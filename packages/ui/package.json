@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "ui": "pnpm dlx shadcn@latest",
+    "ui": "bunx --bun shadcn@latest",
     "lint": "eslint ."
   },
   "peerDependencies": {
@@ -22,6 +22,8 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-separator": "^1.1.1",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

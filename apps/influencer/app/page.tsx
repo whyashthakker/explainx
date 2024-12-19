@@ -1,28 +1,20 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/components/ui/button";
-import styles from "./page.module.css";
+import { Label } from "@repo/ui/components/ui/label";
+import { Separator } from "@repo/ui/components/ui/separator";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
   srcDark: string;
 };
 
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
-
-  return (
-    <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
-    </>
-  );
-};
-
 export default function Home() {
   return (
     <>
       {" "}
-      Influencer button <Button>Button for test ui and tailwind</Button>
+      <Label>hfakjsdfhjkhjk</Label>
+      Influencer button <Separator />
+      <Button variant={"secondary"}>Button for test ui and tailwind</Button>
     </>
   );
 }
