@@ -49,7 +49,7 @@ export const Heading = (props: {
             <HeroSubtitle>
               {props.subtitle || (
                 <>
-                  AI-assisted Commenting, Post Generation, Summaries, Viral Scores & more.
+                  Built for SAAS Founders, by SAAS Founders.
                 </>
               )}
             </HeroSubtitle>

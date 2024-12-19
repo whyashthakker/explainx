@@ -6,10 +6,6 @@ const RefundOption = () => {
   const [activeLicenses, setActiveLicenses] = useState<number | null>(null);
   const [remainingCoupons, setRemainingCoupons] = useState<number | null>(null);
   const landingCopy = "100 TAKA REFUND."
-  
-  useEffect(() => {
-    fetchActiveLicenses();
-  }, []);
 
   useEffect(() => {
     const blinkInterval = setInterval(() => {
@@ -19,30 +15,6 @@ const RefundOption = () => {
     return () => clearInterval(blinkInterval);
   }, []);
 
-
-  useEffect(() => {
-    if (activeLicenses !== null) {
-      const nextMultipleOf10 = Math.ceil(activeLicenses / 10) * 10;
-      const remaining = nextMultipleOf10 - activeLicenses;
-      setRemainingCoupons(remaining === 0 ? 10 : remaining);
-    }
-  }, [activeLicenses]);
-
-  const fetchActiveLicenses = async () => {
-    try {
-      const response = await fetch('/api/licenses/active');
-      if (response.ok) {
-        const data = await response.json();
-        setActiveLicenses(data.count);
-      } else {
-        console.error('Failed to fetch active licenses');
-        setActiveLicenses(0);
-      }
-    } catch (error) {
-      console.error('Error fetching active licenses:', error);
-      setActiveLicenses(0);
-    }
-  };
 
   const Skeleton = () => (
     <div className="inline-block h-4 w-8 bg-green-200 animate-pulse rounded"></div>
@@ -56,7 +28,7 @@ const RefundOption = () => {
             className={`mr-1 h-4 w-4 ${isBlinking ? 'opacity-100' : 'opacity-50'} transition-opacity duration-500`} 
           />
           <span>
-            {activeLicenses === null ? <Skeleton /> : activeLicenses} customers
+            {2 === null ? <Skeleton /> : 2} customers
           </span>
         </div>
         
@@ -65,7 +37,7 @@ const RefundOption = () => {
           <span>
             $20 off for next{' '}
             <strong>
-              {remainingCoupons === null ? <Skeleton /> : remainingCoupons} &nbsp;
+              {10 === null ? <Skeleton /> : 10} &nbsp;
             </strong>
             customers.
           </span>

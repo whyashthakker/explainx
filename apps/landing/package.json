@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
@@ -12,17 +12,18 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
-    "@mdx-js/loader": "3.1.0",
-    "@mdx-js/react": "2.0.0-next.7",
-    "@next/mdx": "15.0.3",
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
+    "@next/mdx": "^15.1.0",
     "@repo/ui": "*",
+    "@repo/db": "workspace:*",
     "@tailwindcss/typography": "0.5.13",
     "@types/mdx": "2.0.13",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "rehype-prism-plus": "2.0.0",
-    "remark-gfm": "4.0.0"
+    "rehype-prism-plus": "^1.6.0",
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

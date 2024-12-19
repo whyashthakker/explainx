@@ -113,17 +113,10 @@ export function Pricing() {
     }
   };
 
-  const handleSliderChange = (value: number[]) => {
-    // Make sure we have a valid value array
-    if (!value?.[0]) return;
-    
-    // userTiers[0] is guaranteed to exist since it's a constant array with values
-    const nearestValue = userTiers.reduce((prev, curr) => {
-        return Math.abs(curr - value[0]) < Math.abs(prev - value[0]) ? curr : prev;
-    }, userTiers[0]);
-    
-    setUsers(nearestValue);
-};
+interface HandleSliderChangeProps {
+  userTiers: number[];
+  setUsers: (value: number) => void;
+}
 
   const plans: Plan[] = [
     {
@@ -180,34 +173,6 @@ export function Pricing() {
         <p className="mt-2 font-cal text-3xl text-gray-900 sm:text-5xl">
           Choose the plan that fits your needs.
         </p>
-      </div>
-
-      <div className="mt-8 mb-8">
-        <p className="text-center text-sm font-medium mb-4">Select number of users 🤗</p>
-        <div className="w-full max-w-md mx-auto">
-          <Slider
-            defaultValue={[users]}
-            max={20}
-            step={1}
-            onValueChange={handleSliderChange}
-            className="mb-4"
-          />
-          <div className="flex justify-between">
-            {userTiers.map((tier) => (
-              <button
-                key={tier}
-                onClick={() => setUsers(tier)}
-                className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                  users === tier 
-                    ? 'bg-blue-600 text-white' 
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              >
-                {tier}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       <div className="bg-white py-10 sm:py-16">

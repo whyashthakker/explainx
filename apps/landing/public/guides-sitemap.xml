@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.olly.social/guides</loc>
+    <lastmod>2024-10-22</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.olly.social/guides/how-to-grow/facebook</loc>
+    <lastmod>2024-10-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.olly.social/guides/how-to-grow/instagram</loc>
+    <lastmod>2024-10-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.olly.social/guides/how-to-grow/linkedin</loc>
+    <lastmod>2024-10-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.olly.social/guides/how-to-grow/reddit</loc>
+    <lastmod>2024-10-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.olly.social/guides/how-to-grow/x-twitter</loc>
+    <lastmod>2024-10-22</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
