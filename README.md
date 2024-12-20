@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# influencer-main
-=======
 # Turborepo starter
 
 This is an official starter Turborepo.
@@ -82,4 +79,3 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
->>>>>>> a5fefe7 (build : Intial Strucuture done)
