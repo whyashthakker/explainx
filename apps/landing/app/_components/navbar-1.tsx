@@ -35,8 +35,8 @@ export function Header() {
       <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Olly.social logo</span>
-            <Logo className="h-8 w-auto" />
+            <span className="sr-only">Infloq.com logo</span>
+            <Logo className="h-14 w-auto" />
           </Link>
         </div>
         
@@ -129,7 +129,7 @@ export function Header() {
           <div className="flex items-center justify-between">
             <Link href="#" className="-m-1.5 p-1.5" onClick={closeMobileMenu}>
               <span className="sr-only">Olly Social logo</span>
-              <Logo className="h-4 w-auto" />
+              <Logo className="h-6 w-auto" />
             </Link>
             <button
               type="button"
