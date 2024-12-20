@@ -13,6 +13,7 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
     "@prisma/client": "^6.1.0",
+    "@prisma/extension-accelerate": "^1.2.1",
     "@repo/db": "workspace:*",
     "@repo/ui": "workspace:*",
     "lucide-react": "^0.468.0",

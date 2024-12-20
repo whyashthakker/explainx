@@ -9,9 +9,16 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-import { signIn } from "../auth";
+import { auth, signIn } from "../auth";
+import { redirect } from "next/navigation";
 
-export default function SignUp() {
+export default async function SignUp() {
+  const session = await auth();
+
+  if (session) {
+    redirect("/authenticated/dashboard");
+  }
+
   return (
     <main className="min-h-screen w-full bg-gradient-to-b from-[#f8fafc] to-white">
       {/* Background decoration */}
@@ -43,7 +50,9 @@ export default function SignUp() {
               <form
                 action={async () => {
                   "use server";
-                  await signIn("google");
+                  await signIn("google", {
+                    redirectTo: "/authenticated/dashboard",
+                  });
                 }}
               >
                 <Button
