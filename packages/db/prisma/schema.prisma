@@ -1,215 +1,93 @@
-// This is your Prisma schema file
-generator client {
-  provider = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
+// prisma/schema.prisma
+datasource db {
+provider  = "postgresql"
+url      = env("DATABASE_URL")
+directUrl = env("DIRECT_URL")
 }
 
-datasource db {
-  provider = "postgresql"
-  directUrl      = env("DIRECT_URL")
-  url      = env("DATABASE_URL")
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Base User Model with Auth
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  
+  // Auth relations
+  accounts      Account[]
+  sessions      Session[]
+  authenticators Authenticator[]
+
+  // Role and type
+  userType     UserType?
+  
+  // Profile relations
+  brand         Brand?    
+  influencer    Influencer?
+
+  // Team memberships
+  brandTeamMemberships    BrandTeamMember[]
+  influencerTeamMemberships  InfluencerTeamMember[]
+
+  // Chat relations
+  sentMessages     Message[]  @relation("SentMessages")
+  receivedMessages Message[]  @relation("ReceivedMessages")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum UserType {
-  INFLUENCER
   BRAND
-  ADMIN
+  INFLUENCER
 }
 
-enum VerificationStatus {
-  PENDING
-  VERIFIED
-  REJECTED
-}
-
-enum Platform {
-  INSTAGRAM
-  TIKTOK
-  LINKEDIN
-  YOUTUBE
-}
-
-enum CampaignStatus {
-  PENDING
-  ACTIVE
-  COMPLETED
-  CANCELLED
-}
-
-enum TeamRole {
-  OWNER
-  ADMIN
-  MEMBER
-}
-
-enum TeamMemberStatus {
-  PENDING
-  ACTIVE
-  INACTIVE
-}
-
-model User {
-  id                String             @id @default(cuid())
-  email             String             @unique
-  password          String?
-  name              String?
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime           @updatedAt
-  verificationStatus VerificationStatus @default(PENDING)
-  emailVerified     DateTime?
-  image             String?
-  role              String?  
-  profilePicture    String?
-  bio               String?
-  
-  // Relations
-  influencerProfile InfluencerProfile?
-  brandProfile      BrandProfile?
-  createdCampaigns  Campaign[]         @relation("CampaignCreator")
-  conversations     Conversation[]
-  messages          Message[]          @relation("MessageSender")
-  
-  // Team member relations
-  brandTeamMemberships    BrandTeamMember[]
-  influencerTeamMemberships InfluencerTeamMember[]
-  
-  // Other relations
-  accounts          Account[]
-  sessions          Session[]
-  Authenticator     Authenticator[]
-  instagramAccount  InstagramAccount?
-
-  // Roles
-  isBrand           Boolean            @default(true)
-  isBrandProfileComplete Boolean       @default(false)
-  isInfluencer      Boolean            @default(false)
-}
-
-model BrandTeamMember {
-  id           String           @id @default(cuid())
-  brandId      String
-  userId       String
-  role         TeamRole
-  status       TeamMemberStatus @default(PENDING)
-  invitedBy    String          // ID of the user who invited this member
-  
-  brand        BrandProfile     @relation(fields: [brandId], references: [id])
-  user         User            @relation(fields: [userId], references: [id])
-  
-  createdAt    DateTime        @default(now())
-  updatedAt    DateTime        @updatedAt
-
-  @@unique([brandId, userId])
-}
-
-model InfluencerTeamMember {
-  id           String           @id @default(cuid())
-  influencerId String
-  userId       String
-  role         TeamRole
-  status       TeamMemberStatus @default(PENDING)
-  invitedBy    String          // ID of the user who invited this member
-  
-  influencer   InfluencerProfile @relation(fields: [influencerId], references: [id])
-  user         User              @relation(fields: [userId], references: [id])
-  
-  createdAt    DateTime          @default(now())
-  updatedAt    DateTime          @updatedAt
-
-  @@unique([influencerId, userId])
-}
-
-model BrandProfile {
-  id               String           @id @default(cuid())
-  userId           String           @unique
-  user             User             @relation(fields: [userId], references: [id])
-  
-  companyName      String
-  industry         String
-  website          String?
-  productTypes     String[]
-  targetAudience   String[]
-  
-  // Team members
-  teamMembers      BrandTeamMember[]
-  
-  // Campaign related
-  campaigns        Campaign[]       @relation("CampaignBrand")
-  
-  createdAt        DateTime         @default(now())
-  updatedAt        DateTime         @updatedAt
-}
-
-model InfluencerProfile {
-  id               String                @id @default(cuid())
-  userId           String                @unique
-  user             User                  @relation(fields: [userId], references: [id])
-  
-  instagramHandle  String                @unique
-  followersCount   Int
-  engagementRate   Float
-  averageLikes     Int
-  averageComments  Int
-  contentCategories String[]
-  
-  basePrice        Float
-  adValue          Float
-  previousBrands   String[]
-  
-  // Team members
-  teamMembers      InfluencerTeamMember[]
-  
-  campaigns        Campaign[]            @relation("CampaignInfluencer")
-  metrics          Metrics[]
-  
-  verificationDocuments String[]
-  
-  createdAt        DateTime              @default(now())
-  updatedAt        DateTime              @updatedAt
-}
-
-// ... (rest of the models remain the same)
-
+// Auth Models
 model Account {
+  id                String  @id @default(cuid())
   userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String?
-  access_token      String?
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String?
+  id_token          String? @db.Text
   session_state     String?
- 
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
-  @@id([provider, providerAccountId])
+
+  @@unique([provider, providerAccountId])
 }
- 
+
 model Session {
+  id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
- 
+
 model VerificationToken {
   identifier String
-  token      String
+  token      String   @unique
   expires    DateTime
- 
+
   @@id([identifier, token])
 }
- 
-// Optional for WebAuthn support
+
 model Authenticator {
   credentialID         String  @unique
   userId               String
@@ -218,91 +96,215 @@ model Authenticator {
   counter              Int
   credentialDeviceType String
   credentialBackedUp   Boolean
-  transports           String?
- 
+  transports          String?
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([userId, credentialID])
 }
 
+// Team Management
+enum TeamRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+// Brand Models
+model Brand {
+  id          String    @id @default(cuid())
+  userId      String    @unique
+  user        User      @relation(fields: [userId], references: [id])
+  
+  name        String
+  logo        String?
+  website     String?
+  industry    String
+  description String?
+  
+  // Team Management
+  team        BrandTeam?
+
+  // Relations
+  campaigns   Campaign[]
+  collaborations Collaboration[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model BrandTeam {
+  id          String    @id @default(cuid())
+  brandId     String    @unique
+  brand       Brand     @relation(fields: [brandId], references: [id])
+  
+  members     BrandTeamMember[]
+  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model BrandTeamMember {
+  id          String    @id @default(cuid())
+  teamId      String
+  team        BrandTeam @relation(fields: [teamId], references: [id])
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  role        TeamRole  
+  inviteStatus InviteStatus
+  inviteToken String?   @unique
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([teamId, userId])
+}
+
+// Influencer Models
+model Influencer {
+  id          String    @id @default(cuid())
+  userId      String    @unique
+  user        User      @relation(fields: [userId], references: [id])
+  
+  name        String
+  avatar      String?
+  bio         String?
+  category    String
+  followers   Int
+  platforms   Platform[]
+  
+  // Team Management
+  team        InfluencerTeam?
+
+  // Relations
+  collaborations Collaboration[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model InfluencerTeam {
+  id            String    @id @default(cuid())
+  influencerId  String    @unique
+  influencer    Influencer @relation(fields: [influencerId], references: [id])
+  
+  members       InfluencerTeamMember[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model InfluencerTeamMember {
+  id          String    @id @default(cuid())
+  teamId      String
+  team        InfluencerTeam @relation(fields: [teamId], references: [id])
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  role        TeamRole
+  inviteStatus InviteStatus
+  inviteToken String?   @unique
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([teamId, userId])
+}
+
+enum InviteStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}
+
+// Platform and Campaign Models
+enum Platform {
+  INSTAGRAM
+  YOUTUBE
+  TIKTOK
+  TWITTER
+  LINKEDIN
+}
+
 model Campaign {
-  id               String         @id @default(cuid())
-  brandId          String
-  brand            BrandProfile   @relation("CampaignBrand", fields: [brandId], references: [id])
-  influencerId     String
-  influencer       InfluencerProfile @relation("CampaignInfluencer", fields: [influencerId], references: [id])
-  creatorId        String
-  creator          User           @relation("CampaignCreator", fields: [creatorId], references: [id])
+  id          String    @id @default(cuid())
+  brandId     String
+  brand       Brand     @relation(fields: [brandId], references: [id])
+  createdById String    // Track which team member created the campaign
   
-  status           CampaignStatus @default(PENDING)
-  budget           Float
-  requirements     String
-  deliverables     String[]
-  startDate        DateTime
-  endDate          DateTime
+  title       String
+  description String
+  budget      Decimal
+  requirements String[]
+  platforms   Platform[]
+  status      CampaignStatus
+  startDate   DateTime
+  endDate     DateTime
   
-  // Metrics after campaign
-  metrics          Metrics?
+  collaborations Collaboration[]
   
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
-model Metrics {
-  id               String     @id @default(cuid())
-  campaignId       String?    @unique
-  campaign         Campaign?  @relation(fields: [campaignId], references: [id])
-  influencerId     String
-  influencer       InfluencerProfile @relation(fields: [influencerId], references: [id])
-  
-  impressions      Int
-  reach            Int
-  engagement       Float
-  clickCount       Int
-  conversionCount  Int?
-  
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
+enum CampaignStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
 }
 
-model Conversation {
-  id               String     @id @default(cuid())
-  participants     User[]
-  messages         Message[]
+// Collaboration and Chat Models
+model Collaboration {
+  id            String    @id @default(cuid())
+  campaignId    String
+  campaign      Campaign  @relation(fields: [campaignId], references: [id])
+  brandId       String
+  brand         Brand     @relation(fields: [brandId], references: [id])
+  influencerId  String
+  influencer    Influencer @relation(fields: [influencerId], references: [id])
   
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
+  status        CollaborationStatus
+  terms         String
+  deliverables  String[]
+  compensation  Decimal
+  
+  chatRoom      ChatRoom?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum CollaborationStatus {
+  PENDING
+  ACCEPTED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model ChatRoom {
+  id              String    @id @default(cuid())
+  collaborationId String    @unique
+  collaboration   Collaboration @relation(fields: [collaborationId], references: [id])
+  
+  messages        Message[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 }
 
 model Message {
-  id               String       @id @default(cuid())
-  conversationId   String
-  conversation     Conversation @relation(fields: [conversationId], references: [id])
-  content          String
-  senderId         String
-  sender           User         @relation("MessageSender", fields: [senderId], references: [id])
+  id          String    @id @default(cuid())
+  content     String
+  chatRoomId  String
+  chatRoom    ChatRoom  @relation(fields: [chatRoomId], references: [id])
   
-  createdAt        DateTime     @default(now())
-}
-
-model InstagramAccount {
-  id                String    @id @default(cuid())
-  userId            String    @unique
-  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  senderId    String
+  sender      User      @relation("SentMessages", fields: [senderId], references: [id])
+  receiverId  String
+  receiver    User      @relation("ReceivedMessages", fields: [receiverId], references: [id])
   
-  // Instagram Profile Data
-  instagramId       String    @unique
-  username          String
-  accountType       String
-  mediaCount        Int
-  followersCount    Int
-  followsCount      Int
-  profilePictureUrl String?
-  
-  // Auth Data
-  accessToken       String
-  tokenExpiresAt    DateTime?
-  
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime  @updatedAt
+  read        Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
