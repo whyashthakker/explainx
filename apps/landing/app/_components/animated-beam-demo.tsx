@@ -16,7 +16,9 @@ import {
   BarChart3,
   Building2,
   Facebook,
-  Linkedin
+  Linkedin,
+  SparkleIcon,
+  Wand
 } from 'lucide-react';
 
 interface MetricData {
@@ -161,7 +163,7 @@ interface AnimatedBeamDemoProps {
 
 const creatorSocialConnections = {
   0: [0, 4], // Creator 1 connects to Instagram and Twitter
-  1: [0, 1], // Creator 2 connects to Youtube and Facebook
+  1: [2, 0], // Creator 2 connects to Youtube and Facebook
   2: [0, 4], // Creator 3 connects to Twitter and LinkedIn
   3: [3, 4], // Creator 4 connects to Instagram and Youtube
   4: [0, 1], // Creator 5 connects to Youtube and Twitter
@@ -285,8 +287,8 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
           </div>
 
           {/* Center - AI */}
-          <div className="flex flex-col justify-center">
-            <Circle ref={aiRef} className="size-20 md:size-24 lg:size-28 bg-white shadow-lg p-4 z-20">
+          <div className="relative flex flex-col justify-center items-center">
+            <Circle ref={aiRef} className="relative size-20 md:size-24 lg:size-28 bg-white shadow-lg p-4 z-20">
               <Image
                 src="/icons/infloq.png"
                 height={1000}
@@ -294,8 +296,11 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
                 alt="AI"
                 className="p-2"
               />
+              {/* Now place the wand icon absolutely inside the circle */}
+              <SparkleIcon className="absolute top-6 right-8 h-4 w-4 text-blue-700" />
             </Circle>
           </div>
+
 
           {/* Mid-Right - Creators */}
           <div className="flex flex-col justify-center gap-6 md:gap-8 z-10">
