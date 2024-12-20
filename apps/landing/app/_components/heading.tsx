@@ -37,12 +37,12 @@ export const Heading = (props: {
           </div>
 
           {/* Logo Strip */}
-          <div className="mt-8 md:mt-12 lg:mt-16">
+          {/* <div className="mt-8 md:mt-12 lg:mt-16">
             <LogoStrip />
-          </div>
+          </div> */}
 
           {/* Video Demo Section */}
-          <div className="mt-12 md:mt-16 lg:mt-20">
+          {/* <div className="mt-12 md:mt-16 lg:mt-20">
             <div className="relative rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:p-4">
               <Image
                 src={props.image || "/new_video_thumbnail.png"}
@@ -53,7 +53,7 @@ export const Heading = (props: {
               />
               <VideoDemo />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
