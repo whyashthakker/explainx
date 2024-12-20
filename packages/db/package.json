@@ -6,9 +6,7 @@
   "module": "src/index.ts",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./client": "./src/index.ts",
-    "./api": "./src/api.ts"
+    "./client": "./src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
