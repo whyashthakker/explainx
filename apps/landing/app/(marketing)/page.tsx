@@ -1,8 +1,8 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { CTA } from "./_components/cta";
-import FAQSection from "./_components/faq-section";
+import { CTA } from "../_components/cta";
+import FAQSection from "../_components/faq-section";
 import {
   Features,
   FeaturesAiPersonalities,
@@ -11,11 +11,11 @@ import {
   FeaturesCustomPanels,
   FeaturesStats,
   FeaturesUnsubscribe,
-} from "./_components/features";
-import { Heading } from "./_components/heading";
-import { Pricing } from "./_components/pricing-2";
-import { Testimonials } from "./_components/testimonials";
-import ProfileCarousel from "./_components/profile-carousel";
+} from "../_components/features";
+import { Heading } from "../_components/heading";
+import { Pricing } from "../_components/pricing-2";
+import { Testimonials } from "../_components/testimonials";
+import ProfileCarousel from "../_components/profile-carousel";
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
