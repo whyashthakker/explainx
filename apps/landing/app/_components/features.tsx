@@ -1,7 +1,5 @@
 import clsx from "clsx";
 import {
-    AirVent,
-  AlignCenterHorizontalIcon,
   BarChart2Icon,
   Database,
   DollarSign,
@@ -18,7 +16,7 @@ import {
   Sparkles,
   SparklesIcon,
   UsersIcon,
-  Voicemail,
+  AirVent,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -28,19 +26,223 @@ export function Features() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="font-cal text-base leading-7 text-blue-600">
-            Privacy first
+            Data-Driven Results
           </h2>
           <p className="mt-2 font-cal text-3xl text-gray-900 sm:text-4xl">
-            One Time Payment. No data is stored on our servers.
+            Pay Per Click. Not Per Campaign.
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            We do not store your data on our servers. All data is stored locally
-            on your computer. We have no access to your API key, social media accounts 
-            or emails.
+            Connect your analytics to showcase real results. Our platform analyzes engagement,
+            audience quality, and conversion rates to ensure brands get the highest ROI from
+            their influencer marketing investments.
           </p>
         </div>
       </div>
     </div>
+  );
+}
+
+const featuresPlatform = [
+  {
+    name: "AI-Powered Matching",
+    description:
+      "Our AI analyzes brand requirements and influencer metrics to create perfect matches based on data, not guesswork.",
+    icon: DollarSign,
+  },
+  {
+    name: "Analytics Integration",
+    description:
+      "Connect your social media analytics to showcase real engagement and conversion metrics to potential brands.",
+    icon: SmileIcon,
+  },
+  {
+    name: "Verified Profiles",
+    description:
+      "All influencers go through our verification process to ensure quality and authenticity.",
+    icon: AirVent,
+  },
+];
+
+export function FeaturesAutomation() {
+  return (
+    <FeaturesWithImage
+      imageSide="right"
+      title="Intelligent Matchmaking 🛠️"
+      subtitle="Data-driven influencer selection for maximum ROI"
+      description="Our platform uses advanced analytics and AI to match brands with the perfect influencers based on real performance data."
+      image="/features/custom-models.png"
+      features={featuresPlatform}
+    />
+  );
+}
+
+const featuresAnalytics = [
+  {
+    name: "Deep Analytics",
+    description:
+      "Get detailed insights into audience demographics, engagement patterns, and conversion rates.",
+    icon: Sparkles,
+  },
+  {
+    name: "Performance Tracking",
+    description:
+      "Track campaign metrics, click-through rates, and ROI in real-time.",
+    icon: Database,
+  },
+  {
+    name: "Optimization Engine",
+    description:
+      "Our AI continuously analyzes performance data to optimize campaign results.",
+    icon: Orbit,
+  },
+];
+
+export function FeaturesStats() {
+  return (
+    <FeaturesWithImage
+      imageSide="right"
+      title="Real Results 🔥"
+      subtitle="Performance Metrics That Matter"
+      description="Get comprehensive insights into campaign performance, audience engagement, and conversion metrics to maximize your ROI."
+      image="/features/virality-score.png"
+      features={featuresAnalytics}
+    />
+  );
+}
+
+const featuresInfluencers = [
+  {
+    name: "Easy Campaign Management",
+    description:
+      "Manage all your brand collaborations, content schedules, and payments in one place.",
+    icon: MousePointer2Icon,
+  },
+  {
+    name: "Fair Compensation",
+    description:
+      "Get paid based on actual performance with our click-based payment system.",
+    icon: Music2,
+  },
+  {
+    name: "Growth Insights",
+    description:
+      "Access detailed analytics about your audience and content performance.",
+    icon: BarChart2Icon,
+  },
+];
+
+export function FeaturesUnsubscribe() {
+  return (
+    <FeaturesWithImage
+      imageSide="left"
+      title="For Influencers"
+      subtitle="Grow Your Personal Brand"
+      description="Connect with brands that value your authentic influence and get paid fairly for your impact."
+      image="/features/comment-generation.png"
+      features={featuresInfluencers}
+    />
+  );
+}
+
+const featuresBrands = [
+  {
+    name: "Smart Campaign Setup",
+    description:
+      "Define your target audience and goals, and let our AI find the perfect influencers.",
+    icon: LayoutPanelLeftIcon,
+  },
+  {
+    name: "Performance-Based Pricing",
+    description:
+      "Only pay for actual clicks and conversions, ensuring ROI on every campaign.",
+    icon: MousePointerClickIcon,
+  },
+  {
+    name: "Real-Time Optimization",
+    description:
+      "Get AI-powered suggestions to optimize your campaigns for better performance.",
+    icon: SparklesIcon,
+  },
+];
+
+export function FeaturesCustomPanels() {
+  return (
+    <FeaturesWithImage
+      imageSide="left"
+      title="For Brands 💼"
+      subtitle="Maximum ROI Guaranteed"
+      description="Connect with verified influencers who can deliver real results for your brand. Pay only for actual performance."
+      image="/features/custom-buttons.png"
+      features={featuresBrands}
+    />
+  );
+}
+
+const featuresVerification = [
+  {
+    name: "Profile Verification",
+    description:
+      "We verify every influencer's metrics, audience quality, and past performance.",
+    icon: UsersIcon,
+  },
+  {
+    name: "Global Reach",
+    description:
+      "Access verified influencers across different platforms and regions.",
+    icon: GlobeIcon,
+  },
+  {
+    name: "Quick Matching",
+    description:
+      "Our AI matches you with relevant opportunities based on your profile and performance.",
+    icon: MousePointer2Icon,
+  },
+];
+
+export function FeaturesAiPersonalities() {
+  return (
+    <FeaturesWithImage
+      imageSide="right"
+      title="Quality Assured ✨"
+      subtitle="Verified Influencers Only"
+      description="Every influencer on Infloq.com goes through our thorough verification process to ensure quality and authenticity."
+      image="/features/ai-personalities-agencies.png"
+      features={featuresVerification}
+    />
+  );
+}
+
+const featuresIntegration = [
+  {
+    name: "Connect Analytics",
+    description:
+      "Easily connect your social media and analytics accounts to showcase your true influence.",
+    icon: LayoutPanelLeftIcon,
+  },
+  {
+    name: "Automated Reporting",
+    description:
+      "Get detailed performance reports and insights automatically generated for each campaign.",
+    icon: SmileIcon,
+  },
+  {
+    name: "Easy Integration",
+    description:
+      "Simple one-click integration with major social media platforms and analytics tools.",
+    icon: AirVent,
+  },
+];
+
+export function FeaturesCustomActions() {
+  return (
+    <FeaturesWithImage
+      imageSide="left"
+      title="Seamless Integration 🔄"
+      subtitle="Connect Your Analytics"
+      description="Connect your social media accounts and analytics tools to showcase your true influence and track campaign performance."
+      image="/features/custom-actions.png"
+      features={featuresIntegration}
+    />
   );
 }
 
@@ -105,8 +307,8 @@ export function FeaturesWithImage(props: {
             <div className="rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4">
               <Image
                 src={props.image}
-                alt="Olly features"
-                className="w-[48rem] max-w-none rounded-xl shadow-2xl shadow-teal-500/50 ring-1 ring-gray-400/10 sm:w-[57rem]"
+                alt="Infloq features"
+                className="w-[48rem] max-w-none rounded-xl shadow-2xl shadow-blue-500/50 ring-1 ring-gray-400/10 sm:w-[57rem]"
                 width={2400}
                 height={1800}
               />
@@ -115,210 +317,5 @@ export function FeaturesWithImage(props: {
         </div>
       </div>
     </div>
-  );
-}
-
-const featuresAutomations = [
-  {
-    name: "Free forever LLM Integration",
-    description:
-      "You can integrate Olly with latest models like Llama 3.1, 3, 2, Gemma 2 and more via Ollama",
-    icon: DollarSign,
-  },
-  {
-    name: "Choose from Paid vendors",
-    description:
-      "Choose from GPT-3.5, 4o, o1, or Claude 3.5 Sonnet, or Gemini 1.5 or Straico or OpenRouter, works just like you would like it to.",
-    icon: SmileIcon,
-  },
-  {
-    name: "Extensive guides & videos",
-    description:
-      "We have extensive guides and docs to help you through the integration and updates.",
-    icon: AirVent,
-  },
-];
-
-export function FeaturesAutomation() {
-  return (
-    <FeaturesWithImage
-      imageSide="right"
-      title="Support for local and popular AI Models 🛠️"
-      subtitle="Flexibly choose between local and popular AI Models of your choice."
-      description="We support local models powered by Ollama, and vendors like OpenAI, Claude, Gemini, Straico, OpenRouter, and more."
-      image="/features/custom-models.png"
-      features={featuresAutomations}
-    />
-  );
-}
-
-const featuresStats = [
-  {
-    name: "Post what works",
-    description:
-      "Understand why certain posts go viral and predict what will work and what won't in seconds.",
-    icon: Sparkles,
-  },
-  {
-    name: "Quality and Quantity",
-    description:
-      "Generate more quality in quantity.",
-    icon: Database,
-  },
-  {
-    name: "Learn with every post",
-    description:
-      "Learn why certain posts go viral and which ones don't and why.",
-    icon: Orbit,
-  },
-];
-
-export function FeaturesStats() {
-  return (
-    <FeaturesWithImage
-      imageSide="right"
-      title="Go Viral 🔥"
-      subtitle="Predict what will work and what won't."
-      description="Leverage the power of AI to predict what will go viral and what won't. Olly can generate virality scores for your and community posts."
-      image="/features/virality-score.png"
-      features={featuresStats}
-    />
-  );
-}
-
-const featuresUnsubscribe = [
-  {
-    name: "Takes a few seconds",
-    description:
-      "Just select the post you want to comment on and generate a comment in seconds.",
-    icon: MousePointer2Icon,
-  },
-  {
-    name: "Use your own voice",
-    description:
-      "Customise your commenting style one time and Olly will use it to generate comments in your voice.",
-    icon: Music2,
-  },
-  {
-    name: "Learn from past comments",
-    description:
-      "Olly learns from your past comments and improves the quality of comments over time.",
-    icon: BarChart2Icon,
-  },
-];
-
-export function FeaturesUnsubscribe() {
-  return (
-    <FeaturesWithImage
-      imageSide="left"
-      title="AI Commenter"
-      subtitle="AI-Powered Comments in your browser."
-      description="Generate dynamic comments in seconds, and in your own voice!"
-      image="/features/comment-generation.png"
-      features={featuresUnsubscribe}
-    />
-  );
-}
-
-const featuresCustomPanels = [
-  {
-    name: "Custom Comment Panels",
-    description:
-      "View a set of pre-defined comment styles directly on social media sites for quick access.",
-    icon: LayoutPanelLeftIcon,
-  },
-  {
-    name: "One-Click Commenting",
-    description:
-      "Generate and post comments with a single click, without needing to select text first.",
-    icon: MousePointerClickIcon,
-  },
-  {
-    name: "Tailored Suggestions",
-    description:
-      "Get AI-powered comment suggestions based on the content and your preferred style.",
-    icon: SparklesIcon,
-  },
-];
-
-export function FeaturesCustomPanels() {
-  return (
-    <FeaturesWithImage
-      imageSide="left"
-      title="Custom Comment Panels 💬"
-      subtitle="One click commenting"
-      description="Effortlessly engage on social platforms with customized comment panels, offering one-click commenting for a variety of styles and tones. Currently only supported for LinkedIn. On roadmap: X, Facebook, Instagram"
-      image="/features/custom-buttons.png"
-      features={featuresCustomPanels}
-    />
-  );
-}
-
-const featuresAiPersonalities = [
-  {
-    name: "Custom AI Personalities",
-    description:
-      "Create AI Personalities with custom prompts for generating comments as various experts (e.g., digital marketing, e-commerce).",
-    icon: UsersIcon,
-  },
-  {
-    name: "Olly for Agencies",
-    description:
-      "Seamlessly work with multiple brands, vendors and much more.",
-    icon: GlobeIcon,
-  },
-  {
-    name: "Quick and Easy",
-    description:
-      "Select a post, choose an AI Personality, and generate a tailored comment in seconds.",
-    icon: MousePointer2Icon,
-  },
-];
-
-export function FeaturesAiPersonalities() {
-  return (
-    <FeaturesWithImage
-      imageSide="right"
-      title="AI Personalities ✨"
-      subtitle="Big deal for Agencies."
-      description="Working with multiple brands? you can now create AI Personalities to match customer commenting style."
-      image="/features/ai-personalities-agencies.png"
-      features={featuresAiPersonalities}
-    />
-  );
-}
-
-
-const featuresCustomActions = [
-  {
-    name: "Take any action, anywhere.",
-    description:
-      "You can now create your own actions by defining Prompts & Tasks for Olly and it will do your bidding.",
-    icon: AlignCenterHorizontalIcon,
-  },
-  {
-    name: "Easily Customisable",
-    description:
-      "Once created, you can easily iterate over the action with various prompts to experiment what works best for you.",
-    icon: SmileIcon,
-  },
-  {
-    name: "Default Actions",
-    description:
-      "Speed is all in the World of Social Media, Olly enables you to set default custom actions so your tasks are a click away.",
-    icon: AirVent,
-  },
-];
-
-export function FeaturesCustomActions() {
-  return (
-    <FeaturesWithImage
-      imageSide="left"
-      title="Custom Actions 🏡"
-      subtitle="Your style, your Prompt"
-      description="We support local models powered by Ollama, and vendors like OpenAI, Claude, Gemini, Straico, OpenRouter, and more."
-      image="/features/custom-actions.png"
-      features={featuresCustomActions}
-    />
   );
 }

@@ -20,6 +20,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        cal: ['var(--font-cal)', 'Inter var', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
