@@ -1,7 +1,6 @@
-import type { Config } from 'tailwindcss'
 import baseConfig from "@repo/ui/tailwind.config";
 
-const config: Config = {
+const config = {
   content: [
     ...(baseConfig.content || []),
     './app/**/*.{js,ts,jsx,tsx,md,mdx}',
