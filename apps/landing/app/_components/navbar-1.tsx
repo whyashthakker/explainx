@@ -22,7 +22,7 @@ const resourcesNavigation = [
   { name: "Affiliates", href: "https://olly-ai.lemonsqueezy.com/affiliates", target: "_blank" },
 ];
 
-export function Header() {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
 

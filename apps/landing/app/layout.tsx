@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Suspense } from "react";
 import localFont from "next/font/local";
-import { Header } from "./_components/navbar-1";
-import { Footer } from "./_components/footer";
+import Navbar from "./_components/navbar-1";
 import { PreFooter } from "./_components/pre-footer";
 import { SquaresPattern } from "./_components/squares-pattern";
 import { Toaster } from '@repo/ui/components/ui/toaster';
@@ -88,7 +87,7 @@ export default function RootLayout({
       <body className={`h-full ${inter.variable} ${calFont.variable} font-sans antialiased`}>
         <Suspense>
           <div className="flex flex-col min-h-screen dark:bg-[#1F1F1F]">
-            <Header />
+            <Navbar />
             <main className="flex-grow pt-12 md:pt-20 isolate">
               {children}
               <SquaresPattern />
