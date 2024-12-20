@@ -94,7 +94,6 @@ export default function RootLayout({
               <SquaresPattern />
             </main>
             <PreFooter />
-            <Footer />
           </div>
           <Toaster />
         </Suspense>
