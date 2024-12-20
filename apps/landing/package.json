@@ -15,7 +15,7 @@
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^15.1.0",
-    "@repo/ui": "*",
+    "@repo/ui": "workspace:*",
     "@repo/db": "workspace:*",
     "@tailwindcss/typography": "0.5.13",
     "@types/mdx": "2.0.13",
