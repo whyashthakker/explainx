@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Content } from "./content";
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import { StructuredData } from "../StructuredData";
 
@@ -20,7 +20,7 @@ async function getPostMetadata(slug: string): Promise<BlogPostMetadata | null> {
     try {
         const postsDirectory = path.join(process.cwd(), 'app/blog/_posts/(en)');
         const filePath = path.join(postsDirectory, `${slug}.mdx`);
-        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const fileContent = await fs.readFile(filePath, 'utf8');
         
         const metadataMatch = fileContent.match(/export const metadata = ({[\s\S]*?})/);
         if (!metadataMatch) return null;
@@ -33,8 +33,11 @@ async function getPostMetadata(slug: string): Promise<BlogPostMetadata | null> {
     }
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-    const post = await getPostMetadata(params.slug);
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+    // Await the params promise
+    const { slug } = await params;
+    
+    const post = await getPostMetadata(slug);
     
     if (!post) {
         return {
@@ -47,32 +50,34 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
         title: post.title,
         description: post.description,
         alternates: {
-            canonical: `/blog/post/${params.slug}`,
+            canonical: `/blog/post/${slug}`,
         },
         robots: { index: true, follow: true },
     };
 }
 
 export async function generateStaticParams(): Promise<Array<Params>> {
-    // Remove the SKIP_BUILD_STATIC_GENERATION check as it's not needed for ISR
     const postsDirectory = path.join(process.cwd(), 'app/blog/_posts/(en)');
-    const posts = fs.readdirSync(postsDirectory)
-        .filter(file => file.endsWith('.mdx'))
-        .sort((a, b) => b.localeCompare(a));
+    const posts = await fs.readdir(postsDirectory)
+        .then(files => 
+            files.filter(file => file.endsWith('.mdx'))
+                 .sort((a, b) => b.localeCompare(a))
+        );
         
     return posts.map((post) => ({
         slug: post.replace(/\.mdx$/, ''),
     }));
 }
 
-// For ISR, we want to allow dynamic parameters
-export const dynamicParams = true;
-
-// Use the Next.js 13+ segment configuration
+// Use the Next.js 15 segment configuration
+export const dynamic = 'force-static'; // Prefer static generation
 export const revalidate = 3600; // Revalidate every hour
 
-export default async function Page({ params }: { params: Params }) {
-    const postMetadata = await getPostMetadata(params.slug);
+export default async function Page({ params }: { params: Promise<Params> }) {
+    // Await the params promise 
+    const { slug } = await params;
+
+    const postMetadata = await getPostMetadata(slug);
     
     if (!postMetadata) {
         notFound();
@@ -88,7 +93,7 @@ export default async function Page({ params }: { params: Params }) {
                 authorUrl="https://goyashy.com"
                 image={[]}
             />
-            <Content slug={params.slug} metadata={postMetadata} />
+            <Content slug={slug} metadata={postMetadata} />
         </>
     );
 }
