@@ -4,7 +4,7 @@ import { Button } from './Button';
 
 export function CTAButtons() {
   return (
-    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 my-8">
+    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start md:items-start gap-4 sm:gap-6 my-8">
       <Button
         size="2xl"
         color="premium"
