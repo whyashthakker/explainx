@@ -7,6 +7,10 @@ const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
+    output: 'standalone', // Add this
+    assetPrefix: '', // Add this
+    reactStrictMode: true, // Add this
+    swcMinify: true, // Add this
     images: {
         remotePatterns: [
             {
@@ -44,7 +48,6 @@ const nextConfig = {
         ],
     },
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-    // Remove experimental.mdxRs
 }
 
 const withMDX = nextMDX({
