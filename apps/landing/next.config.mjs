@@ -7,10 +7,6 @@ const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
-    output: 'standalone', // Add this
-    assetPrefix: '', // Add this
-    reactStrictMode: true, // Add this
-    swcMinify: true, // Add this
     images: {
         remotePatterns: [
             {
