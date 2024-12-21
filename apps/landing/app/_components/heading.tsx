@@ -14,16 +14,16 @@ export const Heading = (props: {
 }) => {
   return (
     <div className="relative heading"> 
-      <div className="py-6 md:py-10 lg:py-20">
-        <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-8"> {/* Increased max-width */}
+      <div className="pt-15 md:pt-12 pb-6 md:py-10 lg:py-20"> {/* Adjusted padding top for mobile */}
+        <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center"> {/* Changed to 12 columns grid */}
-            {/* Left Side - Text Content - Takes less space */}
-            <div className="lg:col-span-5 text-left lg:pr-8"> {/* Reduced to 4 columns */}
-              <h1 className="text-3xl md:text-4xl lg:text-6xl font-cal font-bold text-gray-900 mb-4 md:mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-8 lg:gap-16 items-center">
+            {/* Left Side - Text Content */}
+            <div className="lg:col-span-5 text-left lg:pr-8">
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-cal font-bold text-gray-900 mb-4 mt-12 md:mt-0 md:mb-6 text-center lg:text-start">
                 Find Your Next Creator in Seconds
               </h1>
-              <p className="text-lg md:text-xl text-gray-500 mb-6 md:mb-8">
+              <p className="text-xs md:text-xl text-gray-500 mb-8 md:mb-8 text-center lg:text-start">
                 Our AI matches you with the perfect creators for your brand, 
                 from a network of thousands
               </p>
@@ -31,7 +31,7 @@ export const Heading = (props: {
             </div>
 
             {/* Right Side - Animation - Takes more space */}
-            <div className="lg:col-span-7 w-full min-h-[400px] md:min-h-[600px] lg:min-h-[700px] overflow-visible"> {/* Increased to 8 columns */}
+            <div className="lg:col-span-7 w-full min-h-[300px] md:min-h-[600px] lg:min-h-[700px] overflow-visible mt-4 md:mt-0"> {/* Adjusted min-height for mobile and added margin top */}
               <AnimatedBeamMultipleOutputDemo />
             </div>
           </div>
