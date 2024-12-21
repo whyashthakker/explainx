@@ -13,12 +13,10 @@ import {
   User,
   DollarSign,
   Users,
-  BarChart3,
   Building2,
   Facebook,
   Linkedin,
   SparkleIcon,
-  Wand
 } from 'lucide-react';
 
 interface MetricData {
@@ -35,6 +33,7 @@ interface CircleProps {
   metrics?: MetricData;
   showMetrics?: boolean;
   index?: number;
+  size?: "sm" | "md" | "lg";
 }
 
 interface MetricBadgeProps {
@@ -48,37 +47,33 @@ const MinimalMetricBadge: React.FC<MetricBadgeProps> = ({ metrics }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: 10 }}
     transition={{ duration: 0.2 }}
-    className="absolute -top-2 -translate-y-full left-[80%] z-[100] bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-100 p-2 w-32"
+    className="absolute -top-2 -translate-y-full left-[80%] z-[100] bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-100 p-2 w-28 md:w-32"
   >
-    <div className="text-sm">
+    <div className="text-xs md:text-sm">
       <div className="flex items-center justify-between mb-1">
-        <DollarSign className="w-3.5 h-3.5 text-green-600" />
+        <DollarSign className="w-3 h-3 md:w-3.5 md:h-3.5 text-green-600" />
         <span className="font-bold text-green-600">{metrics.roi}</span>
       </div>
       <div className="flex items-center justify-between">
-        <Users className="w-3.5 h-3.5 text-blue-600" />
+        <Users className="w-3 h-3 md:w-3.5 md:h-3.5 text-blue-600" />
         <span className="font-medium">{metrics.engagement}</span>
       </div>
     </div>
   </motion.div>
 );
 
-// Add a central animation controller
 const useMetricAnimation = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const showNext = () => {
       setActiveIndex(prev => {
-        const nextIndex = Math.floor(Math.random() * 5); // 5 creators
+        const nextIndex = Math.floor(Math.random() * 5);
         return nextIndex;
       });
     };
 
-    // Initial delay
     const timer = setTimeout(showNext, 2000);
-
-    // Set up interval
     const interval = setInterval(showNext, 3000);
 
     return () => {
@@ -91,18 +86,22 @@ const useMetricAnimation = () => {
 };
 
 const Circle = forwardRef<HTMLDivElement, CircleProps>(
-  ({ className, children, metrics, showMetrics, index }, ref) => {
+  ({ className, children, metrics, showMetrics, index, size = "md" }, ref) => {
     const activeIndex = useMetricAnimation();
     const isVisible = activeIndex === index && metrics && showMetrics;
 
+    const sizeClasses = {
+      sm: "size-12 md:size-14",
+      md: "size-14 md:size-16",
+      lg: "size-16 md:size-20 lg:size-24"
+    };
+
     return (
-      <div 
-        className="relative" 
-        ref={ref}
-      >
+      <div className="relative" ref={ref}>
         <div
           className={cn(
-            "flex size-16 items-center justify-center rounded-full border-2 border-border p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)] hover:scale-110 transition-transform",
+            "flex items-center justify-center rounded-full border-2 border-border p-2 md:p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)] hover:scale-110 transition-transform",
+            sizeClasses[size],
             "z-0",
             className,
           )}
@@ -162,11 +161,11 @@ interface AnimatedBeamDemoProps {
 }
 
 const creatorSocialConnections = {
-  0: [0, 4], // Creator 1 connects to Instagram and Twitter
-  1: [2, 0], // Creator 2 connects to Youtube and Facebook
-  2: [0, 4], // Creator 3 connects to Twitter and LinkedIn
-  3: [3, 4], // Creator 4 connects to Instagram and Youtube
-  4: [0, 1], // Creator 5 connects to Youtube and Twitter
+  0: [0, 4],
+  1: [2, 0],
+  2: [0, 4],
+  3: [3, 4],
+  4: [0, 1],
 };
 
 export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoProps) {
@@ -174,7 +173,6 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
   const [showMetrics, setShowMetrics] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // All refs with proper type assertion
   const brand1Ref = useRef<HTMLDivElement>(null);
   const brand2Ref = useRef<HTMLDivElement>(null);
   const brand3Ref = useRef<HTMLDivElement>(null);
@@ -205,14 +203,13 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
     };
   }, []);
 
-  // Helper function to ensure ref is not undefined
   const getValidRef = (ref: React.RefObject<HTMLDivElement>) => ref as React.RefObject<HTMLElement>;
 
   return (
     <div className="w-full h-full flex items-center justify-center">
       <div
         className={cn(
-          "relative flex h-[400px] md:h-[600px] lg:h-[700px] w-full max-w-[1400px] items-center justify-center overflow-hidden px-2 md:px-4 py-10 md:py-20",
+          "relative flex h-[300px] md:h-[500px] lg:h-[600px] w-full max-w-[1400px] items-center justify-center overflow-hidden px-1 md:px-4 py-6 md:py-10 lg:py-16",
           className,
         )}
         ref={containerRef}
@@ -240,19 +237,14 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
           ))}
 
           {/* Creator to Social beams */}
-          {[creator1Ref, creator2Ref, creator3Ref, creator4Ref, creator5Ref].map((creatorRef, i) => {
+          {!isMobile && [creator1Ref, creator2Ref, creator3Ref, creator4Ref, creator5Ref].map((creatorRef, i) => {
             if (!creatorRef) return null;
             
             return (
               <React.Fragment key={`creator-social-${i}`}>
                 {creatorSocialConnections[i as keyof typeof creatorSocialConnections].map((socialIndex) => {
-                  const socialRefs: Array<React.RefObject<HTMLDivElement>> = [
-                    social1Ref,
-                    social2Ref,
-                    social3Ref,
-                    social4Ref,
-                    social5Ref
-                  ].filter((ref): ref is React.RefObject<HTMLDivElement> => ref !== null);
+                  const socialRefs = [social1Ref, social2Ref, social3Ref, social4Ref, social5Ref]
+                    .filter((ref): ref is React.RefObject<HTMLDivElement> => ref !== null);
 
                   const socialRef = socialRefs[socialIndex];
                   if (!socialRef) return null;
@@ -272,38 +264,36 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
         </div>
 
         {/* Content layer */}
-        <div className="flex w-full h-full items-stretch justify-between relative px-4 md:px-8 lg:px-12">
+        <div className="flex w-full h-full items-stretch justify-between relative px-2 md:px-8 lg:px-12">
           {/* Left Side - Brands */}
-          <div className="flex flex-col justify-center gap-6 md:gap-8 z-10">
-            <Circle ref={brand1Ref} className="bg-blue-100">
-              <Building2 className="text-blue-600" size={28} />
+          <div className="flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 z-10">
+            <Circle ref={brand1Ref} className="bg-blue-100" size="sm">
+              <Building2 className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={brand2Ref} className="bg-green-100">
-              <Building2 className="text-green-600" size={28} />
+            <Circle ref={brand2Ref} className="bg-green-100" size="sm">
+              <Building2 className="text-green-600 w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={brand3Ref} className="bg-purple-100">
-              <Building2 className="text-purple-600" size={28} />
+            <Circle ref={brand3Ref} className="bg-purple-100" size="sm">
+              <Building2 className="text-purple-600 w-6 h-6 md:w-7 md:h-7" />
             </Circle>
           </div>
 
           {/* Center - AI */}
           <div className="relative flex flex-col justify-center items-center">
-            <Circle ref={aiRef} className="relative size-20 md:size-24 lg:size-28 bg-white shadow-lg p-4 z-20">
+            <Circle ref={aiRef} className="relative bg-white shadow-lg p-3 md:p-4 z-20" size="lg">
               <Image
                 src="/icons/infloq.png"
                 height={1000}
                 width={1000}
                 alt="AI"
-                className="p-2"
+                className="p-1 md:p-2"
               />
-              {/* Now place the wand icon absolutely inside the circle */}
-              <SparkleIcon className="absolute top-6 right-8 h-4 w-4 text-blue-700" />
+              <SparkleIcon className="absolute top-4 right-6 h-3 w-3 md:h-4 md:w-4 text-blue-700" />
             </Circle>
           </div>
 
-
           {/* Mid-Right - Creators */}
-          <div className="flex flex-col justify-center gap-6 md:gap-8 z-10">
+          <div className="flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 z-10">
             {[creator1Ref, creator2Ref, creator3Ref, creator4Ref, creator5Ref].map((ref, i) => (
               <Circle 
                 key={`creator-${i}`} 
@@ -311,28 +301,29 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
                 className="bg-white"
                 metrics={creatorMetrics[i]}
                 showMetrics={showMetrics}
+                size="sm"
               >
-                <User className="text-gray-700" size={28} />
+                <User className="text-gray-700 w-6 h-6 md:w-7 md:h-7" />
               </Circle>
             ))}
           </div>
 
           {/* Far Right - Social Networks */}
-          <div className="flex flex-col justify-center gap-6 md:gap-8 z-10">
-            <Circle ref={social1Ref} className="bg-pink-500 text-white">
-              <Instagram size={32} />
+          <div className="flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 z-10">
+            <Circle ref={social1Ref} className="bg-pink-500 text-white" size="sm">
+              <Instagram className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social2Ref} className="bg-red-500 text-white">
-              <Youtube size={32} />
+            <Circle ref={social2Ref} className="bg-red-500 text-white" size="sm">
+              <Youtube className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social3Ref} className="bg-blue-400 text-white">
-              <Twitter size={32} />
+            <Circle ref={social3Ref} className="bg-blue-400 text-white" size="sm">
+              <Twitter className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social4Ref} className="bg-blue-500 text-white">
-              <Facebook size={32} />
+            <Circle ref={social4Ref} className="bg-blue-500 text-white" size="sm">
+              <Facebook className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social5Ref} className="bg-blue-600 text-white">
-              <Linkedin size={32} />
+            <Circle ref={social5Ref} className="bg-blue-600 text-white" size="sm">
+              <Linkedin className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
           </div>
         </div>
