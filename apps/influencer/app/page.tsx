@@ -59,11 +59,6 @@ export default async function SignUp() {
                   type="submit"
                   className="w-full h-12 bg-[#2563eb] hover:bg-[#2563eb]/90 text-white flex items-center justify-center gap-3 text-base font-medium"
                 >
-                  <img
-                    src="/api/placeholder/24/24"
-                    alt="Google"
-                    className="w-6 h-6"
-                  />
                   Continue with Google
                 </Button>
               </form>
