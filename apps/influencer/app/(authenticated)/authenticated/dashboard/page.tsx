@@ -10,7 +10,7 @@ export default async function page() {
 
   // Ensure the session exists
   if (!session) {
-    redirect("/login"); // Redirect to login if session is not available
+    redirect("/"); // Redirect to login if session is not available
   }
 
   // Fetch user data based on the session email
