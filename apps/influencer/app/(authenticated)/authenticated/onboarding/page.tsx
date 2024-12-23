@@ -6,16 +6,24 @@ import { OnboardingForm } from "./_components/OnboardingForm";
 export default async function OnboardingPage() {
   const session = await auth();
 
-  if (!session?.user?.email) {
-    redirect("/login");
-  }
-
   // Check if user already has a profile
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
     include: { influencer: true },
   });
+  const isInfluencerTeamMember = await prisma.influencerTeamMember.findFirst({
+    where: {
+      userId: session.user.id,
+    },
+    select: {
+      role: true,
+    },
+  });
 
+  // If the user is a member, redirect them to the team view page
+  if (isInfluencerTeamMember?.role === "MEMBER") {
+    redirect("/authenticated/team-view");
+  }
   if (user?.influencer) {
     redirect("/authenticated/dashboard");
   }

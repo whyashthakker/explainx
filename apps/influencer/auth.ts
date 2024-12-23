@@ -52,7 +52,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
     // Session Callback: Add logging to trace session behavior
     async session({ session, token }) {
-      console.log("Session Callback - Session before: ", session);
+      // console.log("Session Callback - Session before: ", session);
 
       // Ensure userType is assigned to session if it exists in the token
       // if (session.user && token.userType) {
@@ -62,7 +62,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       //   session.user.userType = "INFLUENCER"; // Default value (if needed)
       // }
 
-      console.log("Session Callback - Session after: ", session);
+      // console.log("Session Callback - Session after: ", session);
       return session;
     },
   },
