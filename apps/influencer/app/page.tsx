@@ -51,7 +51,7 @@ export default async function SignUp() {
                 action={async () => {
                   "use server";
                   await signIn("google", {
-                    redirectTo: "/authenticated/dashboard",
+                    redirectTo: "/authenticated/onboarding",
                   });
                 }}
               >
