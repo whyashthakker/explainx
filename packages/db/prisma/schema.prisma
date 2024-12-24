@@ -164,7 +164,7 @@ model BrandTeamMember {
 model Influencer {
   id          String    @id @default(cuid())
   userId      String    @unique
-  user        User      @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   
   name        String
   avatar      String?
@@ -186,7 +186,7 @@ model Influencer {
 model InfluencerTeam {
   id            String    @id @default(cuid())
   influencerId  String    @unique
-  influencer    Influencer @relation(fields: [influencerId], references: [id])
+  influencer    Influencer @relation(fields: [influencerId], references: [id], onDelete : Cascade)
   
   members       InfluencerTeamMember[]
   
@@ -195,19 +195,21 @@ model InfluencerTeam {
 }
 
 model InfluencerTeamMember {
-  id          String    @id @default(cuid())
-  teamId      String
-  team        InfluencerTeam @relation(fields: [teamId], references: [id])
-  userId      String
-  user        User      @relation(fields: [userId], references: [id])
-  role        TeamRole
-  inviteStatus InviteStatus
-  inviteToken String?   @unique
+  id            String    @id @default(cuid())
+  teamId        String
+  team          InfluencerTeam @relation(fields: [teamId], references: [id], onDelete : Cascade)
+  userId        String?   // Make userId optional
+  user          User?     @relation(fields: [userId], references: [id] , onDelete : Cascade) // Make user relation optional
+  role          TeamRole
+  inviteStatus  InviteStatus
+  inviteToken   String?   @unique
+  inviteEmail   String?   // Add this field to store email for pending invites
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
-  @@unique([teamId, userId])
+  @@unique([teamId, inviteEmail]) // Add unique constraint for email invites
+  @@unique([teamId, userId]) // Keep existing unique constraint
 }
 
 enum InviteStatus {
