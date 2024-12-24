@@ -3,6 +3,7 @@ import { auth, signOut } from "../../../../auth";
 import { TeamSection } from "./_components/team/TeamSection";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
+import InfluencerDashboard from "./_components/MainDashboard";
 
 export default async function page() {
   // Retrieve the session data
@@ -44,7 +45,7 @@ export default async function page() {
     <div>
       <h1>Protected Page</h1>
       <TeamSection />
-
+      <InfluencerDashboard />
       <form
         action={async () => {
           "use server";
