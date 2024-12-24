@@ -9,11 +9,11 @@ import {
   CardDescription,
 } from "@repo/ui/components/ui/card";
 import { Users, CheckCircle2, XCircle } from "lucide-react";
-import { auth, signIn } from "../../../auth";
+import { auth, signIn, signOut } from "../../../auth";
 import { redirect } from "next/navigation";
 import { AcceptInviteForm } from "../_components/AcceptInviteForm";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import WrongEmailComponent from "../_components/WrongEmailComponent";
 
 interface InvitePageProps {
   params: {
@@ -76,37 +76,18 @@ export default async function InvitePage({ params }: InvitePageProps) {
   // If user is logged in with wrong email, show error
   if (session.user?.email !== data.invite.inviteEmail) {
     return (
-      <main className="min-h-screen w-full bg-gradient-to-b from-[#f8fafc] to-white">
-        <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen">
-          <Card className="w-full max-w-md bg-white/70 backdrop-blur-lg shadow-xl border-[#6366f1]/10">
-            <CardHeader className="space-y-2 text-center">
-              <XCircle className="w-12 h-12 text-red-500 mx-auto mb-2" />
-              <CardTitle className="text-[#1e293b] text-2xl">
-                Wrong Email Address
-              </CardTitle>
-              <CardDescription className="text-[#1e293b]/60 text-base">
-                This invite was sent to {data.invite.inviteEmail}. You're
-                currently signed in with {session.user?.email}.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <form
-                action={async () => {
-                  "use server";
-                  await signOut();
-                  await signIn("google", {
-                    redirectTo: `/invite/${token}`,
-                  });
-                }}
-              >
-                <Button type="submit" className="w-full">
-                  Sign in with correct account
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </main>
+      <WrongEmailComponent
+        inviteEmail={data.invite.inviteEmail}
+        userEmail={session.user?.email}
+        token={token}
+        formAction={async (formData: FormData) => {
+          "use server";
+          await signOut();
+          await signIn("google", {
+            redirectTo: `/invite/${token}`,
+          });
+        }}
+      />
     );
   }
 

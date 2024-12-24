@@ -78,7 +78,7 @@ export function OnboardingForm() {
         throw new Error(result.error || "Something went wrong");
       }
 
-      router.push("/authenticated/dashboard");
+      router.push("/authenticated/onboarding/connect");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save profile");
     } finally {
