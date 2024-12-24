@@ -42,7 +42,7 @@ export default async function page() {
   // Render the page if no redirects occurred
   return (
     <div>
-      <InfluencerDashboard />
+      <InfluencerDashboard user={user} influencer={user.influencer} />
     </div>
   );
 }

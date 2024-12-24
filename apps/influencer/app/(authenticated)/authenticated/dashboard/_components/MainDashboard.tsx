@@ -48,18 +48,27 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { handleSignOut } from "../../../../../lib/actions";
+import { User, Influencer } from "../../../../../lib/types";
 
-const InfluencerDashboard = () => {
+interface DashboardProps {
+  user: User;
+  influencer: Influencer;
+}
+
+const InfluencerDashboard: React.FC<DashboardProps> = ({
+  user,
+  influencer,
+}) => {
   const router = useRouter();
 
-  // Dummy data remains the same...
+  // Chart data (keeping the visualization data)
   const followerData = [
-    { month: "Jan", followers: 100000 },
-    { month: "Feb", followers: 120000 },
-    { month: "Mar", followers: 150000 },
-    { month: "Apr", followers: 200000 },
-    { month: "May", followers: 250000 },
-    { month: "Jun", followers: 300000 },
+    { month: "Jan", followers: Math.floor(influencer.followers * 0.7) },
+    { month: "Feb", followers: Math.floor(influencer.followers * 0.8) },
+    { month: "Mar", followers: Math.floor(influencer.followers * 0.85) },
+    { month: "Apr", followers: Math.floor(influencer.followers * 0.9) },
+    { month: "May", followers: Math.floor(influencer.followers * 0.95) },
+    { month: "Jun", followers: influencer.followers },
   ];
 
   const engagementData = [
@@ -72,28 +81,35 @@ const InfluencerDashboard = () => {
     { day: "Sun", likes: 23000, comments: 3200, shares: 1600 },
   ];
 
-  const contentData = [
-    { name: "Videos", value: 45 },
-    { name: "Photos", value: 30 },
-    { name: "Stories", value: 15 },
-    { name: "Reels", value: 10 },
-  ];
+  const calculatePlatformDistribution = () => {
+    const total = influencer.platforms.length;
+    return influencer.platforms.map((platform) => ({
+      name: platform,
+      value: Math.round(100 / total),
+    }));
+  };
 
   const COLORS = ["#6366f1", "#ec4899", "#14b8a6", "#f97316"];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header Section with Navigation */}
+        {/* Header Section */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Avatar className="h-16 w-16">
-              <AvatarImage src="/api/placeholder/100/100" />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarImage
+                src={
+                  influencer.avatar || user.image || "/api/placeholder/100/100"
+                }
+              />
+              <AvatarFallback>{influencer.name[0]}</AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Jane Doe</h1>
-              <p className="text-gray-500">Lifestyle & Travel Influencer</p>
+              <h1 className="text-2xl font-bold text-gray-900">
+                {influencer.name}
+              </h1>
+              <p className="text-gray-500">{influencer.category} Influencer</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -117,12 +133,11 @@ const InfluencerDashboard = () => {
             </form>
             <Badge className="bg-indigo-500 hover:bg-indigo-600">
               <Sparkles className="w-4 h-4 mr-2" />
-              Pro Creator
+              {influencer.category}
             </Badge>
           </div>
         </div>
 
-        {/* Rest of the dashboard content remains the same... */}
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>
@@ -132,7 +147,9 @@ const InfluencerDashboard = () => {
                   <p className="text-sm font-medium text-gray-500">
                     Total Followers
                   </p>
-                  <h3 className="text-2xl font-bold text-gray-900">300K</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {influencer.followers.toLocaleString()}
+                  </h3>
                 </div>
                 <Users className="h-8 w-8 text-indigo-500" />
               </div>
@@ -142,10 +159,10 @@ const InfluencerDashboard = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">
-                    Avg. Engagement
-                  </p>
-                  <h3 className="text-2xl font-bold text-gray-900">8.5%</h3>
+                  <p className="text-sm font-medium text-gray-500">Platforms</p>
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {influencer.platforms.length}
+                  </h3>
                 </div>
                 <Heart className="h-8 w-8 text-pink-500" />
               </div>
@@ -155,10 +172,10 @@ const InfluencerDashboard = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">
-                    Total Posts
-                  </p>
-                  <h3 className="text-2xl font-bold text-gray-900">1.2K</h3>
+                  <p className="text-sm font-medium text-gray-500">Category</p>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {influencer.category}
+                  </h3>
                 </div>
                 <Video className="h-8 w-8 text-teal-500" />
               </div>
@@ -168,8 +185,10 @@ const InfluencerDashboard = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Revenue</p>
-                  <h3 className="text-2xl font-bold text-gray-900">$25.6K</h3>
+                  <p className="text-sm font-medium text-gray-500">
+                    Growth Rate
+                  </p>
+                  <h3 className="text-2xl font-bold text-gray-900">+12.5%</h3>
                 </div>
                 <TrendingUp className="h-8 w-8 text-orange-500" />
               </div>
@@ -177,17 +196,18 @@ const InfluencerDashboard = () => {
           </Card>
         </div>
 
-        {/* Alert Section */}
-        <Alert className="bg-indigo-50 border-indigo-200">
-          <Bell className="h-4 w-4 text-indigo-500" />
-          <AlertTitle className="text-indigo-700">
-            New Achievement Unlocked!
-          </AlertTitle>
-          <AlertDescription className="text-indigo-600">
-            Congratulations! You've reached 300K followers. Keep up the great
-            work! 🎉
-          </AlertDescription>
-        </Alert>
+        {/* Bio Alert */}
+        {influencer.bio && (
+          <Alert className="bg-indigo-50 border-indigo-200">
+            <Bell className="h-4 w-4 text-indigo-500" />
+            <AlertTitle className="text-indigo-700">
+              About {influencer.name}
+            </AlertTitle>
+            <AlertDescription className="text-indigo-600">
+              {influencer.bio}
+            </AlertDescription>
+          </Alert>
+        )}
 
         {/* Charts Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -217,8 +237,6 @@ const InfluencerDashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Rest of the cards remain the same... */}
-          {/* Previous charts and components remain unchanged */}
           {/* Engagement Metrics */}
           <Card>
             <CardHeader>
@@ -242,18 +260,18 @@ const InfluencerDashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Content Distribution */}
+          {/* Platform Distribution */}
           <Card>
             <CardHeader>
-              <CardTitle>Content Distribution</CardTitle>
-              <CardDescription>Breakdown by content type</CardDescription>
+              <CardTitle>Platform Distribution</CardTitle>
+              <CardDescription>Active social platforms</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
-                      data={contentData}
+                      data={calculatePlatformDistribution()}
                       cx="50%"
                       cy="50%"
                       innerRadius={60}
@@ -262,7 +280,7 @@ const InfluencerDashboard = () => {
                       paddingAngle={5}
                       dataKey="value"
                     >
-                      {contentData.map((entry, index) => (
+                      {calculatePlatformDistribution().map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={COLORS[index % COLORS.length]}
@@ -276,37 +294,27 @@ const InfluencerDashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Recent Achievements */}
+          {/* Platforms List */}
           <Card>
             <CardHeader>
-              <CardTitle>Recent Achievements</CardTitle>
-              <CardDescription>Your latest milestones</CardDescription>
+              <CardTitle>Connected Platforms</CardTitle>
+              <CardDescription>Your social media presence</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <Award className="h-8 w-8 text-indigo-500" />
-                  <div>
-                    <p className="font-medium">300K Followers Milestone</p>
-                    <p className="text-sm text-gray-500">Reached this month</p>
+                {influencer.platforms.map((platform, index) => (
+                  <div key={platform} className="flex items-center space-x-4">
+                    <Award
+                      className={`h-8 w-8 text-${COLORS[index % COLORS.length].replace("#", "")}`}
+                    />
+                    <div>
+                      <p className="font-medium">{platform}</p>
+                      <p className="text-sm text-gray-500">
+                        Connected and Active
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Award className="h-8 w-8 text-pink-500" />
-                  <div>
-                    <p className="font-medium">Top Creator Award</p>
-                    <p className="text-sm text-gray-500">Lifestyle Category</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Award className="h-8 w-8 text-teal-500" />
-                  <div>
-                    <p className="font-medium">Viral Content Creator</p>
-                    <p className="text-sm text-gray-500">
-                      5 viral posts this month
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </CardContent>
           </Card>
