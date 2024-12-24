@@ -13,6 +13,7 @@ import { auth, signIn } from "../../../auth";
 import { redirect } from "next/navigation";
 import { AcceptInviteForm } from "../_components/AcceptInviteForm";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 interface InvitePageProps {
   params: {
@@ -92,6 +93,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
               <form
                 action={async () => {
                   "use server";
+                  await signOut();
                   await signIn("google", {
                     redirectTo: `/invite/${token}`,
                   });
@@ -157,7 +159,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
               </div>
 
               {/* Accept/Decline Form */}
-              <AcceptInviteForm token={token} />
+              <AcceptInviteForm token={token} invite={data.invite} />
             </div>
           </CardContent>
         </Card>
