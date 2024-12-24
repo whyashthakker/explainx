@@ -1,6 +1,5 @@
 import React from "react";
-import { auth, signOut } from "../../../../auth";
-import { TeamSection } from "./_components/team/TeamSection";
+import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import InfluencerDashboard from "./_components/MainDashboard";
@@ -43,18 +42,7 @@ export default async function page() {
   // Render the page if no redirects occurred
   return (
     <div>
-      <h1>Protected Page</h1>
-      <TeamSection />
       <InfluencerDashboard />
-      <form
-        action={async () => {
-          "use server";
-          await signOut(); // Sign out the user
-          redirect("/login"); // Optionally redirect after sign-out
-        }}
-      >
-        <button type="submit">Sign out</button>
-      </form>
     </div>
   );
 }

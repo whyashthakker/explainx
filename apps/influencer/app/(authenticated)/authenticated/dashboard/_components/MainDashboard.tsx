@@ -27,6 +27,7 @@ import {
   AlertTitle,
 } from "@repo/ui/components/ui/alert";
 import { Badge } from "@repo/ui/components/ui/badge";
+import { Button } from "@repo/ui/components/ui/button";
 import {
   Avatar,
   AvatarFallback,
@@ -42,10 +43,16 @@ import {
   Share2,
   Sparkles,
   Award,
+  LogOut,
+  UserCircle,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { handleSignOut } from "../../../../../lib/actions";
 
 const InfluencerDashboard = () => {
-  // Dummy data for follower growth
+  const router = useRouter();
+
+  // Dummy data remains the same...
   const followerData = [
     { month: "Jan", followers: 100000 },
     { month: "Feb", followers: 120000 },
@@ -55,7 +62,6 @@ const InfluencerDashboard = () => {
     { month: "Jun", followers: 300000 },
   ];
 
-  // Dummy data for engagement rates
   const engagementData = [
     { day: "Mon", likes: 15000, comments: 2000, shares: 1000 },
     { day: "Tue", likes: 18000, comments: 2400, shares: 1200 },
@@ -66,7 +72,6 @@ const InfluencerDashboard = () => {
     { day: "Sun", likes: 23000, comments: 3200, shares: 1600 },
   ];
 
-  // Dummy data for content distribution
   const contentData = [
     { name: "Videos", value: 45 },
     { name: "Photos", value: 30 },
@@ -79,7 +84,7 @@ const InfluencerDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header Section */}
+        {/* Header Section with Navigation */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Avatar className="h-16 w-16">
@@ -91,12 +96,33 @@ const InfluencerDashboard = () => {
               <p className="text-gray-500">Lifestyle & Travel Influencer</p>
             </div>
           </div>
-          <Badge className="bg-indigo-500 hover:bg-indigo-600">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Pro Creator
-          </Badge>
+          <div className="flex items-center gap-4">
+            <Button
+              variant="outline"
+              className="flex items-center gap-2"
+              onClick={() => router.push("/authenticated/profile")}
+            >
+              <UserCircle className="h-4 w-4" />
+              Profile
+            </Button>
+            <form action={handleSignOut}>
+              <Button
+                type="submit"
+                variant="outline"
+                className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+              >
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </Button>
+            </form>
+            <Badge className="bg-indigo-500 hover:bg-indigo-600">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Pro Creator
+            </Badge>
+          </div>
         </div>
 
+        {/* Rest of the dashboard content remains the same... */}
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>
@@ -191,6 +217,8 @@ const InfluencerDashboard = () => {
             </CardContent>
           </Card>
 
+          {/* Rest of the cards remain the same... */}
+          {/* Previous charts and components remain unchanged */}
           {/* Engagement Metrics */}
           <Card>
             <CardHeader>
