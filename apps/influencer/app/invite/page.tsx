@@ -17,9 +17,11 @@ async function getInviteDetails(token: string) {
 }
 
 export default async function InvitePage({ params }: InvitePageProps) {
+  const { token } = await params;
   const session = await auth();
-  const invite = await getInviteDetails(params.token);
+  const invite = await getInviteDetails(token);
 
+  console.log("invite recieved " + invite);
   // If no valid invite found, redirect to 404
   if (!invite) {
     redirect("/404");
@@ -41,10 +43,9 @@ export default async function InvitePage({ params }: InvitePageProps) {
       </div>
     );
   }
-
   return (
     <div className="max-w-2xl mx-auto mt-16 p-6">
-      <AcceptInviteForm invite={invite} token={params.token} />
+      <AcceptInviteForm invite={invite.invite} token={params.token} />
     </div>
   );
 }

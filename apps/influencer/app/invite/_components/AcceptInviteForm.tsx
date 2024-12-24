@@ -20,7 +20,7 @@ export function AcceptInviteForm({ invite, token }: AcceptInviteFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-
+  console.log(invite);
   const handleInviteAction = async (action: "accept" | "decline") => {
     setIsLoading(true);
     setError("");
@@ -42,7 +42,7 @@ export function AcceptInviteForm({ invite, token }: AcceptInviteFormProps) {
 
       // Redirect based on action
       if (action === "accept") {
-        router.push("/authenticated/dashboard");
+        router.push("/authenticated/team-view");
       } else {
         router.push("/");
       }
@@ -61,10 +61,10 @@ export function AcceptInviteForm({ invite, token }: AcceptInviteFormProps) {
       <CardContent className="space-y-4">
         <div className="text-center space-y-2">
           <p>
-            null team
-            <span className="font-medium">nulll's team</span>
+            {invite.team.influencer.name}
+            <span className="font-medium">'s team</span>
           </p>
-          <p className="text-sm text-muted-foreground">Role: role</p>
+          <p className="text-sm text-muted-foreground">Role: {invite.role}</p>
         </div>
 
         {error && (
