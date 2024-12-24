@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -21,7 +21,9 @@ import {
 import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Progress } from "@repo/ui/components/ui/progress";
 import { Platform } from "../../../../../lib/types";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import InstagramLogin from "./instagram-connect";
+import Link from "next/link";
 
 interface SocialPlatform {
   name: string;
@@ -77,14 +79,42 @@ const stats: Stat[] = [
 
 export default function SocialConnect() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [connectedPlatforms, setConnectedPlatforms] = useState<Set<Platform>>(
     new Set(),
   );
+
+  useEffect(() => {
+    const code = searchParams.get("code");
+    if (code) {
+      handleInstagramAuth(code);
+    }
+  }, [searchParams]);
+
+  const handleInstagramAuth = async (code: string) => {
+    try {
+      const response = await fetch(`/api/auth/instagram?code=${code}`);
+      const data = await response.json();
+
+      if (data.success) {
+        handleConnect(Platform.INSTAGRAM);
+      }
+    } catch (error) {
+      console.error("Instagram auth error:", error);
+    }
+  };
+
   const completionPercentage = Math.round(
     (connectedPlatforms.size / platforms.length) * 100,
   );
+  const instaLoginUrl = process.env.NEXT_PUBLIC_INSTAGRAM_EMBEDED_URL;
 
   const handleConnect = (platform: Platform) => {
+    if (platform === Platform.INSTAGRAM) {
+      window.location.href = instaLoginUrl!;
+      return;
+    }
+
     setConnectedPlatforms((prev) => {
       const newSet = new Set(prev);
       newSet.add(platform);
@@ -100,7 +130,6 @@ export default function SocialConnect() {
           Connect your social platforms to unlock more opportunities
         </p>
       </div>
-
       <Card className="border-2 border-blue-100">
         <CardHeader>
           <div className="flex items-center justify-between">
@@ -137,7 +166,6 @@ export default function SocialConnect() {
           </div>
         </CardContent>
       </Card>
-
       <div className="grid gap-4">
         {platforms.map((platform) => (
           <div key={platform.platform}>
@@ -197,7 +225,6 @@ export default function SocialConnect() {
           </div>
         ))}
       </div>
-
       <Alert className="bg-blue-50 border-blue-100">
         <AlertDescription className="flex items-center text-blue-600">
           <CheckCircle2 className="h-5 w-5 mr-2" />
@@ -208,7 +235,6 @@ export default function SocialConnect() {
               } to unlock full potential`}
         </AlertDescription>
       </Alert>
-
       <Button
         className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700"
         disabled={connectedPlatforms.size === 0}
