@@ -179,6 +179,8 @@ model Influencer {
   // Relations
   collaborations Collaboration[]
 
+  youtubeAccount YouTubeAccount?
+
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -309,4 +311,75 @@ model Message {
   read        Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+}
+
+model YouTubeAccount {
+  id              String    @id @default(cuid())
+  influencerId    String    @unique
+  influencer      Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  
+  channelId       String    @unique
+  accessToken     String    @db.Text
+  refreshToken    String    @db.Text
+  tokenExpires    DateTime
+  
+  channelTitle    String
+  description     String?   @db.Text
+  subscriberCount Int       @default(0)
+  videoCount      Int       @default(0)
+  viewCount       Int       @default(0)
+  
+  videos          YouTubeVideo[]
+  analytics       YouTubeAnalytics[]
+
+  lastUpdated     DateTime  @default(now())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model YouTubeVideo {
+  id              String    @id @default(cuid())
+  accountId       String
+  account         YouTubeAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  
+  videoId         String    @unique
+  title           String
+  description     String?   @db.Text
+  thumbnailUrl    String
+  publishedAt     DateTime
+  
+  viewCount       Int       @default(0)
+  likeCount       Int       @default(0)
+  commentCount    Int       @default(0)
+  
+  analytics       YouTubeVideoAnalytics[]
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model YouTubeAnalytics {
+  id              String    @id @default(cuid())
+  accountId       String
+  account         YouTubeAccount @relation(fields: [accountId], references: [id])
+  
+  date            DateTime
+  subscriberCount Int
+  viewCount       Int
+  videoCount      Int
+
+  createdAt       DateTime  @default(now())
+}
+
+model YouTubeVideoAnalytics {
+  id              String    @id @default(cuid())
+  videoId         String
+  video           YouTubeVideo @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  
+  date            DateTime
+  viewCount       Int
+  likeCount       Int
+  commentCount    Int
+
+  createdAt       DateTime  @default(now())
 }
