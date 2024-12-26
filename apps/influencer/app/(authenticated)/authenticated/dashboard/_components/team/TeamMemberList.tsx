@@ -69,16 +69,15 @@ export function TeamMemberList({ members, onTeamUpdate }: TeamMemberListProps) {
   const getStatusBadgeVariant = (status: string) => {
     switch (status) {
       case "ACCEPTED":
-        return "success";
+        return "secondary" as const;
       case "PENDING":
-        return "warning";
+        return "outline" as const;
       case "DECLINED":
-        return "destructive";
+        return "destructive" as const;
       default:
-        return "default";
+        return "default" as const;
     }
   };
-
   const getMemberDisplayName = (member: any) => {
     if (member.user?.name) return member.user.name;
     if (member.user?.email) return member.user.email;
