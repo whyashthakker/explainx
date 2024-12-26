@@ -9,6 +9,8 @@ import { SquaresPattern } from "./_components/squares-pattern";
 import { Toaster } from '@repo/ui/components/ui/toaster';
 import { AhrefsAnalytics } from './_components/ahrefs';
 
+export const dynamic = "force-dynamic";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
