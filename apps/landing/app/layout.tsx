@@ -91,7 +91,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-grow pt-12 md:pt-20 isolate">
               {children}
-              <SquaresPattern />
+            <SquaresPattern />
             </main>
             <PreFooter />
           </div>

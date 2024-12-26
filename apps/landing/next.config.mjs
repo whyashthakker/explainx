@@ -44,6 +44,10 @@ const nextConfig = {
         ],
     },
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+
+    experimental: {
+        mdxRs: true,
+    }
 }
 
 const withMDX = nextMDX({

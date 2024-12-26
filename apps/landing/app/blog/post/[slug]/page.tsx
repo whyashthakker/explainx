@@ -69,8 +69,7 @@ export async function generateStaticParams(): Promise<Array<Params>> {
     }));
 }
 
-// Use the Next.js 15 segment configuration
-export const dynamic = 'force-static'; // Prefer static generation
+export const dynamicParams = true;
 export const revalidate = 3600; // Revalidate every hour
 
 export default async function Page({ params }: { params: Promise<Params> }) {

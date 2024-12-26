@@ -21,7 +21,15 @@
     "packages/*"
   ],
   "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.2",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/mdx": "^2.0.13",
     "framer-motion": "^11.15.0",
+    "gray-matter": "^4.0.3",
+    "rehype-prism-plus": "^2.0.0",
+    "remark-gfm": "^4.0.0",
     "resend": "^4.0.1"
   }
 }
