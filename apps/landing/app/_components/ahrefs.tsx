@@ -1,4 +1,5 @@
-// app/_components/analytics.tsx
+'use client';
+
 import Script from 'next/script'
 
 export function AhrefsAnalytics() {
