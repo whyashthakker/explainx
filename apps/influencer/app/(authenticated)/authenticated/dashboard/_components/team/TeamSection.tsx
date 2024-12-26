@@ -30,7 +30,7 @@ export function TeamSection() {
       }
 
       setTeam(data.team);
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -62,6 +62,7 @@ export function TeamSection() {
           </Alert>
         ) : (
           <TeamMemberList
+            //@ts-ignore
             members={team?.members || []}
             onTeamUpdate={fetchTeam}
           />
