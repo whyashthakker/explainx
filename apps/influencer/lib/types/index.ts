@@ -1,5 +1,8 @@
 // packages/types/index.ts
-
+import type {
+  User as PrismaUser,
+  Influencer as PrismaInfluencer,
+} from "@prisma/client";
 // Enums
 export enum UserType {
   BRAND = "BRAND",
@@ -291,3 +294,15 @@ export interface TeamMemberUpdate {
   userId: string;
   role: TeamRole;
 }
+
+export type PrismaUserWithInfluencer = PrismaUser & {
+  influencer:
+    | (PrismaInfluencer & {
+        user: {
+          id: string;
+          email: string;
+          image: string | null;
+        };
+      })
+    | null;
+};

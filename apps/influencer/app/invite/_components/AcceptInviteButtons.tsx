@@ -64,4 +64,3 @@ export default function AcceptInviteForm({ token }: { token: string }) {
     </div>
   );
 }
-i;

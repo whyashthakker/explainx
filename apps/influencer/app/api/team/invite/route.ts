@@ -148,7 +148,7 @@ export const POST = auth(async function POST(req: Request) {
       success: true,
       teamMember,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log("❌ ERROR DETAILS:");
     console.log("Error name:", error.name);
     console.log("Error message:", error.message);

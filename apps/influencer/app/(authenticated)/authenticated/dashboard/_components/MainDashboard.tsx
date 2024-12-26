@@ -16,11 +16,25 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@repo/ui/components/ui/alert";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@repo/ui/components/ui/card";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@repo/ui/components/ui/alert";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@repo/ui/components/ui/avatar";
 import {
   Bell,
   TrendingUp,
@@ -35,8 +49,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { handleSignOut } from "../../../../../lib/actions";
-import type { Platform } from "@prisma/client";
-import { PrismaUserWithInfluencer } from "../../../../../types";
+import { PrismaUserWithInfluencer, Platform } from "../../../../../lib/types";
 
 interface PlatformDistribution {
   name: Platform;
@@ -55,7 +68,9 @@ interface EngagementDataPoint {
   shares: number;
 }
 
-const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({ user }) => {
+const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
+  user,
+}) => {
   const router = useRouter();
 
   if (!user.influencer) {
@@ -85,14 +100,14 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({ use
 
   const calculatePlatformDistribution = (): PlatformDistribution[] => {
     const total = influencer.platforms.length;
-    return influencer.platforms.map((platform) => ({
+    return influencer.platforms.map((platform: any) => ({
       name: platform,
       value: Math.round(100 / total),
     }));
   };
 
   const COLORS = ["#6366f1", "#ec4899", "#14b8a6", "#f97316"] as const;
-  type ColorType = typeof COLORS[number];
+  type ColorType = (typeof COLORS)[number];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
@@ -306,7 +321,7 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({ use
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {influencer.platforms.map((platform, index) => (
+                {influencer.platforms.map((platform: any, index: number) => (
                   <div key={platform} className="flex items-center space-x-4">
                     <Award
                       style={{ color: COLORS[index % COLORS.length] }}
@@ -330,3 +345,4 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({ use
 };
 
 export default InfluencerDashboard;
+

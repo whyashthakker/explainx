@@ -1,12 +1,13 @@
 // app/api/team/invite/[token]/route.ts
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
 
-export const GET = auth(async function GET(
-  req: Request,
-  { params }: { params: { token: string } },
-) {
+export const GET = async function GET({
+  params,
+}: {
+  params: { token: string };
+}) {
   try {
     // if (!req.auth?.user?.email) {
     //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -41,10 +42,10 @@ export const GET = auth(async function GET(
       { status: 500 },
     );
   }
-});
-
+};
+//@ts-ignore
 export const POST = auth(async function POST(
-  req: Request,
+  req,
   { params }: { params: { token: string } },
 ) {
   try {
