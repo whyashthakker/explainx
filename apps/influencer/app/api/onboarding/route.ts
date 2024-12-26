@@ -6,7 +6,7 @@ import type { CreateInfluencerInput } from "../../../lib/types/";
 
 export const POST = auth(async function POST(req) {
   try {
-    if (!req.auth) {
+    if (!req.auth || !req.auth.user.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
@@ -82,7 +82,7 @@ export const POST = auth(async function POST(req) {
 
 export const GET = auth(async function GET(req) {
   try {
-    if (!req.auth) {
+    if (!req.auth || !req.auth.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 

@@ -3,7 +3,16 @@ import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import ProfilePage from "./_components/ProfilePage";
 import { Metadata } from "next";
-import { Influencer, InfluencerTeamMember, InviteStatus, Platform, TeamRole, User, UserType } from "../../../../types";
+import {
+  Influencer,
+  InfluencerTeamMember,
+  InfluencerTeam,
+  InviteStatus,
+  Platform,
+  TeamRole,
+  User,
+  UserType,
+} from "../../../../lib/types";
 
 export const metadata: Metadata = {
   title: "Profile | Dashboard",
@@ -18,8 +27,8 @@ export default async function Page() {
   }
 
   const user = await prisma.user.findUnique({
-    where: { 
-      email: session.user.email 
+    where: {
+      email: session.user.email,
     },
     include: {
       influencer: {
@@ -32,7 +41,7 @@ export default async function Page() {
               name: true,
               createdAt: true,
               updatedAt: true,
-            }
+            },
           },
           team: {
             include: {
@@ -62,53 +71,81 @@ export default async function Page() {
   if (!user.influencer) {
     redirect("/authenticated/onboarding");
   }
+  const typedUser: User = {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    image: user.image,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt,
+    emailVerified: user.emailVerified,
+    userType: user.userType as UserType | null,
+  };
 
-// Map user data
-const typedUser: User = {
-  id: user.id,
-  email: user.email,
-  name: user.name,
-  image: user.image,
-  createdAt: user.createdAt,
-  updatedAt: user.updatedAt,
-  emailVerified: user.emailVerified,
-  userType: user.userType
-};
+  // Map influencer data first without team
+  const typedInfluencer: Influencer = {
+    id: user.influencer.id,
+    userId: user.influencer.userId,
+    name: user.influencer.name,
+    bio: user.influencer.bio,
+    avatar: user.influencer.avatar,
+    category: user.influencer.category,
+    followers: user.influencer.followers,
+    platforms: user.influencer.platforms as Platform[],
+    user: typedUser,
+    createdAt: user.influencer.createdAt,
+    updatedAt: user.influencer.updatedAt,
+    team: undefined, // Will be set later
+  };
 
-// Map influencer data
-const typedInfluencer: Influencer = {
-  id: user.influencer.id,
-  userId: user.influencer.userId,
-  name: user.influencer.name,
-  bio: user.influencer.bio,
-  avatar: user.influencer.avatar,
-  category: user.influencer.category,
-  followers: user.influencer.followers,
-  platforms: user.influencer.platforms,
-  user: typedUser,
-  createdAt: user.influencer.createdAt,
-  updatedAt: user.influencer.updatedAt
-};
+  // Create team if it exists
+  let team: InfluencerTeam | undefined;
+  if (user.influencer.team) {
+    team = {
+      id: user.influencer.team.id,
+      influencerId: user.influencer.team.influencerId,
+      createdAt: user.influencer.team.createdAt,
+      updatedAt: user.influencer.team.updatedAt,
+      influencer: typedInfluencer,
+      members: [], // Will be populated with typed members
+    };
+    typedInfluencer.team = team;
+  }
 
-// Map team members
-const typedTeamMembers: InfluencerTeamMember[] = (user.influencer.team?.members || []).map(member => ({
-  id: member.id,
-  userId: member.userId,
-  teamId: member.teamId,
-  role: member.role,
-  inviteStatus: member.inviteStatus,
-  inviteToken: member.inviteToken,
-  inviteEmail: member.inviteEmail,
-  createdAt: member.createdAt,
-  updatedAt: member.updatedAt,
-  user: member.user ? {
-    id: member.user.id,
-    name: member.user.name,
-    email: member.user.email,
-    image: member.user.image
-  } : null
-}));
+  // Map team members
+  const typedTeamMembers: InfluencerTeamMember[] = (
+    user.influencer.team?.members || []
+  )
+    .filter((member) => member.userId !== null && member.user)
+    .map((member) => {
+      const typedMemberUser: User = {
+        id: member.user!.id,
+        name: member.user!.name,
+        email: member.user!.email,
+        image: member.user!.image,
+        createdAt: new Date(), // Add required fields
+        updatedAt: new Date(),
+        userType: null,
+      };
 
+      return {
+        id: member.id,
+        teamId: member.teamId,
+        userId: member.userId!,
+        role: member.role as TeamRole,
+        inviteStatus: member.inviteStatus as InviteStatus,
+        inviteToken: member.inviteToken,
+        createdAt: member.createdAt,
+        updatedAt: member.updatedAt,
+        team: team!,
+        user: typedMemberUser,
+      };
+    });
+
+  // Update team members
+  if (team) {
+    team.members = typedTeamMembers;
+  }
   return (
     <ProfilePage
       user={typedUser}
@@ -117,3 +154,4 @@ const typedTeamMembers: InfluencerTeamMember[] = (user.influencer.team?.members 
     />
   );
 }
+

@@ -2,18 +2,19 @@ import prisma from "@repo/db/client";
 import { auth } from "../../../../../auth";
 import { NextResponse } from "next/server";
 
+//@ts-ignore
 export const DELETE = auth(async function DELETE(
-  req: Request,
+  req,
   { params }: { params: { memberId: string } },
 ) {
   try {
-    const session = await auth();
-    if (!session?.user?.email) {
+    if (!req.auth?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
     const { memberId } = await params;
     const currentUser = await prisma.user.findUnique({
-      where: { email: session.user.email },
+      where: { email: req.auth.user.email },
       include: {
         influencer: {
           include: { team: true },
@@ -74,16 +75,17 @@ export const DELETE = auth(async function DELETE(
   }
 });
 
+//@ts-ignore
 // Update member role
 export const PATCH = auth(async function PATCH(
-  req: Request,
+  req,
   { params }: { params: { memberId: string } },
 ) {
   try {
-    const session = await auth();
-    if (!session?.user?.email) {
+    if (!req.auth?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
     const { memberId } = await params;
     const { role } = await req.json();
 
@@ -92,7 +94,7 @@ export const PATCH = auth(async function PATCH(
     }
 
     const currentUser = await prisma.user.findUnique({
-      where: { email: session.user.email },
+      where: { email: req.auth.user.email },
       include: {
         influencer: {
           include: { team: true },
