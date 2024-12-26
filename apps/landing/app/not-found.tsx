@@ -16,7 +16,7 @@ export default function NotFound() {
         
         {/* Supportive Text */}
         <p className="text-lg text-gray-600 mb-8">
-          Oops! The page you're looking for seems to have gone on vacation. 
+          Oops! The page you&apos;re looking for seems to have gone on vacation. 
           Let&apos;s get you back on track.
         </p>
         
