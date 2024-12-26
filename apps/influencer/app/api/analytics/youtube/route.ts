@@ -1,16 +1,45 @@
-// app/api/analytics/youtube/route.ts
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
+import { Session } from "next-auth";
 
-export const GET = auth(async function GET(req) {
+// Extend NextRequest to include auth property
+type AuthenticatedRequest = NextRequest & {
+  auth: Session | null;
+}
+
+// Define proper types for analytics data
+type Analytics = {
+  date: Date;
+  subscriberCount: number;
+  viewCount: number;
+}
+
+type Video = {
+  id: string;
+  title: string;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  publishedAt: Date;
+  thumbnailUrl: string;
+  analytics: any[]; // Replace with proper analytics type if available
+}
+
+export const GET = auth(async (req: AuthenticatedRequest) => {
   try {
-    if (!req.auth) {
-      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    const session = req.auth;
+    
+    if (!session?.user?.email) {
+      return NextResponse.json(
+        { error: "Not authenticated" }, 
+        { status: 401 }
+      );
     }
 
+    // Rest of your code remains the same...
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user?.email },
+      where: { email: session.user.email },
       include: {
         influencer: {
           include: {
@@ -35,12 +64,38 @@ export const GET = auth(async function GET(req) {
     });
 
     if (!user?.influencer?.youtubeAccount) {
-      return NextResponse.json({ error: "YouTube account not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "YouTube account not found" }, 
+        { status: 404 }
+      );
     }
 
-    // Calculate key metrics
     const videos = user.influencer.youtubeAccount.videos;
     const recentAnalytics = user.influencer.youtubeAccount.analytics;
+
+    if (!videos.length) {
+      return NextResponse.json({
+        metrics: {
+          totalViews: 0,
+          totalLikes: 0,
+          totalComments: 0,
+          averageViews: 0,
+          averageLikes: 0,
+          engagementRate: 0,
+        },
+        growthTrends: {
+          subscriberGrowth: 0,
+          viewGrowth: 0,
+          predictedReach: null
+        },
+        recentVideos: [],
+        channelStats: {
+          subscriberCount: user.influencer.youtubeAccount.subscriberCount,
+          totalViews: user.influencer.youtubeAccount.viewCount,
+          videoCount: user.influencer.youtubeAccount.videoCount
+        }
+      });
+    }
 
     // Calculate CTR and engagement metrics
     const metrics = {
@@ -64,9 +119,9 @@ export const GET = auth(async function GET(req) {
 
     // Get recent video performance
     const recentVideos = videos
-      .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+      .sort((a: Video, b: Video) => b.publishedAt.getTime() - a.publishedAt.getTime())
       .slice(0, 10)
-      .map(video => ({
+      .map((video: Video) => ({
         id: video.id,
         title: video.title,
         views: video.viewCount,
@@ -97,29 +152,39 @@ export const GET = auth(async function GET(req) {
 });
 
 // Helper functions
-function calculateGrowthRate(analytics: any[], metric: string) {
-  if (analytics.length < 2) return 0;
+function calculateGrowthRate(analytics: Analytics[], metric: keyof Pick<Analytics, 'subscriberCount' | 'viewCount'>) {
+  if (!analytics || analytics.length < 2) return 0;
   
-  const oldest = analytics[analytics.length - 1][metric];
-  const newest = analytics[0][metric];
+  const oldestAnalytic = analytics[analytics.length - 1];
+  const newestAnalytic = analytics[0];
+  
+  if (!oldestAnalytic || !newestAnalytic) return 0;
+  
+  const oldest = oldestAnalytic[metric];
+  const newest = newestAnalytic[metric];
+  
+  if (oldest === 0) return 0; // Prevent division by zero
+  
   const growthRate = ((newest - oldest) / oldest) * 100;
-  
   return parseFloat(growthRate.toFixed(2));
 }
 
-function predictReach(analytics: any[]) {
-  if (analytics.length < 7) return null;
+function predictReach(analytics: Analytics[]) {
+  if (!analytics || analytics.length < 7) return null;
   
   // Calculate average daily growth rate
   const dailyGrowth = analytics.slice(0, -1).map((day, index) => {
     const nextDay = analytics[index + 1];
+    if (!nextDay || nextDay.viewCount === 0) return 0;
     return (day.viewCount - nextDay.viewCount) / nextDay.viewCount;
   });
+  
+  if (dailyGrowth.length === 0) return null;
   
   const avgDailyGrowth = dailyGrowth.reduce((sum, rate) => sum + rate, 0) / dailyGrowth.length;
   
   // Predict next 30 days
-  const currentViews = analytics[0].viewCount;
+  const currentViews = analytics[0]?.viewCount ?? 0;
   const predictedViews = currentViews * Math.pow(1 + avgDailyGrowth, 30);
   
   return Math.round(predictedViews);

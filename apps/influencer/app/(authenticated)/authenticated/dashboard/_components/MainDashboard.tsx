@@ -1,4 +1,6 @@
+// app/(authenticated)/authenticated/dashboard/_components/MainDashboard.tsx
 "use client";
+
 import React from "react";
 import {
   LineChart,
@@ -14,32 +16,17 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@repo/ui/components/ui/card";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@repo/ui/components/ui/alert";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@repo/ui/components/ui/alert";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@repo/ui/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/components/ui/avatar";
 import {
   Bell,
   TrendingUp,
   Users,
   Video,
   Heart,
-  MessageCircle,
   Share2,
   Sparkles,
   Award,
@@ -48,21 +35,36 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { handleSignOut } from "../../../../../lib/actions";
-import { User, Influencer } from "../../../../../lib/types";
+import type { Platform } from "@prisma/client";
+import { PrismaUserWithInfluencer } from "../../../../../types";
 
-interface DashboardProps {
-  user: User;
-  influencer: Influencer;
+interface PlatformDistribution {
+  name: Platform;
+  value: number;
 }
 
-const InfluencerDashboard: React.FC<DashboardProps> = ({
-  user,
-  influencer,
-}) => {
+interface ChartDataPoint {
+  month: string;
+  followers: number;
+}
+
+interface EngagementDataPoint {
+  day: string;
+  likes: number;
+  comments: number;
+  shares: number;
+}
+
+const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({ user }) => {
   const router = useRouter();
 
-  // Chart data (keeping the visualization data)
-  const followerData = [
+  if (!user.influencer) {
+    return null;
+  }
+
+  const { influencer } = user;
+
+  const followerData: ChartDataPoint[] = [
     { month: "Jan", followers: Math.floor(influencer.followers * 0.7) },
     { month: "Feb", followers: Math.floor(influencer.followers * 0.8) },
     { month: "Mar", followers: Math.floor(influencer.followers * 0.85) },
@@ -71,7 +73,7 @@ const InfluencerDashboard: React.FC<DashboardProps> = ({
     { month: "Jun", followers: influencer.followers },
   ];
 
-  const engagementData = [
+  const engagementData: EngagementDataPoint[] = [
     { day: "Mon", likes: 15000, comments: 2000, shares: 1000 },
     { day: "Tue", likes: 18000, comments: 2400, shares: 1200 },
     { day: "Wed", likes: 22000, comments: 3000, shares: 1500 },
@@ -81,7 +83,7 @@ const InfluencerDashboard: React.FC<DashboardProps> = ({
     { day: "Sun", likes: 23000, comments: 3200, shares: 1600 },
   ];
 
-  const calculatePlatformDistribution = () => {
+  const calculatePlatformDistribution = (): PlatformDistribution[] => {
     const total = influencer.platforms.length;
     return influencer.platforms.map((platform) => ({
       name: platform,
@@ -89,7 +91,8 @@ const InfluencerDashboard: React.FC<DashboardProps> = ({
     }));
   };
 
-  const COLORS = ["#6366f1", "#ec4899", "#14b8a6", "#f97316"];
+  const COLORS = ["#6366f1", "#ec4899", "#14b8a6", "#f97316"] as const;
+  type ColorType = typeof COLORS[number];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
@@ -102,6 +105,7 @@ const InfluencerDashboard: React.FC<DashboardProps> = ({
                 src={
                   influencer.avatar || user.image || "/api/placeholder/100/100"
                 }
+                alt={influencer.name}
               />
               <AvatarFallback>{influencer.name[0]}</AvatarFallback>
             </Avatar>
@@ -280,7 +284,7 @@ const InfluencerDashboard: React.FC<DashboardProps> = ({
                       paddingAngle={5}
                       dataKey="value"
                     >
-                      {calculatePlatformDistribution().map((entry, index) => (
+                      {calculatePlatformDistribution().map((_, index) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={COLORS[index % COLORS.length]}
@@ -305,7 +309,8 @@ const InfluencerDashboard: React.FC<DashboardProps> = ({
                 {influencer.platforms.map((platform, index) => (
                   <div key={platform} className="flex items-center space-x-4">
                     <Award
-                      className={`h-8 w-8 text-${COLORS[index % COLORS.length].replace("#", "")}`}
+                      style={{ color: COLORS[index % COLORS.length] }}
+                      className="h-8 w-8"
                     />
                     <div>
                       <p className="font-medium">{platform}</p>
