@@ -121,6 +121,12 @@ model Brand {
   website     String?
   industry    String
   description String?
+
+  targetDemographic    String?
+  preferredCategories  String[]    // e.g., ["Fashion", "Beauty", "Tech"]
+  minFollowers        Int?
+  maxBudget          Decimal?
+  preferredPlatforms  Platform[]
   
   // Team Management
   team        BrandTeam?
