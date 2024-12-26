@@ -141,7 +141,7 @@ export default function BrandDashboard() {
   );
 
   const navigateToInfluencer = (id: string) => {
-    router.push(`/influencer/${id}`);
+    router.push(`/authenticated/influencer/${id}`);
   };
 
   if (loading) {
