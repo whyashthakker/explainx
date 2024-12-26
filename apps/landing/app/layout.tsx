@@ -7,6 +7,7 @@ import Navbar from "./_components/navbar-1";
 import { PreFooter } from "./_components/pre-footer";
 import { SquaresPattern } from "./_components/squares-pattern";
 import { Toaster } from '@repo/ui/components/ui/toaster';
+import { AhrefsAnalytics } from './_components/ahrefs';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -96,6 +97,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </Suspense>
+        <AhrefsAnalytics />
       </body>
     </html>
   );
