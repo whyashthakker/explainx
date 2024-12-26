@@ -1,3 +1,4 @@
+// app/(authenticated)/authenticated/onboarding/page.tsx
 import { redirect } from "next/navigation";
 import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
@@ -6,14 +7,27 @@ import { OnboardingForm } from "./_components/OnboardingForm";
 export default async function OnboardingPage() {
   const session = await auth();
 
+  if (!session?.user?.email) {
+    redirect("/");
+  }
+
   // Check if user already has a profile
   const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-    include: { influencer: true },
+    where: { 
+      email: session.user.email
+    },
+    include: { 
+      influencer: true 
+    },
   });
+
+  if (!user) {
+    redirect("/");
+  }
+
   const isInfluencerTeamMember = await prisma.influencerTeamMember.findFirst({
     where: {
-      userId: session.user.id,
+      userId: user.id,
     },
     select: {
       role: true,
@@ -24,7 +38,8 @@ export default async function OnboardingPage() {
   if (isInfluencerTeamMember?.role === "MEMBER") {
     redirect("/authenticated/team-view");
   }
-  if (user?.influencer) {
+
+  if (user.influencer) {
     redirect("/authenticated/dashboard");
   }
 
