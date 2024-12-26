@@ -63,43 +63,51 @@ export default async function Page() {
     redirect("/authenticated/onboarding");
   }
 
-  // Map user data
-  const typedUser: User = {
-    id: user.id,
-    email: user.email || '',
-    name: user.name,
-    image: user.image,
-    createdAt: user.createdAt,
-    updatedAt: user.updatedAt,
-    emailVerified: user.emailVerified,
-    userType: user.userType as UserType | null | undefined
-  };
+// Map user data
+const typedUser: User = {
+  id: user.id,
+  email: user.email,
+  name: user.name,
+  image: user.image,
+  createdAt: user.createdAt,
+  updatedAt: user.updatedAt,
+  emailVerified: user.emailVerified,
+  userType: user.userType
+};
 
-  // Map influencer data
-  const typedInfluencer: Influencer = {
-    ...user.influencer,
-    platforms: (user.influencer.platforms || []) as Platform[],
-    user: typedUser
-  };
+// Map influencer data
+const typedInfluencer: Influencer = {
+  id: user.influencer.id,
+  userId: user.influencer.userId,
+  name: user.influencer.name,
+  bio: user.influencer.bio,
+  avatar: user.influencer.avatar,
+  category: user.influencer.category,
+  followers: user.influencer.followers,
+  platforms: user.influencer.platforms,
+  user: typedUser,
+  createdAt: user.influencer.createdAt,
+  updatedAt: user.influencer.updatedAt
+};
 
-  // Map team members
-  const typedTeamMembers: InfluencerTeamMember[] = (user.influencer.team?.members || []).map(member => ({
-    id: member.id,
-    userId: member.userId,
-    teamId: member.teamId,
-    role: member.role as TeamRole,
-    inviteStatus: member.inviteStatus as InviteStatus,
-    inviteToken: member.inviteToken,
-    inviteEmail: member.inviteEmail,
-    createdAt: member.createdAt,
-    updatedAt: member.updatedAt,
-    user: member.user ? {
-      id: member.user.id,
-      name: member.user.name,
-      email: member.user.email || '',
-      image: member.user.image
-    } : null
-  }));
+// Map team members
+const typedTeamMembers: InfluencerTeamMember[] = (user.influencer.team?.members || []).map(member => ({
+  id: member.id,
+  userId: member.userId,
+  teamId: member.teamId,
+  role: member.role,
+  inviteStatus: member.inviteStatus,
+  inviteToken: member.inviteToken,
+  inviteEmail: member.inviteEmail,
+  createdAt: member.createdAt,
+  updatedAt: member.updatedAt,
+  user: member.user ? {
+    id: member.user.id,
+    name: member.user.name,
+    email: member.user.email,
+    image: member.user.image
+  } : null
+}));
 
   return (
     <ProfilePage

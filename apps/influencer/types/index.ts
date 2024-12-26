@@ -1,43 +1,11 @@
-// lib/types/index.ts
 import type { 
     User as PrismaUser, 
-    Influencer as PrismaInfluencer, 
-    Platform as PrismaPlatform, 
-    UserType as PrismaUserType,
-    TeamRole as PrismaTeamRole,
-    InviteStatus as PrismaInviteStatus
+    Influencer as PrismaInfluencer,
+    Platform,
+    UserType,
+    TeamRole,
+    InviteStatus
   } from "@prisma/client";
-  
-  // Export Prisma enums directly to ensure type compatibility
-  export const Platform = {
-    INSTAGRAM: 'INSTAGRAM',
-    YOUTUBE: 'YOUTUBE',
-    TIKTOK: 'TIKTOK',
-    TWITTER: 'TWITTER',
-    LINKEDIN: 'LINKEDIN'
-  } as const;
-  
-  export const TeamRole = {
-    OWNER: 'OWNER',
-    ADMIN: 'ADMIN',
-    MEMBER: 'MEMBER'
-  } as const;
-  
-  export const InviteStatus = {
-    PENDING: 'PENDING',
-    ACCEPTED: 'ACCEPTED',
-    DECLINED: 'DECLINED'
-  } as const;
-  
-  export const UserType = {
-    BRAND: 'BRAND',
-    INFLUENCER: 'INFLUENCER'
-  } as const;
-  
-  export type Platform = typeof Platform[keyof typeof Platform];
-  export type TeamRole = typeof TeamRole[keyof typeof TeamRole];
-  export type InviteStatus = typeof InviteStatus[keyof typeof InviteStatus];
-  export type UserType = typeof UserType[keyof typeof UserType];
   
   // Base model for shared properties
   export interface BaseModel {
@@ -52,7 +20,7 @@ import type {
     emailVerified: Date | null;
     name: string | null;
     image: string | null;
-    userType: UserType | null | undefined;
+    userType: UserType | null;
   }
   
   // Team member interface
@@ -83,10 +51,8 @@ import type {
     user: User;
   }
   
-  export interface Team extends BaseModel {
-    name: string;
-    members: InfluencerTeamMember[];
-  }
+  // Re-export Prisma types
+  export { Platform, UserType, TeamRole, InviteStatus };
   
   export type PrismaUserWithInfluencer = PrismaUser & {
     influencer: (PrismaInfluencer & {
