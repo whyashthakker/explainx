@@ -1,15 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 // GET team details and members
-export const GET = auth(async function GET(req) {
+export const GET = async function GET(req: NextRequest) {
   try {
-    if (!req.auth?.user?.email) {
+    const session = await auth();
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user.email },
+      where: { email: session.user.email },
       include: {
         influencer: {
           include: {
@@ -80,4 +81,4 @@ export const GET = auth(async function GET(req) {
       { status: 500 },
     );
   }
-});
+};

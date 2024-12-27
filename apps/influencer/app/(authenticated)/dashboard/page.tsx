@@ -1,10 +1,10 @@
 // app/(authenticated)/authenticated/dashboard/page.tsx
 import React from "react";
-import { auth } from "../../../../auth";
+import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import InfluencerDashboard from "./_components/MainDashboard";
-import { PrismaUserWithInfluencer } from "../../../../lib/types";
+import { PrismaUserWithInfluencer } from "../../../lib/types";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -59,4 +59,3 @@ export default async function DashboardPage() {
     </div>
   );
 }
-
