@@ -4,6 +4,8 @@ import "./globals.css";
 import { auth } from "../auth";
 import { redirect } from "next/navigation";
 
+import { Toaster } from "@repo/ui/components/ui/toaster";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -26,6 +28,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Toaster />
         {children}
       </body>
     </html>
