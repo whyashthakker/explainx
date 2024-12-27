@@ -139,9 +139,9 @@ export default function SocialConnect() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      bio: "",
-      category: "",
+      name: "Aryan Nagbanshi",
+      bio: "I'm a creator at heart, and I'm passionate about helping brands grow",
+      category: "Tech",
       connectedPlatforms: [],
     },
   });
@@ -282,27 +282,21 @@ export default function SocialConnect() {
     const totalSteps = platforms.length + 3; // 3 additional fields: name, bio, category
     let completedSteps = connectedPlatforms.size;
 
-    if (profileData.name.trim()) completedSteps++;
-    if (profileData.bio.trim()) completedSteps++;
-    if (profileData.category) completedSteps++;
+    const formValues = form.getValues();
+
+    if (formValues.name.trim()) completedSteps++;
+    if (formValues.bio.trim()) completedSteps++;
+    if (formValues.category) completedSteps++;
 
     return Math.round((completedSteps / totalSteps) * 100);
   };
 
-  const completionPercentage = calculateCompletionPercentage();
-
-  const handleProfileChange = (field: keyof ProfileData, value: string) => {
-    setProfileData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
   const isProfileComplete = () => {
+    const formValues = form.getValues();
     return (
-      profileData.name.trim() !== "" &&
-      profileData.bio.trim() !== "" &&
-      profileData.category !== ""
+      formValues.name.trim() !== "" &&
+      formValues.bio.trim() !== "" &&
+      formValues.category !== ""
     );
   };
 
@@ -320,7 +314,6 @@ export default function SocialConnect() {
             Connect your social platforms to unlock more opportunities
           </p>
         </div>
-
         {/* Profile Information Card */}
         <Card className="border-2 border-blue-100">
           <CardHeader>
@@ -341,10 +334,6 @@ export default function SocialConnect() {
                       <Input
                         placeholder="How should brands know you?"
                         {...field}
-                        onChange={(e) => {
-                          field.onChange(e);
-                          handleProfileChange("name", e.target.value);
-                        }}
                       />
                     </FormControl>
                     <FormDescription>
@@ -366,10 +355,6 @@ export default function SocialConnect() {
                         placeholder="Tell your story and what makes your content unique..."
                         className="min-h-[100px]"
                         {...field}
-                        onChange={(e) => {
-                          field.onChange(e);
-                          handleProfileChange("bio", e.target.value);
-                        }}
                       />
                     </FormControl>
                     <FormDescription>
@@ -388,10 +373,7 @@ export default function SocialConnect() {
                     <FormLabel>Content Category</FormLabel>
                     <FormControl>
                       <Select
-                        onValueChange={(value) => {
-                          field.onChange(value);
-                          handleProfileChange("category", value);
-                        }}
+                        onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <SelectTrigger>
@@ -419,7 +401,6 @@ export default function SocialConnect() {
             </div>
           </CardContent>
         </Card>
-
         {/* Progress Card */}
         <Card className="border-2 border-blue-100">
           <CardHeader>
@@ -432,14 +413,17 @@ export default function SocialConnect() {
               </div>
               <div className="text-right">
                 <p className="text-3xl font-bold text-blue-600">
-                  {completionPercentage}%
+                  {calculateCompletionPercentage()}%
                 </p>
                 <p className="text-sm text-gray-500">Completion Score</p>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <Progress value={completionPercentage} className="h-3 mb-4" />
+            <Progress
+              value={calculateCompletionPercentage()}
+              className="h-3 mb-4"
+            />
             <div className="grid grid-cols-3 gap-4 mt-6">
               {stats.map((stat, index) => (
                 <Card key={index} className="bg-gray-50">
@@ -488,6 +472,7 @@ export default function SocialConnect() {
                       </div>
                     </div>
                     <Button
+                      type="button" // Add this to prevent form submission
                       variant={
                         connectedPlatforms.has(platform.platform)
                           ? "outline"
@@ -516,25 +501,34 @@ export default function SocialConnect() {
                 </CardContent>
               </Card>
             </div>
-          ))}
+          ))}{" "}
         </div>
         <Alert className="bg-blue-50 border-blue-100">
           <AlertDescription className="flex items-center text-blue-600">
             <CheckCircle2 className="h-5 w-5 mr-2" />
-            {completionPercentage === 100
+            {calculateCompletionPercentage() === 100
               ? "Profile complete! You're ready to connect with brands."
               : `Complete your profile and connect your platforms to unlock full potential`}
           </AlertDescription>
         </Alert>
         <Button
-          className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700"
-          disabled={!isProfileComplete() || connectedPlatforms.size === 0}
-          onClick={() => router.push("/dashboard")}
           type="submit"
+          className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700"
+          disabled={
+            !isProfileComplete() ||
+            connectedPlatforms.size === 0 ||
+            isSubmitting
+          }
         >
-          Continue to Dashboard
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
+          {isSubmitting ? (
+            "Submitting..."
+          ) : (
+            <>
+              Continue to Dashboard
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </>
+          )}
+        </Button>{" "}
       </form>
     </Form>
   );

@@ -2,8 +2,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
-import { OnboardingForm } from "./_components/OnboardingForm";
-import InfluencerOnboarding from "./_components/OnboardingForm2";
 import SocialConnect from "./_components/SocialConnect";
 
 export default async function OnboardingPage() {
