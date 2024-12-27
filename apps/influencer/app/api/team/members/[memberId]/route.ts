@@ -1,20 +1,19 @@
 import prisma from "@repo/db/client";
 import { auth } from "../../../../../auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-//@ts-ignore
-export const DELETE = auth(async function DELETE(
-  req,
-  { params }: { params: { memberId: string } },
-) {
+type Params = Promise<{ memberId: string }>;
+
+export async function DELETE(req: NextRequest, { params }: { params: Params }) {
   try {
-    if (!req.auth?.user?.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const session = await auth();
+    if (!session?.user?.email) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     const { memberId } = await params;
     const currentUser = await prisma.user.findUnique({
-      where: { email: req.auth.user.email },
+      where: { email: session.user.email },
       include: {
         influencer: {
           include: { team: true },
@@ -28,7 +27,7 @@ export const DELETE = auth(async function DELETE(
 
     // Get member to be deleted
     const memberToDelete = await prisma.influencerTeamMember.findUnique({
-      where: { id: params.memberId },
+      where: { id: memberId },
       include: { team: true },
     });
 
@@ -73,17 +72,13 @@ export const DELETE = auth(async function DELETE(
       { status: 500 },
     );
   }
-});
+}
 
-//@ts-ignore
-// Update member role
-export const PATCH = auth(async function PATCH(
-  req,
-  { params }: { params: { memberId: string } },
-) {
+export async function PATCH(req: NextRequest, { params }: { params: Params }) {
   try {
-    if (!req.auth?.user?.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const session = await auth();
+    if (!session?.user?.email) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     const { memberId } = await params;
@@ -94,7 +89,7 @@ export const PATCH = auth(async function PATCH(
     }
 
     const currentUser = await prisma.user.findUnique({
-      where: { email: req.auth.user.email },
+      where: { email: session.user.email },
       include: {
         influencer: {
           include: { team: true },
@@ -141,7 +136,7 @@ export const PATCH = auth(async function PATCH(
 
     // Update member role
     const updatedMember = await prisma.influencerTeamMember.update({
-      where: { id: params.memberId },
+      where: { id: memberId },
       data: { role },
     });
 
@@ -153,4 +148,4 @@ export const PATCH = auth(async function PATCH(
       { status: 500 },
     );
   }
-});
+}

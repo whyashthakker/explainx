@@ -3,15 +3,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
 
-export const GET = async function GET({
-  params,
-}: {
-  params: { token: string };
-}) {
+type Params = Promise<{ token: string }>;
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Params },
+) {
   try {
-    // if (!req.auth?.user?.email) {
-    //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    // }
     const { token } = await params;
     const invite = await prisma.influencerTeamMember.findFirst({
       where: {
@@ -33,7 +31,8 @@ export const GET = async function GET({
         { status: 404 },
       );
     }
-    console.log("invite form the server", invite);
+
+    console.log("invite from the server", invite);
     return NextResponse.json({ invite });
   } catch (error) {
     console.error("Invite fetch error:", error);
@@ -42,26 +41,27 @@ export const GET = async function GET({
       { status: 500 },
     );
   }
-};
-//@ts-ignore
-export const POST = auth(async function POST(
-  req,
-  { params }: { params: { token: string } },
-) {
+}
+
+export async function POST(req: NextRequest, { params }: { params: Params }) {
   try {
-    if (!req.auth?.user?.email) {
+    const session = await auth();
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { token } = await params;
     const { action } = await req.json();
+
     console.log("getting token in the server " + token);
+
     if (!["accept", "decline"].includes(action)) {
       return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-    console.log(req.auth.user.email);
+
+    console.log(session.user.email);
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user.email },
+      where: { email: session.user.email },
     });
 
     const invite = await prisma.influencerTeamMember.findFirst({
@@ -97,4 +97,4 @@ export const POST = auth(async function POST(
       { status: 500 },
     );
   }
-});
+}

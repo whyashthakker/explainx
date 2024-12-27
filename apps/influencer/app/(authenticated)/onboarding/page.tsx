@@ -1,6 +1,6 @@
 // app/(authenticated)/authenticated/onboarding/page.tsx
 import { redirect } from "next/navigation";
-import { auth } from "../../../../auth";
+import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 import { OnboardingForm } from "./_components/OnboardingForm";
 
@@ -13,11 +13,11 @@ export default async function OnboardingPage() {
 
   // Check if user already has a profile
   const user = await prisma.user.findUnique({
-    where: { 
-      email: session.user.email
+    where: {
+      email: session.user.email,
     },
-    include: { 
-      influencer: true 
+    include: {
+      influencer: true,
     },
   });
 
@@ -55,3 +55,4 @@ export default async function OnboardingPage() {
     </div>
   );
 }
+

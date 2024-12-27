@@ -5,7 +5,7 @@ import prisma from "@repo/db/client";
 import { TeamRole } from "../../../../lib/types";
 import { randomBytes } from "crypto";
 
-export const POST = auth(async function POST(req: Request) {
+export const POST = async function POST(req: Request) {
   console.log("🚀 Starting invite process");
 
   try {
@@ -160,4 +160,4 @@ export const POST = auth(async function POST(req: Request) {
       { status: 500 },
     );
   }
-});
+};

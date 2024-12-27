@@ -1,15 +1,15 @@
 // app/api/onboarding/route.ts
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 import type { CreateInfluencerInput } from "../../../lib/types/";
 
-export const POST = auth(async function POST(req) {
+export const POST = async function POST(req: NextRequest) {
   try {
-    if (!req.auth || !req.auth.user.email) {
+    const session = await auth();
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
-
     const data: CreateInfluencerInput = await req.json();
 
     // Validate required fields
@@ -27,7 +27,7 @@ export const POST = auth(async function POST(req) {
 
     // Get user
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user?.email },
+      where: { email: session.user?.email },
     });
 
     if (!user) {
@@ -78,16 +78,17 @@ export const POST = auth(async function POST(req) {
       { status: 500 },
     );
   }
-});
+};
 
-export const GET = auth(async function GET(req) {
+export const GET = async function GET(req: NextRequest) {
   try {
-    if (!req.auth || !req.auth.user?.email) {
+    const session = await auth();
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user?.email },
+      where: { email: session.user?.email },
       include: {
         influencer: true,
       },
@@ -108,4 +109,4 @@ export const GET = auth(async function GET(req) {
       { status: 500 },
     );
   }
-});
+};

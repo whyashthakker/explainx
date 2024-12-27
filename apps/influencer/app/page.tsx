@@ -13,12 +13,12 @@ import { auth, signIn } from "../auth";
 import { redirect } from "next/navigation";
 import InstagramAuth from "./_components/InstagramAuth";
 
-interface SignInPageProps {
-  searchParams: {
-    invite?: string;
-    email?: string;
-  };
-}
+type SearchParams = Promise<{
+  invite?: string;
+  email?: string;
+}>;
+
+type Params = Promise<{}>;
 
 async function getInviteDetails(token: string) {
   try {
@@ -32,12 +32,16 @@ async function getInviteDetails(token: string) {
   }
 }
 
-export default async function SignIn({ searchParams }: SignInPageProps) {
+export default async function SignIn(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
   const session = await auth();
-  const { invite: recievedInvite } = await searchParams;
+  const searchParams = await props.searchParams;
+  const { invite: receivedInvite } = searchParams;
 
   console.log(searchParams);
-  const invite = recievedInvite ? await getInviteDetails(recievedInvite) : null;
+  const invite = receivedInvite ? await getInviteDetails(receivedInvite) : null;
 
   // If user is logged in
   if (session) {

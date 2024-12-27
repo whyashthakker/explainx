@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Platform } from "../../../../../lib/types/";
+import { Platform } from "../../../../lib/types/";
 import {
   Form,
   FormControl,
