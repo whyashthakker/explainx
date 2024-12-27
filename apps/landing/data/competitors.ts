@@ -10,2392 +10,664 @@ export interface Competitor {
     category: string;
     features: {
       name: string;
-      olly: boolean | string | string[];
+      infloq: boolean | string | string[];
       competitor: boolean | string | string[];
       description?: string;
     }[];
   }
   
   export const competitors: Record<string, Competitor> = {
-    "qura": {
-      name: "Qura.ai",
-      shortDescription: "Basic AI-powered social media automation tool",
-      category: "Social Media Management",
-      comparisonImage: "/images/comparisons/qura.png",
-      features: [
-        {
-          category: "AI Capabilities",
-          features: [
-            {
-              name: "AI Models",
-              olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-              competitor: ["OpenAI"],
-              description: "Available AI language models for content generation"
-            },
-            {
-              name: "Custom AI Personalities",
-              olly: true,
-              competitor: false,
-              description: "Create and customize multiple AI voices for different brands"
-            },
-            {
-              name: "Local Model Support",
-              olly: true,
-              competitor: false,
-              description: "Support for running local models via Ollama (Llama, Gemma)"
-            }
-          ]
-        },
-        {
-          category: "Platform Support",
-          features: [
-            {
-              name: "Supported Platforms",
-              olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-              competitor: ["LinkedIn", "Twitter/X", "YouTube"],
-              description: "Social media platforms supported for content generation"
-            },
-            {
-              name: "Cross-Platform Features",
-              olly: true,
-              competitor: false,
-              description: "Unified experience and features across all supported platforms"
-            }
-          ]
-        },
-        {
-          category: "Advanced Features",
-          features: [
-            {
-              name: "Virality Score",
-              olly: true,
-              competitor: false,
-              description: "AI-powered prediction of content performance"
-            },
-            {
-              name: "Custom Comment Panels",
-              olly: true,
-              competitor: false,
-              description: "One-click commenting with customizable templates"
-            },
-            {
-              name: "Custom Actions",
-              olly: true,
-              competitor: false,
-              description: "User-defined prompts and automation tasks"
-            }
-          ]
-        },
-        {
-          category: "Privacy & Security",
-          features: [
-            {
-              name: "Local Data Storage",
-              olly: true,
-              competitor: false,
-              description: "All user data stored locally, not on servers"
-            },
-            {
-              name: "API Key Security",
-              olly: true,
-              competitor: false,
-              description: "Secure handling of API keys with local storage only"
-            }
-          ]
-        },
-        {
-          category: "Pricing & Value",
-          features: [
-            {
-              name: "Free Tier",
-              olly: "5 comments/day",
-              competitor: "Limited credits",
-              description: "Features available in free version"
-            },
-            {
-              name: "Starting Price",
-              olly: "$9.99/month",
-              competitor: "$8.30/month (annual)",
-              description: "Base subscription cost"
-            },
-            {
-              name: "Lifetime Option",
-              olly: "$49.99",
-              competitor: false,
-              description: "One-time payment for lifetime access"
-            },
-            {
-              name: "API Cost Transparency",
-              olly: true,
-              competitor: false,
-              description: "Clear API usage calculator and costs"
-            }
-          ]
-        }
-      ]
-    },
-    "replai": {
-        name: "Replai.so",
-        shortDescription: "Basic Twitter/LinkedIn commenting tool",
-        category: "Limited Social Media Management",
-        comparisonImage: "/images/comparisons/replai.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["GPT-4"],
-                description: "Available AI models for content generation"
-              },
-              {
-                name: "Custom AI Personalities",
-                olly: true,
-                competitor: false,
-                description: "Create and customize AI voices for different brands"
-              },
-              {
-                name: "Local Model Support",
-                olly: true,
-                competitor: false,
-                description: "Support for running local AI models"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["LinkedIn", "Twitter/X"],
-                description: "Social media platforms supported"
-              },
-              {
-                name: "Engagement Features",
-                olly: ["Comments", "Posts", "Summaries", "Virality Scores"],
-                competitor: ["Comments"],
-                description: "Available engagement tools"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Virality Prediction",
-                olly: true,
-                competitor: false,
-                description: "AI-powered content performance prediction"
-              },
-              {
-                name: "Custom Comment Panels",
-                olly: true,
-                competitor: false,
-                description: "One-click customizable commenting"
-              },
-              {
-                name: "Analytics",
-                olly: true,
-                competitor: false,
-                description: "Engagement and performance tracking"
-              }
-            ]
-          },
-          {
-            category: "Privacy & Security",
-            features: [
-              {
-                name: "Data Storage",
-                olly: "Local storage only",
-                competitor: "Cloud-based",
-                description: "User data storage approach"
-              },
-              {
-                name: "API Security",
-                olly: true,
-                competitor: false,
-                description: "Secure API key handling"
-              }
-            ]
-          },
-          {
-            category: "Pricing & Value",
-            features: [
-              {
-                name: "Free Plan",
-                olly: "5 comments/day",
-                competitor: "Limited trial",
-                description: "Free tier offerings"
-              },
-              {
-                name: "Lifetime Access",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment option"
-              },
-              {
-                name: "Business Features",
-                olly: ["Multi-brand support", "Custom actions", "Team collaboration"],
-                competitor: ["Basic business features"],
-                description: "Enterprise-level capabilities"
-              }
-            ]
-          }
-        ]
-      },
-      "tweetai": {
-        name: "TweetAI",
-        shortDescription: "Twitter-focused content generator",
-        category: "Twitter Management",
-        comparisonImage: "/images/comparisons/tweetai.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["GPT-4"],
-                description: "AI models supported"
-              },
-              {
-                name: "Platform Customization",
-                olly: true,
-                competitor: "Limited to Twitter",
-                description: "Ability to customize for different platforms"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["Twitter/X"],
-                description: "Available social platforms"
-              },
-              {
-                name: "Content Types",
-                olly: ["Comments", "Posts", "Threads", "Summaries", "Virality Analysis"],
-                competitor: ["Tweets", "Threads", "Replies", "Rewrites"],
-                description: "Types of content supported"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Virality Prediction",
-                olly: true,
-                competitor: "Basic analysis",
-                description: "Content performance prediction"
-              },
-              {
-                name: "Multi-Brand Support",
-                olly: true,
-                competitor: false,
-                description: "Support for multiple brand personalities"
-              },
-              {
-                name: "Custom Actions",
-                olly: true,
-                competitor: false,
-                description: "User-defined automation tasks"
-              }
-            ]
-          },
-          {
-            category: "Privacy & Security",
-            features: [
-              {
-                name: "Data Storage",
-                olly: "Local storage only",
-                competitor: "Cloud-based",
-                description: "User data storage method"
-              },
-              {
-                name: "API Security",
-                olly: true,
-                competitor: "Standard",
-                description: "API key handling security"
-              }
-            ]
-          },
-          {
-            category: "Pricing",
-            features: [
-              {
-                name: "Free Plan",
-                olly: "5 comments/day",
-                competitor: "Limited trial",
-                description: "Free tier features"
-              },
-              {
-                name: "Starting Price",
-                olly: "$9.99/month",
-                competitor: "$9.99/month",
-                description: "Base subscription cost"
-              },
-              {
-                name: "Lifetime Access",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment option"
-              }
-            ]
-          }
-        ]
-      },
-      "magicreply": {
-        name: "MagicReply",
-        shortDescription: "Basic Twitter reply generator",
-        category: "Twitter Reply Tool",
-        comparisonImage: "/images/comparisons/magicreply.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["Basic AI model"],
-                description: "Available AI language models"
-              },
-              {
-                name: "AI Personalities",
-                olly: true,
-                competitor: false,
-                description: "Custom AI voice support"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["Twitter/X"],
-                description: "Platform coverage"
-              },
-              {
-                name: "Features",
-                olly: ["Comments", "Posts", "Threads", "Summaries", "Virality Analysis"],
-                competitor: ["Replies only"],
-                description: "Available features"
-              }
-            ]
-          },
-          {
-            category: "Usage Limits",
-            features: [
-              {
-                name: "Monthly Limit",
-                olly: "Flexible plans",
-                competitor: "3000 replies/month",
-                description: "Usage restrictions"
-              },
-              {
-                name: "Custom Actions",
-                olly: true,
-                competitor: false,
-                description: "Automation capabilities"
-              }
-            ]
-          },
-          {
-            category: "Pricing",
-            features: [
-              {
-                name: "Starting Price",
-                olly: "$9.99/month",
-                competitor: "$10/month",
-                description: "Base price"
-              },
-              {
-                name: "Free Plan",
-                olly: "5 comments/day",
-                competitor: "Trial only",
-                description: "Free tier offering"
-              },
-              {
-                name: "Lifetime Deal",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time purchase option"
-              }
-            ]
-          },
-          {
-            category: "Additional Features",
-            features: [
-              {
-                name: "Analytics",
-                olly: true,
-                competitor: false,
-                description: "Performance tracking"
-              },
-              {
-                name: "Multi-brand Support",
-                olly: true,
-                competitor: false,
-                description: "Multiple brand management"
-              },
-              {
-                name: "Privacy Focus",
-                olly: "Local storage",
-                competitor: "Cloud-based",
-                description: "Data storage approach"
-              }
-            ]
-          }
-        ]
-      },
-      "snowball": {
-        name: "Snowball",
-        shortDescription: "Twitter growth and monetization tool",
-        category: "Twitter Management",
-        comparisonImage: "/images/comparisons/snowball.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["GPT-4 (Pro plan only)"],
-                description: "Available AI models"
-              },
-              {
-                name: "Content Generation",
-                olly: ["Comments", "Posts", "Multi-platform content"],
-                competitor: ["Tweets", "Threads", "Replies"],
-                description: "Content types supported"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["Twitter/X"],
-                description: "Supported platforms"
-              },
-              {
-                name: "Post Management",
-                olly: ["Scheduling", "Analytics", "Virality Score"],
-                competitor: ["Scheduling", "Templates", "Basic Analytics"],
-                description: "Content management features"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Virality Prediction",
-                olly: true,
-                competitor: false,
-                description: "AI-powered performance prediction"
-              },
-              {
-                name: "Multi-brand Support",
-                olly: true,
-                competitor: false,
-                description: "Multiple brand management"
-              },
-              {
-                name: "Privacy Focus",
-                olly: "Local storage",
-                competitor: "Cloud-based",
-                description: "Data storage approach"
-              }
-            ]
-          },
-          {
-            category: "Pricing",
-            features: [
-              {
-                name: "Starting Price",
-                olly: "$9.99/month",
-                competitor: "$19/month",
-                description: "Base subscription cost"
-              },
-              {
-                name: "Free Plan",
-                olly: "5 comments/day",
-                competitor: "3-day trial",
-                description: "Free offering"
-              },
-              {
-                name: "Premium Features",
-                olly: "All features included",
-                competitor: "Tiered access to features",
-                description: "Feature availability"
-              }
-            ]
-          }
-        ]
-      },
-      "taplio": {
-        name: "Taplio",
-        shortDescription: "LinkedIn-focused growth tool",
-        category: "LinkedIn Management",
-        comparisonImage: "/images/comparisons/taplio.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["Basic AI model"],
-                description: "Available AI models"
-              },
-              {
-                name: "Platform Specialization",
-                olly: "Multi-platform optimization",
-                competitor: "LinkedIn-only optimization",
-                description: "AI training focus"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["LinkedIn"],
-                description: "Platform coverage"
-              },
-              {
-                name: "Content Features",
-                olly: ["Comments", "Posts", "Threads", "Summaries", "Virality Analysis"],
-                competitor: ["Posts", "Analytics", "Engagement tracking"],
-                description: "Available features"
-              }
-            ]
-          },
-          {
-            category: "Analytics",
-            features: [
-              {
-                name: "Performance Tracking",
-                olly: ["Virality prediction", "Cross-platform analytics"],
-                competitor: ["Post performance", "Follower growth"],
-                description: "Analytics capabilities"
-              },
-              {
-                name: "Content Research",
-                olly: "Cross-platform trend analysis",
-                competitor: "LinkedIn post analysis",
-                description: "Content research tools"
-              }
-            ]
-          },
-          {
-            category: "Additional Features",
-            features: [
-              {
-                name: "Multi-brand Support",
-                olly: true,
-                competitor: "Limited",
-                description: "Multiple brand management"
-              },
-              {
-                name: "Privacy",
-                olly: "Local storage",
-                competitor: "Cloud-based",
-                description: "Data storage method"
-              },
-              {
-                name: "Custom Actions",
-                olly: true,
-                competitor: false,
-                description: "User-defined automations"
-              }
-            ]
-          },
-          {
-            category: "Pricing & Value",
-            features: [
-              {
-                name: "Free Plan",
-                olly: "5 comments/day forever",
-                competitor: "7-day trial",
-                description: "Free offering"
-              },
-              {
-                name: "Lifetime Access",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment option"
-              }
-            ]
-          }
-        ]
-      },
-      "deepai": {
-        name: "DeepAI",
-        shortDescription: "Generic AI text generation platform",
-        category: "AI Content Generation",
-        comparisonImage: "/images/comparisons/deepai.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["Custom LLM"],
-                description: "AI model availability"
-              },
-              {
-                name: "Specialized Features",
-                olly: "Social media optimization",
-                competitor: "General text generation",
-                description: "Core functionality focus"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["Generic text output"],
-                description: "Platform integration"
-              },
-              {
-                name: "Content Types",
-                olly: ["Social posts", "Comments", "Threads", "Summaries", "Virality Analysis"],
-                competitor: ["Generic text", "Stories", "Poems", "Chat"],
-                description: "Content generation capabilities"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Social Media Tools",
-                olly: ["Virality prediction", "Platform-specific optimization", "Engagement analytics"],
-                competitor: false,
-                description: "Social media specific features"
-              },
-              {
-                name: "Content Analysis",
-                olly: "Cross-platform performance tracking",
-                competitor: "Basic text analysis",
-                description: "Analytics capabilities"
-              }
-            ]
-          },
-          {
-            category: "Use Case Focus",
-            features: [
-              {
-                name: "Primary Purpose",
-                olly: "Social media growth and engagement",
-                competitor: "General text generation",
-                description: "Main use case"
-              },
-              {
-                name: "Target Users",
-                olly: ["Social media managers", "Content creators", "Brands"],
-                competitor: ["General users", "Content writers"],
-                description: "Target audience"
-              }
-            ]
-          },
-          {
-            category: "Integration",
-            features: [
-              {
-                name: "Browser Extension",
-                olly: true,
-                competitor: false,
-                description: "Platform integration method"
-              },
-              {
-                name: "Direct Posting",
-                olly: true,
-                competitor: false,
-                description: "Ability to post directly to platforms"
-              }
-            ]
-          }
-        ]
-      },
-      "aifreebox": {
-        name: "AIFreeBox",
-        shortDescription: "Free AI comment generation tools",
-        category: "Basic AI Tools",
-        comparisonImage: "/images/comparisons/aifreebox.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["Basic AI model"],
-                description: "Available AI models"
-              },
-              {
-                name: "Customization",
-                olly: "Full AI personality customization",
-                competitor: "Basic tone selection",
-                description: "AI customization options"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Platform Integration",
-                olly: "Direct platform integration",
-                competitor: "Manual copy-paste",
-                description: "How content is posted"
-              },
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: "Generic text generation",
-                description: "Platform coverage"
-              }
-            ]
-          },
-          {
-            category: "Features",
-            features: [
-              {
-                name: "Advanced Features",
-                olly: ["Virality prediction", "Analytics", "Custom actions", "Multi-brand support"],
-                competitor: ["Basic comment generation", "Language selection", "Tone selection"],
-                description: "Available features"
-              },
-              {
-                name: "Browser Extension",
-                olly: true,
-                competitor: false,
-                description: "Platform integration"
-              }
-            ]
-          },
-          {
-            category: "Pricing & Access",
-            features: [
-              {
-                name: "Pricing Model",
-                olly: "Freemium with paid features",
-                competitor: "Free with limitations",
-                description: "Cost structure"
-              },
-              {
-                name: "Account Requirement",
-                olly: "Account with features",
-                competitor: "No signup required",
-                description: "Access requirements"
-              }
-            ]
-          },
-          {
-            category: "Professional Features",
-            features: [
-              {
-                name: "Analytics",
-                olly: true,
-                competitor: false,
-                description: "Performance tracking"
-              },
-              {
-                name: "Team Features",
-                olly: true,
-                competitor: false,
-                description: "Collaboration tools"
-              },
-              {
-                name: "API Access",
-                olly: true,
-                competitor: false,
-                description: "API availability"
-              }
-            ]
-          }
-        ]
-      },
-      "ai_smart_comment": {
-        name: "AI Smart Comment Generator",
-        shortDescription: "Basic mobile comment generator app",
-        category: "Mobile Social Media Tools",
-        comparisonImage: "/images/comparisons/ai_smart_comment.png",
-        features: [
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["LinkedIn", "Facebook", "Instagram"],
-                description: "Available platforms"
-              },
-              {
-                name: "Platform Integration",
-                olly: "Browser extension with direct posting",
-                competitor: "Mobile app with copy-paste",
-                description: "Integration method"
-              }
-            ]
-          },
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: "Basic AI model",
-                description: "AI technology"
-              },
-              {
-                name: "Customization",
-                olly: "Full AI personality customization",
-                competitor: "Basic templates",
-                description: "Customization options"
-              }
-            ]
-          },
-          {
-            category: "Features",
-            features: [
-              {
-                name: "Analytics",
-                olly: true,
-                competitor: false,
-                description: "Performance tracking"
-              },
-              {
-                name: "Virality Prediction",
-                olly: true,
-                competitor: false,
-                description: "Content performance prediction"
-              },
-              {
-                name: "Multi-device Support",
-                olly: ["Desktop", "Web", "Mobile via browser"],
-                competitor: ["Android mobile only"],
-                description: "Device availability"
-              }
-            ]
-          },
-          {
-            category: "Privacy & Security",
-            features: [
-              {
-                name: "Data Storage",
-                olly: "Local storage only",
-                competitor: "Cloud storage",
-                description: "Data handling"
-              },
-              {
-                name: "Data Collection",
-                olly: "Minimal",
-                competitor: "Personal info and app activity",
-                description: "Data collection practices"
-              }
-            ]
-          },
-          {
-            category: "Professional Features",
-            features: [
-              {
-                name: "Team Collaboration",
-                olly: true,
-                competitor: false,
-                description: "Multi-user support"
-              },
-              {
-                name: "Business Tools",
-                olly: ["Multi-brand support", "Custom actions", "API access"],
-                competitor: false,
-                description: "Enterprise features"
-              }
-            ]
-          }
-        ]
-      },
-      "askyourpdf": {
-        name: "AskYourPDF",
-        shortDescription: "Document interaction and content generation tool",
-        category: "Document & Content Generation",
-        comparisonImage: "/images/comparisons/askyourpdf.png",
-        features: [
-          {
-            category: "Core Features",
-            features: [
-              {
-                name: "Primary Focus",
-                olly: "Social media optimization",
-                competitor: ["Document chat", "Generic content generation"],
-                description: "Main functionality"
-              },
-              {
-                name: "Content Types",
-                olly: ["Social posts", "Comments", "Platform-specific content"],
-                competitor: ["Documents", "Essays", "Stories", "Poems", "Generic captions"],
-                description: "Supported content formats"
-              }
-            ]
-          },
-          {
-            category: "Platform Integration",
-            features: [
-              {
-                name: "Social Platform Support",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["Basic Instagram captions"],
-                description: "Social media integration"
-              },
-              {
-                name: "Device Support",
-                olly: "Cross-platform browser extension",
-                competitor: ["Web", "Mobile apps", "Chrome extension"],
-                description: "Available platforms"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Social Analytics",
-                olly: true,
-                competitor: false,
-                description: "Performance tracking"
-              },
-              {
-                name: "AI Capabilities",
-                olly: ["Multiple AI models", "Custom personalities", "Platform optimization"],
-                competitor: ["Document chat", "Basic text generation"],
-                description: "AI features"
-              }
-            ]
-          },
-          {
-            category: "Professional Tools",
-            features: [
-              {
-                name: "API Access",
-                olly: true,
-                competitor: true,
-                description: "Developer access"
-              },
-              {
-                name: "Business Features",
-                olly: ["Multi-brand support", "Team collaboration", "Custom actions"],
-                competitor: ["Document processing", "PDF tools"],
-                description: "Enterprise capabilities"
-              }
-            ]
-          },
-          {
-            category: "Pricing & Access",
-            features: [
-              {
-                name: "Free Tier",
-                olly: "5 comments/day forever",
-                competitor: "Limited free tools",
-                description: "Free offerings"
-              },
-              {
-                name: "Lifetime Access",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment option"
-              }
-            ]
-          }
-        ]
-      },
-      "contentshake": {
-        name: "ContentShake AI",
-        shortDescription: "SEO-focused content generation platform",
-        category: "Content & SEO Tools",
-        comparisonImage: "/images/comparisons/contentshake.png",
-        features: [
-          {
-            category: "Content Generation",
-            features: [
-              {
-                name: "Focus Area",
-                olly: "Social media optimization and engagement",
-                competitor: ["SEO content", "Blog posts", "Marketing copy"],
-                description: "Primary content types"
-              },
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: "Basic AI model",
-                description: "Available AI technology"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Social Integration",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: "Basic social post generation",
-                description: "Platform coverage"
-              },
-              {
-                name: "Specialized Features",
-                olly: ["Platform-specific optimization", "Engagement analytics", "Virality prediction"],
-                competitor: ["SEO data", "Content optimization", "Readability analysis"],
-                description: "Key features"
-              }
-            ]
-          },
-          {
-            category: "Advanced Capabilities",
-            features: [
-              {
-                name: "Analytics",
-                olly: "Social media performance tracking",
-                competitor: "SEO metrics",
-                description: "Analytics focus"
-              },
-              {
-                name: "Custom Tools",
-                olly: ["AI personalities", "Custom actions", "Multi-brand support"],
-                competitor: ["Paraphrasing", "Title generation", "Word counting"],
-                description: "Additional tools"
-              }
-            ]
-          },
-          {
-            category: "Integration",
-            features: [
-              {
-                name: "Browser Extension",
-                olly: true,
-                competitor: false,
-                description: "Platform integration"
-              },
-              {
-                name: "Direct Posting",
-                olly: true,
-                competitor: false,
-                description: "Content publishing"
-              }
-            ]
-          },
-          {
-            category: "Pricing",
-            features: [
-              {
-                name: "Free Tools",
-                olly: "5 comments/day",
-                competitor: "Basic text generation tools",
-                description: "Free offerings"
-              },
-              {
-                name: "Lifetime Deal",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment"
-              }
-            ]
-          }
-        ]
-      },
-      "wepik": {
-        name: "Wepik AI Writer",
-        shortDescription: "Design-focused AI writing tool",
-        category: "Design & Content Creation",
-        comparisonImage: "/images/comparisons/wepik.png",
-        features: [
-          {
-            category: "Core Features",
-            features: [
-              {
-                name: "Primary Focus",
-                olly: "Social media optimization",
-                competitor: ["Design content", "Basic social posts"],
-                description: "Main functionality"
-              },
-              {
-                name: "Content Types",
-                olly: ["Comments", "Posts", "Threads", "Platform-specific content"],
-                competitor: ["Marketing copy", "Design text", "Basic social posts"],
-                description: "Content capabilities"
-              }
-            ]
-          },
-          {
-            category: "Platform Integration",
-            features: [
-              {
-                name: "Social Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: "Basic social post generation",
-                description: "Platform support"
-              },
-              {
-                name: "Integration Type",
-                olly: "Direct platform integration",
-                competitor: "Manual copy-paste",
-                description: "Content delivery method"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Analytics",
-                olly: true,
-                competitor: false,
-                description: "Performance tracking"
-              },
-              {
-                name: "AI Capabilities",
-                olly: ["Multiple AI models", "Custom personalities", "Virality prediction"],
-                competitor: ["Basic text generation", "Tone adjustment"],
-                description: "AI features"
-              }
-            ]
-          },
-          {
-            category: "Professional Tools",
-            features: [
-              {
-                name: "Team Features",
-                olly: true,
-                competitor: false,
-                description: "Collaboration capabilities"
-              },
-              {
-                name: "Additional Tools",
-                olly: ["Analytics", "Custom actions", "Multi-brand support"],
-                competitor: ["Design tools", "Image generation", "Presentation maker"],
-                description: "Supplementary features"
-              }
-            ]
-          },
-          {
-            category: "Pricing",
-            features: [
-              {
-                name: "Free Plan",
-                olly: "5 comments/day",
-                competitor: "Basic features",
-                description: "Free tier offering"
-              },
-              {
-                name: "Lifetime Deal",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment option"
-              }
-            ]
-          }
-        ]
-      },
-      "typli": {
-        name: "Typli.ai",
-        shortDescription: "General purpose AI writing tool",
-        category: "Content Writing",
-        comparisonImage: "/images/comparisons/typli.png",
-        features: [
-          {
-            category: "Content Generation",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["Basic AI model"],
-                description: "Available AI technologies"
-              },
-              {
-                name: "Content Types",
-                olly: ["Social media posts", "Comments", "Platform-specific content"],
-                competitor: ["General writing", "Basic social posts", "Academic content"],
-                description: "Content capabilities"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Social Integration",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: "Generic content generation",
-                description: "Platform coverage"
-              },
-              {
-                name: "Direct Publishing",
-                olly: true,
-                competitor: false,
-                description: "Platform integration"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Specialized Tools",
-                olly: ["Virality prediction", "Platform optimization", "Custom actions"],
-                competitor: ["Translation", "Paraphrasing", "Text expansion"],
-                description: "Tool offerings"
-              },
-              {
-                name: "Analytics",
-                olly: true,
-                competitor: false,
-                description: "Performance tracking"
-              }
-            ]
-          },
-          {
-            category: "Business Features",
-            features: [
-              {
-                name: "Team Collaboration",
-                olly: true,
-                competitor: false,
-                description: "Multi-user support"
-              },
-              {
-                name: "Multi-brand Support",
-                olly: true,
-                competitor: false,
-                description: "Brand management"
-              }
-            ]
-          },
-          {
-            category: "Pricing",
-            features: [
-              {
-                name: "Starting Price",
-                olly: "$9.99/month",
-                competitor: "$7.99/month",
-                description: "Base subscription"
-              },
-              {
-                name: "Free Plan",
-                olly: "5 comments/day forever",
-                competitor: "Limited word count",
-                description: "Free offering"
-              },
-              {
-                name: "Lifetime Access",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment"
-              }
-            ]
-          }
-        ]
-      },
-      "toolbaz": {
-        name: "ToolBaz",
-        shortDescription: "Free AI content generation suite",
-        category: "Content Writing Tools",
-        comparisonImage: "/images/comparisons/toolbaz.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["GPT-4"],
-                description: "AI technology"
-              },
-              {
-                name: "Content Limits",
-                olly: "Unlimited with paid plans",
-                competitor: "150-char input, 400-word output",
-                description: "Usage restrictions"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: "Generic content generation",
-                description: "Platform integration"
-              },
-              {
-                name: "Direct Publishing",
-                olly: true,
-                competitor: false,
-                description: "Platform posting"
-              }
-            ]
-          },
-          {
-            category: "Features",
-            features: [
-              {
-                name: "Analytics",
-                olly: true,
-                competitor: false,
-                description: "Performance tracking"
-              },
-              {
-                name: "Content Types",
-                olly: ["Platform-optimized content", "Comments", "Posts"],
-                competitor: ["Basic articles", "Sales emails", "Social posts"],
-                description: "Content capabilities"
-              }
-            ]
-          },
-          {
-            category: "Professional Features",
-            features: [
-              {
-                name: "Team Features",
-                olly: true,
-                competitor: false,
-                description: "Collaboration tools"
-              },
-              {
-                name: "Custom Actions",
-                olly: true,
-                competitor: false,
-                description: "Automation capabilities"
-              }
-            ]
-          },
-          {
-            category: "Pricing",
-            features: [
-              {
-                name: "Cost Model",
-                olly: "Freemium with paid features",
-                competitor: "Free with limitations",
-                description: "Pricing structure"
-              },
-              {
-                name: "Premium Plans",
-                olly: true,
-                competitor: false,
-                description: "Paid offerings"
-              },
-              {
-                name: "Lifetime Access",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment option"
-              }
-            ]
-          }
-        ]
-      },
-      "engageai": {
-        name: "Engage AI",
-        shortDescription: "LinkedIn-focused engagement tool",
-        category: "Social Media Management",
-        comparisonImage: "/images/comparisons/engageai.png",
-        features: [
-          {
-            category: "AI Models & Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["OpenAI", "Gemini"],
-                description: "Available AI models"
-              },
-              {
-                name: "Platform Coverage",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["LinkedIn only"],
-                description: "Platform specialization"
-              },
-              {
-                name: "Custom AI Personalities",
-                olly: true,
-                competitor: false,
-                description: "AI voice customization"
-              }
-            ]
-          },
-          {
-            category: "Engagement Features",
-            features: [
-              {
-                name: "Comment Generation",
-                olly: ["AI-powered comments", "Custom templates", "One-click posting", "Cross-platform support"],
-                competitor: ["LinkedIn comments", "Basic templates"],
-                description: "Commenting capabilities"
-              },
-              {
-                name: "Content Analysis",
-                olly: ["Virality prediction", "Cross-platform analytics", "Engagement tracking"],
-                competitor: ["Basic LinkedIn analytics"],
-                description: "Analytics features"
-              },
-              {
-                name: "Automation",
-                olly: ["Custom actions", "Multi-platform scheduling", "Advanced workflows"],
-                competitor: ["Basic prospect monitoring", "Connection requests"],
-                description: "Automation capabilities"
-              }
-            ]
-          },
-          {
-            category: "Business Features",
-            features: [
-              {
-                name: "Team Collaboration",
-                olly: ["Multi-user support", "Team workflows", "Role management"],
-                competitor: "Basic single-user focus",
-                description: "Team capabilities"
-              },
-              {
-                name: "Multi-Brand Support",
-                olly: true,
-                competitor: false,
-                description: "Multiple brand management"
-              },
-              {
-                name: "Privacy",
-                olly: "Local data storage",
-                competitor: "Cloud-based",
-                description: "Data handling approach"
-              }
-            ]
-          },
-          {
-            category: "Advanced Tools",
-            features: [
-              {
-                name: "Cross-Platform Features",
-                olly: ["Platform-specific optimization", "Multi-channel content", "Unified dashboard"],
-                competitor: ["LinkedIn-only features"],
-                description: "Platform capabilities"
-              },
-              {
-                name: "Content Creation",
-                olly: ["Posts", "Comments", "Threads", "Articles", "Stories"],
-                competitor: ["Posts", "Comments", "Connection requests"],
-                description: "Content types"
-              }
-            ]
-          },
-          {
-            category: "Pricing & Value",
-            features: [
-              {
-                name: "Free Plan",
-                olly: "5 comments/day forever",
-                competitor: "Limited trial",
-                description: "Free offering"
-              },
-              {
-                name: "Lifetime Access",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment option"
-              },
-              {
-                name: "Value Proposition",
-                olly: ["Multi-platform support", "Advanced AI features", "Complete toolkit"],
-                competitor: ["LinkedIn specialization", "Basic AI features"],
-                description: "Overall value"
-              }
-            ]
-          }
-        ]
-      },
-      "familyai": {
-        name: "Family AI (Ollie)",
-        shortDescription: "AI assistant for family life management and household tasks",
-        category: "Family Management",
-        comparisonImage: "/images/comparisons/family-ai.png",
-        features: [
-          {
-            category: "AI Capabilities",
-            features: [
-              {
-                name: "AI Models",
-                olly: ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-                competitor: ["Proprietary AI System"],
-                description: "Available AI language models for content generation"
-              },
-              {
-                name: "Custom AI Personalities",
-                olly: true,
-                competitor: false,
-                description: "Create and customize multiple AI voices for different brands"
-              },
-              {
-                name: "Local Model Support",
-                olly: true,
-                competitor: false,
-                description: "Support for running local models via Ollama (Llama, Gemma)"
-              }
-            ]
-          },
-          {
-            category: "Platform Support",
-            features: [
-              {
-                name: "Supported Platforms",
-                olly: ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-                competitor: ["Grocery Stores", "Online Retailers", "E-commerce Platforms"],
-                description: "Platforms supported for integration"
-              },
-              {
-                name: "Cross-Platform Features",
-                olly: true,
-                competitor: false,
-                description: "Unified experience and features across all supported platforms"
-              }
-            ]
-          },
-          {
-            category: "Advanced Features",
-            features: [
-              {
-                name: "Core Functionality",
-                olly: true,
-                competitor: false,
-                description: "Social media engagement and content generation"
-              },
-              {
-                name: "Household Management",
-                olly: false,
-                competitor: true,
-                description: "Meal planning, shopping, and gift recommendations"
-              },
-              {
-                name: "Custom Actions",
-                olly: true,
-                competitor: false,
-                description: "User-defined prompts and automation tasks"
-              }
-            ]
-          },
-          {
-            category: "Privacy & Security",
-            features: [
-              {
-                name: "Local Data Storage",
-                olly: true,
-                competitor: false,
-                description: "All user data stored locally, not on servers"
-              },
-              {
-                name: "API Key Security",
-                olly: true,
-                competitor: false,
-                description: "Secure handling of API keys with local storage only"
-              }
-            ]
-          },
-          {
-            category: "Pricing & Value",
-            features: [
-              {
-                name: "Free Tier",
-                olly: "5 comments/day",
-                competitor: "Beta access",
-                description: "Features available in free version"
-              },
-              {
-                name: "Starting Price",
-                olly: "$9.99/month",
-                competitor: "Not publicly available",
-                description: "Base subscription cost"
-              },
-              {
-                name: "Lifetime Option",
-                olly: "$49.99",
-                competitor: false,
-                description: "One-time payment for lifetime access"
-              },
-              {
-                name: "API Cost Transparency",
-                olly: true,
-                competitor: false,
-                description: "Clear API usage calculator and costs"
-              }
-            ]
-          }
-        ]
-      },
-      "tubepilot": {
-    "name": "TubePilot AI",
-    "shortDescription": "Free YouTube-focused content generation and management toolkit",
-    "category": "YouTube Content Management",
-    "comparisonImage": "/images/comparisons/tubepilot.png",
-    "features": [
+  "upfluence": {
+    name: "Upfluence",
+    shortDescription: "Traditional enterprise influencer marketing platform with CRM features",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/upfluence.png",
+    features: [
       {
-        "category": "AI Capabilities",
-        "features": [
+        category: "Influencer Discovery",
+        features: [
           {
-            "name": "AI Models",
-            "olly": ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-            "competitor": ["Unspecified AI model"],
-            "description": "Available AI language models for content generation"
+            name: "AI-Powered Matching",
+            infloq: "Advanced AI algorithm for precise creator-brand matching",
+            competitor: "Basic data-driven matching",
+            description: "Technology used to match brands with influencers"
           },
           {
-            "name": "Generation Modes",
-            "olly": "Multiple customizable personalities",
-            "competitor": ["Fast mode", "Advanced mode"],
-            "description": "Available content generation modes"
+            name: "Verification Process",
+            infloq: "Thorough AI-driven verification of metrics and authenticity",
+            competitor: "Manual verification process",
+            description: "Method of verifying influencer authenticity"
           },
           {
-            "name": "Content Focus",
-            "olly": "Multi-platform social media content",
-            "competitor": "YouTube-specific content",
-            "description": "Primary content generation focus"
+            name: "Global Creator Network",
+            infloq: ["All major social platforms", "Global reach", "Instant matching"],
+            competitor: ["Limited platform focus", "Regional limitations", "Manual search"],
+            description: "Access to creator network and discovery features"
           }
         ]
       },
       {
-        "category": "Platform Support",
-        "features": [
+        category: "Campaign Management",
+        features: [
           {
-            "name": "Supported Platforms",
-            "olly": ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-            "competitor": ["YouTube", "YouTube Shorts"],
-            "description": "Social media platforms supported for content generation"
+            name: "Payment Model",
+            infloq: "Pay-per-click performance model",
+            competitor: "Traditional campaign-based pricing",
+            description: "Payment structure for influencer campaigns"
           },
           {
-            "name": "YouTube-Specific Features",
-            "olly": "Basic YouTube support",
-            "competitor": ["Comments", "Hashtags", "Titles", "Descriptions", "Scripts", "Shorts", "Channel Info"],
-            "description": "Platform-specific features for YouTube"
+            name: "Real-time Analytics",
+            infloq: true,
+            competitor: true,
+            description: "Live campaign performance tracking"
+          },
+          {
+            name: "Automated Campaign Optimization",
+            infloq: "AI-driven real-time optimization",
+            competitor: "Manual optimization tools",
+            description: "Campaign performance optimization capabilities"
           }
         ]
       },
       {
-        "category": "Advanced Features",
-        "features": [
+        category: "ROI Tracking",
+        features: [
           {
-            "name": "Virality Score",
-            "olly": true,
-            "competitor": false,
-            "description": "AI-powered prediction of content performance"
+            name: "Performance Metrics",
+            infloq: ["Engagement rates", "Click tracking", "Conversion analysis", "Revenue attribution"],
+            competitor: ["Basic engagement metrics", "Sales tracking", "ROI calculation"],
+            description: "Available metrics for measuring campaign success"
           },
           {
-            "name": "SEO Tools",
-            "olly": false,
-            "competitor": ["Title optimization", "Description optimization", "Hashtag generation", "Backlink generation"],
-            "description": "SEO-focused features"
-          },
-          {
-            "name": "Analytics Tools",
-            "olly": false,
-            "competitor": ["Watch time calculator", "Monetization checker", "Video audit"],
-            "description": "Analytics and performance tracking"
-          },
-          {
-            "name": "Integration Tools",
-            "olly": false,
-            "competitor": ["Embed code generator", "QR code generator", "Social media conversion"],
-            "description": "Website and cross-platform integration"
+            name: "Analytics Integration",
+            infloq: "One-click integration with major platforms",
+            competitor: "Manual integration process",
+            description: "Ease of connecting analytics tools"
           }
         ]
       },
       {
-        "category": "Content Types",
-        "features": [
+        category: "Platform Features",
+        features: [
           {
-            "name": "Comment Generation",
-            "olly": "All platforms",
-            "competitor": ["Regular comments", "Fake comments", "Shorts comments"],
-            "description": "Comment generation capabilities"
+            name: "Creator Management",
+            infloq: "Automated AI-driven management system",
+            competitor: "Manual CRM system",
+            description: "Tools for managing creator relationships"
           },
           {
-            "name": "Channel Management",
-            "olly": false,
-            "competitor": ["Channel name generator", "Username generator", "Video information generator"],
-            "description": "Channel management tools"
+            name: "Content Approval",
+            infloq: "AI-assisted content review and approval",
+            competitor: "Manual review process",
+            description: "Content review and approval workflow"
+          },
+          {
+            name: "Automated Reporting",
+            infloq: true,
+            competitor: true,
+            description: "Campaign reporting capabilities"
           }
         ]
       },
       {
-        "category": "Privacy & Security",
-        "features": [
+        category: "Pricing & Value",
+        features: [
           {
-            "name": "Local Data Storage",
-            "olly": true,
-            "competitor": false,
-            "description": "All user data stored locally, not on servers"
+            name: "Pricing Model",
+            infloq: "Performance-based (pay per click)",
+            competitor: "Subscription + Campaign costs",
+            description: "Platform cost structure"
           },
           {
-            "name": "API Key Security",
-            "olly": true,
-            "competitor": false,
-            "description": "Secure handling of API keys with local storage only"
+            name: "Minimum Investment",
+            infloq: "No minimum, pay for performance",
+            competitor: "High minimum campaign budgets",
+            description: "Required minimum spend"
+          },
+          {
+            name: "ROI Guarantee",
+            infloq: true,
+            competitor: false,
+            description: "Performance-based ROI guarantees"
           }
         ]
       },
       {
-        "category": "Pricing & Value",
-        "features": [
+        category: "Technology & Innovation",
+        features: [
           {
-            "name": "Free Tier",
-            "olly": "5 comments/day",
-            "competitor": "100% free tools",
-            "description": "Features available in free version"
+            name: "AI Implementation",
+            infloq: ["Creator matching", "Performance prediction", "Campaign optimization", "Content analysis"],
+            competitor: ["Basic data analysis", "Manual matching"],
+            description: "Use of AI technology in platform features"
           },
           {
-            "name": "Starting Price",
-            "olly": "$9.99/month",
-            "competitor": "Free",
-            "description": "Base subscription cost"
-          },
-          {
-            "name": "Usage Limits",
-            "olly": "Based on plan",
-            "competitor": "Credit-based system",
-            "description": "Limitations on tool usage"
+            name: "Platform Updates",
+            infloq: "Regular AI-powered updates",
+            competitor: "Quarterly feature updates",
+            description: "Frequency and type of platform improvements"
           }
         ]
       }
     ]
   },
-  "textaai": {
-    "name": "Texta.ai",
-    "shortDescription": "AI-powered content generation suite with specialized social media tools",
-    "category": "Content Generation",
-    "comparisonImage": "/images/comparisons/textaai.png",
-    "features": [
+  "creatorco": {
+    name: "Creator.co",
+    shortDescription: "Traditional micro-influencer platform focused on product collaborations",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/creatorco.png",
+    features: [
       {
-        "category": "AI Capabilities",
-        "features": [
+        category: "Creator Discovery & Matching",
+        features: [
           {
-            "name": "AI Models",
-            "olly": ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-            "competitor": ["Unspecified AI model"],
-            "description": "Available AI language models for content generation"
+            name: "Matching Technology",
+            infloq: "AI-powered matching with performance prediction",
+            competitor: "Manual matching based on basic metrics",
+            description: "Method of connecting brands with creators"
           },
           {
-            "name": "Custom AI Personalities",
-            "olly": true,
-            "competitor": false,
-            "description": "Create and customize multiple AI voices for different brands"
+            name: "Creator Verification",
+            infloq: "Advanced AI-driven metrics verification",
+            competitor: "Basic profile verification",
+            description: "Process of validating creator authenticity"
           },
           {
-            "name": "Content Types",
-            "olly": "Social media comments and posts",
-            "competitor": ["Stories", "Questions", "Bios", "Captions", "Pin Descriptions", "Quora Answers", "Tweets", "Video Captions"],
-            "description": "Types of content that can be generated"
+            name: "Creator Network",
+            infloq: ["All major platforms", "Global reach", "Performance-based selection"],
+            competitor: ["Limited platform focus", "Primarily micro-influencers", "Manual selection"],
+            description: "Scope and quality of creator network"
           }
         ]
       },
       {
-        "category": "Platform Support",
-        "features": [
+        category: "Campaign Management",
+        features: [
           {
-            "name": "Supported Platforms",
-            "olly": ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-            "competitor": ["Pinterest", "Quora", "TikTok", "Twitter/X", "LinkedIn", "Facebook"],
-            "description": "Social media platforms supported for content generation"
+            name: "Payment Structure",
+            infloq: "Performance-based pay-per-click",
+            competitor: "Product-based compensation",
+            description: "How creators are compensated"
           },
           {
-            "name": "Browser Integration",
-            "olly": "Chrome Extension",
-            "competitor": "Chrome Extension (Texta Browser Extension)",
-            "description": "Browser integration capabilities"
+            name: "Campaign Setup",
+            infloq: "Automated AI-driven setup and optimization",
+            competitor: "Manual campaign creation",
+            description: "Process of setting up influencer campaigns"
+          },
+          {
+            name: "Performance Tracking",
+            infloq: "Real-time analytics and ROI tracking",
+            competitor: "Basic engagement metrics",
+            description: "Campaign measurement capabilities"
           }
         ]
       },
       {
-        "category": "Advanced Features",
-        "features": [
+        category: "Platform Intelligence",
+        features: [
           {
-            "name": "Virality Score",
-            "olly": true,
-            "competitor": false,
-            "description": "AI-powered prediction of content performance"
+            name: "Data Analysis",
+            infloq: ["AI-powered performance prediction", "Audience quality scoring", "Conversion tracking"],
+            competitor: ["Basic metrics tracking", "Engagement rates", "Profile statistics"],
+            description: "Depth of analytical capabilities"
           },
           {
-            "name": "Specialized Generators",
-            "olly": false,
-            "competitor": true,
-            "description": "Platform-specific content generators (Pinterest, Quora, etc.)"
-          },
-          {
-            "name": "SEO Integration",
-            "olly": false,
-            "competitor": true,
-            "description": "Built-in SEO tools and optimization"
-          },
-          {
-            "name": "Content Workflow",
-            "olly": "Social media focused",
-            "competitor": "Complete content creation suite",
-            "description": "Content creation and management workflow"
+            name: "Optimization Tools",
+            infloq: "AI-driven campaign optimization",
+            competitor: "Manual optimization suggestions",
+            description: "Tools for improving campaign performance"
           }
         ]
       },
       {
-        "category": "Privacy & Security",
-        "features": [
+        category: "Creator Support",
+        features: [
           {
-            "name": "Local Data Storage",
-            "olly": true,
-            "competitor": false,
-            "description": "All user data stored locally, not on servers"
+            name: "Earnings Model",
+            infloq: "Performance-based earnings",
+            competitor: "Product gifting focus",
+            description: "How creators can monetize"
           },
           {
-            "name": "API Key Security",
-            "olly": true,
-            "competitor": false,
-            "description": "Secure handling of API keys with local storage only"
+            name: "Growth Tools",
+            infloq: ["AI performance insights", "Revenue optimization", "Audience analysis"],
+            competitor: ["Basic analytics", "Community support"],
+            description: "Tools for creator growth"
           }
         ]
       },
       {
-        "category": "Pricing & Value",
-        "features": [
+        category: "Brand Benefits",
+        features: [
           {
-            "name": "Free Tier",
-            "olly": "5 comments/day",
-            "competitor": "7-day free trial with full access",
-            "description": "Features available in free version"
+            name: "ROI Measurement",
+            infloq: "Precise click and conversion tracking",
+            competitor: "Basic engagement metrics",
+            description: "Ability to measure campaign success"
           },
           {
-            "name": "Starting Price",
-            "olly": "$9.99/month",
-            "competitor": "Contact for pricing",
-            "description": "Base subscription cost"
+            name: "Campaign Control",
+            infloq: "Full performance-based control",
+            competitor: "Limited campaign control",
+            description: "Level of brand control over campaigns"
           },
           {
-            "name": "Lifetime Option",
-            "olly": "$49.99",
-            "competitor": "Not available",
-            "description": "One-time payment for lifetime access"
+            name: "Cost Structure",
+            infloq: "Pay for performance only",
+            competitor: "Product cost + platform fees",
+            description: "Campaign cost structure"
+          }
+        ]
+      },
+      {
+        category: "Technology Features",
+        features: [
+          {
+            name: "Platform Intelligence",
+            infloq: ["AI matching", "Performance prediction", "Automated optimization"],
+            competitor: ["Basic matching", "Manual optimization"],
+            description: "Advanced technology features"
           },
           {
-            "name": "Trial Requirements",
-            "olly": "None",
-            "competitor": "No credit card required",
-            "description": "Requirements to start free trial"
+            name: "Integration Capabilities",
+            infloq: "Automated analytics integration",
+            competitor: "Manual data input",
+            description: "Ability to connect with other tools"
           }
         ]
       }
     ]
   },
-  "planable": {
-    "name": "Planable Reddit Comment Generator",
-    "shortDescription": "Free AI-powered Reddit comment generator with focus on tone customization",
-    "category": "Social Media Management",
-    "comparisonImage": "/images/comparisons/planable.png",
-    "features": [
+  "grin": {
+    name: "GRIN",
+    shortDescription: "Enterprise-focused creator management platform with comprehensive workflow tools",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/grin.png",
+    features: [
       {
-        "category": "AI Capabilities",
-        "features": [
+        category: "Creator Discovery",
+        features: [
           {
-            "name": "AI Models",
-            "olly": ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-            "competitor": ["Unspecified AI model"],
-            "description": "Available AI language models for content generation"
+            name: "Discovery Technology",
+            infloq: "AI-powered creator matching with performance prediction",
+            competitor: "Traditional search and filter system",
+            description: "Method of finding and evaluating creators"
           },
           {
-            "name": "Tone Variations",
-            "olly": true,
-            "competitor": ["Humorous", "Inspirational", "Informative", "Casual", "Formal", "Witty", "Enthusiastic", "Empathetic", "Convincing", "Teasing"],
-            "description": "Available comment tone options"
+            name: "Verification Process",
+            infloq: "Automated AI-driven authenticity verification",
+            competitor: "Manual verification process",
+            description: "How creator authenticity is verified"
           },
           {
-            "name": "Custom AI Personalities",
-            "olly": true,
-            "competitor": false,
-            "description": "Create and customize multiple AI voices for different brands"
+            name: "Creator Quality Assessment",
+            infloq: ["AI performance prediction", "Engagement analysis", "Audience quality scoring"],
+            competitor: ["Manual review", "Basic metrics analysis", "Historical performance"],
+            description: "Methods for evaluating creator quality"
           }
         ]
       },
       {
-        "category": "Platform Support",
-        "features": [
+        category: "Campaign Management",
+        features: [
           {
-            "name": "Supported Platforms",
-            "olly": ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-            "competitor": ["Reddit", "TikTok", "LinkedIn", "YouTube", "Facebook", "Instagram", "Twitter", "Quora"],
-            "description": "Social media platforms supported for content generation"
+            name: "Campaign Setup",
+            infloq: "AI-automated campaign creation and optimization",
+            competitor: "Manual workflow setup",
+            description: "Process of creating and managing campaigns"
           },
           {
-            "name": "Platform-Specific Features",
-            "olly": true,
-            "competitor": true,
-            "description": "Features tailored to each platform's unique characteristics"
+            name: "Performance Tracking",
+            infloq: "Real-time AI-powered performance tracking",
+            competitor: "Traditional metrics dashboard",
+            description: "Campaign monitoring capabilities"
+          },
+          {
+            name: "Content Management",
+            infloq: "AI-assisted content review and optimization",
+            competitor: "Manual content review system",
+            description: "Content approval and management process"
           }
         ]
       },
       {
-        "category": "Advanced Features",
-        "features": [
+        category: "ROI & Analytics",
+        features: [
           {
-            "name": "Virality Score",
-            "olly": true,
-            "competitor": false,
-            "description": "AI-powered prediction of content performance"
+            name: "Performance Metrics",
+            infloq: ["Real-time ROI tracking", "Conversion attribution", "Click tracking"],
+            competitor: ["Basic engagement metrics", "Content performance", "Campaign reporting"],
+            description: "Available performance metrics"
           },
           {
-            "name": "Comment Length Options",
-            "olly": true,
-            "competitor": ["Short", "Long"],
-            "description": "Control over generated comment length"
+            name: "Data Analysis",
+            infloq: "AI-powered performance analysis and predictions",
+            competitor: "Manual data analysis tools",
+            description: "Analytical capabilities"
           },
           {
-            "name": "Emoji Support",
-            "olly": true,
-            "competitor": true,
-            "description": "Option to include emojis in comments"
-          },
-          {
-            "name": "Multiple Variations",
-            "olly": true,
-            "competitor": "Up to 5 variations",
-            "description": "Generate multiple comment options"
+            name: "Reporting",
+            infloq: "Automated real-time reporting",
+            competitor: "Manual report generation",
+            description: "Reporting capabilities"
           }
         ]
       },
       {
-        "category": "Privacy & Security",
-        "features": [
+        category: "Payment & Compensation",
+        features: [
           {
-            "name": "Local Data Storage",
-            "olly": true,
-            "competitor": false,
-            "description": "All user data stored locally, not on servers"
+            name: "Payment Model",
+            infloq: "Performance-based pay-per-click",
+            competitor: "Fixed-rate or negotiated payments",
+            description: "How creators are compensated"
           },
           {
-            "name": "No Sign-up Required",
-            "olly": false,
-            "competitor": true,
-            "description": "Can use tool without creating account"
+            name: "Payment Processing",
+            infloq: "Automated performance-based payments",
+            competitor: "Manual payment processing",
+            description: "Payment handling system"
           }
         ]
       },
       {
-        "category": "Pricing & Value",
-        "features": [
+        category: "Platform Integration",
+        features: [
           {
-            "name": "Free Tier",
-            "olly": "5 comments/day",
-            "competitor": "Free tool, no limits specified",
-            "description": "Features available in free version"
+            name: "Integration Capabilities",
+            infloq: ["Automated social platform integration", "Analytics integration", "E-commerce integration"],
+            competitor: ["Manual platform connections", "Limited automation", "Basic e-commerce integration"],
+            description: "Platform connectivity options"
           },
           {
-            "name": "Starting Price",
-            "olly": "$9.99/month",
-            "competitor": "Free (part of larger Planable suite)",
-            "description": "Base cost for access"
+            name: "Workflow Automation",
+            infloq: "AI-driven workflow automation",
+            competitor: "Template-based automation",
+            description: "Level of automated processes"
+          }
+        ]
+      },
+      {
+        category: "Pricing & Value",
+        features: [
+          {
+            name: "Cost Structure",
+            infloq: "Performance-based pricing",
+            competitor: "Enterprise subscription model",
+            description: "Platform pricing model"
           },
           {
-            "name": "Lifetime Option",
-            "olly": "$49.99",
-            "competitor": "Not available",
-            "description": "One-time payment for lifetime access"
+            name: "ROI Guarantee",
+            infloq: "Pay for performance only",
+            competitor: "No ROI guarantee",
+            description: "Performance guarantees"
           },
           {
-            "name": "API Cost Transparency",
-            "olly": true,
-            "competitor": false,
-            "description": "Clear API usage calculator and costs"
+            name: "Minimum Investment",
+            infloq: "No minimum requirement",
+            competitor: "Enterprise-level minimums",
+            description: "Required minimum spend"
           }
         ]
       }
     ]
   },
-  "commentgenerator": {
-    "name": "Comment Generator",
-    "shortDescription": "Platform-specific AI comment generator with focus on authenticity",
-    "category": "Social Media Management",
-    "comparisonImage": "/images/comparisons/commentgenerator.png",
-    "features": [
+  "influencity": {
+    name: "Influencity",
+    shortDescription: "Data-driven influencer platform with traditional campaign management",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/influencity.png",
+    features: [
       {
-        "category": "AI Capabilities",
-        "features": [
+        category: "Discovery & Analytics",
+        features: [
           {
-            "name": "AI Models",
-            "olly": ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-            "competitor": ["Unspecified AI model"],
-            "description": "Available AI language models for content generation"
+            name: "Influencer Discovery",
+            infloq: "AI-powered matching with performance prediction",
+            competitor: "Database search with filters",
+            description: "Method of finding and evaluating influencers"
           },
           {
-            "name": "Custom AI Personalities",
-            "olly": true,
-            "competitor": false,
-            "description": "Create and customize multiple AI voices for different brands"
+            name: "Analytics Depth",
+            infloq: ["Real-time performance tracking", "AI-driven predictions", "Conversion analysis"],
+            competitor: ["Historical data analysis", "Basic metrics", "Manual reporting"],
+            description: "Depth and sophistication of analytics"
           },
           {
-            "name": "Tone Customization",
-            "olly": true,
-            "competitor": true,
-            "description": "Ability to customize comment tone and style"
+            name: "Data Access",
+            infloq: "Real-time data with AI insights",
+            competitor: "On-demand profile statistics",
+            description: "How platform accesses and processes data"
           }
         ]
       },
       {
-        "category": "Platform Support",
-        "features": [
+        category: "Campaign Management",
+        features: [
           {
-            "name": "Supported Platforms",
-            "olly": ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-            "competitor": ["Instagram", "LinkedIn", "Threads"],
-            "description": "Social media platforms supported for content generation"
+            name: "Campaign Setup",
+            infloq: "AI-automated campaign creation",
+            competitor: "Manual workflow setup",
+            description: "Process of creating campaigns"
           },
           {
-            "name": "Cross-Platform Features",
-            "olly": true,
-            "competitor": true,
-            "description": "Unified experience and features across supported platforms"
+            name: "Performance Optimization",
+            infloq: "Real-time AI optimization",
+            competitor: "Manual optimization tools",
+            description: "How campaigns are optimized"
+          },
+          {
+            name: "ROI Tracking",
+            infloq: "Automated real-time ROI tracking",
+            competitor: "Manual ROI calculation",
+            description: "Method of tracking return on investment"
           }
         ]
       },
       {
-        "category": "Advanced Features",
-        "features": [
+        category: "Platform Intelligence",
+        features: [
           {
-            "name": "Virality Score",
-            "olly": true,
-            "competitor": false,
-            "description": "AI-powered prediction of content performance"
+            name: "AI Integration",
+            infloq: ["Creator matching", "Performance prediction", "Content analysis", "Automated optimization"],
+            competitor: ["Basic filters", "Manual analysis", "Standard metrics"],
+            description: "Use of artificial intelligence"
           },
           {
-            "name": "Custom Comment Panels",
-            "olly": true,
-            "competitor": true,
-            "description": "One-click commenting with customizable templates"
-          },
-          {
-            "name": "Custom Actions",
-            "olly": true,
-            "competitor": false,
-            "description": "User-defined prompts and automation tasks"
-          },
-          {
-            "name": "Multi-language Support",
-            "olly": true,
-            "competitor": true,
-            "description": "Support for multiple languages"
+            name: "Data Analysis",
+            infloq: "AI-powered real-time analysis",
+            competitor: "Traditional metrics analysis",
+            description: "Data analysis capabilities"
           }
         ]
       },
       {
-        "category": "Privacy & Security",
-        "features": [
+        category: "E-commerce Integration",
+        features: [
           {
-            "name": "Local Data Storage",
-            "olly": true,
-            "competitor": false,
-            "description": "All user data stored locally, not on servers"
+            name: "Store Integration",
+            infloq: "Direct performance tracking",
+            competitor: "Basic Shopify integration",
+            description: "E-commerce integration capabilities"
           },
           {
-            "name": "No Account Access Required",
-            "olly": true,
-            "competitor": true,
-            "description": "Works without requiring social media account access"
+            name: "Sales Attribution",
+            infloq: "Real-time attribution tracking",
+            competitor: "Manual sales tracking",
+            description: "How sales are attributed to creators"
           }
         ]
       },
       {
-        "category": "Pricing & Value",
-        "features": [
+        category: "Creator Management",
+        features: [
           {
-            "name": "Free Tier",
-            "olly": "5 comments/day",
-            "competitor": "Limited free trial (7 days)",
-            "description": "Features available in free version"
+            name: "Relationship Management",
+            infloq: "AI-assisted relationship management",
+            competitor: "Traditional CRM features",
+            description: "Tools for managing creator relationships"
           },
           {
-            "name": "Starting Price",
-            "olly": "$9.99/month",
-            "competitor": "Not specified",
-            "description": "Base subscription cost"
+            name: "Payment System",
+            infloq: "Automated performance-based payments",
+            competitor: "Manual payment processing",
+            description: "Creator payment handling"
+          }
+        ]
+      },
+      {
+        category: "Pricing & Value",
+        features: [
+          {
+            name: "Cost Model",
+            infloq: "Performance-based pricing",
+            competitor: "Subscription-based",
+            description: "Platform pricing structure"
           },
           {
-            "name": "Lifetime Option",
-            "olly": "$49.99",
-            "competitor": "Not available",
-            "description": "One-time payment for lifetime access"
+            name: "Minimum Commitment",
+            infloq: "No minimum requirement",
+            competitor: "Contract requirements",
+            description: "Required minimum investment"
           },
           {
-            "name": "API Cost Transparency",
-            "olly": true,
-            "competitor": false,
-            "description": "Clear API usage calculator and costs"
+            name: "ROI Guarantee",
+            infloq: true,
+            competitor: false,
+            description: "Performance-based guarantees"
           }
         ]
       }
     ]
   },
-  "replymind": {
-    "name": "ReplyMind",
-    "shortDescription": "Basic AI-powered social media engagement assistant",
-    "category": "Social Media Management",
-    "comparisonImage": "/images/comparisons/replymind.png",
-    "features": [
+  "izea": {
+    name: "IZEA",
+    shortDescription: "Pioneer influencer marketing platform with full-service agency capabilities",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/izea.png",
+    features: [
       {
-        "category": "AI Capabilities",
-        "features": [
+        category: "Platform Technology",
+        features: [
           {
-            "name": "AI Models",
-            "olly": ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-            "competitor": ["OpenAI"],
-            "description": "Available AI language models for content generation"
+            name: "AI Implementation",
+            infloq: ["Advanced AI matching", "Performance prediction", "Campaign optimization"],
+            competitor: ["Basic FormAI for content", "Traditional matching", "Manual optimization"],
+            description: "Use of artificial intelligence in platform"
           },
           {
-            "name": "Custom AI Personalities",
-            "olly": true,
-            "competitor": false,
-            "description": "Create and customize multiple AI voices for different brands"
+            name: "Creator Discovery",
+            infloq: "AI-powered creator matching with performance prediction",
+            competitor: "Traditional database search",
+            description: "Method of finding suitable creators"
           },
           {
-            "name": "Local Model Support",
-            "olly": true,
-            "competitor": false,
-            "description": "Support for running local models via Ollama (Llama, Gemma)"
+            name: "Performance Analysis",
+            infloq: "Real-time AI analytics",
+            competitor: "Standard metrics tracking",
+            description: "Campaign performance tracking capabilities"
           }
         ]
       },
       {
-        "category": "Platform Support",
-        "features": [
+        category: "Service Model",
+        features: [
           {
-            "name": "Supported Platforms",
-            "olly": ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-            "competitor": ["LinkedIn", "Twitter/X", "Product Hunt"],
-            "description": "Social media platforms supported for content generation"
+            name: "Service Approach",
+            infloq: "Automated self-service platform",
+            competitor: "Full-service agency + platform",
+            description: "How services are delivered"
           },
           {
-            "name": "Cross-Platform Features",
-            "olly": true,
-            "competitor": false,
-            "description": "Unified experience and features across all supported platforms"
+            name: "Campaign Management",
+            infloq: "AI-driven automated management",
+            competitor: "Manual management with team support",
+            description: "Campaign handling process"
+          },
+          {
+            name: "Strategy Development",
+            infloq: "AI-powered strategy recommendations",
+            competitor: "Human expert consultation",
+            description: "Approach to strategy creation"
           }
         ]
       },
       {
-        "category": "Advanced Features",
-        "features": [
+        category: "Creator Features",
+        features: [
           {
-            "name": "Virality Score",
-            "olly": true,
-            "competitor": false,
-            "description": "AI-powered prediction of content performance"
+            name: "Creator Tools",
+            infloq: ["AI performance insights", "Automated matching", "Real-time analytics"],
+            competitor: ["Mobile app", "Casting calls", "Basic analytics"],
+            description: "Tools available for creators"
           },
           {
-            "name": "Custom Comment Panels",
-            "olly": true,
-            "competitor": false,
-            "description": "One-click commenting with customizable templates"
-          },
-          {
-            "name": "Custom Actions",
-            "olly": true,
-            "competitor": false,
-            "description": "User-defined prompts and automation tasks"
+            name: "Payment System",
+            infloq: "Performance-based automated payments",
+            competitor: "Traditional payment processing",
+            description: "How creators are compensated"
           }
         ]
       },
       {
-        "category": "Privacy & Security",
-        "features": [
+        category: "Platform Intelligence",
+        features: [
           {
-            "name": "Local Data Storage",
-            "olly": true,
-            "competitor": false,
-            "description": "All user data stored locally, not on servers"
+            name: "Data Analysis",
+            infloq: "AI-powered real-time analysis",
+            competitor: "Traditional metrics and reporting",
+            description: "Data analysis capabilities"
           },
           {
-            "name": "API Key Security",
-            "olly": true,
-            "competitor": false,
-            "description": "Secure handling of API keys with local storage only"
+            name: "Optimization Tools",
+            infloq: "Automated AI optimization",
+            competitor: "Manual optimization with team support",
+            description: "Campaign optimization capabilities"
           }
         ]
       },
       {
-        "category": "Pricing & Value",
-        "features": [
+        category: "Business Model",
+        features: [
           {
-            "name": "Free Tier",
-            "olly": "5 comments/day",
-            "competitor": "90 replies/month",
-            "description": "Features available in free version"
+            name: "Pricing Structure",
+            infloq: "Performance-based pricing",
+            competitor: "Service retainer + platform fees",
+            description: "Cost structure for clients"
           },
           {
-            "name": "Starting Price",
-            "olly": "$9.99/month",
-            "competitor": "$7/month (annual)",
-            "description": "Base subscription cost"
+            name: "ROI Measurement",
+            infloq: "Real-time performance tracking",
+            competitor: "Traditional ROI reporting",
+            description: "How ROI is measured"
           },
           {
-            "name": "Lifetime Option",
-            "olly": "$49.99",
-            "competitor": "Available (price not specified)",
-            "description": "One-time payment for lifetime access"
+            name: "Minimum Investment",
+            infloq: "No minimum requirement",
+            competitor: "High minimum for full service",
+            description: "Required minimum spend"
+          }
+        ]
+      },
+      {
+        category: "Platform Focus",
+        features: [
+          {
+            name: "Target Market",
+            infloq: "Modern brands seeking automation",
+            competitor: "Enterprise brands needing full service",
+            description: "Primary target audience"
           },
           {
-            "name": "API Cost Transparency",
-            "olly": true,
-            "competitor": false,
-            "description": "Clear API usage calculator and costs"
+            name: "Technology Focus",
+            infloq: "AI-first approach",
+            competitor: "Traditional service-first approach",
+            description: "Core technology philosophy"
           }
         ]
       }
     ]
   },
-  "grum": {
-    "name": "Grum",
-    "shortDescription": "Free Instagram-focused AI tools and marketing platform",
-    "category": "Instagram Marketing",
-    "comparisonImage": "/images/comparisons/grum.png",
-    "features": [
-      {
-        "category": "AI Capabilities",
-        "features": [
-          {
-            "name": "AI Models",
-            "olly": ["OpenAI", "Claude", "Gemini", "Local Models", "Straico", "OpenRouter"],
-            "competitor": ["Unspecified AI model"],
-            "description": "Available AI language models for content generation"
-          },
-          {
-            "name": "Content Generation",
-            "olly": "Multi-platform content",
-            "competitor": ["Bios", "Captions", "Comments", "Art", "Content Ideas"],
-            "description": "Types of content that can be generated"
-          },
-          {
-            "name": "Custom AI Personalities",
-            "olly": true,
-            "competitor": false,
-            "description": "Create and customize multiple AI voices for different brands"
-          }
-        ]
-      },
-      {
-        "category": "Platform Support",
-        "features": [
-          {
-            "name": "Supported Platforms",
-            "olly": ["LinkedIn", "Twitter/X", "Facebook", "Instagram", "Reddit", "Product Hunt", "YouTube", "Quora", "Medium", "TikTok", "Threads", "HackerNews"],
-            "competitor": ["Instagram"],
-            "description": "Social media platforms supported for content generation"
-          },
-          {
-            "name": "Instagram-Specific Features",
-            "olly": "Basic Instagram support",
-            "competitor": ["Bio generation", "Caption generation", "Art generation", "Hashtag generation", "Content ideas", "Comment generation", "Username generation"],
-            "description": "Platform-specific features for Instagram"
-          }
-        ]
-      },
-      {
-        "category": "Advanced Features",
-        "features": [
-          {
-            "name": "Virality Score",
-            "olly": true,
-            "competitor": false,
-            "description": "AI-powered prediction of content performance"
-          },
-          {
-            "name": "Growth Services",
-            "olly": false,
-            "competitor": ["Free followers", "Free likes", "Free comments", "Free views"],
-            "description": "Instagram growth services"
-          },
-          {
-            "name": "Visual Content",
-            "olly": false,
-            "competitor": "AI Art Generator",
-            "description": "Visual content generation capabilities"
-          },
-          {
-            "name": "Marketing Resources",
-            "olly": false,
-            "competitor": "Marketing blog and resources",
-            "description": "Educational and marketing resources"
-          }
-        ]
-      },
-      {
-        "category": "Content Management",
-        "features": [
-          {
-            "name": "Hashtag Management",
-            "olly": false,
-            "competitor": "Trending hashtag generator",
-            "description": "Hashtag generation and management"
-          },
-          {
-            "name": "Profile Optimization",
-            "olly": "Cross-platform",
-            "competitor": "Instagram-focused",
-            "description": "Profile optimization capabilities"
-          }
-        ]
-      },
-      {
-        "category": "Privacy & Security",
-        "features": [
-          {
-            "name": "Local Data Storage",
-            "olly": true,
-            "competitor": false,
-            "description": "All user data stored locally, not on servers"
-          },
-          {
-            "name": "API Key Security",
-            "olly": true,
-            "competitor": false,
-            "description": "Secure handling of API keys with local storage only"
-          }
-        ]
-      },
-      {
-        "category": "Pricing & Value",
-        "features": [
-          {
-            "name": "Free Tier",
-            "olly": "5 comments/day",
-            "competitor": "100% free tools",
-            "description": "Features available in free version"
-          },
-          {
-            "name": "Starting Price",
-            "olly": "$9.99/month",
-            "competitor": "Free",
-            "description": "Base subscription cost"
-          },
-          {
-            "name": "Additional Services",
-            "olly": "Premium features",
-            "competitor": "Free growth services",
-            "description": "Extra features and services"
-          }
-        ]
-      }
-    ]
-  }
+  
 };

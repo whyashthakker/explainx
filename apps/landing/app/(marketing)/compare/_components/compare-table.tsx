@@ -34,7 +34,7 @@ import { Competitor } from "../../../../data/competitors";
                         </p>
                       )}
                     </TableCell>
-                    <TableCell>{renderFeatureValue(feature.olly)}</TableCell>
+                    <TableCell>{renderFeatureValue(feature.infloq)}</TableCell>
                     <TableCell>{renderFeatureValue(feature.competitor)}</TableCell>
                   </TableRow>
                 ))}
