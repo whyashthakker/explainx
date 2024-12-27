@@ -50,7 +50,7 @@ export default async function SignIn(props: {
       redirect(`/invite/${searchParams.invite}`);
     }
     // Otherwise redirect to dashboard
-    redirect("/authenticated/dashboard");
+    redirect("/dashboard");
   }
 
   return (
@@ -97,7 +97,7 @@ export default async function SignIn(props: {
                   await signIn("google", {
                     redirectTo: searchParams.invite
                       ? `/invite/${searchParams.invite}`
-                      : "/authenticated/dashboard",
+                      : "/dashboard",
                   });
                 }}
               >

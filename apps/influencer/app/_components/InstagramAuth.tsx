@@ -33,7 +33,7 @@ const InstagramAuth = (): JSX.Element | null => {
           if (data.success && data.access_token) {
             console.log(data);
             // Store token if needed
-            router.push("/authenticated/dashboard");
+            router.push("/dashboard");
           } else {
             console.error("Auth failed:", data.error);
           }
