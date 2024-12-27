@@ -1,5 +1,3 @@
-// Generated on 2024-12-27T11:01:40.260Z
-
 const productData = [
   {
     "title": "Influencer Marketing Platform | Infloq.com",
