@@ -24,6 +24,21 @@ import { Platform } from "../../../../lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import InstagramLogin from "./instagram-connect";
 import Link from "next/link";
+import { Input } from "@repo/ui/components/ui/input";
+import { Textarea } from "@repo/ui/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@repo/ui/components/ui/select";
+
+interface ProfileData {
+  name: string;
+  bio: string;
+  category: string;
+}
 
 interface SocialPlatform {
   name: string;
@@ -77,12 +92,32 @@ const stats: Stat[] = [
   { icon: BarChart, label: "Avg. Engagement", value: "+127%" },
 ];
 
+const categories = [
+  "Tech",
+  "Fashion",
+  "Beauty",
+  "Lifestyle",
+  "Gaming",
+  "Education",
+  "Finance",
+  "Food",
+  "Travel",
+  "Fitness",
+];
+
 export default function SocialConnect() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [connectedPlatforms, setConnectedPlatforms] = useState<Set<Platform>>(
     new Set(),
   );
+
+  // Add profile state
+  const [profileData, setProfileData] = useState<ProfileData>({
+    name: "",
+    bio: "",
+    category: "",
+  });
 
   const handleYouTubeAuth = async (code: string) => {
     try {
@@ -157,9 +192,6 @@ export default function SocialConnect() {
     },
   ).toString()}`;
 
-  const completionPercentage = Math.round(
-    (connectedPlatforms.size / platforms.length) * 100,
-  );
   const instaLoginUrl = process.env.NEXT_PUBLIC_INSTAGRAM_EMBEDED_URL;
 
   const handleConnect = (platform: Platform) => {
@@ -180,6 +212,34 @@ export default function SocialConnect() {
     });
   };
 
+  const calculateCompletionPercentage = () => {
+    const totalSteps = platforms.length + 3; // 3 additional fields: name, bio, category
+    let completedSteps = connectedPlatforms.size;
+
+    if (profileData.name.trim()) completedSteps++;
+    if (profileData.bio.trim()) completedSteps++;
+    if (profileData.category) completedSteps++;
+
+    return Math.round((completedSteps / totalSteps) * 100);
+  };
+
+  const completionPercentage = calculateCompletionPercentage();
+
+  const handleProfileChange = (field: keyof ProfileData, value: string) => {
+    setProfileData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const isProfileComplete = () => {
+    return (
+      profileData.name.trim() !== "" &&
+      profileData.bio.trim() !== "" &&
+      profileData.category !== ""
+    );
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-8 py-8 min-h-screen flex flex-col justify-center">
       <div className="text-center space-y-4">
@@ -188,13 +248,73 @@ export default function SocialConnect() {
           Connect your social platforms to unlock more opportunities
         </p>
       </div>
+
+      {/* Profile Information Card */}
+      <Card className="border-2 border-blue-100">
+        <CardHeader>
+          <CardTitle className="text-2xl">Creator Profile</CardTitle>
+          <CardDescription>
+            Help brands understand your unique value
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Creator Name
+              </label>
+              <Input
+                placeholder="How should brands know you?"
+                value={profileData.name}
+                onChange={(e) => handleProfileChange("name", e.target.value)}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Bio
+              </label>
+              <Textarea
+                placeholder="Tell your story and what makes your content unique..."
+                value={profileData.bio}
+                onChange={(e) => handleProfileChange("bio", e.target.value)}
+                className="w-full min-h-[100px]"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Content Category
+              </label>
+              <Select
+                value={profileData.category}
+                onValueChange={(value) =>
+                  handleProfileChange("category", value)
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select your primary content category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((category) => (
+                    <SelectItem key={category} value={category.toLowerCase()}>
+                      {category}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Progress Card */}
       <Card className="border-2 border-blue-100">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-2xl">Profile Strength</CardTitle>
               <CardDescription>
-                Enhanced visibility with each connection
+                Enhanced visibility with each step completed
               </CardDescription>
             </div>
             <div className="text-right">
@@ -286,16 +406,14 @@ export default function SocialConnect() {
       <Alert className="bg-blue-50 border-blue-100">
         <AlertDescription className="flex items-center text-blue-600">
           <CheckCircle2 className="h-5 w-5 mr-2" />
-          {connectedPlatforms.size === platforms.length
-            ? "All platforms connected! You're ready to maximize your impact."
-            : `Connect ${platforms.length - connectedPlatforms.size} more platform${
-                platforms.length - connectedPlatforms.size === 1 ? "" : "s"
-              } to unlock full potential`}
+          {completionPercentage === 100
+            ? "Profile complete! You're ready to connect with brands."
+            : `Complete your profile and connect your platforms to unlock full potential`}
         </AlertDescription>
       </Alert>
       <Button
         className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700"
-        disabled={connectedPlatforms.size === 0}
+        disabled={!isProfileComplete() || connectedPlatforms.size === 0}
         onClick={() => router.push("/dashboard")}
       >
         Continue to Dashboard
