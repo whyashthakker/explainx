@@ -8,6 +8,9 @@
   "exports": {
     "./client": "./src/index.ts"
   },
+  "scripts": {
+    "postinstall": "prisma generate"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@repo/typescript-config": "*"
