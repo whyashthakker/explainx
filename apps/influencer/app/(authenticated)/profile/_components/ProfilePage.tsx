@@ -18,6 +18,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@repo/ui/components/ui/avatar";
+import { useToast } from "@repo/ui/hooks/use-toast";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
 import { handleSignOut } from "../../../../lib/actions";
@@ -43,6 +44,9 @@ import {
   BaseModel,
 } from "../../../../lib/types";
 import { TeamSection } from "./team/TeamSection";
+import EditProfileModal from "./EditProfileModal";
+import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
 interface ProfileSocialLinkProps {
   icon: LucideIcon;
@@ -90,8 +94,51 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
   influencer,
   teamMembers: initialTeamMembers,
 }) => {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [currentInfluencer, setCurrentInfluencer] = useState(influencer);
+  const router = useRouter();
+  const { toast } = useToast();
+
   const handleEditProfile = () => {
-    console.log("Edit profile clicked");
+    setIsEditModalOpen(true);
+  };
+
+  const handleSaveProfile = async (formData: any) => {
+    try {
+      const response = await fetch("/api/profile", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
+
+      const updatedInfluencer = await response.json();
+
+      // Update the local state
+      setCurrentInfluencer(updatedInfluencer as Influencer);
+
+      // Show success message
+      toast({
+        title: "Profile Updated",
+        description: "Your profile has been successfully updated.",
+      });
+
+      // Refresh the page data
+      router.refresh();
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      toast({
+        title: "Error",
+        description: "Failed to update profile. Please try again.",
+        variant: "destructive",
+      });
+      throw error;
+    }
   };
 
   const handleSocialEdit = (platform: Platform) => {
@@ -147,6 +194,13 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
                   <Edit className="h-4 w-4" />
                   Edit Profile
                 </Button>
+
+                <EditProfileModal
+                  open={isEditModalOpen}
+                  onClose={() => setIsEditModalOpen(false)}
+                  influencer={currentInfluencer}
+                  onSave={handleSaveProfile}
+                />
               </div>
             </CardContent>
           </Card>
