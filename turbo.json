@@ -1,6 +1,22 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["VERCEL_ENV"],
+  "globalEnv": [
+    "VERCEL_ENV",
+    "AUTH_SECRET",
+    "AUTH_GOOGLE_SECRET",
+    "AUTH_GOOGLE_ID",
+    "DATABASE_URL",
+    "FACEBOOK_CLIENT_ID",
+    "FACEBOOK_CLIENT_SECRET",
+    "DIRECT_URL",
+    "INSTGRAM_CLIENT_ID",
+    "INSTGRAM_CLIENT_SECRET",
+    "INSTAGRAM_REDIRECT_URI",
+    "YOUTUBE_CLIENT_ID",
+    "YOUTUBE_CLIENT_SECRET",
+    "YOUTUBE_REDIRECT_URI",
+    "RESEND_API_KEY"
+  ],
   "ui": "tui",
   "tasks": {
     "build": {
