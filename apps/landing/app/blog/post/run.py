@@ -16,7 +16,7 @@ def update_file(file_path):
     if matches:
         last_import = matches[-1]
         insert_position = last_import.end() + 1
-        base_url_constant = "\nconst BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.olly.social';\n"
+        base_url_constant = "\nconst BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.infloq.com';\n"
         content = content[:insert_position] + base_url_constant + content[insert_position:]
 
     # Regular expression to find the alternates object

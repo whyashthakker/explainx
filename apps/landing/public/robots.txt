@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://www.olly.social/sitemap.xml
+Sitemap: https://www.infloq.com/sitemap.xml

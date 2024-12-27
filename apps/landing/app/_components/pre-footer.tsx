@@ -25,8 +25,8 @@ const navigation = {
     ],
   support: [
     { name: "Pricing", href: "/#pricing" },
-    { name: "Contact", href: "mailto:yash@olly.social", target: "_blank" },
-    { name: "Feature Requests", href: "mailto:yash@olly.social", target: "_blank" },
+    { name: "Contact", href: "mailto:yash@infloq.com", target: "_blank" },
+    { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
     {name: "OpenAI Cost Calculator", href: "/openai-cost-calculator"},
   ],
   company: [
@@ -37,9 +37,9 @@ const navigation = {
     // { name: "Discord", href: "/discord", target: "_blank" },
     { name: "Pricing", href: "/#pricing" },
     { name: "Contact", href: "/contact", target: "_blank" },
-    { name: "Feature Requests", href: "mailto:yash@olly.social", target: "_blank" },
+    { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
     { name: "FAQ", href: "/#faq" },
-    { name: "Docs", href: "https://docs.olly.social/" },
+    { name: "Docs", href: "https://docs.infloq.com/" },
     // { name: "Who m", href: "https://goyashy.com", target: "_blank" },
   ],
   legal: [
@@ -71,7 +71,7 @@ const navigation = {
     },
     {
         name: "Instagram",
-        href: "https://www.instagram.com/olly.social_app",
+        href: "https://www.instagram.com/infloq.com_app",
         target: "_blank",
         icon: (props: any) => (
             <svg fill="currentColor" viewBox="0 0 448 512" {...props}>

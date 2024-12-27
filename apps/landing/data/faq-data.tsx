@@ -6,7 +6,7 @@ interface FAQData {
 const FAQDataMain: FAQData[] = [
   {
     question: "How do I sign up for Olly?",
-    answer: "To sign up for Olly, visit our website at olly.social and follow the sign-up process. You'll need to download the Chrome extension and create an account to get started.",
+    answer: "To sign up for Olly, visit our website at infloq.com and follow the sign-up process. You'll need to download the Chrome extension and create an account to get started.",
   },
   {
     question: "What platforms does Olly currently support?",
@@ -78,11 +78,11 @@ const FAQDataMain: FAQData[] = [
   },
   {
     question: "How can I contact support for Olly?",
-    answer: "For any questions or issues with Olly, you can reach out to our support team at yash@olly.social.",
+    answer: "For any questions or issues with Olly, you can reach out to our support team at yash@infloq.com.",
   },
   {
     question: "Is there a guide for first-time Olly users?",
-    answer: "Yes, please see the activation guide at https://www.olly.social/activation-guide for detailed instructions on getting started with Olly.",
+    answer: "Yes, please see the activation guide at https://www.infloq.com/activation-guide for detailed instructions on getting started with Olly.",
   },
 ];
 
