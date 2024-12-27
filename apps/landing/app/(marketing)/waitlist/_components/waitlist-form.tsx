@@ -109,8 +109,8 @@ export default function WaitlistForm() {
         className="text-center py-12"
       >
         <CheckCircle className="w-16 h-16 text-[#4361ee] mx-auto mb-6" />
-        <h3 className="text-2xl font-bold mb-4">You're on the list!</h3>
-        <p className="text-gray-600">We'll notify you as soon as we launch.</p>
+        <h3 className="text-2xl font-bold mb-4">You&apos;re on the list!</h3>
+        <p className="text-gray-600">We&apos;ll notify you as soon as we launch.</p>
       </motion.div>
     );
   }
