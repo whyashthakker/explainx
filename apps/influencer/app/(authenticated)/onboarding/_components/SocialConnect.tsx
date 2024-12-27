@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Progress } from "@repo/ui/components/ui/progress";
-import { Platform } from "../../../../../lib/types";
+import { Platform } from "../../../../lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import InstagramLogin from "./instagram-connect";
 import Link from "next/link";
@@ -86,26 +86,29 @@ export default function SocialConnect() {
 
   const handleYouTubeAuth = async (code: string) => {
     try {
-      console.log("Processing YouTube auth with code:", code.substring(0, 10) + "...");
-      
+      console.log(
+        "Processing YouTube auth with code:",
+        code.substring(0, 10) + "...",
+      );
+
       // Make a POST request to your API endpoint
-      const response = await fetch('/api/auth/youtube', {
-        method: 'POST',
+      const response = await fetch("/api/auth/youtube", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ code })
+        body: JSON.stringify({ code }),
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
       console.log("YouTube connection response:", data);
-  
+
       if (data.success) {
-        setConnectedPlatforms(prev => new Set([...prev, Platform.YOUTUBE]));
+        setConnectedPlatforms((prev) => new Set([...prev, Platform.YOUTUBE]));
       }
     } catch (error) {
       console.error("Failed to connect YouTube:", error);
@@ -115,11 +118,11 @@ export default function SocialConnect() {
   useEffect(() => {
     const code = searchParams.get("code");
     const state = searchParams.get("state"); // Get state parameter
-    
+
     if (code) {
       console.log("Received auth code:", code);
       console.log("Platform state:", state);
-      
+
       if (state === "youtube") {
         handleYouTubeAuth(code);
       } else if (state === "instagram") {
@@ -141,16 +144,18 @@ export default function SocialConnect() {
     }
   };
 
-  const ytLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams({
-    client_id: process.env.NEXT_PUBLIC_YOUTUBE_CLIENT_ID!,
-    redirect_uri: process.env.NEXT_PUBLIC_YOUTUBE_REDIRECT_URI!,
-    response_type: 'code',
-    scope: 'https://www.googleapis.com/auth/youtube.readonly',
-    access_type: 'offline',
-    prompt: 'consent',
-    // Add state parameter to identify platform
-    state: 'youtube'
-}).toString()}`;
+  const ytLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams(
+    {
+      client_id: process.env.NEXT_PUBLIC_YOUTUBE_CLIENT_ID!,
+      redirect_uri: process.env.NEXT_PUBLIC_YOUTUBE_REDIRECT_URI!,
+      response_type: "code",
+      scope: "https://www.googleapis.com/auth/youtube.readonly",
+      access_type: "offline",
+      prompt: "consent",
+      // Add state parameter to identify platform
+      state: "youtube",
+    },
+  ).toString()}`;
 
   const completionPercentage = Math.round(
     (connectedPlatforms.size / platforms.length) * 100,
@@ -166,7 +171,7 @@ export default function SocialConnect() {
     if (platform === Platform.YOUTUBE) {
       window.location.href = ytLoginUrl;
       return;
-    }  
+    }
 
     setConnectedPlatforms((prev) => {
       const newSet = new Set(prev);
