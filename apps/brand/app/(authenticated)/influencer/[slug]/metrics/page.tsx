@@ -9,12 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/components/ui/card";
-import {
-  TrendingUp,
-  PlayCircle,
-  ThumbsUp,
-  MessageCircle,
-} from "lucide-react";
+import { TrendingUp, PlayCircle, ThumbsUp, MessageCircle } from "lucide-react";
 import {
   LineChart,
   Line,
@@ -24,7 +19,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { MetricsResponse } from "../../../../../api/influencer/[id]/metrics/route";
+import { MetricsResponse } from "../../../../api/influencer/[id]/metrics/route";
 
 // Loading skeleton component
 function MetricsSkeleton() {
@@ -88,7 +83,9 @@ function InfluencerMetrics({ metrics, analytics }: MetricsProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Average Views</p>
+                <p className="text-sm font-medium text-gray-500">
+                  Average Views
+                </p>
                 <h3 className="text-2xl font-bold">
                   {formatNumber(metrics.avgViews)}
                 </h3>
@@ -154,12 +151,12 @@ function InfluencerMetrics({ metrics, analytics }: MetricsProps) {
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={analytics}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis 
-                  dataKey="date" 
+                <XAxis
+                  dataKey="date"
                   tickFormatter={(date) => new Date(date).toLocaleDateString()}
                 />
                 <YAxis />
-                <Tooltip 
+                <Tooltip
                   labelFormatter={(date) => new Date(date).toLocaleDateString()}
                 />
                 <Line
@@ -200,12 +197,12 @@ export default function InfluencerMetricsPage(props: PageProps) {
       try {
         const response = await fetch(`/api/influencer/${params.slug}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch metrics data');
+          throw new Error("Failed to fetch metrics data");
         }
         const jsonData = await response.json();
         setData(jsonData);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : "An error occurred");
       } finally {
         setLoading(false);
       }
@@ -227,3 +224,4 @@ export default function InfluencerMetricsPage(props: PageProps) {
     </div>
   );
 }
+
