@@ -22,7 +22,6 @@ function Posts() {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
   
-  // Get unique languages and categories
   const languages = ["all", ...Array.from(new Set(posts.map(post => post.language)))
     .filter(lang => lang !== 'all')
     .sort()
