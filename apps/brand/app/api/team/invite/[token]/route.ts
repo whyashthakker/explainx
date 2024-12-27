@@ -2,16 +2,20 @@
 import { NextResponse } from "next/server";
 import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
+import { type NextRequest } from "next/server";
 
-export const GET = auth(async function GET(
-  req: Request,
-  { params }: { params: { token: string } },
+interface InviteResponse {
+  action: "accept" | "decline";
+}
+
+export async function GET(
+  request: NextRequest,
+  context: { params: Promise<{ token: string }> }
 ) {
   try {
-    // if (!req.auth?.user?.email) {
-    //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    // }
-    const { token } = await params;
+    // Note: Auth check removed as per existing commented code
+    const { token } = await context.params;
+    
     const invite = await prisma.influencerTeamMember.findFirst({
       where: {
         inviteToken: token,
@@ -32,7 +36,8 @@ export const GET = auth(async function GET(
         { status: 404 },
       );
     }
-    console.log("invite form the server", invite);
+    
+    console.log("invite from the server", invite);
     return NextResponse.json({ invite });
   } catch (error) {
     console.error("Invite fetch error:", error);
@@ -41,26 +46,31 @@ export const GET = auth(async function GET(
       { status: 500 },
     );
   }
-});
+}
 
-export const POST = auth(async function POST(
-  req: Request,
-  { params }: { params: { token: string } },
+export async function POST(
+  request: NextRequest,
+  context: { params: Promise<{ token: string }> }
 ) {
   try {
-    if (!req.auth?.user?.email) {
+    const session = await auth();
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { token } = await params;
-    const { action } = await req.json();
+    const { token } = await context.params;
+    const { action } = await request.json() as InviteResponse;
+    
     console.log("getting token in the server " + token);
+    
     if (!["accept", "decline"].includes(action)) {
       return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-    console.log(req.auth.user.email);
+    
+    console.log(session.user.email);
+    
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user.email },
+      where: { email: session.user.email },
     });
 
     const invite = await prisma.influencerTeamMember.findFirst({
@@ -96,4 +106,4 @@ export const POST = auth(async function POST(
       { status: 500 },
     );
   }
-});
+}

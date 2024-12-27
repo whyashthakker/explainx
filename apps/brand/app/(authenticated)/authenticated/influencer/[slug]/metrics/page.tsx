@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { use } from "react";
 import {
   Card,
   CardContent,
@@ -8,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/components/ui/card";
-import { Badge } from "@repo/ui/components/ui/badge";
 import {
   TrendingUp,
   PlayCircle,
@@ -24,19 +24,52 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { MetricsResponse } from "../../../../../api/influencer/[id]/metrics/route";
 
-interface MetricsProps {
-  metrics: {
-    avgViews: number;
-    totalViews: number;
-    subscriberGrowth: number;
-    viewGrowth: number;
-    engagement: string;
-  };
-  analytics: any[]; // Replace with proper type from your schema
+// Loading skeleton component
+function MetricsSkeleton() {
+  return (
+    <div className="space-y-6 animate-pulse">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[...Array(4)].map((_, i) => (
+          <Card key={i}>
+            <CardContent className="pt-6">
+              <div className="h-20 bg-gray-200 rounded"></div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      <Card>
+        <CardHeader>
+          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[400px] bg-gray-200 rounded"></div>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
 
-export function InfluencerMetrics({ metrics, analytics }: MetricsProps) {
+// Error component
+function ErrorDisplay({ error }: { error: string }) {
+  return (
+    <Card className="p-6">
+      <div className="text-center text-red-500">
+        <h3 className="text-lg font-semibold mb-2">Error Loading Metrics</h3>
+        <p>{error}</p>
+      </div>
+    </Card>
+  );
+}
+
+interface MetricsProps {
+  metrics: MetricsResponse["metrics"];
+  analytics: MetricsResponse["analytics"];
+}
+
+function InfluencerMetrics({ metrics, analytics }: MetricsProps) {
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
       return `${(num / 1000000).toFixed(1)}M`;
@@ -146,6 +179,51 @@ export function InfluencerMetrics({ metrics, analytics }: MetricsProps) {
           </div>
         </CardContent>
       </Card>
+    </div>
+  );
+}
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default function InfluencerMetricsPage(props: PageProps) {
+  // Use the `use` hook to handle async params
+  const params = use(props.params);
+  const [data, setData] = useState<MetricsResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/influencer/${params.slug}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch metrics data');
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [params.slug]);
+
+  return (
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-8">Influencer Metrics</h1>
+      {loading ? (
+        <MetricsSkeleton />
+      ) : error ? (
+        <ErrorDisplay error={error} />
+      ) : data ? (
+        <InfluencerMetrics metrics={data.metrics} analytics={data.analytics} />
+      ) : null}
     </div>
   );
 }

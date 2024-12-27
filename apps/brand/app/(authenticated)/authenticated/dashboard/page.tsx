@@ -12,10 +12,12 @@ export default async function BrandDashboardPage() {
     redirect("/");
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-    include: { brand: true },
-  });
+  if (session.user.email) {
+    await prisma.user.findUnique({
+      where: { email: session.user.email },
+      include: { brand: true },
+    });
+  }
 
   return <BrandDashboard />;
 }

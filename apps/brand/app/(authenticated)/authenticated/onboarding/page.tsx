@@ -7,8 +7,19 @@ import { BrandOnboardingForm } from "./_components/OnboardingForm";
 export default async function BrandOnboardingPage() {
   const session = await auth();
   
+  if (!session) {
+    redirect("/login");
+    return null;
+  }
+
+  const email = session.user.email;
+  if (!email) {
+    redirect("/login");
+    return null;
+  }
+
   const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
+    where: { email },
     include: { brand: true },
   });
 

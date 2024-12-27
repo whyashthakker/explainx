@@ -63,5 +63,4 @@ export default function AcceptInviteForm({ token }: { token: string }) {
       </Button>
     </div>
   );
-}
-i;
+};

@@ -1,17 +1,25 @@
+// app/api/team/member/[memberId]/route.ts
 import prisma from "@repo/db/client";
 import { auth } from "../../../../../auth";
 import { NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
 
-export const DELETE = auth(async function DELETE(
-  req: Request,
-  { params }: { params: { memberId: string } },
+interface UpdateRoleBody {
+  role: "ADMIN" | "MEMBER";
+}
+
+export async function DELETE(
+  request: NextRequest,
+  context: { params: Promise<{ memberId: string }> }
 ) {
   try {
     const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    const { memberId } = await params;
+
+    const { memberId } = await context.params;
+
     const currentUser = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: {
@@ -27,7 +35,7 @@ export const DELETE = auth(async function DELETE(
 
     // Get member to be deleted
     const memberToDelete = await prisma.influencerTeamMember.findUnique({
-      where: { id: params.memberId },
+      where: { id: memberId },
       include: { team: true },
     });
 
@@ -72,20 +80,20 @@ export const DELETE = auth(async function DELETE(
       { status: 500 },
     );
   }
-});
+}
 
-// Update member role
-export const PATCH = auth(async function PATCH(
-  req: Request,
-  { params }: { params: { memberId: string } },
+export async function PATCH(
+  request: NextRequest,
+  context: { params: Promise<{ memberId: string }> }
 ) {
   try {
     const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    const { memberId } = await params;
-    const { role } = await req.json();
+
+    const { memberId } = await context.params;
+    const { role } = (await request.json()) as UpdateRoleBody;
 
     if (!["ADMIN", "MEMBER"].includes(role)) {
       return NextResponse.json({ error: "Invalid role" }, { status: 400 });
@@ -139,7 +147,7 @@ export const PATCH = auth(async function PATCH(
 
     // Update member role
     const updatedMember = await prisma.influencerTeamMember.update({
-      where: { id: params.memberId },
+      where: { id: memberId },
       data: { role },
     });
 
@@ -151,4 +159,4 @@ export const PATCH = auth(async function PATCH(
       { status: 500 },
     );
   }
-});
+}

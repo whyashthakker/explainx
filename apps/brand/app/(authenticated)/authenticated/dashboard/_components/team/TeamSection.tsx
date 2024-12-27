@@ -14,8 +14,26 @@ import {
 import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Loader2 } from "lucide-react";
 
+interface User {
+  name?: string;
+  email?: string;
+  image?: string;
+}
+
+interface TeamMember {
+  id: string;
+  role: "OWNER" | "ADMIN" | "MEMBER";
+  inviteStatus: "ACCEPTED" | "PENDING" | "DECLINED";
+  inviteEmail?: string;
+  user?: User;
+}
+
+interface Team {
+  members: TeamMember[];
+}
+
 export function TeamSection() {
-  const [team, setTeam] = useState(null);
+  const [team, setTeam] = useState<Team | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [inviteDialogOpen, setInviteDialogOpen] = useState(false);
@@ -30,7 +48,7 @@ export function TeamSection() {
       }
 
       setTeam(data.team);
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setIsLoading(false);

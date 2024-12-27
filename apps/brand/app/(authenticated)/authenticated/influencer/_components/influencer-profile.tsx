@@ -42,8 +42,57 @@ import {
   Youtube,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { Brand, Influencer, User, YouTubeAccount } from "../../../../types";
 import CollaborationForm from "./collab-form";
+
+interface YouTubeVideo {
+  id: string;
+  publishedAt: Date;
+  title: string;
+  description: string | null;
+  thumbnailUrl: string;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+}
+
+interface YouTubeAnalytics {
+  date: Date;
+  subscriberCount: number;
+  viewCount: number;
+}
+
+interface YouTubeAccount {
+  id: string;
+  channelId: string;
+  channelTitle: string;
+  viewCount: number;
+  subscriberCount: number;
+  videoCount: number;
+  videos: YouTubeVideo[];
+  analytics: YouTubeAnalytics[];
+}
+
+type Platform = 'YOUTUBE' | 'INSTAGRAM' | 'TIKTOK';
+
+interface Influencer {
+  id: string;
+  name: string;
+  avatar: string | null;
+  category: string;
+  followers: number;
+  platforms: Platform[];
+}
+
+interface User {
+  email: string;
+  image: string | null;
+}
+
+interface Brand {
+  id: string;
+  name: string;
+  logo: string | null;
+}
 
 interface InfluencerProfileProps {
   influencer: Influencer & {
@@ -68,7 +117,7 @@ export default function InfluencerProfile({
   const isVerified = !!influencer.youtubeAccount;
 
   // Calculate engagement metrics
-  const engagement = isVerified
+  const engagement = isVerified && influencer.youtubeAccount
     ? ((influencer.youtubeAccount.viewCount / influencer.followers) * 100).toFixed(2)
     : "N/A";
 
