@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
-import { OnboardingForm } from "./_components/OnboardingForm";
+import SocialConnect from "./_components/SocialConnect";
 
 export default async function OnboardingPage() {
   const session = await auth();
@@ -48,13 +48,7 @@ export default async function OnboardingPage() {
 
   return (
     <div className="space-y-6">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold">Complete Your Profile</h1>
-        <p className="mt-2 text-gray-600">
-          Tell us about yourself to get started
-        </p>
-      </div>
-      <OnboardingForm />
+      <SocialConnect />
     </div>
   );
 }
