@@ -20,7 +20,7 @@ import {
 } from "@repo/ui/components/ui/avatar";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
-import { handleSignOut } from "../../../../../lib/actions";
+import { handleSignOut } from "../../../../lib/actions";
 import {
   Users,
   Mail,
@@ -33,7 +33,12 @@ import {
   Edit,
   LucideIcon,
 } from "lucide-react";
-import { ProfilePageProps, Platform, ProfileSocialLinkProps, TeamRole } from "../../../../types/profile-types";
+import {
+  ProfilePageProps,
+  Platform,
+  ProfileSocialLinkProps,
+  TeamRole,
+} from "../../../types/profile-types";
 
 const ProfileSocialLink: React.FC<ProfileSocialLinkProps> = ({
   icon: Icon,

@@ -46,7 +46,7 @@ export default async function SignIn({ searchParams }: SignInPageProps) {
       redirect(`/invite/${params.invite}`);
     }
     // Otherwise redirect to dashboard
-    redirect("/authenticated/dashboard");
+    redirect("/dashboard");
   }
 
   return (
@@ -92,7 +92,7 @@ export default async function SignIn({ searchParams }: SignInPageProps) {
                   await signIn("google", {
                     redirectTo: params.invite
                       ? `/invite/${params.invite}`
-                      : "/authenticated/dashboard",
+                      : "/dashboard",
                   });
                 }}
               >
@@ -183,3 +183,4 @@ export default async function SignIn({ searchParams }: SignInPageProps) {
     </main>
   );
 }
+

@@ -25,14 +25,18 @@ import {
 } from "@repo/ui/components/ui/select";
 import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Loader2 } from "lucide-react";
-import { Platform } from "../../../../../lib/types";
+import { Platform } from "../../../../lib/types";
 
 const formSchema = z.object({
   title: z.string().min(2, "Title must be at least 2 characters"),
   description: z.string().min(10, "Description must be at least 10 characters"),
   budget: z.number().min(1, "Budget must be greater than 0"),
-  platforms: z.array(z.nativeEnum(Platform)).min(1, "Select at least one platform"),
-  requirements: z.string().min(10, "Requirements must be at least 10 characters"),
+  platforms: z
+    .array(z.nativeEnum(Platform))
+    .min(1, "Select at least one platform"),
+  requirements: z
+    .string()
+    .min(10, "Requirements must be at least 10 characters"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -85,7 +89,9 @@ export default function CollaborationForm({
 
       onSuccess();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to create collaboration");
+      setError(
+        err instanceof Error ? err.message : "Failed to create collaboration",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -211,3 +217,4 @@ export default function CollaborationForm({
     </Form>
   );
 }
+

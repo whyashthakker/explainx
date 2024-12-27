@@ -1,6 +1,6 @@
 import prisma from "@repo/db/client";
 import React from "react";
-import { auth } from "../../../../auth";
+import { auth } from "../../../auth";
 
 export default async function page() {
   // Retrieve session data

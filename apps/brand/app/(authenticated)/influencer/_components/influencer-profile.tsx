@@ -1,4 +1,4 @@
-// app/(authenticated)/authenticated/influencer/_components/influencer-profile.tsx
+// app/(authenticated)/influencer/_components/influencer-profile.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -72,7 +72,7 @@ interface YouTubeAccount {
   analytics: YouTubeAnalytics[];
 }
 
-type Platform = 'YOUTUBE' | 'INSTAGRAM' | 'TIKTOK';
+type Platform = "YOUTUBE" | "INSTAGRAM" | "TIKTOK";
 
 interface Influencer {
   id: string;
@@ -102,31 +102,36 @@ interface InfluencerProfileProps {
   brand: (User & { brand: Brand | null }) | null;
 }
 
-export default function InfluencerProfile({ 
-  influencer, 
-  brand 
+export default function InfluencerProfile({
+  influencer,
+  brand,
 }: InfluencerProfileProps) {
   const router = useRouter();
   const [showCollaboration, setShowCollaboration] = useState(false);
 
   if (!influencer) {
-    router.push("/authenticated/dashboard");
+    router.push("/dashboard");
     return null;
   }
 
   const isVerified = !!influencer.youtubeAccount;
 
   // Calculate engagement metrics
-  const engagement = isVerified && influencer.youtubeAccount
-    ? ((influencer.youtubeAccount.viewCount / influencer.followers) * 100).toFixed(2)
-    : "N/A";
+  const engagement =
+    isVerified && influencer.youtubeAccount
+      ? (
+          (influencer.youtubeAccount.viewCount / influencer.followers) *
+          100
+        ).toFixed(2)
+      : "N/A";
 
   // Format analytics data for the chart
-  const analyticsData = influencer.youtubeAccount?.analytics?.map((data) => ({
-    date: new Date(data.date).toLocaleDateString(),
-    subscribers: data.subscriberCount,
-    views: data.viewCount,
-  })) || [];
+  const analyticsData =
+    influencer.youtubeAccount?.analytics?.map((data) => ({
+      date: new Date(data.date).toLocaleDateString(),
+      subscribers: data.subscriberCount,
+      views: data.viewCount,
+    })) || [];
 
   const handleCollaboration = () => {
     setShowCollaboration(true);
@@ -139,7 +144,7 @@ export default function InfluencerProfile({
         <Button
           variant="ghost"
           className="flex items-center gap-2"
-          onClick={() => router.push("/authenticated/dashboard")}
+          onClick={() => router.push("/dashboard")}
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Discovery
@@ -149,7 +154,9 @@ export default function InfluencerProfile({
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex items-center space-x-4">
             <Avatar className="h-20 w-20">
-              <AvatarImage src={influencer.avatar || influencer.user.image || ""} />
+              <AvatarImage
+                src={influencer.avatar || influencer.user.image || ""}
+              />
               <AvatarFallback>{influencer.name[0]}</AvatarFallback>
             </Avatar>
             <div>
@@ -259,3 +266,4 @@ export default function InfluencerProfile({
     </div>
   );
 }
+

@@ -1,6 +1,6 @@
 // app/(authenticated)/authenticated/influencer/[slug]/page.tsx
 import { redirect } from "next/navigation";
-import { auth } from "../../../../../auth";
+import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
 import InfluencerProfile from "../_components/influencer-profile";
 
@@ -16,7 +16,7 @@ type BrandUser = {
     name: string;
     logo: string | null;
   } | null;
-}
+};
 
 type InfluencerData = {
   id: string;
@@ -24,7 +24,7 @@ type InfluencerData = {
   avatar: string | null;
   category: string;
   followers: number;
-  platforms: ('YOUTUBE' | 'INSTAGRAM' | 'TIKTOK')[];
+  platforms: ("YOUTUBE" | "INSTAGRAM" | "TIKTOK")[];
   user: {
     email: string;
     image: string | null;
@@ -52,7 +52,7 @@ type InfluencerData = {
       viewCount: number;
     }[];
   } | null;
-}
+};
 
 export default async function InfluencerPage({ params }: PageProps) {
   const session = await auth();
@@ -61,21 +61,21 @@ export default async function InfluencerPage({ params }: PageProps) {
   }
 
   const { slug } = await params;
-  
+
   if (!slug) {
-    redirect("/authenticated/dashboard");
+    redirect("/dashboard");
   }
 
-  const currentUser = await prisma.user.findUnique({
+  const currentUser = (await prisma.user.findUnique({
     where: { email: session.user.email },
-    include: { 
+    include: {
       brand: true,
-    }
-  }) as BrandUser | null;
+    },
+  })) as BrandUser | null;
 
-  const influencer = await prisma.influencer.findUnique({
-    where: { 
-      id: slug 
+  const influencer = (await prisma.influencer.findUnique({
+    where: {
+      id: slug,
     },
     include: {
       user: {
@@ -88,29 +88,25 @@ export default async function InfluencerPage({ params }: PageProps) {
         include: {
           videos: {
             orderBy: {
-              publishedAt: 'desc'
+              publishedAt: "desc",
             },
-            take: 6
+            take: 6,
           },
           analytics: {
             orderBy: {
-              date: 'desc'
+              date: "desc",
             },
-            take: 30
-          }
-        }
-      }
-    }
-  }) as InfluencerData | null;
+            take: 30,
+          },
+        },
+      },
+    },
+  })) as InfluencerData | null;
 
   if (!influencer) {
     redirect("/authenticated/dashboard");
   }
 
-  return (
-    <InfluencerProfile
-      influencer={influencer}
-      brand={currentUser}
-    />
-  );
+  return <InfluencerProfile influencer={influencer} brand={currentUser} />;
 }
+

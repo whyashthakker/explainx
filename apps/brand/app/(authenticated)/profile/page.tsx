@@ -1,10 +1,10 @@
 // app/(authenticated)/authenticated/profile/page.tsx
-import { auth } from "../../../../auth";
+import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import ProfilePage from "./_components/ProfilePage";
 import { Metadata } from "next";
-import { ProfilePageProps } from "../../../types/profile-types";
+import { ProfilePageProps } from "../../types/profile-types";
 
 export const metadata: Metadata = {
   title: "Profile | Dashboard",
@@ -19,8 +19,8 @@ export default async function Page() {
   }
 
   const user = await prisma.user.findUnique({
-    where: { 
-      email: session.user.email || '' // Handle null case with empty string
+    where: {
+      email: session.user.email || "", // Handle null case with empty string
     },
     include: {
       influencer: {
@@ -47,13 +47,14 @@ export default async function Page() {
   });
 
   if (!user?.influencer) {
-    redirect("/authenticated/onboarding");
+    redirect("/onboarding");
   }
 
   // Cast the data to match our component types
   const typedUser = user as ProfilePageProps["user"];
   const typedInfluencer = user.influencer as ProfilePageProps["influencer"];
-  const typedTeamMembers = (user?.influencer?.team?.members || []) as ProfilePageProps["teamMembers"];
+  const typedTeamMembers = (user?.influencer?.team?.members ||
+    []) as ProfilePageProps["teamMembers"];
 
   return (
     <ProfilePage
@@ -63,3 +64,4 @@ export default async function Page() {
     />
   );
 }
+
