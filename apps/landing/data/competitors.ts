@@ -669,5 +669,144 @@ export interface Competitor {
       }
     ]
   },
-  
+  "insightiq": {
+    name: "InsightIQ",
+    shortDescription: "AI-powered influencer discovery and analysis platform",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/insightiq.png",
+    features: [
+      {
+        category: "AI Capabilities",
+        features: [
+          {
+            name: "AI Implementation",
+            infloq: ["Performance prediction", "Campaign optimization", "ROI forecasting", "Automated matching"],
+            competitor: ["Brand safety scanning", "Comment sentiment analysis", "Content classification"],
+            description: "Core AI functionalities"
+          },
+          {
+            name: "Data Analysis",
+            infloq: "Real-time performance analytics",
+            competitor: "Historical data analysis",
+            description: "Data processing capabilities"
+          },
+          {
+            name: "Brand Safety",
+            infloq: "Basic content screening",
+            competitor: "GARM-compliant AI content scanning",
+            description: "Content safety measures"
+          }
+        ]
+      },
+      {
+        category: "Creator Discovery",
+        features: [
+          {
+            name: "Database Size",
+            infloq: "Verified creator network",
+            competitor: "450M+ creator profiles",
+            description: "Size of creator database"
+          },
+          {
+            name: "Discovery Method",
+            infloq: "AI-powered performance matching",
+            competitor: "Multi-filter search system",
+            description: "How creators are found"
+          },
+          {
+            name: "Verification Process",
+            infloq: "Performance-based verification",
+            competitor: "Data-driven authenticity checks",
+            description: "Creator verification approach"
+          }
+        ]
+      },
+      {
+        category: "Campaign Management",
+        features: [
+          {
+            name: "Performance Tracking",
+            infloq: "Real-time performance metrics",
+            competitor: "Continuous campaign reporting",
+            description: "Campaign monitoring capabilities"
+          },
+          {
+            name: "ROI Measurement",
+            infloq: "Direct performance tracking",
+            competitor: "Total Media Value calculation",
+            description: "ROI tracking methods"
+          },
+          {
+            name: "Optimization",
+            infloq: "Automated real-time optimization",
+            competitor: "Manual optimization with insights",
+            description: "Campaign optimization approach"
+          }
+        ]
+      },
+      {
+        category: "Platform Features",
+        features: [
+          {
+            name: "Data Integration",
+            infloq: "Performance-focused metrics",
+            competitor: "Normalized cross-platform data",
+            description: "Data handling approach"
+          },
+          {
+            name: "Audience Analysis",
+            infloq: "Basic demographic data",
+            competitor: "Advanced audience insights",
+            description: "Audience analysis capabilities"
+          },
+          {
+            name: "Reporting Tools",
+            infloq: "Automated performance reports",
+            competitor: "Comprehensive analytics dashboard",
+            description: "Reporting capabilities"
+          }
+        ]
+      },
+      {
+        category: "Business Model",
+        features: [
+          {
+            name: "Pricing Model",
+            infloq: "Performance-based pricing",
+            competitor: "Subscription-based",
+            description: "Cost structure"
+          },
+          {
+            name: "ROI Guarantee",
+            infloq: true,
+            competitor: false,
+            description: "Performance guarantees"
+          },
+          {
+            name: "API Access",
+            infloq: "Basic API",
+            competitor: "Comprehensive API suite",
+            description: "API capabilities"
+          }
+        ]
+      },
+      {
+        category: "Unique Strengths",
+        features: [
+          {
+            name: "Key Differentiator",
+            infloq: "Performance-based payments",
+            competitor: "Vast data insights",
+            description: "Primary platform advantage"
+          },
+          {
+            name: "Target Users",
+            infloq: "Results-focused brands",
+            competitor: "Data-driven marketers",
+            description: "Primary target audience"
+          }
+        ]
+      }
+    ]
+  },
 };

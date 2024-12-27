@@ -389,3 +389,23 @@ model YouTubeVideoAnalytics {
 
   createdAt       DateTime  @default(now())
 }
+
+
+//waitlist
+
+model WaitlistEntry {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  userType    UserType  // Using existing UserType enum
+  intention   String    @db.Text
+  status      WaitlistStatus @default(PENDING)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+enum WaitlistStatus {
+  PENDING
+  APPROVED
+  INVITED
+  JOINED
+}
