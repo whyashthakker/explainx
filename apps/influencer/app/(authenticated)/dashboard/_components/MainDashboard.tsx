@@ -135,7 +135,7 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
             <Button
               variant="outline"
               className="flex items-center gap-2"
-              onClick={() => router.push("/authenticated/profile")}
+              onClick={() => router.push("/profile")}
             >
               <UserCircle className="h-4 w-4" />
               Profile

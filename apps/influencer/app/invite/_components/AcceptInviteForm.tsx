@@ -42,7 +42,7 @@ export function AcceptInviteForm({ invite, token }: AcceptInviteFormProps) {
 
       // Redirect based on action
       if (action === "accept") {
-        router.push("/authenticated/team-view");
+        router.push("/team-view");
       } else {
         router.push("/");
       }

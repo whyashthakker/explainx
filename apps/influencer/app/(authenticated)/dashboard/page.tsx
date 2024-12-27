@@ -45,11 +45,11 @@ export default async function DashboardPage() {
   });
 
   if (isInfluencerTeamMember?.role === "MEMBER") {
-    redirect("/authenticated/team-view");
+    redirect("/team-view");
   }
 
   if (!user.influencer) {
-    redirect("/authenticated/onboarding");
+    redirect("/onboarding");
   }
 
   // Type assertion here if needed
