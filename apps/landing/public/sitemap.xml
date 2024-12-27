@@ -40,8 +40,12 @@
     <loc>https://brand.infloq.com/</loc>
     <lastmod>2024-12-27</lastmod>
   </sitemap>
-    <sitemap>
+  <sitemap>
     <loc>https://creator.infloq.com/</loc>
+    <lastmod>2024-12-27</lastmod>
+  </sitemap>
+  <sitemap>
+  <loc>https://www.infloq.com/demo</loc>
     <lastmod>2024-12-27</lastmod>
   </sitemap>
   <sitemap>
