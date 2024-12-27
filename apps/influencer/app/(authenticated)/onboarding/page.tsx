@@ -35,12 +35,15 @@ export default async function OnboardingPage() {
   });
 
   // If the user is a member, redirect them to the team view page
-  if (isInfluencerTeamMember?.role === "MEMBER") {
-    redirect("/authenticated/team-view");
+  if (
+    isInfluencerTeamMember?.role === "MEMBER" ||
+    isInfluencerTeamMember?.role === "ADMIN"
+  ) {
+    redirect("/team-view");
   }
 
   if (user.influencer) {
-    redirect("/authenticated/dashboard");
+    redirect("/dashboard");
   }
 
   return (
@@ -55,4 +58,3 @@ export default async function OnboardingPage() {
     </div>
   );
 }
-
