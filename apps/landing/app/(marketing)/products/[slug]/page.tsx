@@ -7,7 +7,6 @@ import { Metadata } from "next";
 import { ReviewsSection } from "../../../_components/reviews/reviews-section";
 import { ReviewSkeleton } from "../../../_components/reviews/review-skeleton";
 
-import { productPageData } from "./productPageData";
 import { HeadingDynamic } from "../_components/heading";
 import { TestimonialsDynamic } from "../_components/testimonial";
 import { FeaturesDynamic } from "../_components/features";
@@ -15,6 +14,7 @@ import { UseCasesDynamic } from "../_components/use-cases";
 import { TargetAudienceDynamic } from "../_components/target-audience";
 import { Pricing } from "../../../_components/pricing-2";
 import { Testimonials } from "../../../_components/testimonials";
+import { productPageData } from "../../../../data/productPageData";
 
 export async function generateStaticParams() {
   return productPageData.map((product) => ({

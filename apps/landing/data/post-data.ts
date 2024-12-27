@@ -1,4 +1,4 @@
-// Generated on 2024-12-20T14:31:40.131Z
+// Generated on 2024-12-27T11:01:40.259Z
 interface Author {
   name: string;
   role: string;
@@ -20,34 +20,16 @@ interface Post {
 
 const postData: Post[] = [
   {
-    "title": "Top 10 Plataformas de Marketing de Influencers",
-    "file": "top-10-influencer-marketing-platforms-fr",
-    "description": "Descubre las principales plataformas de marketing de influencers para conectar con los mejores creadores, maximizar el alcance de tu marca y obtener resultados medibles.",
-    "date": "December 20, 2024",
-    "datetime": "2024-12-20",
-    "author": {
-      "name": "Yash Thakker",
-      "role": "Founder",
-      "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
-    },
-    "language": "es",
-    "url": "https://www.infloq.com/blog/post/es/top-10-influencer-marketing-platforms-fr",
-    "categories": [
-      "social-media"
-    ]
-  },
-  {
     "title": "Top 10 Influencer Marketing Platforms",
     "file": "top-10-influencer-marketing-platforms-de",
     "description": "Discover the top influencer marketing platforms to connect with leading creators, maximize brand reach, and drive measurable campaign success.",
-    "date": "December 20, 2024",
-    "datetime": "2024-12-20",
+    "date": "December 27, 2024",
+    "datetime": "2024-12-27",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "de",
     "url": "https://www.infloq.com/blog/post/de/top-10-influencer-marketing-platforms-de",
@@ -55,6 +37,24 @@ const postData: Post[] = [
       "social-media",
       "instagram",
       "ai-tools"
+    ]
+  },
+  {
+    "title": "Top 10 Plataformas de Marketing de Influencers",
+    "file": "top-10-influencer-marketing-platforms-es",
+    "description": "Descubre las principales plataformas de marketing de influencers para conectar con los mejores creadores, maximizar el alcance de tu marca y obtener resultados medibles.",
+    "date": "December 20, 2024",
+    "datetime": "2024-12-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/author/gt.jpeg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/top-10-influencer-marketing-platforms-es",
+    "categories": [
+      "social-media"
     ]
   },
   {
@@ -67,7 +67,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "fr",
     "url": "https://www.infloq.com/blog/post/fr/top-10-influencer-marketing-platforms-fr",
@@ -85,7 +85,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "it",
     "url": "https://www.infloq.com/blog/post/it/top-10-influencer-marketing-platforms-it",
@@ -104,7 +104,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "hi",
     "url": "https://www.infloq.com/blog/post/hi/top-10-influencer-marketing-platforms-hi",
@@ -122,7 +122,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/top-10-influencer-marketing-platforms-ar",
@@ -142,7 +142,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "zh-cn",
     "url": "https://www.infloq.com/blog/post/zh-cn/top-10-influencer-marketing-platforms-zh-cn",
@@ -160,7 +160,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "ko",
     "url": "https://www.infloq.com/blog/post/ko/top-10-influencer-marketing-platforms-ko",
@@ -178,7 +178,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "ja",
     "url": "https://www.infloq.com/blog/post/ja/top-10-influencer-marketing-platforms-ja",
@@ -196,7 +196,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "nl",
     "url": "https://www.infloq.com/blog/post/nl/top-10-influencer-marketing-platforms-nl",
@@ -214,7 +214,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "ru",
     "url": "https://www.infloq.com/blog/post/ru/top-10-influencer-marketing-platforms-ru",
@@ -232,7 +232,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
+      "imageUrl": "/images/blog/author/gt.jpeg"
     },
     "language": "en",
     "url": "https://www.infloq.com/blog/post/top-10-influencer-marketing-platforms-in-india",
