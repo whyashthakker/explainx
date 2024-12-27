@@ -1,12 +1,19 @@
-// app/(authenticated)/authenticated/dashboard/page.tsx
+// app/(authenticated)/(onboarded)/layout.tsx
 import React from "react";
 import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
-import InfluencerDashboard from "./_components/MainDashboard";
+import DashboardLayout from "./_components/DashboardLayout";
 import { PrismaUserWithInfluencer } from "../../../lib/types";
+import { UserProvider } from "./_context/user-context";
 
-export default async function DashboardPage() {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default async function DashboardLayoutWrapper({
+  children,
+}: LayoutProps) {
   const session = await auth();
   if (!session?.user?.email) {
     redirect("/");
@@ -52,10 +59,10 @@ export default async function DashboardPage() {
     redirect("/onboarding");
   }
 
-  // Type assertion here if needed
+  // Make the user data available to all child components through React Context
   return (
-    <div>
-      <InfluencerDashboard user={user as PrismaUserWithInfluencer} />
-    </div>
+    <UserProvider value={user as PrismaUserWithInfluencer}>
+      <DashboardLayout>{children}</DashboardLayout>
+    </UserProvider>
   );
 }

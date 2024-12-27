@@ -1,4 +1,4 @@
-// app/(authenticated)/authenticated/dashboard/_components/MainDashboard.tsx
+// app/(authenticated)/dashboard/_components/MainDashboard.tsx
 "use client";
 
 import React from "react";
@@ -48,8 +48,8 @@ import {
   UserCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { handleSignOut } from "../../../../lib/actions";
-import { PrismaUserWithInfluencer, Platform } from "../../../../lib/types";
+import { handleSignOut } from "../../../../../lib/actions";
+import { PrismaUserWithInfluencer, Platform } from "../../../../../lib/types";
 
 interface PlatformDistribution {
   name: Platform;
