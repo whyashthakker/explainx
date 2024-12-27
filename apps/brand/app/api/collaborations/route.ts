@@ -4,6 +4,7 @@ import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 import { z } from "zod";
 import { Platform } from "../../../lib/types";
+import { type NextRequest } from "next/server";
 
 const collaborationSchema = z.object({
   title: z.string().min(2),
@@ -15,13 +16,14 @@ const collaborationSchema = z.object({
   brandId: z.string(),
 });
 
-export const POST = auth(async function POST(req) {
+export async function POST(request: NextRequest) {
   try {
-    if (!req.auth) {
+    const session = await auth();
+    if (!session) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const data = await req.json();
+    const data = await request.json();
     const validatedData = collaborationSchema.parse(data);
 
     // Check if brand exists and user has access
@@ -30,7 +32,7 @@ export const POST = auth(async function POST(req) {
       include: { user: true },
     });
 
-    if (!brand || brand.user.email !== req.auth.user?.email) {
+    if (!brand || brand.user.email !== session.user?.email) {
       return NextResponse.json(
         { error: "Unauthorized or brand not found" },
         { status: 403 }
@@ -92,17 +94,23 @@ export const POST = auth(async function POST(req) {
       { status: 500 }
     );
   }
-});
+}
 
-export const GET = auth(async function GET(req) {
+export async function GET(request: NextRequest) {
   try {
-    if (!req.auth) {
+    const session = await auth();
+    if (!session) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     // Get user's brand
+    const email = session.user?.email;
+    if (!email) {
+      return NextResponse.json({ error: "Email not found" }, { status: 400 });
+    }
+
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user?.email },
+      where: { email },
       include: { brand: true },
     });
 
@@ -154,4 +162,4 @@ export const GET = auth(async function GET(req) {
       { status: 500 }
     );
   }
-});
+}

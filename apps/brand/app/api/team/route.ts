@@ -1,15 +1,37 @@
+// app/api/team/route.ts
 import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
-// GET team details and members
-export const GET = auth(async function GET(req) {
+import { type NextRequest } from "next/server";
+
+interface TeamUser {
+  id: string;
+  name: string | null;
+  email: string | null;
+  image: string | null;
+}
+
+interface TeamMember {
+  id: string;
+  role: string;
+  inviteStatus: string;
+  user: TeamUser;
+}
+
+interface Team {
+  id: string;
+  members: TeamMember[];
+}
+
+export async function GET(request: NextRequest) {
   try {
-    if (!req.auth?.user?.email) {
+    const session = await auth();
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user.email },
+      where: { email: session.user.email },
       include: {
         influencer: {
           include: {
@@ -68,7 +90,8 @@ export const GET = auth(async function GET(req) {
             },
           },
         },
-      });
+      }) as Team;
+
       return NextResponse.json({ team });
     }
 
@@ -80,4 +103,4 @@ export const GET = auth(async function GET(req) {
       { status: 500 },
     );
   }
-});
+}

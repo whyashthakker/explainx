@@ -13,8 +13,22 @@ import {
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
 
+interface User {
+  name?: string;
+  email?: string;
+  image?: string;
+}
+
+interface TeamMember {
+  id: string;
+  role: "OWNER" | "ADMIN" | "MEMBER";
+  inviteStatus: "ACCEPTED" | "PENDING" | "DECLINED";
+  inviteEmail?: string;
+  user?: User;
+}
+
 interface TeamMemberListProps {
-  members: any[];
+  members: TeamMember[];
   onTeamUpdate: () => void;
 }
 
@@ -69,13 +83,13 @@ export function TeamMemberList({ members, onTeamUpdate }: TeamMemberListProps) {
   const getStatusBadgeVariant = (status: string) => {
     switch (status) {
       case "ACCEPTED":
-        return "success";
+        return "secondary" as const; // Instead of "success"
       case "PENDING":
-        return "warning";
+        return "outline" as const;   // Instead of "warning" 
       case "DECLINED":
-        return "destructive";
+        return "destructive" as const;
       default:
-        return "default";
+        return "default" as const;
     }
   };
 
@@ -104,7 +118,7 @@ export function TeamMemberList({ members, onTeamUpdate }: TeamMemberListProps) {
         >
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src={member.user?.image || null} />
+              <AvatarImage src={member.user?.image || undefined} />
               <AvatarFallback>{getAvatarFallback(member)}</AvatarFallback>
             </Avatar>
             <div>

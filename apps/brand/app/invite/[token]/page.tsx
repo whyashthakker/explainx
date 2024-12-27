@@ -16,9 +16,7 @@ import Link from "next/link";
 import WrongEmailComponent from "../_components/WrongEmailComponent";
 
 interface InvitePageProps {
-  params: {
-    token: string;
-  };
+  params: Promise<{ token: string }>;
 }
 
 async function getInviteDetails(token: string) {
@@ -41,12 +39,11 @@ export default async function InvitePage({ params }: InvitePageProps) {
   const { token } = await params;
   const session = await auth();
   const data = await getInviteDetails(token);
+
   // If user is not logged in, redirect to sign in
   if (!session) {
     redirect(`/?invite=${token}`);
   }
-
-  console.log("influencer data " + data.invite.team.influencer.name);
 
   if (!data) {
     return (

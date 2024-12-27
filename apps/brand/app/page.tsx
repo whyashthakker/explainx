@@ -13,10 +13,10 @@ import { redirect } from "next/navigation";
 import { auth, signIn } from "../auth";
 
 interface SignInPageProps {
-  searchParams: {
+  searchParams: Promise<{
     invite?: string;
     email?: string;
-  };
+  }>;
 }
 
 async function getInviteDetails(token: string) {
@@ -33,16 +33,17 @@ async function getInviteDetails(token: string) {
 
 export default async function SignIn({ searchParams }: SignInPageProps) {
   const session = await auth();
-  const { invite: recievedInvite } = await searchParams;
+  const params = await searchParams;
+  const { invite: receivedInvite } = params;
 
-  console.log(searchParams);
-  const invite = recievedInvite ? await getInviteDetails(recievedInvite) : null;
+  console.log(params);
+  const invite = receivedInvite ? await getInviteDetails(receivedInvite) : null;
 
   // If user is logged in
   if (session) {
     // If there's an invite, redirect to invite page
-    if (searchParams.invite) {
-      redirect(`/invite/${searchParams.invite}`);
+    if (params.invite) {
+      redirect(`/invite/${params.invite}`);
     }
     // Otherwise redirect to dashboard
     redirect("/authenticated/dashboard");
@@ -89,8 +90,8 @@ export default async function SignIn({ searchParams }: SignInPageProps) {
                 action={async () => {
                   "use server";
                   await signIn("google", {
-                    redirectTo: searchParams.invite
-                      ? `/invite/${searchParams.invite}`
+                    redirectTo: params.invite
+                      ? `/invite/${params.invite}`
                       : "/authenticated/dashboard",
                   });
                 }}

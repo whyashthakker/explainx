@@ -1,11 +1,10 @@
+// app/invite/page.tsx
 import { auth } from "../../auth";
 import { redirect } from "next/navigation";
 import { AcceptInviteForm } from "./_components/AcceptInviteForm";
 
 interface InvitePageProps {
-  params: {
-    token: string;
-  };
+  params: Promise<{ token: string }>;
 }
 
 async function getInviteDetails(token: string) {
@@ -21,7 +20,8 @@ export default async function InvitePage({ params }: InvitePageProps) {
   const session = await auth();
   const invite = await getInviteDetails(token);
 
-  console.log("invite recieved " + invite);
+  console.log("invite received ", invite);
+  
   // If no valid invite found, redirect to 404
   if (!invite) {
     redirect("/404");
@@ -29,7 +29,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
 
   // If user is not logged in, redirect to sign in
   if (!session) {
-    redirect(`/login?invite=${params.token}`);
+    redirect(`/login?invite=${token}`);
   }
 
   // If user is logged in but with wrong email, show error
@@ -43,9 +43,10 @@ export default async function InvitePage({ params }: InvitePageProps) {
       </div>
     );
   }
+
   return (
     <div className="max-w-2xl mx-auto mt-16 p-6">
-      <AcceptInviteForm invite={invite.invite} token={params.token} />
+      <AcceptInviteForm invite={invite.invite} token={token} />
     </div>
   );
 }

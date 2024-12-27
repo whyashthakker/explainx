@@ -2,18 +2,39 @@
 import { NextResponse } from "next/server";
 import prisma from "@repo/db/client";
 import { auth } from "../../../auth";
+import { type NextRequest } from "next/server";
+import { Platform } from "../../types";
 
-export const POST = auth(async function POST(req) {
+interface BrandOnboardingData {
+  name: string;
+  logo: string;
+  website: string;
+  industry: string;
+  description: string;
+  targetDemographic: string[];
+  preferredCategories: string[];
+  minFollowers: number;
+  maxBudget: number;
+  preferredPlatforms: Platform[];
+}
+
+export async function POST(request: NextRequest) {
   try {
-    if (!req.auth) {
+    const session = await auth();
+    if (!session) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const data = await req.json();
+    const data = await request.json() as BrandOnboardingData;
 
     // Get user
+    const email = session.user?.email;
+    if (!email) {
+      return NextResponse.json({ error: "User email not found" }, { status: 400 });
+    }
+
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user?.email },
+      where: { email },
     });
 
     if (!user) {
@@ -41,7 +62,6 @@ export const POST = auth(async function POST(req) {
         website: data.website,
         industry: data.industry,
         description: data.description,
-        targetDemographic: data.targetDemographic,
         preferredCategories: data.preferredCategories,
         minFollowers: data.minFollowers,
         maxBudget: data.maxBudget,
@@ -65,4 +85,4 @@ export const POST = auth(async function POST(req) {
       { status: 500 },
     );
   }
-});
+}

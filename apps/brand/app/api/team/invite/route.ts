@@ -4,8 +4,14 @@ import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
 import { TeamRole } from "../../../../lib/types";
 import { randomBytes } from "crypto";
+import { type NextRequest } from "next/server";
 
-export const POST = auth(async function POST(req: Request) {
+interface InviteRequestBody {
+  email: string;
+  role: TeamRole;
+}
+
+export async function POST(request: NextRequest) {
   console.log("🚀 Starting invite process");
 
   try {
@@ -21,7 +27,7 @@ export const POST = auth(async function POST(req: Request) {
 
     // 2. Parse Body
     console.log("📝 Parsing request body...");
-    const body = await req.json();
+    const body = await request.json() as InviteRequestBody;
     const { email, role } = body;
     console.log("Request data:", { email, role });
 
@@ -132,7 +138,7 @@ export const POST = auth(async function POST(req: Request) {
       data: {
         team: { connect: { id: team.id } },
         inviteEmail: email,
-        role: role as TeamRole,
+        role: role,
         inviteStatus: "PENDING",
         inviteToken,
       },
@@ -142,6 +148,7 @@ export const POST = auth(async function POST(req: Request) {
     // generate invite email from here
     const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL}/invite/${inviteToken}`;
     console.log(inviteUrl);
+    
     // 9. Send Response
     console.log("📤 Sending success response");
     return NextResponse.json({
@@ -150,9 +157,11 @@ export const POST = auth(async function POST(req: Request) {
     });
   } catch (error) {
     console.log("❌ ERROR DETAILS:");
-    console.log("Error name:", error.name);
-    console.log("Error message:", error.message);
-    console.log("Error stack:", error.stack);
+    if (error instanceof Error) {
+      console.log("Error name:", error.name);
+      console.log("Error message:", error.message);
+      console.log("Error stack:", error.stack);
+    }
     console.log("Full error object:", error);
 
     return NextResponse.json(
@@ -160,4 +169,4 @@ export const POST = auth(async function POST(req: Request) {
       { status: 500 },
     );
   }
-});
+}

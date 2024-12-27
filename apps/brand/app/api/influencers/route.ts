@@ -2,10 +2,53 @@
 import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
+import { type NextRequest } from "next/server";
 
-export const GET = auth(async function GET(req) {
+// Define proper types for our data structures
+interface InfluencerMetrics {
+  subscribers: number;
+  videos: number;
+  views: number;
+}
+
+interface ProcessedInfluencer {
+  id: string;
+  name: string;
+  avatar: string | null;
+  category: string;
+  followers: number;
+  platforms: string[];
+  bio: string | null;
+  isVerified: boolean;
+  engagement: string;
+  metrics: InfluencerMetrics;
+}
+
+interface RawInfluencer {
+  id: string;
+  name: string;
+  avatar: string | null;
+  category: string;
+  followers: number;
+  platforms: string[];
+  bio: string | null;
+  youtubeAccount: {
+    channelId: string;
+    channelTitle: string;
+    subscriberCount: number;
+    videoCount: number;
+    viewCount: number;
+  } | null;
+  user: {
+    email: string | null;
+    image: string | null;
+  };
+}
+
+export async function GET(request: NextRequest) {
   try {
-    if (!req.auth) {
+    const session = await auth();
+    if (!session) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
@@ -28,7 +71,7 @@ export const GET = auth(async function GET(req) {
           },
         },
       },
-    });
+    }) as RawInfluencer[];
 
     // Calculate engagement metrics and add sample data
     const processedInfluencers = influencers.map(influencer => {
@@ -65,9 +108,9 @@ export const GET = auth(async function GET(req) {
       { status: 500 }
     );
   }
-});
+}
 
-function calculateEngagement(influencer: any) {
+function calculateEngagement(influencer: RawInfluencer): string {
   if (influencer.youtubeAccount) {
     return ((influencer.youtubeAccount.viewCount / influencer.followers) * 100).toFixed(2);
   }
@@ -75,7 +118,7 @@ function calculateEngagement(influencer: any) {
   return (Math.random() * (8 - 2) + 2).toFixed(2);
 }
 
-function getSampleInfluencers() {
+function getSampleInfluencers(): ProcessedInfluencer[] {
   return [
     {
       id: 'sample1',
