@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChromeIcon, SparklesIcon, TvIcon } from 'lucide-react';
+import { ChromeIcon, ShieldQuestion, SparklesIcon, TvIcon } from 'lucide-react';
 import { Button } from './Button';
 
 export function CTAButtons() {
@@ -19,10 +19,10 @@ export function CTAButtons() {
         size="2xl"
         color="white"
         className="shadow-md shadow-[#33dfa0]/100 w-full sm:w-auto"
-        link={{href: '/signup'}}
+        link={{href: '/demo'}}
       >
-        <TvIcon className="mr-2 h-4 w-4" />
-        Join as Influencer
+        <ShieldQuestion className="mr-2 h-4 w-4" />
+        How it works?
       </Button>
     </div>
   );
