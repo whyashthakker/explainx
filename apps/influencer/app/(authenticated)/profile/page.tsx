@@ -1,4 +1,4 @@
-import { auth } from "../../../../auth";
+import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import ProfilePage from "./_components/ProfilePage";
@@ -12,7 +12,7 @@ import {
   TeamRole,
   User,
   UserType,
-} from "../../../../lib/types";
+} from "../../../lib/types";
 
 export const metadata: Metadata = {
   title: "Profile | Dashboard",
@@ -154,4 +154,3 @@ export default async function Page() {
     />
   );
 }
-

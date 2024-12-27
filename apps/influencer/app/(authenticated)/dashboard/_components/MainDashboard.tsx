@@ -48,8 +48,8 @@ import {
   UserCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { handleSignOut } from "../../../../../lib/actions";
-import { PrismaUserWithInfluencer, Platform } from "../../../../../lib/types";
+import { handleSignOut } from "../../../../lib/actions";
+import { PrismaUserWithInfluencer, Platform } from "../../../../lib/types";
 
 interface PlatformDistribution {
   name: Platform;
@@ -345,4 +345,3 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
 };
 
 export default InfluencerDashboard;
-

@@ -19,14 +19,21 @@ type Video = {
   analytics: any[];
 };
 
-export const GET = auth(async (req) => {
+export const GET = async () => {
   try {
-    if (!req.auth?.user?.email) {
+    // if (!req.auth?.user?.email) {
+    //   return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    // }
+
+    const session = await auth();
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: req.auth.user.email },
+      // where: { email: req.auth.user.email },
+
+      where: { email: session.user.email },
       include: {
         influencer: {
           include: {
@@ -147,7 +154,7 @@ export const GET = auth(async (req) => {
       { status: 500 },
     );
   }
-});
+};
 
 function calculateGrowthRate(
   analytics: Analytics[],
@@ -188,4 +195,3 @@ function predictReach(analytics: Analytics[]) {
 
   return Math.round(predictedViews);
 }
-

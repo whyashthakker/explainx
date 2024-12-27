@@ -20,7 +20,7 @@ import {
 } from "@repo/ui/components/ui/avatar";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
-import { handleSignOut } from "../../../../../lib/actions";
+import { handleSignOut } from "../../../../lib/actions";
 import {
   Users,
   Mail,
@@ -41,7 +41,7 @@ import {
   Platform,
   TeamRole,
   BaseModel,
-} from "../../../../../lib/types";
+} from "../../../../lib/types";
 
 interface ProfileSocialLinkProps {
   icon: LucideIcon;
