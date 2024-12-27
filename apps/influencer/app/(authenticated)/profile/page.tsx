@@ -69,7 +69,7 @@ export default async function Page() {
   }
 
   if (!user.influencer) {
-    redirect("/authenticated/onboarding");
+    redirect("/onboarding");
   }
   const typedUser: User = {
     id: user.id,

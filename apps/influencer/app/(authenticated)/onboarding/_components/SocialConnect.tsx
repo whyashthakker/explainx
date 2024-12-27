@@ -296,7 +296,7 @@ export default function SocialConnect() {
       <Button
         className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700"
         disabled={connectedPlatforms.size === 0}
-        onClick={() => router.push("/authenticated/dashboard")}
+        onClick={() => router.push("/dashboard")}
       >
         Continue to Dashboard
         <ArrowRight className="ml-2 h-5 w-5" />

@@ -31,7 +31,7 @@ export default function AcceptInviteForm({ token }: { token: string }) {
 
       startTransition(() => {
         if (action === "accept") {
-          router.push("/authenticated/dashboard");
+          router.push("/dashboard");
         } else {
           router.push("/");
         }
