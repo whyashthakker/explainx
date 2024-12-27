@@ -42,6 +42,7 @@ import {
   TeamRole,
   BaseModel,
 } from "../../../../lib/types";
+import { TeamSection } from "./team/TeamSection";
 
 interface ProfileSocialLinkProps {
   icon: LucideIcon;
@@ -89,14 +90,8 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
   influencer,
   teamMembers: initialTeamMembers,
 }) => {
-  const [teamMembers, setTeamMembers] = useState(initialTeamMembers);
-
   const handleEditProfile = () => {
     console.log("Edit profile clicked");
-  };
-
-  const handleAddMember = () => {
-    console.log("Add member clicked");
   };
 
   const handleSocialEdit = (platform: Platform) => {
@@ -175,54 +170,11 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
                       Manage your team and their roles
                     </CardDescription>
                   </div>
-                  <Button onClick={handleAddMember}>
-                    <Users className="h-4 w-4 mr-2" />
-                    Add Member
-                  </Button>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  {teamMembers.map((member) => (
-                    <div
-                      key={member.id}
-                      className="flex items-center justify-between p-4 rounded-lg border"
-                    >
-                      <div className="flex items-center gap-4">
-                        <Avatar>
-                          <AvatarImage
-                            src={member.user.image || "/api/placeholder/32/32"}
-                            alt={member.user.name || "Team member"}
-                          />
-                          <AvatarFallback>
-                            {member.user.name?.[0] || "T"}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-medium">{member.user.name}</p>
-                          <p className="text-sm text-gray-500">
-                            {member.user.email}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Badge
-                          variant={
-                            member.role === TeamRole.OWNER
-                              ? "default"
-                              : "secondary"
-                          }
-                        >
-                          {member.role}
-                        </Badge>
-                        {member.inviteStatus !== "ACCEPTED" && (
-                          <Badge variant="outline" className="text-yellow-600">
-                            {member.inviteStatus}
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                  <TeamSection />
                 </div>
               </CardContent>
             </Card>
