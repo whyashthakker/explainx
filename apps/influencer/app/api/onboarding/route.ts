@@ -1,112 +1,79 @@
 // app/api/onboarding/route.ts
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
-import type { CreateInfluencerInput } from "../../../lib/types/";
+import { z } from "zod";
+import { Platform } from "../../../lib/types";
 
-export const POST = async function POST(req: NextRequest) {
+const profileSchema = z.object({
+  name: z.string().min(2),
+  bio: z.string().min(10),
+  category: z.string().min(1),
+  platforms: z.array(z.nativeEnum(Platform)),
+});
+
+export async function POST(req: Request) {
   try {
     const session = await auth();
+
     if (!session?.user?.email) {
-      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
-    }
-    const data: CreateInfluencerInput = await req.json();
-
-    // Validate required fields
-    if (
-      !data.name ||
-      !data.category ||
-      !data.followers ||
-      !data.platforms?.length
-    ) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Get user
+    const body = await req.json();
+    const validatedData = profileSchema.parse(body);
+
+    // Get existing user
     const user = await prisma.user.findUnique({
-      where: { email: session.user?.email },
+      where: { id: session.user.id },
+      include: { influencer: true },
     });
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Check if influencer profile already exists
-    const existingInfluencer = await prisma.influencer.findUnique({
-      where: { userId: user.id },
-    });
-
-    if (existingInfluencer) {
-      return NextResponse.json(
-        { error: "Influencer profile already exists" },
-        { status: 400 },
-      );
-    }
-
-    // Create influencer profile
-    const influencer = await prisma.influencer.create({
-      data: {
+    // Create or update influencer profile
+    const influencer = await prisma.influencer.upsert({
+      where: {
         userId: user.id,
-        name: data.name,
-        avatar: data.avatar,
-        bio: data.bio,
-        category: data.category,
-        followers: data.followers,
-        platforms: data.platforms,
+      },
+      create: {
+        userId: user.id,
+        name: validatedData.name,
+        bio: validatedData.bio,
+        category: validatedData.category,
+        platforms: validatedData.platforms,
+        followers: 0, // This will be updated when social accounts are connected
+      },
+      update: {
+        name: validatedData.name,
+        bio: validatedData.bio,
+        category: validatedData.category,
+        platforms: validatedData.platforms,
       },
     });
 
-    // Update user type
-    await prisma.user.update({
-      where: { id: user.id },
-      data: {
-        userType: "INFLUENCER",
-      },
-    });
+    // Update user type if not already set
+    if (!user.userType) {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { userType: "INFLUENCER" },
+      });
+    }
 
-    return NextResponse.json({
-      success: true,
-      influencer,
-    });
+    return NextResponse.json({ success: true, data: influencer });
   } catch (error) {
-    console.error("Onboarding error:", error);
+    console.error("Profile creation error:", error);
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Invalid data", details: error.errors },
+        { status: 400 },
+      );
+    }
     return NextResponse.json(
-      { error: "Failed to complete onboarding" },
+      { error: "Failed to save profile" },
       { status: 500 },
     );
   }
-};
-
-export const GET = async function GET(req: NextRequest) {
-  try {
-    const session = await auth();
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
-    }
-
-    const user = await prisma.user.findUnique({
-      where: { email: session.user?.email },
-      include: {
-        influencer: true,
-      },
-    });
-
-    if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({
-      hasProfile: !!user.influencer,
-      profile: user.influencer,
-    });
-  } catch (error) {
-    console.error("Error fetching profile:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch profile" },
-      { status: 500 },
-    );
-  }
-};
+}
