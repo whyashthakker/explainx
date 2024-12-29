@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Platform } from "../../../../../lib/types/";
+import { Platform } from "../../../../lib/types";
 import {
   Form,
   FormControl,
@@ -36,10 +36,14 @@ const formSchema = z.object({
   industry: z.string().min(2, "Industry is required"),
   description: z.string().max(500).optional(),
   targetDemographic: z.string().min(2, "Target demographic is required"),
-  preferredCategories: z.array(z.string()).min(1, "Select at least one category"),
+  preferredCategories: z
+    .array(z.string())
+    .min(1, "Select at least one category"),
   minFollowers: z.number().min(0),
   maxBudget: z.number().min(0),
-  preferredPlatforms: z.array(z.nativeEnum(Platform)).min(1, "Select at least one platform"),
+  preferredPlatforms: z
+    .array(z.nativeEnum(Platform))
+    .min(1, "Select at least one platform"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -138,7 +142,10 @@ export function BrandOnboardingForm() {
                 <FormItem>
                   <FormLabel>Target Demographic</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="e.g., 18-24 year old females interested in fitness" />
+                    <Input
+                      {...field}
+                      placeholder="e.g., 18-24 year old females interested in fitness"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -233,3 +240,4 @@ export function BrandOnboardingForm() {
     </Card>
   );
 }
+

@@ -33,7 +33,27 @@ import {
   Edit,
   LucideIcon,
 } from "lucide-react";
-import { ProfilePageProps, Platform, ProfileSocialLinkProps, TeamRole } from "../../../../types/profile-types";
+import {
+  Platform,
+  User,
+  Influencer,
+  InfluencerTeamMember,
+  TeamRole,
+} from "../../../../../lib/types";
+
+interface ProfilePageProps {
+  user: User & {
+    influencer: Influencer | null;
+  };
+  influencer: Influencer;
+  teamMembers: InfluencerTeamMember[];
+}
+
+interface ProfileSocialLinkProps {
+  icon: LucideIcon;
+  label: string;
+  link: string;
+}
 
 const ProfileSocialLink: React.FC<ProfileSocialLinkProps> = ({
   icon: Icon,

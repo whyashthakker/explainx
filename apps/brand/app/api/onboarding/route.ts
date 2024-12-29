@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import prisma from "@repo/db/client";
 import { auth } from "../../../auth";
 import { type NextRequest } from "next/server";
-import { Platform } from "../../types";
+import { Platform } from "../../../lib/types";
 
 interface BrandOnboardingData {
   name: string;
@@ -25,12 +25,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const data = await request.json() as BrandOnboardingData;
+    const data = (await request.json()) as BrandOnboardingData;
 
     // Get user
     const email = session.user?.email;
     if (!email) {
-      return NextResponse.json({ error: "User email not found" }, { status: 400 });
+      return NextResponse.json(
+        { error: "User email not found" },
+        { status: 400 },
+      );
     }
 
     const user = await prisma.user.findUnique({
@@ -86,3 +89,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
