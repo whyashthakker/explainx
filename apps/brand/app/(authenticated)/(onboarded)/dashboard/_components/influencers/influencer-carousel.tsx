@@ -15,13 +15,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@repo/ui/components/ui/avatar";
-import {
-  Verified,
-  Users,
-  BarChart3,
-  Share2,
-  Search,
-} from "lucide-react";
+import { Verified, Users, BarChart3, Share2, Search } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
 import { Platform } from "../../../../../../lib/types";
 
@@ -42,7 +36,13 @@ interface Influencer {
   };
 }
 
-const InfluencerCard = ({ influencer, onClick }: { influencer: Influencer; onClick: () => void }) => (
+const InfluencerCard = ({
+  influencer,
+  onClick,
+}: {
+  influencer: Influencer;
+  onClick: () => void;
+}) => (
   <Card
     className="cursor-pointer hover:shadow-lg transition-shadow"
     onClick={onClick}
@@ -78,9 +78,7 @@ const InfluencerCard = ({ influencer, onClick }: { influencer: Influencer; onCli
           </div>
           <div className="text-center">
             <BarChart3 className="h-5 w-5 mx-auto text-gray-500" />
-            <p className="mt-1 text-sm font-medium">
-              {influencer.engagement}%
-            </p>
+            <p className="mt-1 text-sm font-medium">{influencer.engagement}%</p>
             <p className="text-xs text-gray-500">Engagement</p>
           </div>
           <div className="text-center">
@@ -94,19 +92,13 @@ const InfluencerCard = ({ influencer, onClick }: { influencer: Influencer; onCli
 
         <div className="flex flex-wrap gap-2">
           {influencer.platforms.map((platform) => (
-            <Badge
-              key={platform}
-              variant="secondary"
-              className="text-xs"
-            >
+            <Badge key={platform} variant="secondary" className="text-xs">
               {platform}
             </Badge>
           ))}
         </div>
 
-        <p className="text-sm text-gray-600 line-clamp-2">
-          {influencer.bio}
-        </p>
+        <p className="text-sm text-gray-600 line-clamp-2">{influencer.bio}</p>
       </div>
     </CardContent>
   </Card>
@@ -137,7 +129,7 @@ export default function BrandDashboard() {
   const filteredInfluencers = influencers.filter(
     (influencer) =>
       influencer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      influencer.category.toLowerCase().includes(searchTerm.toLowerCase())
+      influencer.category.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const navigateToInfluencer = (id: string) => {
@@ -145,7 +137,11 @@ export default function BrandDashboard() {
   };
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
   }
 
   return (
@@ -154,7 +150,9 @@ export default function BrandDashboard() {
         {/* Search Section */}
         <div className="space-y-8">
           <div className="flex flex-col space-y-4">
-            <h1 className="text-3xl font-bold text-gray-900">Creator Discovery</h1>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Creator Discovery
+            </h1>
             <div className="relative">
               <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Input
@@ -168,7 +166,9 @@ export default function BrandDashboard() {
 
           {searchTerm && (
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-900">Search Results</h2>
+              <h2 className="text-xl font-semibold text-gray-900">
+                Search Results
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredInfluencers.map((influencer) => (
                   <InfluencerCard
