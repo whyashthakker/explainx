@@ -19,7 +19,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { MetricsResponse } from "../../../../api/influencer/[id]/metrics/route";
+import { MetricsResponse } from "../../../../../api/influencer/[id]/metrics/route";
 
 // Loading skeleton component
 function MetricsSkeleton() {
@@ -224,4 +224,3 @@ export default function InfluencerMetricsPage(props: PageProps) {
     </div>
   );
 }
-

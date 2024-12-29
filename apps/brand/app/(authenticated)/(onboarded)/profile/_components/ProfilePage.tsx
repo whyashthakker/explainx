@@ -20,7 +20,7 @@ import {
 } from "@repo/ui/components/ui/avatar";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
-import { handleSignOut } from "../../../../lib/actions";
+import { handleSignOut } from "../../../../../lib/actions";
 import {
   Users,
   Mail,
@@ -34,11 +34,26 @@ import {
   LucideIcon,
 } from "lucide-react";
 import {
-  ProfilePageProps,
   Platform,
-  ProfileSocialLinkProps,
+  User,
+  Influencer,
+  InfluencerTeamMember,
   TeamRole,
-} from "../../../types/profile-types";
+} from "../../../../../lib/types";
+
+interface ProfilePageProps {
+  user: User & {
+    influencer: Influencer | null;
+  };
+  influencer: Influencer;
+  teamMembers: InfluencerTeamMember[];
+}
+
+interface ProfileSocialLinkProps {
+  icon: LucideIcon;
+  label: string;
+  link: string;
+}
 
 const ProfileSocialLink: React.FC<ProfileSocialLinkProps> = ({
   icon: Icon,

@@ -17,7 +17,7 @@ import {
 } from "@repo/ui/components/ui/avatar";
 import { Verified, Users, BarChart3, Share2, Search } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
-import { Platform } from "../../../../../lib/types";
+import { Platform } from "../../../../../../lib/types";
 
 interface Influencer {
   id: string;
@@ -199,4 +199,3 @@ export default function BrandDashboard() {
     </div>
   );
 }
-

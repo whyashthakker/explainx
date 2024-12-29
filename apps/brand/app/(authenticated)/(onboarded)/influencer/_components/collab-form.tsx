@@ -25,7 +25,7 @@ import {
 } from "@repo/ui/components/ui/select";
 import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Loader2 } from "lucide-react";
-import { Platform } from "../../../../lib/types";
+import { Platform } from "../../../../../lib/types";
 
 const formSchema = z.object({
   title: z.string().min(2, "Title must be at least 2 characters"),
@@ -217,4 +217,3 @@ export default function CollaborationForm({
     </Form>
   );
 }
-

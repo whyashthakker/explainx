@@ -1,6 +1,6 @@
 // app/(authenticated)/authenticated/influencer/[slug]/page.tsx
 import { redirect } from "next/navigation";
-import { auth } from "../../../../auth";
+import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
 import InfluencerProfile from "../_components/influencer-profile";
 
@@ -109,4 +109,3 @@ export default async function InfluencerPage({ params }: PageProps) {
 
   return <InfluencerProfile influencer={influencer} brand={currentUser} />;
 }
-
