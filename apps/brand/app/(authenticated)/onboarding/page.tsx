@@ -1,12 +1,12 @@
 // app/authenticated/brand/onboarding/page.tsx
 import { redirect } from "next/navigation";
-import { auth } from "../../../../auth";
+import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 import { BrandOnboardingForm } from "./_components/OnboardingForm";
 
 export default async function BrandOnboardingPage() {
   const session = await auth();
-  
+
   if (!session) {
     redirect("/login");
     return null;
@@ -39,3 +39,4 @@ export default async function BrandOnboardingPage() {
     </div>
   );
 }
+

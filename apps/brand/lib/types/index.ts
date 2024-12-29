@@ -1,5 +1,5 @@
-// packages/types/index.ts
-
+import type { User as PrismaUser, Brand as PrismaBrand } from "@prisma/client";
+// Enums
 // Enums
 export enum UserType {
   BRAND = "BRAND",
@@ -41,15 +41,6 @@ export enum CollaborationStatus {
   CANCELLED = "CANCELLED",
 }
 
-export interface InfluencerFormData {
-  name: string;
-  avatar?: string;
-  bio?: string;
-  category: string;
-  followers: number;
-  platforms: Platform[];
-}
-
 // Base Types
 export interface BaseModel {
   id: string;
@@ -58,24 +49,6 @@ export interface BaseModel {
 }
 
 // Auth Related Types
-export interface User extends BaseModel {
-  name?: string | null;
-  email: string;
-  emailVerified?: Date | null;
-  image?: string | null;
-  userType?: UserType | null;
-
-  // Relations
-  accounts?: Account[];
-  sessions?: Session[];
-  authenticators?: Authenticator[];
-  brand?: Brand | null;
-  influencer?: Influencer | null;
-  brandTeamMemberships?: BrandTeamMember[];
-  influencerTeamMemberships?: InfluencerTeamMember[];
-  sentMessages?: Message[];
-  receivedMessages?: Message[];
-}
 
 export interface Account extends BaseModel {
   userId: string;
@@ -118,6 +91,59 @@ export interface Authenticator {
 
   user: User;
 }
+// Auth Related Types
+export interface User extends BaseModel {
+  name?: string | null;
+  email: string;
+  emailVerified?: Date | null;
+  image?: string | null;
+  userType?: UserType | null;
+
+  // Relations
+  accounts?: Account[];
+  sessions?: Session[];
+  authenticators?: Authenticator[];
+  brand?: Brand | null;
+  influencer?: Influencer | null;
+  brandTeamMemberships?: BrandTeamMember[];
+  influencerTeamMemberships?: InfluencerTeamMember[];
+  sentMessages?: Message[];
+  receivedMessages?: Message[];
+}
+
+// YouTube Related Types
+export interface YouTubeAccount {
+  id: string;
+  influencerId: string;
+  channelId: string;
+  channelTitle: string;
+  description: string | null;
+  subscriberCount: number;
+  videoCount: number;
+  viewCount: number;
+  videos: YouTubeVideo[];
+  analytics: YouTubeAnalytics[];
+}
+
+export interface YouTubeVideo {
+  id: string;
+  videoId: string;
+  title: string;
+  description: string | null;
+  thumbnailUrl: string;
+  publishedAt: Date;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+}
+
+export interface YouTubeAnalytics {
+  id: string;
+  date: Date;
+  subscriberCount: number;
+  viewCount: number;
+  videoCount: number;
+}
 
 // Brand Related Types
 export interface Brand extends BaseModel {
@@ -127,6 +153,11 @@ export interface Brand extends BaseModel {
   website?: string | null;
   industry: string;
   description?: string | null;
+  targetDemographic?: string | null;
+  preferredCategories?: string[];
+  minFollowers?: number | null;
+  maxBudget?: number | null;
+  preferredPlatforms?: Platform[];
 
   // Relations
   user: User;
@@ -135,6 +166,24 @@ export interface Brand extends BaseModel {
   collaborations?: Collaboration[];
 }
 
+// Influencer Related Types
+export interface Influencer extends BaseModel {
+  userId: string;
+  name: string;
+  avatar?: string | null;
+  bio?: string | null;
+  category: string;
+  followers: number;
+  platforms: Platform[];
+  youtubeAccount?: YouTubeAccount;
+
+  // Relations
+  user: User;
+  team?: InfluencerTeam | null;
+  collaborations?: Collaboration[];
+}
+
+// Team Related Types
 export interface BrandTeam extends BaseModel {
   brandId: string;
   brand: Brand;
@@ -150,22 +199,6 @@ export interface BrandTeamMember extends BaseModel {
 
   team: BrandTeam;
   user: User;
-}
-
-// Influencer Related Types
-export interface Influencer extends BaseModel {
-  userId: string;
-  name: string;
-  avatar?: string | null;
-  bio?: string | null;
-  category: string;
-  followers: number;
-  platforms: Platform[];
-
-  // Relations
-  user: User;
-  team?: InfluencerTeam | null;
-  collaborations?: Collaboration[];
 }
 
 export interface InfluencerTeam extends BaseModel {
@@ -239,7 +272,63 @@ export interface Message extends BaseModel {
   receiver: User;
 }
 
-// Input Types for Forms and API Requests
+// Metrics Related Types
+export interface InfluencerMetrics {
+  avgViews: number;
+  totalViews: number;
+  subscriberGrowth: number;
+  viewGrowth: number;
+  engagement: string;
+}
+
+export interface AnalyticsDataPoint {
+  date: string;
+  subscriberCount: number;
+  viewCount: number;
+  videoCount: number;
+}
+
+export interface VideoMetrics {
+  id: string;
+  title: string;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  publishedAt: string;
+  thumbnailUrl: string;
+}
+
+export interface PlatformMetrics {
+  platform: string;
+  followers: number;
+  engagement: number;
+  posts: number;
+  reach: number;
+}
+
+export interface CollaborationMetrics {
+  totalCollaborations: number;
+  successRate: number;
+  averageBudget: number;
+  completedCampaigns: number;
+  activeProjects: number;
+}
+
+export interface MetricsResponse {
+  success: boolean;
+  data?: {
+    influencer: {
+      metrics: InfluencerMetrics;
+      analytics: AnalyticsDataPoint[];
+      recentVideos: VideoMetrics[];
+      platformMetrics: PlatformMetrics[];
+      collaborationMetrics: CollaborationMetrics;
+    };
+  };
+  error?: string;
+}
+
+// Input Types
 export interface CreateBrandInput {
   name: string;
   logo?: string;
@@ -281,7 +370,6 @@ export interface CreateMessageInput {
   receiverId: string;
 }
 
-// Team Management Types
 export interface TeamInviteInput {
   email: string;
   role: TeamRole;
@@ -291,3 +379,15 @@ export interface TeamMemberUpdate {
   userId: string;
   role: TeamRole;
 }
+
+export type PrismaUserWithBrand = PrismaUser & {
+  brand:
+    | (PrismaBrand & {
+        user: {
+          id: string;
+          email: string;
+          image: string | null;
+        };
+      })
+    | null;
+};
