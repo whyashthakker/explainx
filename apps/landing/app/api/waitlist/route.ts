@@ -1,4 +1,3 @@
-// app/api/waitlist/route.ts
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sendDiscordNotification } from "../../../lib/discord-notify";
