@@ -910,17 +910,24 @@ export default function MultistepBrandOnboardingForm() {
   });
 
   const isStepValid = () => {
-    const currentFields = {
+    const currentFields: Record<number, Array<keyof FormValues>> = {
       1: ["name", "website", "industry", "description"],
       2: ["targetDemographic", "preferredCategories"],
       3: ["minFollowers", "maxBudget"],
       4: ["preferredPlatforms"],
-    }[currentStep];
+    };
 
-    return currentFields?.every((field) => {
+    const fieldsToCheck = currentFields[currentStep];
+    if (!fieldsToCheck) return false;
+
+    return fieldsToCheck.every((field) => {
       const value = form.getValues(field);
       if (Array.isArray(value)) {
         return value.length > 0;
+      }
+      // Handle optional fields
+      if (field === "description" || field === "website") {
+        return true;
       }
       return !!value;
     });
