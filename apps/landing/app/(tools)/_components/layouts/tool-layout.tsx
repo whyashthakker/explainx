@@ -51,7 +51,7 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
           <CardTitle>Use Cases</CardTitle>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue={tool.useCase[0].title.toLowerCase()}>
+          <Tabs defaultValue={tool.useCase?.[0]?.title?.toLowerCase() || ''}>
             <TabsList className="mb-6">
               {tool.useCase.map((useCase) => (
                 <TabsTrigger 
