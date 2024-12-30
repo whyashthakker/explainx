@@ -134,6 +134,7 @@ model Brand {
   // Relations
   campaigns   Campaign[]
   collaborations Collaboration[]
+  sentInvites   CollaborationInvite[]
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -184,6 +185,7 @@ model Influencer {
 
   // Relations
   collaborations Collaboration[]
+  recievedInvites   CollaborationInvite[]
 
   youtubeAccount YouTubeAccount?
 
@@ -228,7 +230,7 @@ enum InviteStatus {
 
 // Platform and Campaign Models
 enum Platform {
-  INSTAGRAM
+  INSTAGRAM 
   YOUTUBE
   TIKTOK
   TWITTER
@@ -290,6 +292,23 @@ enum CollaborationStatus {
   ACTIVE
   COMPLETED
   CANCELLED
+}
+
+
+model CollaborationInvite {
+  id            String    @id @default(cuid())
+  brandId       String
+  brand         Brand     @relation(fields: [brandId], references: [id])
+  influencerId  String
+  influencer    Influencer @relation(fields: [influencerId], references: [id])
+  
+  status        InviteStatus  @default(PENDING)
+  message       String?       @db.Text
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@unique([brandId, influencerId])
 }
 
 model ChatRoom {

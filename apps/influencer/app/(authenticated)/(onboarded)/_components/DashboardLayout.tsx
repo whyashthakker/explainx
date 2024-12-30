@@ -46,9 +46,9 @@ const Sidebar = ({
       href: "/brands",
     },
     {
-      label: "Collabs",
+      label: "Collaborations",
       icon: HandshakeIcon,
-      href: "/collabs",
+      href: "/collaborations",
     },
     {
       label: "Integrations",
