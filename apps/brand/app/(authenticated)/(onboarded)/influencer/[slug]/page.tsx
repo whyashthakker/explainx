@@ -1,8 +1,8 @@
-// app/(authenticated)/authenticated/influencer/[slug]/page.tsx
+// app/(authenticated)/influencer/[slug]/page.tsx
 import { redirect } from "next/navigation";
 import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
-import InfluencerProfile from "../_components/influencer-profile";
+import InfluencerProfile from "../_components/InfluencerProfile";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

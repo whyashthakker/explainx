@@ -42,7 +42,8 @@ import {
   Youtube,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import CollaborationForm from "./collab-form";
+import CollaborationForm from "./CollabForm";
+import { CollaborationList } from "./CollaborationList";
 
 interface YouTubeVideo {
   id: string;
@@ -108,7 +109,14 @@ export default function InfluencerProfile({
 }: InfluencerProfileProps) {
   const router = useRouter();
   const [showCollaboration, setShowCollaboration] = useState(false);
+  // Add this state to trigger collaboration list refresh
+  const [collaborationRefresh, setCollaborationRefresh] = useState(0);
 
+  const handleCollaborationSuccess = () => {
+    setShowCollaboration(false);
+    // Increment the refresh counter to trigger a re-fetch
+    setCollaborationRefresh((prev) => prev + 1);
+  };
   if (!influencer) {
     router.push("/dashboard");
     return null;
@@ -149,7 +157,6 @@ export default function InfluencerProfile({
           <ArrowLeft className="h-4 w-4" />
           Back to Discovery
         </Button>
-
         {/* Profile Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex items-center space-x-4">
@@ -179,7 +186,6 @@ export default function InfluencerProfile({
             </Button>
           </div>
         </div>
-
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>
@@ -241,24 +247,29 @@ export default function InfluencerProfile({
             </Card>
           )}
         </div>
+        {brand?.brand && (
+          <CollaborationList
+            influencerId={influencer.id}
+            refreshTrigger={collaborationRefresh}
+          />
+        )}
 
-        {/* Rest of the component remains the same... */}
-
-        {/* Collaboration Dialog */}
         {brand?.brand && (
           <Dialog open={showCollaboration} onOpenChange={setShowCollaboration}>
-            <DialogContent className="sm:max-w-[500px]">
-              <DialogHeader>
+            <DialogContent className="w-[95vw] max-w-[95vw] md:w-[800px] md:max-w-[800px] h-[90vh] max-h-[90vh] overflow-hidden flex flex-col">
+              <DialogHeader className="px-6 pt-6">
                 <DialogTitle>Start Collaboration</DialogTitle>
                 <DialogDescription>
                   Send a collaboration request to {influencer.name}
                 </DialogDescription>
               </DialogHeader>
-              <CollaborationForm
-                influencerId={influencer.id}
-                brandId={brand.brand.id}
-                onSuccess={() => setShowCollaboration(false)}
-              />
+              <div className="flex-1 overflow-y-auto px-6 pb-6">
+                <CollaborationForm
+                  influencerId={influencer.id}
+                  brandId={brand.brand.id}
+                  onSuccess={handleCollaborationSuccess}
+                />
+              </div>
             </DialogContent>
           </Dialog>
         )}
@@ -266,4 +277,3 @@ export default function InfluencerProfile({
     </div>
   );
 }
-
