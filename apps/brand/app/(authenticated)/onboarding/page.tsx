@@ -24,7 +24,7 @@ export default async function BrandOnboardingPage() {
   });
 
   if (user?.brand) {
-    redirect("/authenticated/dashboard");
+    redirect("/dashboard");
   }
 
   return (
@@ -39,4 +39,3 @@ export default async function BrandOnboardingPage() {
     </div>
   );
 }
-

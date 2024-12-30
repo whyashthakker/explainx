@@ -29,25 +29,25 @@ const Sidebar = ({
     {
       label: "Search",
       icon: SearchIcon,
-      href: "/dashboard/search",
+      href: "/search",
       description: "Find creators",
     },
     {
       label: "Collaborations",
       icon: HandshakeIcon,
-      href: "/dashboard/collaborations",
+      href: "/collaborations",
       description: "Manage partnerships",
     },
     {
       label: "Analytics",
       icon: BarChart3Icon,
-      href: "/dashboard/analytics",
+      href: "/analytics",
       description: "Campaign insights",
     },
     {
       label: "Profile",
       icon: UserCircleIcon,
-      href: "/dashboard/profile",
+      href: "/profile",
       description: "Brand settings",
     },
   ];
