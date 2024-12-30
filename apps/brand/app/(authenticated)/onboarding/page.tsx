@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
-import { BrandOnboardingForm } from "./_components/OnboardingForm";
+import MultistepBrandOnboardingForm from "./_components/OnboardingForm";
 
 export default async function BrandOnboardingPage() {
   const session = await auth();
@@ -29,7 +29,7 @@ export default async function BrandOnboardingPage() {
 
   return (
     <div className="space-y-6">
-      <BrandOnboardingForm />
+      <MultistepBrandOnboardingForm />
     </div>
   );
 }
