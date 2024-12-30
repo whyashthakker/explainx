@@ -909,8 +909,25 @@ export default function MultistepBrandOnboardingForm() {
     },
   });
 
+  const isStepValid = () => {
+    const currentFields = {
+      1: ["name", "website", "industry", "description"],
+      2: ["targetDemographic", "preferredCategories"],
+      3: ["minFollowers", "maxBudget"],
+      4: ["preferredPlatforms"],
+    }[currentStep];
+
+    return currentFields?.every((field) => {
+      const value = form.getValues(field);
+      if (Array.isArray(value)) {
+        return value.length > 0;
+      }
+      return !!value;
+    });
+  };
+
   const nextStep = () => {
-    if (currentStep < steps.length) {
+    if (currentStep < steps.length && isStepValid()) {
       setCurrentStep((prev) => prev + 1);
     }
   };
@@ -937,8 +954,15 @@ export default function MultistepBrandOnboardingForm() {
                 <FormItem>
                   <FormLabel>Brand Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your brand name" {...field} />
+                    <Input
+                      placeholder="Enter your brand's legal or trading name"
+                      {...field}
+                    />
                   </FormControl>
+                  <FormDescription>
+                    This is the name that will be displayed to creators and used
+                    in all communications
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -952,20 +976,19 @@ export default function MultistepBrandOnboardingForm() {
                   <FormLabel>Website URL</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="e.g., infloq.com or https://infloq.com"
+                      placeholder="yourwebsite.com"
                       {...field}
                       onChange={(e) => {
                         let value = e.target.value.trim();
-                        // Remove https:// or http:// if user manually types it
                         value = value.replace(/^(https?:\/\/)/, "");
-                        // Remove www. if user types it
                         value = value.replace(/^www\./, "");
                         field.onChange(value);
                       }}
                     />
                   </FormControl>
-                  <FormDescription className="text-sm text-gray-500">
-                    Enter your website URL with or without https://
+                  <FormDescription>
+                    Your official website where creators can learn more about
+                    your brand. No need to include 'http://' or 'www.'
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -984,7 +1007,7 @@ export default function MultistepBrandOnboardingForm() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select your industry" />
+                        <SelectValue placeholder="Choose your primary industry sector" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -995,6 +1018,10 @@ export default function MultistepBrandOnboardingForm() {
                       ))}
                     </SelectContent>
                   </Select>
+                  <FormDescription>
+                    Select the industry that best represents your brand's main
+                    business activity
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -1008,11 +1035,15 @@ export default function MultistepBrandOnboardingForm() {
                   <FormLabel>Brand Description</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us about your brand..."
+                      placeholder="Share your brand's story, mission, and values..."
                       className="h-32"
                       {...field}
                     />
                   </FormControl>
+                  <FormDescription>
+                    Provide a compelling description that will help creators
+                    understand your brand's vision and what makes it unique
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -1035,7 +1066,7 @@ export default function MultistepBrandOnboardingForm() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select target audience" />
+                        <SelectValue placeholder="Select your ideal customer demographic" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -1046,6 +1077,10 @@ export default function MultistepBrandOnboardingForm() {
                       ))}
                     </SelectContent>
                   </Select>
+                  <FormDescription>
+                    Choose the primary audience segment that your brand wants to
+                    reach through creator collaborations
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -1084,6 +1119,11 @@ export default function MultistepBrandOnboardingForm() {
                       />
                     ))}
                   </div>
+                  <FormDescription>
+                    Select all content categories that align with your brand's
+                    marketing objectives
+                  </FormDescription>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -1105,7 +1145,7 @@ export default function MultistepBrandOnboardingForm() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select minimum followers" />
+                        <SelectValue placeholder="Choose minimum follower requirement" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -1119,6 +1159,10 @@ export default function MultistepBrandOnboardingForm() {
                       ))}
                     </SelectContent>
                   </Select>
+                  <FormDescription>
+                    Set the minimum follower count required for creators to work
+                    with your brand
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -1136,7 +1180,7 @@ export default function MultistepBrandOnboardingForm() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select your budget" />
+                        <SelectValue placeholder="Select your campaign budget range" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -1150,6 +1194,9 @@ export default function MultistepBrandOnboardingForm() {
                       ))}
                     </SelectContent>
                   </Select>
+                  <FormDescription>
+                    Indicate your maximum budget for creator collaborations
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -1226,6 +1273,10 @@ export default function MultistepBrandOnboardingForm() {
                     );
                   })}
                 </div>
+                <FormDescription>
+                  Choose the social media platforms where you want to run your
+                  creator campaigns
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -1235,6 +1286,7 @@ export default function MultistepBrandOnboardingForm() {
   };
 
   const onSubmit = async (data: FormValues) => {
+    if (!isStepValid()) return;
     setIsSubmitting(true);
     setError("");
 
@@ -1299,9 +1351,11 @@ export default function MultistepBrandOnboardingForm() {
                   <Button
                     type="submit"
                     className={`flex items-center ml-auto ${
-                      isSubmitting ? "opacity-50" : ""
+                      isSubmitting || !isStepValid()
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
                     }`}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !isStepValid()}
                   >
                     {isSubmitting ? (
                       "Submitting..."
@@ -1316,12 +1370,15 @@ export default function MultistepBrandOnboardingForm() {
                   <Button
                     type="button"
                     onClick={nextStep}
-                    className="flex items-center ml-auto"
+                    disabled={!isStepValid()}
+                    className={`flex items-center ml-auto ${
+                      !isStepValid() ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   >
                     Next
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
-                )}{" "}
+                )}
               </div>
             </form>
           </Form>
