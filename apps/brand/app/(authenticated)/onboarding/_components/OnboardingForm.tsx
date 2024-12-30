@@ -40,6 +40,7 @@ import {
   Instagram,
   Linkedin,
   Youtube,
+  Twitter,
 } from "lucide-react";
 
 const categories = [
@@ -80,16 +81,22 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const platformIcons = {
+// Define platform icons with type safety
+const platformIcons: Record<Platform, React.ElementType> = {
   [Platform.INSTAGRAM]: Instagram,
   [Platform.LINKEDIN]: Linkedin,
   [Platform.YOUTUBE]: Youtube,
+  [Platform.TIKTOK]: Youtube, // Replace with proper TikTok icon when available
+  [Platform.TWITTER]: Twitter,
 };
 
-const platformColors = {
+// Define platform colors with type safety
+const platformColors: Record<Platform, string> = {
   [Platform.INSTAGRAM]: "text-pink-600 bg-pink-100",
   [Platform.LINKEDIN]: "text-blue-600 bg-blue-100",
   [Platform.YOUTUBE]: "text-red-600 bg-red-100",
+  [Platform.TIKTOK]: "text-black bg-gray-100", // Add appropriate TikTok colors
+  [Platform.TWITTER]: "text-black bg-gray-100",
 };
 
 export function BrandOnboardingForm() {
@@ -564,6 +571,7 @@ interface PlatformOption {
   metrics: string;
 }
 
+// Update platform options to include all platforms
 const platformOptions: PlatformOption[] = [
   {
     platform: Platform.INSTAGRAM,
@@ -592,8 +600,16 @@ const platformOptions: PlatformOption[] = [
     bgColor: "bg-red-100",
     metrics: "2.5B+ monthly active users",
   },
+  {
+    platform: Platform.TIKTOK,
+    icon: Youtube, // Replace with proper TikTok icon when available
+    label: "TikTok",
+    description: "Short-form video platform",
+    color: "text-black",
+    bgColor: "bg-gray-100",
+    metrics: "1B+ monthly active users",
+  },
 ];
-
 // Additional utility functions you might need
 
 const formatCurrency = (amount: number): string => {
