@@ -104,7 +104,7 @@ export default async function InfluencerPage({ params }: PageProps) {
   })) as InfluencerData | null;
 
   if (!influencer) {
-    redirect("/authenticated/dashboard");
+    redirect("/dashboard");
   }
 
   return <InfluencerProfile influencer={influencer} brand={currentUser} />;

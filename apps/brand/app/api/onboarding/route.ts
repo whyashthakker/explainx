@@ -7,11 +7,11 @@ import { Platform } from "../../../lib/types";
 
 interface BrandOnboardingData {
   name: string;
-  logo: string;
-  website: string;
+  logo?: string;
+  website?: string;
   industry: string;
-  description: string;
-  targetDemographic: string[];
+  description?: string;
+  targetDemographic: string; // Changed from string[] to string to match form
   preferredCategories: string[];
   minFollowers: number;
   maxBudget: number;
@@ -26,6 +26,22 @@ export async function POST(request: NextRequest) {
     }
 
     const data = (await request.json()) as BrandOnboardingData;
+
+    // Input validation
+    if (!data.name || !data.industry || !data.targetDemographic) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 },
+      );
+    }
+
+    // Validate arrays are not empty
+    if (!data.preferredCategories.length || !data.preferredPlatforms.length) {
+      return NextResponse.json(
+        { error: "Categories and platforms cannot be empty" },
+        { status: 400 },
+      );
+    }
 
     // Get user
     const email = session.user?.email;
@@ -56,20 +72,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Clean up optional fields
+    const cleanData = {
+      userId: user.id,
+      name: data.name,
+      logo: data.logo || "", // Handle optional fields
+      website: data.website || "",
+      industry: data.industry,
+      description: data.description || "",
+      targetDemographic: data.targetDemographic,
+      preferredCategories: data.preferredCategories,
+      minFollowers: data.minFollowers,
+      maxBudget: data.maxBudget,
+      preferredPlatforms: data.preferredPlatforms,
+    };
+
     // Create brand profile
     const brand = await prisma.brand.create({
-      data: {
-        userId: user.id,
-        name: data.name,
-        logo: data.logo,
-        website: data.website,
-        industry: data.industry,
-        description: data.description,
-        preferredCategories: data.preferredCategories,
-        minFollowers: data.minFollowers,
-        maxBudget: data.maxBudget,
-        preferredPlatforms: data.preferredPlatforms,
-      },
+      data: cleanData,
     });
 
     // Update user type
@@ -80,13 +100,22 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    return NextResponse.json({ success: true, brand });
+    return NextResponse.json({
+      success: true,
+      brand,
+      message: "Brand profile created successfully",
+    });
   } catch (error) {
     console.error("Brand onboarding error:", error);
+
+    // Better error handling
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
     return NextResponse.json(
       { error: "Failed to complete brand onboarding" },
       { status: 500 },
     );
   }
 }
-
