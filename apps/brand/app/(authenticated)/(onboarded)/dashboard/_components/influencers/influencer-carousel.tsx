@@ -133,7 +133,7 @@ export default function BrandDashboard() {
   );
 
   const navigateToInfluencer = (id: string) => {
-    router.push(`/authenticated/influencer/${id}`);
+    router.push(`/influencer/${id}`);
   };
 
   if (loading) {
