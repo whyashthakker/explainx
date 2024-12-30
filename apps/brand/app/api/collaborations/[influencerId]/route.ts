@@ -3,16 +3,25 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { influencerId: string } },
-) {
+type RouteParams = Promise<{ influencerId: string }>;
+
+type RouteContext = {
+  params: RouteParams;
+};
+
+export async function GET(req: NextRequest, context: RouteContext) {
   try {
+    // Authenticate user
     const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
+    // Get params
+    const params = await context.params;
+    const { influencerId } = params;
+
+    // Get brand profile
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: { brand: true },
@@ -25,12 +34,10 @@ export async function GET(
       );
     }
 
+    // Fetch collaborations
     const collaborations = await prisma.collaboration.findMany({
       where: {
-        AND: [
-          { brandId: user.brand.id },
-          { influencerId: params.influencerId },
-        ],
+        AND: [{ brandId: user.brand.id }, { influencerId }],
       },
       include: {
         campaign: true,
