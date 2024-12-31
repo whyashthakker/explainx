@@ -6,11 +6,16 @@ import prisma from "@repo/db/client";
 import { JWT } from "next-auth/jwt";
 import { verifyPassword } from "./lib/password";
 
+// Define the credentials type
+interface CustomCredentials {
+  email: string;
+  password: string;
+}
+
 declare module "next-auth" {
   interface User {
     userType?: "INFLUENCER";
   }
-
   interface Session {
     user: {
       id: string;
@@ -50,14 +55,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         email: { type: "email", label: "Email" },
         password: { type: "password", label: "Password" },
       },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+      async authorize(credentials): Promise<any> {
+        const creds = credentials as CustomCredentials;
+
+        if (!creds?.email || !creds?.password) {
           throw new Error("Please enter your email and password");
         }
 
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email: creds.email,
           },
         });
 
@@ -70,7 +77,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         const passwordMatch = await verifyPassword(
-          credentials.password,
+          creds.password,
           user.password,
         );
 
@@ -94,13 +101,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.id = user.id;
         token.userType = user.userType;
       }
-
       if (trigger === "update" && session) {
-        // Handle session updates
         token.name = session.user.name;
         token.image = session.user.image;
       }
-
       return token;
     },
     async session({ session, token }) {
