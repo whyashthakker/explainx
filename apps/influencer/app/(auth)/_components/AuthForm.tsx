@@ -1,12 +1,12 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState, useTransition } from "react";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useCountdown } from "usehooks-ts";
 import { z } from "zod";
+import { signIn } from "next-auth/react";
 
 import { Button } from "@repo/ui/components/ui/button";
 import {
@@ -24,20 +24,12 @@ import { FormError } from "./form-error";
 import { FormSuccess } from "./form-success";
 
 export const signupSchema = z.object({
-  email: z
-    .string()
-    .regex(
-      new RegExp(
-        "^[a-zA-Z0-9._%+-]+(21|[2-9][2-9])(dse)?@(aiml|ds|mech|civil|it|comp|auto).sce.edu.in$",
-      ),
-      "College email only allowed and only after 2020 batch.",
-    ),
-  password: z.string().min(7),
+  email: z.string().email("Please enter a valid email"),
+  password: z.string().min(7, "Password is required of lenght 7 and 8"),
 });
 
 export const loginSchema = z.object({
   email: z.string().email("Please enter a valid email"),
-
   password: z.string().min(1, "Password is required for Login"),
 });
 
@@ -64,7 +56,7 @@ export default function AuthForm({
   const isRegister = formType === "register" ? true : false;
   const [oneTimError, setOneTimeError] = useState(false);
   const [verificationCounter, setVerificationCounter] = useState<number>(0);
-  const [isPending, startTransisiton] = useTransition();
+  const [isPending, startTransition] = useTransition();
   const [resendVerificationEmail, setResendVerificationEmail] = useState(false);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -102,22 +94,62 @@ export default function AuthForm({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setSuccess("");
     setError("");
-
-    startTransisiton(async () => {
-      isRegister
-        ? await register(values).then(async (data) => {
-            setError(data.error);
-            setSuccess(data.success);
-          })
-        : await login(values).then((data) => {
-            setError(data.error);
-            setSuccess(data.success);
+    startTransition(async () => {
+      try {
+        if (isRegister) {
+          // Handle Registration
+          const response = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: values.email,
+              password: values.password,
+            }),
           });
-    });
 
-    if (success == "Logging in") {
-      router.push("/settings");
-    }
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.error || "Registration failed");
+          }
+
+          // If registration successful, automatically sign in
+          const signInResult = await signIn("credentials", {
+            email: values.email,
+            password: values.password,
+            redirect: false,
+          });
+
+          if (signInResult?.error) {
+            setError(signInResult.error);
+            return;
+          }
+
+          setSuccess("Registration successful!");
+          router.push("/onboarding"); // Redirect to onboarding instead of dashboard
+        } else {
+          // Handle Login
+          const signInResult = await signIn("credentials", {
+            email: values.email,
+            password: values.password,
+            redirect: false,
+          });
+
+          if (signInResult?.error) {
+            setError(signInResult.error);
+            return;
+          }
+
+          router.push("/dashboard");
+        }
+      } catch (error) {
+        setError(
+          error instanceof Error ? error.message : "Something went wrong",
+        );
+      }
+    });
   }
 
   async function onResendEmail() {
@@ -127,15 +159,9 @@ export default function AuthForm({
     }
     setError("");
     setSuccess("");
-    const data = await resendEmailVerificationLink(form.getValues("email"));
-
-    setVerificationCounter((prev) => prev + 1);
-    setSuccess(data.success);
-    setError(data.error);
   }
 
   return (
-    // <div className="w-full lg:grid min-h-screen">
     <div className="w-full lg:grid min-h-[93vh] ">
       <div className="flex flex-col items-center justify-center py-12">
         <div className="flex flex-col px-8 py-10 rounded-xl border ">
@@ -192,15 +218,7 @@ export default function AuthForm({
               />
               {!isRegister && error && (
                 <div className="text-sm flex gap-1 justify-start">
-                  <button
-                    className="underline text-blue-500"
-                    onClick={async () => {
-                      const resp = await sendLinkInMail(form.getValues().email);
-                      setSuccess(resp.success);
-                      setError(resp.error);
-                    }}
-                    type="button"
-                  >
+                  <button className="underline text-blue-500" type="button">
                     Forgot Password ?
                   </button>
                 </div>
@@ -210,6 +228,20 @@ export default function AuthForm({
 
               <Button type="submit" disabled={isPending}>
                 {submitButton}
+              </Button>
+
+              <div className="flex items-center gap-2 justify-center">
+                <div className="h-[1px] flex-1 bg-gray-200"></div>
+                <p className="text-sm text-gray-400">OR</p>
+                <div className="h-[1px] flex-1 bg-gray-200"></div>
+              </div>
+
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              >
+                Continue with Google
               </Button>
             </form>
             {resendVerificationEmail && (
