@@ -1319,84 +1319,130 @@ export default function MultistepBrandOnboardingForm() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto py-8">
-      <Card className="border-2">
-        <CardHeader>
-          <div className="space-y-2">
-            <Progress value={calculateProgress()} className="h-2" />
-            <div className="flex justify-between text-sm text-gray-500">
-              {steps.map((step) => (
-                <span
-                  key={step.id}
-                  className={currentStep >= step.id ? "text-blue-600" : ""}
-                >
-                  {step.title}
-                </span>
-              ))}
-            </div>
-          </div>
-        </CardHeader>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome to Infloq
+          </h1>
+          <p className="text-gray-600">
+            Let's set up your brand profile to connect with amazing creators
+          </p>
+        </div>
 
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              {renderStepContent()}
-
-              <div className="flex justify-between pt-6">
-                {currentStep > 1 && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={prevStep}
-                    className="flex items-center"
-                  >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Previous
-                  </Button>
-                )}
-                {currentStep === steps.length ? (
-                  <Button
-                    type="submit"
-                    className={`flex items-center ml-auto ${
-                      isSubmitting || !isStepValid()
-                        ? "opacity-50 cursor-not-allowed"
-                        : ""
-                    }`}
-                    disabled={isSubmitting || !isStepValid()}
-                  >
-                    {isSubmitting ? (
-                      "Submitting..."
-                    ) : (
-                      <>
-                        Complete
-                        <CheckCircle2 className="w-4 h-4 ml-2" />
-                      </>
-                    )}
-                  </Button>
-                ) : (
-                  <Button
-                    type="button"
-                    onClick={nextStep}
-                    disabled={!isStepValid()}
-                    className={`flex items-center ml-auto ${
-                      !isStepValid() ? "opacity-50 cursor-not-allowed" : ""
-                    }`}
-                  >
-                    Next
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                )}
+        {/* Main Form Card */}
+        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
+          <CardHeader className="border-b border-gray-100 pb-6">
+            <div className="space-y-4">
+              {/* Step Progress */}
+              <div className="relative">
+                <Progress
+                  value={calculateProgress()}
+                  className="h-2 bg-gray-100"
+                />
+                <div className="absolute top-4 left-0 right-0">
+                  <div className="flex justify-between text-sm">
+                    {steps.map((step) => (
+                      <div
+                        key={step.id}
+                        className={`flex flex-col items-center ${
+                          currentStep >= step.id
+                            ? "text-blue-600"
+                            : "text-gray-400"
+                        }`}
+                      >
+                        <div
+                          className={`w-8 h-8 rounded-full flex items-center justify-center mb-2 ${
+                            currentStep >= step.id
+                              ? "bg-blue-100"
+                              : "bg-gray-100"
+                          }`}
+                        >
+                          {step.id === 1 && <Building2 className="w-4 h-4" />}
+                          {step.id === 2 && <Target className="w-4 h-4" />}
+                          {step.id === 3 && <BarChart className="w-4 h-4" />}
+                          {step.id === 4 && <Globe className="w-4 h-4" />}
+                        </div>
+                        <span className="hidden sm:block text-xs font-medium">
+                          {step.title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+            </div>
+          </CardHeader>
 
-      {error && (
-        <Alert variant="destructive" className="mt-4">
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
+          <CardContent className="pt-8">
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
+                <div className="bg-white rounded-lg p-6">
+                  {renderStepContent()}
+                </div>
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-between pt-6 border-t border-gray-100">
+                  {currentStep > 1 && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={prevStep}
+                      className="flex items-center hover:bg-gray-50"
+                    >
+                      <ArrowLeft className="w-4 h-4 mr-2" />
+                      Previous Step
+                    </Button>
+                  )}
+                  {currentStep === steps.length ? (
+                    <Button
+                      type="submit"
+                      className={`flex items-center ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white ${
+                        isSubmitting || !isStepValid()
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
+                      disabled={isSubmitting || !isStepValid()}
+                    >
+                      {isSubmitting ? (
+                        "Setting up your profile..."
+                      ) : (
+                        <>
+                          Complete Setup
+                          <CheckCircle2 className="w-4 h-4 ml-2" />
+                        </>
+                      )}
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      onClick={nextStep}
+                      disabled={!isStepValid()}
+                      className={`flex items-center ml-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white ${
+                        !isStepValid() ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
+                    >
+                      Continue
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  )}
+                </div>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+
+        {/* Error Alert */}
+        {error && (
+          <Alert variant="destructive" className="mt-4">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+      </div>
     </div>
   );
 }
