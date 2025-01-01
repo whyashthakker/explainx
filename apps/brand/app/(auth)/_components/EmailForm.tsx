@@ -8,9 +8,10 @@ import {
   CardDescription,
 } from "@repo/ui/components/ui/card";
 import { Button } from "@repo/ui/components/ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { auth, signIn } from "../../auth";
+import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
+import { auth, signIn } from "../../../auth";
 import { redirect } from "next/navigation";
+import { Input } from "@repo/ui/components/ui/input";
 
 type SearchParams = Promise<{
   invite?: string;
@@ -54,8 +55,6 @@ export default async function SignIn(props: {
 
   return (
     <main className="min-h-screen w-full bg-gradient-to-b from-[#f8fafc] to-white">
-      {/* <InstagramAuth /> */}
-      {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[#2563eb]/5 blur-3xl scale-y-50 transform" />
       </div>
@@ -90,6 +89,7 @@ export default async function SignIn(props: {
           <CardContent className="space-y-6">
             {/* Sign In Options */}
             <div className="space-y-4">
+              {/* Google Sign In */}
               <form
                 action={async () => {
                   "use server";
@@ -110,6 +110,46 @@ export default async function SignIn(props: {
                       ({invite.inviteEmail})
                     </span>
                   )}
+                </Button>
+              </form>
+
+              {/* Magic Link Sign In */}
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t border-[#6366f1]/10" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white px-2 text-[#1e293b]/60">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+
+              <form
+                action={async (formData) => {
+                  "use server";
+                  await signIn("resend", {
+                    email: formData.get("email"),
+                    redirectTo: searchParams.invite
+                      ? `/invite/${searchParams.invite}`
+                      : "/dashboard",
+                  });
+                }}
+                className="space-y-3"
+              >
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  className="w-full h-12 border-[#6366f1]/20"
+                  required
+                />
+                <Button
+                  type="submit"
+                  className="w-full h-12 bg-white border-2 border-[#2563eb] text-[#2563eb] hover:bg-[#2563eb] hover:text-white flex items-center justify-center gap-3 text-base font-medium transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                  Continue with Email
                 </Button>
               </form>
 
