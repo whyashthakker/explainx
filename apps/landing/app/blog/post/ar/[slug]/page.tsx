@@ -14,6 +14,7 @@ type BlogPostMetadata = {
     description: string;
     date: string;
     author: string;
+    language: string;
 };
 
 async function getPostMetadata(slug: string): Promise<BlogPostMetadata | null> {
@@ -25,8 +26,11 @@ async function getPostMetadata(slug: string): Promise<BlogPostMetadata | null> {
         const metadataMatch = fileContent.match(/export const metadata = ({[\s\S]*?})/);
         if (!metadataMatch) return null;
         
-        const metadata = eval(`(${metadataMatch[1]})`) as BlogPostMetadata;
-        return metadata;
+        const metadata = eval(`(${metadataMatch[1]})`) as Omit<BlogPostMetadata, 'language'>;
+        return {
+            ...metadata,
+            language: 'ar' // Set Arabic as the language
+        };
     } catch (error) {
         console.error('Error reading post metadata:', error);
         return null;
@@ -34,9 +38,7 @@ async function getPostMetadata(slug: string): Promise<BlogPostMetadata | null> {
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
-    // Await the params promise
     const { slug } = await params;
-    
     const post = await getPostMetadata(slug);
     
     if (!post) {
@@ -46,13 +48,54 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
         };
     }
     
+    const defaultImage = '/images/main/landing.png';
+    
     return {
         title: post.title,
         description: post.description,
         alternates: {
-            canonical: `/blog/post/${slug}`,
+            canonical: `/blog/post/ar/${slug}`,
+            languages: {
+                'en': `/blog/post/${slug}`,
+                'ar': `/blog/post/ar/${slug}`,
+                'de': `/blog/post/de/${slug}`,
+                'es': `/blog/post/es/${slug}`,
+                'fr': `/blog/post/fr/${slug}`,
+                'hi': `/blog/post/hi/${slug}`,
+                'it': `/blog/post/it/${slug}`,
+                'ja': `/blog/post/ja/${slug}`,
+                'ko': `/blog/post/ko/${slug}`,
+                'nl': `/blog/post/nl/${slug}`,
+                'ru': `/blog/post/ru/${slug}`,
+                'zh-CN': `/blog/post/zh-cn/${slug}`,
+            }
         },
         robots: { index: true, follow: true },
+        metadataBase: new URL('https://infloq.com'),
+        openGraph: {
+            type: 'article',
+            locale: 'ar',
+            url: `/blog/post/ar/${slug}`,
+            title: post.title,
+            description: post.description,
+            images: [
+                {
+                    url: defaultImage,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                }
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.description,
+            images: [defaultImage],
+        },
+        other: {
+            'html-lang': 'ar',
+        }
     };
 }
 
@@ -74,14 +117,14 @@ export const dynamic = 'force-static'; // Prefer static generation
 export const revalidate = 3600; // Revalidate every hour
 
 export default async function Page({ params }: { params: Promise<Params> }) {
-    // Await the params promise 
     const { slug } = await params;
-
     const postMetadata = await getPostMetadata(slug);
     
     if (!postMetadata) {
         notFound();
     }
+
+    const defaultImage = ['/images/main/landing.png'];
 
     return (
         <>
@@ -91,7 +134,8 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                 dateModified={postMetadata.date}
                 authorName={postMetadata.author}
                 authorUrl="https://goyashy.com"
-                image={[]}
+                image={defaultImage}
+                language={postMetadata.language}
             />
             <Content slug={slug} metadata={postMetadata} />
         </>
