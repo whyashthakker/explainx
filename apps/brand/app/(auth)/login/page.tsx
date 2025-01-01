@@ -29,12 +29,27 @@ export default function BrandSignIn(props: {
   params: Params;
   searchParams: SearchParams;
 }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [emailLoading, setEmailLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const handleGoogleSubmit = async () => {
+    try {
+      setGoogleLoading(true);
+      const searchParams = await props.searchParams;
+      const redirectPath = searchParams.invite
+        ? `/invite/${searchParams.invite}`
+        : "/dashboard";
+      await handleGoogleSignIn(redirectPath);
+    } catch (err) {
+      // Reset loading if there's an error
+      setGoogleLoading(false);
+    }
+  };
 
   const handleEmailSubmit = async (formData: FormData) => {
     setError(null);
-    setIsLoading(true);
+    setEmailLoading(true);
 
     try {
       const email = formData.get("email") as string;
@@ -52,8 +67,7 @@ export default function BrandSignIn(props: {
       } else {
         setError("Failed to send login link. Please try again.");
       }
-    } finally {
-      setIsLoading(false);
+      setEmailLoading(false);
     }
   };
 
@@ -84,22 +98,43 @@ export default function BrandSignIn(props: {
           <CardContent className="space-y-6">
             <div className="space-y-4">
               {/* Google Sign In */}
-              <form
-                action={async () => {
-                  const searchParams = await props.searchParams;
-                  const redirectPath = searchParams.invite
-                    ? `/invite/${searchParams.invite}`
-                    : "/dashboard";
-                  await handleGoogleSignIn(redirectPath);
-                }}
-              >
+              <form action={handleGoogleSubmit}>
                 <Button
                   type="submit"
-                  className="w-full h-12 bg-[#2563eb] hover:bg-[#2563eb]/90 text-white flex items-center justify-center gap-3 text-base font-medium"
+                  className="w-full h-12 bg-[#2563eb] hover:bg-[#2563eb]/90 text-white flex items-center justify-center gap-3 text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={googleLoading}
                 >
-                  Continue with Google
+                  {googleLoading ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        />
+                      </svg>
+                      Signing in...
+                    </>
+                  ) : (
+                    "Continue with Google"
+                  )}
                 </Button>
               </form>
+
+              {/* Divider - keep the same */}
 
               {/* Divider */}
               <div className="relative">
@@ -114,6 +149,7 @@ export default function BrandSignIn(props: {
               </div>
 
               {/* Email Sign In */}
+              {/* Email Sign In */}
               <form action={handleEmailSubmit} className="space-y-3">
                 <div className="space-y-2">
                   <Input
@@ -123,7 +159,7 @@ export default function BrandSignIn(props: {
                     className={`w-full h-12 border-[#6366f1]/20 ${
                       error ? "border-red-500 focus-visible:ring-red-500" : ""
                     }`}
-                    disabled={isLoading}
+                    disabled={emailLoading}
                     required
                   />
                   {error && (
@@ -133,9 +169,9 @@ export default function BrandSignIn(props: {
                 <Button
                   type="submit"
                   className="w-full h-12 bg-white border-2 border-[#2563eb] text-[#2563eb] hover:bg-[#2563eb] hover:text-white flex items-center justify-center gap-3 text-base font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={isLoading}
+                  disabled={emailLoading}
                 >
-                  {isLoading ? (
+                  {emailLoading ? (
                     <>
                       <svg
                         className="animate-spin -ml-1 mr-3 h-5 w-5"
@@ -167,7 +203,6 @@ export default function BrandSignIn(props: {
                   )}
                 </Button>
               </form>
-
               {/* Benefits */}
               <div className="py-6 space-y-3">
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
