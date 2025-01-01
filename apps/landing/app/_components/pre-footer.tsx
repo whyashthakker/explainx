@@ -36,12 +36,10 @@ const navigation = {
     { name: "Blog", href: "/blog" },
     { name: "Twitter", href: "https://twitter.com/infloq", target: "_blank" },
     { name: "GitHub", href: "https://github.com/infloq", target: "_blank" },
-    // { name: "Discord", href: "/discord", target: "_blank" },
     { name: "Pricing", href: "/#pricing" },
     { name: "Contact", href: "/contact", target: "_blank" },
     { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
     { name: "FAQ", href: "/#faq" },
-    // { name: "Docs", href: "https://docs.infloq.com/" },
   ],
   legal: [
     { name: "Privacy", href: "/privacy-policy" },
