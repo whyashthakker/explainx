@@ -7,6 +7,7 @@ import { UseCaseTestimonials } from "./_components/use-case-testimonials";
 import { UseCaseCTA } from "./_components/use-case-cta";
 import { getAllUseCaseSlugs, getUseCase } from "../../../../lib/use-cases";
 import { IconType, UseCase } from "../../../../types/use-cases";
+import { AvailableTools } from "./_components/available-tools";
 
 interface UseCasePageProps {
   params: Promise<{
@@ -122,6 +123,8 @@ export default async function UseCasePage({ params }: UseCasePageProps) {
         buttonText={useCase.ctaButtonText}
         buttonLink={useCase.ctaButtonLink}
       />
+
+    <AvailableTools />
     </div>
   );
 }

@@ -1,5 +1,5 @@
-// app/use-cases/[slug]/_components/use-case-testimonials.tsx
 import Image from 'next/image';
+import { Avatar, AvatarImage, AvatarFallback } from '@repo/ui/components/ui/avatar';
 
 interface Testimonial {
   quote: string;
@@ -14,6 +14,15 @@ interface UseCaseTestimonialsProps {
 }
 
 export function UseCaseTestimonials({ testimonials }: UseCaseTestimonialsProps) {
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
   return (
     <div className="bg-gray-50 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -31,15 +40,17 @@ export function UseCaseTestimonials({ testimonials }: UseCaseTestimonialsProps) 
               <div key={index} className="flex flex-col justify-between bg-white p-8 shadow-lg ring-1 ring-gray-900/5 sm:p-10">
                 <div>
                   <div className="flex items-center gap-x-4">
-                    {testimonial.image && (
-                      <Image
-                        className="h-12 w-12 rounded-full bg-gray-50"
-                        src={testimonial.image}
-                        alt={testimonial.author}
-                        width={48}
-                        height={48}
-                      />
-                    )}
+                    <Avatar className="h-12 w-12">
+                      {testimonial.image ? (
+                        <AvatarImage
+                          src={testimonial.image}
+                          alt={testimonial.author}
+                        />
+                      ) : null}
+                      <AvatarFallback className="bg-gray-100 text-gray-900">
+                        {getInitials(testimonial.author)}
+                      </AvatarFallback>
+                    </Avatar>
                     <div>
                       <h3 className="text-lg font-semibold leading-6 text-gray-900">
                         {testimonial.author}
@@ -61,3 +72,5 @@ export function UseCaseTestimonials({ testimonials }: UseCaseTestimonialsProps) 
     </div>
   );
 }
+
+export default UseCaseTestimonials;
