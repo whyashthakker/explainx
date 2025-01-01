@@ -36,7 +36,7 @@ const navigation = {
     { name: "Contact", href: "/contact", target: "_blank" },
     { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
     { name: "FAQ", href: "/#faq" },
-    { name: "Docs", href: "https://docs.infloq.com/" },
+    // { name: "Docs", href: "https://docs.infloq.com/" },
   ],
   legal: [
     { name: "Privacy", href: "/privacy-policy" },

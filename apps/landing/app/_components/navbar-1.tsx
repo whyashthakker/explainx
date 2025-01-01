@@ -23,12 +23,12 @@ type NavigationItem = {
 const navigation: NavigationItem[] = [
   { 
     name: "Features",
-    href: "/features",
+    href: "/#features",
     hasDropdown: true,
     dropdownItems: [
-      { name: "Analytics Dashboard", href: "/features/analytics", description: "Track your campaign performance" },
-      { name: "Automation Tools", href: "/features/automation", description: "Streamline your workflow" },
-      { name: "Content Management", href: "/features/content", description: "Organize your content" }
+      { name: "Analytics Dashboard", href: "/#features", description: "Track your campaign performance" },
+      { name: "Automation Tools", href: "/#features", description: "Streamline your workflow" },
+      { name: "Content Management", href: "/#features", description: "Organize your content" }
     ]
   },
   { 
