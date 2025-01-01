@@ -1,4 +1,4 @@
-// Generated on 2025-01-01T08:21:49.891Z
+// Generated on 2025-01-01T08:33:35.209Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,187 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Programa de Influencers de Amazon: Una Guía Completa para 2025",
+    "file": "amazon-influencer",
+    "description": "Aprende todo sobre cómo convertirte en un influencer de Amazon, desde los requisitos de calificación hasta las estrategias de monetización y la construcción de tu escaparate exitoso.",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Amazon Influencer Programm: Ein umfassender Leitfaden für 2025",
+    "file": "amazon-influencer",
+    "description": "Erfahren Sie alles über das Amazon Influencer Programm, von Qualifikationsanforderungen bis hin zu Monetarisierungsstrategien und dem Aufbau einer erfolgreichen Storefront.",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/amazon-influencer",
+    "categories": [
+      "facebook",
+      "social-media"
+    ]
+  },
+  {
+    "title": "Programme d'Influenceurs Amazon : Un Guide Complet pour 2025",
+    "file": "amazon-influencer",
+    "description": "Découvrez tout ce qu'il faut savoir pour devenir un influenceur Amazon, des conditions requises aux stratégies de monétisation en passant par la création de votre vitrine.",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Programma Influencer Amazon: Una Guida Completa per il 2025",
+    "file": "amazon-influencer",
+    "description": "Scopri tutto su come diventare un influencer Amazon, dai requisiti di qualificazione alle strategie di monetizzazione e alla creazione della tua vetrina di successo.",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/amazon-influencer",
+    "categories": [
+      "ai-tools"
+    ]
+  },
+  {
+    "title": "अमेज़न इन्फ्लुएंसर प्रोग्राम: 2025 के लिए एक संपूर्ण गाइड",
+    "file": "amazon-influencer",
+    "description": "अमेज़न इन्फ्लुएंसर बनने के बारे में सब कुछ जानें, योग्यता आवश्यकताओं से लेकर मौद्रिकरण रणनीतियों और अपनी सफल स्टोरफ्रंट बनाने तक।",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "دليل شامل لبرنامج المؤثرين في أمازون 2025",
+    "file": "amazon-influencer",
+    "description": "تعرف على كل شيء عن كيفية أن تصبح مؤثراً في أمازون، من متطلبات التأهيل إلى استراتيجيات تحقيق الدخل وبناء واجهة متجرك الناجحة",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "ياش ثاكر",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "아마존 인플루언서 프로그램: 2025년 완벽 가이드",
+    "file": "amazon-influencer",
+    "description": "아마존 인플루언서가 되기 위한 모든 것을 알아보세요. 자격 요건부터 수익화 전략, 성공적인 스토어프론트 구축까지 상세히 설명합니다.",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Amazonインフルエンサープログラム：2025年完全ガイド",
+    "file": "amazon-influencer",
+    "description": "Amazonインフルエンサーになるための全てを学びましょう。資格要件からマネタイズ戦略、成功するストアフロントの構築まで詳しく解説します。",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Программа Amazon Influencer: Полное руководство на 2025 год",
+    "file": "amazon-influencer",
+    "description": "Узнайте все о том, как стать инфлюенсером Amazon: от требований к квалификации до стратегий монетизации и создания успешного магазина.",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Amazon Influencer Program: A Complete Guide for 2024",
+    "file": "amazon-influencer",
+    "description": "Learn everything about becoming an Amazon influencer, from qualification requirements to monetization strategies and building your successful storefront.",
+    "date": "January 1, 2025",
+    "datetime": "2025-01-01",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/amazon-influencer",
+    "categories": [
+      "social-media"
+    ]
+  },
   {
     "title": "Top 10 Influencer Marketing Platforms",
     "file": "top-10-influencer-marketing-platforms",
