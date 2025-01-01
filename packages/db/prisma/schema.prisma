@@ -16,7 +16,6 @@ model User {
   email         String    @unique
   emailVerified DateTime?
   image         String?
-  password      String?
   
   // Auth relations
   accounts      Account[]
@@ -82,12 +81,11 @@ model Session {
 }
 
 model VerificationToken {
-  id         String   @id @default(cuid())
-  email      String
-  token      String   @unique
+  identifier String
+  token      String
   expires    DateTime
-
-  @@unique([email, token])
+ 
+  @@id([identifier, token])
 }
 
 model Authenticator {

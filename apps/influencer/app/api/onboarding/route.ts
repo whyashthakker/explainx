@@ -22,6 +22,7 @@ export async function POST(req: Request) {
 
     const body = await req.json();
     const validatedData = profileSchema.parse(body);
+    console.log(session);
 
     // Get existing user
     const user = await prisma.user.findUnique({
