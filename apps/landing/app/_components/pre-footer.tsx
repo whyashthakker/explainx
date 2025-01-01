@@ -2,48 +2,43 @@ import Link from "next/link";
 
 const navigation = {
     main: [
-        { name: "LinkedIn Comment Generator", href: "/products/linkedin-comment-generator" },
-        { name: "Twitter / X Comment Generator", href: "/products/twitter-x-comment-generator" },
-        { name: "Facebook Comment Generator", href: "/products/facebook-comment-generator" },
-        { name: "Reddit Comment Generator", href: "/products/reddit-comment-generator" },
-        { name: "Product Hunt Comment Generator", href: "/products/product-hunt-comment-generator" },
-        { name: "YouTube Comment Generator", href: "/products/youtube-comment-generator" },
-        { name: "Instagram Comment Generator", href: "/products/instagram-comment-generator" },
         { name: "All Products", href: "/products" },
     ],
     tools: [
-      {name: "TikTok Comment Generator", href: "/tools/tiktok-comment-generator"},
-      {name: "Instagram Comment Generator", href: "/tools/instagram-comment-generator"},
-      {name: "YouTube Shorts Comment Generator", href: "/tools/youtube-shorts-comment-generator"},
+      {name: "Instagram Engagement Checker", href: "/tools/instagram-engagement-checker"},
+      {name: "Instagram Audit", href: "/tools/instagram-audit"},
+      {name: "Tiktok Audit", href: "/tools/tiktok-audit"},
       {name: "All Tools", href: "/tools"},
     ],
     comparisons: [
-      {name: "Olly vs Engage AI co", href: "/compare/engageai"},
-      {name: "Olly vs Replai", href: "/compare/replai"},
-      {name: "Olly vs Magic Reply", href: "/compare/magicreply"},
-      {name: "All Comparisons", href: "/compare"},
+      {name: "Infloq vs Upfluence", href: "/compare/upfluence"},
+      {name: "Infloq vs Creator.co", href: "/compare/creator-co"},
+      {name: "Infloq vs GRIN", href: "/compare/grin"},
+      {name: "Infloq vs Influencity", href: "/compare/influencity"},
+      {name: "Infloq vs IZEA", href: "/compare/izea"},
+      {name: "Infloq vs InsightIQ", href: "/compare/insightiq"},
+      {name: "Infloq vs Engage AI co", href: "/compare/engageai"},
+      {name: "Infloq vs Replai", href: "/compare/replai"},
+      {name: "Infloq vs Magic Reply", href: "/compare/magicreply"},
+      {name: "All Comparisons", href: "/compare"}
     ],
   support: [
     { name: "Pricing", href: "/#pricing" },
     { name: "Contact", href: "mailto:yash@infloq.com", target: "_blank" },
     { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
-    {name: "OpenAI Cost Calculator", href: "/openai-cost-calculator"},
   ],
   company: [
     { name: "Blog", href: "/blog" },
-    { name: "Affiliates", href: "https://olly-ai.lemonsqueezy.com/affiliates", target: "_blank" },
-    { name: "Twitter", href: "https://twitter.com/olly_social", target: "_blank" },
-    // { name: "GitHub", href: "/github", target: "_blank" },
+    { name: "Twitter", href: "https://twitter.com/infloq", target: "_blank" },
+    { name: "GitHub", href: "https://github.com/infloq", target: "_blank" },
     // { name: "Discord", href: "/discord", target: "_blank" },
     { name: "Pricing", href: "/#pricing" },
     { name: "Contact", href: "/contact", target: "_blank" },
     { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
     { name: "FAQ", href: "/#faq" },
     { name: "Docs", href: "https://docs.infloq.com/" },
-    // { name: "Who m", href: "https://goyashy.com", target: "_blank" },
   ],
   legal: [
-    { name: "How to Use?", href: "/activation-guide" },
     { name: "Privacy", href: "/privacy-policy" },
     { name: "Terms", href: "/terms" },
     { name: "Sitemap", href: "/sitemap.xml" },
@@ -51,7 +46,7 @@ const navigation = {
   social: [
     {
       name: "Twitter",
-      href: "https://twitter.com/olly_social",
+      href: "https://twitter.com/infloq",
       target: "_blank",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -61,7 +56,7 @@ const navigation = {
     },
     {
         name: "LinkedIn",
-        href: "https://www.linkedin.com/company/olly-social",
+        href: "https://www.linkedin.com/company/infloq",
         target: "_blank",
         icon: (props: any) => (
           <svg fill="currentColor" viewBox="0 0 192 192" {...props}>
@@ -71,7 +66,7 @@ const navigation = {
     },
     {
         name: "Instagram",
-        href: "https://www.instagram.com/infloq.com_app",
+        href: "https://www.instagram.com/infloq",
         target: "_blank",
         icon: (props: any) => (
             <svg fill="currentColor" viewBox="0 0 448 512" {...props}>
