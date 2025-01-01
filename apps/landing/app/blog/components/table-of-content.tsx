@@ -1,6 +1,6 @@
-// components/TableOfContents.tsx
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import clsx from 'clsx';
 
 type TOCLink = {
   text: string;
@@ -9,9 +9,8 @@ type TOCLink = {
 };
 
 export function TableOfContents({ links }: { links: TOCLink[] }) {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  // Filter out Related Posts and anything after it
   const filteredLinks = links.slice(0, links.findIndex(link => link.text.includes('Related Posts')));
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -26,31 +25,45 @@ export function TableOfContents({ links }: { links: TOCLink[] }) {
   };
 
   return (
-    <div className="border rounded-lg border-gray-200 mb-8">
+    <div className="mb-8 bg-gray-50/50 rounded-lg p-4">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between text-gray-900 hover:text-gray-600 transition-colors"
+        aria-expanded={isExpanded}
+        aria-controls="toc-list"
       >
-        <span className="text-lg font-medium text-gray-900">Table of Contents</span>
-        {isExpanded ? (
-          <ChevronDown className="h-5 w-5 text-gray-500" />
-        ) : (
-          <ChevronRight className="h-5 w-5 text-gray-500" />
-        )}
+        <div className="flex items-center space-x-2">
+          {isExpanded ? (
+            <ChevronDown className="h-4 w-4" />
+          ) : (
+            <ChevronRight className="h-4 w-4" />
+          )}
+          <span className="font-semibold">Table of Contents</span>
+        </div>
       </button>
       
       {isExpanded && (
-        <nav className="px-4 pb-4">
-          <ul className="space-y-2 list-none">
+        <nav className="mt-3" aria-label="Table of contents">
+          <ul id="toc-list" className="space-y-2 list-none">
             {filteredLinks.map((link) => (
               <li
                 key={link.id}
-                className={`${link.level === 2 ? '' : 'ml-4'}`}
+                className={clsx(
+                  'leading-normal',
+                  link.level === 2 ? 'ml-0' : 'ml-4'
+                )}
               >
                 <a
                   href={`#${link.id}`}
-                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, link.id)}
-                  className="text-gray-600 hover:text-gray-900 transition-colors block py-1"
+                  onClick={(e) => scrollToSection(e, link.id)}
+                  className={clsx(
+                    'block py-1 text-gray-600',
+                    'hover:text-gray-900 transition-colors',
+                    'no-underline relative',
+                    'after:absolute after:bottom-0 after:left-0 after:h-px',
+                    'after:w-0 hover:after:w-full after:transition-all',
+                    'after:bg-gray-300'
+                  )}
                 >
                   {link.text}
                 </a>

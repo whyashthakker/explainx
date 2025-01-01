@@ -7,8 +7,8 @@ const featuredTestimonial = {
     name: "AppSumo User",
     handle: "106812663271318157415",
     imageUrl:
-      "/tacos-appsumo-black.png",
-    logoUrl: "/tacos-appsumo-black.png",
+      "/images/blog/yt.jpg",
+    logoUrl: "/images/blog/yt.jpg",
   },
 };
 

@@ -21,12 +21,12 @@ interface Profile {
 const profiles: Profile[] = [
   {
     id: 1,
-    name: "Sarah Chen",
-    age: 28,
-    location: "San Francisco",
+    name: "Yash Thakker",
+    age: 30,
+    location: "India",
     bio: "Creative soul seeking adventure. Love hiking, photography, and trying new cuisines.",
     interests: ["Photography", "Hiking", "Cooking", "Travel"],
-    imageUrl: "/tacos-appsumo-black.png",
+    imageUrl: "/images/blog/yt.jpg",
     occupation: "UX Designer"
   },
   {
