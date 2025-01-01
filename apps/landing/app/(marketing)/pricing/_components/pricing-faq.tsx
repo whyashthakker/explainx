@@ -1,3 +1,5 @@
+//new comp
+
 import {
     Accordion,
     AccordionContent,
