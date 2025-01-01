@@ -1,4 +1,3 @@
-// app/(tools)/_components/layouts/ToolLayout.tsx
 import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@repo/ui/components/ui/tabs';
 import { Tool } from '../../../../types/tools';
