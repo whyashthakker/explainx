@@ -44,7 +44,9 @@ export default {
         };
       },
     }),
-    Resend,
+    Resend({
+      from: "yash@mail.infloq.com",
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
