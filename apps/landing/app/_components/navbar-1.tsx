@@ -53,14 +53,15 @@ const navigation: NavigationItem[] = [
     href: "/pricing",
     hasDropdown: false
   },
-  { 
+  {
     name: "Free tools",
     href: "/tools",
     hasDropdown: true,
     dropdownItems: [
-      { name: "Hashtag Generator", href: "/tools/hashtag-generator" },
-      { name: "Caption Writer", href: "/tools/caption-writer" },
-      { name: "Analytics Calculator", href: "/tools/analytics-calculator" }
+      { name: "Instagram Engagement Checker", href: "/tools/instagram-engagement-checker" },
+      { name: "Instagram Audit", href: "/tools/instagram-audit" },
+      { name: "Tiktok Audit", href: "/tools/tiktok-audit" },
+      { name: "All Tools", href: "/tools" }
     ]
   },
   { 

@@ -78,7 +78,7 @@ const MarketingPage = () => {
       <FeaturesCustomPanels />
       <FeaturesAutomation />
       <FeaturesCustomActions />
-      <CTA />
+      {/* <CTA /> */}
       <Suspense>
         <Pricing />
       </Suspense>
