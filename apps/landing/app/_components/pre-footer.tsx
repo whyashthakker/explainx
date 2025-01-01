@@ -30,8 +30,8 @@ const navigation = {
     { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
   ],
   company: [
-    { name: "About", href: "/team" },
-    { name: "Careers", href: "/team" },
+    { name: "About", href: "/about" },
+    { name: "Careers", href: "/careers" },
     { name: "Team", href: "/team" },
     { name: "Blog", href: "/blog" },
     { name: "Twitter", href: "https://twitter.com/infloq", target: "_blank" },
