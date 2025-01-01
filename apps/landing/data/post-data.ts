@@ -1,4 +1,4 @@
-// Generated on 2025-01-01T08:33:35.209Z
+// Generated on 2025-01-01T09:46:31.266Z
 interface Author {
   name: string;
   role: string;
