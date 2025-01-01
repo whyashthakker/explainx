@@ -7,19 +7,19 @@ import { JWT } from "next-auth/jwt";
 // Define custom types
 declare module "next-auth" {
   interface User {
-    userType?: "INFLUENCER";
+    userType?: "BRAND";
   }
 
   interface Session {
     user: {
-      userType: "INFLUENCER";
+      userType: "BRAND";
     } & DefaultSession["user"];
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
-    userType?: "INFLUENCER";
+    userType?: "BRAND";
   }
 }
 
@@ -34,7 +34,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           name: profile.name,
           email: profile.email,
           image: profile.picture,
-          userType: "INFLUENCER", // Assigning userType here
+          userType: "BRAND", // Assigning userType here
         };
       },
     }),

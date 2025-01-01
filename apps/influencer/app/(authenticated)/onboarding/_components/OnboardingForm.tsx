@@ -64,7 +64,7 @@ export function OnboardingForm() {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     setError("");
-
+    console.log("data", data);
     try {
       const response = await fetch("/api/onboarding", {
         method: "POST",
