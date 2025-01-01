@@ -19,21 +19,35 @@ type StructuredDataProps = {
   wordCount?: number;
 };
 
+function formatToISODate(dateString: string) {
+  // If the string is already in a parseable format like "YYYY-MM-DD",
+  // `new Date(dateString).toISOString()` should work fine.
+  return new Date(dateString).toISOString();
+}
+
 export function StructuredData(props: StructuredDataProps) {
+
+  const datePublishedISO = formatToISODate(props.datePublished);
+  const dateModifiedISO = formatToISODate(props.dateModified);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: props.headline,
     image: props.image.length ? props.image : undefined,
-    datePublished: props.datePublished,
-    dateModified: props.dateModified,
+    datePublished: datePublishedISO,
+    dateModified: dateModifiedISO,
     author: [
       {
         "@type": "Person",
-        name: props.authorName,
-        url: props.authorUrl,
-      },
-    ],
+        name: "Yash Thakker",
+        url: "https://goyashy.com",
+        sameAs: [
+          "https://www.x.com/goyashy",
+          "https://www.linkedin.com/in/goyashy/"
+        ]
+      }
+    ],    
     // Enhanced keywords handling
     keywords: props.categories?.join(', ') || props.keywords?.join(', '),
     articleSection: props.categories,
@@ -45,13 +59,11 @@ export function StructuredData(props: StructuredDataProps) {
     // Add publisher information
     publisher: {
       "@type": "Organization",
-      name: props.publisher?.name || "Goyashy",
-      ...(props.publisher?.logo && {
-        logo: {
-          "@type": "ImageObject",
-          url: props.publisher.logo
-        }
-      })
+      name: "AISOLO Technologies Pvt. Ltd. (Parent of infloq.com)",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://infloq.com/icons/infloq.png"
+      }
     },
     // Add language support
     inLanguage: props.language || 'en',
