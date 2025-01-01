@@ -42,7 +42,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
 
   // If user is not logged in, redirect to sign in
   if (!session) {
-    redirect(`/?invite=${token}`);
+    redirect(`/register/?invite=${token}`);
   }
 
   if (!data) {
@@ -145,3 +145,4 @@ export default async function InvitePage({ params }: InvitePageProps) {
     </main>
   );
 }
+

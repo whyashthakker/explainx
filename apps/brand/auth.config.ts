@@ -14,12 +14,12 @@ interface CustomCredentials {
 
 declare module "next-auth" {
   interface User {
-    userType?: "INFLUENCER";
+    userType?: "BRAND";
   }
   interface Session {
     user: {
       id: string;
-      userType: "INFLUENCER";
+      userType: "BRAND";
     } & DefaultSession["user"];
   }
 }
@@ -27,7 +27,7 @@ declare module "next-auth" {
 declare module "next-auth/jwt" {
   interface JWT {
     id?: string;
-    userType?: "INFLUENCER";
+    userType?: "BRAND";
   }
 }
 
@@ -40,7 +40,7 @@ export default {
           name: profile.name,
           email: profile.email,
           image: profile.picture,
-          userType: "INFLUENCER",
+          userType: "BRAND",
         };
       },
     }),
@@ -58,7 +58,7 @@ export default {
     async session({ session, token }) {
       if (token && session.user) {
         session.user.id = token.id as string;
-        session.user.userType = token.userType as "INFLUENCER";
+        session.user.userType = token.userType as "BRAND";
       }
       return session;
     },
