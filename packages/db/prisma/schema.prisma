@@ -16,7 +16,6 @@ model User {
   email         String    @unique
   emailVerified DateTime?
   image         String?
-  password      String?
   
   // Auth relations
   accounts      Account[]
@@ -83,9 +82,9 @@ model Session {
 
 model VerificationToken {
   identifier String
-  token      String   @unique
+  token      String
   expires    DateTime
-
+ 
   @@id([identifier, token])
 }
 
@@ -135,7 +134,6 @@ model Brand {
   // Relations
   campaigns   Campaign[]
   collaborations Collaboration[]
-  sentInvites   CollaborationInvite[]
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -186,7 +184,6 @@ model Influencer {
 
   // Relations
   collaborations Collaboration[]
-  recievedInvites   CollaborationInvite[]
 
   youtubeAccount YouTubeAccount?
 
@@ -295,22 +292,6 @@ enum CollaborationStatus {
   CANCELLED
 }
 
-
-model CollaborationInvite {
-  id            String    @id @default(cuid())
-  brandId       String
-  brand         Brand     @relation(fields: [brandId], references: [id])
-  influencerId  String
-  influencer    Influencer @relation(fields: [influencerId], references: [id])
-  
-  status        InviteStatus  @default(PENDING)
-  message       String?       @db.Text
-  
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  @@unique([brandId, influencerId])
-}
 
 model ChatRoom {
   id              String    @id @default(cuid())

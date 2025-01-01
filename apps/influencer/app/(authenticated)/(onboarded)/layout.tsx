@@ -15,6 +15,9 @@ export default async function DashboardLayoutWrapper({
   children,
 }: LayoutProps) {
   const session = await auth();
+
+  console.log("session for authenticated layout", JSON.stringify(session));
+
   if (!session?.user?.email) {
     redirect("/");
   }
