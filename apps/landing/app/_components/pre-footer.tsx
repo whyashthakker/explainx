@@ -2,7 +2,9 @@ import Link from "next/link";
 
 const navigation = {
     main: [
-        { name: "All Products", href: "/products" },
+      { name: "Influencer Marketing Platform", href: "/products/influencer-marketing-platform" },
+      { name: "Free Influencer Finder", href: "/products/free-influencer-finder" },
+      { name: "All Products", href: "/products" },
     ],
     tools: [
       {name: "Instagram Engagement Checker", href: "/tools/instagram-engagement-checker"},
@@ -28,6 +30,9 @@ const navigation = {
     { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
   ],
   company: [
+    { name: "About", href: "/team" },
+    { name: "Careers", href: "/team" },
+    { name: "Team", href: "/team" },
     { name: "Blog", href: "/blog" },
     { name: "Twitter", href: "https://twitter.com/infloq", target: "_blank" },
     { name: "GitHub", href: "https://github.com/infloq", target: "_blank" },

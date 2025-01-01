@@ -8,7 +8,7 @@
     <loc>https://www.infloq.com/contact</loc>
     <lastmod>2024-12-27</lastmod>
   </sitemap>
-    <sitemap>
+  <sitemap>
     <loc>https://www.infloq.com/demo</loc>
     <lastmod>2024-12-27</lastmod>
   </sitemap>
@@ -67,5 +67,21 @@
   <sitemap>
     <loc>https://www.infloq.com/comparison-sitemap.xml</loc>
     <lastmod>2025-01-01</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.infloq.com/tools-sitemap.xml</loc>
+    <lastmod>2025-01-01</lastmod>
+  </sitemap>
+    <sitemap>
+    <loc>https://www.infloq.com/about</loc>
+    <lastmod>2024-12-27</lastmod>
+  </sitemap>
+    <sitemap>
+    <loc>https://www.infloq.com/careers</loc>
+    <lastmod>2024-12-27</lastmod>
+  </sitemap>
+    <sitemap>
+    <loc>https://www.infloq.com/team</loc>
+    <lastmod>2024-12-27</lastmod>
   </sitemap>
 </sitemapindex>
