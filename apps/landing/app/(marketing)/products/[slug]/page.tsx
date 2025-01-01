@@ -12,9 +12,9 @@ import { TestimonialsDynamic } from "../_components/testimonial";
 import { FeaturesDynamic } from "../_components/features";
 import { UseCasesDynamic } from "../_components/use-cases";
 import { TargetAudienceDynamic } from "../_components/target-audience";
-import { Pricing } from "../../../_components/pricing-2";
 import { Testimonials } from "../../../_components/testimonials";
 import { productPageData } from "../../../../data/productPageData";
+import { Pricing } from "../../../_components/infloq-pricing";
 
 export async function generateStaticParams() {
   return productPageData.map((product) => ({

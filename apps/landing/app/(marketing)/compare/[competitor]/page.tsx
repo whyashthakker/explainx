@@ -5,10 +5,10 @@ import { ComparisonTableSkeleton } from '../_components/compare-skeleton';
 import { ComparisonTable } from '../_components/compare-table';
 import { Heading } from '../../../_components/heading';
 import { Testimonials } from '../../../_components/testimonials';
-import { Pricing } from '../../../_components/pricing-2';
 import FAQs from '../../../_components/faq-section';
 import { competitors } from '../../../../data/competitors';
 import { ReviewsSection } from '../../../_components/reviews/reviews-section';
+import { Pricing } from '../../../_components/infloq-pricing';
 
 interface PageProps {
   params: Promise<{

@@ -13,9 +13,9 @@ import {
   FeaturesUnsubscribe,
 } from "../_components/features";
 import { Heading } from "../_components/heading";
-import { Pricing } from "../_components/pricing-2";
 import { Testimonials } from "../_components/testimonials";
 import ProfileCarousel from "../_components/profile-carousel";
+import { Pricing } from "../_components/infloq-pricing";
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
