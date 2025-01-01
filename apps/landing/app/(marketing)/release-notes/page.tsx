@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: 'Infloq',
     images: [
       {
-        url: '/images/release-notes-og.png',
+        url: '/images/main/landing.png',
         width: 1200,
         height: 630,
         alt: 'Infloq Platform Updates',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Latest Updates from Infloq - Influencer Marketing Platform',
     description: 'Explore new features and improvements in Infloq\'s AI-powered influencer marketing platform.',
-    images: ['/images/release-notes-og.png'],
+    images: ['/images/main/landing-og.png'],
     site: '@infloq',
     creator: '@infloq'
   },

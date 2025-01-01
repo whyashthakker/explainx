@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: "/images/privacy-policy-og.png",
+        url: "/images/main/landing.png",
         width: 1200,
         height: 630,
         alt: 'Infloq Privacy Policy',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: 'Discover how Infloq safeguards your data while revolutionizing influencer marketing. Our privacy policy ensures transparent and secure data handling.',
     site: '@infloq',
     creator: '@infloq',
-    images: ["/images/privacy-policy-og.png"],
+    images: ["/images/main/landing.png"],
   },
   keywords: [
     'Infloq privacy policy',

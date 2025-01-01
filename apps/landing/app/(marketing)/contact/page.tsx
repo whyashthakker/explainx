@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Infloq",
     images: [
       {
-        url: "/images/contact-og.png",
+        url: "/images/main/landing.png",
         width: 1200,
         height: 630,
         alt: "Contact Infloq Support Team",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Get Support from Infloq - AI-Powered Influencer Marketing",
     description: "Connect with our support team for assistance with brand-creator collaborations, campaign management, and platform features.",
-    images: ["/images/contact-og.png"],
+    images: ["/images/main/landing.png"],
     site: "@infloq",
     creator: "@infloq"
   },

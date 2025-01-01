@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: UseCasePageProps): Promise<Me
       siteName: "Infloq",
       images: [
         {
-          url: `/images/use-cases/${slug}-og.png`,
+          url: `/images/main/landing-og.png`,
           width: 1200,
           height: 630,
           alt: title,
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: UseCasePageProps): Promise<Me
       card: "summary_large_image",
       title: `${title} - AI-Powered Influencer Marketing`,
       description,
-      images: [`/images/use-cases/${slug}-og.png`],
+      images: [`/images/main/landing-og.png`],
       site: "@infloq",
       creator: "@infloq"
     },

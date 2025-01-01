@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       type: 'website',
       images: [{
-        url: '/olly_home.png',
+        url: '/images/main/landing.png',
         width: 1200,
         height: 630,
         alt: `infloq.com vs ${competitor.name} comparison`
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
-      images: ['/olly_home.png']
+      images: ['/images/main/landing.png']
     },
     alternates: {
       canonical: `https://infloq.com/compare/${resolvedParams.competitor}`
@@ -70,7 +70,7 @@ export default async function ComparisonPage({ params }: PageProps) {
       <Heading
         title={`Infloq.com vs ${competitor.name}`}
         subtitle={`Compare features, pricing, and capabilities between Infloq.com and ${competitor.name}`}
-        image="/olly_home.png"
+        image="/images/main/landing.png"
       />
       
       <div className="container py-8">

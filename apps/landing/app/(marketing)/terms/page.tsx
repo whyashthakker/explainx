@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: "/images/terms-og.png",
+        url: "/images/main/landing-og.png",
         width: 1200,
         height: 630,
         alt: 'Infloq Terms of Service',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: 'Clear, comprehensive terms governing the use of Infloq\'s influencer marketing platform. Understanding your rights and responsibilities.',
     site: '@infloq',
     creator: '@infloq',
-    images: ["/images/terms-og.png"],
+    images: ["/images/main/landing-og.png"],
   },
   keywords: [
     'Infloq terms of service',
