@@ -31,16 +31,18 @@ const navigation: NavigationItem[] = [
       { name: "Content Management", href: "/#features", description: "Organize your content" }
     ]
   },
-  { 
+  {
     name: "Use Cases",
     href: "/use-cases",
     hasDropdown: true,
     dropdownItems: [
-      { name: "For Creators", href: "/use-cases/creators", description: "Grow your audience" },
-      { name: "For Brands", href: "/use-cases/brands", description: "Connect with creators" },
-      { name: "For Agencies", href: "/use-cases/agencies", description: "Manage multiple accounts" }
+      { name: "Drive E-commerce Sales", href: "/use-cases/drive-ecommerce-sales", description: "Boost your online sales" },
+      { name: "Run Affiliate Programs", href: "/use-cases/run-affiliate-programs", description: "Manage affiliate partnerships" },
+      { name: "Manage Client Campaigns", href: "/use-cases/manage-client-campaigns", description: "Streamline campaign management" },
+      { name: "For Creators", href: "/use-cases/for-creators", description: "Grow your influence" },
+      { name: "For Brands", href: "/use-cases/for-brands", description: "Connect with your audience" }
     ]
-  },
+  }
   // { 
   //   name: "Agency",
   //   href: "/agency",
