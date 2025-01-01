@@ -12,7 +12,7 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
-import { handleGoogleSignIn, handleEmailSignIn } from "../_actions/actions";
+import { handleGoogleSignIn, handleEmailSignIn } from "../_actions/action";
 
 const emailSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -25,7 +25,7 @@ type SearchParams = Promise<{
 
 type Params = Promise<{}>;
 
-export default function CreatorSignIn(props: {
+export default function BrandSignIn(props: {
   params: Params;
   searchParams: SearchParams;
 }) {
@@ -67,17 +67,17 @@ export default function CreatorSignIn(props: {
         {/* Logo & Header */}
         <div className="w-full max-w-md mb-8 text-center">
           <h1 className="text-[#2563eb] text-4xl font-bold mb-3">infloq</h1>
-          <p className="text-[#1e293b]/80 text-lg">Connect. Create. Earn.</p>
+          <p className="text-[#1e293b]/80 text-lg">Partner. Connect. Grow.</p>
         </div>
 
         {/* Main Card */}
         <Card className="w-full max-w-md bg-white/70 backdrop-blur-lg shadow-xl border-[#6366f1]/10">
           <CardHeader className="space-y-2 text-center">
             <CardTitle className="text-[#1e293b] text-2xl">
-              Sign in to Creator Portal
+              Sign in to Brand Portal
             </CardTitle>
             <CardDescription className="text-[#1e293b]/60 text-base">
-              Access the leading creator monetization platform
+              Access our network of top-tier creators
             </CardDescription>
           </CardHeader>
 
@@ -172,15 +172,15 @@ export default function CreatorSignIn(props: {
               <div className="py-6 space-y-3">
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Instant access to brand deals</span>
+                  <span>Access to 50K+ verified creators</span>
                 </div>
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Analytics and performance tracking</span>
+                  <span>Campaign performance analytics</span>
                 </div>
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Direct payments and fast withdrawals</span>
+                  <span>Streamlined creator collaboration</span>
                 </div>
               </div>
 
@@ -191,12 +191,12 @@ export default function CreatorSignIn(props: {
                   <div className="text-sm text-[#1e293b]/60">Creators</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#0ea5e9]">100+</div>
-                  <div className="text-sm text-[#1e293b]/60">Brands</div>
+                  <div className="text-2xl font-bold text-[#0ea5e9]">5M+</div>
+                  <div className="text-sm text-[#1e293b]/60">Reach</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#6366f1]">$2M+</div>
-                  <div className="text-sm text-[#1e293b]/60">Paid Out</div>
+                  <div className="text-2xl font-bold text-[#6366f1]">20+</div>
+                  <div className="text-sm text-[#1e293b]/60">Industries</div>
                 </div>
               </div>
 
@@ -206,7 +206,7 @@ export default function CreatorSignIn(props: {
                   variant="link"
                   className="text-[#2563eb] hover:text-[#2563eb]/80"
                 >
-                  New to Infloq? Create a creator account
+                  New to Infloq? Create a brand account
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
@@ -221,7 +221,7 @@ export default function CreatorSignIn(props: {
 
         <div className="mt-6 px-6 py-3 bg-[#22c55e]/10 rounded-full">
           <span className="text-[#22c55e] font-medium">
-            Average creator earnings: $2,500/month
+            Average campaign ROI: 300%+
           </span>
         </div>
       </div>
