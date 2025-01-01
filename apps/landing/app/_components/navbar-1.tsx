@@ -42,7 +42,7 @@ const navigation: NavigationItem[] = [
       { name: "For Creators", href: "/use-cases/for-creators", description: "Grow your influence" },
       { name: "For Brands", href: "/use-cases/for-brands", description: "Connect with your audience" }
     ]
-  }
+  },
   // { 
   //   name: "Agency",
   //   href: "/agency",
