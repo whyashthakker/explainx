@@ -70,7 +70,7 @@ export function FeaturesAutomation() {
       title="Intelligent Matchmaking 🛠️"
       subtitle="Data-driven influencer selection for maximum ROI"
       description="Our platform uses advanced analytics and AI to match brands with the perfect influencers based on real performance data."
-      image="/features/custom-models.png"
+      image="/features/data-driven-influencers.png"
       features={featuresPlatform}
     />
   );
@@ -104,7 +104,7 @@ export function FeaturesStats() {
       title="Real Results 🔥"
       subtitle="Performance Metrics That Matter"
       description="Get comprehensive insights into campaign performance, audience engagement, and conversion metrics to maximize your ROI."
-      image="/features/virality-score.png"
+      image="/features/performance-metrics-that-matter.png"
       features={featuresAnalytics}
     />
   );
@@ -138,7 +138,7 @@ export function FeaturesUnsubscribe() {
       title="For Influencers"
       subtitle="Grow Your Personal Brand"
       description="Connect with brands that value your authentic influence and get paid fairly for your impact."
-      image="/features/comment-generation.png"
+      image="/features/grow-personal-brand.png"
       features={featuresInfluencers}
     />
   );
@@ -172,7 +172,7 @@ export function FeaturesCustomPanels() {
       title="For Brands 💼"
       subtitle="Maximum ROI Guaranteed"
       description="Connect with verified influencers who can deliver real results for your brand. Pay only for actual performance."
-      image="/features/custom-buttons.png"
+      image="/features/maximum-roi-guaranteed.png"
       features={featuresBrands}
     />
   );
@@ -206,7 +206,7 @@ export function FeaturesAiPersonalities() {
       title="Quality Assured ✨"
       subtitle="Verified Influencers Only"
       description="Every influencer on Infloq.com goes through our thorough verification process to ensure quality and authenticity."
-      image="/features/ai-personalities-agencies.png"
+      image="/features/verified-creators-only.png"
       features={featuresVerification}
     />
   );
@@ -240,7 +240,7 @@ export function FeaturesCustomActions() {
       title="Seamless Integration 🔄"
       subtitle="Connect Your Analytics"
       description="Connect your social media accounts and analytics tools to showcase your true influence and track campaign performance."
-      image="/features/custom-actions.png"
+      image="/features/connect-your-analytics.png"
       features={featuresIntegration}
     />
   );

@@ -57,7 +57,7 @@ export default function CompareHome() {
     <div className="container space-y-12">
       <div className="relative w-full h-64 mb-12 rounded-xl overflow-hidden">
         <Image
-          src="/olly_home.png"
+          src="/images/main/landing.png"
           alt="infloq.com Platform"
           fill
           className="object-cover"
@@ -84,7 +84,7 @@ export default function CompareHome() {
                 </div>
                 <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src={'/olly_home.png'}
+                    src={'/images/main/landing.png'}
                     alt={`${competitor.name} interface`}
                     fill
                     className="object-cover"

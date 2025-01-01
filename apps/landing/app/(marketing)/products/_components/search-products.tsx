@@ -39,7 +39,7 @@ export default function SearchProducts({ products }: { products: Product[] }) {
             <Card className="h-full hover:shadow-lg transition-all duration-200">
               <div className="relative w-full h-40">
                 <Image
-                  src="/olly_home.png"
+                  src="/images/main/landing.png"
                   alt={product.title}
                   fill
                   className="object-cover rounded-t-lg"

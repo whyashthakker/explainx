@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Infloq",
     images: [
       {
-        url: "/images/enterprise-og.png",
+        url: "/images/main/landing.png",
         width: 1200,
         height: 630,
         alt: "Infloq Enterprise Solutions",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Scale Your Influencer Marketing with Infloq Enterprise",
     description: "Connect with our enterprise team to discover how Infloq's AI-powered platform can transform your influencer marketing strategy.",
-    images: ["/images/enterprise-og.png"],
+    images: ["/images/main/landing.png"],
     site: "@infloq",
     creator: "@infloq"
   },
