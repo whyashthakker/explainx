@@ -93,12 +93,30 @@ export async function POST(request: NextRequest) {
     });
 
     // Update user type
-    await prisma.user.update({
-      where: { id: user.id },
-      data: {
-        userType: "BRAND",
-      },
-    });
+    if (user && user.email) {
+      // Check if user exists and has email
+      //@ts-ignore
+      const nameFromEmail = user.email
+        .split("@")[0]
+        .split(/[._-]/)
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+        )
+        .join(" ");
+
+      await prisma.user.update({
+        where: { id: user.id },
+        data: {
+          name: nameFromEmail,
+          userType: "BRAND",
+        },
+      });
+    } else {
+      // Handle the case where user is undefined
+      console.error("User not found or email missing");
+      // You might want to throw an error or handle this case differently
+      throw new Error("Failed to update user: User not found");
+    }
 
     return NextResponse.json({
       success: true,
