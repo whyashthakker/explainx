@@ -51,7 +51,7 @@ const withMDX = nextMDX({
     options: {
         // Use string format for plugins
         remarkPlugins: [['remark-gfm']],
-        rehypePlugins: [['rehype-prism-plus']],
+        rehypePlugins: [['rehype-prism-plus'], ['rehype-slug']], // Added rehype-slug as string
         providerImportSource: "@mdx-js/react"
     },
 })

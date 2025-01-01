@@ -41,11 +41,11 @@ const navigation: NavigationItem[] = [
       { name: "For Agencies", href: "/use-cases/agencies", description: "Manage multiple accounts" }
     ]
   },
-  { 
-    name: "Agency",
-    href: "/agency",
-    hasDropdown: false
-  },
+  // { 
+  //   name: "Agency",
+  //   href: "/agency",
+  //   hasDropdown: false
+  // },
   { 
     name: "Pricing",
     href: "/pricing",
@@ -67,10 +67,9 @@ const navigation: NavigationItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: "Blog", href: "/blog" },
-      { name: "Case Studies", href: "/case-studies" },
-      { name: "Help Center", href: "/help" },
-      { name: "Docs", href: "https://docs.infloq.com/", target: "_blank" },
-      { name: "Affiliates", href: "https://infloq.com/affiliates", target: "_blank" }
+      // { name: "Case Studies", href: "/case-studies" },
+      { name: "Help Center", href: "/contact" },
+      { name: "Docs", href: "/#faqs", target: "_blank" },
     ]
   }
 ];
