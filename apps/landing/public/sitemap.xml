@@ -1,63 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://www.infloq.com/</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/contact</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/compare</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/contact-sales</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/terms</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/products</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/release-notes</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/privacy-policy</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.infloq.com/blog</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://brand.infloq.com/</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://creator.infloq.com/</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
-  <loc>https://www.infloq.com/demo</loc>
-    <lastmod>2024-12-27</lastmod>
-  </sitemap>
-  <sitemap>
     <loc>https://www.infloq.com/blog-sitemap.xml</loc>
-    <lastmod>2024-12-27</lastmod>
+    <lastmod>2025-01-01</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://www.infloq.com/product-sitemap.xml</loc>
-    <lastmod>2024-12-27</lastmod>
+    <lastmod>2025-01-01</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://www.infloq.com/comparison-sitemap.xml</loc>
-    <lastmod>2024-12-27</lastmod>
+    <lastmod>2025-01-01</lastmod>
   </sitemap>
 </sitemapindex>

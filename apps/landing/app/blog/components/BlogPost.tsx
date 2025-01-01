@@ -3,9 +3,9 @@ import { BasicLayout } from "./basic-layout";
 import { Prose } from './Prose';
 
 // Dynamically import EmailPopup with ssr disabled
-const EmailPopup = dynamic(() => import('./blog-visitor-email'), {
-  ssr: false,
-});
+// const EmailPopup = dynamic(() => import('./blog-visitor-email'), {
+//   ssr: false,
+// });
 
 export function BlogPost(props: {
   date: string;
@@ -35,7 +35,7 @@ export function BlogPost(props: {
             </div> */}
 
             {/* Email Popup */}
-            <EmailPopup currentPath={generateBlogPath(title)} />
+            {/* <EmailPopup currentPath={generateBlogPath(title)} /> */}
 
             <div className="mt-12">
               <Prose>{content}</Prose>
