@@ -57,7 +57,7 @@ export default async function SignIn(props: {
   return (
     <main className="min-h-screen w-full bg-gradient-to-b from-[#f8fafc] to-white">
       Landing will be here , in the meantime head over to the{" "}
-      <Link href="/sign-in">sign in page</Link>
+      <Link href="/register">sign in page</Link>
     </main>
   );
 }
