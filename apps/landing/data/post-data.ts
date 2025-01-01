@@ -1,4 +1,4 @@
-// Generated on 2024-12-27T11:05:52.286Z
+// Generated on 2025-01-01T06:11:41.510Z
 interface Author {
   name: string;
   role: string;
@@ -29,7 +29,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "de",
     "url": "https://www.infloq.com/blog/post/de/top-10-influencer-marketing-platforms-de",
@@ -49,7 +49,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "es",
     "url": "https://www.infloq.com/blog/post/es/top-10-influencer-marketing-platforms-es",
@@ -67,7 +67,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "fr",
     "url": "https://www.infloq.com/blog/post/fr/top-10-influencer-marketing-platforms-fr",
@@ -85,7 +85,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "it",
     "url": "https://www.infloq.com/blog/post/it/top-10-influencer-marketing-platforms-it",
@@ -104,7 +104,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "hi",
     "url": "https://www.infloq.com/blog/post/hi/top-10-influencer-marketing-platforms-hi",
@@ -122,7 +122,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/top-10-influencer-marketing-platforms-ar",
@@ -142,7 +142,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "zh-cn",
     "url": "https://www.infloq.com/blog/post/zh-cn/top-10-influencer-marketing-platforms-zh-cn",
@@ -160,7 +160,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "ko",
     "url": "https://www.infloq.com/blog/post/ko/top-10-influencer-marketing-platforms-ko",
@@ -178,7 +178,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "ja",
     "url": "https://www.infloq.com/blog/post/ja/top-10-influencer-marketing-platforms-ja",
@@ -196,7 +196,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "nl",
     "url": "https://www.infloq.com/blog/post/nl/top-10-influencer-marketing-platforms-nl",
@@ -214,7 +214,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "ru",
     "url": "https://www.infloq.com/blog/post/ru/top-10-influencer-marketing-platforms-ru",
@@ -232,7 +232,7 @@ const postData: Post[] = [
       "name": "Yash Thakker",
       "role": "Founder",
       "href": "#",
-      "imageUrl": "/images/blog/author/gt.jpeg"
+      "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "en",
     "url": "https://www.infloq.com/blog/post/top-10-influencer-marketing-platforms-in-india",

@@ -49,10 +49,12 @@ const nextConfig = {
 const withMDX = nextMDX({
     extension: /\.mdx?$/,
     options: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypePrism],
+        // Use string format for plugins
+        remarkPlugins: [['remark-gfm']],
+        rehypePlugins: [['rehype-prism-plus']],
         providerImportSource: "@mdx-js/react"
     },
 })
+
 
 export default withMDX(nextConfig)
