@@ -306,3 +306,8 @@ export type PrismaUserWithInfluencer = PrismaUser & {
       })
     | null;
 };
+
+export interface AuthSearchParams {
+  invite?: string;
+  email?: string;
+}
