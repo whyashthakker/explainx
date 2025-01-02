@@ -1,9 +1,14 @@
+// lib/types.ts
+import { Platform as PrismaPlatform } from "@prisma/client";
+export { PrismaPlatform as Platform };
+
 // app/api/onboarding/route.ts
 import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 import { z } from "zod";
-import { Platform } from "../../../lib/types";
+import { Platform } from "@prisma/client";
+import { UserType, ActivePortal } from "@prisma/client";
 
 const profileSchema = z.object({
   name: z.string().min(2),
@@ -12,66 +17,89 @@ const profileSchema = z.object({
   platforms: z.array(z.nativeEnum(Platform)),
 });
 
+type ProfileData = z.infer<typeof profileSchema>;
+
 export async function POST(req: Request) {
   try {
     const session = await auth();
-
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const body = await req.json();
     const validatedData = profileSchema.parse(body);
-    console.log(session);
 
-    // Get existing user
+    // Get existing user with all profiles
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
-      include: { influencer: true },
+      include: {
+        influencers: true,
+        brands: true,
+      },
     });
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Create or update influencer profile
-    const influencer = await prisma.influencer.upsert({
-      where: {
-        userId: user.id,
-      },
-      create: {
-        userId: user.id,
-        name: validatedData.name,
-        bio: validatedData.bio,
-        category: validatedData.category,
-        platforms: validatedData.platforms,
-        followers: 0, // This will be updated when social accounts are connected
-      },
-      update: {
-        name: validatedData.name,
-        bio: validatedData.bio,
-        category: validatedData.category,
-        platforms: validatedData.platforms,
-      },
-    });
+    // Start a transaction to handle all updates atomically
+    const result = await prisma.$transaction(async (prisma) => {
+      // Create influencer profile
+      const influencer = await prisma.influencer.create({
+        data: {
+          userId: user.id,
+          name: validatedData.name,
+          bio: validatedData.bio,
+          category: validatedData.category,
+          platforms: validatedData.platforms,
+          followers: 0,
+        },
+      });
 
-    // Update user type if not already set
-    if (!user.userType) {
+      // Determine user type based on existing profiles
+      let userType: UserType = UserType.INFLUENCER;
+      if (user.brands && user.brands.length > 0) {
+        userType = UserType.BOTH;
+      }
+
+      // Update user with name, type, and portal
       await prisma.user.update({
         where: { id: user.id },
-        data: { name: validatedData.name, userType: "INFLUENCER" },
+        data: {
+          name: validatedData.name,
+          userType: userType,
+          activePortal: ActivePortal.INFLUENCER,
+        },
       });
-    }
 
-    return NextResponse.json({ success: true, data: influencer });
+      return influencer;
+    });
+
+    return NextResponse.json({
+      success: true,
+      data: result,
+    });
   } catch (error) {
     console.error("Profile creation error:", error);
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid data", details: error.errors },
+        {
+          error: "Invalid data",
+          details: error.errors,
+        },
         { status: 400 },
       );
     }
+
+    // Handle unique constraint violations
+    if (error instanceof Error && error.message.includes("Unique constraint")) {
+      return NextResponse.json(
+        { error: "Profile already exists" },
+        { status: 409 },
+      );
+    }
+
     return NextResponse.json(
       { error: "Failed to save profile" },
       { status: 500 },

@@ -17,7 +17,7 @@ export default async function DashboardPage() {
       email: session.user.email,
     },
     include: {
-      influencer: {
+      influencers: {
         include: {
           user: {
             select: {
