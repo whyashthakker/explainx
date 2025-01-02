@@ -46,6 +46,7 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useToast } from "@repo/ui/hooks/use-toast";
 
 interface ProfileData {
   name: string;
@@ -130,9 +131,8 @@ type FormValues = z.infer<typeof formSchema>;
 export default function SocialConnect() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [connectedPlatforms, setConnectedPlatforms] = useState<Set<Platform>>(
-    new Set(),
-  );
+  const { toast } = useToast();
+  const [connectedPlatforms, setConnectedPlatforms] = useState<Set<Platform>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -234,16 +234,61 @@ export default function SocialConnect() {
 
   const handleInstagramAuth = async (code: string) => {
     try {
-      const response = await fetch(`/api/auth/instagram?code=${code}`);
-      const data = await response.json();
-
-      if (data.success) {
-        handleConnect(Platform.INSTAGRAM);
+      const response = await fetch(`/api/auth/instagram/callback?code=${code}`);
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to connect Instagram');
       }
+
+      setConnectedPlatforms((prev) => new Set([...prev, Platform.INSTAGRAM]));
+      
+      toast({
+        title: "Successfully connected",
+        description: "Your Instagram account has been connected successfully!",
+        variant: "default",
+      });
     } catch (error) {
       console.error("Instagram auth error:", error);
+      toast({
+        title: "Connection Failed",
+        description: error instanceof Error ? error.message : "Failed to connect Instagram account",
+        variant: "destructive",
+      });
     }
   };
+
+  useEffect(() => {
+    const code = searchParams.get("code");
+    const state = searchParams.get("state");
+    const error = searchParams.get("error");
+    const success = searchParams.get("success");
+
+    if (error) {
+      toast({
+        title: "Connection Failed",
+        description: "Failed to connect your Instagram account. Please try again.",
+        variant: "destructive",
+      });
+    }
+
+    if (success === 'instagram_connected') {
+      toast({
+        title: "Successfully Connected",
+        description: "Your Instagram account has been connected successfully!",
+        variant: "default",
+      });
+      setConnectedPlatforms(prev => new Set([...prev, Platform.INSTAGRAM]));
+    }
+
+    if (code) {
+      if (state === "instagram") {
+        handleInstagramAuth(code);
+      } else if (state === "youtube") {
+        handleYouTubeAuth(code);
+      }
+    }
+  }, [searchParams]);
 
   const ytLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams(
     {
@@ -260,22 +305,27 @@ export default function SocialConnect() {
 
   const instaLoginUrl = process.env.NEXT_PUBLIC_INSTAGRAM_EMBEDED_URL;
 
-  const handleConnect = (platform: Platform) => {
+  const handleConnect = async (platform: Platform) => {
     if (platform === Platform.INSTAGRAM) {
-      window.location.href = instaLoginUrl!;
+      // Get Instagram auth URL from backend
+      try {
+        const response = await fetch('/api/auth/instagram');
+        const data = await response.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('Failed to get Instagram authorization URL');
+        }
+      } catch (error) {
+        console.error('Error initiating Instagram auth:', error);
+        toast({
+          title: "Connection Failed",
+          description: "Failed to initiate Instagram connection. Please try again.",
+          variant: "destructive",
+        });
+      }
       return;
     }
-
-    if (platform === Platform.YOUTUBE) {
-      window.location.href = ytLoginUrl;
-      return;
-    }
-
-    setConnectedPlatforms((prev) => {
-      const newSet = new Set(prev);
-      newSet.add(platform);
-      return newSet;
-    });
   };
 
   const calculateCompletionPercentage = () => {
