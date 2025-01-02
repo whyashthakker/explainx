@@ -698,6 +698,1247 @@ export const tools: Tool[] = [
       price: '$39/month'
     }
   },
+  {
+    id: 'twitter-creator-finder',
+    name: 'Twitter/X Creator Discovery Tool',
+    description: 'Find and analyze Twitter/X creators in any location. Get detailed insights into their audience, engagement, and content performance to make data-driven decisions for your influencer marketing campaigns.',
+    platform: 'Twitter-X',
+    category: 'discovery',
+    component: 'TwitterCreatorFinder',
+    image: '/tools/twitter-creator-finder.jpg',
+    ctaText: 'Find Creators',
+    features: [
+      'Location-based creator search',
+      'Detailed engagement metrics',
+      'Category filtering',
+      'Audience demographics analysis',
+      'Real-time creator data',
+      'Export capabilities',
+      'Custom search filters',
+      'Engagement rate calculation'
+    ],
+    keyFeatures: [
+      {
+        title: 'Location-Based Search',
+        description: 'Find creators in specific countries, cities, or regions to target your local audience effectively.',
+        icon: 'location'
+      },
+      {
+        title: 'Category Filtering',
+        description: 'Filter creators by industry categories to find the perfect match for your brand.',
+        icon: 'filter'
+      },
+      {
+        title: 'Engagement Analysis',
+        description: 'Get detailed engagement metrics to evaluate creator performance and audience interaction.',
+        icon: 'chart'
+      },
+      {
+        title: 'Quick Results',
+        description: 'Instant access to creator profiles and metrics without complex setup.',
+        icon: 'speed'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Brands',
+        description: 'Discover and evaluate potential brand ambassadors in your target market',
+        examples: [
+          'Find local creators for regional campaigns',
+          'Evaluate creator engagement rates',
+          'Analyze audience demographics',
+          'Monitor brand mentions and reach'
+        ]
+      },
+      {
+        title: 'For Agencies',
+        description: 'Streamline your influencer discovery process for client campaigns',
+        examples: [
+          'Build location-specific creator lists',
+          'Compare creator performance metrics',
+          'Track campaign results',
+          'Generate client reports'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Marketing Managers',
+      'Digital Agencies',
+      'Brand Managers',
+      'PR Professionals',
+      'Social Media Managers',
+      'Event Organizers'
+    ],
+    benefits: [
+      'No account required',
+      'Instant creator discovery',
+      'Location-specific results',
+      'Category-based filtering',
+      'Engagement metrics'
+    ],
+    faq: [
+      {
+        question: 'How accurate is the location data?',
+        answer: 'Our tool uses Twitter/X API data combined with advanced algorithms to verify creator locations based on their profile information and posting patterns.'
+      },
+      {
+        question: 'How often is the creator database updated?',
+        answer: 'Our creator database is updated daily to ensure you have access to the most current information and metrics.'
+      },
+      {
+        question: 'Can I search multiple locations at once?',
+        answer: 'Currently, you can search one location at a time, but you can quickly perform multiple searches and compare results.'
+      },
+      {
+        question: 'What metrics are included in the results?',
+        answer: 'Results include follower count, engagement rate, posting frequency, audience demographics, and top content categories.'
+      }
+    ],
+    pricing: {
+      free: [
+        'Basic location search',
+        'Limited results per search',
+        'Basic metrics',
+        'Standard support'
+      ],
+      pro: [
+        'Advanced location filtering',
+        'Unlimited searches',
+        'Detailed analytics',
+        'Export capabilities',
+        'Priority support',
+        'Custom reports'
+      ],
+      price: '$39/month'
+    }
+  },
+  {
+    id: 'pinterest-audit',
+    name: 'Pinterest Audit Tool',
+    description: 'Revolutionize your Pinterest strategy with our comprehensive Pinterest Audit Tool. Get quick, precise profile analysis with no signup required - perfect for marketers and influencers seeking to enhance their Pinterest presence.',
+    platform: 'Pinterest',
+    category: 'audit',
+    component: 'PinterestAudit',
+    image: '/tools/pinterest-audit.jpg',
+    ctaText: 'Analyze Profile',
+    features: [
+      'Quick profile analysis',
+      'Engagement rate calculation',
+      'Board and pin metrics',
+      'Monthly view tracking',
+      'Repin analysis',
+      'Performance insights',
+      'Growth tracking',
+      'Content performance metrics'
+    ],
+    keyFeatures: [
+      {
+        title: 'Comprehensive Analytics',
+        description: 'Get detailed insights into your Pinterest profile performance including followers, engagement, and repins.',
+        icon: 'analytics'
+      },
+      {
+        title: 'Monthly Views Tracking',
+        description: 'Monitor your content reach and visibility with accurate monthly view statistics.',
+        icon: 'eye'
+      },
+      {
+        title: 'Content Performance',
+        description: 'Analyze pin and board performance to optimize your content strategy.',
+        icon: 'chart'
+      },
+      {
+        title: 'Instant Results',
+        description: 'Get immediate access to your Pinterest metrics without complex setup.',
+        icon: 'speed'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Brands',
+        description: 'Perfect for evaluating and improving your Pinterest marketing strategy',
+        examples: [
+          'Track engagement metrics over time',
+          'Analyze content performance',
+          'Monitor audience growth',
+          'Measure campaign success'
+        ]
+      },
+      {
+        title: 'For Creators',
+        description: 'Optimize your profile and grow your Pinterest presence',
+        examples: [
+          'Track pin performance',
+          'Monitor board engagement',
+          'Analyze growth trends',
+          'Optimize content strategy'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Digital Marketers',
+      'Content Creators',
+      'Social Media Managers',
+      'E-commerce Businesses',
+      'Bloggers',
+      'Brands'
+    ],
+    benefits: [
+      'No signup required',
+      'Instant analytics access',
+      'Comprehensive metrics',
+      'Real-time data',
+      'Performance tracking'
+    ],
+    faq: [
+      {
+        question: 'How accurate is the audit tool?',
+        answer: 'Our tool utilizes Pinterest\'s public data combined with proprietary analytics to provide accurate insights. The percentages displayed are estimates based on our extensive database.'
+      },
+      {
+        question: 'How often should I audit my profile?',
+        answer: 'We recommend conducting monthly audits to track progress effectively and identify trends. Additional audits are beneficial when testing new content strategies.'
+      },
+      {
+        question: 'What metrics are included in the audit?',
+        answer: 'The audit provides comprehensive metrics including follower count, engagement rate, average repins, board count, total pins, and monthly views.'
+      },
+      {
+        question: 'Is the tool user-friendly?',
+        answer: 'Yes, our tool is designed with an intuitive interface that makes it accessible for users of all experience levels. Simply enter your Pinterest username to get started.'
+      }
+    ],
+    pricing: {
+      free: [
+        'Basic profile analysis',
+        'Essential metrics',
+        'Standard support',
+        'Monthly reports'
+      ],
+      pro: [
+        'Advanced analytics',
+        'Historical data',
+        'Custom reporting',
+        'Priority support',
+        'API access',
+        'Competitor analysis'
+      ],
+      price: '$29/month'
+    }
+  },
+  {
+    id: 'fba-calculator',
+    name: 'FBA Calculator',
+    description: 'Calculate your Amazon FBA fees accurately with our comprehensive FBA Calculator. Get instant estimates for fulfillment, storage, and referral fees to optimize your Amazon business profitability.',
+    platform: 'General',
+    category: 'calculator',
+    component: 'FBACalculator',
+    image: '/tools/fba-calculator.jpg',
+    ctaText: 'Calculate Fees',
+    features: [
+      'Comprehensive cost analysis',
+      'Real-time fee calculation',
+      'Accurate dimensional weight calculation',
+      'Storage fee estimation',
+      'Referral fee calculation',
+      'Total cost breakdown',
+      'User-friendly interface',
+      'Mobile-friendly design'
+    ],
+    keyFeatures: [
+      {
+        title: 'Instant Calculations',
+        description: 'Get immediate fee estimates as you input your product dimensions and weight.',
+        icon: 'calculator'
+      },
+      {
+        title: 'Complete Fee Breakdown',
+        description: 'View detailed breakdowns of fulfillment, storage, and referral fees.',
+        icon: 'list'
+      },
+      {
+        title: 'Accurate Estimates',
+        description: 'Uses current Amazon fee structures for precise calculations.',
+        icon: 'check'
+      },
+      {
+        title: 'Easy to Use',
+        description: 'Simple interface requiring only basic product information.',
+        icon: 'user'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Sellers',
+        description: 'Optimize your product pricing and profitability',
+        examples: [
+          'Calculate fees before listing products',
+          'Determine profitable price points',
+          'Estimate storage costs',
+          'Plan inventory expenses'
+        ]
+      },
+      {
+        title: 'For Business Planning',
+        description: 'Make informed decisions about your Amazon business',
+        examples: [
+          'Compare product profitability',
+          'Budget for FBA costs',
+          'Analyze fee impacts',
+          'Plan pricing strategies'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Amazon Sellers',
+      'E-commerce Businesses',
+      'Product Manufacturers',
+      'Retail Arbitrage Sellers',
+      'Private Label Sellers',
+      'Business Planners'
+    ],
+    benefits: [
+      'No registration required',
+      'Instant calculations',
+      'Accurate fee estimates',
+      'Comprehensive cost analysis',
+      'Mobile-friendly interface'
+    ],
+    faq: [
+      {
+        question: 'What is an FBA Calculator?',
+        answer: 'An FBA Calculator is a tool that helps Amazon sellers estimate the fees associated with using Fulfillment by Amazon (FBA) services. It calculates fulfillment fees, storage fees, and referral fees based on product dimensions and weight.'
+      },
+      {
+        question: 'How accurate is the FBA Calculator?',
+        answer: 'Our calculator uses current Amazon fee structures to provide accurate estimates. However, actual fees may vary based on factors such as seasonal storage rates and product category-specific referral fees.'
+      },
+      {
+        question: 'Can I use the FBA Calculator for products sold outside North America?',
+        answer: 'Currently, our calculator is optimized for the North American market. Fee structures may vary in other regions.'
+      },
+      {
+        question: 'How often are the fees updated in the calculator?',
+        answer: 'We regularly update our calculator to reflect Amazon\'s current fee structure. However, it\'s recommended to verify final fees on Amazon Seller Central.'
+      }
+    ]
+  },
+  {
+    id: 'youtube-audit',
+    name: 'YouTube Audit Tool',
+    description: 'Revolutionize your YouTube strategy with our comprehensive YouTube Audit Tool. Get quick, precise profile analysis with no signup required - perfect for marketers and influencers seeking to enhance their YouTube presence.',
+    platform: 'YouTube',
+    category: 'audit',
+    component: 'YouTubeAudit',
+    image: '/tools/youtube-audit.jpg',
+    ctaText: 'Analyze Profile',
+    features: [
+      'Quick profile analysis',
+      'Subscriber count tracking',
+      'Engagement rate calculation',
+      'View count metrics',
+      'Average performance stats',
+      'Content analysis',
+      'Growth tracking',
+      'Audience insights'
+    ],
+    keyFeatures: [
+      {
+        title: 'Comprehensive Analytics',
+        description: 'Get detailed insights into your YouTube channel performance including subscribers, views, and engagement.',
+        icon: 'analytics'
+      },
+      {
+        title: 'Engagement Tracking',
+        description: 'Monitor likes, comments, and overall engagement rates to optimize your content strategy.',
+        icon: 'chart'
+      },
+      {
+        title: 'Performance Metrics',
+        description: 'Track average views, likes, and comments to understand your content\'s impact.',
+        icon: 'graph'
+      },
+      {
+        title: 'Quick Results',
+        description: 'Get instant access to your channel metrics without complex setup.',
+        icon: 'speed'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Content Creators',
+        description: 'Optimize your content strategy and grow your channel',
+        examples: [
+          'Track channel growth metrics',
+          'Analyze video performance',
+          'Monitor engagement trends',
+          'Identify successful content'
+        ]
+      },
+      {
+        title: 'For Brands',
+        description: 'Evaluate potential partnerships and monitor campaign success',
+        examples: [
+          'Assess creator audiences',
+          'Measure campaign impact',
+          'Track promotional content',
+          'Analyze collaboration ROI'
+        ]
+      }
+    ],
+    targetAudience: [
+      'YouTube Content Creators',
+      'Digital Marketers',
+      'Brand Managers',
+      'Influencer Managers',
+      'Social Media Agencies',
+      'Content Strategists'
+    ],
+    benefits: [
+      'No registration required',
+      'Instant analytics access',
+      'Comprehensive metrics',
+      'Real-time data',
+      'Performance tracking'
+    ],
+    faq: [
+      {
+        question: 'What does the YouTube audit tool analyze?',
+        answer: 'Our tool analyzes key channel metrics including subscriber count, total views, engagement rate, average views per video, likes, comments, and overall channel growth trends.'
+      },
+      {
+        question: 'How can this tool help YouTube influencers?',
+        answer: 'It provides valuable insights to help creators understand their channel performance, identify successful content strategies, and make data-driven decisions for growth.'
+      },
+      {
+        question: 'How accurate are the metrics?',
+        answer: 'Our tool uses YouTube\'s public data combined with proprietary analytics to provide accurate insights. The percentages displayed are estimates based on our extensive database.'
+      },
+      {
+        question: 'Is the tool user-friendly?',
+        answer: 'Yes, our tool features an intuitive interface that makes it easy to get instant channel insights. Simply enter your YouTube username to begin.'
+      }
+    ],
+    pricing: {
+      free: [
+        'Basic channel analysis',
+        'Essential metrics',
+        'Standard support',
+        'Real-time results'
+      ],
+      pro: [
+        'Advanced analytics',
+        'Historical data',
+        'Custom reporting',
+        'API access',
+        'Priority support',
+        'Competitor analysis'
+      ],
+      price: '$29/month'
+    }
+  },
+  {
+    id: 'twitch-audit',
+    name: 'Twitch Audit Tool',
+    description: 'Revolutionize your Twitch strategy with our comprehensive Twitch Audit Tool. Get quick, precise profile analysis with no signup required - perfect for streamers and marketers seeking to enhance their Twitch presence.',
+    platform: 'Twitch',
+    category: 'audit',
+    component: 'TwitchAudit',
+    image: '/tools/twitch-audit.jpg',
+    ctaText: 'Analyze Profile',
+    features: [
+      'Follower analytics',
+      'Viewer metrics tracking',
+      'Engagement analysis',
+      'Audience demographics',
+      'Stream performance stats',
+      'Channel authenticity score',
+      'Growth tracking',
+      'Audience insights'
+    ],
+    keyFeatures: [
+      {
+        title: 'Comprehensive Analytics',
+        description: 'Get detailed insights into your Twitch channel performance including followers, views, and engagement.',
+        icon: 'analytics'
+      },
+      {
+        title: 'Audience Demographics',
+        description: 'Understand your viewer base with detailed demographic breakdowns.',
+        icon: 'users'
+      },
+      {
+        title: 'Stream Performance',
+        description: 'Track average viewers, peak viewership, and stream time metrics.',
+        icon: 'chart'
+      },
+      {
+        title: 'Channel Health',
+        description: 'Monitor authenticity scores and subscriber growth.',
+        icon: 'shield'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Streamers',
+        description: 'Optimize your streaming strategy and grow your channel',
+        examples: [
+          'Track channel growth metrics',
+          'Analyze viewer engagement',
+          'Monitor stream performance',
+          'Understand audience demographics'
+        ]
+      },
+      {
+        title: 'For Brands',
+        description: 'Evaluate potential partnerships and monitor campaign success',
+        examples: [
+          'Verify streamer authenticity',
+          'Assess audience reach',
+          'Monitor campaign metrics',
+          'Track sponsorship ROI'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Twitch Streamers',
+      'Content Creators',
+      'Gaming Brands',
+      'Marketing Agencies',
+      'Esports Organizations',
+      'Stream Managers'
+    ],
+    benefits: [
+      'No signup required',
+      'Instant analytics access',
+      'Comprehensive metrics',
+      'Real-time data',
+      'Performance tracking'
+    ],
+    faq: [
+      {
+        question: 'Is the Twitch audit tool really free?',
+        answer: 'Yes, our basic Twitch audit tool is completely free to use. Simply enter your Twitch username to get instant insights about your channel performance.'
+      },
+      {
+        question: 'How can this tool help me attract more sponsors?',
+        answer: 'The tool provides comprehensive analytics about your channel\'s performance, audience demographics, and engagement rates - key metrics that sponsors look for when evaluating partnerships. Having these metrics readily available makes it easier to demonstrate your channel\'s value to potential sponsors.'
+      },
+      {
+        question: 'How accurate are the analytics?',
+        answer: 'Our tool uses Twitch\'s public data combined with proprietary analytics to provide accurate insights. The percentages displayed are estimates based on our extensive database and analysis algorithms.'
+      },
+      {
+        question: 'Can I use this tool if I\'m new to Twitch?',
+        answer: 'Absolutely! The tool is designed to be user-friendly for streamers at all levels. For new streamers, it\'s particularly useful for establishing baseline metrics and tracking growth from the beginning.'
+      }
+    ],
+    pricing: {
+      free: [
+        'Basic channel analysis',
+        'Essential metrics',
+        'Real-time results',
+        'Standard support'
+      ],
+      pro: [
+        'Advanced analytics',
+        'Historical data',
+        'Custom reporting',
+        'Competitor analysis',
+        'API access',
+        'Priority support'
+      ],
+      price: '$29/month'
+    }
+  },
+  {
+    id: 'engagement-calculator',
+    name: 'Social Media Engagement Rate Calculator',
+    description: 'Calculate engagement rates for Instagram, TikTok, YouTube, and more with our free engagement rate calculator. Get instant insights into your social media performance with platform-specific benchmarks and analysis.',
+    platform: 'General',
+    category: 'calculator',
+    component: 'EngagementCalculator',
+    image: '/tools/engagement-calculator.jpg',
+    ctaText: 'Calculate Engagement',
+    features: [
+      'Instagram engagement rate calculator',
+      'TikTok engagement calculator',
+      'YouTube engagement metrics',
+      'Twitter engagement analysis',
+      'LinkedIn engagement tracking',
+      'Facebook engagement insights',
+      'Multi-platform benchmarks',
+      'Real-time calculations'
+    ],
+    keyFeatures: [
+      {
+        title: 'Multi-Platform Support',
+        description: 'Calculate engagement rates for Instagram, TikTok, YouTube, Twitter, LinkedIn, and Facebook all in one place.',
+        icon: 'social'
+      },
+      {
+        title: 'Platform-Specific Metrics',
+        description: 'Tailored calculations for each platform including likes, comments, shares, saves, and views.',
+        icon: 'calculator'
+      },
+      {
+        title: 'Industry Benchmarks',
+        description: 'Compare your engagement rates against industry standards for each platform.',
+        icon: 'chart'
+      },
+      {
+        title: 'Real-Time Results',
+        description: 'Get instant engagement calculations and performance insights as you input your metrics.',
+        icon: 'speed'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Influencers',
+        description: 'Track and optimize your social media engagement across platforms',
+        examples: [
+          'Monitor Instagram engagement rates',
+          'Calculate TikTok performance metrics',
+          'Track YouTube engagement growth',
+          'Compare cross-platform performance'
+        ]
+      },
+      {
+        title: 'For Marketers',
+        description: 'Evaluate influencer partnerships and campaign performance',
+        examples: [
+          'Assess potential collaborations',
+          'Measure campaign engagement',
+          'Compare influencer performance',
+          'Track ROI metrics'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Social Media Influencers',
+      'Digital Marketers',
+      'Content Creators',
+      'Brand Managers',
+      'Social Media Managers',
+      'Marketing Agencies'
+    ],
+    benefits: [
+      'Free to use',
+      'No registration required',
+      'Instant calculations',
+      'Platform-specific insights',
+      'Industry benchmarks included'
+    ],
+    faq: [
+      {
+        question: 'How is Instagram engagement rate calculated?',
+        answer: 'Instagram engagement rate is calculated by dividing the total engagement (likes + comments + saves) by the number of followers, then multiplying by 100. This gives you the percentage of your audience that engages with your content.'
+      },
+      {
+        question: 'What is a good engagement rate for TikTok?',
+        answer: 'TikTok typically has higher engagement rates than other platforms. A good TikTok engagement rate is 3-6%, while anything above 15% is considered excellent. Rates can vary based on follower count and niche.'
+      },
+      {
+        question: 'How do you calculate YouTube engagement?',
+        answer: 'YouTube engagement is calculated using likes and comments divided by views (or followers if views aren\'t available). This reflects how actively viewers interact with your content beyond just watching.'
+      },
+      {
+        question: 'Why do engagement rates vary by platform?',
+        answer: 'Each platform has unique features, audience behaviors, and content formats that affect engagement. For example, TikTok\'s algorithm and format typically drive higher engagement than LinkedIn\'s professional network.'
+      }
+    ],
+    pricing: {
+      free: [
+        'All platform calculations',
+        'Basic metrics tracking',
+        'Industry benchmarks',
+        'Real-time results'
+      ],
+      pro: [
+        'Historical tracking',
+        'Custom benchmarks',
+        'Competitor analysis',
+        'Detailed analytics',
+        'API access',
+        'Export capabilities'
+      ],
+      price: '$19/month'
+    }
+  },
+  {
+    id: 'social-roi-calculator',
+    name: 'Social Media ROI Calculator',
+    description: 'Calculate your social media marketing ROI across Facebook, Instagram, TikTok, LinkedIn, and Twitter. Get instant insights into ROAS, CPC, conversion rates, and more with our free calculator.',
+    platform: 'General',
+    category: 'calculator',
+    component: 'SocialROICalculator',
+    image: '/tools/social-roi-calculator.jpg',
+    ctaText: 'Calculate ROI',
+    features: [
+      'Social media ROI calculator',
+      'Facebook ads ROI calculator',
+      'Instagram campaign ROI metrics',
+      'TikTok marketing ROI analysis',
+      'LinkedIn advertising ROI',
+      'Twitter campaign performance',
+      'ROAS calculator',
+      'Conversion tracking'
+    ],
+    keyFeatures: [
+      {
+        title: 'Comprehensive ROI Analysis',
+        description: 'Calculate return on investment, ROAS, CPC, CPM, and conversion metrics for your social media campaigns.',
+        icon: 'calculator'
+      },
+      {
+        title: 'Multi-Platform Support',
+        description: 'Track performance across Facebook, Instagram, TikTok, LinkedIn, and Twitter with platform-specific benchmarks.',
+        icon: 'social'
+      },
+      {
+        title: 'Performance Benchmarks',
+        description: 'Compare your results against industry averages for each platform.',
+        icon: 'chart'
+      },
+      {
+        title: 'Real-Time Calculations',
+        description: 'Get instant insights as you input your campaign data.',
+        icon: 'speed'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Marketing Teams',
+        description: 'Track and optimize your social media campaign performance',
+        examples: [
+          'Calculate campaign ROI',
+          'Monitor advertising costs',
+          'Track conversion metrics',
+          'Compare platform performance'
+        ]
+      },
+      {
+        title: 'For Agencies',
+        description: 'Measure and report client campaign success',
+        examples: [
+          'Generate performance reports',
+          'Track client campaign ROI',
+          'Compare platform effectiveness',
+          'Optimize ad spend'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Social Media Managers',
+      'Digital Marketing Teams',
+      'Marketing Agencies',
+      'E-commerce Businesses',
+      'Performance Marketers',
+      'Brand Managers'
+    ],
+    benefits: [
+      'Free to use',
+      'No registration required',
+      'Real-time calculations',
+      'Platform-specific insights',
+      'Industry benchmarks'
+    ],
+    faq: [
+      {
+        question: 'How is social media ROI calculated?',
+        answer: 'Social media ROI is calculated by subtracting the total campaign cost from the revenue generated, dividing by the campaign cost, and multiplying by 100 to get a percentage. Our calculator also includes ROAS, CPC, CPM, and conversion metrics for a complete performance analysis.'
+      },
+      {
+        question: 'What is a good ROAS for social media ads?',
+        answer: 'A good Return on Ad Spend (ROAS) varies by platform and industry, but generally, a ROAS of 2:1 or higher is considered good. However, the ideal ROAS depends on your campaign goals and industry benchmarks.'
+      },
+      {
+        question: 'How do you calculate conversion rates?',
+        answer: 'Conversion rates are calculated by dividing the number of conversions by the number of clicks, then multiplying by 100. This gives you the percentage of clicks that result in a conversion.'
+      },
+      {
+        question: 'Why do social media ROI vary by platform?',
+        answer: 'Each platform has unique features, audience behaviors, and content formats that affect ROI. For example, TikTok\'s algorithm and format typically drive higher ROI than LinkedIn\'s professional network.'
+      }
+    ],
+    pricing: {
+      free: [
+        'All platform calculations',
+        'Basic metrics tracking',
+        'Industry benchmarks',
+        'Real-time results'
+      ],
+      pro: [
+        'Historical tracking',
+        'Custom benchmarks',
+        'Competitor analysis',
+        'Detailed analytics',
+        'API access',
+        'Export capabilities'
+      ],
+      price: '$19/month'
+    },
+  },
+  {
+    id: 'influencer-earnings-calculator',
+    name: 'Influencer Earnings Calculator',
+    description: 'Calculate potential earnings as an influencer across Instagram, TikTok, YouTube, Twitter, and Twitch. Get customized estimates based on your followers, engagement rate, and content niche with our free calculator.',
+    platform: 'General',
+    category: 'calculator',
+    component: 'InfluencerEarningsCalculator',
+    image: '/tools/influencer-earnings-calculator.jpg',
+    ctaText: 'Calculate Earnings',
+    features: [
+      'Instagram influencer rate calculator',
+      'TikTok earnings calculator',
+      'YouTube revenue estimator',
+      'Twitter creator earnings',
+      'Twitch streamer income calculator',
+      'Niche-specific rates',
+      'Engagement-based calculations',
+      'Content type comparisons'
+    ],
+    keyFeatures: [
+      {
+        title: 'Platform-Specific Calculations',
+        description: 'Get tailored earnings estimates for Instagram, TikTok, YouTube, Twitter, and Twitch based on current market rates.',
+        icon: 'calculator'
+      },
+      {
+        title: 'Content Type Breakdown',
+        description: 'Compare potential earnings across different content types including posts, stories, videos, reels, and streams.',
+        icon: 'layout'
+      },
+      {
+        title: 'Niche Analysis',
+        description: 'Factor in your content niche to get more accurate earning estimates based on industry standards.',
+        icon: 'target'
+      },
+      {
+        title: 'Engagement Impact',
+        description: 'See how your engagement rate affects potential earnings with our comprehensive analysis.',
+        icon: 'trending-up'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Content Creators',
+        description: 'Understand your earning potential and optimize your content strategy',
+        examples: [
+          'Calculate potential influencer earnings',
+          'Compare content type profitability',
+          'Analyze engagement impact',
+          'Optimize content for revenue'
+
+        ]
+      },
+      {
+        title: 'For Marketers',
+        description: 'Measure and report client campaign success',
+        examples: [
+          'Generate performance reports',
+          'Track client campaign ROI',
+          'Compare platform effectiveness',
+          'Optimize ad spend'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Influencers',
+      'Content Creators',
+      'Social Media Managers',
+      'Marketing Agencies',
+      'Brand Managers',
+      'Talent Agents'
+    ],
+    benefits: [
+      'Free to use',
+      'No registration required',
+      'Real-time calculations',
+      'Platform-specific insights',
+      'Industry benchmarks'
+    ],
+    faq: [
+      {
+        question: 'How are Instagram earnings calculated?',
+        answer: 'Instagram earnings are calculated by multiplying your average engagement rate by your follower count, then multiplying by 100. This gives you the potential earnings based on your current engagement rate and follower count.'
+      },
+      {
+        question: 'What is a good engagement rate for TikTok?',
+        answer: 'TikTok typically has higher engagement rates than other platforms. A good TikTok engagement rate is 3-6%, while anything above 15% is considered excellent. Rates can vary based on follower count and niche.'
+      },
+      {
+        question: 'How do you calculate YouTube earnings?',
+        answer: 'YouTube earnings are calculated by multiplying your average engagement rate by your view count, then multiplying by 100. This reflects how actively viewers interact with your content.'
+      },
+      {
+        question: 'Why do earnings vary by platform?',
+        answer: 'Each platform has unique features, audience behaviors, and content formats that affect earnings. For example, TikTok\'s algorithm and format typically drive higher earnings than LinkedIn\'s professional network.'
+      }
+    ],
+    pricing: {
+      free: [
+        'All platform calculations',
+        'Basic metrics tracking',
+        'Industry benchmarks',
+        'Real-time results'
+      ],
+      pro: [
+        'Historical tracking',
+        'Custom benchmarks',
+        'Competitor analysis',
+        'Detailed analytics',
+        'API access',
+        'Export capabilities'
+      ],
+      price: '$19/month'
+    },
+  },
+  {
+    id: 'youtube-earnings-calculator',
+    name: 'YouTube Earnings Calculator',
+    description: 'Calculate potential YouTube earnings from views, AdSense, sponsorships, memberships, and merchandise. Get accurate estimates based on your niche, subscribers, and engagement with our free calculator.',
+    platform: 'YouTube',
+    category: 'calculator',
+    component: 'YouTubeEarningsCalculator',
+    image: '/tools/youtube-earnings-calculator.jpg',
+    ctaText: 'Calculate Earnings',
+    features: [
+      'YouTube AdSense calculator',
+      'CPM rate estimator',
+      'Sponsorship earnings calculator',
+      'Channel membership calculator',
+      'Merchandise revenue estimator',
+      'Multi-stream income calculator',
+      'Niche-specific calculations',
+      'Monthly earnings projector'
+    ],
+    keyFeatures: [
+      {
+        title: 'Comprehensive Revenue Analysis',
+        description: 'Calculate earnings from multiple revenue streams including AdSense, sponsorships, memberships, and merchandise.',
+        icon: 'calculator'
+      },
+      {
+        title: 'Niche-Specific Rates',
+        description: 'Get accurate estimates based on your content niche with industry-standard CPM rates.',
+        icon: 'target'
+      },
+      {
+        title: 'Real-Time Calculations',
+        description: 'Instant earnings projections as you input your channel metrics.',
+        icon: 'speed'
+      },
+      {
+        title: 'Growth Potential',
+        description: 'Understand monetization requirements and earnings potential at different subscriber levels.',
+        icon: 'trending-up'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Content Creators',
+        description: 'Plan your YouTube monetization strategy',
+        examples: [
+          'Project potential earnings',
+          'Compare revenue streams',
+          'Plan content strategy',
+          'Set income goals'
+        ]
+      },
+      {
+        title: 'For Businesses',
+        description: 'Evaluate YouTube as a revenue channel',
+        examples: [
+          'Calculate ROI potential',
+          'Plan content investments',
+          'Project revenue growth',
+          'Compare platform economics'
+        ]
+      }
+    ],
+    targetAudience: [
+      'YouTube Content Creators',
+      'Aspiring YouTubers',
+      'Digital Marketing Teams',
+      'Business Owners',
+      'Content Strategists',
+      'Social Media Managers'
+    ],
+    benefits: [
+      'Free to use',
+      'No registration required',
+      'Real-time calculations',
+      'Multiple revenue streams',
+      'Niche-specific insights',
+      'Growth projections'
+    ],
+    faq: [
+      {
+        question: 'How are YouTube earnings calculated?',
+        answer: 'YouTube earnings are calculated using multiple factors including views, CPM rates (cost per thousand views), AdSense revenue, sponsorships, memberships, and merchandise sales. Our calculator provides estimates based on these revenue streams.'
+      },
+      {
+        question: 'What is a good CPM rate for YouTube?',
+        answer: 'The CPM rate varies by niche and can be found on industry benchmarks. A good CPM rate is between $0.50 and $1.00 per thousand views.'
+      },
+      {
+        question: 'How do you calculate AdSense earnings?',
+        answer: 'AdSense earnings are calculated by multiplying your monthly views by the average CPM rate for your niche. This gives you a rough estimate of potential revenue from AdSense.'
+      },
+      {
+        question: 'Why do earnings vary by platform?',
+        answer: 'Each platform has unique features, audience behaviors, and content formats that affect earnings. For example, TikTok\'s algorithm and format typically drive higher earnings than LinkedIn\'s professional network.'
+      }
+    ],
+    pricing: {
+      free: [
+        'All revenue calculations',
+        'Basic metrics tracking',
+        'Niche-specific rates',
+        'Real-time results'
+      ],
+      pro: [
+        'Historical tracking',
+        'Custom benchmarks',
+        'Competitor analysis',
+        'Detailed analytics',
+        'API access',
+        'Export capabilities'
+      ],
+      price: '$19/month'
+    },
+  },
+  {
+    id: 'x-earnings-calculator',
+    name: 'X (Twitter) Earnings Calculator',
+    description: 'Calculate your potential X (Twitter) earnings with our free calculator. Get accurate estimates based on verified followers, engagement rates, and tweet frequency. Updated with the latest revenue sharing model.',
+    platform: 'Twitter-X',
+    category: 'calculator',
+    component: 'XEarningsCalculator',
+    image: '/tools/x-earnings-calculator.jpg',
+    ctaText: 'Calculate Earnings',
+    features: [
+      'X revenue calculator',
+      'Verified follower analysis',
+      'Engagement rate calculator',
+      'Monthly earnings estimator',
+      'Annual revenue projector',
+      'Tweet frequency optimizer',
+      'Real-time calculations',
+      'Platform-specific insights'
+    ],
+    keyFeatures: [
+      {
+        title: 'Verified Follower Focus',
+        description: 'Calculate earnings based on X\'s new verified follower engagement model.',
+        icon: 'users'
+      },
+      {
+        title: 'Engagement Analysis',
+        description: 'See how engagement rates affect your potential earnings.',
+        icon: 'chart'
+      },
+      {
+        title: 'Tweet Optimization',
+        description: 'Understand how tweet frequency impacts your revenue.',
+        icon: 'message-circle'
+      },
+      {
+        title: 'Revenue Projections',
+        description: 'Get monthly and annual earning estimates based on current data.',
+        icon: 'trending-up'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Content Creators',
+        description: 'Understand and optimize your X earnings potential',
+        examples: [
+          'Calculate potential earnings',
+          'Optimize posting strategy',
+          'Track revenue metrics',
+          'Plan content schedule'
+        ]
+      },
+      {
+        title: 'For Businesses',
+        description: 'Evaluate X as a revenue channel',
+        examples: [
+          'Project revenue potential',
+          'Plan social strategy',
+          'Analyze ROI',
+          'Compare platform earnings'
+        ]
+      }
+    ],
+    targetAudience: [
+      'X Content Creators',
+      'Social Media Influencers',
+      'Digital Marketers',
+      'Business Owners',
+      'Personal Brands',
+      'Social Media Managers'
+    ],
+    benefits: [
+      'Free to use',
+      'No registration required',
+      'Real-time calculations',
+      'Updated revenue model',
+      'Engagement insights',
+      'Growth planning'
+    ],
+    faq: [
+      {
+        question: 'How are X earnings calculated?',
+        answer: 'X earnings are primarily calculated based on engagement from verified followers. The platform shares ad revenue based on interactions like replies, likes, and bookmarks from verified accounts. Our calculator uses real data to estimate earnings based on your verified follower count, engagement rate, and tweet frequency.'
+      },
+      {
+        question: 'What is a good engagement rate on X?',
+        answer: 'Engagement rates on X typically range from 1-3% for most accounts. However, with the new revenue sharing model, engagement from verified followers is what matters most for earnings. Higher engagement from verified followers can significantly increase your earnings potential.'
+      },
+      {
+        question: 'How often should I tweet to maximize earnings?',
+        answer: 'According to current data, accounts that tweet more frequently (10+ times per day) tend to earn more through the revenue sharing program. However, content quality and verified follower engagement remain the most important factors.'
+      },
+      {
+        question: 'Why do earnings vary so much between creators?',
+        answer: 'Earnings can vary significantly based on the number of verified followers, engagement rates, tweet frequency, and content quality. Accounts with higher percentages of verified followers typically earn more per impression than those with mostly non-verified followers.'
+      }
+    ],
+    pricing: {
+      free: [
+        'Basic earnings calculator',
+        'Real-time estimates',
+        'Engagement analysis',
+        'Revenue projections'
+      ],
+      pro: [
+        'Advanced analytics',
+        'Historical tracking',
+        'Custom benchmarks',
+        'Competitor analysis',
+        'API access',
+        'Export capabilities'
+      ],
+      price: '$19/month'
+    }
+  },
+  {
+    id: 'influencer-marketing-calculator',
+    name: 'Influencer Marketing Campaign Calculator',
+    description: 'Calculate influencer marketing costs, ROI, and campaign performance across top influencer marketing platforms. Get accurate estimates for Instagram, TikTok, YouTube, and more with our free calculator.',
+    platform: 'General',
+    category: 'calculator',
+    component: 'InfluencerMarketingCalculator',
+    image: '/tools/influencer-marketing-calculator.jpg',
+    ctaText: 'Calculate Campaign',
+    features: [
+      'Influencer marketing ROI calculator',
+      'Campaign cost estimator',
+      'Top influencer marketing platforms comparison',
+      'Influencer tier cost analysis',
+      'Industry-specific benchmarks',
+      'Conversion rate projections',
+      'Revenue forecasting',
+      'Budget optimization tools'
+    ],
+    keyFeatures: [
+      {
+        title: 'Cost & ROI Analysis',
+        description: 'Calculate potential returns and costs across different influencer marketing platforms and tiers.',
+        icon: 'calculator'
+      },
+      {
+        title: 'Platform Comparison',
+        description: 'Compare costs and performance across top influencer marketing platforms like Instagram, TikTok, and YouTube.',
+        icon: 'layout'
+      },
+      {
+        title: 'Campaign Performance',
+        description: 'Project reach, engagement, and conversions based on industry benchmarks and platform data.',
+        icon: 'trending-up'
+      },
+      {
+        title: 'Budget Planning',
+        description: 'Optimize your influencer marketing costs and budget allocation across campaigns.',
+        icon: 'dollar-sign'
+      }
+    ],
+    useCase: [
+      {
+        title: 'For Brands',
+        description: 'Plan and optimize your influencer marketing campaigns',
+        examples: [
+          'Calculate influencer marketing ROI',
+          'Estimate campaign costs',
+          'Compare platform performance',
+          'Project conversion rates'
+        ]
+      },
+      {
+        title: 'For Agencies',
+        description: 'Manage client campaigns and budgets effectively',
+        examples: [
+          'Present campaign projections',
+          'Optimize marketing spend',
+          'Track campaign metrics',
+          'Measure platform ROI'
+        ]
+      }
+    ],
+    targetAudience: [
+      'Brand Managers',
+      'Marketing Agencies',
+      'Social Media Managers',
+      'E-commerce Businesses',
+      'Digital Marketing Teams',
+      'Campaign Planners'
+    ],
+    benefits: [
+      'Free campaign calculator',
+      'Platform-specific insights',
+      'Real-time cost estimates',
+      'ROI projections',
+      'Industry benchmarks',
+      'Budget optimization'
+    ],
+    faq: [
+      {
+        question: 'How are influencer marketing costs calculated?',
+        answer: 'Influencer marketing costs are calculated based on multiple factors including platform choice, influencer tier (follower count), engagement rates, and industry. Our calculator factors in average rates across top influencer marketing platforms and provides estimates for campaign costs, reach, and potential ROI.'
+      },
+      {
+        question: 'What is a good ROI for influencer marketing?',
+        answer: 'A good influencer marketing ROI typically ranges from 5:1 to 6.5:1, meaning for every dollar spent, you generate $5-$6.50 in revenue. However, ROI can vary significantly based on factors like platform choice, influencer selection, and campaign objectives.'
+      },
+      {
+        question: 'How do costs vary across different platforms?',
+        answer: 'Influencer marketing costs vary by platform, with YouTube typically commanding higher rates due to content production complexity, while Instagram and TikTok rates vary based on engagement rates and follower count. Our calculator provides platform-specific estimates based on current market rates.'
+      },
+      {
+        question: 'How accurate are the campaign estimates?',
+        answer: 'Our estimates are based on industry averages and real campaign data across major influencer marketing platforms. While actual results may vary, the calculator provides realistic projections based on platform performance benchmarks and industry standards.'
+      }
+    ],
+    pricing: {
+      free: [
+        'Basic campaign calculator',
+        'Cost estimates',
+        'ROI projections',
+        'Platform comparisons'
+      ],
+      pro: [
+        'Advanced analytics',
+        'Custom benchmarks',
+        'Historical tracking',
+        'Campaign optimization',
+        'API access',
+        'Report generation'
+      ],
+      price: '$49/month'
+    }
+  },
 
 ];
 

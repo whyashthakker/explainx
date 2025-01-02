@@ -1,4 +1,4 @@
-// Generated on 2025-01-01T10:54:52.212Z
+// Generated on 2025-01-02T06:14:00.609Z
 interface Author {
   name: string;
   role: string;
@@ -183,7 +183,7 @@ const postData: Post[] = [
     ]
   },
   {
-    "title": "Amazon Influencer Program: A Complete Guide for 2024",
+    "title": "Amazon Influencer Program: A Complete Guide for 2025",
     "file": "amazon-influencer",
     "description": "Learn everything about becoming an Amazon influencer, from qualification requirements to monetization strategies and building your successful storefront.",
     "date": "January 1, 2025",
