@@ -1,4 +1,4 @@
-// Generated on 2025-01-02T11:19:01.095Z
+// Generated on 2025-01-02T11:51:22.995Z
 interface Author {
   name: string;
   role: string;
@@ -20,6 +20,115 @@ interface Post {
 
 const postData: Post[] = [
   {
+    "title": "Cómo Encontrar la Tienda de un Influencer de Amazon en 5 Pasos",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Descubre las formas más sencillas de encontrar tiendas de influencers de Amazon y mejora tu experiencia de compra con recomendaciones de expertos y colecciones de productos seleccionados.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "So finden Sie einen Amazon Influencer Storefront in nur 5 Schritten",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Entdecken Sie die einfachsten Wege, Amazon Influencer Storefronts zu finden und verbessern Sie Ihr Einkaufserlebnis mit Expertenempfehlungen und kuratierten Produktkollektionen.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Comment Trouver une Boutique d'Influenceur Amazon en 5 Étapes",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Découvrez les moyens les plus simples de trouver des boutiques d'influenceurs Amazon et améliorez votre expérience d'achat avec des recommandations d'experts et des collections de produits sélectionnés.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Come Trovare lo Storefront di un Influencer Amazon in 5 Passaggi",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Scopri i modi più semplici per trovare gli storefront degli influencer Amazon e migliora la tua esperienza di shopping con consigli di esperti e collezioni di prodotti selezionati.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "instagram",
+      "social-media"
+    ]
+  },
+  {
+    "title": "सिर्फ 5 कदमों में अमेज़न इन्फ्लुएंसर स्टोरफ्रंट कैसे खोजें",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "एक्सपर्ट की सिफारिशों और क्यूरेटेड प्रोडक्ट कलेक्शन के साथ अमेज़न इन्फ्लुएंसर स्टोरफ्रंट खोजने के सबसे आसान तरीके जानें और अपने शॉपिंग अनुभव को बेहतर बनाएं।",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "كيفية العثور على متجر مؤثر أمازون في 5 خطوات فقط",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "اكتشف أسهل الطرق للعثور على متاجر مؤثري أمازون وتحسين تجربة تسوقك من خلال توصيات الخبراء ومجموعات المنتجات المنسقة",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
     "title": "أفضل ٥١ عارضة أزياء على انستغرام للمتابعة: دليل شامل ٢٠٢٥",
     "file": "top-51-instagram-models-to-follow",
     "description": "اكتشف أكثر عارضات الأزياء تأثيراً على انستغرام في عام ٢٠٢٥، من أيقونات الموضة الراقية إلى المواهب الناشئة التي تعيد تشكيل المشهد الرقمي لعرض الأزياء",
@@ -33,6 +142,114 @@ const postData: Post[] = [
     },
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/top-51-instagram-models-to-follow",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "5步轻松找到亚马逊红人店铺",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "发现寻找亚马逊红人店铺的最简单方法，通过专家推荐和精选产品系列提升您的购物体验。",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "단 5단계로 아마존 인플루언서 스토어프론트 찾는 방법",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "전문가의 추천과 엄선된 제품 컬렉션으로 아마존 인플루언서 스토어프론트를 찾는 가장 쉬운 방법을 발견하고 쇼핑 경험을 향상시켜보세요.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Amazon インフルエンサーストアフロントを見つける5つの簡単なステップ",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Amazon インフルエンサーストアフロントを見つける最も簡単な方法を発見し、専門家のおすすめと厳選された商品コレクションでショッピング体験を向上させましょう。",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Hoe je een Amazon Influencer Storefront vindt in 5 Stappen",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Ontdek de makkelijkste manieren om Amazon influencer storefronts te vinden en verbeter je shopping ervaring met aanbevelingen van experts en samengestelde productcollecties.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "Как найти витрину Amazon Influencer за 5 шагов",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Узнайте самые простые способы найти витрины Amazon influencer и улучшите свой опыт покупок с помощью рекомендаций экспертов и подобранных коллекций товаров.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
+    "title": "How to Find Amazon Influencer Storefront in Just 5 Steps",
+    "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
+    "description": "Discover the easiest ways to find Amazon influencer storefronts and enhance your shopping experience with expert recommendations and curated product collections.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
       "social-media"
     ]
