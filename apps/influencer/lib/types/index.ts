@@ -3,6 +3,7 @@ import type {
   User as PrismaUser,
   Influencer as PrismaInfluencer,
 } from "@repo/db";
+import { Prisma } from "@repo/db";
 // Enums
 export enum UserType {
   BRAND = "BRAND",
@@ -295,17 +296,25 @@ export interface TeamMemberUpdate {
   role: TeamRole;
 }
 
-export type PrismaUserWithInfluencer = PrismaUser & {
-  influencer:
-    | (PrismaInfluencer & {
+const userWithInfluencer = Prisma.validator<Prisma.UserDefaultArgs>()({
+  include: {
+    influencers: {
+      include: {
         user: {
-          id: string;
-          email: string;
-          image: string | null;
-        };
-      })
-    | null;
-};
+          select: {
+            id: true,
+            email: true,
+            image: true,
+          },
+        },
+      },
+    },
+  },
+});
+
+export type PrismaUserWithInfluencer = Prisma.UserGetPayload<
+  typeof userWithInfluencer
+>;
 
 export type AuthSearchParams = Promise<{
   invite?: string;

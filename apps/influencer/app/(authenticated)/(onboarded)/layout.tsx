@@ -4,8 +4,8 @@ import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import DashboardLayout from "./_components/DashboardLayout";
-import { PrismaUserWithInfluencer } from "../../../lib/types";
 import { UserProvider } from "./_context/user-context";
+import { UserType, ActivePortal } from "@prisma/client";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,56 +16,73 @@ export default async function DashboardLayoutWrapper({
 }: LayoutProps) {
   const session = await auth();
 
-  console.log("session for authenticated layout", JSON.stringify(session));
-
   if (!session?.user?.email) {
     redirect("/");
   }
 
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session.user.email,
-    },
-    include: {
-      influencer: {
-        include: {
-          user: {
-            select: {
-              id: true,
-              email: true,
-              image: true,
+  try {
+    const user = await prisma.user.update({
+      where: {
+        email: session.user.email,
+      },
+      data: {
+        activePortal: ActivePortal.INFLUENCER,
+      },
+      include: {
+        influencers: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                email: true,
+                image: true,
+              },
             },
           },
         },
       },
-    },
-  });
+    });
 
-  if (!user) {
-    redirect("/");
+    if (!user) {
+      redirect("/");
+    }
+
+    if (
+      user.userType !== UserType.INFLUENCER &&
+      user.userType !== UserType.BOTH
+    ) {
+      redirect("/auth/unauthorized");
+    }
+
+    if (!user.influencers || user.influencers.length === 0) {
+      redirect("/onboarding");
+    }
+
+    const teamMembership = await prisma.influencerTeamMember.findFirst({
+      where: {
+        userId: user.id,
+        inviteStatus: "ACCEPTED",
+      },
+      include: {
+        team: {
+          include: {
+            influencer: true,
+          },
+        },
+      },
+    });
+
+    if (teamMembership?.role === "MEMBER") {
+      redirect("/team-view");
+    }
+
+    return (
+      <UserProvider value={user}>
+        <DashboardLayout>{children}</DashboardLayout>
+      </UserProvider>
+    );
+  } catch (error) {
+    console.error("Layout Error:", error);
+    redirect("/auth/error");
   }
-
-  const isInfluencerTeamMember = await prisma.influencerTeamMember.findFirst({
-    where: {
-      userId: user.id,
-    },
-    select: {
-      role: true,
-    },
-  });
-
-  if (isInfluencerTeamMember?.role === "MEMBER") {
-    redirect("/team-view");
-  }
-
-  if (!user.influencer) {
-    redirect("/onboarding");
-  }
-
-  // Make the user data available to all child components through React Context
-  return (
-    <UserProvider value={user as PrismaUserWithInfluencer}>
-      <DashboardLayout>{children}</DashboardLayout>
-    </UserProvider>
-  );
 }
