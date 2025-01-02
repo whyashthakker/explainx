@@ -7,6 +7,7 @@ import Navbar from "./_components/navbar-1";
 import { PreFooter } from "./_components/pre-footer";
 import { Toaster } from '@repo/ui/components/ui/toaster';
 import { AhrefsAnalytics } from './_components/ahrefs';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,6 +22,8 @@ const calFont = localFont({
   preload: true,
   display: "swap",
 });
+
+const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
 
 export const metadata: Metadata = {
   "metadataBase": new URL("https://www.infloq.com"),
@@ -91,6 +94,7 @@ export default function RootLayout({
             <main className="flex-grow">
               {children}
             </main>
+            <GoogleAnalytics gaId={GA_ID} />
             <PreFooter />
           </div>
           <Toaster />
