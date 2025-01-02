@@ -45,7 +45,7 @@ export default async function InvitePage(props: {
 
   // If user is not logged in, redirect to sign in
   if (!session) {
-    redirect(`/register/?invite=${token}`);
+    redirect(`/signup/?invite=${token}`);
   }
 
   if (!data) {

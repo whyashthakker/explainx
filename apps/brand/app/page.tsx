@@ -52,7 +52,7 @@ export default async function Landing({ searchParams }: SignInPageProps) {
   return (
     <main className="min-h-screen w-full bg-gradient-to-b from-[#f8fafc] to-white">
       Landing will be here , in the meantime head over to the{" "}
-      <Link href="/register">sign in page</Link>
+      <Link href="/signup">sign in page</Link>
     </main>
   );
 }
