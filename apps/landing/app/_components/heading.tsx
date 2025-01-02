@@ -7,6 +7,7 @@ import { CTAButtons } from "./cta-ab";
 import { cn } from "@repo/ui/lib/utils";
 import { AnimatedBeamMultipleOutputDemo } from "./animated-beam-demo";
 import { CTAButtonsProducts } from "./cta-products";
+import { SquaresPattern } from "./squares-pattern";
 
 export const Heading = (props: {
   title?: string;
@@ -16,11 +17,11 @@ export const Heading = (props: {
   const { title, subtitle, image } = props;
   const hasHeadingProps = !!(title || subtitle || image);
 
-  // If any of the heading props are provided, show centered heading and hide the animated beam
   if (hasHeadingProps) {
     return (
-      <div className="relative heading">
-        <div className="pt-15 md:pt-12 pb-6 md:py-10 lg:py-20">
+      <div className="relative overflow-hidden">
+        <SquaresPattern />
+        <div className="relative pt-15 md:pt-12 pb-6 md:py-10 lg:py-20">
           <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-cal font-bold text-gray-900 mb-4 mt-12 md:mt-0 md:mb-6">
@@ -31,18 +32,6 @@ export const Heading = (props: {
                   "Our AI matches you with the perfect creators for your brand, from a network of thousands"}
               </p>
               <CTAButtonsProducts />
-
-              {/* If you want to use the image prop here, you could do something like:
-                <div className="mt-8">
-                  <Image
-                    src={image}
-                    alt="Custom heading image"
-                    width={500}
-                    height={300}
-                    className="mx-auto rounded-md shadow ring-1 ring-gray-900/10"
-                  />
-                </div>
-              */}
             </div>
           </div>
         </div>
@@ -50,14 +39,12 @@ export const Heading = (props: {
     );
   }
 
-  // Otherwise, show the original layout
   return (
-    <div className="relative heading">
-      <div className="pt-15 md:pt-12 pb-6 md:py-10 lg:py-20"> 
+    <div className="relative overflow-hidden">
+      <SquaresPattern />
+      <div className="relative pt-15 md:pt-12 pb-6 md:py-10 lg:py-20">
         <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-8 lg:gap-16 items-center">
-            {/* Left Side - Text Content */}
             <div className="lg:col-span-5 text-left lg:pr-8">
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-cal font-bold text-gray-900 mb-4 mt-12 md:mt-0 md:mb-6 text-center lg:text-start">
                 Find Your Next Creator in Seconds
@@ -69,16 +56,10 @@ export const Heading = (props: {
               <CTAButtons />
             </div>
 
-            {/* Right Side - Animation */}
             <div className="lg:col-span-7 w-full min-h-[300px] md:min-h-[600px] lg:min-h-[700px] overflow-visible mt-4 md:mt-0">
               <AnimatedBeamMultipleOutputDemo />
             </div>
           </div>
-
-          {/* Optionally bring back LogoStrip or VideoDemo here if desired */}
-          {/* <div className="mt-8 md:mt-12 lg:mt-16">
-            <LogoStrip />
-          </div> */}
         </div>
       </div>
     </div>

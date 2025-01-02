@@ -1,9 +1,13 @@
 import React from 'react';
 
-export function SquaresPattern() {
+interface SquaresPatternProps {
+  className?: string;
+}
+
+export function SquaresPattern({ className = '' }: SquaresPatternProps) {
   return (
     <svg
-      className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+      className={`absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)] ${className}`}
       aria-hidden="true"
     >
       <defs>
