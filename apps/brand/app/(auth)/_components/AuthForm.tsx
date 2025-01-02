@@ -1,7 +1,7 @@
 "use client";
 
 import { z } from "zod";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,26 +12,53 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
-import { handleGoogleSignIn, handleEmailSignIn } from "../_actions/actions";
+import { AuthSearchParams } from "../../../lib/types";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
 });
 
-type SearchParams = Promise<{
-  invite?: string;
-  email?: string;
-}>;
+interface AuthFormProps {
+  mode: "login" | "signup";
+  title: string;
+  description: string;
+  handleEmailAuth: (email: string, redirectPath: string) => Promise<void>;
+  handleGoogleAuth: (redirectPath: string) => Promise<void>;
+  searchParams: AuthSearchParams;
+  alternateAuthLink?: {
+    text: string;
+    href: string;
+  };
+}
 
-type Params = Promise<{}>;
-
-export default function InfluencerSignIn(props: {
-  params: Params;
-  searchParams: SearchParams;
-}) {
+export default function BrandAuthForm({
+  mode,
+  title,
+  description,
+  handleEmailAuth,
+  handleGoogleAuth,
+  searchParams,
+  alternateAuthLink,
+}: AuthFormProps) {
   const [emailLoading, setEmailLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [redirectPath, setRedirectPath] = useState("/dashboard");
+
+  useEffect(() => {
+    const initializeRedirectPath = async () => {
+      try {
+        const params = await searchParams;
+        if (params?.invite) {
+          setRedirectPath(`/invite/${params.invite}`);
+        }
+      } catch (error) {
+        console.error("Error processing searchParams:", error);
+      }
+    };
+
+    initializeRedirectPath();
+  }, [searchParams]);
 
   const handleEmailSubmit = async (formData: FormData) => {
     setError(null);
@@ -39,22 +66,27 @@ export default function InfluencerSignIn(props: {
 
     try {
       const email = formData.get("email") as string;
-
       const result = formSchema.parse({ email });
-
-      const searchParams = await props.searchParams;
-      const redirectPath = searchParams.invite
-        ? `/invite/${searchParams.invite}`
-        : "/dashboard";
-
-      await handleEmailSignIn(result.email, redirectPath);
+      await handleEmailAuth(result.email, redirectPath);
     } catch (err) {
       if (err instanceof z.ZodError) {
         setError(err.errors[0]?.message || "Invalid input");
       } else {
-        setError("Failed to send login link. Please try again.");
+        setError(
+          `Failed to ${mode === "login" ? "send login link" : "sign up"}. Please try again.`,
+        );
       }
       setEmailLoading(false);
+    }
+  };
+
+  const handleGoogleSubmit = async () => {
+    setGoogleLoading(true);
+    try {
+      await handleGoogleAuth(redirectPath);
+    } catch (err) {
+      setError("Failed to authenticate with Google. Please try again.");
+      setGoogleLoading(false);
     }
   };
 
@@ -68,35 +100,22 @@ export default function InfluencerSignIn(props: {
         {/* Logo & Header */}
         <div className="w-full max-w-md mb-8 text-center">
           <h1 className="text-[#2563eb] text-4xl font-bold mb-3">infloq</h1>
-          <p className="text-[#1e293b]/80 text-lg">
-            Connect. Influence. Monetize.
-          </p>
+          <p className="text-[#1e293b]/80 text-lg">Partner. Connect. Grow.</p>
         </div>
 
         {/* Main Card */}
         <Card className="w-full max-w-md bg-white/70 backdrop-blur-lg shadow-xl border-[#6366f1]/10">
           <CardHeader className="space-y-2 text-center">
-            <CardTitle className="text-[#1e293b] text-2xl">
-              Sign in to Influencer Portal
-            </CardTitle>
+            <CardTitle className="text-[#1e293b] text-2xl">{title}</CardTitle>
             <CardDescription className="text-[#1e293b]/60 text-base">
-              Maximize your influence and revenue potential
+              {description}
             </CardDescription>
           </CardHeader>
 
           <CardContent className="space-y-6">
             <div className="space-y-4">
-              {/* Google Sign In */}
-              <form
-                action={async () => {
-                  setGoogleLoading(true);
-                  const searchParams = await props.searchParams;
-                  const redirectPath = searchParams.invite
-                    ? `/invite/${searchParams.invite}`
-                    : "/dashboard";
-                  await handleGoogleSignIn(redirectPath);
-                }}
-              >
+              {/* Google Auth */}
+              <form action={handleGoogleSubmit}>
                 <Button
                   type="submit"
                   className="w-full h-12 bg-[#2563eb] hover:bg-[#2563eb]/90 text-white flex items-center justify-center gap-3 text-base font-medium"
@@ -124,7 +143,8 @@ export default function InfluencerSignIn(props: {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         />
                       </svg>
-                      Logging in with Google...
+                      {mode === "login" ? "Logging in" : "Signing up"} with
+                      Google...
                     </>
                   ) : (
                     <>
@@ -165,13 +185,13 @@ export default function InfluencerSignIn(props: {
                 </div>
               </div>
 
-              {/* Email Sign In */}
+              {/* Email Auth */}
               <form action={handleEmailSubmit} className="space-y-3">
                 <div className="space-y-2">
                   <Input
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter work email"
                     className={`w-full h-12 border-[#6366f1]/20 ${
                       error && error.includes("email")
                         ? "border-red-500 focus-visible:ring-red-500"
@@ -226,15 +246,15 @@ export default function InfluencerSignIn(props: {
               <div className="py-6 space-y-3">
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Premium brand partnerships</span>
+                  <span>Access to 50K+ verified creators</span>
                 </div>
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Engagement & revenue analytics</span>
+                  <span>Campaign performance analytics</span>
                 </div>
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Team management tools</span>
+                  <span>Streamlined creator collaboration</span>
                 </div>
               </div>
 
@@ -242,28 +262,33 @@ export default function InfluencerSignIn(props: {
               <div className="grid grid-cols-3 gap-4 py-6 border-y border-[#6366f1]/10">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#2563eb]">50K+</div>
-                  <div className="text-sm text-[#1e293b]/60">Active Users</div>
+                  <div className="text-sm text-[#1e293b]/60">Creators</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#0ea5e9]">200+</div>
-                  <div className="text-sm text-[#1e293b]/60">Top Brands</div>
+                  <div className="text-2xl font-bold text-[#0ea5e9]">5M+</div>
+                  <div className="text-sm text-[#1e293b]/60">Reach</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#6366f1]">$5M+</div>
-                  <div className="text-sm text-[#1e293b]/60">Revenue</div>
+                  <div className="text-2xl font-bold text-[#6366f1]">20+</div>
+                  <div className="text-sm text-[#1e293b]/60">Industries</div>
                 </div>
               </div>
 
               {/* Login/Register Toggle */}
-              <div className="text-center">
-                <Button
-                  variant="link"
-                  className="text-[#2563eb] hover:text-[#2563eb]/80"
-                >
-                  New to Infloq? Create an influencer account
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
+              {alternateAuthLink && (
+                <div className="text-center">
+                  <Button
+                    variant="link"
+                    className="text-[#2563eb] hover:text-[#2563eb]/80"
+                    onClick={() =>
+                      (window.location.href = alternateAuthLink.href)
+                    }
+                  >
+                    {alternateAuthLink.text}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -275,7 +300,7 @@ export default function InfluencerSignIn(props: {
 
         <div className="mt-6 px-6 py-3 bg-[#22c55e]/10 rounded-full">
           <span className="text-[#22c55e] font-medium">
-            Top influencers earn $10,000+/month
+            Average campaign ROI: 300%+
           </span>
         </div>
       </div>

@@ -145,6 +145,7 @@ export default async function Page() {
   // Update team members
   if (team) {
     team.members = typedTeamMembers;
+    console.log(team.members);
   }
   return (
     <ProfilePage

@@ -391,3 +391,8 @@ export type PrismaUserWithBrand = PrismaUser & {
       })
     | null;
 };
+
+export type AuthSearchParams = Promise<{
+  invite?: string;
+  email?: string;
+}>;

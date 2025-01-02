@@ -8,18 +8,18 @@ interface PageProps {
   searchParams: AuthSearchParams;
 }
 
-export default function LoginPage({ searchParams }: PageProps) {
+export default function SignupPage({ searchParams }: PageProps) {
   return (
     <AuthForm
-      mode="login"
-      title="Sign in to Influencer Portal"
-      description="Maximize your influence and revenue potential"
+      mode="signup"
+      title="Create your Influencer Account"
+      description="Join thousands of successful influencers"
       handleEmailAuth={handleEmailSignIn}
       handleGoogleAuth={handleGoogleSignIn}
       searchParams={searchParams}
       alternateAuthLink={{
-        text: "New to Infloq? Create an influencer account",
-        href: "/signup",
+        text: "Already have an account? Sign in",
+        href: "/login",
       }}
     />
   );

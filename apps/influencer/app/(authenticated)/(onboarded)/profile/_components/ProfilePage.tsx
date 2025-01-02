@@ -96,6 +96,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
 }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentInfluencer, setCurrentInfluencer] = useState(influencer);
+  const [profileVersion, setProfileVersion] = useState(0);
   const router = useRouter();
   const { toast } = useToast();
 
@@ -121,12 +122,16 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
 
       // Update the local state
       setCurrentInfluencer(updatedInfluencer as Influencer);
+      // Increment profile version to trigger TeamSection refresh
+      setProfileVersion((prev) => prev + 1);
 
       // Show success message
       toast({
         title: "Profile Updated",
         description: "Your profile has been successfully updated.",
       });
+
+      setIsEditModalOpen(false);
 
       // Refresh the page data
       router.refresh();
@@ -140,7 +145,6 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
       throw error;
     }
   };
-
   const handleSocialEdit = (platform: Platform) => {
     console.log(`Edit ${platform} clicked`);
   };
@@ -228,12 +232,20 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  <TeamSection />
+                  <TeamSection
+                    profileVersion={profileVersion}
+                    onError={(error) => {
+                      toast({
+                        title: "Error",
+                        description: error,
+                        variant: "destructive",
+                      });
+                    }}
+                  />
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
-
           <TabsContent value="platforms">
             <Card>
               <CardHeader>

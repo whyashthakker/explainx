@@ -19,6 +19,7 @@ interface TeamMemberListProps {
 }
 
 export function TeamMemberList({ members, onTeamUpdate }: TeamMemberListProps) {
+  console.log(members);
   const handleRemoveMember = async (memberId: string) => {
     try {
       const response = await fetch(`/api/team/members/${memberId}`, {

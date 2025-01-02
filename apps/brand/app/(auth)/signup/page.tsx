@@ -1,3 +1,4 @@
+// app/signup/page.tsx
 "use client";
 
 import AuthForm from "../_components/AuthForm";
@@ -5,21 +6,22 @@ import { handleGoogleSignIn, handleEmailSignIn } from "../_actions/actions";
 import { AuthSearchParams } from "../../../lib/types";
 
 interface PageProps {
+  params: {};
   searchParams: AuthSearchParams;
 }
 
-export default function LoginPage({ searchParams }: PageProps) {
+export default function SignupPage({ searchParams }: PageProps) {
   return (
     <AuthForm
-      mode="login"
-      title="Sign in to Influencer Portal"
-      description="Maximize your influence and revenue potential"
+      mode="signup"
+      title="Sign up to Brand Portal"
+      description="Create your brand account and start collaborating with influencers"
       handleEmailAuth={handleEmailSignIn}
       handleGoogleAuth={handleGoogleSignIn}
       searchParams={searchParams}
       alternateAuthLink={{
-        text: "New to Infloq? Create an influencer account",
-        href: "/signup",
+        text: "Already have an account? Sign in",
+        href: "/login",
       }}
     />
   );
