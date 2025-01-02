@@ -1,89 +1,111 @@
-interface FAQData {
+//data/landing/faq-data.ts
+export interface FAQItem {
   question: string;
   answer: string;
+  category?: string;
 }
 
-const FAQDataMain: FAQData[] = [
+export const faqData: FAQItem[] = [
   {
-    question: "How do I sign up for Olly?",
-    answer: "To sign up for Olly, visit our website at infloq.com and follow the sign-up process. You'll need to download the Chrome extension and create an account to get started.",
+    question: "How do I sign up for Infloq?",
+    answer: "Getting started with Infloq is simple. Visit infloq.com and click 'Get Started' to create your account. You can start with our free tier to explore the platform's capabilities.",
+    category: "Getting Started"
   },
   {
-    question: "What platforms does Olly currently support?",
-    answer: "Olly supports a wide range of platforms including Facebook, LinkedIn, Instagram, Reddit, Product Hunt, YouTube, Twitter/X, Threads, Quora, HackerNews, Medium, TikTok, and Skool community.",
+    question: "What platforms does Infloq support?",
+    answer: "Infloq supports all major social platforms including Instagram, TikTok, YouTube, Twitter/X, LinkedIn, Pinterest, Twitch, and Facebook. Our AI-powered discovery works across platforms to find the best creators for your brand.",
+    category: "Platform Features"
   },
   {
-    question: "Is Olly free to use?",
-    answer: "Yes, Olly offers a free forever plan where you can generate 5 comments per day. We also offer paid plans with additional features and higher usage limits.",
+    question: "Is Infloq free to use?",
+    answer: "Infloq offers a free tier that lets you explore our platform and connect with up to 5 creators monthly. For scaling your campaigns, we use a performance-based pricing model where you only pay for actual engagement and results.",
+    category: "Pricing"
   },
   {
-    question: "What AI models are supported by Olly?",
-    answer: "Olly supports various AI models including GPT-3.5, GPT-4, GPT-4 Turbo, GPT-4o mini, Claude-3 models by Anthropic, Gemini models by Google, and open-source models like Llama-3 and Gemma 2 through local setups using Ollama. We also support models from Straico and OpenRouter.",
+    question: "How does AI-powered creator matching work?",
+    answer: "Our AI analyzes multiple factors including creator content, audience demographics, engagement rates, and past performance to match you with creators who align with your brand values and are most likely to drive results.",
+    category: "Technology"
   },
   {
-    question: "How does billing work for Olly?",
-    answer: "Billing depends on the AI model you use. OpenAI or the relevant vendor (like Anthropic, Google, Straico, or OpenRouter) will bill you directly based on your usage of their models through Olly.",
+    question: "How does the billing work?",
+    answer: "We use a credit-based system where you only pay for actual results. Credits cost $0.10 each and never expire. Our platform fee is 30% of campaign spend, significantly lower than industry standards.",
+    category: "Pricing"
   },
   {
-    question: "Can I use Olly Social in my language?",
-    answer: "Yes, Olly supports many languages including English, Spanish, French, German, Italian, Portuguese, Dutch, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Polish, Vietnamese, Slovakian, Czech, Finnish, Romanian, Hungarian, and Indonesian.",
+    question: "Can I use Infloq in my language?",
+    answer: "Yes, Infloq supports multiple languages including English, Spanish, French, German, Italian, Portuguese, Dutch, Russian, Chinese, Japanese, Korean, Arabic, Hindi, and more. Our AI can match you with creators who speak your target audience's language.",
+    category: "Platform Features"
   },
   {
-    question: "How do I set up my AI model API key in Olly?",
-    answer: "The setup process depends on the AI model you choose. For OpenAI, visit https://openai.com/index/openai-api/ for instructions. For other models, check our setup guide or contact support for assistance.",
+    question: "How do I track campaign performance?",
+    answer: "Our real-time analytics dashboard shows key metrics including clicks, conversions, ROI, and engagement rates. You can track performance at both the campaign and individual creator level, with detailed insights and AI-powered optimization suggestions.",
+    category: "Analytics"
   },
   {
-    question: "Can I customize my commenting style with Olly?",
-    answer: "Yes, Olly allows you to customize your commenting style with options like professional, casual, and humorous. You can also create AI Personalities (Custom Buttons) to set custom prompts and actions for generating personalized comments.",
+    question: "Can I customize campaign requirements?",
+    answer: "Yes, you can set custom campaign requirements including content guidelines, posting schedules, and performance targets. Our platform helps ensure creators meet your specifications while maintaining authentic engagement.",
+    category: "Campaign Management"
   },
   {
-    question: "Is automatic commenting available?",
-    answer: "Olly supports auto comment posting for LinkedIn, and we're continuously expanding this functionality to other platforms.",
+    question: "Is automatic campaign optimization available?",
+    answer: "Yes, our AI continuously analyzes campaign performance and provides optimization suggestions. It can automatically adjust targeting and budget allocation based on real-time performance data.",
+    category: "Technology"
   },
   {
-    question: "Does Olly offer engagement analytics?",
-    answer: "Yes, we offer engagement analytics on our /dashboard. This feature is currently in beta and provides insights into your social media interactions.",
+    question: "Do you offer analytics and reporting?",
+    answer: "Yes, we provide comprehensive analytics including engagement rates, audience demographics, conversion tracking, and ROI analysis. Custom reports can be generated for specific campaigns or time periods.",
+    category: "Analytics"
   },
   {
-    question: "How does Olly handle user data and privacy?",
-    answer: "All data is stored locally on your device. Olly does not track or collect any personal information, prioritizing user privacy and data security.",
+    question: "How does Infloq handle data privacy?",
+    answer: "We prioritize data security and privacy. All data is encrypted, and we comply with global privacy regulations. We only collect essential information needed for platform functionality.",
+    category: "Security"
   },
   {
-    question: "Can businesses use Olly for their social media management?",
-    answer: "Yes, you can customize Olly to respond in your brand's voice and style. The AI Personalities feature is particularly useful for businesses and agencies managing multiple social media accounts.",
+    question: "Can businesses of any size use Infloq?",
+    answer: "Yes, Infloq is designed to scale with your needs. Whether you're a solopreneur or a growing brand, our performance-based pricing and flexible credit system make it accessible for businesses of all sizes.",
+    category: "Platform Features"
   },
   {
-    question: "What are Custom Actions in Olly?",
-    answer: "Custom Actions is a feature allowing users to create and take customized actions with Olly, tailoring their workflow. This feature is currently in beta.",
+    question: "What are Custom Campaigns?",
+    answer: "Custom Campaigns allow you to create specialized influencer marketing campaigns with specific goals, requirements, and targeting parameters. This feature is available on all paid plans.",
+    category: "Campaign Management"
   },
   {
-    question: "Can I use local AI models with Olly?",
-    answer: "Yes, you can use Olly with local models set up on your computer using Ollama, supporting open-source models like Llama-3 and Gemma 2.",
+    question: "How do creator payments work?",
+    answer: "Creators are paid based on actual performance (clicks and conversions) through our automated payment system. You set your cost-per-click rate, and payments are processed automatically when performance thresholds are met.",
+    category: "Payments"
   },
   {
-    question: "Where does Olly appear when I'm using it?",
-    answer: "Olly appears in the right sidebar of your browser, providing a less intrusive and more user-friendly interface.",
+    question: "Where can I see campaign analytics?",
+    answer: "Campaign analytics are available in your dashboard under the 'Analytics' section. You can view real-time performance metrics, generate custom reports, and export data for further analysis.",
+    category: "Analytics"
   },
   {
-    question: "Is Olly available as a mobile app?",
-    answer: "No, Olly currently only works as a Chrome browser extension on desktop devices.",
+    question: "Is there a mobile app available?",
+    answer: "We're currently developing our mobile app. For now, Infloq is optimized for desktop and mobile web browsers, providing a seamless experience across devices.",
+    category: "Platform Features"
   },
   {
-    question: "Can I edit comments before posting them?",
-    answer: "Yes, you can edit comments before posting on most supported platforms.",
+    question: "Can I edit campaign details after launching?",
+    answer: "Yes, you can modify most campaign parameters even after launch. Our platform allows for real-time adjustments to budgets, targeting, and requirements.",
+    category: "Campaign Management"
   },
   {
-    question: "Is there a demo available for Olly?",
-    answer: "Yes, you can watch demo videos for various features on our YouTube channel. Check our website or release notes for links to specific feature demonstrations.",
+    question: "Is there a demo available?",
+    answer: "Yes, you can schedule a personalized demo with our team to explore Infloq's features. Visit our demo page to book a time that works for you.",
+    category: "Getting Started"
   },
   {
-    question: "How can I contact support for Olly?",
-    answer: "For any questions or issues with Olly, you can reach out to our support team at yash@infloq.com.",
+    question: "How can I contact support?",
+    answer: "Our support team is available via email at support@infloq.com. Enterprise customers get access to priority support with dedicated account managers.",
+    category: "Support"
   },
   {
-    question: "Is there a guide for first-time Olly users?",
-    answer: "Yes, please see the activation guide at https://www.infloq.com/activation-guide for detailed instructions on getting started with Olly.",
-  },
+    question: "Is there a guide for new users?",
+    answer: "Yes, we provide comprehensive onboarding resources including video tutorials, documentation, and best practices guides. Visit our Help Center for detailed information.",
+    category: "Getting Started"
+  }
 ];
 
-export default FAQDataMain;
+export default faqData;
