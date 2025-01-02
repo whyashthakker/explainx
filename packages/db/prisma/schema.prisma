@@ -187,6 +187,8 @@ model Influencer {
 
   youtubeAccount YouTubeAccount?
 
+  instagramAccount InstagramAccount?
+
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -409,4 +411,147 @@ enum WaitlistStatus {
   APPROVED
   INVITED
   JOINED
+}
+
+//INSTAGRAM MODEL
+
+model InstagramAccount {
+  id              String    @id @default(cuid())
+  influencerId    String    @unique
+  influencer      Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  
+  username        String    @unique
+  accessToken     String    @db.Text
+  tokenExpires    DateTime
+  
+  // Profile data
+  igAccountId     String    @unique
+  followersCount  Int       @default(0)
+  followingCount  Int       @default(0)
+  mediaCount      Int       @default(0)
+  
+  // Relations
+  posts           InstagramPost[]
+  reels           InstagramReel[]
+  stories         InstagramStory[]
+  analytics       InstagramAnalytics[]
+
+  lastUpdated     DateTime  @default(now())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model InstagramPost {
+  id              String    @id @default(cuid())
+  accountId       String
+  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  
+  igMediaId       String    @unique
+  mediaType       String    // IMAGE, VIDEO, CAROUSEL_ALBUM
+  mediaUrl        String
+  thumbnailUrl    String?
+  permalink       String
+  caption         String?   @db.Text
+  
+  // Engagement metrics
+  likesCount      Int       @default(0)
+  commentsCount   Int       @default(0)
+  
+  // Analytics relation
+  analytics       InstagramPostAnalytics[]
+  
+  publishedAt     DateTime
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model InstagramReel {
+  id              String    @id @default(cuid())
+  accountId       String
+  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  
+  igMediaId       String    @unique
+  mediaUrl        String
+  thumbnailUrl    String
+  permalink       String
+  caption         String?   @db.Text
+  
+  // Engagement metrics
+  playsCount      Int       @default(0)
+  likesCount      Int       @default(0)
+  commentsCount   Int       @default(0)
+  
+  // Analytics relation
+  analytics       InstagramReelAnalytics[]
+  
+  publishedAt     DateTime
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model InstagramStory {
+  id              String    @id @default(cuid())
+  accountId       String
+  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  
+  igMediaId       String    @unique
+  mediaType       String    // IMAGE or VIDEO
+  mediaUrl        String
+  
+  // Story-specific metrics
+  impressions     Int       @default(0)
+  replies         Int       @default(0)
+  
+  expiresAt       DateTime
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model InstagramAnalytics {
+  id              String    @id @default(cuid())
+  accountId       String
+  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  
+  date            DateTime
+  followersCount  Int
+  followingCount  Int
+  mediaCount      Int
+  impressions     Int
+  reach           Int
+  profileViews    Int
+
+  createdAt       DateTime  @default(now())
+}
+
+model InstagramPostAnalytics {
+  id              String    @id @default(cuid())
+  postId          String
+  post            InstagramPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+  date            DateTime
+  impressions     Int
+  reach           Int
+  likesCount      Int
+  commentsCount   Int
+  saves           Int
+  shares          Int
+
+  createdAt       DateTime  @default(now())
+}
+
+model InstagramReelAnalytics {
+  id              String    @id @default(cuid())
+  reelId          String
+  reel            InstagramReel @relation(fields: [reelId], references: [id], onDelete: Cascade)
+  
+  date            DateTime
+  plays           Int
+  impressions     Int
+  reach           Int
+  likesCount      Int
+  commentsCount   Int
+  saves           Int
+  shares          Int
+
+  createdAt       DateTime  @default(now())
 }
