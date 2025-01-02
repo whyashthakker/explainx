@@ -56,7 +56,7 @@ export async function POST(req: Request) {
     });
 
     // Update user type if not already set
-    if (!user.userType || !user.name) {
+    if (!user.userType) {
       await prisma.user.update({
         where: { id: user.id },
         data: { name: validatedData.name, userType: "INFLUENCER" },
