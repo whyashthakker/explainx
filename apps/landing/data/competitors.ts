@@ -151,6 +151,123 @@ export interface Competitor {
       }
     ]
   },
+  "wednesday": {
+      "name": "Wednesday",
+      "shortDescription": "Influencer marketing software focused on small businesses and startups with direct outreach capabilities",
+      "category": "Influencer Marketing Platform",
+      "comparisonImage": "/images/comparisons/wednesday.png",
+      "features": [
+        {
+          "category": "Influencer Discovery",
+          "features": [
+            {
+              "name": "Creator Search",
+              "infloq": "AI-powered matching with automated discovery",
+              "competitor": "Manual search with filters across platforms",
+              "description": "Method of finding relevant creators"
+            },
+            {
+              "name": "Platform Coverage",
+              "infloq": ["All major social platforms", "Global reach", "Instant AI matching"],
+              "competitor": ["7 major social platforms", "Manual search", "Filter-based discovery"],
+              "description": "Supported social media platforms"
+            },
+            {
+              "name": "Verification Process",
+              "infloq": "AI-driven verification of metrics and authenticity",
+              "competitor": "Basic engagement metrics verification",
+              "description": "Creator verification methods"
+            }
+          ]
+        },
+        {
+          "category": "Campaign Management",
+          "features": [
+            {
+              "name": "Contact Methods",
+              "infloq": "In-platform messaging with templates",
+              "competitor": "Direct email outreach",
+              "description": "Methods for reaching out to creators"
+            },
+            {
+              "name": "Campaign Tracking",
+              "infloq": "Real-time AI-powered analytics",
+              "competitor": "Basic CRM tracking system",
+              "description": "Campaign monitoring capabilities"
+            },
+            {
+              "name": "Creator Management",
+              "infloq": "Advanced relationship management with AI insights",
+              "competitor": "Built-in CRM for basic relationship tracking",
+              "description": "Tools for managing creator relationships"
+            }
+          ]
+        },
+        {
+          "category": "Platform Features",
+          "features": [
+            {
+              "name": "Browser Extension",
+              "infloq": false,
+              "competitor": true,
+              "description": "Browser extension for creator discovery"
+            },
+            {
+              "name": "Analytics Integration",
+              "infloq": "One-click integration with major platforms",
+              "competitor": "Basic analytics tracking",
+              "description": "Integration with analytics tools"
+            },
+            {
+              "name": "ROI Tracking",
+              "infloq": ["Performance metrics", "Click tracking", "Conversion analysis"],
+              "competitor": ["Basic engagement tracking", "Campaign monitoring"],
+              "description": "Campaign performance measurement"
+            }
+          ]
+        },
+        {
+          "category": "Pricing & Value",
+          "features": [
+            {
+              "name": "Pricing Model",
+              "infloq": "Pay-per-click performance model",
+              "competitor": "Free tier with paid scaling options",
+              "description": "Platform cost structure"
+            },
+            {
+              "name": "Entry Point",
+              "infloq": "Waitlist with minimum credit purchase",
+              "competitor": "Free to start, scale as needed",
+              "description": "Initial platform access"
+            },
+            {
+              "name": "Target Market",
+              "infloq": ["Brands", "Agencies", "Enterprise"],
+              "competitor": ["Small businesses", "Startups", "Solopreneurs", "Small agencies"],
+              "description": "Primary target audience"
+            }
+          ]
+        },
+        {
+          "category": "Technology & Innovation",
+          "features": [
+            {
+              "name": "AI Implementation",
+              "infloq": ["Creator matching", "Performance prediction", "Campaign optimization"],
+              "competitor": ["Basic search filters", "Manual discovery"],
+              "description": "Use of AI technology"
+            },
+            {
+              "name": "Additional Tools",
+              "infloq": "Comprehensive analytics suite",
+              "competitor": ["Fake follower checker", "Platform-specific audit tools", "Engagement calculators"],
+              "description": "Supplementary platform features"
+            }
+          ]
+        }
+      ]
+    },
   "creatorco": {
     name: "Creator.co",
     shortDescription: "Traditional micro-influencer platform focused on product collaborations",
