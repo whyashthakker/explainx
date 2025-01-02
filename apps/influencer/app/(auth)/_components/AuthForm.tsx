@@ -1,7 +1,7 @@
 "use client";
 
 import { z } from "zod";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,6 +12,7 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
+import { AuthSearchParams } from "../../../lib/types";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -23,10 +24,7 @@ interface AuthFormProps {
   description: string;
   handleEmailAuth: (email: string, redirectPath: string) => Promise<void>;
   handleGoogleAuth: (redirectPath: string) => Promise<void>;
-  searchParams: {
-    invite?: string;
-    email?: string;
-  };
+  searchParams: AuthSearchParams;
   alternateAuthLink?: {
     text: string;
     href: string;
@@ -45,10 +43,17 @@ export default function AuthForm({
   const [emailLoading, setEmailLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [redirectPath, setRedirectPath] = useState("/dashboard");
 
-  const redirectPath = searchParams?.invite
-    ? `/invite/${searchParams.invite}`
-    : "/dashboard";
+  useEffect(() => {
+    const initializeRedirectPath = async () => {
+      const params = await searchParams;
+      if (params?.invite) {
+        setRedirectPath(`/invite/${params.invite}`);
+      }
+    };
+    initializeRedirectPath();
+  }, [searchParams]);
 
   const handleEmailSubmit = async (formData: FormData) => {
     setError(null);
@@ -70,6 +75,16 @@ export default function AuthForm({
     }
   };
 
+  const handleGoogleSubmit = async () => {
+    setGoogleLoading(true);
+    try {
+      await handleGoogleAuth(redirectPath);
+    } catch (err) {
+      setError("Failed to authenticate with Google. Please try again.");
+      setGoogleLoading(false);
+    }
+  };
+
   return (
     <main className="min-h-screen w-full bg-gradient-to-b from-[#f8fafc] to-white">
       <div className="absolute inset-0 -z-10">
@@ -80,9 +95,7 @@ export default function AuthForm({
         {/* Logo & Header */}
         <div className="w-full max-w-md mb-8 text-center">
           <h1 className="text-[#2563eb] text-4xl font-bold mb-3">infloq</h1>
-          <p className="text-[#1e293b]/80 text-lg">
-            Connect. Influence. Monetize.
-          </p>
+          <p className="text-[#1e293b]/80 text-lg">Partner. Connect. Grow.</p>
         </div>
 
         {/* Main Card */}
@@ -97,12 +110,7 @@ export default function AuthForm({
           <CardContent className="space-y-6">
             <div className="space-y-4">
               {/* Google Auth */}
-              <form
-                action={async () => {
-                  setGoogleLoading(true);
-                  await handleGoogleAuth(redirectPath);
-                }}
-              >
+              <form action={handleGoogleSubmit}>
                 <Button
                   type="submit"
                   className="w-full h-12 bg-[#2563eb] hover:bg-[#2563eb]/90 text-white flex items-center justify-center gap-3 text-base font-medium"
@@ -178,7 +186,7 @@ export default function AuthForm({
                   <Input
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter work email"
                     className={`w-full h-12 border-[#6366f1]/20 ${
                       error && error.includes("email")
                         ? "border-red-500 focus-visible:ring-red-500"
@@ -233,15 +241,15 @@ export default function AuthForm({
               <div className="py-6 space-y-3">
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Premium brand partnerships</span>
+                  <span>Access to 50K+ verified creators</span>
                 </div>
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Engagement & revenue analytics</span>
+                  <span>Campaign performance analytics</span>
                 </div>
                 <div className="flex items-center gap-3 text-[#1e293b]/80">
                   <CheckCircle2 className="w-5 h-5 text-[#0ea5e9]" />
-                  <span>Team management tools</span>
+                  <span>Streamlined creator collaboration</span>
                 </div>
               </div>
 
@@ -249,15 +257,15 @@ export default function AuthForm({
               <div className="grid grid-cols-3 gap-4 py-6 border-y border-[#6366f1]/10">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#2563eb]">50K+</div>
-                  <div className="text-sm text-[#1e293b]/60">Active Users</div>
+                  <div className="text-sm text-[#1e293b]/60">Creators</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#0ea5e9]">200+</div>
-                  <div className="text-sm text-[#1e293b]/60">Top Brands</div>
+                  <div className="text-2xl font-bold text-[#0ea5e9]">5M+</div>
+                  <div className="text-sm text-[#1e293b]/60">Reach</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#6366f1]">$5M+</div>
-                  <div className="text-sm text-[#1e293b]/60">Revenue</div>
+                  <div className="text-2xl font-bold text-[#6366f1]">20+</div>
+                  <div className="text-sm text-[#1e293b]/60">Industries</div>
                 </div>
               </div>
 
@@ -287,7 +295,7 @@ export default function AuthForm({
 
         <div className="mt-6 px-6 py-3 bg-[#22c55e]/10 rounded-full">
           <span className="text-[#22c55e] font-medium">
-            Top influencers earn $10,000+/month
+            Average campaign ROI: 300%+
           </span>
         </div>
       </div>

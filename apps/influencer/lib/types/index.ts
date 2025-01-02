@@ -307,7 +307,7 @@ export type PrismaUserWithInfluencer = PrismaUser & {
     | null;
 };
 
-export interface AuthSearchParams {
+export type AuthSearchParams = Promise<{
   invite?: string;
   email?: string;
-}
+}>;
