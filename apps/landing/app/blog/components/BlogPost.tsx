@@ -1,4 +1,3 @@
-import postData from "../../../data/post-data";
 import { BasicLayout } from "./basic-layout";
 import { MDXContent } from "./mdx-content";
 import { Prose } from './Prose';
@@ -16,15 +15,14 @@ export function BlogPost(props: BlogPostProps) {
 
   return (
     <BasicLayout>
-      <div className="mx-auto max-w-7xl px-6 py-20">
+      {/* Add min-height to reserve space */}
+      <div className="mx-auto max-w-7xl px-6 py-20 min-h-[800px]">
         <article className="mx-auto max-w-3xl">
           <div className="mt-12">
             <Prose>
               <MDXContent>{content}</MDXContent>
             </Prose>
           </div>
-
-          {/* Add this line */}
           <RelatedPosts />
         </article>
       </div>
