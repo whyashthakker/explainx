@@ -79,7 +79,7 @@ const navigation = {
     },
     {
       name: "Discord",
-      href: "https://discord.gg/Phg8nwJEek",
+      href: "https://discord.gg/FuEWNmUFGF",
       target: "_blank",
       icon: (props: any) => (
         <svg width="100" height="100" viewBox="0 0 48 48" {...props}>

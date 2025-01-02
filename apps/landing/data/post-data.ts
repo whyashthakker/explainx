@@ -1,4 +1,4 @@
-// Generated on 2025-01-02T06:14:00.609Z
+// Generated on 2025-01-02T06:57:52.443Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,25 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Top 51 Instagram Models to Follow: Complete Guide 2025",
+    "file": "instagram-models-guide",
+    "description": "Discover the most influential Instagram models of 2025, from high-fashion icons to emerging talent reshaping the digital modeling landscape.",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/instagram-models-guide",
+    "categories": [
+      "social-media",
+      "instagram"
+    ]
+  },
   {
     "title": "Programa de Influencers de Amazon: Una Guía Completa para 2025",
     "file": "amazon-influencer",

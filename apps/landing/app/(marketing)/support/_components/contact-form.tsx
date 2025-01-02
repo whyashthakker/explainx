@@ -10,7 +10,7 @@ import * as z from "zod";
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 
-const DISCORD_INVITE_LINK = "https://discord.gg/Phg8nwJEek";
+const DISCORD_INVITE_LINK = "https://discord.gg/FuEWNmUFGF";
 const GET_ANSWERS_LINK = "https://chatgpt.com/g/g-LVAKUYjrB-olly-faq"; // Replace with your actual link
 
 const schema = z.object({
