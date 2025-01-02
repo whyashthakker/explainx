@@ -498,7 +498,6 @@ model InstagramStory {
   mediaType       String    // IMAGE or VIDEO
   mediaUrl        String
   
-  // Story-specific metrics
   impressions     Int       @default(0)
   replies         Int       @default(0)
   
