@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import localFont from "next/font/local";
 import Navbar from "./_components/navbar-1";
 import { PreFooter } from "./_components/pre-footer";
-import { SquaresPattern } from "./_components/squares-pattern";
 import { Toaster } from '@repo/ui/components/ui/toaster';
 import { AhrefsAnalytics } from './_components/ahrefs';
 
@@ -89,9 +88,8 @@ export default function RootLayout({
         <Suspense>
           <div className="flex flex-col min-h-screen dark:bg-[#1F1F1F]">
             <Navbar />
-            <main className="flex-grow pt-12 md:pt-20 isolate">
+            <main className="flex-grow">
               {children}
-            <SquaresPattern />
             </main>
             <PreFooter />
           </div>
