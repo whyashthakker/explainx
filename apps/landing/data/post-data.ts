@@ -1,4 +1,4 @@
-// Generated on 2025-01-02T06:57:52.443Z
+// Generated on 2025-01-02T09:03:00.330Z
 interface Author {
   name: string;
   role: string;
@@ -20,8 +20,26 @@ interface Post {
 
 const postData: Post[] = [
   {
+    "title": "أفضل ٥١ عارضة أزياء على انستغرام للمتابعة: دليل شامل ٢٠٢٥",
+    "file": "top-51-instagram-models-to-follow",
+    "description": "اكتشف أكثر عارضات الأزياء تأثيراً على انستغرام في عام ٢٠٢٥، من أيقونات الموضة الراقية إلى المواهب الناشئة التي تعيد تشكيل المشهد الرقمي لعرض الأزياء",
+    "date": "January 2, 2025",
+    "datetime": "2025-01-02",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/top-51-instagram-models-to-follow",
+    "categories": [
+      "social-media"
+    ]
+  },
+  {
     "title": "Top 51 Instagram Models to Follow: Complete Guide 2025",
-    "file": "instagram-models-guide",
+    "file": "top-51-instagram-models-to-follow",
     "description": "Discover the most influential Instagram models of 2025, from high-fashion icons to emerging talent reshaping the digital modeling landscape.",
     "date": "January 2, 2025",
     "datetime": "2025-01-02",
@@ -32,7 +50,7 @@ const postData: Post[] = [
       "imageUrl": "/images/blog/yt.jpg"
     },
     "language": "en",
-    "url": "https://www.infloq.com/blog/post/instagram-models-guide",
+    "url": "https://www.infloq.com/blog/post/top-51-instagram-models-to-follow",
     "categories": [
       "social-media",
       "instagram"
