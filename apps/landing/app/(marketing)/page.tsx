@@ -1,7 +1,6 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { CTA } from "../_components/cta";
 import FAQSection from "../_components/faq-section";
 import {
   Features,
@@ -16,6 +15,7 @@ import { Heading } from "../_components/heading";
 import { Testimonials } from "../_components/testimonials";
 import ProfileCarousel from "../_components/profile-carousel";
 import { Pricing } from "../_components/infloq-pricing";
+import CTA from "../_components/cta";
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
