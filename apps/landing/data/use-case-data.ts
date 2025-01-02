@@ -1,4 +1,4 @@
-// Generated on 2025-01-01T10:54:52.211Z
+// Generated on 2025-01-02T06:14:00.607Z
 interface UseCase {
   title: string;
   slug: string;
