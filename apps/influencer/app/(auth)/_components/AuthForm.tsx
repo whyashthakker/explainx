@@ -1,7 +1,7 @@
 "use client";
 
 import { z } from "zod";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,26 +12,48 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
-import { handleGoogleSignIn, handleEmailSignIn } from "../_actions/actions";
+import { AuthSearchParams } from "../../../lib/types";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
 });
 
-type SearchParams = Promise<{
-  invite?: string;
-  email?: string;
-}>;
+interface AuthFormProps {
+  mode: "login" | "signup";
+  title: string;
+  description: string;
+  handleEmailAuth: (email: string, redirectPath: string) => Promise<void>;
+  handleGoogleAuth: (redirectPath: string) => Promise<void>;
+  searchParams: AuthSearchParams;
+  alternateAuthLink?: {
+    text: string;
+    href: string;
+  };
+}
 
-type Params = Promise<{}>;
-
-export default function BrandSignIn(props: {
-  params: Params;
-  searchParams: SearchParams;
-}) {
+export default function AuthForm({
+  mode,
+  title,
+  description,
+  handleEmailAuth,
+  handleGoogleAuth,
+  searchParams,
+  alternateAuthLink,
+}: AuthFormProps) {
   const [emailLoading, setEmailLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [redirectPath, setRedirectPath] = useState("/dashboard");
+
+  useEffect(() => {
+    const initializeRedirectPath = async () => {
+      const params = await searchParams;
+      if (params?.invite) {
+        setRedirectPath(`/invite/${params.invite}`);
+      }
+    };
+    initializeRedirectPath();
+  }, [searchParams]);
 
   const handleEmailSubmit = async (formData: FormData) => {
     setError(null);
@@ -39,22 +61,27 @@ export default function BrandSignIn(props: {
 
     try {
       const email = formData.get("email") as string;
-
       const result = formSchema.parse({ email });
-
-      const searchParams = await props.searchParams;
-      const redirectPath = searchParams.invite
-        ? `/invite/${searchParams.invite}`
-        : "/dashboard";
-
-      await handleEmailSignIn(result.email, redirectPath);
+      await handleEmailAuth(result.email, redirectPath);
     } catch (err) {
       if (err instanceof z.ZodError) {
         setError(err.errors[0]?.message || "Invalid input");
       } else {
-        setError("Failed to send login link. Please try again.");
+        setError(
+          `Failed to ${mode === "login" ? "send login link" : "sign up"}. Please try again.`,
+        );
       }
       setEmailLoading(false);
+    }
+  };
+
+  const handleGoogleSubmit = async () => {
+    setGoogleLoading(true);
+    try {
+      await handleGoogleAuth(redirectPath);
+    } catch (err) {
+      setError("Failed to authenticate with Google. Please try again.");
+      setGoogleLoading(false);
     }
   };
 
@@ -74,27 +101,16 @@ export default function BrandSignIn(props: {
         {/* Main Card */}
         <Card className="w-full max-w-md bg-white/70 backdrop-blur-lg shadow-xl border-[#6366f1]/10">
           <CardHeader className="space-y-2 text-center">
-            <CardTitle className="text-[#1e293b] text-2xl">
-              Sign in to Brand Portal
-            </CardTitle>
+            <CardTitle className="text-[#1e293b] text-2xl">{title}</CardTitle>
             <CardDescription className="text-[#1e293b]/60 text-base">
-              Access our network of top-tier creators
+              {description}
             </CardDescription>
           </CardHeader>
 
           <CardContent className="space-y-6">
             <div className="space-y-4">
-              {/* Google Sign In */}
-              <form
-                action={async () => {
-                  setGoogleLoading(true);
-                  const searchParams = await props.searchParams;
-                  const redirectPath = searchParams.invite
-                    ? `/invite/${searchParams.invite}`
-                    : "/dashboard";
-                  await handleGoogleSignIn(redirectPath);
-                }}
-              >
+              {/* Google Auth */}
+              <form action={handleGoogleSubmit}>
                 <Button
                   type="submit"
                   className="w-full h-12 bg-[#2563eb] hover:bg-[#2563eb]/90 text-white flex items-center justify-center gap-3 text-base font-medium"
@@ -122,7 +138,8 @@ export default function BrandSignIn(props: {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         />
                       </svg>
-                      Logging in with Google...
+                      {mode === "login" ? "Logging in" : "Signing up"} with
+                      Google...
                     </>
                   ) : (
                     <>
@@ -163,7 +180,7 @@ export default function BrandSignIn(props: {
                 </div>
               </div>
 
-              {/* Email Sign In */}
+              {/* Email Auth */}
               <form action={handleEmailSubmit} className="space-y-3">
                 <div className="space-y-2">
                   <Input
@@ -253,15 +270,20 @@ export default function BrandSignIn(props: {
               </div>
 
               {/* Login/Register Toggle */}
-              <div className="text-center">
-                <Button
-                  variant="link"
-                  className="text-[#2563eb] hover:text-[#2563eb]/80"
-                >
-                  New to Infloq? Create a brand account
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
+              {alternateAuthLink && (
+                <div className="text-center">
+                  <Button
+                    variant="link"
+                    className="text-[#2563eb] hover:text-[#2563eb]/80"
+                    onClick={() =>
+                      (window.location.href = alternateAuthLink.href)
+                    }
+                  >
+                    {alternateAuthLink.text}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
