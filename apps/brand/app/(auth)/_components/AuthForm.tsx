@@ -1,7 +1,7 @@
 "use client";
 
 import { z } from "zod";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,6 +12,7 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
+import { AuthSearchParams } from "../../../lib/types";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -23,10 +24,7 @@ interface AuthFormProps {
   description: string;
   handleEmailAuth: (email: string, redirectPath: string) => Promise<void>;
   handleGoogleAuth: (redirectPath: string) => Promise<void>;
-  searchParams: {
-    invite?: string;
-    email?: string;
-  };
+  searchParams: AuthSearchParams;
   alternateAuthLink?: {
     text: string;
     href: string;
@@ -45,10 +43,22 @@ export default function BrandAuthForm({
   const [emailLoading, setEmailLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [redirectPath, setRedirectPath] = useState("/dashboard");
 
-  const redirectPath = searchParams?.invite
-    ? `/invite/${searchParams.invite}`
-    : "/dashboard";
+  useEffect(() => {
+    const initializeRedirectPath = async () => {
+      try {
+        const params = await searchParams;
+        if (params?.invite) {
+          setRedirectPath(`/invite/${params.invite}`);
+        }
+      } catch (error) {
+        console.error("Error processing searchParams:", error);
+      }
+    };
+
+    initializeRedirectPath();
+  }, [searchParams]);
 
   const handleEmailSubmit = async (formData: FormData) => {
     setError(null);
@@ -67,6 +77,16 @@ export default function BrandAuthForm({
         );
       }
       setEmailLoading(false);
+    }
+  };
+
+  const handleGoogleSubmit = async () => {
+    setGoogleLoading(true);
+    try {
+      await handleGoogleAuth(redirectPath);
+    } catch (err) {
+      setError("Failed to authenticate with Google. Please try again.");
+      setGoogleLoading(false);
     }
   };
 
@@ -95,12 +115,7 @@ export default function BrandAuthForm({
           <CardContent className="space-y-6">
             <div className="space-y-4">
               {/* Google Auth */}
-              <form
-                action={async () => {
-                  setGoogleLoading(true);
-                  await handleGoogleAuth(redirectPath);
-                }}
-              >
+              <form action={handleGoogleSubmit}>
                 <Button
                   type="submit"
                   className="w-full h-12 bg-[#2563eb] hover:bg-[#2563eb]/90 text-white flex items-center justify-center gap-3 text-base font-medium"
