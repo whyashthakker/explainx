@@ -43,16 +43,6 @@ export default {
     }),
     Resend({
       from: "yash@mail.infloq.com",
-      profile(profile) {
-        return {
-          id: profile.id,
-          name: profile.name,
-          email: profile.email,
-          image: profile.image,
-          userType: UserType.INFLUENCER, // Set default userType
-          activePortal: ActivePortal.INFLUENCER, // Set default activePortal
-        };
-      },
     }),
   ],
   callbacks: {
