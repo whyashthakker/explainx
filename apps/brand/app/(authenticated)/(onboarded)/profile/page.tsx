@@ -4,33 +4,29 @@ import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import ProfilePage from "./_components/ProfilePage";
 import { Metadata } from "next";
-import { User, Influencer, InfluencerTeamMember } from "../../../../lib/types";
+import { User, Brand, BrandTeamMember } from "../../../../lib/types";
 export const metadata: Metadata = {
-  title: "Profile | Dashboard",
-  description: "Manage your profile and team settings",
+  title: "Brand Profile | Dashboard",
+  description: "Manage your brand profile and team settings",
 };
-
 interface ProfilePageProps {
   user: User & {
-    influencer: Influencer | null;
+    brand: Brand | null;
   };
-  influencer: Influencer;
-  teamMembers: InfluencerTeamMember[];
+  brand: Brand;
+  teamMembers: BrandTeamMember[];
 }
-
 export default async function Page() {
   const session = await auth();
-
   if (!session?.user?.email) {
     redirect("/");
   }
-
   const user = await prisma.user.findUnique({
     where: {
       email: session.user.email || "", // Handle null case with empty string
     },
     include: {
-      influencer: {
+      brands: {
         include: {
           team: {
             include: {
@@ -52,22 +48,29 @@ export default async function Page() {
       },
     },
   });
-
-  if (!user?.influencer) {
+  // Since users can have multiple brands, we'll use the first brand for now
+  // You might want to add logic to determine which brand's profile to show
+  const activeBrand = user?.brands?.[0];
+  if (!activeBrand) {
     redirect("/onboarding");
   }
-
   // Cast the data to match our component types
-  const typedUser = user as ProfilePageProps["user"];
-  const typedInfluencer = user.influencer as ProfilePageProps["influencer"];
+  const typedUser: ProfilePageProps["user"] = {
+    ...user,
+    //@ts-ignore
+    brand: activeBrand, // Set the active brand
+  };
   //@ts-ignore
-  const typedTeamMembers = (user?.influencer?.team?.members ||
-    []) as ProfilePageProps["teamMembers"];
 
+  const typedBrand: ProfilePageProps["brand"] = activeBrand;
+  //@ts-ignore
+
+  const typedTeamMembers: ProfilePageProps["teamMembers"] =
+    activeBrand?.team?.members || [];
   return (
     <ProfilePage
       user={typedUser}
-      influencer={typedInfluencer}
+      brand={typedBrand}
       teamMembers={typedTeamMembers}
     />
   );

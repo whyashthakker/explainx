@@ -1,20 +1,15 @@
 "use client";
 
-import { use } from "react";
 import AuthForm from "../_components/AuthForm";
 import { handleGoogleSignIn, handleEmailSignIn } from "../_actions/actions";
 import { AuthSearchParams } from "../../../lib/types";
 
 interface PageProps {
- params: Promise<{}>;
- searchParams: Promise<AuthSearchParams>;
+searchParams: AuthSearchParams;
 }
 
-export default function SignupPage(props: PageProps) {
- const params = use(props.params);
- const searchParams = use(props.searchParams);
-
- return (
+export default function SignupPage({ searchParams }: PageProps) {
+return (
    <AuthForm
      mode="signup"
      title="Sign up to Brand Portal"
