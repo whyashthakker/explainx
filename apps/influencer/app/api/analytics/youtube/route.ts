@@ -21,51 +21,71 @@ type Video = {
 
 export const GET = async () => {
   try {
-    // if (!req.auth?.user?.email) {
-    //   return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
-    // }
-
     const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
+    // Get user and check portal access
     const user = await prisma.user.findUnique({
-      // where: { email: req.auth.user.email },
-
       where: { email: session.user.email },
       include: {
-        influencer: {
+        influencers: true,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Check if user has influencer access and is in influencer portal
+    if (user.userType !== "INFLUENCER" && user.userType !== "BOTH") {
+      return NextResponse.json(
+        { error: "Not authorized for influencer portal" },
+        { status: 403 },
+      );
+    }
+
+    if (user.activePortal !== "INFLUENCER") {
+      return NextResponse.json(
+        { error: "Please switch to influencer portal" },
+        { status: 403 },
+      );
+    }
+
+    // Get the active influencer profile with YouTube account
+    const influencer = await prisma.influencer.findFirst({
+      where: {
+        userId: user.id,
+      },
+      include: {
+        youtubeAccount: {
           include: {
-            youtubeAccount: {
+            videos: {
               include: {
-                videos: {
-                  include: {
-                    analytics: true,
-                  },
-                },
-                analytics: {
-                  orderBy: {
-                    date: "desc",
-                  },
-                  take: 30,
-                },
+                analytics: true,
               },
+            },
+            analytics: {
+              orderBy: {
+                date: "desc",
+              },
+              take: 30,
             },
           },
         },
       },
     });
 
-    if (!user?.influencer?.youtubeAccount) {
+    if (!influencer?.youtubeAccount) {
       return NextResponse.json(
         { error: "YouTube account not found" },
         { status: 404 },
       );
     }
 
-    const videos = user.influencer.youtubeAccount.videos;
-    const recentAnalytics = user.influencer.youtubeAccount.analytics;
+    const videos = influencer.youtubeAccount.videos;
+    const recentAnalytics = influencer.youtubeAccount.analytics;
 
     if (!videos.length) {
       return NextResponse.json({
@@ -84,9 +104,9 @@ export const GET = async () => {
         },
         recentVideos: [],
         channelStats: {
-          subscriberCount: user.influencer.youtubeAccount.subscriberCount,
-          totalViews: user.influencer.youtubeAccount.viewCount,
-          videoCount: user.influencer.youtubeAccount.videoCount,
+          subscriberCount: influencer.youtubeAccount.subscriberCount,
+          totalViews: influencer.youtubeAccount.viewCount,
+          videoCount: influencer.youtubeAccount.videoCount,
         },
       });
     }
@@ -142,9 +162,9 @@ export const GET = async () => {
       growthTrends,
       recentVideos,
       channelStats: {
-        subscriberCount: user.influencer.youtubeAccount.subscriberCount,
-        totalViews: user.influencer.youtubeAccount.viewCount,
-        videoCount: user.influencer.youtubeAccount.videoCount,
+        subscriberCount: influencer.youtubeAccount.subscriberCount,
+        totalViews: influencer.youtubeAccount.viewCount,
+        videoCount: influencer.youtubeAccount.videoCount,
       },
     });
   } catch (error) {

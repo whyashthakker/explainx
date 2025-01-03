@@ -5,13 +5,11 @@ import Resend from "next-auth/providers/resend";
 import { JWT } from "next-auth/jwt";
 import prisma from "@repo/db/client";
 import { UserType, ActivePortal } from "@prisma/client";
-
 declare module "next-auth" {
   interface User {
     userType?: UserType;
     activePortal?: ActivePortal;
   }
-
   interface Session {
     user: {
       id: string;
@@ -20,7 +18,6 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 }
-
 declare module "next-auth/jwt" {
   interface JWT {
     id?: string;
@@ -28,7 +25,6 @@ declare module "next-auth/jwt" {
     activePortal?: ActivePortal;
   }
 }
-
 export default {
   providers: [
     Google({
@@ -47,12 +43,21 @@ export default {
     }),
     Resend({
       from: "yash@mail.infloq.com",
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.image,
+          userType: UserType.INFLUENCER, // Set default userType
+          activePortal: ActivePortal.INFLUENCER, // Set default activePortal
+        };
+      },
     }),
   ],
   callbacks: {
     async signIn({ user, account }) {
       if (!user.email) return false;
-
       try {
         // Check if user exists
         const existingUser = await prisma.user.findUnique({
@@ -62,12 +67,10 @@ export default {
             brands: true,
           },
         });
-
         if (existingUser) {
           let userType = existingUser.userType;
           const hasBrand = existingUser.brands.length > 0;
           const hasInfluencer = existingUser.influencers.length > 0;
-
           // Determine user type based on profiles
           if (!userType) {
             if (hasBrand && hasInfluencer) {
@@ -77,7 +80,6 @@ export default {
             } else {
               userType = UserType.INFLUENCER;
             }
-
             // Update user type
             await prisma.user.update({
               where: { id: existingUser.id },
@@ -88,14 +90,12 @@ export default {
             });
           }
         }
-
         return true;
       } catch (error) {
         console.error("Error in signIn callback:", error);
         return false;
       }
     },
-
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
@@ -104,7 +104,6 @@ export default {
       }
       return token;
     },
-
     async session({ session, token }) {
       if (token && session.user) {
         session.user.id = token.id as string;
@@ -118,5 +117,5 @@ export default {
     signIn: "/login",
     error: "/auth/error",
   },
-  debug: process.env.NODE_ENV === "development",
+  // debug: process.env.NODE_ENV === "development",
 } satisfies NextAuthConfig;

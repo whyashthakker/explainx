@@ -9,7 +9,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Base User Model with Auth
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -24,10 +23,11 @@ model User {
 
   // Role and type
   userType     UserType?
+  activePortal ActivePortal? // Track which portal/app the user is currently using
   
-  // Profile relations
-  brand         Brand?    
-  influencer    Influencer?
+  // Profile relations - Remove unique constraint to allow both
+  brands        Brand[]    
+  influencers   Influencer[]
 
   // Team memberships
   brandTeamMemberships    BrandTeamMember[]
@@ -42,6 +42,12 @@ model User {
 }
 
 enum UserType {
+  BRAND
+  INFLUENCER
+  BOTH
+}
+
+enum ActivePortal {
   BRAND
   INFLUENCER
 }
@@ -110,10 +116,10 @@ enum TeamRole {
   MEMBER
 }
 
-// Brand Models
+// Update Brand model - remove unique constraint on userId
 model Brand {
   id          String    @id @default(cuid())
-  userId      String    @unique
+  userId      String
   user        User      @relation(fields: [userId], references: [id])
   
   name        String
@@ -123,20 +129,19 @@ model Brand {
   description String?
 
   targetDemographic    String?
-  preferredCategories  String[]    // e.g., ["Fashion", "Beauty", "Tech"]
+  preferredCategories  String[]
   minFollowers        Int?
   maxBudget          Decimal?
   preferredPlatforms  Platform[]
   
-  // Team Management
   team        BrandTeam?
-
-  // Relations
   campaigns   Campaign[]
   collaborations Collaboration[]
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  @@index([userId]) // Add index for better query performance
 }
 
 model BrandTeam {
@@ -159,17 +164,19 @@ model BrandTeamMember {
   role        TeamRole  
   inviteStatus InviteStatus
   inviteToken String?   @unique
+  inviteEmail String?   // Add this field to store email for pending invites
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
+ @@unique([teamId, inviteEmail]) // Add this unique constraint
   @@unique([teamId, userId])
 }
 
-// Influencer Models
+// Update Influencer model - remove unique constraint on userId
 model Influencer {
   id          String    @id @default(cuid())
-  userId      String    @unique
+  userId      String
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   
   name        String
@@ -179,18 +186,16 @@ model Influencer {
   followers   Int
   platforms   Platform[]
   
-  // Team Management
   team        InfluencerTeam?
-
-  // Relations
   collaborations Collaboration[]
-
   youtubeAccount YouTubeAccount?
 
   instagramAccount InstagramAccount?
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  @@index([userId]) // Add index for better query performance
 }
 
 model InfluencerTeam {

@@ -1,4 +1,4 @@
-// app/collaborations/[id]/page.tsx
+// app/(authenticated)/(onboarded)/collaborations/[id]/page.tsx
 import { redirect } from "next/navigation";
 import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
@@ -19,12 +19,30 @@ export default async function CollaborationPage({ params }: PageProps) {
     redirect("/");
   }
 
+  // Get user with their influencer profiles and check active portal
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
-    include: { influencer: true },
+    include: {
+      influencers: true,
+    },
   });
 
-  if (!user?.influencer) {
+  // Check if user exists and has proper access
+  if (!user) {
+    redirect("/");
+  }
+
+  // Verify user has influencer access and is in influencer portal
+  if (
+    user.activePortal !== "INFLUENCER" ||
+    (user.userType !== "INFLUENCER" && user.userType !== "BOTH")
+  ) {
+    redirect("/dashboard");
+  }
+
+  // Get the active influencer profile
+  const activeInfluencer = user?.influencers?.[0];
+  if (!activeInfluencer) {
     redirect("/dashboard");
   }
 
@@ -32,7 +50,7 @@ export default async function CollaborationPage({ params }: PageProps) {
   const collaboration = await prisma.collaboration.findFirst({
     where: {
       id: id,
-      influencerId: user.influencer.id,
+      influencerId: activeInfluencer.id,
     },
   });
 
@@ -47,7 +65,6 @@ export default async function CollaborationPage({ params }: PageProps) {
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
   const { id } = resolvedParams;
-
   return {
     title: `Collaboration ${id}`,
     description: `Details for collaboration ${id}`,

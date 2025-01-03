@@ -34,19 +34,30 @@ import {
   Edit,
   LucideIcon,
 } from "lucide-react";
-
-import {
+import { useRouter } from "next/navigation";
+import type {
   User,
-  Influencer,
-  InfluencerTeamMember,
   Platform,
   TeamRole,
-  BaseModel,
-} from "../../../../../lib/types";
+  Influencer,
+  InfluencerTeam,
+  InfluencerTeamMember,
+} from "@prisma/client";
 import { TeamSection } from "./team/TeamSection";
 import EditProfileModal from "./EditProfileModal";
-import { revalidatePath } from "next/cache";
-import { useRouter } from "next/navigation";
+
+// Extended types for nested data
+interface ExtendedInfluencerTeam extends InfluencerTeam {
+  members: ExtendedTeamMember[];
+}
+
+interface ExtendedTeamMember extends InfluencerTeamMember {
+  user: Pick<User, "id" | "name" | "email" | "image">;
+}
+
+interface ExtendedInfluencer extends Influencer {
+  team?: ExtendedInfluencerTeam;
+}
 
 interface ProfileSocialLinkProps {
   icon: LucideIcon;
@@ -56,8 +67,8 @@ interface ProfileSocialLinkProps {
 
 interface ProfilePageProps {
   user: User;
-  influencer: Influencer;
-  teamMembers: InfluencerTeamMember[];
+  influencer: ExtendedInfluencer;
+  teamMembers: ExtendedTeamMember[];
 }
 
 const ProfileSocialLink: React.FC<ProfileSocialLinkProps> = ({
@@ -78,11 +89,11 @@ const ProfileSocialLink: React.FC<ProfileSocialLinkProps> = ({
 
 const SocialIcon = ({ platform }: { platform: Platform }) => {
   switch (platform) {
-    case Platform.INSTAGRAM:
+    case "INSTAGRAM":
       return <Instagram className="h-5 w-5 text-pink-500" />;
-    case Platform.YOUTUBE:
+    case "YOUTUBE":
       return <Youtube className="h-5 w-5 text-red-500" />;
-    case Platform.TWITTER:
+    case "TWITTER":
       return <Twitter className="h-5 w-5 text-blue-500" />;
     default:
       return null;
@@ -95,7 +106,8 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
   teamMembers: initialTeamMembers,
 }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [currentInfluencer, setCurrentInfluencer] = useState(influencer);
+  const [currentInfluencer, setCurrentInfluencer] =
+    useState<ExtendedInfluencer>(influencer);
   const [profileVersion, setProfileVersion] = useState(0);
   const router = useRouter();
   const { toast } = useToast();
@@ -104,7 +116,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
     setIsEditModalOpen(true);
   };
 
-  const handleSaveProfile = async (formData: any) => {
+  const handleSaveProfile = async (formData: Partial<ExtendedInfluencer>) => {
     try {
       const response = await fetch("/api/profile", {
         method: "PUT",
@@ -119,21 +131,15 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
       }
 
       const updatedInfluencer = await response.json();
-
-      // Update the local state
-      setCurrentInfluencer(updatedInfluencer as Influencer);
-      // Increment profile version to trigger TeamSection refresh
+      setCurrentInfluencer(updatedInfluencer as ExtendedInfluencer);
       setProfileVersion((prev) => prev + 1);
 
-      // Show success message
       toast({
         title: "Profile Updated",
         description: "Your profile has been successfully updated.",
       });
 
       setIsEditModalOpen(false);
-
-      // Refresh the page data
       router.refresh();
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -142,13 +148,12 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
         description: "Failed to update profile. Please try again.",
         variant: "destructive",
       });
-      throw error;
     }
   };
+
   const handleSocialEdit = (platform: Platform) => {
     console.log(`Edit ${platform} clicked`);
   };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -246,6 +251,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
               </CardContent>
             </Card>
           </TabsContent>
+
           <TabsContent value="platforms">
             <Card>
               <CardHeader>
