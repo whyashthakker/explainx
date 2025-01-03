@@ -1,68 +1,13 @@
 // export { auth as middleware } from "./auth";
-// // middleware.ts
-// import { NextResponse } from 'next/server'
-// import type { NextRequest } from 'next/server'
-// import { auth } from '@/lib/auth'
-
-// export async function middleware(request: NextRequest) {
-//   const session = await auth()
-
-//   // Protect authenticated routes
-//   if (request.nextUrl.pathname.startsWith('/authenticated') && !session) {
-//     return NextResponse.redirect(new URL('/login', request.url))
-//   }
-
-//   // Redirect logged in users from auth pages
-//   if (session && (
-//     request.nextUrl.pathname === '/login' ||
-//     request.nextUrl.pathname === '/register'
-//   )) {
-//     return NextResponse.redirect(new URL('/authenticated/dashboard', request.url))
-//   }
-// }
-
-// export const config = {
-//   matcher: ['/authenticated/:path*', '/login', '/register', '/onboarding']
-// }
-
-// middleware.ts
-// import { NextResponse } from "next/server";
-// import type { NextRequest } from "next/server";
-// import { auth } from "./auth";
-
-// export async function middleware(request: NextRequest) {
-//   const session = await auth();
-
-//   if (!session) {
-//     return NextResponse.redirect(new URL("/login", request.url));
-//   }
-
-//   // Check if user is an influencer
-//   if (session.user.userType !== "INFLUENCER") {
-//     return NextResponse.redirect(new URL("/auth/unauthorized", request.url));
-//   }
-
-//   return NextResponse.next();
-// }
-
-// export const config = {
-//   matcher: [
-//     "/dashboard/:path*",
-//     "/profile/:path*",
-//     // Add other protected routes
-//   ],
-// }
-//
 // middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { auth } from "./auth";
 import prisma from "@repo/db/client";
-import { UserType, ActivePortal } from "@prisma/client";
+import { UserType, ActivePortal, TeamRole } from "@prisma/client";
 
 export async function middleware(request: NextRequest) {
   const session = await auth();
-
   // No session -> redirect to login
   if (!session?.user?.id) {
     const loginUrl = new URL("/login", request.url);
@@ -71,6 +16,7 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
+    console.log("middleware");
     // Get and update user in one query
     const user = await prisma.user.update({
       where: {
@@ -81,7 +27,13 @@ export async function middleware(request: NextRequest) {
       },
       include: {
         influencers: {
-          take: 1, // Only need to check if any exist
+          take: 1,
+        },
+        influencerTeamMemberships: {
+          take: 1,
+          where: {
+            inviteStatus: "ACCEPTED",
+          },
         },
       },
     });
@@ -99,8 +51,28 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/auth/unauthorized", request.url));
     }
 
-    // If no influencer profile exists and not already on onboarding page
+    // Get team membership if exists
+    const teamMembership = user.influencerTeamMemberships[0];
+
+    // If trying to access team-view and is OWNER, redirect to dashboard
     if (
+      request.nextUrl.pathname.startsWith("/team-view") &&
+      teamMembership?.role === TeamRole.OWNER
+    ) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+
+    // If MEMBER or ADMIN, redirect to team-view
+    if (
+      teamMembership &&
+      (teamMembership.role === TeamRole.MEMBER ||
+        teamMembership.role === TeamRole.ADMIN)
+    ) {
+      if (!request.nextUrl.pathname.startsWith("/team-view")) {
+        return NextResponse.redirect(new URL("/team-view", request.url));
+      }
+    } else if (
+      // Only check for influencer profile if they're not a team member or are OWNER
       user.influencers.length === 0 &&
       !request.nextUrl.pathname.startsWith("/onboarding")
     ) {
@@ -122,6 +94,7 @@ export const config = {
     "/campaigns/:path*",
     "/analytics/:path*",
     "/settings/:path*",
-    "/((?!api|_next/static|_next/image|favicon.ico|login|auth).*)",
+    // Exclude auth-related paths and other static/api routes
+    "/((?!api|_next/static|_next/image|favicon.ico|login|signup|invite|auth|verify|callback).*)",
   ],
 };

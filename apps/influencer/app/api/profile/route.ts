@@ -22,18 +22,46 @@ export async function PUT(request: Request, segmentData: { params: Params }) {
 
     const data = (await request.json()) as UpdateProfileRequest;
 
-    // Get the user's influencer profile
+    // Get user with portal state
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: { influencer: true },
+      include: {
+        influencers: true,
+      },
     });
 
-    if (!user?.influencer) {
+    if (!user) {
+      return new NextResponse("User not found", { status: 404 });
+    }
+
+    // Verify portal access
+    if (!user.activePortal) {
+      return new NextResponse("No active portal selected", { status: 400 });
+    }
+
+    if (user.activePortal !== "INFLUENCER") {
+      return new NextResponse("Please switch to influencer portal", {
+        status: 400,
+      });
+    }
+
+    if (user.userType !== "INFLUENCER" && user.userType !== "BOTH") {
+      return new NextResponse("Not authorized for influencer portal", {
+        status: 403,
+      });
+    }
+
+    // Get the active influencer profile
+    const activeInfluencer = await prisma.influencer.findFirst({
+      where: { userId: user.id },
+    });
+
+    if (!activeInfluencer) {
       return new NextResponse("Influencer profile not found", { status: 404 });
     }
 
-    // Store the influencer ID outside the transaction since we've confirmed it exists
-    const influencerId = user.influencer.id;
+    // Store the influencer ID outside the transaction
+    const influencerId = activeInfluencer.id;
     const userId = user.id;
 
     // Update both the influencer and user profiles in a transaction
@@ -50,6 +78,8 @@ export async function PUT(request: Request, segmentData: { params: Params }) {
       });
 
       // Update the corresponding user profile
+      // Only update the user's name and image if this is their only profile
+      // or if they're currently using the influencer portal
       await prisma.user.update({
         where: { id: userId },
         data: {

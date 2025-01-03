@@ -51,11 +51,7 @@ export default async function DashboardLayoutWrapper({
       user.userType !== UserType.INFLUENCER &&
       user.userType !== UserType.BOTH
     ) {
-      redirect("/auth/unauthorized");
-    }
-
-    if (!user.influencers || user.influencers.length === 0) {
-      redirect("/onboarding");
+      redirect("/login");
     }
 
     const teamMembership = await prisma.influencerTeamMember.findFirst({
@@ -72,8 +68,12 @@ export default async function DashboardLayoutWrapper({
       },
     });
 
-    if (teamMembership?.role === "MEMBER") {
+    if (teamMembership?.role === "MEMBER" || teamMembership?.role === "ADMIN") {
       redirect("/team-view");
+    }
+
+    if (!user.influencers || user.influencers.length === 0) {
+      redirect("/onboarding");
     }
 
     return (

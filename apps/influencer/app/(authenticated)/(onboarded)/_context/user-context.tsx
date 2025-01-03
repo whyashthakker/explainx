@@ -1,16 +1,16 @@
 // app/(authenticated)/(onboarded)/_context/user-context.tsx
 "use client";
 import { createContext, useContext } from "react";
-import { PrismaUserWithInfluencer } from "../../../../lib/types";
+import { UserWithProfiles } from "../../../../lib/types";
 
-const UserContext = createContext<PrismaUserWithInfluencer | null>(null);
+const UserContext = createContext<UserWithProfiles | null>(null);
 
 export function UserProvider({
   children,
   value,
 }: {
   children: React.ReactNode;
-  value: PrismaUserWithInfluencer;
+  value: UserWithProfiles;
 }) {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

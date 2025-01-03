@@ -48,7 +48,8 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { handleSignOut } from "../../../../../lib/actions";
-import { PrismaUserWithInfluencer, Platform } from "../../../../../lib/types";
+import { UserWithProfiles } from "../../../../../lib/types";
+import { Platform } from "@prisma/client";
 
 interface PlatformDistribution {
   name: Platform;
@@ -67,7 +68,7 @@ interface EngagementDataPoint {
   shares: number;
 }
 
-const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
+const InfluencerDashboard: React.FC<{ user: UserWithProfiles }> = ({
   user,
 }) => {
   const router = useRouter();
@@ -323,20 +324,22 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {currentInfluencer.platforms.map((platform, index) => (
-                  <div key={platform} className="flex items-center space-x-4">
-                    <Award
-                      style={{ color: COLORS[index % COLORS.length] }}
-                      className="h-8 w-8"
-                    />
-                    <div>
-                      <p className="font-medium">{platform}</p>
-                      <p className="text-sm text-gray-500">
-                        Connected and Active
-                      </p>
+                {currentInfluencer.platforms.map(
+                  (platform: Platform, index: number) => (
+                    <div key={platform} className="flex items-center space-x-4">
+                      <Award
+                        style={{ color: COLORS[index % COLORS.length] }}
+                        className="h-8 w-8"
+                      />
+                      <div>
+                        <p className="font-medium">{platform}</p>
+                        <p className="text-sm text-gray-500">
+                          Connected and Active
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
             </CardContent>
           </Card>

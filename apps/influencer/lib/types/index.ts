@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 // packages/types/index.ts
 import type {
   User as PrismaUser,
   Influencer as PrismaInfluencer,
 } from "@repo/db";
 import { Prisma } from "@repo/db";
+=======
+import { Prisma } from "@prisma/client";
+
+>>>>>>> 7225996 (build : double auth)
 // Enums
 export enum UserType {
+  BRAND = "BRAND",
+  INFLUENCER = "INFLUENCER",
+  BOTH = "BOTH",
+}
+
+export enum ActivePortal {
   BRAND = "BRAND",
   INFLUENCER = "INFLUENCER",
 }
@@ -45,15 +56,6 @@ export enum CollaborationStatus {
   CANCELLED = "CANCELLED",
 }
 
-export interface InfluencerFormData {
-  name: string;
-  avatar?: string;
-  bio?: string;
-  category: string;
-  followers: number;
-  platforms: Platform[];
-}
-
 // Base Types
 export interface BaseModel {
   id: string;
@@ -68,13 +70,14 @@ export interface User extends BaseModel {
   emailVerified?: Date | null;
   image?: string | null;
   userType?: UserType | null;
+  activePortal?: ActivePortal | null;
 
   // Relations
   accounts?: Account[];
   sessions?: Session[];
   authenticators?: Authenticator[];
-  brand?: Brand | null;
-  influencer?: Influencer | null;
+  brands?: Brand[];
+  influencers?: Influencer[];
   brandTeamMemberships?: BrandTeamMember[];
   influencerTeamMemberships?: InfluencerTeamMember[];
   sentMessages?: Message[];
@@ -131,6 +134,11 @@ export interface Brand extends BaseModel {
   website?: string | null;
   industry: string;
   description?: string | null;
+  targetDemographic?: string | null;
+  preferredCategories: string[];
+  minFollowers?: number | null;
+  maxBudget?: number | null;
+  preferredPlatforms: Platform[];
 
   // Relations
   user: User;
@@ -170,6 +178,7 @@ export interface Influencer extends BaseModel {
   user: User;
   team?: InfluencerTeam | null;
   collaborations?: Collaboration[];
+  youtubeAccount?: YouTubeAccount | null;
 }
 
 export interface InfluencerTeam extends BaseModel {
@@ -180,13 +189,14 @@ export interface InfluencerTeam extends BaseModel {
 
 export interface InfluencerTeamMember extends BaseModel {
   teamId: string;
-  userId: string;
+  userId?: string | null;
   role: TeamRole;
   inviteStatus: InviteStatus;
   inviteToken?: string | null;
+  inviteEmail?: string | null;
 
   team: InfluencerTeam;
-  user: User;
+  user?: User | null;
 }
 
 // Campaign Related Types
@@ -243,13 +253,18 @@ export interface Message extends BaseModel {
   receiver: User;
 }
 
-// Input Types for Forms and API Requests
+// Input Types
 export interface CreateBrandInput {
   name: string;
   logo?: string;
   website?: string;
   industry: string;
   description?: string;
+  targetDemographic?: string;
+  preferredCategories?: string[];
+  minFollowers?: number;
+  maxBudget?: number;
+  preferredPlatforms?: Platform[];
 }
 
 export interface CreateInfluencerInput {
@@ -296,25 +311,68 @@ export interface TeamMemberUpdate {
   role: TeamRole;
 }
 
-const userWithInfluencer = Prisma.validator<Prisma.UserDefaultArgs>()({
+// YouTube related interfaces
+export interface YouTubeAccount extends BaseModel {
+  influencerId: string;
+  channelId: string;
+  accessToken: string;
+  refreshToken: string;
+  tokenExpires: Date;
+  channelTitle: string;
+  description?: string | null;
+  subscriberCount: number;
+  videoCount: number;
+  viewCount: number;
+  lastUpdated: Date;
+
+  influencer: Influencer;
+  videos?: YouTubeVideo[];
+  analytics?: YouTubeAnalytics[];
+}
+
+export interface YouTubeVideo extends BaseModel {
+  accountId: string;
+  videoId: string;
+  title: string;
+  description?: string | null;
+  thumbnailUrl: string;
+  publishedAt: Date;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+
+  account: YouTubeAccount;
+  analytics?: YouTubeVideoAnalytics[];
+}
+
+export interface YouTubeAnalytics extends BaseModel {
+  accountId: string;
+  date: Date;
+  subscriberCount: number;
+  viewCount: number;
+  videoCount: number;
+
+  account: YouTubeAccount;
+}
+
+export interface YouTubeVideoAnalytics extends BaseModel {
+  videoId: string;
+  date: Date;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+
+  video: YouTubeVideo;
+}
+
+// Prisma Types
+const userWithProfiles = Prisma.validator<Prisma.UserDefaultArgs>()({
   include: {
-    influencers: {
-      include: {
-        user: {
-          select: {
-            id: true,
-            email: true,
-            image: true,
-          },
-        },
-      },
-    },
+    influencers: true,
   },
 });
 
-export type PrismaUserWithInfluencer = Prisma.UserGetPayload<
-  typeof userWithInfluencer
->;
+export type UserWithProfiles = Prisma.UserGetPayload<typeof userWithProfiles>;
 
 export type AuthSearchParams = Promise<{
   invite?: string;

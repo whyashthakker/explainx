@@ -1,7 +1,3 @@
-// lib/types.ts
-import { Platform as PrismaPlatform } from "@prisma/client";
-export { PrismaPlatform as Platform };
-
 // app/api/onboarding/route.ts
 import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
