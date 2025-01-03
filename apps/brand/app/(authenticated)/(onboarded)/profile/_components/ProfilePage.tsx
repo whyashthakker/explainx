@@ -29,47 +29,58 @@ import {
   Instagram,
   Youtube,
   Twitter,
+  Linkedin,
   Settings,
   Edit,
+  Building2,
   LucideIcon,
 } from "lucide-react";
 import {
   Platform,
   User,
-  Influencer,
-  InfluencerTeamMember,
+  Brand,
+  BrandTeamMember,
   TeamRole,
 } from "../../../../../lib/types";
 
 interface ProfilePageProps {
   user: User & {
-    influencer: Influencer | null;
+    brand: Brand | null;
   };
-  influencer: Influencer;
-  teamMembers: InfluencerTeamMember[];
+  brand: Brand;
+  teamMembers: BrandTeamMember[];
 }
 
-interface ProfileSocialLinkProps {
+interface ProfileLinkProps {
   icon: LucideIcon;
   label: string;
-  link: string;
+  link?: string;
 }
 
-const ProfileSocialLink: React.FC<ProfileSocialLinkProps> = ({
+const ProfileLink: React.FC<ProfileLinkProps> = ({
   icon: Icon,
   label,
   link,
-}) => (
-  <a
-    href={link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-  >
-    <Icon className="h-4 w-4" />
-    <span>{label}</span>
-  </a>
-);
+}) => {
+  const Component = link ? "a" : "div";
+  const props = link
+    ? {
+        href: link,
+        target: "_blank",
+        rel: "noopener noreferrer",
+      }
+    : {};
+
+  return (
+    <Component
+      {...props}
+      className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+    >
+      <Icon className="h-4 w-4" />
+      <span>{label}</span>
+    </Component>
+  );
+};
 
 const SocialIcon = ({ platform }: { platform: Platform }) => {
   switch (platform) {
@@ -79,6 +90,8 @@ const SocialIcon = ({ platform }: { platform: Platform }) => {
       return <Youtube className="h-5 w-5 text-red-500" />;
     case Platform.TWITTER:
       return <Twitter className="h-5 w-5 text-blue-500" />;
+    case Platform.LINKEDIN:
+      return <Linkedin className="h-5 w-5 text-blue-700" />;
     default:
       return null;
   }
@@ -86,7 +99,7 @@ const SocialIcon = ({ platform }: { platform: Platform }) => {
 
 const ProfilePage: React.FC<ProfilePageProps> = ({
   user,
-  influencer,
+  brand,
   teamMembers: initialTeamMembers,
 }) => {
   const [teamMembers, setTeamMembers] = useState(initialTeamMembers);
@@ -99,7 +112,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
     console.log("Add member clicked");
   };
 
-  const handleSocialEdit = (platform: Platform) => {
+  const handlePlatformEdit = (platform: Platform) => {
     console.log(`Edit ${platform} clicked`);
   };
 
@@ -113,35 +126,36 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
               <div className="flex flex-col items-center text-center md:text-left md:flex-row md:items-start gap-6">
                 <Avatar className="h-24 w-24">
                   <AvatarImage
-                    src={
-                      influencer.avatar ||
-                      user.image ||
-                      "/api/placeholder/100/100"
-                    }
-                    alt={influencer.name}
+                    src={brand.logo || user.image || "/api/placeholder/100/100"}
+                    alt={brand.name}
                   />
-                  <AvatarFallback>{influencer.name[0]}</AvatarFallback>
+                  <AvatarFallback>{brand.name[0]}</AvatarFallback>
                 </Avatar>
                 <div className="space-y-4 flex-1">
                   <div className="space-y-2">
                     <div className="flex items-center justify-center md:justify-between gap-4">
-                      <h2 className="text-2xl font-bold">{influencer.name}</h2>
-                      <Badge variant="secondary">{influencer.category}</Badge>
+                      <h2 className="text-2xl font-bold">{brand.name}</h2>
+                      <Badge variant="secondary">{brand.industry}</Badge>
                     </div>
-                    <p className="text-gray-500">{influencer.bio}</p>
+                    <p className="text-gray-500">{brand.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                    <ProfileSocialLink
+                    <ProfileLink
                       icon={Mail}
                       label={user.email}
                       link={`mailto:${user.email}`}
                     />
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Users className="h-4 w-4" />
-                      <span>
-                        {influencer.followers.toLocaleString()} followers
-                      </span>
-                    </div>
+                    {brand.website && (
+                      <ProfileLink
+                        icon={LinkIcon}
+                        label="Website"
+                        link={brand.website}
+                      />
+                    )}
+                    <ProfileLink
+                      icon={Building2}
+                      label={`Budget: ${brand.maxBudget ? `$${brand.maxBudget}` : "Not specified"}`}
+                    />
                   </div>
                 </div>
                 <Button
@@ -161,7 +175,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
         <Tabs defaultValue="team" className="space-y-6">
           <TabsList>
             <TabsTrigger value="team">Team</TabsTrigger>
-            <TabsTrigger value="platforms">Platforms</TabsTrigger>
+            <TabsTrigger value="preferences">Preferences</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -191,17 +205,17 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
                       <div className="flex items-center gap-4">
                         <Avatar>
                           <AvatarImage
-                            src={member.user.image || "/api/placeholder/32/32"}
-                            alt={member.user.name || "Team member"}
+                            src={member.user?.image || "/api/placeholder/32/32"}
+                            alt={member.user?.name || "Team member"}
                           />
                           <AvatarFallback>
-                            {member.user.name?.[0] || "T"}
+                            {member.user?.name?.[0] || "T"}
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <p className="font-medium">{member.user.name}</p>
+                          <p className="font-medium">{member.user?.name}</p>
                           <p className="text-sm text-gray-500">
-                            {member.user.email}
+                            {member.user?.email || member.inviteEmail}
                           </p>
                         </div>
                       </div>
@@ -228,34 +242,55 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
             </Card>
           </TabsContent>
 
-          <TabsContent value="platforms">
+          <TabsContent value="preferences">
             <Card>
               <CardHeader>
-                <CardTitle>Connected Platforms</CardTitle>
+                <CardTitle>Brand Preferences</CardTitle>
                 <CardDescription>
-                  Manage your social media presence
+                  Manage your targeting and collaboration preferences
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {influencer.platforms.map((platform) => (
-                    <div
-                      key={platform}
-                      className="flex items-center gap-4 p-4 rounded-lg border"
-                    >
-                      <SocialIcon platform={platform} />
-                      <div className="flex-1">
-                        <p className="font-medium">{platform}</p>
-                      </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleSocialEdit(platform)}
-                      >
-                        Edit
-                      </Button>
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <h3 className="font-medium">Preferred Platforms</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {brand.preferredPlatforms.map((platform) => (
+                        <div
+                          key={platform}
+                          className="flex items-center gap-4 p-4 rounded-lg border"
+                        >
+                          <SocialIcon platform={platform} />
+                          <div className="flex-1">
+                            <p className="font-medium">{platform}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handlePlatformEdit(platform)}
+                          >
+                            Edit
+                          </Button>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="font-medium">Target Demographics</h3>
+                    <div className="p-4 rounded-lg border">
+                      <p>{brand.targetDemographic || "Not specified"}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="font-medium">Categories</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {brand.preferredCategories.map((category) => (
+                        <Badge key={category} variant="secondary">
+                          {category}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>

@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     // 2. Parse Body
     console.log("📝 Parsing request body...");
-    const body = await request.json() as InviteRequestBody;
+    const body = (await request.json()) as InviteRequestBody;
     const { email, role } = body;
     console.log("Request data:", { email, role });
 
@@ -39,12 +39,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Get Current User
+    // 3. Get Current User and Verify Portal Access
     console.log("🔍 Finding current user...");
     const currentUser = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: {
-        influencer: {
+        influencers: {
           include: {
             team: true,
           },
@@ -53,7 +53,35 @@ export async function POST(request: NextRequest) {
     });
     console.log("Current user:", currentUser);
 
-    if (!currentUser?.influencer) {
+    if (!currentUser) {
+      console.log("❌ User not found");
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Check user type and active portal
+    if (
+      currentUser.userType !== "INFLUENCER" &&
+      currentUser.userType !== "BOTH"
+    ) {
+      console.log("❌ User not authorized for influencer portal");
+      return NextResponse.json(
+        { error: "Not authorized to access influencer portal" },
+        { status: 403 },
+      );
+    }
+
+    if (currentUser.activePortal !== "INFLUENCER") {
+      console.log("❌ Wrong portal active");
+      return NextResponse.json(
+        { error: "Please switch to influencer portal" },
+        { status: 403 },
+      );
+    }
+
+    // Get the active influencer profile
+    // For now, we'll use the first influencer profile, but you might want to add logic to determine which one
+    const activeInfluencer = currentUser.influencers[0];
+    if (!activeInfluencer) {
       console.log("❌ No influencer profile found");
       return NextResponse.json(
         { error: "Influencer profile not found" },
@@ -63,12 +91,12 @@ export async function POST(request: NextRequest) {
 
     // 4. Handle Team
     console.log("👥 Checking team...");
-    let team = currentUser.influencer.team;
+    let team = activeInfluencer.team;
     if (!team) {
       console.log("Creating new team...");
       team = await prisma.influencerTeam.create({
         data: {
-          influencerId: currentUser.influencer.id,
+          influencerId: activeInfluencer.id,
           members: {
             create: {
               userId: currentUser.id,
@@ -148,7 +176,7 @@ export async function POST(request: NextRequest) {
     // generate invite email from here
     const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL}/invite/${inviteToken}`;
     console.log(inviteUrl);
-    
+
     // 9. Send Response
     console.log("📤 Sending success response");
     return NextResponse.json({
@@ -170,3 +198,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+

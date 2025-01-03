@@ -1,16 +1,16 @@
-// app/(onboarded)/_context/user-context.tsx
+// app/(authenticated)/(onboarded)/_context/user-context.tsx
 "use client";
 import React, { createContext, useContext } from "react";
-import { PrismaUserWithBrand } from "../../../../lib/types";
+import { PrismaUserWithBrands } from "../../../../lib/types";
 
-const UserContext = createContext<PrismaUserWithBrand | null>(null);
+const UserContext = createContext<PrismaUserWithBrands | null>(null);
 
 export function UserProvider({
   children,
   value,
 }: {
   children: React.ReactNode;
-  value: PrismaUserWithBrand;
+  value: PrismaUserWithBrands;
 }) {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
@@ -22,7 +22,6 @@ export function useUser() {
   }
   return context;
 }
-
 // _context/user-context.tsx
 // "use client";
 

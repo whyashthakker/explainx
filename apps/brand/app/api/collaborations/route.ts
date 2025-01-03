@@ -19,23 +19,46 @@ const collaborationSchema = z.object({
 export async function POST(request: NextRequest) {
   try {
     const session = await auth();
-    if (!session) {
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     const data = await request.json();
     const validatedData = collaborationSchema.parse(data);
 
-    // Check if brand exists and user has access
-    const brand = await prisma.brand.findUnique({
-      where: { id: validatedData.brandId },
-      include: { user: true },
+    // Get user and verify brand access
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+      include: { brands: true },
     });
 
-    if (!brand || brand.user.email !== session.user?.email) {
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Verify user has brand access and is in brand portal
+    if (user.userType !== "BRAND" && user.userType !== "BOTH") {
+      return NextResponse.json(
+        { error: "Not authorized to access brand portal" },
+        { status: 403 },
+      );
+    }
+
+    if (user.activePortal !== "BRAND") {
+      return NextResponse.json(
+        { error: "Please switch to brand portal" },
+        { status: 403 },
+      );
+    }
+
+    // Check if the brandId belongs to the user
+    const userBrand = user.brands.find(
+      (brand) => brand.id === validatedData.brandId,
+    );
+    if (!userBrand) {
       return NextResponse.json(
         { error: "Unauthorized or brand not found" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -43,7 +66,7 @@ export async function POST(request: NextRequest) {
     const campaign = await prisma.campaign.create({
       data: {
         brandId: validatedData.brandId,
-        createdById: brand.userId,
+        createdById: user.id,
         title: validatedData.title,
         description: validatedData.description,
         budget: validatedData.budget,
@@ -68,7 +91,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Create chat room for the collaboration
+    // Create chat room
     const chatRoom = await prisma.chatRoom.create({
       data: {
         collaborationId: collaboration.id,
@@ -86,12 +109,12 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid data provided", details: error.errors },
-        { status: 400 }
+        { status: 400 },
       );
     }
     return NextResponse.json(
       { error: "Failed to create collaboration" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -99,32 +122,49 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const session = await auth();
-    if (!session) {
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    // Get user's brand
-    const email = session.user?.email;
-    if (!email) {
-      return NextResponse.json({ error: "Email not found" }, { status: 400 });
-    }
-
+    // Get user with brands
     const user = await prisma.user.findUnique({
-      where: { email },
-      include: { brand: true },
+      where: { email: session.user.email },
+      include: { brands: true },
     });
 
-    if (!user?.brand) {
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Verify user has brand access and is in brand portal
+    if (user.userType !== "BRAND" && user.userType !== "BOTH") {
       return NextResponse.json(
-        { error: "Brand profile not found" },
-        { status: 404 }
+        { error: "Not authorized to access brand portal" },
+        { status: 403 },
       );
     }
 
-    // Fetch collaborations for the brand
+    if (user.activePortal !== "BRAND") {
+      return NextResponse.json(
+        { error: "Please switch to brand portal" },
+        { status: 403 },
+      );
+    }
+
+    if (!user.brands.length) {
+      return NextResponse.json(
+        { error: "No brand profiles found" },
+        { status: 404 },
+      );
+    }
+
+    // Get all brand IDs for the user
+    const brandIds = user.brands.map((brand) => brand.id);
+
+    // Fetch collaborations for all user's brands
     const collaborations = await prisma.collaboration.findMany({
       where: {
-        brandId: user.brand.id,
+        brandId: { in: brandIds },
       },
       include: {
         campaign: true,
@@ -159,7 +199,8 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching collaborations:", error);
     return NextResponse.json(
       { error: "Failed to fetch collaborations" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
+

@@ -1,8 +1,9 @@
 // app/(authenticated)/(onboarded)/layout.tsx
-import React from "react";
-import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
+import { auth } from "../../../auth";
+import { UserType } from "@prisma/client";
+import { PrismaUserWithBrands } from "../../../lib/types";
 import BrandDashboardLayout from "./_components/BrandDashboardLayout";
 import { UserProvider } from "./_context/user-context";
 
@@ -21,7 +22,7 @@ export default async function OnboardedLayout({ children }: LayoutProps) {
       email: session.user.email,
     },
     include: {
-      brand: {
+      brands: {
         include: {
           user: {
             select: {
@@ -39,12 +40,12 @@ export default async function OnboardedLayout({ children }: LayoutProps) {
     redirect("/");
   }
 
-  if (!user.brand) {
+  if (!user.brands.length) {
     redirect("/onboarding");
   }
 
   return (
-    <UserProvider value={user}>
+    <UserProvider value={user as PrismaUserWithBrands}>
       <BrandDashboardLayout>{children}</BrandDashboardLayout>
     </UserProvider>
   );

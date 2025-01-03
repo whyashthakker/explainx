@@ -44,6 +44,8 @@ import {
 import { useRouter } from "next/navigation";
 import CollaborationForm from "./CollabForm";
 import { CollaborationList } from "./CollaborationList";
+import type { Platform, User, Brand } from "../../../../../lib/types"; // Update path as needed
+import { ActivePortal, UserType } from "@prisma/client";
 
 interface YouTubeVideo {
   id: string;
@@ -73,8 +75,6 @@ interface YouTubeAccount {
   analytics: YouTubeAnalytics[];
 }
 
-type Platform = "YOUTUBE" | "INSTAGRAM" | "TIKTOK";
-
 interface Influencer {
   id: string;
   name: string;
@@ -82,25 +82,26 @@ interface Influencer {
   category: string;
   followers: number;
   platforms: Platform[];
+  user: Pick<User, "email" | "image">;
+  youtubeAccount?: YouTubeAccount | null;
 }
 
-interface User {
+interface BrandUser {
   email: string;
   image: string | null;
-}
-
-interface Brand {
-  id: string;
-  name: string;
-  logo: string | null;
+  userType: UserType | null;
+  activePortal: ActivePortal | null;
+  brands: {
+    id: string;
+    name: string;
+    logo: string | null;
+  }[];
+  brand: Brand | null; // Added to match the expected type
 }
 
 interface InfluencerProfileProps {
-  influencer: Influencer & {
-    user: Pick<User, "email" | "image">;
-    youtubeAccount?: YouTubeAccount | null;
-  };
-  brand: (User & { brand: Brand | null }) | null;
+  influencer: Influencer;
+  brand: BrandUser;
 }
 
 export default function InfluencerProfile({
@@ -109,14 +110,13 @@ export default function InfluencerProfile({
 }: InfluencerProfileProps) {
   const router = useRouter();
   const [showCollaboration, setShowCollaboration] = useState(false);
-  // Add this state to trigger collaboration list refresh
   const [collaborationRefresh, setCollaborationRefresh] = useState(0);
 
   const handleCollaborationSuccess = () => {
     setShowCollaboration(false);
-    // Increment the refresh counter to trigger a re-fetch
     setCollaborationRefresh((prev) => prev + 1);
   };
+
   if (!influencer) {
     router.push("/dashboard");
     return null;
@@ -124,7 +124,6 @@ export default function InfluencerProfile({
 
   const isVerified = !!influencer.youtubeAccount;
 
-  // Calculate engagement metrics
   const engagement =
     isVerified && influencer.youtubeAccount
       ? (
@@ -133,7 +132,6 @@ export default function InfluencerProfile({
         ).toFixed(2)
       : "N/A";
 
-  // Format analytics data for the chart
   const analyticsData =
     influencer.youtubeAccount?.analytics?.map((data) => ({
       date: new Date(data.date).toLocaleDateString(),
@@ -148,7 +146,6 @@ export default function InfluencerProfile({
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Back Button */}
         <Button
           variant="ghost"
           className="flex items-center gap-2"
@@ -157,7 +154,7 @@ export default function InfluencerProfile({
           <ArrowLeft className="h-4 w-4" />
           Back to Discovery
         </Button>
-        {/* Profile Header */}
+        {/* Rest of the JSX remains the same */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex items-center space-x-4">
             <Avatar className="h-20 w-20">
@@ -253,7 +250,6 @@ export default function InfluencerProfile({
             refreshTrigger={collaborationRefresh}
           />
         )}
-
         {brand?.brand && (
           <Dialog open={showCollaboration} onOpenChange={setShowCollaboration}>
             <DialogContent className="w-[95vw] max-w-[95vw] md:w-[800px] md:max-w-[800px] h-[90vh] max-h-[90vh] overflow-hidden flex flex-col">
