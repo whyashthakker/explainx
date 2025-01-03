@@ -1,4 +1,4 @@
-// Generated on 2025-01-02T11:51:22.995Z
+// Generated on 2025-01-03T06:09:08.235Z
 interface Author {
   name: string;
   role: string;
@@ -20,6 +20,256 @@ interface Post {
 
 const postData: Post[] = [
   {
+    "title": "Tamaño del Mercado del Marketing de Influencers 2024-2025: Análisis Global y Perspectivas Regionales",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "Análisis exhaustivo del tamaño del mercado del marketing de influencers en 2024-2025, incluyendo detalles regionales y proyecciones futuras para España y Latinoamérica.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Carlos Rodríguez",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Influencer Marketing Marktgröße 2024-2025: Globale Branchenanalyse & Regionale Einblicke",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "Umfassende Analyse der Influencer Marketing Marktgröße 2024-2025, einschließlich detaillierter regionaler Aufschlüsselungen und Zukunftsprognosen für den DACH-Raum.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Marcel Schmidt",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Taille du Marché du Marketing d'Influence 2024-2025 : Analyse Mondiale et Perspectives Régionales",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "Analyse approfondie de la taille du marché du marketing d'influence en 2024-2025, incluant des données régionales détaillées et des projections futures pour la France et les marchés francophones.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Sophie Laurent",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/influencer-marketing-market-size-2025",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Dimensione del Mercato del Marketing degli Influencer 2024-2025: Analisi Globale e Approfondimenti Regionali",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "Analisi completa della dimensione del mercato del marketing degli influencer nel 2024-2025, con dettagli regionali e proiezioni future per l'Italia e l'Europa meridionale.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Marco Rossi",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "analytics"
+    ]
+  },
+  {
+    "title": "इन्फ्लुएंसर मार्केटिंग मार्केट साइज़ 2024-2025: वैश्विक उद्योग विश्लेषण और क्षेत्रीय अंतर्दृष्टि",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "2024-2025 में इन्फ्लुएंसर मार्केटिंग मार्केट साइज़ का विस्तृत विश्लेषण, विस्तृत क्षेत्रीय विवरण और भविष्य के अनुमानों सहित।",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "حجم سوق التسويق المؤثر 2024-2025: تحليل شامل للصناعة والرؤى الإقليمية",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "تحليل شامل لحجم سوق التسويق المؤثر في 2024-2025، يشمل تحليلات إقليمية مفصلة وتوقعات مستقبلية للشرق الأوسط وشمال أفريقيا",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "ياسر العتيبي",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2024-2025年网红营销市场规模分析：全球行业分析与区域洞察",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "2024-2025年网红营销市场规模的全面分析，包括中国市场详细区域细分和未来预测。",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "李明",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "인플루언서 마케팅 시장 규모 2024-2025: 글로벌 산업 분석 및 지역별 인사이트",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "2024-2025년 인플루언서 마케팅 시장 규모에 대한 포괄적 분석. 한국 시장을 포함한 상세한 지역별 분석과 미래 전망을 포함.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "김지원",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "インフルエンサーマーケティング市場規模 2024-2025：グローバル産業分析と地域別インサイト",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "2024-2025年のインフルエンサーマーケティング市場規模の包括的な分析。日本市場を含む詳細な地域別内訳と将来予測を含む。",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "田中隆",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Omvang van de Influencer Marketing Markt 2024-2025: Mondiale Industrieanalyse & Regionale Inzichten",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "Uitgebreide analyse van de omvang van de influencer marketing markt in 2024-2025, inclusief gedetailleerde regionale uitsplitsingen en toekomstprognoses voor Nederland en de Benelux.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Thomas van der Berg",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Размер Рынка Инфлюенсер-Маркетинга 2024-2025: Глобальный Анализ Индустрии и Региональные Инсайты",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "Комплексный анализ размера рынка инфлюенсер-маркетинга в 2024-2025 годах, включая детальную региональную разбивку и прогнозы для России и стран СНГ.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Александр Петров",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Influencer Marketing Market Size 2024-2025: Global Industry Analysis & Regional Insights",
+    "file": "influencer-marketing-market-size-2025",
+    "description": "Comprehensive analysis of the influencer marketing market size in 2024-2025, including detailed regional breakdowns and future projections.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Influencer Marketing Market Size India 2024-2025: Growth Analysis & Future Projections",
+    "file": "influencer-marketing-market-size-india-2025-2026",
+    "description": "In-depth analysis of India's influencer marketing market size, including key trends, growth factors, and future projections based on the latest industry reports.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/influencer-marketing-market-size-india-2025-2026",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
     "title": "Cómo Encontrar la Tienda de un Influencer de Amazon en 5 Pasos",
     "file": "how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "description": "Descubre las formas más sencillas de encontrar tiendas de influencers de Amazon y mejora tu experiencia de compra con recomendaciones de expertos y colecciones de productos seleccionados.",
@@ -34,7 +284,8 @@ const postData: Post[] = [
     "language": "es",
     "url": "https://www.infloq.com/blog/post/es/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -52,7 +303,8 @@ const postData: Post[] = [
     "language": "de",
     "url": "https://www.infloq.com/blog/post/de/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -70,7 +322,7 @@ const postData: Post[] = [
     "language": "fr",
     "url": "https://www.infloq.com/blog/post/fr/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -88,8 +340,10 @@ const postData: Post[] = [
     "language": "it",
     "url": "https://www.infloq.com/blog/post/it/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
+      "influencer-marketing",
+      "creator-economy",
       "instagram",
-      "social-media"
+      "social-media-marketing"
     ]
   },
   {
@@ -107,7 +361,7 @@ const postData: Post[] = [
     "language": "hi",
     "url": "https://www.infloq.com/blog/post/hi/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -125,7 +379,7 @@ const postData: Post[] = [
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -143,7 +397,7 @@ const postData: Post[] = [
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/top-51-instagram-models-to-follow",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -161,7 +415,7 @@ const postData: Post[] = [
     "language": "zh-cn",
     "url": "https://www.infloq.com/blog/post/zh-cn/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -179,7 +433,7 @@ const postData: Post[] = [
     "language": "ko",
     "url": "https://www.infloq.com/blog/post/ko/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -197,7 +451,7 @@ const postData: Post[] = [
     "language": "ja",
     "url": "https://www.infloq.com/blog/post/ja/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -215,7 +469,8 @@ const postData: Post[] = [
     "language": "nl",
     "url": "https://www.infloq.com/blog/post/nl/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -233,7 +488,8 @@ const postData: Post[] = [
     "language": "ru",
     "url": "https://www.infloq.com/blog/post/ru/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -251,7 +507,8 @@ const postData: Post[] = [
     "language": "en",
     "url": "https://www.infloq.com/blog/post/how-to-find-amazon-influencer-storefront-in-just-5-steps",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -269,8 +526,8 @@ const postData: Post[] = [
     "language": "en",
     "url": "https://www.infloq.com/blog/post/top-51-instagram-models-to-follow",
     "categories": [
-      "social-media",
-      "instagram"
+      "instagram",
+      "social-media-marketing"
     ]
   },
   {
@@ -288,7 +545,8 @@ const postData: Post[] = [
     "language": "es",
     "url": "https://www.infloq.com/blog/post/es/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -306,8 +564,8 @@ const postData: Post[] = [
     "language": "de",
     "url": "https://www.infloq.com/blog/post/de/amazon-influencer",
     "categories": [
-      "facebook",
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -325,7 +583,7 @@ const postData: Post[] = [
     "language": "fr",
     "url": "https://www.infloq.com/blog/post/fr/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -343,7 +601,10 @@ const postData: Post[] = [
     "language": "it",
     "url": "https://www.infloq.com/blog/post/it/amazon-influencer",
     "categories": [
-      "ai-tools"
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
     ]
   },
   {
@@ -361,7 +622,7 @@ const postData: Post[] = [
     "language": "hi",
     "url": "https://www.infloq.com/blog/post/hi/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -379,7 +640,7 @@ const postData: Post[] = [
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -397,7 +658,7 @@ const postData: Post[] = [
     "language": "ko",
     "url": "https://www.infloq.com/blog/post/ko/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -415,7 +676,7 @@ const postData: Post[] = [
     "language": "ja",
     "url": "https://www.infloq.com/blog/post/ja/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -433,7 +694,8 @@ const postData: Post[] = [
     "language": "ru",
     "url": "https://www.infloq.com/blog/post/ru/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -451,7 +713,8 @@ const postData: Post[] = [
     "language": "en",
     "url": "https://www.infloq.com/blog/post/amazon-influencer",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -469,9 +732,12 @@ const postData: Post[] = [
     "language": "de",
     "url": "https://www.infloq.com/blog/post/de/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media",
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
       "instagram",
-      "ai-tools"
+      "social-media-marketing",
+      "analytics"
     ]
   },
   {
@@ -489,7 +755,8 @@ const postData: Post[] = [
     "language": "es",
     "url": "https://www.infloq.com/blog/post/es/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -507,7 +774,7 @@ const postData: Post[] = [
     "language": "fr",
     "url": "https://www.infloq.com/blog/post/fr/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -525,8 +792,10 @@ const postData: Post[] = [
     "language": "it",
     "url": "https://www.infloq.com/blog/post/it/top-10-influencer-marketing-platforms",
     "categories": [
+      "influencer-marketing",
+      "creator-economy",
       "instagram",
-      "social-media"
+      "social-media-marketing"
     ]
   },
   {
@@ -544,7 +813,7 @@ const postData: Post[] = [
     "language": "hi",
     "url": "https://www.infloq.com/blog/post/hi/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -562,9 +831,12 @@ const postData: Post[] = [
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media",
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
       "instagram",
-      "ai-tools"
+      "social-media-marketing",
+      "analytics"
     ]
   },
   {
@@ -582,7 +854,7 @@ const postData: Post[] = [
     "language": "zh-cn",
     "url": "https://www.infloq.com/blog/post/zh-cn/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -600,7 +872,7 @@ const postData: Post[] = [
     "language": "ko",
     "url": "https://www.infloq.com/blog/post/ko/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -618,7 +890,7 @@ const postData: Post[] = [
     "language": "ja",
     "url": "https://www.infloq.com/blog/post/ja/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -636,7 +908,8 @@ const postData: Post[] = [
     "language": "nl",
     "url": "https://www.infloq.com/blog/post/nl/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -654,7 +927,7 @@ const postData: Post[] = [
     "language": "ru",
     "url": "https://www.infloq.com/blog/post/ru/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media"
+      "influencer-marketing"
     ]
   },
   {
@@ -672,9 +945,12 @@ const postData: Post[] = [
     "language": "en",
     "url": "https://www.infloq.com/blog/post/top-10-influencer-marketing-platforms",
     "categories": [
-      "social-media",
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
       "instagram",
-      "ai-tools"
+      "social-media-marketing",
+      "analytics"
     ]
   }
 ];

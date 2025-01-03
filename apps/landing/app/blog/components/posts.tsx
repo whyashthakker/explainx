@@ -29,7 +29,7 @@ type PostsProps = {
 };
 
 export function Posts({ initialPosts }: PostsProps) {
-  const [selectedLanguage, setSelectedLanguage] = useState("all");
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
