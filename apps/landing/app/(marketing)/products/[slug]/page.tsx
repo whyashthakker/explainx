@@ -14,7 +14,7 @@ import { UseCasesDynamic } from "../_components/use-cases";
 import { TargetAudienceDynamic } from "../_components/target-audience";
 import { Testimonials } from "../../../_components/testimonials";
 import { productPageData } from "../../../../data/productPageData";
-import { Pricing } from "../../../_components/infloq-pricing";
+import HybridPricing from "../../../_components/infloq-pricing";
 
 export async function generateStaticParams() {
   return productPageData.map((product) => ({
@@ -99,7 +99,7 @@ export default async function ProductPage({ params }: PageProps) {
       {/* 6. Pricing (Fixed / As Is) */}
       {/* Some pages might not use dynamic pricing, so we just show a standard component */}
       <Suspense>
-        <Pricing />
+        <HybridPricing />
       </Suspense>
 
       {/* 7. Reviews Section (Optional Suspense Example) */}

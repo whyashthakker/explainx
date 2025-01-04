@@ -396,6 +396,864 @@ export interface Competitor {
       }
     ]
   },
+  "later-influence": {
+    name: "Later Influence",
+    shortDescription: "Full-funnel influencer marketing platform with 10+ years of performance data",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/later.png",
+    features: [
+      {
+        category: "Platform Reach",
+        features: [
+          {
+            name: "Creator Network",
+            infloq: "Curated network of verified creators",
+            competitor: "10M+ influencers across platforms",
+            description: "Size and scope of creator network"
+          },
+          {
+            name: "Platform Partnerships",
+            infloq: "Standard platform integrations",
+            competitor: ["Pinterest Partner", "TikTok Partner", "Rakuten Partner"],
+            description: "Official platform partnerships"
+          },
+          {
+            name: "Content Types",
+            infloq: ["Social posts", "Stories", "Videos"],
+            competitor: ["Viral content", "UGC", "Reviews", "Multi-platform content"],
+            description: "Supported content formats"
+          }
+        ]
+      },
+      {
+        category: "Campaign Management",
+        features: [
+          {
+            name: "Campaign Setup",
+            infloq: "AI-driven campaign optimization",
+            competitor: "Data-backed campaign strategy",
+            description: "Campaign setup approach"
+          },
+          {
+            name: "Creator Communication",
+            infloq: "Direct messaging system",
+            competitor: "Automated templated messaging",
+            description: "Creator communication tools"
+          },
+          {
+            name: "Workflow Automation",
+            infloq: "AI-assisted workflow",
+            competitor: "End-to-end automated management",
+            description: "Campaign workflow automation"
+          }
+        ]
+      },
+      {
+        category: "Data & Analytics",
+        features: [
+          {
+            name: "Performance Data",
+            infloq: "Real-time performance metrics",
+            competitor: "10+ years of proprietary data",
+            description: "Depth of performance data"
+          },
+          {
+            name: "Benchmarking",
+            infloq: "Basic industry benchmarks",
+            competitor: "Extensive historical benchmarks",
+            description: "Benchmarking capabilities"
+          },
+          {
+            name: "ROI Tracking",
+            infloq: ["Click tracking", "Conversion analysis"],
+            competitor: ["Full-funnel attribution", "EMV calculation", "Shopify integration"],
+            description: "ROI measurement tools"
+          }
+        ]
+      },
+      {
+        category: "Content Strategy",
+        features: [
+          {
+            name: "Content Planning",
+            infloq: "AI-powered content suggestions",
+            competitor: "Strategic content planning services",
+            description: "Content strategy approach"
+          },
+          {
+            name: "Content Syndication",
+            infloq: "Basic content rights",
+            competitor: "Advanced content syndication",
+            description: "Content distribution capabilities"
+          },
+          {
+            name: "Content Management",
+            infloq: "Basic content library",
+            competitor: "Integrated content calendar and planner",
+            description: "Content management tools"
+          }
+        ]
+      },
+      {
+        category: "Service Level",
+        features: [
+          {
+            name: "Support Model",
+            infloq: ["Email support", "Account manager (Growth+)"],
+            competitor: ["Custom campaign services", "In-house expert team", "Full-service management"],
+            description: "Available support options"
+          },
+          {
+            name: "Strategic Services",
+            infloq: "AI-driven recommendations",
+            competitor: "Full-service campaign management",
+            description: "Strategic support level"
+          },
+          {
+            name: "Implementation",
+            infloq: "Self-service platform",
+            competitor: "Managed service available",
+            description: "Platform implementation"
+          }
+        ]
+      },
+      {
+        category: "Pricing & Business Model",
+        features: [
+          {
+            name: "Pricing Model",
+            infloq: "Performance-based (pay per click)",
+            competitor: "Subscription + campaign costs",
+            description: "Cost structure"
+          },
+          {
+            name: "Payment Options",
+            infloq: "Credit-based system",
+            competitor: "Custom pricing based on services",
+            description: "Payment structure"
+          },
+          {
+            name: "Target Market",
+            infloq: "Small to mid-sized brands",
+            competitor: "Enterprise and growing brands",
+            description: "Primary target audience"
+          }
+        ]
+      }
+    ]
+  },
+  "hypeauditor": {
+    name: "HypeAuditor",
+    shortDescription: "Data-driven influencer analytics and campaign management platform",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/hypeauditor.png",
+    features: [
+      {
+        category: "Analytics & Insights",
+        features: [
+          {
+            name: "Core Focus",
+            infloq: "Performance optimization",
+            competitor: "Influencer analytics and verification",
+            description: "Primary platform strength"
+          },
+          {
+            name: "Data Analysis",
+            infloq: "AI-driven performance metrics",
+            competitor: "Big data analytics and audience insights",
+            description: "Data analysis approach"
+          },
+          {
+            name: "Market Intelligence",
+            infloq: "Basic competitor analysis",
+            competitor: "Comprehensive market analysis tools",
+            description: "Market research capabilities"
+          }
+        ]
+      },
+      {
+        category: "Platform Tools",
+        features: [
+          {
+            name: "Discovery Method",
+            infloq: "AI-powered matching",
+            competitor: "Advanced search and filtering",
+            description: "Influencer discovery approach"
+          },
+          {
+            name: "Automation Level",
+            infloq: "Full campaign automation",
+            competitor: "Selective process automation",
+            description: "Automation capabilities"
+          },
+          {
+            name: "Technology Stack",
+            infloq: ["AI matching", "Performance prediction"],
+            competitor: ["Big data analysis", "Audience verification", "Fraud detection"],
+            description: "Core technologies used"
+          }
+        ]
+      },
+      {
+        category: "Campaign Management",
+        features: [
+          {
+            name: "Campaign Setup",
+            infloq: "AI-assisted campaign creation",
+            competitor: "Data-driven campaign planning",
+            description: "Campaign initialization process"
+          },
+          {
+            name: "Performance Tracking",
+            infloq: "Real-time performance metrics",
+            competitor: "In-depth analytics and reporting",
+            description: "Campaign monitoring capabilities"
+          },
+          {
+            name: "Optimization",
+            infloq: "Automated optimization",
+            competitor: "Data-backed recommendations",
+            description: "Campaign optimization approach"
+          }
+        ]
+      },
+      {
+        category: "Professional Services",
+        features: [
+          {
+            name: "Support Level",
+            infloq: ["Email support", "Account management"],
+            competitor: ["Professional services", "Migration support", "Training"],
+            description: "Available support options"
+          },
+          {
+            name: "Educational Resources",
+            infloq: "Basic documentation",
+            competitor: "HypeAuditor Academy",
+            description: "Learning resources"
+          },
+          {
+            name: "Implementation",
+            infloq: "Self-service platform",
+            competitor: "Guided implementation",
+            description: "Platform implementation approach"
+          }
+        ]
+      },
+      {
+        category: "Integration & Tools",
+        features: [
+          {
+            name: "Free Tools",
+            infloq: "Limited free tools",
+            competitor: "Comprehensive free tool suite",
+            description: "Complementary tools offered"
+          },
+          {
+            name: "Platform Integration",
+            infloq: "Standard integrations",
+            competitor: "Advanced integration options",
+            description: "Integration capabilities"
+          },
+          {
+            name: "Partner Ecosystem",
+            infloq: false,
+            competitor: "Partner program available",
+            description: "Partnership opportunities"
+          }
+        ]
+      },
+      {
+        category: "Business Model",
+        features: [
+          {
+            name: "Pricing Approach",
+            infloq: "Performance-based pricing",
+            competitor: "Subscription-based model",
+            description: "Cost structure"
+          },
+          {
+            name: "Target Market",
+            infloq: "Growing brands and businesses",
+            competitor: "Agencies and enterprise brands",
+            description: "Primary audience"
+          },
+          {
+            name: "Value Proposition",
+            infloq: "Pay-for-performance model",
+            competitor: "Data accuracy and insights",
+            description: "Core platform value"
+          }
+        ]
+      }
+    ]
+  },
+  "hashtag-paid": {
+    name: "#paid",
+    shortDescription: "Creator marketplace platform with expert creative strategy support",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/paid.png",
+    features: [
+      {
+        category: "Platform Model",
+        features: [
+          {
+            name: "Core Approach",
+            infloq: "AI-driven matching and automation",
+            competitor: "Curated marketplace with expert support",
+            description: "Primary platform methodology"
+          },
+          {
+            name: "Creator Network",
+            infloq: "AI-verified creators across platforms",
+            competitor: "Curated creator marketplace",
+            description: "Creator ecosystem approach"
+          },
+          {
+            name: "Matching System",
+            infloq: "Automated AI matching algorithm",
+            competitor: "Data-driven manual matching with expert oversight",
+            description: "How brands and creators are matched"
+          }
+        ]
+      },
+      {
+        category: "Campaign Support",
+        features: [
+          {
+            name: "Creative Strategy",
+            infloq: "AI-assisted content recommendations",
+            competitor: "Expert creative team support",
+            description: "Creative direction and strategy support"
+          },
+          {
+            name: "Campaign Management",
+            infloq: ["Automated optimization", "AI-driven insights"],
+            competitor: ["Expert team guidance", "Research-backed strategy", "Industry benchmarks"],
+            description: "Campaign management approach"
+          },
+          {
+            name: "Content Usage",
+            infloq: "Digital platforms focus",
+            competitor: "Multi-channel repurposing (including OOH, print)",
+            description: "Content usage flexibility"
+          }
+        ]
+      },
+      {
+        category: "Analytics & Measurement",
+        features: [
+          {
+            name: "Performance Tracking",
+            infloq: ["Real-time analytics", "Click tracking", "Conversion metrics"],
+            competitor: ["Live reporting", "Post-campaign insights", "Creative element analysis"],
+            description: "Performance measurement capabilities"
+          },
+          {
+            name: "ROI Measurement",
+            infloq: "Performance-based metrics",
+            competitor: "Campaign effectiveness analysis",
+            description: "ROI tracking approach"
+          }
+        ]
+      },
+      {
+        category: "Creator Experience",
+        features: [
+          {
+            name: "Creator Support",
+            infloq: "Automated support system",
+            competitor: "Dedicated creator success team",
+            description: "Level of creator support"
+          },
+          {
+            name: "Community Building",
+            infloq: "Online community",
+            competitor: "In-person events and networking",
+            description: "Community engagement approach"
+          },
+          {
+            name: "Payment Model",
+            infloq: "Performance-based payments",
+            competitor: "Campaign-based payments",
+            description: "How creators are compensated"
+          }
+        ]
+      },
+      {
+        category: "Brand Experience",
+        features: [
+          {
+            name: "Workflow Automation",
+            infloq: "AI-driven automation",
+            competitor: "Managed workflow with expert support",
+            description: "Campaign workflow approach"
+          },
+          {
+            name: "Brand Safety",
+            infloq: "AI verification system",
+            competitor: "Manual curation and verification",
+            description: "Creator verification process"
+          },
+          {
+            name: "Strategic Support",
+            infloq: "AI-generated recommendations",
+            competitor: "Expert team consultation",
+            description: "Level of strategic support"
+          }
+        ]
+      },
+      {
+        category: "Pricing & Investment",
+        features: [
+          {
+            name: "Pricing Model",
+            infloq: "Pay-per-click performance",
+            competitor: "Campaign-based pricing",
+            description: "Cost structure"
+          },
+          {
+            name: "Platform Fee",
+            infloq: "30% platform fee",
+            competitor: "Variable based on services",
+            description: "Platform fee structure"
+          },
+          {
+            name: "Minimum Investment",
+            infloq: "$500 starting point",
+            competitor: "Custom campaign minimums",
+            description: "Minimum investment required"
+          }
+        ]
+      }
+    ]
+  },
+  "modash": {
+    name: "Modash",
+    shortDescription: "Comprehensive influencer discovery and analytics platform with automated tracking",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/modash.png",
+    features: [
+      {
+        category: "Influencer Discovery",
+        features: [
+          {
+            name: "Database Size",
+            infloq: "AI-curated network of verified creators",
+            competitor: "250M+ profiles across platforms",
+            description: "Size and scope of influencer database"
+          },
+          {
+            name: "Platform Coverage",
+            infloq: ["Instagram", "TikTok", "YouTube", "Twitter/X", "LinkedIn", "Pinterest", "Twitch", "Facebook"],
+            competitor: ["Instagram", "TikTok", "YouTube"],
+            description: "Supported social media platforms"
+          },
+          {
+            name: "Search Capabilities",
+            infloq: "AI-powered creator matching",
+            competitor: "Advanced filters and lookalike search",
+            description: "Methods for finding relevant creators"
+          }
+        ]
+      },
+      {
+        category: "Analytics & Verification",
+        features: [
+          {
+            name: "Audience Analytics",
+            infloq: "AI-driven audience quality analysis",
+            competitor: "Detailed demographic and performance metrics",
+            description: "Depth of audience insight data"
+          },
+          {
+            name: "Verification Process",
+            infloq: "AI-powered verification system",
+            competitor: "Automated metrics verification",
+            description: "Creator verification methodology"
+          },
+          {
+            name: "Performance Tracking",
+            infloq: "Real-time performance tracking",
+            competitor: "Automated content and performance collection",
+            description: "Campaign monitoring capabilities"
+          }
+        ]
+      },
+      {
+        category: "Campaign Management",
+        features: [
+          {
+            name: "Content Collection",
+            infloq: "Manual tracking with automated reporting",
+            competitor: "Automatic content collection without authentication",
+            description: "Method of collecting campaign content"
+          },
+          {
+            name: "Integration Options",
+            infloq: "One-click platform integrations",
+            competitor: "Shopify integration for revenue tracking",
+            description: "Platform integration capabilities"
+          },
+          {
+            name: "Campaign Workflow",
+            infloq: "AI-assisted campaign management",
+            competitor: "End-to-end campaign management platform",
+            description: "Campaign management features"
+          }
+        ]
+      },
+      {
+        category: "Pricing & Business Model",
+        features: [
+          {
+            name: "Pricing Structure",
+            infloq: "Performance-based (pay per click)",
+            competitor: "Subscription-based platform access",
+            description: "Cost structure for services"
+          },
+          {
+            name: "Minimum Investment",
+            infloq: "Starting at $500 (5,000 credits)",
+            competitor: "14-day free trial, then custom pricing",
+            description: "Initial investment required"
+          },
+          {
+            name: "Payment Model",
+            infloq: "Credit-based system with 30% platform fee",
+            competitor: "Subscription + optional payment handling",
+            description: "Payment handling and fees"
+          }
+        ]
+      },
+      {
+        category: "Technology",
+        features: [
+          {
+            name: "Core Technology",
+            infloq: ["AI-powered matching", "Performance prediction", "Campaign optimization"],
+            competitor: ["Data-driven analytics", "Automated tracking", "API access"],
+            description: "Primary technology features"
+          },
+          {
+            name: "Data Collection",
+            infloq: "AI-driven data aggregation",
+            competitor: "Direct platform data access",
+            description: "Method of collecting creator data"
+          }
+        ]
+      },
+      {
+        category: "Additional Features",
+        features: [
+          {
+            name: "API Access",
+            infloq: false,
+            competitor: true,
+            description: "Availability of API access"
+          },
+          {
+            name: "Custom Integration",
+            infloq: "Available on enterprise plan",
+            competitor: "Available through API",
+            description: "Custom integration options"
+          },
+          {
+            name: "Support Level",
+            infloq: ["Email support", "Dedicated manager (Growth+)"],
+            competitor: ["Helpdesk", "Direct support", "Academy resources"],
+            description: "Available support options"
+          }
+        ]
+      }
+    ]
+  },
+  "captiv8": {
+    name: "Captiv8",
+    shortDescription: "End-to-end enterprise influencer marketing platform with award-winning services",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/captiv8.png",
+    features: [
+      {
+        category: "Platform Capabilities",
+        features: [
+          {
+            name: "Core Focus",
+            infloq: "AI-driven performance marketing",
+            competitor: "End-to-end enterprise solution",
+            description: "Primary platform strength"
+          },
+          {
+            name: "Data Intelligence",
+            infloq: "AI-powered insights",
+            competitor: "AI/ML predictive analytics with first-party data",
+            description: "Data analysis capabilities"
+          },
+          {
+            name: "Platform Integration",
+            infloq: "Standard platform connections",
+            competitor: ["TikTok API integration", "Facebook API", "Instagram API", "Twitter API", "YouTube API"],
+            description: "Platform integration depth"
+          }
+        ]
+      },
+      {
+        category: "Campaign Management",
+        features: [
+          {
+            name: "Payment Models",
+            infloq: "Performance-based payments",
+            competitor: "Multiple payment model support",
+            description: "Creator payment options"
+          },
+          {
+            name: "Content Amplification",
+            infloq: "Basic boost options",
+            competitor: "Advanced paid channel amplification",
+            description: "Content promotion capabilities"
+          },
+          {
+            name: "Campaign Tracking",
+            infloq: "Real-time performance metrics",
+            competitor: "Full-funnel transparency",
+            description: "Campaign monitoring depth"
+          }
+        ]
+      },
+      {
+        category: "Service Options",
+        features: [
+          {
+            name: "Service Model",
+            infloq: ["Self-service platform", "Basic support"],
+            competitor: ["SaaS+", "Full-service option", "Expert strategy team"],
+            description: "Available service levels"
+          },
+          {
+            name: "Strategic Support",
+            infloq: "AI-generated recommendations",
+            competitor: "In-house brand strategy experts",
+            description: "Strategic guidance offering"
+          },
+          {
+            name: "Implementation",
+            infloq: "Self-guided setup",
+            competitor: "Managed implementation",
+            description: "Platform implementation approach"
+          }
+        ]
+      },
+      {
+        category: "Diversity & Inclusion",
+        features: [
+          {
+            name: "DEI Features",
+            infloq: "Basic diversity filters",
+            competitor: "Built-in diversity discovery and programs",
+            description: "Diversity support features"
+          },
+          {
+            name: "Creator Identity",
+            infloq: "Standard profile information",
+            competitor: "Self-identification options for creators",
+            description: "Creator profile depth"
+          },
+          {
+            name: "DEI Initiatives",
+            infloq: false,
+            competitor: "Dedicated DEI program (Cr8 Change)",
+            description: "Diversity initiatives"
+          }
+        ]
+      },
+      {
+        category: "Analytics & Reporting",
+        features: [
+          {
+            name: "Data Access",
+            infloq: "Platform analytics",
+            competitor: "Open API access",
+            description: "Data accessibility"
+          },
+          {
+            name: "Analytics Depth",
+            infloq: ["Performance metrics", "ROI tracking"],
+            competitor: ["Predictive analytics", "Custom insights", "Cross-platform data"],
+            description: "Analytics capabilities"
+          },
+          {
+            name: "Reporting Tools",
+            infloq: "Automated reporting",
+            competitor: "Enterprise-grade reporting suite",
+            description: "Reporting capabilities"
+          }
+        ]
+      },
+      {
+        category: "Enterprise Features",
+        features: [
+          {
+            name: "Scale Support",
+            infloq: "Growing business focus",
+            competitor: "Enterprise-grade infrastructure",
+            description: "Platform scalability"
+          },
+          {
+            name: "Industry Recognition",
+            infloq: "New platform",
+            competitor: ["#1 Enterprise Leader on G2", "5-star IMH rating", "Forrester Leader"],
+            description: "Platform recognition"
+          },
+          {
+            name: "Target Market",
+            infloq: "Small to mid-sized businesses",
+            competitor: "Enterprise and established brands",
+            description: "Primary audience"
+          }
+        ]
+      }
+    ]
+  },
+  "traackr": {
+    name: "Traackr",
+    shortDescription: "Enterprise-focused influencer marketing platform with comprehensive data analytics",
+    category: "Influencer Marketing Platform",
+    comparisonImage: "/images/comparisons/traackr.png",
+    features: [
+      {
+        category: "Platform Focus",
+        features: [
+          {
+            name: "Target Market",
+            infloq: "Small to mid-sized businesses",
+            competitor: "Enterprise brands and agencies",
+            description: "Primary target audience"
+          },
+          {
+            name: "Core Strength",
+            infloq: "AI-powered matching and performance pricing",
+            competitor: "Data analytics and market benchmarking",
+            description: "Platform's main value proposition"
+          },
+          {
+            name: "Implementation",
+            infloq: "Self-service platform",
+            competitor: "Full-service with expert team support",
+            description: "Platform implementation approach"
+          }
+        ]
+      },
+      {
+        category: "Analytics & Insights",
+        features: [
+          {
+            name: "Market Intelligence",
+            infloq: "Basic competitor analysis",
+            competitor: "Comprehensive market benchmarking",
+            description: "Market analysis capabilities"
+          },
+          {
+            name: "Performance Metrics",
+            infloq: ["Engagement rates", "Click tracking", "Conversion analysis"],
+            competitor: ["Brand impact metrics", "Industry benchmarks", "Competitive analysis", "ROI calculation"],
+            description: "Available analytics metrics"
+          },
+          {
+            name: "Data Scale",
+            infloq: "Verified creator network",
+            competitor: "Largest global influencer dataset",
+            description: "Scope of available data"
+          }
+        ]
+      },
+      {
+        category: "Campaign Management",
+        features: [
+          {
+            name: "Campaign Tools",
+            infloq: ["AI campaign optimization", "Automated reporting", "Performance tracking"],
+            competitor: ["Product seeding", "Paid campaigns", "Affiliate programs", "Social commerce"],
+            description: "Campaign management features"
+          },
+          {
+            name: "Collaboration",
+            infloq: "Direct creator communication",
+            competitor: "Multi-stakeholder coordination",
+            description: "Collaboration capabilities"
+          },
+          {
+            name: "Program Types",
+            infloq: "Performance-based campaigns",
+            competitor: "Full-spectrum campaign types",
+            description: "Supported campaign types"
+          }
+        ]
+      },
+      {
+        category: "Enterprise Features",
+        features: [
+          {
+            name: "Governance",
+            infloq: "Basic compliance tools",
+            competitor: "Enterprise governance & compliance",
+            description: "Governance capabilities"
+          },
+          {
+            name: "Team Management",
+            infloq: "Basic team roles",
+            competitor: "Advanced team coordination",
+            description: "Team management features"
+          },
+          {
+            name: "Agency Integration",
+            infloq: false,
+            competitor: true,
+            description: "Agency partnership features"
+          }
+        ]
+      },
+      {
+        category: "Support & Services",
+        features: [
+          {
+            name: "Expert Support",
+            infloq: ["Email support", "Account manager (Growth+)"],
+            competitor: ["Dedicated expert team", "Strategic consulting", "Training"],
+            description: "Available support options"
+          },
+          {
+            name: "Resources",
+            infloq: "Basic documentation",
+            competitor: "Comprehensive industry reports & guides",
+            description: "Educational resources"
+          }
+        ]
+      },
+      {
+        category: "Pricing & Business Model",
+        features: [
+          {
+            name: "Pricing Model",
+            infloq: "Performance-based (pay per click)",
+            competitor: "Enterprise subscription",
+            description: "Cost structure"
+          },
+          {
+            name: "Contract Terms",
+            infloq: "Flexible credit-based system",
+            competitor: "Annual contracts",
+            description: "Contract requirements"
+          },
+          {
+            name: "Investment Level",
+            infloq: "Starting at $500",
+            competitor: "Enterprise-level investment",
+            description: "Required investment"
+          }
+        ]
+      }
+    ]
+  },
   "grin": {
     name: "GRIN",
     shortDescription: "Enterprise-focused creator management platform with comprehensive workflow tools",

@@ -1,12 +1,20 @@
 "use client"
 
 import { Button } from "@repo/ui/components/ui/button";
-import React, { useEffect } from "react";
+import React from "react";
 import FAQDataMain from "../../data/faq-data";
+import { FAQ } from "../(marketing)/compare/[competitor]/utils";
 
-export default function FAQs() {
+interface FAQsProps {
+  faqs?: FAQ[];  // Make it optional to maintain backward compatibility
+}
+
+export default function FAQs({ faqs }: FAQsProps) {
   const [showAll, setShowAll] = React.useState(false);
   const initiallyShown = 5;
+
+  // Use provided FAQs or fallback to main FAQ data
+  const faqData = faqs || FAQDataMain;
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
@@ -21,7 +29,7 @@ export default function FAQs() {
         Frequently asked questions
       </h2>
       <dl className="mt-10 space-y-8 divide-y divide-border">
-        {FAQDataMain.slice(0, showAll ? FAQDataMain.length : initiallyShown).map((faq, index) => (
+        {faqData.slice(0, showAll ? faqData.length : initiallyShown).map((faq, index) => (
           <div
             key={faq.question}
             className="pt-8 lg:grid lg:grid-cols-12 lg:gap-8"
@@ -37,7 +45,7 @@ export default function FAQs() {
           </div>
         ))}
       </dl>
-      {FAQDataMain.length > initiallyShown && (
+      {faqData.length > initiallyShown && (
         <div className="flex justify-start mt-8">
           <Button
             onClick={toggleShowAll}
