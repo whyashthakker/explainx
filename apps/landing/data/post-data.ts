@@ -1,4 +1,4 @@
-// Generated on 2025-01-04T05:46:54.922Z
+// Generated on 2025-01-04T06:38:15.394Z
 interface Author {
   name: string;
   role: string;
@@ -20,6 +20,26 @@ interface Post {
 
 const postData: Post[] = [
   {
+    "title": "Cómo Colaborar en Instagram: Guía Completa para 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Aprende todo sobre las colaboraciones en Instagram, desde establecer asociaciones exitosas hasta maximizar el engagement a través de plataformas como TikTok.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
     "title": "Tamaño del Mercado del Marketing de Influencers 2024-2025: Análisis Global y Perspectivas Regionales",
     "file": "influencer-marketing-market-size-2025",
     "description": "Análisis exhaustivo del tamaño del mercado del marketing de influencers en 2024-2025, incluyendo detalles regionales y proyecciones futuras para España y Latinoamérica.",
@@ -36,6 +56,45 @@ const postData: Post[] = [
     "categories": [
       "influencer-marketing",
       "creator-economy"
+    ]
+  },
+  {
+    "title": "Marketing de Influencers vs Performance vs Afiliados: Una Guía Completa para 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "Domina las diferencias entre el marketing de influencers, performance y afiliados. Aprende a aprovechar cada estrategia de manera efectiva y escala tus esfuerzos de marketing utilizando plataformas modernas como Infloq.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Wie man auf Instagram zusammenarbeitet: Kompletter Leitfaden für 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Lernen Sie alles über Instagram-Kooperationen, von der Einrichtung erfolgreicher Partnerschaften bis zur Maximierung des Engagements über Plattformen wie TikTok.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
     ]
   },
   {
@@ -60,6 +119,45 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "Influencer- vs. Performance- vs. Affiliate-Marketing: Ein umfassender Leitfaden für 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "Beherrschen Sie die Unterschiede zwischen Influencer-, Performance- und Affiliate-Marketing. Lernen Sie, wie Sie jede Strategie effektiv einsetzen und Ihre Marketingaktivitäten mit modernen Plattformen wie Infloq skalieren können.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Comment Collaborer sur Instagram : Guide Complet pour 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Apprenez tout sur les collaborations Instagram, de la mise en place de partenariats réussis à la maximisation de l'engagement sur les plateformes comme TikTok.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
     "title": "Taille du Marché du Marketing d'Influence 2024-2025 : Analyse Mondiale et Perspectives Régionales",
     "file": "influencer-marketing-market-size-2025",
     "description": "Analyse approfondie de la taille du marché du marketing d'influence en 2024-2025, incluant des données régionales détaillées et des projections futures pour la France et les marchés francophones.",
@@ -76,6 +174,44 @@ const postData: Post[] = [
     "categories": [
       "ai-tools",
       "analytics"
+    ]
+  },
+  {
+    "title": "Marketing d'Influence vs Marketing à la Performance vs Marketing d'Affiliation : Guide Complet 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "Maîtrisez les différences entre le marketing d'influence, le marketing à la performance et le marketing d'affiliation. Apprenez à exploiter chaque stratégie efficacement et à développer vos efforts marketing avec des plateformes modernes comme Infloq.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Come Collaborare su Instagram: Guida Completa per il 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Impara tutto sulle collaborazioni Instagram, dalla creazione di partnership di successo alla massimizzazione del coinvolgimento su piattaforme come TikTok.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
     ]
   },
   {
@@ -99,6 +235,45 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "Marketing degli Influencer vs Marketing delle Performance vs Marketing di Affiliazione: Guida Completa 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "Padroneggia le differenze tra marketing degli influencer, marketing delle performance e marketing di affiliazione. Scopri come sfruttare ogni strategia in modo efficace e scalare i tuoi sforzi di marketing utilizzando piattaforme moderne come Infloq.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Instagram पर सहयोग कैसे करें: 2025 के लिए पूर्ण गाइड",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Instagram सहयोग के बारे में सब कुछ जानें, सफल साझेदारी से लेकर TikTok जैसे प्लेटफॉर्म्स पर एंगेजमेंट को बढ़ाने तक।",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
     "title": "इन्फ्लुएंसर मार्केटिंग मार्केट साइज़ 2024-2025: वैश्विक उद्योग विश्लेषण और क्षेत्रीय अंतर्दृष्टि",
     "file": "influencer-marketing-market-size-2025",
     "description": "2024-2025 में इन्फ्लुएंसर मार्केटिंग मार्केट साइज़ का विस्तृत विश्लेषण, विस्तृत क्षेत्रीय विवरण और भविष्य के अनुमानों सहित।",
@@ -112,6 +287,42 @@ const postData: Post[] = [
     },
     "language": "hi",
     "url": "https://www.infloq.com/blog/post/hi/influencer-marketing-market-size-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "इन्फ्लुएंसर मार्केटिंग vs परफॉरमेंस मार्केटिंग vs एफिलिएट मार्केटिंग: 2025 के लिए संपूर्ण गाइड",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "इन्फ्लुएंसर मार्केटिंग, परफॉरमेंस मार्केटिंग और एफिलिएट मार्केटिंग के बीच अंतर को समझें। जानें कैसे Infloq जैसे आधुनिक प्लेटफॉर्म का उपयोग करके प्रत्येक रणनीति को प्रभावी ढंग से लागू करें।",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "كيفية التعاون على انستغرام: دليل شامل لعام 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "تعلم كل شيء عن التعاون على انستغرام، من إنشاء شراكات ناجحة إلى تعظيم التفاعل عبر منصات مثل تيك توك.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/how-to-collaborate-on-instagram",
     "categories": [
       "influencer-marketing"
     ]
@@ -135,6 +346,43 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "التسويق بالمؤثرين مقابل التسويق بالأداء مقابل التسويق بالعمولة: دليل شامل لعام 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "إتقان الفروق بين التسويق بالمؤثرين والتسويق بالأداء والتسويق بالعمولة. تعلم كيفية الاستفادة من كل استراتيجية بفعالية وتوسيع نطاق جهود التسويق الخاصة بك باستخدام المنصات الحديثة مثل Infloq.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Instagram协作完全指南：2025年版",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "了解Instagram协作的一切，从建立成功的合作伙伴关系到在抖音等平台上最大化参与度。",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "亚斯·塔克",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
     "title": "2024-2025年网红营销市场规模分析：全球行业分析与区域洞察",
     "file": "influencer-marketing-market-size-2025",
     "description": "2024-2025年网红营销市场规模的全面分析，包括中国市场详细区域细分和未来预测。",
@@ -150,6 +398,44 @@ const postData: Post[] = [
     "url": "https://www.infloq.com/blog/post/zh-cn/influencer-marketing-market-size-2025",
     "categories": [
       "influencer-marketing"
+    ]
+  },
+  {
+    "title": "影响者营销 vs 效果营销 vs 联盟营销：2025完整指南",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "深入了解影响者营销、效果营销和联盟营销之间的差异。学习如何有效利用每种策略，并通过Infloq等现代平台扩展您的营销努力。",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "亚什·塔克尔",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Instagram 콜라보레이션 완벽 가이드: 2025년판",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "TikTok과 같은 플랫폼에서의 참여도를 극대화하는 성공적인 파트너십 구축까지, Instagram 콜라보레이션에 대한 모든 것을 알아보세요.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "야쉬 타커",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
     ]
   },
   {
@@ -171,6 +457,44 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "인플루언서 마케팅 vs 퍼포먼스 마케팅 vs 제휴 마케팅: 2025년 완벽 가이드",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "인플루언서 마케팅, 퍼포먼스 마케팅, 제휴 마케팅의 차이점을 이해하고, Infloq와 같은 현대적인 플랫폼을 활용하여 각 전략을 효과적으로 활용하는 방법을 알아보세요.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "야쉬 타커",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Instagramでのコラボレーション完全ガイド：2025年版",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "TikTokなどのプラットフォームでのエンゲージメントを最大化する成功的なパートナーシップの構築まで、Instagramコラボレーションについてすべてを学びましょう。",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "ヤシュ・タッカー",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
     "title": "インフルエンサーマーケティング市場規模 2024-2025：グローバル産業分析と地域別インサイト",
     "file": "influencer-marketing-market-size-2025",
     "description": "2024-2025年のインフルエンサーマーケティング市場規模の包括的な分析。日本市場を含む詳細な地域別内訳と将来予測を含む。",
@@ -186,6 +510,44 @@ const postData: Post[] = [
     "url": "https://www.infloq.com/blog/post/ja/influencer-marketing-market-size-2025",
     "categories": [
       "influencer-marketing"
+    ]
+  },
+  {
+    "title": "インフルエンサーマーケティング vs パフォーマンスマーケティング vs アフィリエイトマーケティング：2025年完全ガイド",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "インフルエンサーマーケティング、パフォーマンスマーケティング、アフィリエイトマーケティングの違いを理解し、Infloqのような最新のプラットフォームを活用して各戦略を効果的に展開する方法を学びましょう。",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "ヤーシュ・タッカー",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Hoe te Samenwerken op Instagram: Complete Gids voor 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Leer alles over Instagram samenwerkingen, van het opzetten van succesvolle partnerships tot het maximaliseren van engagement op platforms zoals TikTok.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
     ]
   },
   {
@@ -210,6 +572,45 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "Influencer Marketing vs Performance Marketing vs Affiliate Marketing: Complete Gids voor 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "Beheers de verschillen tussen influencer marketing, performance marketing en affiliate marketing. Leer hoe je elke strategie effectief kunt inzetten en je marketinginspanningen kunt opschalen met moderne platforms zoals Infloq.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Как Создавать Коллаборации в Instagram: Полное Руководство 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Узнайте все о коллаборациях в Instagram: от создания успешных партнерств до максимизации вовлеченности на платформах вроде TikTok.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Яш Таккер",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
     "title": "Размер Рынка Инфлюенсер-Маркетинга 2024-2025: Глобальный Анализ Индустрии и Региональные Инсайты",
     "file": "influencer-marketing-market-size-2025",
     "description": "Комплексный анализ размера рынка инфлюенсер-маркетинга в 2024-2025 годах, включая детальную региональную разбивку и прогнозы для России и стран СНГ.",
@@ -225,6 +626,44 @@ const postData: Post[] = [
     "url": "https://www.infloq.com/blog/post/ru/influencer-marketing-market-size-2025",
     "categories": [
       "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Инфлюенсер-маркетинг vs Performance-маркетинг vs Партнерский маркетинг: Полное руководство 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "Освойте различия между инфлюенсер-маркетингом, performance-маркетингом и партнерским маркетингом. Узнайте, как эффективно использовать каждую стратегию и масштабировать свои маркетинговые усилия с помощью современных платформ, таких как Infloq.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Яш Таккер",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/influencer-vs-performance-vs-affiliate-marketing",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "How to Collaborate on Instagram: Complete Guide for 2025",
+    "file": "how-to-collaborate-on-instagram",
+    "description": "Learn everything about Instagram collaborations, from setting up successful partnerships to maximizing engagement across platforms like TikTok.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/how-to-collaborate-on-instagram",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
     ]
   },
   {
@@ -264,6 +703,25 @@ const postData: Post[] = [
     },
     "language": "en",
     "url": "https://www.infloq.com/blog/post/influencer-marketing-market-size-india-2025-2026",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Influencer vs Performance vs Affiliate Marketing: A Comprehensive Guide for 2025",
+    "file": "influencer-vs-performance-vs-affiliate-marketing",
+    "description": "Master the differences between influencer, performance, and affiliate marketing. Learn how to leverage each strategy effectively and scale your marketing efforts using modern platforms like Infloq.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/influencer-vs-performance-vs-affiliate-marketing",
     "categories": [
       "influencer-marketing",
       "creator-economy"
