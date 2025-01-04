@@ -95,7 +95,7 @@ async function getRedirectPath(user: any, teamMember: any) {
     user.userType !== UserType.INFLUENCER &&
     user.userType !== UserType.BOTH
   ) {
-    return "/auth/unauthorized";
+    return "/";
   }
 
   // Check team membership

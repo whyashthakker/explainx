@@ -48,7 +48,7 @@ export async function middleware(request: NextRequest) {
       user.userType !== UserType.INFLUENCER &&
       user.userType !== UserType.BOTH
     ) {
-      return NextResponse.redirect(new URL("/auth/unauthorized", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
 
     // Get team membership if exists
