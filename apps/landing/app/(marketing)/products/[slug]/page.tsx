@@ -2,11 +2,8 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-
-// Example of reviews and skeleton
 import { ReviewsSection } from "../../../_components/reviews/reviews-section";
 import { ReviewSkeleton } from "../../../_components/reviews/review-skeleton";
-
 import { HeadingDynamic } from "../_components/heading";
 import { TestimonialsDynamic } from "../_components/testimonial";
 import { FeaturesDynamic } from "../_components/features";
@@ -15,6 +12,34 @@ import { TargetAudienceDynamic } from "../_components/target-audience";
 import { Testimonials } from "../../../_components/testimonials";
 import { productPageData } from "../../../../data/productPageData";
 import HybridPricing from "../../../_components/infloq-pricing";
+import { ProductStructuredData } from "./structured-data";
+
+// Mock reviews data - replace with your actual reviews data
+const getProductReviews = (productSlug: string) => {
+  return [
+    {
+      author: "John Smith",
+      rating: 5,
+      content: "This platform has transformed how we handle influencer marketing.",
+      date: "2024-01-15"
+    },
+    {
+      author: "Sarah Johnson",
+      rating: 4,
+      content: "Great features and excellent support team.",
+      date: "2024-02-01"
+    }
+  ];
+};
+
+// Mock pricing data - replace with your actual pricing data
+const getProductPricing = (productSlug: string) => {
+  return {
+    amount: 0,
+    currency: "USD",
+    billingPeriod: "monthly"
+  };
+};
 
 export async function generateStaticParams() {
   return productPageData.map((product) => ({
@@ -23,40 +48,48 @@ export async function generateStaticParams() {
 }
 
 type PageProps = {
-    params: Promise<{ slug: string }>;
-  };
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = productPageData.find((p) => p.slug === slug);
   
-  export async function generateMetadata({
-    params,
-  }: PageProps): Promise<Metadata> {
-    const { slug } = await params;
-    const product = productPageData.find((p) => p.slug === slug);
-    
-    if (!product) {
-      return {
-        title: "Product Not Found | Infloq",
-        description: "This product doesn't exist",
-      };
-    }
-  
+  if (!product) {
     return {
-      title: product.metadata.title,
-      description: product.metadata.description,
-      alternates: product.metadata.alternates,
+      title: "Product Not Found | Infloq",
+      description: "This product doesn't exist",
     };
   }
-  
+
+  return {
+    title: product.metadata.title,
+    description: product.metadata.description,
+    alternates: product.metadata.alternates,
+  };
+}
+
 export default async function ProductPage({ params }: PageProps) {
-    const { slug } = await params;
-    const product = productPageData.find((p) => p.slug === slug);
-  
-    if (!product) {
-      notFound();
-    }
+  const { slug } = await params;
+  const product = productPageData.find((p) => p.slug === slug);
+
+  if (!product) {
+    notFound();
+  }
+
+  const reviews = getProductReviews(slug);
+  const pricing = getProductPricing(slug);
 
   return (
     <>
-      {/* 1. Heading Section (Dynamic) */}
+      <ProductStructuredData 
+        product={product}
+        reviews={reviews}
+        pricing={pricing}
+      />
+
       {product.heading && (
         <HeadingDynamic
           title={product.heading.title}
@@ -65,44 +98,24 @@ export default async function ProductPage({ params }: PageProps) {
         />
       )}
 
-      {/* 2. Testimonials (Dynamic) */}
-      {/* {product.testimonials && product.testimonials.length > 0 && (
-        <TestimonialsDynamic
-        featuredTestimonial={{
-            body: "We closed 3 deals in a week using this platform!",
-            author: {
-              name: "Anna Johnson",
-              handle: "annaj_85",
-              imageUrl: "/path/to/image.jpg",
-            },
-        }}
-         testimonials={product.testimonials} />
-      )} */}
-
       <Testimonials />
 
-      {/* 3. Features (Dynamic) */}
       {product.features && product.features.length > 0 && (
         <FeaturesDynamic features={product.features} />
       )}
 
-      {/* 4. Use Cases (Dynamic) */}
       {product.useCases && product.useCases.length > 0 && (
         <UseCasesDynamic useCases={product.useCases} />
       )}
 
-      {/* 5. Target Audience (Dynamic) */}
       {product.targetAudience && product.targetAudience.length > 0 && (
         <TargetAudienceDynamic targetAudience={product.targetAudience} />
       )}
 
-      {/* 6. Pricing (Fixed / As Is) */}
-      {/* Some pages might not use dynamic pricing, so we just show a standard component */}
       <Suspense>
         <HybridPricing />
       </Suspense>
 
-      {/* 7. Reviews Section (Optional Suspense Example) */}
       <Suspense fallback={<ReviewSkeleton />}>
         <ReviewsSection />
       </Suspense>
