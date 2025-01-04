@@ -1,4 +1,4 @@
-// apps/landing/app/(tools)/tools/[slug]/page.tsx
+// apps/landing/app/(tools)/tools/[slug]/page.tsx.
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
