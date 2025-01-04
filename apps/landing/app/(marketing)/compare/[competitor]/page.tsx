@@ -1,3 +1,5 @@
+// apps/landing/app/(marketing)/compare/[competitor]/page.tsx
+
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -8,7 +10,9 @@ import { Testimonials } from '../../../_components/testimonials';
 import FAQs from '../../../_components/faq-section';
 import { competitors } from '../../../../data/competitors';
 import { ReviewsSection } from '../../../_components/reviews/reviews-section';
-import { Pricing } from '../../../_components/infloq-pricing';
+import HybridPricing from '../../../_components/infloq-pricing';
+import { ComparisonStructuredData } from './StructuredData';
+import { generateFAQsFromFeatures, generateReviews, getFeatureHighlights } from './utils';
 
 interface PageProps {
   params: Promise<{
@@ -30,16 +34,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `Infloq.com vs ${competitor.name} Comparison`;
   const description = `Compare Infloq.com with ${competitor.name}. See how these ${competitor.category} tools stack up in features, pricing, and capabilities.`;
+  const keywords = [competitor.name, 'infloq.com', `${competitor.name} alternatives`, `free ${competitor.name} alternatives`, `influencer marketing platforms`, 'comparison', 'features', 'pricing', 'capabilities'];
 
   return {
     title,
     description,
+    keywords,
     openGraph: {
       title,
       description,
       type: 'website',
       images: [{
-        url: '/images/main/landing.png',
+        url: competitor.comparisonImage,
         width: 1200,
         height: 630,
         alt: `infloq.com vs ${competitor.name} comparison`
@@ -49,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
-      images: ['/images/main/landing.png']
+      images: [competitor.comparisonImage]
     },
     alternates: {
       canonical: `https://infloq.com/compare/${resolvedParams.competitor}`
@@ -65,12 +71,23 @@ export default async function ComparisonPage({ params }: PageProps) {
     notFound();
   }
 
+  const faqs = generateFAQsFromFeatures(competitor);
+  const reviews = generateReviews(competitor);
+  const featureHighlights = getFeatureHighlights(competitor);
+
   return (
     <>
+      <ComparisonStructuredData
+        competitor={competitor}
+        faqs={faqs}
+        reviews={reviews}
+        featureHighlights={featureHighlights}
+      />
+      
       <Heading
         title={`Infloq.com vs ${competitor.name}`}
         subtitle={`Compare features, pricing, and capabilities between Infloq.com and ${competitor.name}`}
-        image="/images/main/landing.png"
+        image={competitor.comparisonImage}
       />
       
       <div className="container py-8">
@@ -80,8 +97,8 @@ export default async function ComparisonPage({ params }: PageProps) {
         
         <Testimonials />
         <ReviewsSection />
-        <Pricing />
-        <FAQs />
+        <HybridPricing />
+        <FAQs faqs={faqs} />
       </div>
     </>
   );
