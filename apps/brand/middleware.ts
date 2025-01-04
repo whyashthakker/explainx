@@ -46,7 +46,7 @@ export async function middleware(request: NextRequest) {
 
     // Check user type - allow BRAND or BOTH
     if (user.userType !== UserType.BRAND && user.userType !== UserType.BOTH) {
-      return NextResponse.redirect(new URL("/auth/unauthorized", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
 
     // Get team membership if exists
