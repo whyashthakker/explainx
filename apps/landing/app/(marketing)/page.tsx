@@ -16,6 +16,7 @@ import { Testimonials } from "../_components/testimonials";
 import ProfileCarousel from "../_components/profile-carousel";
 import Pricing from "../_components/infloq-pricing";
 import CTA from "../_components/cta";
+import { HomePageStructuredData } from './StructuredData';
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -68,6 +69,7 @@ const MarketingPage = () => {
 
   return (
     <div className="min-h-full flex flex-col">
+      <HomePageStructuredData />
       <Heading />
       <ProfileCarousel />
       <Testimonials />
