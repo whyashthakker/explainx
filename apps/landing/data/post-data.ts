@@ -1,4 +1,4 @@
-// Generated on 2025-01-04T06:38:15.394Z
+// Generated on 2025-01-05T10:23:16.443Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,892 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Cómo Ganar Dinero con Menos de 1000 Seguidores: Guía Completa de Plataformas 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "Guía completa para monetizar tu presencia en redes sociales con menos de 1000 seguidores, incluyendo estrategias específicas por plataforma y consejos de éxito.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Carlos Rodríguez",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Guía Completa de Tipos de Influencers: De Mega a Nano 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "Análisis exhaustivo de las diferentes categorías de influencers, su efectividad y cómo elegir el tipo adecuado para tu marca en 2025.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Carlos Rodríguez",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Influencers de IA: El Futuro del Marketing Digital en 2025",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "Guía completa sobre los influencers de inteligencia artificial, su impacto en el marketing de marca y cómo las empresas pueden aprovecharlos eficazmente en su estrategia de marketing.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Experto en Marketing Digital",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Guía Definitiva de Creadores UGC: Todo lo que Necesitas Saber en 2025",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "Guía completa sobre creadores de contenido generado por usuarios, su impacto en el marketing de marca y cómo aprovechar el contenido UGC de manera efectiva en diferentes plataformas.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Experto en Marketing Digital",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Geld verdienen mit weniger als 1000 Followern: Kompletter Plattform-Guide 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "Umfassender Leitfaden zur Monetarisierung Ihrer Social-Media-Präsenz mit weniger als 1000 Followern, einschließlich plattformspezifischer Strategien und Erfolgstipps.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Marcel Schmidt",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Der komplette Leitfaden zu Influencer-Typen: Von Mega bis Nano 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "Umfassende Analyse verschiedener Influencer-Kategorien, ihrer Effektivität und wie Sie den richtigen Typ für Ihre Marke im Jahr 2025 auswählen.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Marcel Schmidt",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "KI-Influencer: Die Zukunft des digitalen Marketings 2025",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "Umfassender Leitfaden zu KI-Influencern, ihrer Wirkung auf das Markenmarketing und wie Unternehmen sie effektiv in ihrer Marketingstrategie einsetzen können.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Digital Marketing Experte",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Der ultimative Leitfaden für UGC-Creator: Alles, was Sie 2025 wissen müssen",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "Umfassender Leitfaden über UGC-Creator, ihre Auswirkungen auf das Markenmarketing und wie Sie nutzergenerierte Inhalte effektiv über verschiedene Plattformen hinweg nutzen können.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Digital Marketing Experte",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Comment Gagner de l'Argent avec Moins de 1000 Abonnés : Guide Complet des Plateformes 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "Guide complet pour monétiser votre présence sur les réseaux sociaux avec moins de 1000 abonnés, incluant des stratégies spécifiques par plateforme et des conseils de réussite.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Sophie Laurent",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Guide Complet des Types d'Influenceurs : Du Méga au Nano 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "Analyse approfondie des différentes catégories d'influenceurs, leur efficacité et comment choisir le bon type pour votre marque en 2025.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Sophie Laurent",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Les Influenceurs IA : L'Avenir du Marketing Digital en 2025",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "Guide complet sur les influenceurs d'intelligence artificielle, leur impact sur le marketing de marque et comment les entreprises peuvent les exploiter efficacement dans leur stratégie marketing.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Expert en Marketing Digital",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Guide Complet des Créateurs UGC : Tout ce qu'il Faut Savoir en 2025",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "Guide complet sur les créateurs de contenu généré par les utilisateurs, leur impact sur le marketing de marque et comment exploiter efficacement le contenu UGC sur différentes plateformes.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Expert en Marketing Digital",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Come Guadagnare con Meno di 1000 Follower: Guida Completa alle Piattaforme 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "Guida completa per monetizzare la tua presenza sui social media con meno di 1000 follower, incluse strategie specifiche per piattaforma e consigli per il successo.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Marco Rossi",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Guida Completa ai Tipi di Influencer: Dal Mega al Nano 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "Analisi approfondita delle diverse categorie di influencer, la loro efficacia e come scegliere il tipo giusto per il tuo brand nel 2025.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Marco Rossi",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Influencer IA: Il Futuro del Marketing Digitale nel 2025",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "Guida completa sugli influencer di intelligenza artificiale, il loro impatto sul marketing dei brand e come le aziende possono sfruttarli efficacemente nella loro strategia di marketing.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Esperto di Marketing Digitale",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Guida Completa ai Creator UGC: Tutto Quello che Devi Sapere nel 2025",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "Guida completa sui creator di contenuti generati dagli utenti, il loro impatto sul marketing del brand e come sfruttare efficacemente i contenuti UGC su diverse piattaforme.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Esperto di Marketing Digitale",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "1000 से कम फॉलोअर्स के साथ पैसे कैसे कमाएं: संपूर्ण प्लेटफॉर्म गाइड 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "1000 से कम फॉलोअर्स के साथ सोशल मीडिया से कमाई करने का विस्तृत गाइड, जिसमें प्लेटफॉर्म-विशिष्ट रणनीतियां और सफलता के टिप्स शामिल हैं।",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "आदित्य शर्मा",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "इन्फ्लुएंसर के प्रकार: मेगा से नैनो तक की संपूर्ण गाइड 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "विभिन्न इन्फ्लुएंसर श्रेणियों, उनकी प्रभावशीलता और 2025 में अपने ब्रांड के लिए सही प्रकार का चयन करने का विस्तृत विश्लेषण।",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "आदित्य शर्मा",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI इन्फ्लुएंसर्स: 2025 में डिजिटल मार्केटिंग का भविष्य",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "आर्टिफिशियल इंटेलिजेंस इन्फ्लुएंसर्स पर एक व्यापक गाइड, ब्रांड मार्केटिंग पर उनका प्रभाव और कंपनियां अपनी मार्केटिंग रणनीति में उनका प्रभावी उपयोग कैसे कर सकती हैं।",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "डिजिटल मार्केटिंग विशेषज्ञ",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "यूजीसी क्रिएटर्स की संपूर्ण गाइड: 2025 में जानने योग्य सब कुछ",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "यूजर जनरेटेड कंटेंट क्रिएटर्स, ब्रांड मार्केटिंग पर उनका प्रभाव और विभिन्न प्लेटफॉर्म्स पर यूजीसी कंटेंट का प्रभावी उपयोग कैसे करें, इस पर एक व्यापक गाइड।",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "डिजिटल मार्केटिंग विशेषज्ञ",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "الدليل الشامل لأنواع المؤثرين: من الميجا إلى النانو 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "تحليل شامل لفئات المؤثرين المختلفة وفعاليتهم وكيفية اختيار النوع المناسب لعلامتك التجارية في 2025",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "ياسر العتيبي",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "المؤثرون الاصطناعيون: مستقبل التسويق الرقمي في 2025",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "دليل شامل يشرح المؤثرين الاصطناعيين وتأثيرهم على تسويق العلامات التجارية وكيف يمكن للشركات الاستفادة منهم بفعالية في استراتيجيتها التسويقية.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "خبير التسويق الرقمي",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "الدليل الشامل لصناع المحتوى المستخدم: كل ما تحتاج معرفته في 2025",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "دليل شامل حول صناع محتوى المستخدم وتأثيرهم على تسويق العلامات التجارية وكيفية الاستفادة من محتوى المستخدم بفعالية عبر المنصات المختلفة.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "خبير التسويق الرقمي",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "1000粉丝以下如何赚钱：2025年平台完整指南",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "针对拥有1000粉丝以下的社交媒体账号如何实现变现的综合指南，包括平台特定策略和成功技巧。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "李明",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025年完整网红类型指南：从超级网红到微型网红",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "2025年深入分析各类网红类别，探讨其效果以及如何为您的品牌选择合适的网红类型。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "托马斯·范德伯格",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI虚拟红人：2025年数字营销的未来",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "全面解析AI虚拟红人、其对品牌营销的影响，以及企业如何在营销策略中有效利用这项创新技术。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "数字营销专家",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "UGC创作者完全指南：2025年你需要知道的一切",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "全面解析用户生成内容创作者、他们对品牌营销的影响，以及如何在不同平台上有效利用UGC内容。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "数字营销专家",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "1000 팔로워 미만으로 수익 창출하는 방법: 2025년 플랫폼 완벽 가이드",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "1000 팔로워 미만의 소셜 미디어 계정으로 수익을 창출하는 포괄적인 가이드. 플랫폼별 전략과 성공을 위한 팁을 포함합니다.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "김지원",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "인플루언서 유형 완벽 가이드: 메가부터 나노까지 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "2025년 각각의 인플루언서 카테고리, 효과성 및 브랜드에 적합한 유형 선택 방법에 대한 상세 분석.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "김지원",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI 인플루언서: 2025년 디지털 마케팅의 미래",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "AI 인플루언서에 대한 포괄적인 가이드, 브랜드 마케팅에 미치는 영향, 그리고 기업이 마케팅 전략에서 이를 효과적으로 활용하는 방법.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "디지털 마케팅 전문가",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "UGC 크리에이터 완벽 가이드: 2025년에 알아야 할 모든 것",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "사용자 생성 콘텐츠 크리에이터, 브랜드 마케팅에 미치는 영향, 그리고 다양한 플랫폼에서 UGC 콘텐츠를 효과적으로 활용하는 방법에 대한 포괄적인 가이드.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "디지털 마케팅 전문가",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "1000フォロワー未満でも稼げる方法：2025年プラットフォーム完全ガイド",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "1000フォロワー未満のSNSアカウントで収益化を実現するための包括的なガイド。プラットフォーム別戦略と成功のためのヒントを含みます。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "田中隆",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "インフルエンサーの種類完全ガイド：メガからナノまで 2025年版",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "2025年におけるインフルエンサーの各カテゴリー、その効果、そしてブランドに最適な種類の選び方についての詳細な分析。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "田中隆",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AIインフルエンサー：2025年のデジタルマーケティングの未来",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "AIインフルエンサーに関する包括的なガイド、ブランドマーケティングへの影響、そして企業がマーケティング戦略でAIインフルエンサーを効果的に活用する方法について。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "デジタルマーケティングエキスパート",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "UGCクリエイター完全ガイド：2025年に知っておくべきすべて",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "ユーザー生成コンテンツクリエイター、ブランドマーケティングへの影響、さまざまなプラットフォームでのUGCコンテンツの効果的な活用方法に関する包括的なガイド。",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "デジタルマーケティングエキスパート",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Geld Verdienen met Minder dan 1000 Volgers: Complete Platform Gids 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "Uitgebreide gids voor het monetiseren van je social media aanwezigheid met minder dan 1000 volgers, inclusief platformspecifieke strategieën en tips voor succes.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Thomas van der Berg",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Complete Gids voor Influencer Types: Van Mega tot Nano 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "Uitgebreide analyse van verschillende influencer categorieën, hun effectiviteit en hoe je het juiste type voor jouw merk kiest in 2025.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Thomas van der Berg",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "AI-Influencers: De Toekomst van Digitale Marketing in 2025",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "Complete gids over AI-influencers, hun impact op merkmarketing en hoe bedrijven dit effectief kunnen inzetten in hun marketingstrategie.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Digitale Marketing Expert",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "De Complete Gids voor UGC-Creators: Alles wat je moet weten in 2025",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "Uitgebreide gids over user-generated content creators, hun impact op merkmarketing en hoe je UGC-content effectief kunt inzetten op verschillende platforms.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Digital Marketing Expert",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Как Зарабатывать с Менее чем 1000 Подписчиков: Полное Руководство по Платформам 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "Подробное руководство по монетизации присутствия в социальных сетях с менее чем 1000 подписчиков, включая стратегии для конкретных платформ и советы по достижению успеха.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Александр Петров",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Полное руководство по типам инфлюенсеров: От мега до нано 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "Подробный анализ различных категорий инфлюенсеров, их эффективности и как выбрать правильный тип для вашего бренда в 2025 году.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Томас ван дер Берг",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "ИИ-инфлюенсеры: Будущее цифрового маркетинга в 2025 году",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "Полное руководство по инфлюенсерам на базе искусственного интеллекта, их влиянию на маркетинг брендов и тому, как компании могут эффективно использовать эту технологию в своей маркетинговой стратегии.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Эксперт по цифровому маркетингу",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Полное руководство по UGC-креаторам: Всё, что нужно знать в 2025 году",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "Всеобъемлющее руководство о создателях пользовательского контента, их влиянии на маркетинг брендов и эффективном использовании UGC-контента на различных платформах.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Эксперт по цифровому маркетингу",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "How to Make Money with Less Than 1000 Followers: Complete Platform Guide 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "Comprehensive guide on monetizing your social media presence with under 1000 followers across multiple platforms, including platform-specific strategies and tips.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/how-to-make-money-with-less-than-1000-followers",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Types: From Mega to Nano 2025",
+    "file": "mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "description": "Comprehensive analysis of different influencer categories, their effectiveness, and how to choose the right type for your brand in 2025.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/mega-vs-macro-vs-micro-vs-nano-influencers-detailed-comparison",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "AI Influencers: The Future of Digital Marketing in 2025",
+    "file": "what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "description": "Complete guide explaining AI influencers, their impact on brand marketing, and how businesses can effectively leverage them in their marketing strategy.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Digital Marketing Expert",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/what-are-ai-influencers-marketing-and-how-businesses-can-navigate-the-future",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "social-media-marketing",
+      "ai-tools",
+      "instagram",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Ultimate Guide to UGC Creators: Everything You Need to Know in 2025",
+    "file": "who-what-why-of-ugc-creators-full-guide",
+    "description": "Comprehensive guide about UGC creators, their impact on brand marketing, and how to leverage user-generated content effectively across different platforms.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
+    "author": {
+      "name": "Digital Marketing Expert",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/who-what-why-of-ugc-creators-full-guide",
+    "categories": [
+      "creator-economy"
+    ]
+  },
   {
     "title": "Cómo Colaborar en Instagram: Guía Completa para 2025",
     "file": "how-to-collaborate-on-instagram",
@@ -323,6 +1209,24 @@ const postData: Post[] = [
     },
     "language": "ar",
     "url": "https://www.infloq.com/blog/post/ar/how-to-collaborate-on-instagram",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "كيفية كسب المال مع أقل من 1000 متابع: دليل شامل للمنصات 2025",
+    "file": "how-to-make-money-with-less-than-1000-followers",
+    "description": "دليل شامل لتحقيق الدخل من وسائل التواصل الاجتماعي مع أقل من 1000 متابع عبر منصات متعددة، يتضمن استراتيجيات خاصة بكل منصة ونصائح للنجاح.",
+    "date": "January 3, 2025",
+    "datetime": "2025-01-03",
+    "author": {
+      "name": "ياسر العتيبي",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/how-to-make-money-with-less-than-1000-followers",
     "categories": [
       "influencer-marketing"
     ]
