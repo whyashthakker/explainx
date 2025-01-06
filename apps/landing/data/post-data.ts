@@ -1,4 +1,4 @@
-// Generated on 2025-01-06T03:44:41.851Z
+// Generated on 2025-01-06T08:49:11.891Z
 interface Author {
   name: string;
   role: string;
@@ -264,6 +264,27 @@ const postData: Post[] = [
     },
     "language": "en",
     "url": "https://www.infloq.com/blog/post/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Top 10 Influencer Marketing Platforms in India (2025) - Plus a Bonus Platform!",
+    "file": "top-10-influencer-marketing-platforms-in-india",
+    "description": "Comprehensive guide to the leading influencer marketing platforms in India, including detailed comparisons, best practices, and emerging trends. Features an exclusive look at new AI-powered solutions.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/top-10-influencer-marketing-platforms-in-india",
     "categories": [
       "influencer-marketing",
       "creator-economy",
