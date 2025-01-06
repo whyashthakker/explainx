@@ -6,15 +6,15 @@
   "module": "src/index.ts",
   "type": "module",
   "exports": {
-    "./client": "./src/index.ts"
+    "./client": "./src/index.ts",
+    ".": "./src/index.ts"
   },
   "scripts": {
     "postinstall": "prisma generate"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@repo/typescript-config": "*",
-    "@repo/db": "workspace:*"
+    "@repo/typescript-config": "*"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

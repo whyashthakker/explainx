@@ -1,6 +1,8 @@
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
+export * from '@prisma/client';
+
 const prismaClientSingleton = () => {
   return new PrismaClient().$extends(withAccelerate());
 };
