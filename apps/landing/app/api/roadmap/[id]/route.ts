@@ -6,9 +6,10 @@ import { type NextRequest } from "next/server";
 // PUT: Update roadmap item
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  segmentData: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await segmentData.params;
     const data = await request.json();
     const { id } = params;
 
@@ -33,10 +34,12 @@ export async function PUT(
 // DELETE: Delete roadmap item
 export async function DELETE(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  segmentData: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await segmentData.params;
     const { id } = params;
+    
     await prisma.roadmapItem.delete({
       where: { id }
     });
