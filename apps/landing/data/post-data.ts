@@ -1,4 +1,4 @@
-// Generated on 2025-01-06T08:49:11.891Z
+// Generated on 2025-01-06T13:50:46.498Z
 interface Author {
   name: string;
   role: string;
@@ -20,6 +20,27 @@ interface Post {
 
 const postData: Post[] = [
   {
+    "title": "Cómo Planificar tu Presupuesto de Marketing con Influencers",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "Aprende a planificar y asignar efectivamente tu presupuesto de marketing con influencers con nuestra guía completa que cubre todo, desde estrategias de compensación hasta costos ocultos.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
     "title": "The Complete Guide to Influencer Performance Marketing in 2025",
     "file": "influencer-marketing-performance-measure-analytics",
     "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
@@ -38,6 +59,46 @@ const postData: Post[] = [
       "creator-economy",
       "ai-tools",
       "analytics"
+    ]
+  },
+  {
+    "title": "Las 10 Principales Plataformas de Marketing de Influencers en India para Marcas y Agencias",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "Descubre las principales plataformas de marketing de influencers que están transformando el marketing digital en India. Desde soluciones impulsadas por IA hasta herramientas completas de gestión de campañas.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Wie man ein Influencer-Marketing-Budget plant",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "Lernen Sie, wie Sie Ihr Influencer-Marketing-Budget effektiv planen und zuweisen können, mit unserem umfassenden Leitfaden, der alles von Vergütungsstrategien bis zu versteckten Kosten abdeckt.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -62,6 +123,45 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "Die Top 10 vertrauenswürdigen Influencer-Marketing-Plattformen in Indien für Marken und Agenturen",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "Entdecken Sie die führenden Influencer-Marketing-Plattformen, die das digitale Marketing in Indien transformieren. Von KI-gestützten Lösungen bis hin zu umfassenden Kampagnenmanagement-Tools.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Comment Planifier votre Budget Marketing d'Influence",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "Apprenez à planifier et à allouer efficacement votre budget marketing d'influence avec notre guide complet couvrant tout, des stratégies de rémunération aux coûts cachés.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
     "title": "The Complete Guide to Influencer Performance Marketing in 2025",
     "file": "influencer-marketing-performance-measure-analytics",
     "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
@@ -75,6 +175,46 @@ const postData: Post[] = [
     },
     "language": "fr",
     "url": "https://www.infloq.com/blog/post/fr/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Les 10 Meilleures Plateformes de Marketing d'Influence en Inde pour les Marques et les Agences",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "Découvrez les principales plateformes de marketing d'influence qui transforment le marketing digital en Inde. Des solutions alimentées par l'IA aux outils complets de gestion de campagne.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Come Pianificare il Budget per il Marketing con gli Influencer",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "Impara a pianificare e allocare efficacemente il tuo budget per il marketing con gli influencer con la nostra guida completa che copre tutto, dalle strategie di compenso ai costi nascosti.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/how-to-plan-your-influencer-marketing-budget",
     "categories": [
       "influencer-marketing",
       "creator-economy",
@@ -104,6 +244,47 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "Le 10 Migliori Piattaforme di Influencer Marketing in India per Brand e Agenzie",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "Scopri le principali piattaforme di influencer marketing che stanno trasformando il marketing digitale in India. Dalle soluzioni basate sull'AI agli strumenti completi di gestione delle campagne.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "इन्फ्लुएंसर मार्केटिंग बजट की योजना कैसे बनाएं",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "हमारी व्यापक गाइड के साथ अपना इन्फ्लुएंसर मार्केटिंग बजट प्रभावी ढंग से योजना बनाना और आवंटित करना सीखें, जो मुआवजे की रणनीतियों से लेकर छिपी लागतों तक सब कुछ कवर करती है।",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
     "title": "The Complete Guide to Influencer Performance Marketing in 2025",
     "file": "influencer-marketing-performance-measure-analytics",
     "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
@@ -122,6 +303,43 @@ const postData: Post[] = [
       "creator-economy",
       "ai-tools",
       "analytics"
+    ]
+  },
+  {
+    "title": "ब्रांड्स और एजेंसियों के लिए भारत में शीर्ष 10 विश्वसनीय इन्फ्लुएंसर मार्केटिंग प्लेटफॉर्म",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "भारत में डिजिटल मार्केटिंग को बदल रहे प्रमुख इन्फ्लुएंसर मार्केटिंग प्लेटफॉर्म की खोज करें। AI-संचालित समाधानों से लेकर व्यापक अभियान प्रबंधन उपकरणों तक।",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "كيفية تخطيط ميزانية التسويق عبر المؤثرين",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "تعلم كيفية التخطيط الفعال وتخصيص ميزانية التسويق عبر المؤثرين من خلال دليلنا الشامل الذي يغطي كل شيء من استراتيجيات التعويض إلى التكاليف الخفية",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing"
     ]
   },
   {
@@ -146,6 +364,42 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "أفضل 10 منصات موثوقة للتسويق المؤثر في الهند للعلامات التجارية والوكالات",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "اكتشف منصات التسويق المؤثرة الرائدة التي تغير التسويق الرقمي في الهند. من الحلول المدعومة بالذكاء الاصطناعي إلى أدوات إدارة الحملات الشاملة.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "如何规划您的网红营销预算",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "通过我们的全面指南，学习如何有效规划和分配您的网红营销预算，涵盖从薪酬策略到隐藏成本的所有内容。",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
     "title": "The Complete Guide to Influencer Performance Marketing in 2025",
     "file": "influencer-marketing-performance-measure-analytics",
     "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
@@ -164,6 +418,42 @@ const postData: Post[] = [
       "creator-economy",
       "ai-tools",
       "analytics"
+    ]
+  },
+  {
+    "title": "印度品牌与代理机构首选的十大可信网红营销平台",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "探索正在改变印度数字营销格局的领先网红营销平台。从人工智能驱动的解决方案到全面的活动管理工具。",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "인플루언서 마케팅 예산 계획 수립 방법",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "보상 전략부터 숨겨진 비용까지 모든 것을 다루는 포괄적인 가이드와 함께 인플루언서 마케팅 예산을 효과적으로 계획하고 할당하는 방법을 알아보세요.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing"
     ]
   },
   {
@@ -188,6 +478,43 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "인도의 브랜드 및 에이전시를 위한 신뢰할 수 있는 상위 10개 인플루언서 마케팅 플랫폼",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "인도의 디지털 마케팅을 혁신하는 주요 인플루언서 마케팅 플랫폼을 살펴보세요. AI 기반 솔루션부터 종합적인 캠페인 관리 도구까지.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "インフルエンサーマーケティング予算の立て方",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "報酬戦略から隠れたコストまで、あらゆる面をカバーする包括的なガイドで、インフルエンサーマーケティング予算を効果的に計画し配分する方法を学びましょう。",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
     "title": "The Complete Guide to Influencer Performance Marketing in 2025",
     "file": "influencer-marketing-performance-measure-analytics",
     "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
@@ -204,6 +531,25 @@ const postData: Post[] = [
     "categories": [
       "influencer-marketing",
       "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "ブランドとエージェンシーのためのインドにおける信頼できるトップ10のインフルエンサーマーケティングプラットフォーム",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "インドのデジタルマーケティングを変革する主要なインフルエンサーマーケティングプラットフォームをご紹介。AIを活用したソリューションから包括的なキャンペーン管理ツールまで。",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
       "ai-tools",
       "analytics"
     ]
@@ -230,6 +576,24 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "Как Планировать Бюджет Инфлюенсер-Маркетинга",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "Узнайте, как эффективно планировать и распределять бюджет на инфлюенсер-маркетинг с помощью нашего комплексного руководства, охватывающего всё: от стратегий компенсации до скрытых затрат.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
     "title": "The Complete Guide to Influencer Performance Marketing in 2025",
     "file": "influencer-marketing-performance-measure-analytics",
     "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
@@ -248,6 +612,43 @@ const postData: Post[] = [
       "creator-economy",
       "ai-tools",
       "analytics"
+    ]
+  },
+  {
+    "title": "Топ-10 Надежных Платформ для Инфлюенсер-Маркетинга в Индии для Брендов и Агентств",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "Откройте для себя ведущие платформы инфлюенсер-маркетинга, трансформирующие цифровой маркетинг в Индии. От решений на базе ИИ до комплексных инструментов управления кампаниями.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "How to Plan Your Influencer Marketing Budget",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "Learn how to effectively plan and allocate your influencer marketing budget with our comprehensive guide covering everything from compensation strategies to hidden costs.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
     ]
   },
   {
@@ -289,6 +690,30 @@ const postData: Post[] = [
       "influencer-marketing",
       "creator-economy",
       "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Top 10 Trusted Influencer Marketing Platforms in India for Brands & Agencies",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "Discover the leading influencer marketing platforms transforming digital marketing in India. From AI-powered solutions to comprehensive campaign management tools.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "social-media-marketing",
+      "ai-tools",
+      "instagram",
+      "campaign-management",
       "analytics"
     ]
   },
