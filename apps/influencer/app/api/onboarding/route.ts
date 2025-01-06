@@ -4,7 +4,7 @@ import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 import { z } from "zod";
 import { Platform } from "@prisma/client";
-import { UserType, ActivePortal } from "@prisma/client";
+import { UserType } from "@prisma/client";
 
 const profileSchema = z.object({
   name: z.string().min(2),
@@ -64,7 +64,6 @@ export async function POST(req: Request) {
         data: {
           name: validatedData.name,
           userType: userType,
-          activePortal: ActivePortal.INFLUENCER,
         },
       });
 

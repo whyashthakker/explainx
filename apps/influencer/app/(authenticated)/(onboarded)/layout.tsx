@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import DashboardLayout from "./_components/DashboardLayout";
 import { UserProvider } from "./_context/user-context";
-import { UserType, ActivePortal } from "@prisma/client";
+import { UserType } from "@prisma/client";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,73 +16,64 @@ export default async function DashboardLayoutWrapper({
 }: LayoutProps) {
   const session = await auth();
 
-  if (!session?.user?.email) {
-    redirect("/");
-  }
+  if (!session?.user?.email) redirect("/");
 
-  try {
-    const user = await prisma.user.update({
-      where: {
-        email: session.user.email,
-      },
-      data: {
-        activePortal: ActivePortal.INFLUENCER,
-      },
-      include: {
-        influencers: {
-          include: {
-            user: {
-              select: {
-                id: true,
-                email: true,
-                image: true,
-              },
+  const user = await prisma.user.findFirst({
+    where: {
+      email: session.user.email,
+    },
+    include: {
+      influencers: {
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              image: true,
             },
           },
         },
       },
-    });
+    },
+  });
 
-    if (!user) {
-      redirect("/");
-    }
+  if (!user) redirect("/");
 
-    if (
-      user.userType !== UserType.INFLUENCER &&
-      user.userType !== UserType.BOTH
-    ) {
-      redirect("/login");
-    }
+  // Check user type
+  if (
+    user.userType !== UserType.INFLUENCER &&
+    user.userType !== UserType.BOTH
+  ) {
+    redirect("/");
+  }
 
-    const teamMembership = await prisma.influencerTeamMember.findFirst({
-      where: {
-        userId: user.id,
-        inviteStatus: "ACCEPTED",
-      },
-      include: {
-        team: {
-          include: {
-            influencer: true,
-          },
+  // Check onboarding status
+  if (!user.influencers?.length) {
+    redirect("/onboarding");
+  }
+
+  // Check team membership
+  const teamMembership = await prisma.influencerTeamMember.findFirst({
+    where: {
+      userId: user.id,
+      inviteStatus: "ACCEPTED",
+    },
+    include: {
+      team: {
+        include: {
+          influencer: true,
         },
       },
-    });
+    },
+  });
 
-    if (teamMembership?.role === "MEMBER" || teamMembership?.role === "ADMIN") {
-      redirect("/team-view");
-    }
-
-    if (!user.influencers || user.influencers.length === 0) {
-      redirect("/onboarding");
-    }
-
-    return (
-      <UserProvider value={user}>
-        <DashboardLayout>{children}</DashboardLayout>
-      </UserProvider>
-    );
-  } catch (error) {
-    console.error("Layout Error:", error);
-    redirect("/auth/error");
+  if (teamMembership?.role === "MEMBER" || teamMembership?.role === "ADMIN") {
+    redirect("/team-view");
   }
+
+  return (
+    <UserProvider value={user}>
+      <DashboardLayout>{children}</DashboardLayout>
+    </UserProvider>
+  );
 }

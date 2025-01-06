@@ -33,10 +33,7 @@ export default async function CollaborationPage({ params }: PageProps) {
   }
 
   // Verify user has influencer access and is in influencer portal
-  if (
-    user.activePortal !== "INFLUENCER" ||
-    (user.userType !== "INFLUENCER" && user.userType !== "BOTH")
-  ) {
+  if (user.userType !== "INFLUENCER" && user.userType !== "BOTH") {
     redirect("/dashboard");
   }
 
