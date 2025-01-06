@@ -15,6 +15,7 @@ import {
   Users,
   Briefcase,
   MessageSquare,
+  HandHelping,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@repo/ui/lib/utils";
@@ -97,6 +98,13 @@ const Sidebar = ({
           href: "/collaborations",
           description: "Ongoing partnerships",
           badge: 2, // New requests
+        },
+        {
+          label: "Proposals",
+          icon: HandHelping,
+          href: "/proposals",
+          description: "Proposals",
+          badge: 1, // New requests
         },
         {
           label: "Messages",
