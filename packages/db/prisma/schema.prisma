@@ -184,8 +184,8 @@ model Influencer {
   collaborations Collaboration[]
   youtubeAccount YouTubeAccount?
 
-  instagramAccount InstagramAccount?
-
+instagramAccount InstagramAccount?
+proposalApplications ProposalApplication[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
@@ -252,6 +252,7 @@ model Campaign {
   endDate     DateTime
   
   collaborations Collaboration[]
+  proposals    CampaignProposal[]
   
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -265,14 +266,30 @@ enum CampaignStatus {
 }
 
 // Collaboration and Chat Models
+
+enum CollaborationStatus {
+  PENDING
+  ACCEPTED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+
 model Collaboration {
   id            String    @id @default(cuid())
   campaignId    String
-  campaign      Campaign  @relation(fields: [campaignId], references: [id])
+  campaign      Campaign  @relation(fields: [campaignId], references: [id], onDelete: Cascade)
   brandId       String
-  brand         Brand     @relation(fields: [brandId], references: [id])
+  brand         Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   influencerId  String
-  influencer    Influencer @relation(fields: [influencerId], references: [id])
+  influencer    Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  
+  // New fields to track if this came from a proposal
+  proposalId    String?
+  proposal      CampaignProposal? @relation("ProposalCollaboration", fields: [proposalId], references: [id], onDelete: SetNull)
+  applicationId String? @unique
+  application   ProposalApplication? @relation(fields: [applicationId], references: [id], onDelete: SetNull)
   
   status        CollaborationStatus
   terms         String
@@ -285,12 +302,69 @@ model Collaboration {
   updatedAt     DateTime  @updatedAt
 }
 
-enum CollaborationStatus {
+enum ProposalStatus {
+  DRAFT
+  OPEN
+  CLOSED
+  CANCELLED
+}
+
+model CampaignProposal {
+  id              String    @id @default(cuid())
+  campaignId      String
+  campaign        Campaign  @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  
+  title           String
+  description     String
+  requirements    String[]
+  deliverables    String[]
+  budget          Decimal
+  timeframe       Int      // Duration in days
+  platforms       Platform[]
+  
+  // Targeting criteria
+  minFollowers    Int
+  maxFollowers    Int?
+  targetCategories String[]
+  targetPlatforms Platform[]
+  
+  // Status
+  status          ProposalStatus @default(OPEN)
+  
+  // Relations
+  applications    ProposalApplication[]
+  collaborations  Collaboration[] @relation("ProposalCollaboration")
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model ProposalApplication {
+  id              String    @id @default(cuid())
+  proposalId      String
+  proposal        CampaignProposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  influencerId    String
+  influencer      Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  
+  // Application details
+  coverLetter     String
+  proposedTerms   String?
+  proposedBudget  Decimal?
+  
+  status          ApplicationStatus @default(PENDING)
+  
+  // If accepted, create collaboration
+  collaboration   Collaboration?
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+enum ApplicationStatus {
   PENDING
   ACCEPTED
-  ACTIVE
-  COMPLETED
-  CANCELLED
+  REJECTED
+  WITHDRAWN
 }
 
 
