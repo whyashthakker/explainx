@@ -11,7 +11,7 @@ import {
 } from "@repo/ui/components/ui/card";
 import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Loader2 } from "lucide-react";
-import { TeamRole, InviteStatus } from "@prisma/client"; // Import these from your Prisma client
+import { TeamRole, InviteStatus } from "@repo/db"; // Import these from your Prisma client
 
 // Define the types based on your Prisma schema
 interface TeamMember {

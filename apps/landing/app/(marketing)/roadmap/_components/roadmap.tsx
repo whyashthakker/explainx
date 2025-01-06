@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@repo/ui/components/ui/select";
 import { ChevronDown, ChevronUp, Loader2, ThumbsUp } from 'lucide-react';
-import type { RoadmapItemStatus, RoadmapCategory } from '@prisma/client';
+import type { RoadmapItemStatus, RoadmapCategory } from '@repo/db';
 
 interface RoadmapItem {
   id: string;

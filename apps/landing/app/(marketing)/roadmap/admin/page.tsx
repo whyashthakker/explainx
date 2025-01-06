@@ -36,7 +36,7 @@ import {
   DialogTrigger,
 } from "@repo/ui/components/ui/dialog";
 import { Loader2, Plus, Pencil, Trash2, ArrowUpDown } from 'lucide-react';
-import { RoadmapItemStatus, RoadmapCategory } from '@prisma/client';
+import { RoadmapItemStatus, RoadmapCategory } from '@repo/db';
 
 interface RoadmapItem {
   id: string;
