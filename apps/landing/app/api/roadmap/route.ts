@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@repo/db/client";
 import { type NextRequest } from "next/server";
-import { RoadmapItemStatus, RoadmapCategory } from "@prisma/client";
+import { RoadmapItemStatus, RoadmapCategory } from "@repo/db";
 
 // GET: Fetch all roadmap items
 export async function GET() {
