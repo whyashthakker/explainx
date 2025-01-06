@@ -12,39 +12,21 @@ interface InviteRequestBody {
 }
 
 export async function POST(request: NextRequest) {
-  console.log("🚀 Starting invite process");
-
   try {
-    // 1. Auth Check
-    console.log("👤 Checking authentication...");
     const session = await auth();
-    console.log("Session data:", session);
+    console.log("Session:", session);
 
     if (!session?.user?.email) {
-      console.log("❌ No authenticated user found");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // 2. Parse Body
-    console.log("📝 Parsing request body...");
-    const body = (await request.json()) as InviteRequestBody;
-    const { email, role } = body;
-    console.log("Request data:", { email, role });
+    const { email, role } = (await request.json()) as InviteRequestBody;
+    console.log("Request payload:", { email, role });
 
-    if (!email || !role) {
-      console.log("❌ Missing required fields");
-      return NextResponse.json(
-        { error: "Email and role are required" },
-        { status: 400 },
-      );
-    }
-
-    // 3. Get Current User and Verify Portal Access
-    console.log("🔍 Finding current user...");
     const currentUser = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: {
-        influencers: {
+        brands: {
           include: {
             team: true,
           },
@@ -54,49 +36,36 @@ export async function POST(request: NextRequest) {
     console.log("Current user:", currentUser);
 
     if (!currentUser) {
-      console.log("❌ User not found");
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
-
-    // Check user type and active portal
-    if (
-      currentUser.userType !== "INFLUENCER" &&
-      currentUser.userType !== "BOTH"
-    ) {
-      console.log("❌ User not authorized for influencer portal");
+    if (currentUser.userType !== "BRAND" && currentUser.userType !== "BOTH") {
       return NextResponse.json(
-        { error: "Not authorized to access influencer portal" },
+        { error: "Not authorized to access brand portal" },
+        { status: 403 },
+      );
+    }
+    if (currentUser.activePortal !== "BRAND") {
+      return NextResponse.json(
+        { error: "Please switch to brand portal" },
         { status: 403 },
       );
     }
 
-    if (currentUser.activePortal !== "INFLUENCER") {
-      console.log("❌ Wrong portal active");
+    const activeBrand = currentUser.brands[0];
+    console.log("Active brand:", activeBrand);
+    if (!activeBrand) {
       return NextResponse.json(
-        { error: "Please switch to influencer portal" },
-        { status: 403 },
-      );
-    }
-
-    // Get the active influencer profile
-    // For now, we'll use the first influencer profile, but you might want to add logic to determine which one
-    const activeInfluencer = currentUser.influencers[0];
-    if (!activeInfluencer) {
-      console.log("❌ No influencer profile found");
-      return NextResponse.json(
-        { error: "Influencer profile not found" },
+        { error: "Brand profile not found" },
         { status: 404 },
       );
     }
+    let team = activeBrand.team;
+    console.log("Existing team:", team);
 
-    // 4. Handle Team
-    console.log("👥 Checking team...");
-    let team = activeInfluencer.team;
     if (!team) {
-      console.log("Creating new team...");
-      team = await prisma.influencerTeam.create({
+      team = await prisma.brandTeam.create({
         data: {
-          influencerId: activeInfluencer.id,
+          brandId: activeBrand.id,
           members: {
             create: {
               userId: currentUser.id,
@@ -106,31 +75,19 @@ export async function POST(request: NextRequest) {
           },
         },
       });
-      console.log("New team created:", team);
+      console.log("Created new team:", team);
     }
 
-    // 5. Check Authorization
-    console.log("🔑 Checking user authorization...");
-    const currentMember = await prisma.influencerTeamMember.findFirst({
+    const currentMember = await prisma.brandTeamMember.findFirst({
       where: {
         teamId: team.id,
         userId: currentUser.id,
         role: { in: ["OWNER", "ADMIN"] },
       },
     });
-    console.log("Current member status:", currentMember);
+    console.log("Current team member:", currentMember);
 
-    if (!currentMember) {
-      console.log("❌ User not authorized to invite");
-      return NextResponse.json(
-        { error: "Not authorized to invite members" },
-        { status: 403 },
-      );
-    }
-
-    // 6. Check Existing Invite
-    console.log("🔍 Checking for existing invite...");
-    const existingInvite = await prisma.influencerTeamMember.findFirst({
+    const existingInvite = await prisma.brandTeamMember.findFirst({
       where: {
         teamId: team.id,
         inviteEmail: email,
@@ -139,63 +96,33 @@ export async function POST(request: NextRequest) {
     });
     console.log("Existing invite:", existingInvite);
 
-    if (existingInvite) {
-      console.log("❌ Invite already exists");
-      return NextResponse.json(
-        { error: "Invite already exists for this email" },
-        { status: 400 },
-      );
-    }
-
-    // 7. Generate Token
-    console.log("🔑 Generating invite token...");
     const inviteToken = randomBytes(32).toString("hex");
-    console.log("Generated token:", inviteToken);
+    console.log("Generated invite token:", inviteToken);
 
-    // 8. Create Team Member
-    console.log("👥 Creating team member invite...");
-    console.log("Team member creation data:", {
-      teamId: team.id,
-      inviteEmail: email,
-      role,
-      inviteStatus: "PENDING",
-      inviteToken,
-    });
-
-    const teamMember = await prisma.influencerTeamMember.create({
+    const teamMember = await prisma.brandTeamMember.create({
       data: {
-        team: { connect: { id: team.id } },
+        teamId: team.id,
+        userId: null,
         inviteEmail: email,
         role: role,
         inviteStatus: "PENDING",
         inviteToken,
       },
     });
-    console.log("✅ Team member created:", teamMember);
+    console.log("Created team member:", teamMember);
 
-    // generate invite email from here
     const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL}/invite/${inviteToken}`;
-    console.log(inviteUrl);
+    console.log("Invite URL:", inviteUrl);
 
-    // 9. Send Response
-    console.log("📤 Sending success response");
     return NextResponse.json({
       success: true,
       teamMember,
     });
   } catch (error) {
-    console.log("❌ ERROR DETAILS:");
-    if (error instanceof Error) {
-      console.log("Error name:", error.name);
-      console.log("Error message:", error.message);
-      console.log("Error stack:", error.stack);
-    }
-    console.log("Full error object:", error);
-
+    console.error("Invite error:", error);
     return NextResponse.json(
       { error: "Failed to send invite" },
       { status: 500 },
     );
   }
 }
-

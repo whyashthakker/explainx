@@ -46,7 +46,7 @@ import {
   BrandTeamMember,
   Prisma,
 } from "@prisma/client";
-import { TeamSection } from "./team/TeamSection";
+import { TeamSection } from "../_components/team/TeamSection";
 import EditProfileModal from "./EditProfileModal";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { ScrollArea } from "@repo/ui/components/ui/scroll-area";

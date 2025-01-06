@@ -13,32 +13,34 @@ import {
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
 
-interface TeamMemberListProps {
+interface BrandTeamMemberListProps {
   members: any[];
   onTeamUpdate: () => void;
 }
 
-export function TeamMemberList({ members, onTeamUpdate }: TeamMemberListProps) {
-  console.log(members);
+export function TeamMemberList({
+  members,
+  onTeamUpdate,
+}: BrandTeamMemberListProps) {
   const handleRemoveMember = async (memberId: string) => {
     try {
-      const response = await fetch(`/api/team/members/${memberId}`, {
+      const response = await fetch(`api/team/members/${memberId}`, {
         method: "DELETE",
       });
 
       if (!response.ok) {
-        throw new Error("Failed to remove member");
+        throw new Error("Failed to remove team member");
       }
 
       onTeamUpdate();
     } catch (error) {
-      console.error("Error removing member:", error);
+      console.error("Error removing team member:", error);
     }
   };
 
   const handleRoleChange = async (memberId: string, newRole: string) => {
     try {
-      const response = await fetch(`/api/team/members/${memberId}`, {
+      const response = await fetch(`api/team/members/${memberId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -79,6 +81,7 @@ export function TeamMemberList({ members, onTeamUpdate }: TeamMemberListProps) {
         return "default" as const;
     }
   };
+
   const getMemberDisplayName = (member: any) => {
     if (member.user?.name) return member.user.name;
     if (member.user?.email) return member.user.email;
@@ -131,18 +134,22 @@ export function TeamMemberList({ members, onTeamUpdate }: TeamMemberListProps) {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem
-                    onClick={() => handleRoleChange(member.id, "ADMIN")}
-                  >
-                    <Shield className="mr-2 h-4 w-4" />
-                    Make Admin
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => handleRoleChange(member.id, "MEMBER")}
-                  >
-                    <Shield className="mr-2 h-4 w-4" />
-                    Make Member
-                  </DropdownMenuItem>
+                  {member.role !== "ADMIN" && (
+                    <DropdownMenuItem
+                      onClick={() => handleRoleChange(member.id, "ADMIN")}
+                    >
+                      <Shield className="mr-2 h-4 w-4" />
+                      Make Admin
+                    </DropdownMenuItem>
+                  )}
+                  {member.role === "ADMIN" && (
+                    <DropdownMenuItem
+                      onClick={() => handleRoleChange(member.id, "MEMBER")}
+                    >
+                      <Shield className="mr-2 h-4 w-4" />
+                      Remove Admin
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuItem
                     className="text-red-600"
                     onClick={() => handleRemoveMember(member.id)}

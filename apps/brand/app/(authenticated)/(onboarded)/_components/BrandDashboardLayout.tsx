@@ -35,6 +35,7 @@ import { signOut } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { LogoutMenuItem } from "./LogoutMenuItem";
 import { useUser } from "../_context/user-context";
+import Link from "next/link";
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   isMobileOpen: boolean;
   setIsMobileOpen: (value: boolean) => void;
@@ -274,9 +275,12 @@ const Sidebar = ({
                   <DropdownMenuSeparator />
                 </>
               )}
-              <DropdownMenuItem>
-                <UserCircleIcon className="w-4 h-4 mr-2" /> Profile Settings
-              </DropdownMenuItem>
+              <Link href="/profile">
+                <DropdownMenuItem>
+                  <UserCircleIcon className="w-4 h-4 mr-2" /> Profile Settings
+                </DropdownMenuItem>
+              </Link>
+
               <DropdownMenuItem>
                 <Bell className="w-4 h-4 mr-2" /> Notifications
               </DropdownMenuItem>

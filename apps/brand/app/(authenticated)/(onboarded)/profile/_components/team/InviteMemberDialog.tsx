@@ -1,4 +1,3 @@
-// components/team/InviteMemberDialog.tsx
 "use client";
 
 import { useState } from "react";
@@ -38,7 +37,7 @@ const formSchema = z.object({
   }),
 });
 
-interface InviteMemberDialogProps {
+interface BrandInviteMemberDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onInviteSent: () => void;
@@ -48,7 +47,7 @@ export function InviteMemberDialog({
   open,
   onOpenChange,
   onInviteSent,
-}: InviteMemberDialogProps) {
+}: BrandInviteMemberDialogProps) {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -65,7 +64,7 @@ export function InviteMemberDialog({
     setError("");
 
     try {
-      const response = await fetch("/api/team/invite", {
+      const response = await fetch(`/api/team/invite`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,9 +92,9 @@ export function InviteMemberDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Invite Team Member</DialogTitle>
+          <DialogTitle>Invite Brand Team Member</DialogTitle>
           <DialogDescription>
-            Send an invitation to join your team
+            Send an invitation to join your brand team
           </DialogDescription>
         </DialogHeader>
 
