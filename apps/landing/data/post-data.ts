@@ -1,4 +1,4 @@
-// Generated on 2025-01-05T10:23:16.443Z
+// Generated on 2025-01-06T03:44:41.851Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,258 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-performance-marketing",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/influencer-performance-marketing",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "The Complete Guide to Influencer Performance Marketing in 2025",
+    "file": "influencer-marketing-performance-measure-analytics",
+    "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Marketing Team",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/influencer-marketing-performance-measure-analytics",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Cómo Ganar Dinero con Menos de 1000 Seguidores: Guía Completa de Plataformas 2025",
     "file": "how-to-make-money-with-less-than-1000-followers",
