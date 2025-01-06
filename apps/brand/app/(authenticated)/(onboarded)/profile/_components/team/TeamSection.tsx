@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { TeamMemberList } from "./TeamMemberList";
 import { InviteMemberDialog } from "./InviteMemberDialog";
@@ -11,9 +12,8 @@ import {
 } from "@repo/ui/components/ui/card";
 import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Loader2 } from "lucide-react";
-import { TeamRole, InviteStatus } from "@prisma/client"; // Import these from your Prisma client
+import { TeamRole, InviteStatus } from "@prisma/client";
 
-// Define the types based on your Prisma schema
 interface TeamMember {
   id: string;
   userId: string | null;
@@ -27,18 +27,22 @@ interface TeamMember {
   } | null;
 }
 
-interface Team {
+interface BrandTeam {
   id: string;
+  brandId: string;
   members: TeamMember[];
 }
 
-interface TeamSectionProps {
+interface BrandTeamSectionProps {
   profileVersion?: number;
   onError?: (error: string) => void;
 }
 
-export function TeamSection({ profileVersion = 0, onError }: TeamSectionProps) {
-  const [team, setTeam] = useState<Team | null>(null);
+export function TeamSection({
+  profileVersion = 0,
+  onError,
+}: BrandTeamSectionProps) {
+  const [team, setTeam] = useState<BrandTeam | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [inviteDialogOpen, setInviteDialogOpen] = useState(false);
@@ -46,17 +50,17 @@ export function TeamSection({ profileVersion = 0, onError }: TeamSectionProps) {
   const fetchTeam = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/team");
+      const response = await fetch(`/api/team`);
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch team");
+        throw new Error(data.error || "Failed to fetch brand team");
       }
 
       setTeam(data.team);
       setError("");
     } catch (err: any) {
-      const errorMessage = err.message || "Failed to fetch team";
+      const errorMessage = err.message || "Failed to fetch brand team";
       setError(errorMessage);
       onError?.(errorMessage);
     } finally {
@@ -79,8 +83,17 @@ export function TeamSection({ profileVersion = 0, onError }: TeamSectionProps) {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Team Management</CardTitle>
-        <Button onClick={() => setInviteDialogOpen(true)}>Invite Member</Button>
+        <CardTitle>Brand Team Management</CardTitle>
+        <Button
+          onClick={() => setInviteDialogOpen(true)}
+          disabled={
+            !team?.members.some(
+              (member) => member.role === "OWNER" || member.role === "ADMIN",
+            )
+          }
+        >
+          Invite Team Member
+        </Button>
       </CardHeader>
       <CardContent>
         {error ? (

@@ -30,11 +30,10 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Get user with all influencer profiles
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: {
-        influencers: {
+        brands: {
           include: {
             team: {
               include: {
@@ -61,35 +60,32 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Check user type and portal access
-    if (user.userType !== "INFLUENCER" && user.userType !== "BOTH") {
+    if (user.userType !== "BRAND" && user.userType !== "BOTH") {
       return NextResponse.json(
-        { error: "Not authorized to access influencer portal" },
+        { error: "Not authorized to access brand portal" },
         { status: 403 },
       );
     }
 
-    if (user.activePortal !== "INFLUENCER") {
+    if (user.activePortal !== "BRAND") {
       return NextResponse.json(
-        { error: "Please switch to influencer portal" },
+        { error: "Please switch to brand portal" },
         { status: 403 },
       );
     }
 
-    // Get active influencer profile
-    const activeInfluencer = user.influencers[0]; // You might want to modify this logic
-    if (!activeInfluencer) {
+    const activeBrand = user.brands[0];
+    if (!activeBrand) {
       return NextResponse.json(
-        { error: "Influencer profile not found" },
+        { error: "Brand profile not found" },
         { status: 404 },
       );
     }
 
-    // Create team if it doesn't exist
-    if (!activeInfluencer.team) {
-      const team = (await prisma.influencerTeam.create({
+    if (!activeBrand.team) {
+      const team = await prisma.brandTeam.create({
         data: {
-          influencerId: activeInfluencer.id,
+          brandId: activeBrand.id,
           members: {
             create: {
               userId: user.id,
@@ -112,12 +108,11 @@ export async function GET(request: NextRequest) {
             },
           },
         },
-      })) as Team;
-
+      });
       return NextResponse.json({ team });
     }
 
-    return NextResponse.json({ team: activeInfluencer.team });
+    return NextResponse.json({ team: activeBrand.team });
   } catch (error) {
     console.error("Team fetch error:", error);
     return NextResponse.json(
@@ -126,4 +121,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
