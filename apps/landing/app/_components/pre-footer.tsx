@@ -36,6 +36,15 @@ const navigation = {
       { name: "Infloq vs InsightIQ", href: "/compare/insightiq" },
       { name: "All Comparisons", href: "/compare" }
   ],
+  forPages: [
+    { name: "Brands", href: "/brands" },
+    { name: "Creators", href: "/creators" },
+    { name: "Influencers", href: "/influencers" },
+    { name: "Nano Influencers", href: "/nano-influencers" },
+    { name: "Micro Influencers", href: "/micro-influencers" },
+    { name: "Macro Influencers", href: "/macro-influencers" },
+    { name: "Mega Influencers", href: "/mega-influencers" }
+],
   company: [
       { name: "About", href: "/about" },
       { name: "Careers", href: "/careers" },
@@ -118,51 +127,56 @@ const navigation = {
 };
 
 export function PreFooter() {
-  return (
-      <footer className="relative">
-          <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-              <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                  <div className="md:grid md:grid-cols-2 md:gap-8">
-                      <div>
-                          <FooterList title="Products" items={navigation.main} />
-                      </div>
-                      <div className="mt-10 md:mt-0">
-                          <FooterList title="Free Tools" items={navigation.tools} />
-                      </div>
-                  </div>
-                  <div className="md:grid md:grid-cols-2 md:gap-8">
-                      <div>
-                          <FooterList title="Company" items={navigation.company} />
-                      </div>
-                      <div className="mt-10 md:mt-0">
-                          <FooterList title="Legal" items={navigation.legal} />
-                      </div>
-                  </div>
-              </div>
-
-              <div className="mt-10">
-                  <FooterList title="Compare" items={navigation.comparisons} />
-              </div>
-
-              <div className="mt-16 flex justify-center space-x-10">
-                  {navigation.social.map((item) => (
-                      <Link
-                          key={item.name}
-                          href={item.href}
-                          className="text-gray-400 hover:text-gray-500"
-                      >
-                          <span className="sr-only">{item.name}</span>
-                          <item.icon className="h-6 w-6" aria-hidden="true" />
-                      </Link>
-                  ))}
-              </div>
-              <p className="mt-10 text-center text-xs leading-5 text-gray-500">
-                  &copy; {new Date().getFullYear()} AISOLO Technologies Private Limited. All rights reserved.
-              </p>
-          </div>
-      </footer>
-  );
-}
+    return (
+        <footer className="relative">
+            <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+                <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+                    <div className="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <FooterList title="Products" items={navigation.main} />
+                        </div>
+                        <div className="mt-10 md:mt-0">
+                            <FooterList title="Free Tools" items={navigation.tools} />
+                        </div>
+                    </div>
+                    <div className="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <FooterList title="Company" items={navigation.company} />
+                        </div>
+                        <div className="mt-10 md:mt-0">
+                            <FooterList title="Legal" items={navigation.legal} />
+                        </div>
+                    </div>
+                </div>
+  
+                <div className="mt-10 md:grid md:grid-cols-2 md:gap-8">
+                    <div>
+                        <FooterList title="Compare" items={navigation.comparisons} />
+                    </div>
+                    <div className="mt-10 md:mt-0">
+                        <FooterList title="Made for you ❤️" items={navigation.forPages} />
+                    </div>
+                </div>
+  
+                <div className="mt-16 flex justify-center space-x-10">
+                    {navigation.social.map((item) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            className="text-gray-400 hover:text-gray-500"
+                        >
+                            <span className="sr-only">{item.name}</span>
+                            <item.icon className="h-6 w-6" aria-hidden="true" />
+                        </Link>
+                    ))}
+                </div>
+                <p className="mt-10 text-center text-xs leading-5 text-gray-500">
+                    &copy; {new Date().getFullYear()} AISOLO Technologies Private Limited. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    );
+  }
 
 function FooterList(props: {
   title: string;
