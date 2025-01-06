@@ -2,7 +2,7 @@
 import type {
   User as PrismaUser,
   Influencer as PrismaInfluencer,
-} from "@prisma/client";
+} from "@repo/db";
 // Enums
 export enum UserType {
   BRAND = "BRAND",
