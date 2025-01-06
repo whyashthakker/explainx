@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sendDiscordNotification } from "../../../lib/discord-notify";
+import prisma from "@repo/db/client";
 
 const waitlistSchema = z.object({
   email: z.string().email(),
@@ -19,14 +20,14 @@ export async function POST(req: Request) {
         `New waitlist entry: ${validatedData.email}, ${validatedData.userType}, ${validatedData.intention}`
     ).catch(console.error);
 
-    // const entry = await prisma.waitlistEntry.create({
-    //   data: {
-    //     email: validatedData.email,
-    //     userType: validatedData.userType as "BRAND" | "INFLUENCER",
-    //     intention: validatedData.intention,
-    //     status: "PENDING"
-    //   },
-    // });
+    const entry = await prisma.waitlistEntry.create({
+      data: {
+        email: validatedData.email,
+        userType: validatedData.userType as "BRAND" | "INFLUENCER",
+        intention: validatedData.intention,
+        status: "PENDING"
+      },
+    });
 
     return NextResponse.json({ success: true, data: validatedData });
   } catch (error) {
