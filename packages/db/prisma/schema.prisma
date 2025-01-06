@@ -159,8 +159,8 @@ model BrandTeamMember {
   id          String    @id @default(cuid())
   teamId      String
   team        BrandTeam @relation(fields: [teamId], references: [id])
-  userId      String
-  user        User      @relation(fields: [userId], references: [id])
+  userId      String?
+  user        User?      @relation(fields: [userId], references: [id])
   role        TeamRole  
   inviteStatus InviteStatus
   inviteToken String?   @unique
