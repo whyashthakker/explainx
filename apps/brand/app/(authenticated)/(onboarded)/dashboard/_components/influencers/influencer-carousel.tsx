@@ -18,9 +18,11 @@ import {
 import { Verified, Users, BarChart3, Share2, Search } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
 import { Platform } from "../../../../../../lib/types";
+import { useUser } from "../../../_context/user-context";
 
 interface Influencer {
   id: string;
+  userId: string;
   name: string;
   avatar: string;
   category: string;
@@ -104,7 +106,9 @@ const InfluencerCard = ({
   </Card>
 );
 
-export default function BrandDashboard() {
+export default function InfluencerDashboard() {
+  const user = useUser();
+  console.log(user);
   const router = useRouter();
   const [influencers, setInfluencers] = useState<Influencer[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -115,7 +119,14 @@ export default function BrandDashboard() {
       try {
         const response = await fetch("/api/influencers");
         const data = await response.json();
-        setInfluencers(data);
+        console.log(data);
+
+        // Filter out the current user's influencer profile using the user ID from hook
+        const filteredInfluencers = data.filter(
+          (influencer: Influencer) => influencer.userId !== user?.id,
+        );
+
+        setInfluencers(filteredInfluencers);
       } catch (error) {
         console.error("Failed to fetch influencers:", error);
       } finally {
@@ -124,7 +135,7 @@ export default function BrandDashboard() {
     };
 
     fetchInfluencers();
-  }, []);
+  }, [user?.id]); // Add user?.id as dependency
 
   const filteredInfluencers = influencers.filter(
     (influencer) =>
@@ -163,7 +174,6 @@ export default function BrandDashboard() {
               />
             </div>
           </div>
-
           {searchTerm && (
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-900">
@@ -181,7 +191,6 @@ export default function BrandDashboard() {
             </div>
           )}
         </div>
-
         {/* All Creators Section */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-900">All Creators</h2>
