@@ -23,7 +23,6 @@ model User {
 
   // Role and type
   userType     UserType?
-  activePortal ActivePortal? // Track which portal/app the user is currently using
   
   // Profile relations - Remove unique constraint to allow both
   brands        Brand[]    
@@ -45,11 +44,6 @@ enum UserType {
   BRAND
   INFLUENCER
   BOTH
-}
-
-enum ActivePortal {
-  BRAND
-  INFLUENCER
 }
 
 // Auth Models
