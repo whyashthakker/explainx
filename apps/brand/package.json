@@ -16,6 +16,7 @@
     "@prisma/extension-accelerate": "^1.2.1",
     "@repo/db": "workspace:*",
     "@repo/ui": "workspace:*",
+    "date-fns": "^4.1.0",
     "lucide-react": "^0.468.0",
     "next": "^15.1.0",
     "next-auth": "^5.0.0-beta.25",
