@@ -5,10 +5,10 @@ import productData from '../../../data/product-data'
 
 
 export const metadata: Metadata = {
-  title: 'AI Social Media Tools & Products | Olly.social',
-  description: 'Explore Olly.socials suite of AI-powered tools for social media management, including comment generators, virality calculators, and automation tools.',
+  title: 'AI Social Media Tools & Products | Infloq.com',
+  description: 'Explore Infloq.coms suite of AI-powered tools for social media management, including comment generators, virality calculators, and automation tools.',
   openGraph: {
-    title: 'AI Social Media Tools & Products | Olly.social',
+    title: 'AI Social Media Tools & Products | Infloq.com',
     description: 'Discover our AI-powered social media tools',
     images: ['/og-products.jpg']
   }

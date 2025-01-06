@@ -34,9 +34,6 @@ const navigation = {
       { name: "Infloq vs Influencity", href: "/compare/influencity" },
       { name: "Infloq vs IZEA", href: "/compare/izea" },
       { name: "Infloq vs InsightIQ", href: "/compare/insightiq" },
-      { name: "Infloq vs Engage AI co", href: "/compare/engageai" },
-      { name: "Infloq vs Replai", href: "/compare/replai" },
-      { name: "Infloq vs Magic Reply", href: "/compare/magicreply" },
       { name: "All Comparisons", href: "/compare" }
   ],
   company: [

@@ -105,12 +105,6 @@ export function Posts({ initialPosts }: PostsProps) {
                 To keep up to date with the future of AI.
               </p>
             </div>
-            <Button
-              variant="default"
-              className="mt-3 sm:mt-0"
-            >
-              Get Olly
-            </Button>
           </div>
 
           {/* Filters Section */}

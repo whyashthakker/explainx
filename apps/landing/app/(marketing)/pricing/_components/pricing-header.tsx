@@ -7,11 +7,11 @@ export function PricingHeader() {
         Simple & Transparent Pricing
       </Badge>
       <h1 className="font-cal text-4xl md:text-5xl mb-4">
-        Pay Only For Results
+        Find & Pay Influencers By Performance
       </h1>
       <p className="text-muted-foreground max-w-[700px] text-lg">
-        No monthly fees, no surprises. Purchase credits and use them for campaigns.
-        Credits never expire, and you only pay for actual engagement.
+        Start for free, upgrade as you grow. Pay influencers based on their actual performance,
+        with credits that never expire.
       </p>
     </div>
   );

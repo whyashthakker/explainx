@@ -4,6 +4,9 @@ import { PricingCalculator } from "./_components/pricing-calculator";
 import { PricingFAQ } from "./_components/pricing-faq";
 import { PricingFeatures } from "./_components/pricing-features";
 import { ContactCTA } from "./_components/contact-cta";
+import PricingSection from "../../_components/infloq-pricing";
+import { PricingStructuredData } from "./structured-data";
+import { faqs, influencerTiers, plans } from "../../../data/plans/pricing";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.infloq.com"),
@@ -30,7 +33,13 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <div className="container max-w-7xl mx-auto px-6 py-12">
+      <PricingStructuredData
+        plans={plans} 
+        influencerTiers={influencerTiers}
+        faqs={faqs}
+      />      
       <PricingHeader />
+      <PricingSection />
       <PricingFeatures />
       <PricingCalculator />
       <PricingFAQ />
