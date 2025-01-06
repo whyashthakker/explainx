@@ -67,13 +67,6 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    if (user.activePortal !== "BRAND") {
-      return NextResponse.json(
-        { error: "Please switch to brand portal" },
-        { status: 403 },
-      );
-    }
-
     const activeBrand = user.brands[0];
     if (!activeBrand) {
       return NextResponse.json(

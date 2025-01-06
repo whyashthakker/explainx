@@ -3,18 +3,16 @@ import Google from "next-auth/providers/google";
 import Resend from "next-auth/providers/resend";
 import { JWT } from "next-auth/jwt";
 import prisma from "@repo/db/client";
-import { UserType, ActivePortal, Prisma } from "@prisma/client";
+import { UserType, Prisma } from "@prisma/client";
 
 declare module "next-auth" {
   interface User {
     userType?: UserType;
-    activePortal?: ActivePortal;
   }
   interface Session {
     user: {
       id: string;
       userType?: UserType;
-      activePortal?: ActivePortal;
     } & DefaultSession["user"];
   }
 }
@@ -23,7 +21,6 @@ declare module "next-auth/jwt" {
   interface JWT {
     id?: string;
     userType?: UserType;
-    activePortal?: ActivePortal;
   }
 }
 
@@ -40,7 +37,6 @@ export default {
           email: profile.email,
           image: profile.picture,
           userType: UserType.BRAND,
-          activePortal: ActivePortal.BRAND,
         };
       },
     }),
@@ -124,7 +120,6 @@ export default {
             where: { id: dbUser.id },
             data: {
               userType: newUserType,
-              activePortal: ActivePortal.BRAND,
             },
           });
           console.log("[SignIn] Updated User:", updatedUser);
@@ -138,7 +133,6 @@ export default {
             name: user.name || null,
             image: user.image || null,
             userType: UserType.BRAND,
-            activePortal: ActivePortal.BRAND,
           },
         });
         console.log("[SignIn] Created New User:", newUser);
@@ -173,7 +167,6 @@ export default {
       if (user) {
         token.id = user.id;
         token.userType = user.userType;
-        token.activePortal = user.activePortal;
       }
       console.log("[JWT] Output Token:", token);
       return token;
@@ -185,7 +178,6 @@ export default {
       if (token && session.user) {
         session.user.id = token.id as string;
         session.user.userType = token.userType;
-        session.user.activePortal = token.activePortal;
       }
       console.log("[Session] Output Session:", session);
       return session;

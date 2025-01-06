@@ -44,12 +44,6 @@ export async function POST(request: NextRequest) {
         { status: 403 },
       );
     }
-    if (currentUser.activePortal !== "BRAND") {
-      return NextResponse.json(
-        { error: "Please switch to brand portal" },
-        { status: 403 },
-      );
-    }
 
     const activeBrand = currentUser.brands[0];
     console.log("Active brand:", activeBrand);

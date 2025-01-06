@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import ProfilePage from "./_components/ProfilePage";
 import { Metadata } from "next";
-import { UserType, ActivePortal, TeamRole, InviteStatus } from "@prisma/client";
 
 export const metadata: Metadata = {
   title: "Brand Profile | Dashboard",
