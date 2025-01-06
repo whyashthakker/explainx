@@ -1,4 +1,3 @@
-// auth.config.ts
 import { DefaultSession, NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import Resend from "next-auth/providers/resend";
@@ -34,6 +33,7 @@ export default {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       profile(profile) {
+        console.log("[Google Profile]:", profile);
         return {
           id: profile.sub,
           name: profile.name,
@@ -50,10 +50,16 @@ export default {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      if (!user.email || !account) return false;
+      console.log("[SignIn] User:", user);
+      console.log("[SignIn] Account:", account);
+      console.log("[SignIn] Profile:", profile);
+
+      if (!user.email || !account) {
+        console.log("[SignIn] Missing email or account");
+        return false;
+      }
 
       try {
-        // Find or create user based on email
         let dbUser = await prisma.user.findUnique({
           where: { email: user.email },
           include: {
@@ -62,17 +68,18 @@ export default {
             brands: true,
           },
         });
+        console.log("[SignIn] Found DB User:", dbUser);
 
         if (dbUser) {
-          // If user exists but doesn't have this OAuth account linked
           const hasAccount = dbUser.accounts.some(
             (acc) =>
               acc.provider === account.provider &&
               acc.providerAccountId === account.providerAccountId,
           );
+          console.log("[SignIn] Has Account:", hasAccount);
 
           if (!hasAccount) {
-            await prisma.account.create({
+            const newAccount = await prisma.account.create({
               data: {
                 userId: dbUser.id,
                 type: account.type || "oauth",
@@ -87,38 +94,44 @@ export default {
                 session_state: account.session_state?.toString() || null,
               } satisfies Prisma.AccountUncheckedCreateInput,
             });
+            console.log("[SignIn] Created New Account:", newAccount);
           }
 
-          // Check for existing profiles
           const hasBrand = dbUser.brands && dbUser.brands.length > 0;
           const hasInfluencer =
             dbUser.influencers && dbUser.influencers.length > 0;
+          console.log(
+            "[SignIn] Profile Status - Brand:",
+            hasBrand,
+            "Influencer:",
+            hasInfluencer,
+          );
 
-          // Always update user type based on current profile status
           let newUserType: UserType;
           if (hasBrand && hasInfluencer) {
             newUserType = UserType.BOTH;
+          } else if (hasInfluencer && !hasBrand) {
+            // If they're an influencer signing up for brand portal
+            newUserType = UserType.BOTH;
           } else if (hasBrand) {
             newUserType = UserType.BRAND;
-          } else if (hasInfluencer) {
-            newUserType = UserType.INFLUENCER;
           } else {
-            newUserType = UserType.BRAND; // Default for brand portal
+            newUserType = UserType.BRAND;
           }
+          console.log("[SignIn] New User Type:", newUserType);
 
-          // Always update the user to ensure type is current
-          await prisma.user.update({
+          const updatedUser = await prisma.user.update({
             where: { id: dbUser.id },
             data: {
               userType: newUserType,
               activePortal: ActivePortal.BRAND,
             },
           });
+          console.log("[SignIn] Updated User:", updatedUser);
 
           return true;
         }
 
-        // Create new user
         const newUser = await prisma.user.create({
           data: {
             email: user.email,
@@ -128,9 +141,9 @@ export default {
             activePortal: ActivePortal.BRAND,
           },
         });
+        console.log("[SignIn] Created New User:", newUser);
 
-        // Create new account
-        await prisma.account.create({
+        const newAccount = await prisma.account.create({
           data: {
             userId: newUser.id,
             type: account.type || "oauth",
@@ -145,27 +158,36 @@ export default {
             session_state: account.session_state?.toString() || null,
           } satisfies Prisma.AccountUncheckedCreateInput,
         });
+        console.log("[SignIn] Created Account for New User:", newAccount);
 
         return true;
       } catch (error) {
-        console.error("Error in signIn callback:", error);
+        console.error("[SignIn] Error:", error);
         return false;
       }
     },
     async jwt({ token, user }) {
+      console.log("[JWT] Input Token:", token);
+      console.log("[JWT] Input User:", user);
+
       if (user) {
         token.id = user.id;
         token.userType = user.userType;
         token.activePortal = user.activePortal;
       }
+      console.log("[JWT] Output Token:", token);
       return token;
     },
     async session({ session, token }) {
+      console.log("[Session] Input Session:", session);
+      console.log("[Session] Input Token:", token);
+
       if (token && session.user) {
         session.user.id = token.id as string;
         session.user.userType = token.userType;
         session.user.activePortal = token.activePortal;
       }
+      console.log("[Session] Output Session:", session);
       return session;
     },
   },

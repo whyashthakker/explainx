@@ -4,7 +4,7 @@ import Google from "next-auth/providers/google";
 import Resend from "next-auth/providers/resend";
 import { JWT } from "next-auth/jwt";
 import prisma from "@repo/db/client";
-import { UserType, ActivePortal } from "@prisma/client";
+import { UserType, ActivePortal, Prisma } from "@prisma/client";
 declare module "next-auth" {
   interface User {
     userType?: UserType;
@@ -31,6 +31,7 @@ export default {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       profile(profile) {
+        console.log("[Google Profile]:", profile);
         return {
           id: profile.sub,
           name: profile.name,
@@ -46,60 +47,145 @@ export default {
     }),
   ],
   callbacks: {
-    async signIn({ user, account }) {
-      if (!user.email) return false;
+    async signIn({ user, account, profile }) {
+      console.log("[SignIn] User:", user);
+      console.log("[SignIn] Account:", account);
+      console.log("[SignIn] Profile:", profile);
+
+      if (!user.email || !account) {
+        console.log("[SignIn] Missing email or account");
+        return false;
+      }
+
       try {
-        // Check if user exists
-        const existingUser = await prisma.user.findUnique({
+        let dbUser = await prisma.user.findUnique({
           where: { email: user.email },
           include: {
+            accounts: true,
             influencers: true,
             brands: true,
           },
         });
-        if (existingUser) {
-          let userType = existingUser.userType;
-          const hasBrand = existingUser.brands.length > 0;
-          const hasInfluencer = existingUser.influencers.length > 0;
-          // Determine user type based on profiles
-          if (!userType) {
-            if (hasBrand && hasInfluencer) {
-              userType = UserType.BOTH;
-            } else if (hasBrand) {
-              userType = UserType.BRAND;
-            } else {
-              userType = UserType.INFLUENCER;
-            }
-            // Update user type
-            await prisma.user.update({
-              where: { id: existingUser.id },
+        console.log("[SignIn] Found DB User:", dbUser);
+
+        if (dbUser) {
+          const hasAccount = dbUser.accounts.some(
+            (acc) =>
+              acc.provider === account.provider &&
+              acc.providerAccountId === account.providerAccountId,
+          );
+          console.log("[SignIn] Has Account:", hasAccount);
+
+          if (!hasAccount) {
+            const newAccount = await prisma.account.create({
               data: {
-                userType,
-                activePortal: ActivePortal.INFLUENCER,
-              },
+                userId: dbUser.id,
+                type: account.type || "oauth",
+                provider: account.provider,
+                providerAccountId: account.providerAccountId,
+                refresh_token: account.refresh_token?.toString() || null,
+                access_token: account.access_token?.toString() || null,
+                expires_at: account.expires_at || null,
+                token_type: account.token_type || null,
+                scope: account.scope || null,
+                id_token: account.id_token?.toString() || null,
+                session_state: account.session_state?.toString() || null,
+              } satisfies Prisma.AccountUncheckedCreateInput,
             });
+            console.log("[SignIn] Created New Account:", newAccount);
           }
+
+          const hasBrand = dbUser.brands && dbUser.brands.length > 0;
+          const hasInfluencer =
+            dbUser.influencers && dbUser.influencers.length > 0;
+          console.log(
+            "[SignIn] Profile Status - Brand:",
+            hasBrand,
+            "Influencer:",
+            hasInfluencer,
+          );
+
+          let newUserType: UserType;
+          if (hasBrand && hasInfluencer) {
+            newUserType = UserType.BOTH;
+          } else if (hasBrand && !hasInfluencer) {
+            // If they're a brand signing up for influencer portal
+            newUserType = UserType.BOTH;
+          } else if (hasInfluencer) {
+            newUserType = UserType.INFLUENCER;
+          } else {
+            newUserType = UserType.INFLUENCER;
+          }
+          console.log("[SignIn] New User Type:", newUserType);
+
+          const updatedUser = await prisma.user.update({
+            where: { id: dbUser.id },
+            data: {
+              userType: newUserType,
+              activePortal: ActivePortal.BRAND,
+            },
+          });
+          console.log("[SignIn] Updated User:", updatedUser);
+
+          return true;
         }
+
+        const newUser = await prisma.user.create({
+          data: {
+            email: user.email,
+            name: user.name || null,
+            image: user.image || null,
+            userType: UserType.INFLUENCER,
+            activePortal: ActivePortal.INFLUENCER,
+          },
+        });
+        console.log("[SignIn] Created New User:", newUser);
+
+        const newAccount = await prisma.account.create({
+          data: {
+            userId: newUser.id,
+            type: account.type || "oauth",
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+            refresh_token: account.refresh_token?.toString() || null,
+            access_token: account.access_token?.toString() || null,
+            expires_at: account.expires_at || null,
+            token_type: account.token_type || null,
+            scope: account.scope || null,
+            id_token: account.id_token?.toString() || null,
+            session_state: account.session_state?.toString() || null,
+          } satisfies Prisma.AccountUncheckedCreateInput,
+        });
+        console.log("[SignIn] Created Account for New User:", newAccount);
+
         return true;
       } catch (error) {
-        console.error("Error in signIn callback:", error);
+        console.error("[SignIn] Error:", error);
         return false;
       }
     },
     async jwt({ token, user }) {
+      console.log("[JWT] Input Token:", token);
+      console.log("[JWT] Input User:", user);
+
       if (user) {
         token.id = user.id;
         token.userType = user.userType;
         token.activePortal = user.activePortal;
       }
+      console.log("[JWT] Output Token:", token);
       return token;
     },
     async session({ session, token }) {
+      console.log("[Session] Input Session:", session);
+      console.log("[Session] Input Token:", token);
+
       if (token && session.user) {
         session.user.id = token.id as string;
         session.user.userType = token.userType;
         session.user.activePortal = token.activePortal;
       }
+      console.log("[Session] Output Session:", session);
       return session;
     },
   },
@@ -107,5 +193,4 @@ export default {
     signIn: "/login",
     error: "/auth/error",
   },
-  // debug: process.env.NODE_ENV === "development",
 } satisfies NextAuthConfig;
