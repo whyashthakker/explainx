@@ -12,18 +12,18 @@ export default function NotFound() {
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          setShouldRedirect(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-    if (countdown > 0) {
-      timer = setTimeout(() => {
-        setCountdown(countdown - 1);
-      }, 1000);
-    } else {
-      setShouldRedirect(true);
-    }
-
-    return () => clearTimeout(timer);
-  }, [countdown]);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (shouldRedirect) {
