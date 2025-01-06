@@ -10,7 +10,7 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "postinstall": "prisma generate"
+    "db:generate": "prisma generate"
   },
   "devDependencies": {
     "@types/bun": "latest",
