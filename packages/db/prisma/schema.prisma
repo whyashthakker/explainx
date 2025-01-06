@@ -7,7 +7,6 @@ directUrl = env("DIRECT_URL")
 
 generator client {
   provider = "prisma-client-js"
-  engineType = "binary"
 }
 
 // Base User Model with Auth
