@@ -3,7 +3,6 @@ import { CalendarIcon, CheckIcon, ClockIcon, StarIcon, VideoIcon } from 'lucide-
 import Link from 'next/link';
 import { releaseData } from '../../../../data/release-notes';
 
-
 const ReleaseNoteTimeline = () => {
   return (
     <div className="w-full max-w-4xl mx-auto py-12 md:py-16">
