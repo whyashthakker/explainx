@@ -39,13 +39,6 @@ export async function DELETE(
       );
     }
 
-    if (currentUser.activePortal !== "BRAND") {
-      return NextResponse.json(
-        { error: "Please switch to brand portal" },
-        { status: 403 },
-      );
-    }
-
     const activeBrand = currentUser.brands[0];
     if (!activeBrand?.team) {
       return NextResponse.json({ error: "Team not found" }, { status: 404 });
@@ -136,13 +129,6 @@ export async function PATCH(
     if (currentUser.userType !== "BRAND" && currentUser.userType !== "BOTH") {
       return NextResponse.json(
         { error: "Not authorized to access brand portal" },
-        { status: 403 },
-      );
-    }
-
-    if (currentUser.activePortal !== "BRAND") {
-      return NextResponse.json(
-        { error: "Please switch to brand portal" },
         { status: 403 },
       );
     }

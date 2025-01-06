@@ -45,7 +45,7 @@ import { useRouter } from "next/navigation";
 import CollaborationForm from "./CollabForm";
 import { CollaborationList } from "./CollaborationList";
 import type { Platform, User, Brand } from "../../../../../lib/types"; // Update path as needed
-import { ActivePortal, UserType } from "@prisma/client";
+import { UserType } from "@prisma/client";
 
 interface YouTubeVideo {
   id: string;
@@ -90,7 +90,6 @@ interface BrandUser {
   email: string;
   image: string | null;
   userType: UserType | null;
-  activePortal: ActivePortal | null;
   brands: {
     id: string;
     name: string;

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import prisma from "@repo/db/client";
 import { auth } from "../../../auth";
 import { type NextRequest } from "next/server";
-import { Platform, UserType, ActivePortal } from "@prisma/client";
+import { Platform, UserType } from "@prisma/client";
 
 interface BrandOnboardingData {
   name: string;
@@ -120,7 +120,6 @@ export async function POST(request: NextRequest) {
       where: { id: user.id },
       data: {
         userType,
-        activePortal: ActivePortal.BRAND,
         // Only update name if it's not already set and we have a valid email-based name
         ...(!user.name || (user.name.trim() === "" && nameFromEmail)
           ? { name: nameFromEmail }

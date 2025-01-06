@@ -35,14 +35,5 @@ export default async function BrandDashboardPage() {
     redirect("/");
   }
 
-  // Check if user has brand access
-  if (
-    !user.brands.length ||
-    user.userType === UserType.INFLUENCER ||
-    (user.userType === UserType.BOTH && user.activePortal !== "BRAND")
-  ) {
-    redirect("/onboarding");
-  }
-
   return <BrandDashboard />;
 }

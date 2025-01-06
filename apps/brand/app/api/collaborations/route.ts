@@ -44,13 +44,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (user.activePortal !== "BRAND") {
-      return NextResponse.json(
-        { error: "Please switch to brand portal" },
-        { status: 403 },
-      );
-    }
-
     // Check if the brandId belongs to the user
     const userBrand = user.brands.find(
       (brand) => brand.id === validatedData.brandId,
@@ -144,13 +137,6 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    if (user.activePortal !== "BRAND") {
-      return NextResponse.json(
-        { error: "Please switch to brand portal" },
-        { status: 403 },
-      );
-    }
-
     if (!user.brands.length) {
       return NextResponse.json(
         { error: "No brand profiles found" },
@@ -203,4 +189,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-

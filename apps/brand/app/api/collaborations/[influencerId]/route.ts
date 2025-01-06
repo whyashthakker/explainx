@@ -41,13 +41,6 @@ export async function GET(req: NextRequest, context: RouteContext) {
       );
     }
 
-    if (user.activePortal !== "BRAND") {
-      return NextResponse.json(
-        { error: "Please switch to brand portal" },
-        { status: 403 },
-      );
-    }
-
     // Get all brands for this user
     const userBrands = user.brands;
     if (!userBrands.length) {
