@@ -4,6 +4,8 @@ export const releaseData = [
     "date": "Jan 01, 2025",
     "time": "10:00 AM",
     "isFeatured": true,
+    "isFuture": false,
+    "video": "https://www.youtube.com/watch?v=6v2L2UGZJAM",
     "features": [
       {
         "title": "Development",
