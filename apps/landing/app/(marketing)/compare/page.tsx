@@ -11,7 +11,7 @@ interface FeatureComparison {
   category: string
   features: {
     name: string
-    olly: boolean | string | string[]
+    infloq: boolean | string | string[]
     competitor: boolean | string | string[]
     description?: string
   }[]
@@ -67,7 +67,7 @@ export default function CompareHome() {
           <div className="p-8">
             <h1 className="text-4xl font-bold tracking-tight mb-4">Compare infloq.com</h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              See how Olly stacks up against other platforms across features, pricing, and capabilities
+              See how Infloq stacks up against other platforms across features, pricing, and capabilities
             </p>
           </div>
         </div>

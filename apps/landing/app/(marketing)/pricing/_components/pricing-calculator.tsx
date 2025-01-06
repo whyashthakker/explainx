@@ -17,6 +17,12 @@ interface InfluencerTier {
 
 const influencerTiers: InfluencerTier[] = [
   {
+    name: "Nano (1k-10k followers)",
+    minCPC: 0.02,
+    maxCPC: 0.05,
+    averageEngagement: 0.08 // 8%
+  },
+  {
     name: "Micro (10k-50k followers)",
     minCPC: 0.05,
     maxCPC: 0.15,
@@ -33,12 +39,6 @@ const influencerTiers: InfluencerTier[] = [
     minCPC: 0.50,
     maxCPC: 1.50,
     averageEngagement: 0.025 // 2.5%
-  },
-  {
-    name: "Celebrity (1M+ followers)",
-    minCPC: 1.50,
-    maxCPC: 5.00,
-    averageEngagement: 0.015 // 1.5%
   }
 ];
 

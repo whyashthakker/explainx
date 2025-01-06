@@ -554,3 +554,34 @@ model InstagramReelAnalytics {
 
   createdAt       DateTime  @default(now())
 }
+
+//ROADMAP LANDING
+
+enum RoadmapItemStatus {
+  COMPLETED
+  IN_PROGRESS
+  PLANNED
+}
+
+enum RoadmapCategory {
+  CORE_PLATFORM
+  AI_FEATURES
+  ANALYTICS
+  INTEGRATION
+  USER_EXPERIENCE
+  MOBILE
+  PERFORMANCE
+}
+
+model RoadmapItem {
+  id                String            @id @default(cuid())
+  feature           String
+  status            RoadmapItemStatus
+  description       String            @db.Text
+  category          RoadmapCategory
+  votes             Int               @default(0)
+  implementationDate DateTime?
+  
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}

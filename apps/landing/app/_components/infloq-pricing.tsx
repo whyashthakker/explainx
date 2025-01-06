@@ -1,28 +1,10 @@
 import React from 'react';
-import { CheckIcon, StarIcon } from "lucide-react";
+import { CheckIcon, StarIcon, InfoIcon } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@repo/ui/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@repo/ui/components/ui/tabs";
-
-interface PricingPlan {
-  name: string;
-  description: string;
-  price: string;
-  billingPeriod?: string;
-  creditValue: string;
-  features: string[];
-  buttonText: string;
-  buttonVariant?: "outline" | "default" | "secondary" | "destructive";
-  buttonLink: string;
-  tag?: { 
-    text: string; 
-    variant: "outline" | "default" | "secondary" | "destructive" 
-  };
-  highlight?: boolean;
-  showStar?: boolean;
-}
+import { plans, PricingPlan } from '../../data/plans/pricing';
 
 const PricingCard = ({ plan }: { plan: PricingPlan }) => (
   <Card className={`relative ${plan.highlight ? 'border-2 border-blue-500 shadow-lg' : ''}`}>
@@ -34,30 +16,28 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => (
     <CardHeader>
       <div className="flex items-center gap-2">
         <h3 className="text-2xl font-bold">{plan.name}</h3>
-        {plan.showStar && (
-          <StarIcon className="h-5 w-5 text-yellow-500" fill="currentColor" />
-        )}
       </div>
       <p className="text-gray-500">{plan.description}</p>
+      <div className="flex items-baseline gap-2 mt-4">
+        <p className="text-3xl font-bold">{plan.price}</p>
+        <p className="text-sm text-gray-500">/month</p>
+      </div>
     </CardHeader>
     <CardContent>
-      <div className="mb-4">
-        <div className="flex items-baseline gap-2">
-          <p className="text-3xl font-bold">{plan.price}</p>
-          {plan.billingPeriod && (
-            <p className="text-sm text-gray-500">{plan.billingPeriod}</p>
-          )}
+      <div className="space-y-4">
+        <div className="bg-gray-50 p-3 rounded-lg">
+          <p className="text-sm font-medium">Supported Platforms</p>
+          <p className="text-sm text-gray-600">{plan.platforms}</p>
         </div>
-        <p className="text-sm text-gray-500">{plan.creditValue}</p>
+        <ul className="space-y-3">
+          {plan.features.map((feature, idx) => (
+            <li key={idx} className="flex gap-2">
+              <CheckIcon className="h-5 w-5 text-blue-500 flex-shrink-0" />
+              <span className="text-sm">{feature}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className="space-y-3">
-        {plan.features.map((feature, idx) => (
-          <li key={idx} className="flex gap-2">
-            <CheckIcon className="h-5 w-5 text-blue-500 flex-shrink-0" />
-            <span className="text-sm">{feature}</span>
-          </li>
-        ))}
-      </ul>
     </CardContent>
     <CardFooter>
       <Button 
@@ -71,184 +51,7 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => (
   </Card>
 );
 
-export default function HybridPricing() {
-  const monthlyPlans: PricingPlan[] = [
-    {
-      name: "Starter",
-      description: "Perfect for trying out our platform",
-      price: "$49",
-      billingPeriod: "/month",
-      creditValue: "5,000 credits per month",
-      features: [
-        "Monthly credit refresh",
-        "Basic influencer matching",
-        "Campaign management tools",
-        "Up to 5 active campaigns",
-        "Email support"
-      ],
-      buttonText: "Start Free Trial",
-      buttonVariant: "outline",
-      buttonLink: "/signup"
-    },
-    {
-      name: "Professional",
-      description: "For growing creators and brands",
-      price: "$99",
-      billingPeriod: "/month",
-      creditValue: "12,000 credits per month",
-      features: [
-        "Monthly credit refresh",
-        "AI-powered matching",
-        "Analytics dashboard",
-        "Unlimited campaigns",
-        "Priority support",
-        "Campaign templates"
-      ],
-      buttonText: "Start Free Trial",
-      buttonVariant: "default",
-      buttonLink: "/signup",
-      tag: { text: "Popular", variant: "default" },
-      highlight: true
-    },
-    {
-      name: "Business",
-      description: "For marketing teams and agencies",
-      price: "$199",
-      billingPeriod: "/month",
-      creditValue: "30,000 credits per month",
-      features: [
-        "Monthly credit refresh",
-        "Advanced analytics",
-        "Priority matching",
-        "API access",
-        "Dedicated support",
-        "Custom integrations"
-      ],
-      buttonText: "Start Free Trial",
-      buttonVariant: "outline",
-      buttonLink: "/signup"
-    }
-  ];
-
-  const yearlyPlans: PricingPlan[] = [
-    {
-      name: "Starter",
-      description: "Perfect for trying out our platform",
-      price: "$469",
-      billingPeriod: "/year",
-      creditValue: "5,000 credits per month",
-      features: [
-        "20% savings vs monthly",
-        "Monthly credit refresh",
-        "Basic influencer matching",
-        "Campaign management tools",
-        "Up to 5 active campaigns",
-        "Email support"
-      ],
-      buttonText: "Start Free Trial",
-      buttonVariant: "outline",
-      buttonLink: "/signup"
-    },
-    {
-      name: "Professional",
-      description: "For growing creators and brands",
-      price: "$949",
-      billingPeriod: "/year",
-      creditValue: "12,000 credits per month",
-      features: [
-        "20% savings vs monthly",
-        "Monthly credit refresh",
-        "AI-powered matching",
-        "Analytics dashboard",
-        "Unlimited campaigns",
-        "Priority support",
-        "Campaign templates"
-      ],
-      buttonText: "Start Free Trial",
-      buttonVariant: "default",
-      buttonLink: "/signup",
-      tag: { text: "Popular", variant: "default" },
-      highlight: true
-    },
-    {
-      name: "Business",
-      description: "For marketing teams and agencies",
-      price: "$1,899",
-      billingPeriod: "/year",
-      creditValue: "30,000 credits per month",
-      features: [
-        "20% savings vs monthly",
-        "Monthly credit refresh",
-        "Advanced analytics",
-        "Priority matching",
-        "API access",
-        "Dedicated support",
-        "Custom integrations"
-      ],
-      buttonText: "Start Free Trial",
-      buttonVariant: "outline",
-      buttonLink: "/signup"
-    }
-  ];
-
-  const lifetimePlans: PricingPlan[] = [
-    {
-      name: "Growth Package",
-      description: "Best for seasonal campaigns",
-      price: "$999",
-      creditValue: "15,000 credits (never expire)",
-      features: [
-        "One-time payment",
-        "Credits never expire",
-        "AI-powered matching",
-        "Basic analytics",
-        "Email support",
-        "Campaign templates"
-      ],
-      buttonText: "Buy Now",
-      buttonVariant: "outline",
-      buttonLink: "/checkout",
-      showStar: true
-    },
-    {
-      name: "Scale Package",
-      description: "For consistent marketing needs",
-      price: "$2,499",
-      creditValue: "40,000 credits (never expire)",
-      features: [
-        "One-time payment",
-        "Credits never expire",
-        "Priority matching",
-        "Advanced analytics",
-        "Dedicated manager",
-        "Priority support"
-      ],
-      buttonText: "Buy Now",
-      buttonVariant: "default",
-      buttonLink: "/checkout",
-      tag: { text: "Best Value", variant: "secondary" },
-      highlight: true,
-      showStar: true
-    },
-    {
-      name: "Enterprise",
-      description: "Custom solutions for large teams",
-      price: "Custom",
-      creditValue: "Custom package",
-      features: [
-        "Volume discounts",
-        "Custom features",
-        "API access",
-        "24/7 support",
-        "Strategic consulting",
-        "Custom integrations"
-      ],
-      buttonText: "Contact Sales",
-      buttonVariant: "outline",
-      buttonLink: "/contact",
-      showStar: true
-    }
-  ];
+export default function PricingSection() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16">
@@ -257,51 +60,24 @@ export default function HybridPricing() {
         <p className="text-xl text-gray-600 mb-6">
           Flexible options for every stage of your growth
         </p>
+        <div className="bg-blue-50 p-4 rounded-lg inline-block">
+          <div className="flex items-center gap-2">
+            <InfoIcon className="h-5 w-5 text-blue-500" />
+            <p className="text-sm text-gray-700">
+              Pay based on performance: Purchase credits and pay influencers based on their average views.
+              Eligible for refunds if content outperforms expectations!
+            </p>
+          </div>
+        </div>
       </div>
 
-      <Tabs defaultValue="monthly" className="mb-12">
-        <TabsList className="mx-auto mb-8">
-          <TabsTrigger value="monthly">Monthly</TabsTrigger>
-          <TabsTrigger value="yearly">Yearly (Save 20%)</TabsTrigger>
-          <TabsTrigger value="lifetime">
-            <div className="flex items-center gap-1">
-              Lifetime
-              <StarIcon className="h-4 w-4 text-yellow-500" fill="currentColor" />
-            </div>
-          </TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="monthly">
-          <div className="grid gap-8 md:grid-cols-3">
-            {monthlyPlans.map((plan, index) => (
-              <PricingCard key={index} plan={plan} />
-            ))}
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="yearly">
-          <div className="grid gap-8 md:grid-cols-3">
-            {yearlyPlans.map((plan, index) => (
-              <PricingCard key={index} plan={plan} />
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="lifetime">
-          <div className="grid gap-8 md:grid-cols-3">
-            {lifetimePlans.map((plan, index) => (
-              <PricingCard key={index} plan={plan} />
-            ))}
-          </div>
-        </TabsContent>
-      </Tabs>
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {plans.map((plan, index) => (
+          <PricingCard key={index} plan={plan} />
+        ))}
+      </div>
 
       <div className="mt-12 space-y-6 text-center">
-        <div className="inline-block bg-blue-50 p-4 rounded-lg">
-          <p className="text-sm text-gray-600">
-            💡 All plans include core features • Dedicated support • 30-day money-back guarantee
-          </p>
-        </div>
         <p className="text-sm text-gray-500">
           Need a custom solution?{' '}
           <Link href="/contact" className="text-blue-600 hover:underline">

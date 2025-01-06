@@ -1,33 +1,27 @@
 import Link from "next/link";
 import { Button } from "@repo/ui/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@repo/ui/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui/components/ui/card";
 
 export function ContactCTA() {
   return (
     <Card className="bg-primary-foreground">
       <CardHeader>
         <CardTitle className="font-cal text-2xl text-center">
-          Ready to get started?
+          Ready to start your first campaign?
         </CardTitle>
         <CardDescription className="text-center">
-          Talk to our team about your campaign goals and get a personalized quote.
+          Get started for free or talk to our team about your campaign goals
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center gap-4">
-        <Link href="/contact">
+        <Link href="/signup">
           <Button variant="default" size="lg">
-            Contact Sales
+            Start For Free
           </Button>
         </Link>
-        <Link href="/signup">
+        <Link href="/contact">
           <Button variant="outline" size="lg">
-            Create Account
+            Talk to Sales
           </Button>
         </Link>
       </CardContent>
