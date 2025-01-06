@@ -20,4 +20,8 @@
     <loc>https://www.infloq.com/sitemaps/tools-sitemap.xml</loc>
     <lastmod>2025-01-01</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://www.infloq.com/sitemaps/for-pages-sitemap.xml</loc>
+    <lastmod>2025-01-06</lastmod>
+  </sitemap>
 </sitemapindex>

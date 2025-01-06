@@ -1,16 +1,78 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { Progress } from "@repo/ui/components/ui/progress";
+import { Button } from "@repo/ui/components/ui/button";
+
 export default function NotFound() {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <h1 className="text-6xl font-bold text-gray-900 mb-4">404</h1>
-          <h2 className="text-xl text-gray-600 mb-8">Page not found</h2>
-          <a 
-            href="/"
-            className="inline-flex px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+  const router = useRouter();
+  const [countdown, setCountdown] = useState(5);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (countdown > 0) {
+      timer = setTimeout(() => {
+        setCountdown(countdown - 1);
+      }, 1000);
+    } else {
+      setShouldRedirect(true);
+    }
+
+    return () => clearTimeout(timer);
+  }, [countdown]);
+
+  useEffect(() => {
+    if (shouldRedirect) {
+      router.push('/');
+    }
+  }, [shouldRedirect, router]);
+
+  const handleHomeClick = () => {
+    setShouldRedirect(true);
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center space-y-8 px-4 max-w-[400px] mx-auto">
+        <Image
+          src="/icons/infloq.png"
+          alt="Infloq"
+          width={120}
+          height={40}
+          className="mx-auto"
+          priority
+        />
+        
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <h1 className="text-7xl font-bold tracking-tight">404</h1>
+            <h2 className="text-xl text-muted-foreground">This page does not exist</h2>
+          </div>
+          
+          <p className="text-sm text-muted-foreground">
+            Redirecting you home in {countdown} seconds...
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          <Progress 
+            value={(countdown / 5) * 100} 
+            className="h-1"
+          />
+
+          <Button 
+            onClick={handleHomeClick}
+            className="w-full"
+            variant="default"
           >
-            Return Home
-          </a>
+            Go home now
+          </Button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
