@@ -16,11 +16,6 @@ export enum UserType {
   BOTH = "BOTH",
 }
 
-export enum ActivePortal {
-  BRAND = "BRAND",
-  INFLUENCER = "INFLUENCER",
-}
-
 export enum TeamRole {
   OWNER = "OWNER",
   ADMIN = "ADMIN",
@@ -70,7 +65,6 @@ export interface User extends BaseModel {
   emailVerified?: Date | null;
   image?: string | null;
   userType?: UserType | null;
-  activePortal?: ActivePortal | null;
 
   // Relations
   accounts?: Account[];

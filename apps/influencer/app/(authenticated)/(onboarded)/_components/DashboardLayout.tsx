@@ -16,7 +16,7 @@ import {
 import { useUser } from "../_context/user-context";
 import { cn } from "@repo/ui/lib/utils";
 import { usePathname } from "next/navigation";
-import { ActivePortal, UserType } from "@prisma/client";
+import { UserType } from "@prisma/client";
 import Link from "next/link";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -76,8 +76,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   const pathname = usePathname();
 
   if (
-    user.activePortal !== ActivePortal.INFLUENCER ||
-    (user.userType !== UserType.INFLUENCER && user.userType !== UserType.BOTH)
+    user.userType !== UserType.INFLUENCER &&
+    user.userType !== UserType.BOTH
   ) {
     return null;
   }

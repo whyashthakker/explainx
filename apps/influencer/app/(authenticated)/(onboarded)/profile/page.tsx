@@ -83,7 +83,6 @@ export default async function Page() {
       updatedAt: user.updatedAt,
       emailVerified: user.emailVerified,
       userType: user.userType,
-      activePortal: user.activePortal,
     };
 
     // Map influencer with team

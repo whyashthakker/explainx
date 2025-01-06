@@ -34,17 +34,6 @@ export async function PUT(request: Request, segmentData: { params: Params }) {
       return new NextResponse("User not found", { status: 404 });
     }
 
-    // Verify portal access
-    if (!user.activePortal) {
-      return new NextResponse("No active portal selected", { status: 400 });
-    }
-
-    if (user.activePortal !== "INFLUENCER") {
-      return new NextResponse("Please switch to influencer portal", {
-        status: 400,
-      });
-    }
-
     if (user.userType !== "INFLUENCER" && user.userType !== "BOTH") {
       return new NextResponse("Not authorized for influencer portal", {
         status: 403,

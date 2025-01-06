@@ -46,13 +46,6 @@ export const GET = async () => {
       );
     }
 
-    if (user.activePortal !== "INFLUENCER") {
-      return NextResponse.json(
-        { error: "Please switch to influencer portal" },
-        { status: 403 },
-      );
-    }
-
     // Get the active influencer profile with YouTube account
     const influencer = await prisma.influencer.findFirst({
       where: {

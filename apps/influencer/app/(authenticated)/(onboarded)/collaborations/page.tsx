@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
 import CollaborationsView from "./_components/CollaborationsView";
-import { ActivePortal } from "@prisma/client";
+import { UserType } from "../../../../lib/types";
 
 export default async function CollaborationsPage() {
   const session = await auth();
@@ -17,8 +17,12 @@ export default async function CollaborationsPage() {
     },
   });
 
+  if (!user) {
+    redirect("/");
+  }
+
   // Check if user exists and is in influencer portal
-  if (!user || user.activePortal !== ActivePortal.INFLUENCER) {
+  if (user.userType !== UserType.INFLUENCER || UserType.BOTH) {
     redirect("/dashboard");
   }
 

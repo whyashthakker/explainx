@@ -1,64 +1,62 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
+import { UserType } from "@prisma/client";
 
 type Params = Promise<{ id: string }>;
 
-// Helper function to check if user has access to collaboration
 async function checkCollaborationAccess(
   collaborationId: string,
   userId: string,
-  activePortal: "BRAND" | "INFLUENCER",
+  userType: UserType,
 ) {
   const collaboration = await prisma.collaboration.findUnique({
     where: { id: collaborationId },
-    include: {
-      brand: true,
-      influencer: true,
-    },
+    include: { brand: true, influencer: true },
   });
 
-  if (!collaboration) {
-    return { error: "Collaboration not found", status: 404 };
-  }
+  if (!collaboration) return { error: "Collaboration not found", status: 404 };
 
-  // Check if user has access based on active portal
-  if (activePortal === "BRAND") {
-    const userBrand = await prisma.brand.findFirst({
-      where: { userId },
-    });
-    if (!userBrand || collaboration.brandId !== userBrand.id) {
-      return {
-        error: "Not authorized to access this collaboration",
-        status: 403,
-      };
-    }
-  } else {
-    const userInfluencer = await prisma.influencer.findFirst({
-      where: { userId },
-    });
-    if (!userInfluencer || collaboration.influencerId !== userInfluencer.id) {
-      return {
-        error: "Not authorized to access this collaboration",
-        status: 403,
-      };
+  const userBrand = await prisma.brand.findFirst({ where: { userId } });
+  const userInfluencer = await prisma.influencer.findFirst({
+    where: { userId },
+  });
+
+  // Prevent self-collaboration
+  if (userBrand && userInfluencer) {
+    const isSelfCollaboration =
+      collaboration.brandId === userBrand.id &&
+      collaboration.influencerId === userInfluencer.id;
+    if (isSelfCollaboration) {
+      return { error: "Cannot collaborate with yourself", status: 403 };
     }
   }
 
-  return { collaboration };
+  const hasBrandAccess = userBrand && collaboration.brandId === userBrand.id;
+  const hasInfluencerAccess =
+    userInfluencer && collaboration.influencerId === userInfluencer.id;
+
+  if (!hasBrandAccess && !hasInfluencerAccess) {
+    return {
+      error: "Not authorized to access this collaboration",
+      status: 403,
+    };
+  }
+
+  return {
+    collaboration,
+    isBrand: hasBrandAccess,
+    isInfluencer: hasInfluencerAccess,
+  };
 }
 
 export async function GET(_req: NextRequest, { params }: { params: Params }) {
   try {
-    const resolvedParams = await params;
-    const { id } = resolvedParams;
-
     const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    // Get user with portal info
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
     });
@@ -67,42 +65,20 @@ export async function GET(_req: NextRequest, { params }: { params: Params }) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    if (!user.activePortal) {
+    if (!user?.userType) {
       return NextResponse.json(
-        { error: "No active portal selected" },
-        { status: 400 },
+        { error: "User not onboarded" },
+        { status: 404 },
       );
     }
 
-    // Verify user has access to current portal
-    if (
-      user.activePortal === "BRAND" &&
-      user.userType !== "BRAND" &&
-      user.userType !== "BOTH"
-    ) {
-      return NextResponse.json(
-        { error: "Not authorized for brand portal" },
-        { status: 403 },
-      );
-    }
-
-    if (
-      user.activePortal === "INFLUENCER" &&
-      user.userType !== "INFLUENCER" &&
-      user.userType !== "BOTH"
-    ) {
-      return NextResponse.json(
-        { error: "Not authorized for influencer portal" },
-        { status: 403 },
-      );
-    }
-
-    // Check access and get collaboration
+    const { id } = await params;
     const accessCheck = await checkCollaborationAccess(
       id,
       user.id,
-      user.activePortal,
+      user.userType,
     );
+
     if ("error" in accessCheck) {
       return NextResponse.json(
         { error: accessCheck.error },
@@ -110,7 +86,6 @@ export async function GET(_req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    // Get full collaboration details
     const collaboration = await prisma.collaboration.findUnique({
       where: { id },
       include: {
@@ -120,13 +95,8 @@ export async function GET(_req: NextRequest, { params }: { params: Params }) {
         chatRoom: {
           include: {
             messages: {
-              orderBy: {
-                createdAt: "desc",
-              },
-              include: {
-                sender: true,
-                receiver: true,
-              },
+              orderBy: { createdAt: "desc" },
+              include: { sender: true, receiver: true },
             },
           },
         },
@@ -145,22 +115,11 @@ export async function GET(_req: NextRequest, { params }: { params: Params }) {
 
 export async function PATCH(req: NextRequest, { params }: { params: Params }) {
   try {
-    const resolvedParams = await params;
-    const { id } = resolvedParams;
-
     const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const body = await req.json();
-    const { status } = body;
-
-    if (!["ACCEPTED", "DECLINED", "COMPLETED", "CANCELLED"].includes(status)) {
-      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
-    }
-
-    // Get user with portal info
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
     });
@@ -169,41 +128,24 @@ export async function PATCH(req: NextRequest, { params }: { params: Params }) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    if (!user.activePortal) {
+    if (!user?.userType) {
       return NextResponse.json(
-        { error: "No active portal selected" },
-        { status: 400 },
+        { error: "User not onboarded" },
+        { status: 404 },
       );
     }
 
-    // Verify user has access to current portal
-    if (
-      user.activePortal === "BRAND" &&
-      user.userType !== "BRAND" &&
-      user.userType !== "BOTH"
-    ) {
-      return NextResponse.json(
-        { error: "Not authorized for brand portal" },
-        { status: 403 },
-      );
+    const { id } = await params;
+    const { status } = await req.json();
+
+    if (!["ACCEPTED", "DECLINED", "COMPLETED", "CANCELLED"].includes(status)) {
+      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
     }
 
-    if (
-      user.activePortal === "INFLUENCER" &&
-      user.userType !== "INFLUENCER" &&
-      user.userType !== "BOTH"
-    ) {
-      return NextResponse.json(
-        { error: "Not authorized for influencer portal" },
-        { status: 403 },
-      );
-    }
-
-    // Check access and get collaboration
     const accessCheck = await checkCollaborationAccess(
       id,
       user.id,
-      user.activePortal,
+      user.userType,
     );
     if ("error" in accessCheck) {
       return NextResponse.json(
@@ -212,28 +154,22 @@ export async function PATCH(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    // Handle status updates based on portal
-    if (
-      user.activePortal === "INFLUENCER" &&
-      !["ACCEPTED", "DECLINED"].includes(status)
-    ) {
+    // Check permissions based on user role and requested status
+    const { isBrand, isInfluencer } = accessCheck;
+    if (isInfluencer && !["ACCEPTED", "DECLINED"].includes(status)) {
       return NextResponse.json(
         { error: "Influencers can only accept or decline collaborations" },
         { status: 400 },
       );
     }
 
-    if (
-      user.activePortal === "BRAND" &&
-      !["COMPLETED", "CANCELLED"].includes(status)
-    ) {
+    if (isBrand && !["COMPLETED", "CANCELLED"].includes(status)) {
       return NextResponse.json(
         { error: "Brands can only complete or cancel collaborations" },
         { status: 400 },
       );
     }
 
-    // Update collaboration
     const updatedCollaboration = await prisma.collaboration.update({
       where: { id },
       data: { status },

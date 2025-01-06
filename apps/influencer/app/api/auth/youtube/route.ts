@@ -183,10 +183,6 @@ export async function POST(req: Request) {
       throw new Error("Not authorized for influencer portal");
     }
 
-    if (user.activePortal !== "INFLUENCER") {
-      throw new Error("Please switch to influencer portal");
-    }
-
     // Get or create the active influencer profile
     const activeInfluencer = await prisma.influencer.findFirst({
       where: { userId: user.id },
@@ -276,4 +272,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
