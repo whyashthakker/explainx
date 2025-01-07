@@ -1,11 +1,5 @@
 // app/()authenticated)/(onboarded)/proposals/_components/types.ts
-import {
-  Prisma,
-  Platform,
-  ProposalStatus,
-  ApplicationStatus,
-} from "@prisma/client";
-import { Decimal } from "@prisma/client/runtime/library";
+import { Platform, ProposalStatus, ApplicationStatus } from "@repo/db/client";
 
 // Pagination Types
 export interface PaginationData {
@@ -62,7 +56,7 @@ export interface CampaignProposal {
   description: string;
   requirements: string[];
   deliverables: string[];
-  budget: Decimal;
+  budget: number;
   timeframe: number;
   platforms: Platform[];
   minFollowers: number;
@@ -90,4 +84,42 @@ export interface ProposalListProps {
 
 export interface ProposalCardProps {
   proposal: CampaignProposal;
+}
+
+export interface ProposalPageProps {
+  proposal: {
+    id: string;
+    title: string;
+    status: string;
+    budget: number;
+    timeframe: number;
+    description: string;
+    requirements?: string[];
+    platforms: string[];
+    createdAt: Date;
+    campaign: {
+      title: string;
+      brand: {
+        name: string;
+        logo?: string;
+        industry: string;
+        description: string;
+      };
+    };
+    applications: Application[];
+  };
+}
+
+export interface Application {
+  id: string;
+  status: string;
+  createdAt: Date;
+  proposedTerms?: string;
+  proposedBudget?: number;
+  coverLetter: string;
+  influencer: {
+    id: string;
+    name: string;
+    avatar: string | null;
+  };
 }
