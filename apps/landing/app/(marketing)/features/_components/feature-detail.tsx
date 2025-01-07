@@ -1,9 +1,9 @@
-import { FeatureCategory } from "@/types/features";
 import { Card } from "@repo/ui/components/ui/card";
 import Image from "next/image";
 import { Button } from "@repo/ui/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { FeatureCategory } from "../../../../data/features";
 
 interface FeatureDetailProps {
   feature: FeatureCategory;

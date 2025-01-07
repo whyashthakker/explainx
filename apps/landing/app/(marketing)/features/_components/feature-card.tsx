@@ -1,5 +1,6 @@
 import { Card } from "@repo/ui/components/ui/card";
 import Link from "next/link";
+import { FeatureCategory } from "../../../../data/features";
 
 export function FeatureCard({ feature }: { feature: FeatureCategory }) {
     return (
