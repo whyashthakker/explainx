@@ -28,7 +28,6 @@ export default {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       profile(profile) {
-        console.log("[Google Profile]:", profile);
         return {
           id: profile.sub,
           name: profile.name,
@@ -44,12 +43,7 @@ export default {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      console.log("[SignIn] User:", user);
-      console.log("[SignIn] Account:", account);
-      console.log("[SignIn] Profile:", profile);
-
       if (!user.email || !account) {
-        console.log("[SignIn] Missing email or account");
         return false;
       }
 
@@ -62,7 +56,6 @@ export default {
             brands: true,
           },
         });
-        console.log("[SignIn] Found DB User:", dbUser);
 
         if (dbUser) {
           const hasAccount = dbUser.accounts.some(
@@ -70,7 +63,6 @@ export default {
               acc.provider === account.provider &&
               acc.providerAccountId === account.providerAccountId,
           );
-          console.log("[SignIn] Has Account:", hasAccount);
 
           if (!hasAccount) {
             const newAccount = await prisma.account.create({
@@ -88,18 +80,11 @@ export default {
                 session_state: account.session_state?.toString() || null,
               } satisfies Prisma.AccountUncheckedCreateInput,
             });
-            console.log("[SignIn] Created New Account:", newAccount);
           }
 
           const hasBrand = dbUser.brands && dbUser.brands.length > 0;
           const hasInfluencer =
             dbUser.influencers && dbUser.influencers.length > 0;
-          console.log(
-            "[SignIn] Profile Status - Brand:",
-            hasBrand,
-            "Influencer:",
-            hasInfluencer,
-          );
 
           let newUserType: UserType;
           if (hasBrand && hasInfluencer) {
@@ -112,7 +97,6 @@ export default {
           } else {
             newUserType = UserType.INFLUENCER;
           }
-          console.log("[SignIn] New User Type:", newUserType);
 
           const updatedUser = await prisma.user.update({
             where: { id: dbUser.id },
@@ -120,7 +104,6 @@ export default {
               userType: newUserType,
             },
           });
-          console.log("[SignIn] Updated User:", updatedUser);
 
           return true;
         }
@@ -133,7 +116,6 @@ export default {
             userType: UserType.INFLUENCER,
           },
         });
-        console.log("[SignIn] Created New User:", newUser);
 
         const newAccount = await prisma.account.create({
           data: {
@@ -150,34 +132,24 @@ export default {
             session_state: account.session_state?.toString() || null,
           } satisfies Prisma.AccountUncheckedCreateInput,
         });
-        console.log("[SignIn] Created Account for New User:", newAccount);
 
         return true;
       } catch (error) {
-        console.error("[SignIn] Error:", error);
         return false;
       }
     },
     async jwt({ token, user }) {
-      console.log("[JWT] Input Token:", token);
-      console.log("[JWT] Input User:", user);
-
       if (user) {
         token.id = user.id;
         token.userType = user.userType;
       }
-      console.log("[JWT] Output Token:", token);
       return token;
     },
     async session({ session, token }) {
-      console.log("[Session] Input Session:", session);
-      console.log("[Session] Input Token:", token);
-
       if (token && session.user) {
         session.user.id = token.id as string;
         session.user.userType = token.userType;
       }
-      console.log("[Session] Output Session:", session);
       return session;
     },
   },

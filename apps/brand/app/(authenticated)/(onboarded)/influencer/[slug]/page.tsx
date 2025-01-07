@@ -5,6 +5,7 @@ import prisma from "@repo/db/client";
 import InfluencerProfile from "../_components/InfluencerProfile";
 import type { Brand } from "../../../../../lib/types";
 import type { User, Influencer, YouTubeAccount } from "@repo/db/client";
+import { serializeBrand, SerializedBrandUser } from "../_components/types";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -127,10 +128,10 @@ export default async function InfluencerPage({ params }: PageProps) {
     brand: activeBrand,
     brands: currentUser.brands,
   };
-
+  console.log(brandUserData);
   return (
     <InfluencerProfile
-      //    @ts-ignore
+      //@ts-ignore
       influencer={influencer as ExtendedInfluencer}
       brand={brandUserData}
     />

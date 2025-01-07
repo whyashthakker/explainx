@@ -104,12 +104,14 @@ export default async function ProposalsPage(props: Props) {
   const campaigns = campaignsData as CampaignSelect[];
   const proposals = proposalsData.map((proposal) => ({
     ...proposal,
+    budget: proposal.budget.toNumber(),
     platforms: proposal.platforms as Platform[],
     targetPlatforms: proposal.targetPlatforms as Platform[],
     applications: proposal.applications.map((app) => ({
       id: app.id,
       status: app.status,
       createdAt: app.createdAt,
+      proposedBudget: app.proposedBudget?.toNumber(),
       influencer: {
         id: app.influencer.id,
         name: app.influencer.name,
@@ -117,12 +119,15 @@ export default async function ProposalsPage(props: Props) {
       },
     })),
   })) satisfies CampaignProposal[];
+  console.log(proposals);
 
   const pagination: PaginationProps = {
     currentPage: page,
     totalPages: Math.ceil(totalProposals / limit),
     totalItems: totalProposals,
   };
+
+  console.log("campaigns" + JSON.stringify(campaigns));
 
   return (
     <ProposalsClient

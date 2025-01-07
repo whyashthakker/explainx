@@ -22,6 +22,7 @@ import { ProposalCardProps, ProposalListProps } from "./types";
 import { ApplicationStatus } from "@prisma/client";
 
 export function ProposalList({ proposals }: ProposalListProps) {
+  console.log(proposals[0]?.applications);
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {proposals.map((proposal) => (
@@ -51,7 +52,7 @@ function ProposalCard({ proposal }: ProposalCardProps) {
             </p>
           </div>
           <Link
-            href={`/brand/proposals/${proposal.id}`}
+            href={`/proposals/${proposal.id}`}
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
               "opacity-0 group-hover:opacity-100 transition-opacity",
