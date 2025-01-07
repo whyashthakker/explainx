@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [competitor.comparisonImage]
     },
     alternates: {
-      canonical: `https://infloq.com/compare/${resolvedParams.competitor}`
+      canonical: `https://www.infloq.com/compare/${resolvedParams.competitor}`
     }
   };
 }

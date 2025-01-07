@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
         }  
        },
        robots: { index: true, follow: true },
-       metadataBase: new URL('https://infloq.com'),
+       metadataBase: new URL('https://www.infloq.com'),
        openGraph: {
            type: 'article',
            locale: 'it',
