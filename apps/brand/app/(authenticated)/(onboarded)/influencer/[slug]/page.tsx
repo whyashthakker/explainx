@@ -4,7 +4,7 @@ import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
 import InfluencerProfile from "../_components/InfluencerProfile";
 import type { Brand } from "../../../../../lib/types";
-import type { User, Influencer, YouTubeAccount } from "@prisma/client";
+import type { User, Influencer, YouTubeAccount } from "@repo/db/client";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
