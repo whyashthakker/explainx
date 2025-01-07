@@ -1,4 +1,4 @@
-// Generated on 2025-01-06T13:50:46.498Z
+// Generated on 2025-01-07T05:15:02.059Z
 interface Author {
   name: string;
   role: string;
@@ -555,6 +555,25 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "Hoe Je Een Influencer Marketing Budget Plant",
+    "file": "how-to-plan-your-influencer-marketing-budget",
+    "description": "Leer hoe je effectief een influencer marketing budget plant en toewijst met onze uitgebreide gids die alles behandelt, van compensatiestrategieën tot verborgen kosten.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/how-to-plan-your-influencer-marketing-budget",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
     "title": "The Complete Guide to Influencer Performance Marketing in 2025",
     "file": "influencer-marketing-performance-measure-analytics",
     "description": "Learn how to measure and optimize your influencer performance marketing with detailed metrics, tracking methods, and analytics tools for maximum ROI.",
@@ -572,6 +591,29 @@ const postData: Post[] = [
       "influencer-marketing",
       "creator-economy",
       "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Top 10 Betrouwbare Influencer Marketing Platforms in India voor Merken en Bureaus",
+    "file": "top-10-trusted-influencer-marketing-platforms-in-india",
+    "description": "Ontdek de toonaangevende influencer marketing platforms die digitale marketing in India transformeren. Van AI-gestuurde oplossingen tot uitgebreide campagnebeheertools.",
+    "date": "January 6, 2025",
+    "datetime": "2025-01-06",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/top-10-trusted-influencer-marketing-platforms-in-india",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
       "analytics"
     ]
   },
