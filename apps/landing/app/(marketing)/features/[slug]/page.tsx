@@ -6,13 +6,14 @@ import { featuresData } from "../../../../data/features";
 import FeaturesStructuredData from "../structured-data";
 
 interface FeaturePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: FeaturePageProps): Promise<Metadata> {
-  const feature = featuresData.categories.find(cat => cat.slug === params.slug);
+  const { slug } = await params;
+  const feature = featuresData.categories.find(cat => cat.slug === slug);
   
   if (!feature) {
     return {
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: FeaturePageProps): Promise<Me
       title: `${feature.title} - Infloq Features`,
       description: feature.description,
       type: 'website',
-      url: `https://infloq.com/features/${params.slug}`,
+      url: `https://www.infloq.com/features/${slug}`,
     }
   };
 }
@@ -39,8 +40,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function FeaturePage({ params }: FeaturePageProps) {
-  const feature = featuresData.categories.find(cat => cat.slug === params.slug);
+export default async function FeaturePage({ params }: FeaturePageProps) {
+  const { slug } = await params;
+  const feature = featuresData.categories.find(cat => cat.slug === slug);
   
   if (!feature) {
     notFound();
