@@ -25,6 +25,9 @@ export function ProposalsClient({
   initialProposals,
   pagination,
 }: ProposalsClientProps) {
+  console.log(initialProposals);
+  console.log(campaigns);
+  console.log(pagination);
   const [proposals, setProposals] =
     useState<CampaignProposal[]>(initialProposals);
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);

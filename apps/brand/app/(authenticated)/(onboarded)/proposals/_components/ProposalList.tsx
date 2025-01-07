@@ -17,27 +17,27 @@ import {
 } from "@repo/ui/components/ui/avatar";
 import { buttonVariants } from "@repo/ui/components/ui/button";
 import { cn } from "@repo/ui/lib/utils";
-import { Decimal } from "@prisma/client/runtime/library";
 import { ProposalCardProps, ProposalListProps } from "./types";
 import { ApplicationStatus } from "@prisma/client";
 
 export function ProposalList({ proposals }: ProposalListProps) {
-  console.log(proposals[0]?.applications);
+  console.log(proposals?.[0]?.applications);
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {proposals.map((proposal) => (
-        <ProposalCard key={proposal.id} proposal={proposal} />
+      {proposals?.map((proposal) => (
+        <ProposalCard key={proposal?.id} proposal={proposal} />
       ))}
     </div>
   );
 }
 
 function ProposalCard({ proposal }: ProposalCardProps) {
-  const activeApplications = proposal.applications.filter(
-    (app) => app.status === ApplicationStatus.PENDING,
-  );
-  const displayedApplications = activeApplications.slice(0, 3);
-  const remainingApplications = Math.max(0, activeApplications.length - 3);
+  const activeApplications =
+    proposal?.applications?.filter(
+      (app) => app?.status === ApplicationStatus.PENDING,
+    ) ?? [];
+  const displayedApplications = activeApplications?.slice(0, 3);
+  const remainingApplications = Math.max(0, activeApplications?.length - 3);
 
   return (
     <Card className="group hover:shadow-lg transition-shadow">
@@ -45,14 +45,14 @@ function ProposalCard({ proposal }: ProposalCardProps) {
         <div className="flex justify-between items-start">
           <div className="space-y-1">
             <CardTitle className="text-lg line-clamp-1">
-              {proposal.title}
+              {proposal?.title}
             </CardTitle>
             <p className="text-sm text-muted-foreground">
-              Campaign: {proposal.campaign.title}
+              Campaign: {proposal?.campaign?.title}
             </p>
           </div>
           <Link
-            href={`/proposals/${proposal.id}`}
+            href={`/proposals/${proposal?.id}`}
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
               "opacity-0 group-hover:opacity-100 transition-opacity",
@@ -63,40 +63,40 @@ function ProposalCard({ proposal }: ProposalCardProps) {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm line-clamp-2">{proposal.description}</p>
+        <p className="text-sm line-clamp-2">{proposal?.description}</p>
         <div className="flex items-center gap-2">
           <span className="text-sm font-medium">
-            ${Number(proposal.budget).toLocaleString()}
+            ${Number(proposal?.budget)?.toLocaleString()}
           </span>
           <span className="text-muted-foreground">•</span>
           <span className="text-sm text-muted-foreground">
-            {proposal.timeframe} days
+            {proposal?.timeframe} days
           </span>
         </div>
         <div className="flex flex-wrap gap-2">
-          {proposal.platforms.map((platform) => (
+          {proposal?.platforms?.map((platform) => (
             <Badge key={platform} variant="secondary">
               {platform}
             </Badge>
           ))}
         </div>
-        {activeApplications.length > 0 ? (
+        {activeApplications?.length > 0 ? (
           <div className="pt-4 border-t">
             <p className="text-sm font-medium mb-2">
-              Recent Applications ({activeApplications.length})
+              Recent Applications ({activeApplications?.length})
             </p>
             <div className="flex -space-x-2 overflow-hidden">
-              {displayedApplications.map((application) => (
+              {displayedApplications?.map((application) => (
                 <Avatar
-                  key={application.id}
+                  key={application?.id}
                   className="border-2 border-background w-8 h-8"
                 >
                   <AvatarImage
-                    src={application.influencer.avatar ?? undefined}
-                    alt={application.influencer.name}
+                    src={application?.influencer?.avatar ?? undefined}
+                    alt={application?.influencer?.name ?? ""}
                   />
                   <AvatarFallback>
-                    {application.influencer.name.charAt(0)}
+                    {application?.influencer?.name?.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
               ))}
@@ -113,7 +113,7 @@ function ProposalCard({ proposal }: ProposalCardProps) {
           </div>
         )}
         <div className="text-xs text-muted-foreground mt-4">
-          Created {format(new Date(proposal.createdAt), "MMM d, yyyy")}
+          Created {format(new Date(proposal?.createdAt), "MMM d, yyyy")}
         </div>
       </CardContent>
     </Card>
