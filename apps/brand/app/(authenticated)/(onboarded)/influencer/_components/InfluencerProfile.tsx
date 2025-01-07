@@ -46,6 +46,7 @@ import CollaborationForm from "./CollabForm";
 import { CollaborationList } from "./CollaborationList";
 import type { Platform, User, Brand } from "../../../../../lib/types"; // Update path as needed
 import { UserType } from "@prisma/client";
+import { SerializedBrandUser } from "./types";
 
 interface YouTubeVideo {
   id: string;
@@ -107,6 +108,7 @@ export default function InfluencerProfile({
   influencer,
   brand,
 }: InfluencerProfileProps) {
+  console.log(brand);
   const router = useRouter();
   const [showCollaboration, setShowCollaboration] = useState(false);
   const [collaborationRefresh, setCollaborationRefresh] = useState(0);

@@ -12,6 +12,7 @@ import {
   XIcon,
   MenuIcon,
   YoutubeIcon,
+  HandHelping,
 } from "lucide-react";
 import { useUser } from "../_context/user-context";
 import { cn } from "@repo/ui/lib/utils";
@@ -39,6 +40,11 @@ const routes = [
     label: "Brands",
     icon: Building2Icon,
     href: "/brands",
+  },
+  {
+    label: "Proposals",
+    icon: HandHelping,
+    href: "/proposals",
   },
   {
     label: "Collaborations",
