@@ -60,16 +60,16 @@ export function ProposalForm({
     resolver: zodResolver(proposalFormSchema),
     defaultValues: {
       campaignId: selectedCampaign,
-      title: initialData?.title || "",
-      description: initialData?.description || "",
-      requirements: initialData?.requirements || [],
-      deliverables: initialData?.deliverables || [],
-      budget: initialData?.budget || undefined,
-      timeframe: initialData?.timeframe || undefined,
-      minFollowers: initialData?.minFollowers || undefined,
-      maxFollowers: initialData?.maxFollowers || undefined,
-      targetCategories: initialData?.targetCategories || [],
-      platforms: initialData?.platforms || [],
+      title: initialData?.title ?? "",
+      description: initialData?.description ?? "",
+      requirements: initialData?.requirements ?? [],
+      deliverables: initialData?.deliverables ?? [],
+      budget: initialData?.budget ?? 0,
+      timeframe: initialData?.timeframe ?? 0,
+      minFollowers: initialData?.minFollowers ?? 0,
+      maxFollowers: initialData?.maxFollowers ?? 0,
+      targetCategories: initialData?.targetCategories ?? [],
+      platforms: initialData?.platforms ?? [],
     },
   });
 
@@ -326,8 +326,12 @@ export function ProposalForm({
                         <Input
                           type="number"
                           {...field}
-                          value={value || ""}
-                          onChange={(e) => onChange(e.target.valueAsNumber)}
+                          value={value === 0 ? "" : value}
+                          onChange={(e) =>
+                            onChange(
+                              e.target.value ? Number(e.target.value) : 0,
+                            )
+                          }
                           placeholder="Enter budget"
                         />
                       </FormControl>
@@ -410,7 +414,6 @@ export function ProposalForm({
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="maxFollowers"
@@ -421,10 +424,11 @@ export function ProposalForm({
                         <Input
                           type="number"
                           {...field}
-                          value={value ?? ""}
-                          onChange={(e) =>
-                            onChange(e.target.valueAsNumber || null)
-                          }
+                          value={typeof value === "number" ? value : ""}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            onChange(val ? Number(val) : null);
+                          }}
                           placeholder="Max followers (optional)"
                         />
                       </FormControl>
