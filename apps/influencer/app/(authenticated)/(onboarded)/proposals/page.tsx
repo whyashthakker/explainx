@@ -52,7 +52,7 @@ export default function ProposalsPage() {
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Budget:</p>
-                  <p>{proposal.budget.toNumber()}</p>
+                  <p>${Number(proposal.budget).toLocaleString()}</p>
                 </div>
 
                 <div>
