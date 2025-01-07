@@ -10,8 +10,8 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "db:generate": "prisma generate",
-    "postinstall": "prisma generate"
+    "db:generate": "prisma generate --no-engine",
+    "postinstall": "prisma generate --no-engine"
   },
   "devDependencies": {
     "@types/bun": "latest",
