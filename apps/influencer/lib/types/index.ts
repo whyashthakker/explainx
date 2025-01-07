@@ -1,14 +1,10 @@
-<<<<<<< HEAD
 // packages/types/index.ts
 import type {
   User as PrismaUser,
   Influencer as PrismaInfluencer,
 } from "@repo/db";
 import { Prisma } from "@repo/db";
-=======
-import { Prisma } from "@prisma/client";
 
->>>>>>> 7225996 (build : double auth)
 // Enums
 export enum UserType {
   BRAND = "BRAND",

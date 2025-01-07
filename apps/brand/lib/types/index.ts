@@ -1,4 +1,4 @@
-import type { User as PrismaUser, Brand as PrismaBrand } from "@repo/db";
+import { User as PrismaUser, Brand as PrismaBrand, Prisma } from "@repo/db";
 // Enums
 export enum UserType {
   BRAND = "BRAND",
