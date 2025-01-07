@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
       targetDemographic: data.targetDemographic,
       preferredCategories: data.preferredCategories,
       minFollowers: data.minFollowers,
-      maxBudget: data.maxBudget,
+      maxBudget: data.maxBudget.toString(),
       preferredPlatforms: data.preferredPlatforms,
     };
 
