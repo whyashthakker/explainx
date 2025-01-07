@@ -5,8 +5,8 @@ import authConfig from "./auth.config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   // session: {
-  //   strategy: "database",
-  // },
+  //    strategy: "database",
+  //  },
   adapter: PrismaAdapter(prisma),
   ...authConfig,
 });

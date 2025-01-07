@@ -6,7 +6,6 @@ import MultistepBrandOnboardingForm from "./_components/OnboardingForm";
 
 export default async function BrandOnboardingPage() {
   const session = await auth();
-
   if (!session) {
     redirect("/login");
     return null;
@@ -18,12 +17,14 @@ export default async function BrandOnboardingPage() {
     return null;
   }
 
+  // Check if user exists and fetch their brands
   const user = await prisma.user.findUnique({
     where: { email },
-    include: { brand: true },
+    include: { brands: true },
   });
 
-  if (user?.brand) {
+  // If user has any brands, redirect to dashboard
+  if (user?.brands && user.brands.length > 0) {
     redirect("/dashboard");
   }
 

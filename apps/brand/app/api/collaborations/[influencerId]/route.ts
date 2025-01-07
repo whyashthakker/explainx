@@ -1,10 +1,8 @@
-// app/api/collaborations/[influencerId]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
 
 type RouteParams = Promise<{ influencerId: string }>;
-
 type RouteContext = {
   params: RouteParams;
 };
@@ -21,23 +19,42 @@ export async function GET(req: NextRequest, context: RouteContext) {
     const params = await context.params;
     const { influencerId } = params;
 
-    // Get brand profile
+    // Get user with their brands and verify they're using the brand portal
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-      include: { brand: true },
+      where: {
+        email: session.user.email,
+      },
+      include: {
+        brands: true,
+      },
     });
 
-    if (!user?.brand) {
+    // Check if user exists and has permission to access brand portal
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    if (user.userType !== "BRAND" && user.userType !== "BOTH") {
       return NextResponse.json(
-        { error: "Brand profile not found" },
+        { error: "Not authorized to access brand portal" },
+        { status: 403 },
+      );
+    }
+
+    // Get all brands for this user
+    const userBrands = user.brands;
+    if (!userBrands.length) {
+      return NextResponse.json(
+        { error: "No brand profiles found" },
         { status: 404 },
       );
     }
 
-    // Fetch collaborations
+    // Fetch collaborations for all brands owned by the user
+    const brandIds = userBrands.map((brand) => brand.id);
     const collaborations = await prisma.collaboration.findMany({
       where: {
-        AND: [{ brandId: user.brand.id }, { influencerId }],
+        AND: [{ brandId: { in: brandIds } }, { influencerId }],
       },
       include: {
         campaign: true,

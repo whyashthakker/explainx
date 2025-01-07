@@ -15,8 +15,8 @@ import {
   Users,
   Briefcase,
   MessageSquare,
+  HandHelping,
 } from "lucide-react";
-import { useUser } from "../_context/user-context";
 import { usePathname } from "next/navigation";
 import { cn } from "@repo/ui/lib/utils";
 import {
@@ -35,6 +35,8 @@ import {
 import { signOut } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { LogoutMenuItem } from "./LogoutMenuItem";
+import { useUser } from "../_context/user-context";
+import Link from "next/link";
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   isMobileOpen: boolean;
   setIsMobileOpen: (value: boolean) => void;
@@ -59,6 +61,7 @@ const Sidebar = ({
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const user = useUser();
   const pathname = usePathname();
+  const currentBrand = user.brands[0];
 
   const navigationSections: NavSection[] = [
     {
@@ -95,6 +98,13 @@ const Sidebar = ({
           href: "/collaborations",
           description: "Ongoing partnerships",
           badge: 2, // New requests
+        },
+        {
+          label: "Proposals",
+          icon: HandHelping,
+          href: "/proposals",
+          description: "Proposals",
+          badge: 1, // New requests
         },
         {
           label: "Messages",
@@ -160,7 +170,6 @@ const Sidebar = ({
             </div>
           </div>
         </div>
-
         {/* Navigation Sections */}
         <div className="flex-1 py-4 overflow-y-auto">
           {navigationSections.map((section, index) => (
@@ -228,7 +237,6 @@ const Sidebar = ({
             </div>
           ))}
         </div>
-
         {/* Footer Section */}
         <div className="p-4 border-t">
           <DropdownMenu>
@@ -239,17 +247,19 @@ const Sidebar = ({
               >
                 <div className="flex items-center gap-3 w-full">
                   <Avatar className="w-10 h-10">
-                    <AvatarImage src={user.brand?.logo || ""} />
+                    <AvatarImage src={currentBrand?.logo || ""} />
                     <AvatarFallback className="bg-blue-100 text-blue-600">
-                      {user.brand?.name?.charAt(0) || user.email?.charAt(0)}
+                      {currentBrand?.name?.charAt(0) || user.email?.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 text-left">
                     <p className="text-sm font-medium text-gray-900">
-                      {user.brand?.name || user.email}
+                      {currentBrand?.name || user.email}
                     </p>
                     <p className="text-xs text-blue-600">
-                      {user?.userType || "Brand Account"}
+                      {user.brands.length > 1
+                        ? `Brand 1 of ${user.brands.length}`
+                        : "Brand Account"}
                     </p>
                   </div>
                   <Settings className="w-4 h-4 text-gray-400" />
@@ -259,9 +269,26 @@ const Sidebar = ({
             <DropdownMenuContent align="end" className="w-[240px]">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <UserCircleIcon className="w-4 h-4 mr-2" /> Profile Settings
-              </DropdownMenuItem>
+              {user.brands.length > 1 && (
+                <>
+                  <DropdownMenuLabel className="text-xs text-gray-500">
+                    Switch Brand
+                  </DropdownMenuLabel>
+                  {user.brands.map((brand) => (
+                    <DropdownMenuItem key={brand.id}>
+                      <Briefcase className="w-4 h-4 mr-2" />
+                      {brand.name}
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                </>
+              )}
+              <Link href="/profile">
+                <DropdownMenuItem>
+                  <UserCircleIcon className="w-4 h-4 mr-2" /> Profile Settings
+                </DropdownMenuItem>
+              </Link>
+
               <DropdownMenuItem>
                 <Bell className="w-4 h-4 mr-2" /> Notifications
               </DropdownMenuItem>
@@ -270,9 +297,9 @@ const Sidebar = ({
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <LogoutMenuItem />
-            </DropdownMenuContent>{" "}
+            </DropdownMenuContent>
           </DropdownMenu>
-        </div>
+        </div>{" "}
       </div>
     </div>
   );

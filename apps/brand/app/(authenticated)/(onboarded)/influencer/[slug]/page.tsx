@@ -3,55 +3,48 @@ import { redirect } from "next/navigation";
 import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
 import InfluencerProfile from "../_components/InfluencerProfile";
+import type { Brand } from "../../../../../lib/types";
+import type { User, Influencer, YouTubeAccount } from "@repo/db/client";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-type BrandUser = {
-  email: string;
-  image: string | null;
-  brand: {
+// Using Prisma's generated types for consistency
+type BrandUser = User & {
+  brand: Brand | null;
+  brands: {
     id: string;
     name: string;
     logo: string | null;
-  } | null;
+  }[];
 };
 
-type InfluencerData = {
+type YouTubeVideo = {
   id: string;
-  name: string;
-  avatar: string | null;
-  category: string;
-  followers: number;
-  platforms: ("YOUTUBE" | "INSTAGRAM" | "TIKTOK")[];
-  user: {
-    email: string;
-    image: string | null;
-  };
-  youtubeAccount?: {
-    id: string;
-    channelId: string;
-    channelTitle: string;
-    viewCount: number;
-    subscriberCount: number;
-    videoCount: number;
-    videos: {
-      id: string;
-      publishedAt: Date;
-      title: string;
-      description: string | null;
-      thumbnailUrl: string;
-      viewCount: number;
-      likeCount: number;
-      commentCount: number;
-    }[];
-    analytics: {
-      date: Date;
-      subscriberCount: number;
-      viewCount: number;
-    }[];
-  } | null;
+  publishedAt: Date;
+  title: string;
+  description: string | null;
+  thumbnailUrl: string;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+};
+
+type YouTubeAnalytics = {
+  date: Date;
+  subscriberCount: number;
+  viewCount: number;
+};
+
+type ExtendedYouTubeAccount = YouTubeAccount & {
+  videos: YouTubeVideo[];
+  analytics: YouTubeAnalytics[];
+};
+
+type ExtendedInfluencer = Influencer & {
+  user: Pick<User, "email" | "image">;
+  youtubeAccount: ExtendedYouTubeAccount | null;
 };
 
 export default async function InfluencerPage({ params }: PageProps) {
@@ -61,19 +54,30 @@ export default async function InfluencerPage({ params }: PageProps) {
   }
 
   const { slug } = await params;
-
   if (!slug) {
     redirect("/dashboard");
   }
 
-  const currentUser = (await prisma.user.findUnique({
-    where: { email: session.user.email },
-    include: {
-      brand: true,
+  const currentUser = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
     },
-  })) as BrandUser | null;
+    include: {
+      brands: {
+        select: {
+          id: true,
+          name: true,
+          logo: true,
+        },
+      },
+    },
+  });
 
-  const influencer = (await prisma.influencer.findUnique({
+  if (!currentUser || !currentUser.brands.length) {
+    redirect("/onboarding");
+  }
+
+  const influencer = await prisma.influencer.findUnique({
     where: {
       id: slug,
     },
@@ -101,11 +105,34 @@ export default async function InfluencerPage({ params }: PageProps) {
         },
       },
     },
-  })) as InfluencerData | null;
+  });
 
   if (!influencer) {
     redirect("/dashboard");
   }
 
-  return <InfluencerProfile influencer={influencer} brand={currentUser} />;
+  if (!currentUser?.brands?.[0]) {
+    redirect("/onboarding");
+  }
+
+  const activeBrand = {
+    id: currentUser.brands[0].id,
+    name: currentUser.brands[0].name,
+    logo: currentUser.brands[0].logo,
+  };
+
+  const brandUserData: BrandUser = {
+    ...currentUser,
+    //    @ts-ignore
+    brand: activeBrand,
+    brands: currentUser.brands,
+  };
+
+  return (
+    <InfluencerProfile
+      //    @ts-ignore
+      influencer={influencer as ExtendedInfluencer}
+      brand={brandUserData}
+    />
+  );
 }

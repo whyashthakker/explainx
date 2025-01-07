@@ -1,16 +1,16 @@
 // app/(authenticated)/(onboarded)/layout.tsx
-import React from "react";
-import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
+import { auth } from "../../../auth";
+import { PrismaUserWithBrands } from "../../../lib/types";
 import BrandDashboardLayout from "./_components/BrandDashboardLayout";
 import { UserProvider } from "./_context/user-context";
 
-interface LayoutProps {
+export default async function OnboardedLayout({
+  children,
+}: {
   children: React.ReactNode;
-}
-
-export default async function OnboardedLayout({ children }: LayoutProps) {
+}) {
   const session = await auth();
   if (!session?.user?.email) {
     redirect("/");
@@ -21,7 +21,7 @@ export default async function OnboardedLayout({ children }: LayoutProps) {
       email: session.user.email,
     },
     include: {
-      brand: {
+      brands: {
         include: {
           user: {
             select: {
@@ -39,12 +39,15 @@ export default async function OnboardedLayout({ children }: LayoutProps) {
     redirect("/");
   }
 
-  if (!user.brand) {
+  if (user.brands.length === 0) {
     redirect("/onboarding");
   }
 
+  // Cast the user to PrismaUserWithBrands type
+  const typedUser = user as unknown as PrismaUserWithBrands;
+
   return (
-    <UserProvider value={user}>
+    <UserProvider value={typedUser}>
       <BrandDashboardLayout>{children}</BrandDashboardLayout>
     </UserProvider>
   );

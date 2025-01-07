@@ -4,8 +4,8 @@ import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import DashboardLayout from "./_components/DashboardLayout";
-import { PrismaUserWithInfluencer } from "../../../lib/types";
 import { UserProvider } from "./_context/user-context";
+import { UserType } from "@prisma/client";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,18 +16,14 @@ export default async function DashboardLayoutWrapper({
 }: LayoutProps) {
   const session = await auth();
 
-  console.log("session for authenticated layout", JSON.stringify(session));
+  if (!session?.user?.email) redirect("/");
 
-  if (!session?.user?.email) {
-    redirect("/");
-  }
-
-  const user = await prisma.user.findUnique({
+  const user = await prisma.user.findFirst({
     where: {
       email: session.user.email,
     },
     include: {
-      influencer: {
+      influencers: {
         include: {
           user: {
             select: {
@@ -41,30 +37,42 @@ export default async function DashboardLayoutWrapper({
     },
   });
 
-  if (!user) {
+  if (!user) redirect("/");
+
+  // Check user type
+  if (
+    user.userType !== UserType.INFLUENCER &&
+    user.userType !== UserType.BOTH
+  ) {
     redirect("/");
   }
 
-  const isInfluencerTeamMember = await prisma.influencerTeamMember.findFirst({
-    where: {
-      userId: user.id,
-    },
-    select: {
-      role: true,
-    },
-  });
-
-  if (isInfluencerTeamMember?.role === "MEMBER") {
-    redirect("/team-view");
-  }
-
-  if (!user.influencer) {
+  // Check onboarding status
+  if (!user.influencers?.length) {
     redirect("/onboarding");
   }
 
-  // Make the user data available to all child components through React Context
+  // Check team membership
+  const teamMembership = await prisma.influencerTeamMember.findFirst({
+    where: {
+      userId: user.id,
+      inviteStatus: "ACCEPTED",
+    },
+    include: {
+      team: {
+        include: {
+          influencer: true,
+        },
+      },
+    },
+  });
+
+  if (teamMembership?.role === "MEMBER" || teamMembership?.role === "ADMIN") {
+    redirect("/team-view");
+  }
+
   return (
-    <UserProvider value={user as PrismaUserWithInfluencer}>
+    <UserProvider value={user}>
       <DashboardLayout>{children}</DashboardLayout>
     </UserProvider>
   );

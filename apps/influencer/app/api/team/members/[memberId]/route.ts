@@ -4,6 +4,21 @@ import { NextRequest, NextResponse } from "next/server";
 
 type Params = Promise<{ memberId: string }>;
 
+async function getCurrentTeamMember(userId: string) {
+  const influencer = await prisma.influencer.findFirst({
+    where: { userId },
+    include: { team: true },
+  });
+  if (!influencer?.team) return null;
+
+  return prisma.influencerTeamMember.findFirst({
+    where: {
+      teamId: influencer.team.id,
+      userId,
+    },
+  });
+}
+
 export async function DELETE(req: NextRequest, { params }: { params: Params }) {
   try {
     const session = await auth();
@@ -12,20 +27,19 @@ export async function DELETE(req: NextRequest, { params }: { params: Params }) {
     }
 
     const { memberId } = await params;
-    const currentUser = await prisma.user.findUnique({
+
+    const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: {
-        influencer: {
-          include: { team: true },
-        },
-      },
     });
 
-    if (!currentUser?.influencer?.team) {
-      return NextResponse.json({ error: "Team not found" }, { status: 404 });
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Get member to be deleted
+    if (user.userType !== "INFLUENCER" && user.userType !== "BOTH") {
+      return NextResponse.json({ error: "Not authorized" }, { status: 403 });
+    }
+
     const memberToDelete = await prisma.influencerTeamMember.findUnique({
       where: { id: memberId },
       include: { team: true },
@@ -35,11 +49,11 @@ export async function DELETE(req: NextRequest, { params }: { params: Params }) {
       return NextResponse.json({ error: "Member not found" }, { status: 404 });
     }
 
-    // Check if current user has permission (must be OWNER or ADMIN)
+    // Check if current user has permission
     const currentMember = await prisma.influencerTeamMember.findFirst({
       where: {
-        teamId: currentUser.influencer.team.id,
-        userId: currentUser.id,
+        teamId: memberToDelete.teamId,
+        userId: user.id,
         role: { in: ["OWNER", "ADMIN"] },
       },
     });
@@ -59,7 +73,6 @@ export async function DELETE(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    // Delete member
     await prisma.influencerTeamMember.delete({
       where: { id: memberId },
     });
@@ -88,24 +101,31 @@ export async function PATCH(req: NextRequest, { params }: { params: Params }) {
       return NextResponse.json({ error: "Invalid role" }, { status: 400 });
     }
 
-    const currentUser = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: {
-        influencer: {
-          include: { team: true },
-        },
-      },
     });
 
-    if (!currentUser?.influencer?.team) {
-      return NextResponse.json({ error: "Team not found" }, { status: 404 });
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Check if current user is OWNER (only OWNER can promote to ADMIN)
+    if (user.userType !== "INFLUENCER" && user.userType !== "BOTH") {
+      return NextResponse.json({ error: "Not authorized" }, { status: 403 });
+    }
+
+    const memberToUpdate = await prisma.influencerTeamMember.findUnique({
+      where: { id: memberId },
+    });
+
+    if (!memberToUpdate) {
+      return NextResponse.json({ error: "Member not found" }, { status: 404 });
+    }
+
+    // Check if current user is OWNER
     const currentMember = await prisma.influencerTeamMember.findFirst({
       where: {
-        teamId: currentUser.influencer.team.id,
-        userId: currentUser.id,
+        teamId: memberToUpdate.teamId,
+        userId: user.id,
         role: "OWNER",
       },
     });
@@ -117,15 +137,6 @@ export async function PATCH(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    // Get member to update
-    const memberToUpdate = await prisma.influencerTeamMember.findUnique({
-      where: { id: memberId },
-    });
-
-    if (!memberToUpdate) {
-      return NextResponse.json({ error: "Member not found" }, { status: 404 });
-    }
-
     // Can't change OWNER's role
     if (memberToUpdate.role === "OWNER") {
       return NextResponse.json(
@@ -134,7 +145,6 @@ export async function PATCH(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    // Update member role
     const updatedMember = await prisma.influencerTeamMember.update({
       where: { id: memberId },
       data: { role },

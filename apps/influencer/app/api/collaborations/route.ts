@@ -1,4 +1,3 @@
-// app/api/collaborations/route.ts
 import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
@@ -12,10 +11,22 @@ export async function GET() {
 
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: { influencer: true },
+      include: { influencers: true },
     });
 
-    if (!user?.influencer) {
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    if (!user.userType) {
+      return NextResponse.json(
+        { error: "User not onboarded" },
+        { status: 404 },
+      );
+    }
+
+    const influencer = user.influencers[0];
+    if (!influencer) {
       return NextResponse.json(
         { error: "Influencer profile not found" },
         { status: 404 },
@@ -23,26 +34,20 @@ export async function GET() {
     }
 
     const collaborations = await prisma.collaboration.findMany({
-      where: {
-        influencerId: user.influencer.id,
-      },
+      where: { influencerId: influencer.id },
       include: {
         brand: true,
         campaign: true,
         chatRoom: {
           include: {
             messages: {
-              orderBy: {
-                createdAt: "desc",
-              },
+              orderBy: { createdAt: "desc" },
               take: 1,
             },
           },
         },
       },
-      orderBy: {
-        createdAt: "desc",
-      },
+      orderBy: { createdAt: "desc" },
     });
 
     return NextResponse.json(collaborations);

@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: {
-        influencer: {
+        brands: {
           include: {
             team: {
               include: {
@@ -56,18 +56,29 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    if (!user?.influencer) {
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    if (user.userType !== "BRAND" && user.userType !== "BOTH") {
       return NextResponse.json(
-        { error: "Influencer profile not found" },
+        { error: "Not authorized to access brand portal" },
+        { status: 403 },
+      );
+    }
+
+    const activeBrand = user.brands[0];
+    if (!activeBrand) {
+      return NextResponse.json(
+        { error: "Brand profile not found" },
         { status: 404 },
       );
     }
 
-    // Create team if it doesn't exist
-    if (!user.influencer.team) {
-      const team = await prisma.influencerTeam.create({
+    if (!activeBrand.team) {
+      const team = await prisma.brandTeam.create({
         data: {
-          influencerId: user.influencer.id,
+          brandId: activeBrand.id,
           members: {
             create: {
               userId: user.id,
@@ -90,12 +101,11 @@ export async function GET(request: NextRequest) {
             },
           },
         },
-      }) as Team;
-
+      });
       return NextResponse.json({ team });
     }
 
-    return NextResponse.json({ team: user.influencer.team });
+    return NextResponse.json({ team: activeBrand.team });
   } catch (error) {
     console.error("Team fetch error:", error);
     return NextResponse.json(
