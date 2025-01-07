@@ -152,17 +152,17 @@ export interface ProductData {
         {
           title: "Smart Creator Search",
           description: "Use AI-powered filters to find creators by niche, audience size, engagement rate, and location.",
-          link: "/features/creator-search"
+          link: "/features"
         },
         {
           title: "Engagement Analytics",
           description: "View detailed engagement metrics and audience demographics for any creator.",
-          link: "/features/analytics"
+          link: "/features"
         },
         {
           title: "Export & Share",
           description: "Export your favorite creators to CSV or share lists with your team.",
-          link: "/features/collaboration"
+          link: "/features"
         }
       ],
       useCases: [
@@ -222,17 +222,17 @@ export interface ProductData {
         {
           title: "E-commerce Integration",
           description: "One-click integration with major platforms like Shopify, WooCommerce, and Magento. Track sales and attribution automatically.",
-          link: "/features/ecommerce-integration"
+          link: "/features"
         },
         {
           title: "Product Seeding",
           description: "Streamline product sampling with automated shipping and tracking for influencer partnerships.",
-          link: "/features/product-seeding"
+          link: "/features"
         },
         {
           title: "Sales Attribution",
           description: "Track revenue, conversion rates, and ROI for each influencer partnership in real-time.",
-          link: "/features/sales-tracking"
+          link: "/features"
         }
       ],
       useCases: [
@@ -292,17 +292,17 @@ export interface ProductData {
         {
           title: "Affiliate Recruitment",
           description: "Find and recruit high-performing creators with custom landing pages and automated outreach.",
-          link: "/features/affiliate-recruitment"
+          link: "/features"
         },
         {
           title: "Sales Attribution",
           description: "Track orders, revenue, and calculate commissions automatically with unique affiliate links.",
-          link: "/features/affiliate-tracking"
+          link: "/features"
         },
         {
           title: "Automated Payments",
           description: "Process international payments and manage commission structures with one-click payouts.",
-          link: "/features/commission-management"
+          link: "/features"
         }
       ],
       useCases: [
@@ -361,17 +361,17 @@ export interface ProductData {
         {
           title: "Campaign Workflow",
           description: "Create custom campaign workflows with automated tasks, deadlines, and team collaboration tools.",
-          link: "/features/workflow-automation"
+          link: "/features"
         },
         {
           title: "Content Management",
           description: "Streamline content approvals and manage deliverables across all your campaigns.",
-          link: "/features/content-management"
+          link: "/features"
         },
         {
           title: "Performance Analytics",
           description: "Track campaign metrics, ROI, and generate custom reports in real-time.",
-          link: "/features/campaign-analytics"
+          link: "/features"
         }
       ]
     },
@@ -405,17 +405,17 @@ export interface ProductData {
         {
           title: "Smart Search Filters",
           description: "Filter by niche, location, audience size, engagement rate, and brand affinity.",
-          link: "/features/search-filters"
+          link: "/features"
         },
         {
           title: "AI Matching",
           description: "Get AI-powered creator recommendations based on your brand and campaign goals.",
-          link: "/features/ai-matching"
+          link: "/features"
         },
         {
           title: "Database Access",
           description: "Access millions of verified creators across Instagram, TikTok, YouTube, and more.",
-          link: "/features/creator-database"
+          link: "/features"
         }
       ]
     },
@@ -449,17 +449,17 @@ export interface ProductData {
         {
           title: "Engagement Analysis",
           description: "Track engagement rates, growth trends, and content performance metrics.",
-          link: "/features/engagement-analytics"
+          link: "/features"
         },
         {
           title: "Audience Insights",
           description: "Analyze follower demographics, authenticity, and brand affinity scores.",
-          link: "/features/audience-insights"
+          link: "/features"
         },
         {
           title: "Performance Tracking",
           description: "Monitor content performance and ROI across all creator partnerships.",
-          link: "/features/performance-tracking"
+          link: "/features"
         }
       ]
     },
@@ -493,17 +493,17 @@ export interface ProductData {
         {
           title: "Communication Hub",
           description: "Centralize all creator communications with automated messaging and task management.",
-          link: "/features/communication-hub"
+          link: "/features"
         },
         {
           title: "Contract Management",
           description: "Generate, send, and track contracts and agreements with digital signatures.",
-          link: "/features/contract-management"
+          link: "/features"
         },
         {
           title: "Payment Automation",
           description: "Process creator payments and manage invoices with automated workflows.",
-          link: "/features/payment-automation"
+          link: "/features"
         }
       ]
     },
@@ -538,17 +538,17 @@ export interface ProductData {
         {
           title: "Shipping Automation",
           description: "Automate product fulfillment and shipping with major carriers worldwide.",
-          link: "/features/shipping-automation"
+          link: "/features"
         },
         {
           title: "Gift Tracking",
           description: "Track shipments and measure content creation from gifted products.",
-          link: "/features/gift-tracking"
+          link: "/features"
         },
         {
           title: "ROI Measurement",
           description: "Calculate the return on investment for your product seeding campaigns.",
-          link: "/features/gifting-roi"
+          link: "/features"
         }
       ]
      },
@@ -583,17 +583,17 @@ export interface ProductData {
         {
           title: "Payment Processing",
           description: "Send payments to creators worldwide with support for multiple currencies.",
-          link: "/features/payment-processing"
+          link: "/features"
         },
         {
           title: "Invoice Management",
           description: "Generate and track invoices automatically for all creator payments.",
-          link: "/features/invoice-management"
+          link: "/features"
         },
         {
           title: "Tax Documentation",
           description: "Manage tax forms and compliance documentation for global creators.",
-          link: "/features/tax-management"
+          link: "/features"
         }
       ]
      },
@@ -628,17 +628,17 @@ export interface ProductData {
         {
           title: "Performance Tracking",
           description: "Monitor engagement, reach, and conversion metrics in real-time.",
-          link: "/features/performance-tracking"
+          link: "/features"
         },
         {
           title: "ROI Analysis",
           description: "Calculate campaign ROI with automated sales and conversion tracking.",
-          link: "/features/roi-analysis"
+          link: "/features"
         },
         {
           title: "Custom Reports",
           description: "Generate branded reports with key metrics and campaign insights.",
-          link: "/features/custom-reports"
+          link: "/features"
         }
       ]
      },
@@ -673,17 +673,17 @@ export interface ProductData {
         {
           title: "Sales Attribution",
           description: "Track influencer-driven sales and conversions in your Shopify store.",
-          link: "/features/shopify-attribution"
+          link: "/features"
         },
         {
           title: "Product Sync",
           description: "Sync products and inventory for automated influencer gifting.",
-          link: "/features/product-sync"
+          link: "/features"
         },
         {
           title: "Discount Management",
           description: "Create and track unique discount codes for each creator.",
-          link: "/features/discount-codes"
+          link: "/features"
         }
       ]
      },
@@ -718,17 +718,17 @@ export interface ProductData {
         {
           title: "Creator Filtering",
           description: "Filter creators based on engagement, authenticity, and brand affinity.",
-          link: "/features/creator-filtering"
+          link: "/features"
         },
         {
           title: "Creator Analytics",
           description: "Analyze engagement metrics, authenticity scores, and brand affinity.",
-          link: "/features/creator-analytics"
+          link: "/features"
         },
         {
           title: "Brand Affinity",
           description: "Measure brand affinity and growth potential for creators.",
-          link: "/features/brand-affinity"
+          link: "/features"
         }
       ]
      },
@@ -763,17 +763,17 @@ export interface ProductData {
           {
             title: "Smart Creator Search",
             description: "Use AI-powered filters to find creators by niche, audience size, engagement rate, and location.",
-            link: "/features/creator-search"
+            link: "/features"
           },
           {
             title: "Engagement Analytics",
             description: "View detailed engagement metrics and audience demographics for any creator.",
-            link: "/features/analytics"
+            link: "/features"
           },
           {
             title: "Export & Share",
             description: "Export your favorite creators to CSV or share lists with your team.",
-            link: "/features/collaboration"
+            link: "/features"
           }
         ],
         useCases: [
@@ -833,17 +833,17 @@ export interface ProductData {
           {
             title: "Sales Tracking",
             description: "Automatically track sales and conversions from creator partnerships.",
-            link: "/features/bigcommerce-tracking"
+            link: "/features"
           },
           {
             title: "Product Management",
             description: "Sync your product catalog for streamlined influencer gifting.",
-            link: "/features/product-management"
+            link: "/features"
           },
           {
             title: "Discount Codes",
             description: "Generate and track unique discount codes for each creator.",
-            link: "/features/promo-codes"
+            link: "/features"
           }
         ]
        },
@@ -878,17 +878,17 @@ export interface ProductData {
           {
             title: "Amazon Attribution",
             description: "Track sales and performance metrics from creator partnerships.",
-            link: "/features/amazon-tracking"
+            link: "/features"
           },
           {
             title: "Affiliate Management",
             description: "Manage Amazon Associates and influencer partnerships in one place.",
-            link: "/features/amazon-affiliates"
+            link: "/features"
           },
           {
             title: "Product Sampling",
             description: "Automate product seeding for Amazon influencer reviews.",
-            link: "/features/amazon-seeding"
+            link: "/features"
           }
         ]
        },
@@ -923,17 +923,17 @@ export interface ProductData {
           {
             title: "Platform Integration",
             description: "Connect with major e-commerce platforms for seamless tracking.",
-            link: "/features/platform-integration"
+            link: "/features"
           },
           {
             title: "Sales Attribution",
             description: "Track revenue and ROI from creator partnerships.",
-            link: "/features/sales-tracking"
+            link: "/features"
           },
           {
             title: "Product Management",
             description: "Streamline product seeding and inventory management.",
-            link: "/features/product-management"
+            link: "/features"
           }
         ]
        },
@@ -968,17 +968,17 @@ export interface ProductData {
           {
             title: "Magento Integration",
             description: "Seamless connection with your Magento store for sales tracking.",
-            link: "/features/magento-integration"
+            link: "/features"
           },
           {
             title: "Product Sync",
             description: "Automatically sync products for influencer campaigns.",
-            link: "/features/magento-products"
+            link: "/features"
           },
           {
             title: "Campaign Analytics",
             description: "Track performance and ROI across all creator partnerships.",
-            link: "/features/magento-analytics"
+            link: "/features"
           }
         ]
        },
@@ -1013,17 +1013,17 @@ export interface ProductData {
           {
             title: "WooCommerce Integration",
             description: "Seamless connection with your store for automated tracking.",
-            link: "/features/woo-integration"
+            link: "/features"
           },
           {
             title: "Product Management",
             description: "Sync and manage products for influencer campaigns.",
-            link: "/features/woo-products"
+            link: "/features"
           },
           {
             title: "Performance Analytics",
             description: "Track sales and ROI from creator partnerships.",
-            link: "/features/woo-analytics"
+            link: "/features"
           }
         ]
        },
@@ -1058,17 +1058,17 @@ export interface ProductData {
             {
               title: "Shipping Automation",
               description: "Automate product fulfillment and shipping with major carriers worldwide.",
-              link: "/features/shipping-automation"
+              link: "/features"
             },
             {
               title: "Gift Tracking",
               description: "Track shipments and measure content creation from gifted products.",
-              link: "/features/gift-tracking"
+              link: "/features"
             },
             {
               title: "ROI Measurement",
               description: "Calculate the return on investment for your product seeding campaigns.",
-              link: "/features/gifting-roi"
+              link: "/features"
             }
           ]
         },

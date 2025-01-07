@@ -74,39 +74,39 @@ export interface InfluencerPageData {
           canonical: "/creators",
           openGraph: {
             type: "website",
-            images: ["/images/creator-platform.jpg"]
+            images: ["images/for-pages/creator-platform.jpg"]
           }
         }
       },
       heading: {
         title: "Grow Your Personal Brand",
         subtitle: "Connect with premium brands and get paid fairly for your authentic influence",
-        image: "/images/creator-hero.jpg"
+        image: "images/for-pages/creator-hero.jpg"
       },
       features: [
         {
           title: "Easy Campaign Management",
           description: "Manage all your brand collaborations, content schedules, and payments in one centralized dashboard.",
           icon: "Dashboard",
-          link: "/features/campaign-management"
+          link: "/features"
         },
         {
           title: "Fair Compensation",
           description: "Earn based on actual performance with our transparent click-based payment system. Only pay for real engagement.",
           icon: "Wallet",
-          link: "/features/earnings"
+          link: "/features"
         },
         {
           title: "Growth Insights",
           description: "Access detailed analytics about your audience and content performance to optimize your strategy.",
           icon: "ChartBar",
-          link: "/features/analytics"
+          link: "/features"
         },
         {
           title: "AI-Powered Matching",
           description: "Get matched with brands that align with your content and audience demographics using our advanced AI technology.",
           icon: "Sparkles",
-          link: "/features/matching"
+          link: "/features"
         }
       ],
       benefits: [
@@ -229,39 +229,39 @@ export interface InfluencerPageData {
           canonical: "/brands",
           openGraph: {
             type: "website",
-            images: ["/images/brand-platform.jpg"]
+            images: ["images/for-pages/brand-platform.jpg"]
           }
         }
       },
       heading: {
         title: "Find Your Next Creator in Seconds",
         subtitle: "Our AI matches you with the perfect creators for your brand, from a network of thousands",
-        image: "/images/brand-hero.jpg"
+        image: "images/for-pages/brand-hero.jpg"
       },
       features: [
         {
           title: "AI-Powered Creator Discovery",
           description: "Let our AI find the perfect creators based on your brand values, target audience, and performance requirements.",
           icon: "Sparkles",
-          link: "/features/ai-matching"
+          link: "/features"
         },
         {
           title: "Performance-Based Pricing",
           description: "Only pay for actual results with our innovative credit system. No more wasted budget on underperforming campaigns.",
           icon: "CreditCard",
-          link: "/features/pricing"
+          link: "/features"
         },
         {
           title: "Real-Time Analytics",
           description: "Track campaign performance, engagement rates, and ROI in real-time across all your creator partnerships.",
           icon: "ChartBar",
-          link: "/features/analytics"
+          link: "/features"
         },
         {
           title: "Quality Assured Network",
           description: "Access only verified creators with proven track records and authentic engagement metrics.",
           icon: "Shield",
-          link: "/features/verification"
+          link: "/features"
         }
       ],
       benefits: [
@@ -384,39 +384,39 @@ export interface InfluencerPageData {
             canonical: "/influencers",
             openGraph: {
               type: "website",
-              images: ["/images/influencer-platform.jpg"]
+              images: ["images/for-pages/influencer-platform.jpg"]
             }
           }
         },
         heading: {
           title: "Scale Your Influence Into a Business",
           subtitle: "Transform your influence into a sustainable income stream with AI-powered brand partnerships",
-          image: "/images/influencer-hero.jpg"
+          image: "images/for-pages/influencer-hero.jpg"
         },
         features: [
           {
             title: "Smart Brand Matching",
             description: "Our AI analyzes your content style, audience demographics, and performance metrics to match you with perfect brand opportunities.",
             icon: "Target",
-            link: "/features/brand-matching"
+            link: "/features"
           },
           {
             title: "Business Tools Suite",
             description: "Access professional tools for content planning, performance tracking, and revenue management - everything you need to run your influence as a business.",
             icon: "Briefcase",
-            link: "/features/business-tools"
+            link: "/features"
           },
           {
             title: "Revenue Optimization",
             description: "Leverage AI-powered insights to optimize your content strategy and maximize earnings across all platforms.",
             icon: "TrendingUp",
-            link: "/features/revenue"
+            link: "/features"
           },
           {
             title: "Partnership Automation",
             description: "Streamline brand communications, content approvals, and payment processing with our automated workflow system.",
             icon: "Zap",
-            link: "/features/automation"
+            link: "/features"
           }
         ],
         benefits: [
@@ -539,39 +539,39 @@ export interface InfluencerPageData {
         canonical: "/nano-influencers",
         openGraph: {
             type: "website",
-            images: ["/images/nano-influencer-platform.jpg"]
+            images: ["images/for-pages/nano-influencer-platform.jpg"]
         }
         }
     },
     heading: {
         title: "Start Earning From Your Authentic Influence",
         subtitle: "Perfect for creators with 1,000-10,000 followers who want to begin their monetization journey",
-        image: "/images/nano-hero.jpg"
+        image: "images/for-pages/nano-hero.jpg"
     },
     features: [
         {
         title: "Easy Start Program",
         description: "Begin your influencer journey with simplified tools and guidance designed specifically for nano influencers.",
         icon: "Rocket",
-        link: "/features/nano-start"
+        link: "/features"
         },
         {
         title: "Brand Match Starter",
         description: "Get matched with brands looking specifically for authentic nano influencers with highly engaged audiences.",
         icon: "HandShake",
-        link: "/features/nano-matching"
+        link: "/features"
         },
         {
         title: "Growth Tracking",
         description: "Track your audience growth, engagement rates, and content performance with beginner-friendly analytics.",
         icon: "LineChart",
-        link: "/features/growth-analytics"
+        link: "/features"
         },
         {
         title: "Learning Resources",
         description: "Access our nano influencer academy with step-by-step guides on growing your audience and working with brands.",
         icon: "GraduationCap",
-        link: "/features/nano-academy"
+        link: "/features"
         }
     ],
     benefits: [
@@ -694,39 +694,39 @@ export interface InfluencerPageData {
         canonical: "/micro-influencers",
         openGraph: {
             type: "website",
-            images: ["/images/micro-influencer-platform.jpg"]
+            images: ["images/for-pages/micro-influencer-platform.jpg"]
         }
         }
     },
     heading: {
         title: "Scale Your Growing Influence",
         subtitle: "Unlock premium opportunities and tools designed for creators with 10,000-100,000 followers",
-        image: "/images/micro-hero.jpg"
+        image: "images/for-pages/micro-hero.jpg"
     },
     features: [
         {
         title: "Premium Brand Matching",
         description: "Get matched with established brands seeking micro influencers. Access higher-value partnerships and long-term collaborations.",
         icon: "Diamond",
-        link: "/features/micro-matching"
+        link: "/features"
         },
         {
         title: "Advanced Analytics Suite",
         description: "Track advanced metrics, audience insights, and content performance to optimize your growth strategy.",
         icon: "BarChart2",
-        link: "/features/micro-analytics"
+        link: "/features"
         },
         {
         title: "Content Strategy Tools",
         description: "Plan, schedule, and optimize your content across platforms with our AI-powered content tools.",
         icon: "Calendar",
-        link: "/features/content-tools"
+        link: "/features"
         },
         {
         title: "Growth Acceleration",
         description: "Access proven strategies and tools to accelerate your journey from micro to macro influencer.",
         icon: "TrendingUp",
-        link: "/features/growth-tools"
+        link: "/features"
         }
     ],
     benefits: [
@@ -849,39 +849,39 @@ export interface InfluencerPageData {
                 canonical: "/macro-influencers",
                 openGraph: {
                     type: "website",
-                    images: ["/images/macro-influencer-platform.jpg"]
+                    images: ["images/for-pages/macro-influencer-platform.jpg"]
                 }
             }
         },
         heading: {
             title: "Enterprise-Level Tools for Growing Creators",
             subtitle: "Scale your influence into a sustainable business with tools designed for 100K+ audience creators",
-            image: "/images/macro-hero.jpg"
+            image: "images/for-pages/macro-hero.jpg"
         },
         features: [
             {
                 title: "Enterprise Brand Partnerships",
                 description: "Access exclusive deals with Fortune 500 companies and global brands seeking macro-level reach and impact.",
                 icon: "Building",
-                link: "/features/enterprise-partnerships"
+                link: "/features"
             },
             {
                 title: "Team Management Suite",
                 description: "Manage your growing team with tools for content creation, scheduling, approvals, and campaign coordination.",
                 icon: "Users",
-                link: "/features/team-management"
+                link: "/features"
             },
             {
                 title: "Multi-Platform Analytics",
                 description: "Track performance across all platforms with enterprise-grade analytics and custom reporting tools.",
                 icon: "Activity",
-                link: "/features/macro-analytics"
+                link: "/features"
             },
             {
                 title: "Revenue Diversification",
                 description: "Expand your revenue streams with merchandising, digital products, and sponsored content optimization.",
                 icon: "Layers",
-                link: "/features/revenue-streams"
+                link: "/features"
             }
         ],
         benefits: [
@@ -1004,39 +1004,39 @@ export interface InfluencerPageData {
                 canonical: "/mega-influencers",
                 openGraph: {
                     type: "website",
-                    images: ["/images/mega-influencer-platform.jpg"]
+                    images: ["images/for-pages/mega-influencer-platform.jpg"]
                 }
             }
         },
         heading: {
             title: "Build Your Global Media Empire",
             subtitle: "Enterprise solutions designed for creators with 1M+ followers and global influence",
-            image: "/images/mega-hero.jpg"
+            image: "images/for-pages/mega-hero.jpg"
         },
         features: [
             {
                 title: "Global Brand Suite",
                 description: "Access exclusive partnerships with Fortune 100 companies and manage multiple global brand relationships simultaneously.",
                 icon: "Globe",
-                link: "/features/global-partnerships"
+                link: "/features"
             },
             {
                 title: "Media Empire Management",
                 description: "Comprehensive tools to manage your media company, multiple content channels, product lines, and brand extensions.",
                 icon: "Building2",
-                link: "/features/empire-management"
+                link: "/features"
             },
             {
                 title: "Enterprise Analytics",
                 description: "Advanced analytics with AI-powered insights, global audience metrics, and cross-platform performance tracking.",
                 icon: "TrendingUp",
-                link: "/features/mega-analytics"
+                link: "/features"
             },
             {
                 title: "Corporate Infrastructure",
                 description: "Full suite of tools for managing your corporation, including team management, legal compliance, and financial operations.",
                 icon: "Network",
-                link: "/features/corporate-tools"
+                link: "/features"
             }
         ],
         benefits: [
@@ -1159,39 +1159,39 @@ export interface InfluencerPageData {
                 canonical: "/ai-influencers",
                 openGraph: {
                     type: "website",
-                    images: ["/images/ai-influencer-platform.jpg"]
+                    images: ["images/for-pages/ai-influencer-platform.jpg"]
                 }
             }
         },
         heading: {
             title: "The Future of Digital Influence",
             subtitle: "Create and scale AI-powered virtual influencers with enterprise-grade management tools",
-            image: "/images/ai-hero.jpg"
+            image: "images/for-pages/ai-hero.jpg"
         },
         features: [
             {
                 title: "AI Personality Creation",
                 description: "Build authentic, consistent virtual personalities using advanced AI models while maintaining brand safety and ethical guidelines.",
                 icon: "Sparkles",
-                link: "/features/ai-personality"
+                link: "/features"
             },
             {
                 title: "Automated Content Studio",
                 description: "Generate and schedule content across platforms with AI-powered tools while maintaining your virtual influencer's unique voice and style.",
                 icon: "VideoCamera",
-                link: "/features/content-automation"
+                link: "/features"
             },
             {
                 title: "Virtual Brand Management",
                 description: "Manage brand partnerships, sponsorships, and collaborations specifically designed for AI influencers.",
                 icon: "Shield",
-                link: "/features/virtual-management"
+                link: "/features"
             },
             {
                 title: "Ethics & Compliance",
                 description: "Stay compliant with disclosure requirements and ethical guidelines for AI-generated content and virtual personalities.",
                 icon: "CheckCircle",
-                link: "/features/ai-compliance"
+                link: "/features"
             }
         ],
         benefits: [

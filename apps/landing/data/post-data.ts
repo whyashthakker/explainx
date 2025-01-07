@@ -1,4 +1,4 @@
-// Generated on 2025-01-07T05:15:02.059Z
+// Generated on 2025-01-07T11:57:19.488Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,698 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Cómo Ganar Dinero en TikTok: Guía Completa 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "Descubre cómo ganar dinero en TikTok a través de múltiples fuentes de ingresos. Aprende estrategias expertas para la monetización, desde el Programa Beta de Creatividad hasta asociaciones con marcas, además de consejos esenciales para hacer crecer tu presencia en TikTok y maximizar tu potencial de ingresos en 2025.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/how-to-make-money-on-tiktok",
+    "categories": [
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "¿Ha Muerto el Marketing de Influencers? La Evolución y el Futuro de la Influencia Digital en 2025",
+    "file": "is-influencer-marketing-dead",
+    "description": "Un análisis completo del estado actual del marketing de influencers, su evolución y perspectivas futuras en el mercado hispanohablante y global.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Experto en Marketing Digital",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "¿Qué es un Creador Digital? La Guía Completa",
+    "file": "what-is-a-digital-creator",
+    "description": "Explora el mundo integral de los creadores digitales, incluyendo estrategias comprobadas de monetización y perspectivas de los creadores más destacados. Aprende cómo transformar tu pasión en una carrera digital próspera mientras construyes una comunidad comprometida a través de múltiples plataformas.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/what-is-a-digital-creator",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Was ist ein Digital Creator? Der vollständige Leitfaden",
+    "file": "hat-is-a-digital-creator",
+    "description": "Erkunden Sie die umfassende Welt der Digital Creator, einschließlich bewährter Monetarisierungsstrategien und Einblicke von Top-Kreativen. Lernen Sie, wie Sie Ihre Leidenschaft in eine erfolgreiche digitale Karriere verwandeln und dabei eine engagierte Community über mehrere Plattformen hinweg aufbauen.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/hat-is-a-digital-creator",
+    "categories": [
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Geld verdienen auf TikTok: Vollständiger Leitfaden für 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "Entdecken Sie, wie Sie auf TikTok durch verschiedene Einnahmequellen Geld verdienen können. Lernen Sie Expertenstrategien zur Monetarisierung kennen, vom Creativity Program Beta bis hin zu Markenpartnerschaften, plus wichtige Tipps zum Ausbau Ihrer TikTok-Präsenz und zur Maximierung Ihres Ertragspotenzials im Jahr 2025.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/how-to-make-money-on-tiktok",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Ist Influencer-Marketing tot? Die Evolution und Zukunft des digitalen Einflusses im Jahr 2025",
+    "file": "is-influencer-marketing-dead",
+    "description": "Eine umfassende Analyse des aktuellen Stands des Influencer-Marketings, seiner Entwicklung und Zukunftsperspektiven im deutschsprachigen Raum und weltweit.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Digital Marketing Experte",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Comment Gagner de l'Argent sur TikTok : Guide Complet 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "Découvrez comment gagner de l'argent sur TikTok grâce à de multiples sources de revenus. Apprenez les stratégies d'experts pour la monétisation, du Programme Bêta de Créativité aux partenariats avec les marques, ainsi que des conseils essentiels pour développer votre présence sur TikTok et maximiser votre potentiel de revenus en 2025.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/how-to-make-money-on-tiktok",
+    "categories": [
+      "ai-tools",
+      "tiktok",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Le Marketing d'Influence est-il Mort ? L'Évolution et l'Avenir de l'Influence Digitale en 2025",
+    "file": "is-influencer-marketing-dead",
+    "description": "Une analyse approfondie de l'état actuel du marketing d'influence, son évolution et ses perspectives d'avenir sur le marché francophone et mondial.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Expert en Marketing Digital",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/is-influencer-marketing-dead",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Qu'est-ce qu'un Créateur Digital ? Le Guide Complet",
+    "file": "what-is-a-digital-creator",
+    "description": "Explorez l'univers complet des créateurs digitaux, incluant les stratégies de monétisation éprouvées et les perspectives des créateurs les plus influents. Apprenez à transformer votre passion en une carrière digitale florissante tout en bâtissant une communauté engagée sur plusieurs plateformes.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/what-is-a-digital-creator",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Come Guadagnare su TikTok: Guida Completa 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "Scopri come guadagnare su TikTok attraverso molteplici fonti di reddito. Impara le strategie degli esperti per la monetizzazione, dal Programma Beta di Creatività alle partnership con i brand, più consigli essenziali per far crescere la tua presenza su TikTok e massimizzare il tuo potenziale di guadagno nel 2025.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/how-to-make-money-on-tiktok",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Il Marketing degli Influencer è Morto? L'Evoluzione e il Futuro dell'Influenza Digitale nel 2025",
+    "file": "is-influencer-marketing-dead",
+    "description": "Un'analisi approfondita dello stato attuale del marketing degli influencer, la sua evoluzione e le prospettive future nel mercato italiano e globale.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Esperto di Marketing Digitale",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Che Cos'è un Creatore Digitale? La Guida Completa",
+    "file": "what-is-a-digital-creator",
+    "description": "Esplora il mondo completo dei creatori digitali, includendo strategie di monetizzazione comprovate e approfondimenti dai migliori creator. Impara a trasformare la tua passione in una carriera digitale di successo costruendo una community coinvolta su più piattaforme.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/what-is-a-digital-creator",
+    "categories": [
+      "creator-economy",
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "टिकटॉक पर पैसे कैसे कमाएं: संपूर्ण गाइड 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "टिकटॉक पर कई आय स्रोतों के माध्यम से पैसे कमाना सीखें। क्रिएटिविटी प्रोग्राम बीटा से लेकर ब्रांड पार्टनरशिप तक की विशेषज्ञ मुद्रीकरण रणनीतियां जानें, साथ ही 2025 में अपनी टिकटॉक उपस्थिति बढ़ाने और अपनी कमाई की क्षमता को अधिकतम करने के लिए आवश्यक टिप्स।",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/how-to-make-money-on-tiktok",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "क्या इन्फ्लुएंसर मार्केटिंग खत्म हो गया है? 2025 में डिजिटल प्रभाव का विकास और भविष्य",
+    "file": "is-influencer-marketing-dead",
+    "description": "भारतीय बाजार में इन्फ्लुएंसर मार्केटिंग की वर्तमान स्थिति, विकास और भविष्य की संभावनाओं का विस्तृत विश्लेषण",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "डिजिटल मार्केटिंग विशेषज्ञ",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "डिजिटल क्रिएटर क्या है? पूर्ण मार्गदर्शिका",
+    "file": "what-is-a-digital-creator",
+    "description": "डिजिटल क्रिएटर्स की व्यापक दुनिया का पता लगाएं, जिसमें सिद्ध मौद्रीकरण रणनीतियां और शीर्ष क्रिएटर्स की अंतर्दृष्टि शामिल हैं। अपने जुनून को एक समृद्ध डिजिटल करियर में बदलना सीखें जबकि कई प्लेटफॉर्म पर एक जुड़ा हुआ समुदाय बनाएं।",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/what-is-a-digital-creator",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "دليل شامل لكسب المال على تيك توك 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "اكتشف كيفية كسب المال على تيك توك من خلال مصادر دخل متعددة. تعلم استراتيجيات الخبراء للربح، من برنامج الإبداع التجريبي إلى الشراكات مع العلامات التجارية، بالإضافة إلى نصائح أساسية لتنمية حضورك على تيك توك وتعظيم إمكانات كسب المال في 2025",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/how-to-make-money-on-tiktok",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "هل انتهى عصر تسويق المؤثرين؟ تطور وتأثير التسويق الرقمي في 2025",
+    "file": "is-influencer-marketing-dead",
+    "description": "تحليل شامل لواقع تسويق المؤثرين في المنطقة العربية والعالم، مع التركيز على التطورات المستقبلية وتأثيرها على التسويق الرقمي",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "خبير التسويق الرقمي",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "ما هو صانع المحتوى الرقمي؟ الدليل الشامل",
+    "file": "what-is-a-digital-creator",
+    "description": "اكتشف العالم الشامل لصناع المحتوى الرقمي، بما في ذلك استراتيجيات الربح المُثبتة ورؤى من أبرز المبدعين. تعلم كيفية تحويل شغفك إلى مهنة رقمية مزدهرة مع بناء مجتمع متفاعل عبر منصات متعددة.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/what-is-a-digital-creator",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025年TikTok变现完整指南",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "探索如何通过多种收入来源在TikTok上赚钱。学习从创意计划测试版到品牌合作的专业变现策略，以及在2025年提升您的TikTok影响力和最大化收益潜力的重要技巧。",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/how-to-make-money-on-tiktok",
+    "categories": [
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "网红营销已死？2025年数字影响力的演变与未来",
+    "file": "is-influencer-marketing-dead",
+    "description": "深入分析中国市场网红营销的现状、演变及未来发展前景",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "数字营销专家",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "什么是数字创作者？完整指南",
+    "file": "what-is-a-digital-creator",
+    "description": "探索数字创作者的全面世界，包括经过验证的变现策略和顶尖创作者的见解。了解如何在多个平台建立活跃社群的同时，将您的热情转化为蓬勃发展的数字职业生涯。",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/what-is-a-digital-creator",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "틱톡으로 수익 창출하는 방법: 2025년 완벽 가이드",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "틱톡에서 다양한 수익원을 통해 수입을 얻는 방법을 알아보세요. 크리에이티비티 프로그램 베타부터 브랜드 파트너십까지, 전문가의 수익화 전략을 배우고, 2025년 틱톡에서의 영향력을 키우고 수익 잠재력을 극대화하기 위한 필수 팁도 확인하세요.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/how-to-make-money-on-tiktok",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "인플루언서 마케팅은 끝났나? 2025년 디지털 영향력의 진화와 미래",
+    "file": "is-influencer-marketing-dead",
+    "description": "한국 시장에서의 인플루언서 마케팅 현황, 발전, 그리고 미래 전망에 대한 상세 분석",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "디지털 마케팅 전문가",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "디지털 크리에이터란? 포괄적인 완벽 가이드",
+    "file": "what-is-a-digital-creator",
+    "description": "입증된 수익화 전략과 성공한 크리에이터들의 인사이트를 통해 디지털 크리에이터의 세계를 자세히 알아보세요. 여러 플랫폼에서 활발한 커뮤니티를 구축하면서 당신의 열정을 성공적인 디지털 경력으로 전환하는 방법을 배워보세요.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/what-is-a-digital-creator",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "TikTokで収入を得る方法：完全ガイド2025年版",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "TikTokで複数の収入源を通じて収益を上げる方法をご紹介します。クリエイティビティプログラムベータからブランドパートナーシップまで、専門家の収益化戦略を学び、2025年にTikTokでのプレゼンスを高め、収益力を最大化するための重要なヒントもご覧いただけます。",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/how-to-make-money-on-tiktok",
+    "categories": [
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "インフルエンサーマーケティングは終焉を迎えたのか？2025年のデジタルインフルエンスの進化と未来",
+    "file": "is-influencer-marketing-dead",
+    "description": "日本市場におけるインフルエンサーマーケティングの現状、進化、そして将来の展望についての詳細な分析",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "デジタルマーケティングエキスパート",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "デジタルクリエイターとは？完全攻略ガイド",
+    "file": "what-is-a-digital-creator",
+    "description": "デジタルクリエイターの世界を徹底解説。実証済みの収益化戦略からトップクリエイターの洞察まで、複数のプラットフォームで熱心なコミュニティを構築しながら、あなたの情熱を成功するデジタルキャリアへと導く方法を学びましょう。",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/what-is-a-digital-creator",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Geld Verdienen op TikTok: Complete Gids 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "Ontdek hoe je geld kunt verdienen op TikTok via verschillende inkomstenbronnen. Leer expertstrategieën voor monetisatie, van het Creativity Program Beta tot merkpartnerschappen, plus essentiële tips voor het vergroten van je TikTok-aanwezigheid en het maximaliseren van je verdienpotentieel in 2025.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/how-to-make-money-on-tiktok",
+    "categories": [
+      "instagram",
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Is Influencer Marketing Dood? De Evolutie en Toekomst van Digitale Invloed in 2025",
+    "file": "is-influencer-marketing-dead",
+    "description": "Een diepgaande analyse van de huidige staat van influencer marketing, de evolutie ervan en toekomstperspectieven in de Nederlandse markt en wereldwijd.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Digital Marketing Expert",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Wat is een Digital Creator? De Complete Gids",
+    "file": "what-is-a-digital-creator",
+    "description": "Ontdek de uitgebreide wereld van digital creators, inclusief bewezen monetisatiestrategieën en inzichten van toonaangevende creators. Leer hoe je jouw passie kunt omzetten in een succesvolle digitale carrière terwijl je een betrokken community opbouwt op verschillende platforms.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/what-is-a-digital-creator",
+    "categories": [
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Как Зарабатывать на TikTok: Полное Руководство 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "Узнайте, как зарабатывать на TikTok через различные источники дохода. Изучите экспертные стратегии монетизации: от программы Creativity Program Beta до партнерства с брендами, а также ключевые советы по развитию вашего присутствия в TikTok и максимизации потенциала заработка в 2025 году.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/how-to-make-money-on-tiktok",
+    "categories": [
+      "tiktok",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Умер ли маркетинг влияния? Эволюция и будущее цифрового влияния в 2025 году",
+    "file": "is-influencer-marketing-dead",
+    "description": "Подробный анализ текущего состояния маркетинга влияния, его эволюции и перспектив на российском рынке и в мире",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Эксперт по цифровому маркетингу",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Кто такой диджитал-креатор? Полное руководство",
+    "file": "what-is-a-digital-creator",
+    "description": "Исследуйте комплексный мир диджитал-креаторов, включая проверенные стратегии монетизации и опыт ведущих создателей контента. Узнайте, как превратить свою страсть в успешную цифровую карьеру, создавая вовлеченное сообщество на различных платформах.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/what-is-a-digital-creator",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "How to Make Money on TikTok: Complete Guide for 2025",
+    "file": "how-to-make-money-on-tiktok",
+    "description": "Discover how to make money on TikTok through multiple revenue streams. Learn expert strategies for monetization, from the Creativity Program Beta to brand partnerships, plus essential tips for growing your TikTok presence and maximizing your earning potential in 2025.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/how-to-make-money-on-tiktok",
+    "categories": [
+      "influencer-marketing",
+      "tiktok",
+      "brand-collaboration",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Is Influencer Marketing Dead? The Evolution and Future of Digital Influence in 2025",
+    "file": "is-influencer-marketing-dead",
+    "description": "Dive deep into the current state of influencer marketing, exploring whether it's dying or evolving, its future prospects, and its transformation into the new PR. A comprehensive analysis of the industry in 2025.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Digital Marketing Expert",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/is-influencer-marketing-dead",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "What Is a Digital Creator? The Complete Guide",
+    "file": "what-is-a-digital-creator",
+    "description": "Explore the comprehensive world of digital creators, including proven monetization strategies and insights from top creators. Learn how to transform your passion into a thriving digital career while building an engaged community across multiple platforms.",
+    "date": "January 7, 2025",
+    "datetime": "2025-01-07",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/what-is-a-digital-creator",
+    "categories": [
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
   {
     "title": "Cómo Planificar tu Presupuesto de Marketing con Influencers",
     "file": "how-to-plan-your-influencer-marketing-budget",

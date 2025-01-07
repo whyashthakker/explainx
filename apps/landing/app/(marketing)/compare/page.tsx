@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     images: ['/og-compare.jpg']
   },
   alternates: {
-    canonical: 'https://infloq.com/compare'
+    canonical: 'https://www.infloq.com/compare'
   }
 }
 

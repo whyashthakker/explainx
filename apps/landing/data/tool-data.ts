@@ -9,7 +9,7 @@ export const tools: Tool[] = [
     platform: 'Instagram',
     category: 'audit',
     component: 'InstagramAudit',
-    image: '/tools/instagram-audit.jpg',
+    image: '/images/tool-images/instagram-audit.jpg',
     ctaText: 'Analyze Profile',
     features: [
       'Rapid profile analysis with instant results',
@@ -123,7 +123,7 @@ export const tools: Tool[] = [
     platform: 'Instagram',
     category: 'analytics',
     component: 'InstagramEngagementChecker',
-    image: '/tools/instagram-engagement.jpg',
+    image: '/images/tool-images/instagram-engagement.jpg',
     ctaText: 'Check Engagement',
     features: [
       'Real-time engagement rate calculation',
@@ -220,7 +220,7 @@ export const tools: Tool[] = [
     platform: 'Instagram',
     category: 'verification',
     component: 'FakeFollowerChecker',
-    image: '/tools/fake-follower-checker.jpg',
+    image: '/images/tool-images/fake-follower-checker.jpg',
     ctaText: 'Check Followers Now',
     features: [
       'Instant fake follower detection',
@@ -335,7 +335,7 @@ export const tools: Tool[] = [
     platform: 'Instagram',
     category: 'discovery',
     component: 'CreatorDiscovery',
-    image: '/tools/creator-discovery.jpg',
+    image: '/images/tool-images/creator-discovery.jpg',
     ctaText: 'Find Creators',
     features: [
       'Location-based creator search',
@@ -456,7 +456,7 @@ export const tools: Tool[] = [
     platform: 'TikTok',
     category: 'audit',
     component: 'TikTokAudit',
-    image: '/tools/tiktok-audit.jpg',
+    image: '/images/tool-images/tiktok-audit.jpg',
     ctaText: 'Analyze Profile',
     features: [
       'Instant profile analysis',
@@ -577,7 +577,7 @@ export const tools: Tool[] = [
     platform: 'TikTok',
     category: 'engagement',
     component: 'TikTokEngagement',
-    image: '/tools/tiktok-engagement.jpg',
+    image: '/images/tool-images/tiktok-engagement.jpg',
     ctaText: 'Check Engagement',
     features: [
       'Real-time engagement analysis',
@@ -705,7 +705,7 @@ export const tools: Tool[] = [
     platform: 'Twitter-X',
     category: 'discovery',
     component: 'TwitterCreatorFinder',
-    image: '/tools/twitter-creator-finder.jpg',
+    image: '/images/tool-images/twitter-creator-finder.jpg',
     ctaText: 'Find Creators',
     features: [
       'Location-based creator search',
@@ -819,7 +819,7 @@ export const tools: Tool[] = [
     platform: 'Pinterest',
     category: 'audit',
     component: 'PinterestAudit',
-    image: '/tools/pinterest-audit.jpg',
+    image: '/images/tool-images/pinterest-audit.jpg',
     ctaText: 'Analyze Profile',
     features: [
       'Quick profile analysis',
@@ -933,7 +933,7 @@ export const tools: Tool[] = [
     platform: 'General',
     category: 'calculator',
     component: 'FBACalculator',
-    image: '/tools/fba-calculator.jpg',
+    image: '/images/tool-images/fba-calculator.jpg',
     ctaText: 'Calculate Fees',
     features: [
       'Comprehensive cost analysis',
@@ -1030,7 +1030,7 @@ export const tools: Tool[] = [
     platform: 'YouTube',
     category: 'audit',
     component: 'YouTubeAudit',
-    image: '/tools/youtube-audit.jpg',
+    image: '/images/tool-images/youtube-audit.jpg',
     ctaText: 'Analyze Profile',
     features: [
       'Quick profile analysis',
@@ -1144,7 +1144,7 @@ export const tools: Tool[] = [
     platform: 'Twitch',
     category: 'audit',
     component: 'TwitchAudit',
-    image: '/tools/twitch-audit.jpg',
+    image: '/images/tool-images/twitch-audit.jpg',
     ctaText: 'Analyze Profile',
     features: [
       'Follower analytics',
@@ -1258,7 +1258,7 @@ export const tools: Tool[] = [
     platform: 'General',
     category: 'calculator',
     component: 'EngagementCalculator',
-    image: '/tools/engagement-calculator.jpg',
+    image: '/images/tool-images/engagement-calculator.jpg',
     ctaText: 'Calculate Engagement',
     features: [
       'Instagram engagement rate calculator',
@@ -1372,7 +1372,7 @@ export const tools: Tool[] = [
     platform: 'General',
     category: 'calculator',
     component: 'SocialROICalculator',
-    image: '/tools/social-roi-calculator.jpg',
+    image: '/images/tool-images/social-roi-calculator.jpg',
     ctaText: 'Calculate ROI',
     features: [
       'Social media ROI calculator',
@@ -1486,7 +1486,7 @@ export const tools: Tool[] = [
     platform: 'General',
     category: 'calculator',
     component: 'InfluencerEarningsCalculator',
-    image: '/tools/influencer-earnings-calculator.jpg',
+    image: '/images/tool-images/influencer-earnings-calculator.jpg',
     ctaText: 'Calculate Earnings',
     features: [
       'Instagram influencer rate calculator',
@@ -1601,7 +1601,7 @@ export const tools: Tool[] = [
     platform: 'YouTube',
     category: 'calculator',
     component: 'YouTubeEarningsCalculator',
-    image: '/tools/youtube-earnings-calculator.jpg',
+    image: '/images/tool-images/youtube-earnings-calculator.jpg',
     ctaText: 'Calculate Earnings',
     features: [
       'YouTube AdSense calculator',
@@ -1716,7 +1716,7 @@ export const tools: Tool[] = [
     platform: 'Twitter-X',
     category: 'calculator',
     component: 'XEarningsCalculator',
-    image: '/tools/x-earnings-calculator.jpg',
+    image: '/images/tool-images/x-earnings-calculator.jpg',
     ctaText: 'Calculate Earnings',
     features: [
       'X revenue calculator',
@@ -1831,7 +1831,7 @@ export const tools: Tool[] = [
     platform: 'General',
     category: 'calculator',
     component: 'InfluencerMarketingCalculator',
-    image: '/tools/influencer-marketing-calculator.jpg',
+    image: '/images/tool-images/influencer-marketing-calculator.jpg',
     ctaText: 'Calculate Campaign',
     features: [
       'Influencer marketing ROI calculator',
