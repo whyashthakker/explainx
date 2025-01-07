@@ -1,4 +1,3 @@
-// app/api/team/member/[memberId]/route.ts
 import prisma from "@repo/db/client";
 import { auth } from "../../../../../auth";
 import { NextResponse } from "next/server";
@@ -10,7 +9,7 @@ interface UpdateRoleBody {
 
 export async function DELETE(
   request: NextRequest,
-  context: { params: Promise<{ memberId: string }> }
+  context: { params: Promise<{ memberId: string }> },
 ) {
   try {
     const session = await auth();
@@ -23,18 +22,29 @@ export async function DELETE(
     const currentUser = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: {
-        influencer: {
+        brands: {
           include: { team: true },
         },
       },
     });
 
-    if (!currentUser?.influencer?.team) {
+    if (!currentUser) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    if (currentUser.userType !== "BRAND" && currentUser.userType !== "BOTH") {
+      return NextResponse.json(
+        { error: "Not authorized to access brand portal" },
+        { status: 403 },
+      );
+    }
+
+    const activeBrand = currentUser.brands[0];
+    if (!activeBrand?.team) {
       return NextResponse.json({ error: "Team not found" }, { status: 404 });
     }
 
-    // Get member to be deleted
-    const memberToDelete = await prisma.influencerTeamMember.findUnique({
+    const memberToDelete = await prisma.brandTeamMember.findUnique({
       where: { id: memberId },
       include: { team: true },
     });
@@ -43,10 +53,16 @@ export async function DELETE(
       return NextResponse.json({ error: "Member not found" }, { status: 404 });
     }
 
-    // Check if current user has permission (must be OWNER or ADMIN)
-    const currentMember = await prisma.influencerTeamMember.findFirst({
+    if (memberToDelete.teamId !== activeBrand.team.id) {
+      return NextResponse.json(
+        { error: "Member not in your team" },
+        { status: 403 },
+      );
+    }
+
+    const currentMember = await prisma.brandTeamMember.findFirst({
       where: {
-        teamId: currentUser.influencer.team.id,
+        teamId: activeBrand.team.id,
         userId: currentUser.id,
         role: { in: ["OWNER", "ADMIN"] },
       },
@@ -59,7 +75,6 @@ export async function DELETE(
       );
     }
 
-    // Can't delete OWNER
     if (memberToDelete.role === "OWNER") {
       return NextResponse.json(
         { error: "Cannot remove team owner" },
@@ -67,8 +82,7 @@ export async function DELETE(
       );
     }
 
-    // Delete member
-    await prisma.influencerTeamMember.delete({
+    await prisma.brandTeamMember.delete({
       where: { id: memberId },
     });
 
@@ -84,7 +98,7 @@ export async function DELETE(
 
 export async function PATCH(
   request: NextRequest,
-  context: { params: Promise<{ memberId: string }> }
+  context: { params: Promise<{ memberId: string }> },
 ) {
   try {
     const session = await auth();
@@ -102,20 +116,46 @@ export async function PATCH(
     const currentUser = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: {
-        influencer: {
+        brands: {
           include: { team: true },
         },
       },
     });
 
-    if (!currentUser?.influencer?.team) {
+    if (!currentUser) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    if (currentUser.userType !== "BRAND" && currentUser.userType !== "BOTH") {
+      return NextResponse.json(
+        { error: "Not authorized to access brand portal" },
+        { status: 403 },
+      );
+    }
+
+    const activeBrand = currentUser.brands[0];
+    if (!activeBrand?.team) {
       return NextResponse.json({ error: "Team not found" }, { status: 404 });
     }
 
-    // Check if current user is OWNER (only OWNER can promote to ADMIN)
-    const currentMember = await prisma.influencerTeamMember.findFirst({
+    const memberToUpdate = await prisma.brandTeamMember.findUnique({
+      where: { id: memberId },
+    });
+
+    if (!memberToUpdate) {
+      return NextResponse.json({ error: "Member not found" }, { status: 404 });
+    }
+
+    if (memberToUpdate.teamId !== activeBrand.team.id) {
+      return NextResponse.json(
+        { error: "Member not in your team" },
+        { status: 403 },
+      );
+    }
+
+    const currentMember = await prisma.brandTeamMember.findFirst({
       where: {
-        teamId: currentUser.influencer.team.id,
+        teamId: activeBrand.team.id,
         userId: currentUser.id,
         role: "OWNER",
       },
@@ -128,16 +168,6 @@ export async function PATCH(
       );
     }
 
-    // Get member to update
-    const memberToUpdate = await prisma.influencerTeamMember.findUnique({
-      where: { id: memberId },
-    });
-
-    if (!memberToUpdate) {
-      return NextResponse.json({ error: "Member not found" }, { status: 404 });
-    }
-
-    // Can't change OWNER's role
     if (memberToUpdate.role === "OWNER") {
       return NextResponse.json(
         { error: "Cannot change owner's role" },
@@ -145,8 +175,7 @@ export async function PATCH(
       );
     }
 
-    // Update member role
-    const updatedMember = await prisma.influencerTeamMember.update({
+    const updatedMember = await prisma.brandTeamMember.update({
       where: { id: memberId },
       data: { role },
     });

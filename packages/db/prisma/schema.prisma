@@ -9,7 +9,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Base User Model with Auth
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -25,9 +24,9 @@ model User {
   // Role and type
   userType     UserType?
   
-  // Profile relations
-  brand         Brand?    
-  influencer    Influencer?
+  // Profile relations - Remove unique constraint to allow both
+  brands        Brand[]    
+  influencers   Influencer[]
 
   // Team memberships
   brandTeamMemberships    BrandTeamMember[]
@@ -44,6 +43,7 @@ model User {
 enum UserType {
   BRAND
   INFLUENCER
+  BOTH
 }
 
 // Auth Models
@@ -110,10 +110,10 @@ enum TeamRole {
   MEMBER
 }
 
-// Brand Models
+// Update Brand model - remove unique constraint on userId
 model Brand {
   id          String    @id @default(cuid())
-  userId      String    @unique
+  userId      String
   user        User      @relation(fields: [userId], references: [id])
   
   name        String
@@ -123,20 +123,19 @@ model Brand {
   description String?
 
   targetDemographic    String?
-  preferredCategories  String[]    // e.g., ["Fashion", "Beauty", "Tech"]
+  preferredCategories  String[]
   minFollowers        Int?
   maxBudget          Decimal?
   preferredPlatforms  Platform[]
   
-  // Team Management
   team        BrandTeam?
-
-  // Relations
   campaigns   Campaign[]
   collaborations Collaboration[]
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  @@index([userId]) // Add index for better query performance
 }
 
 model BrandTeam {
@@ -154,22 +153,24 @@ model BrandTeamMember {
   id          String    @id @default(cuid())
   teamId      String
   team        BrandTeam @relation(fields: [teamId], references: [id])
-  userId      String
-  user        User      @relation(fields: [userId], references: [id])
+  userId      String?
+  user        User?      @relation(fields: [userId], references: [id])
   role        TeamRole  
   inviteStatus InviteStatus
   inviteToken String?   @unique
+  inviteEmail String?   // Add this field to store email for pending invites
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
+ @@unique([teamId, inviteEmail]) // Add this unique constraint
   @@unique([teamId, userId])
 }
 
-// Influencer Models
+// Update Influencer model - remove unique constraint on userId
 model Influencer {
   id          String    @id @default(cuid())
-  userId      String    @unique
+  userId      String
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   
   name        String
@@ -179,18 +180,16 @@ model Influencer {
   followers   Int
   platforms   Platform[]
   
-  // Team Management
   team        InfluencerTeam?
-
-  // Relations
   collaborations Collaboration[]
-
   youtubeAccount YouTubeAccount?
 
-  instagramAccount InstagramAccount?
-
+instagramAccount InstagramAccount?
+proposalApplications ProposalApplication[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  @@index([userId]) // Add index for better query performance
 }
 
 model InfluencerTeam {
@@ -253,6 +252,7 @@ model Campaign {
   endDate     DateTime
   
   collaborations Collaboration[]
+  proposals    CampaignProposal[]
   
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -266,14 +266,30 @@ enum CampaignStatus {
 }
 
 // Collaboration and Chat Models
+
+enum CollaborationStatus {
+  PENDING
+  ACCEPTED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+
 model Collaboration {
   id            String    @id @default(cuid())
   campaignId    String
-  campaign      Campaign  @relation(fields: [campaignId], references: [id])
+  campaign      Campaign  @relation(fields: [campaignId], references: [id], onDelete: Cascade)
   brandId       String
-  brand         Brand     @relation(fields: [brandId], references: [id])
+  brand         Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   influencerId  String
-  influencer    Influencer @relation(fields: [influencerId], references: [id])
+  influencer    Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  
+  // New fields to track if this came from a proposal
+  proposalId    String?
+  proposal      CampaignProposal? @relation("ProposalCollaboration", fields: [proposalId], references: [id], onDelete: SetNull)
+  applicationId String? @unique
+  application   ProposalApplication? @relation(fields: [applicationId], references: [id], onDelete: SetNull)
   
   status        CollaborationStatus
   terms         String
@@ -286,12 +302,69 @@ model Collaboration {
   updatedAt     DateTime  @updatedAt
 }
 
-enum CollaborationStatus {
+enum ProposalStatus {
+  DRAFT
+  OPEN
+  CLOSED
+  CANCELLED
+}
+
+model CampaignProposal {
+  id              String    @id @default(cuid())
+  campaignId      String
+  campaign        Campaign  @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  
+  title           String
+  description     String
+  requirements    String[]
+  deliverables    String[]
+  budget          Decimal
+  timeframe       Int      // Duration in days
+  platforms       Platform[]
+  
+  // Targeting criteria
+  minFollowers    Int
+  maxFollowers    Int?
+  targetCategories String[]
+  targetPlatforms Platform[]
+  
+  // Status
+  status          ProposalStatus @default(OPEN)
+  
+  // Relations
+  applications    ProposalApplication[]
+  collaborations  Collaboration[] @relation("ProposalCollaboration")
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model ProposalApplication {
+  id              String    @id @default(cuid())
+  proposalId      String
+  proposal        CampaignProposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  influencerId    String
+  influencer      Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  
+  // Application details
+  coverLetter     String
+  proposedTerms   String?
+  proposedBudget  Decimal?
+  
+  status          ApplicationStatus @default(PENDING)
+  
+  // If accepted, create collaboration
+  collaboration   Collaboration?
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+enum ApplicationStatus {
   PENDING
   ACCEPTED
-  ACTIVE
-  COMPLETED
-  CANCELLED
+  REJECTED
+  WITHDRAWN
 }
 
 

@@ -1,4 +1,3 @@
-// app/(authenticated)/dashboard/_components/MainDashboard.tsx
 "use client";
 
 import React from "react";
@@ -49,7 +48,8 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { handleSignOut } from "../../../../../lib/actions";
-import { PrismaUserWithInfluencer, Platform } from "../../../../../lib/types";
+import { UserWithProfiles } from "../../../../../lib/types";
+import { Platform } from "@prisma/client";
 
 interface PlatformDistribution {
   name: Platform;
@@ -68,24 +68,24 @@ interface EngagementDataPoint {
   shares: number;
 }
 
-const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
+const InfluencerDashboard: React.FC<{ user: UserWithProfiles }> = ({
   user,
 }) => {
   const router = useRouter();
 
-  if (!user.influencer) {
+  if (!user.influencers?.[0]) {
     return null;
   }
 
-  const { influencer } = user;
+  const currentInfluencer = user.influencers[0];
 
   const followerData: ChartDataPoint[] = [
-    { month: "Jan", followers: Math.floor(influencer.followers * 0.7) },
-    { month: "Feb", followers: Math.floor(influencer.followers * 0.8) },
-    { month: "Mar", followers: Math.floor(influencer.followers * 0.85) },
-    { month: "Apr", followers: Math.floor(influencer.followers * 0.9) },
-    { month: "May", followers: Math.floor(influencer.followers * 0.95) },
-    { month: "Jun", followers: influencer.followers },
+    { month: "Jan", followers: Math.floor(currentInfluencer.followers * 0.7) },
+    { month: "Feb", followers: Math.floor(currentInfluencer.followers * 0.8) },
+    { month: "Mar", followers: Math.floor(currentInfluencer.followers * 0.85) },
+    { month: "Apr", followers: Math.floor(currentInfluencer.followers * 0.9) },
+    { month: "May", followers: Math.floor(currentInfluencer.followers * 0.95) },
+    { month: "Jun", followers: currentInfluencer.followers },
   ];
 
   const engagementData: EngagementDataPoint[] = [
@@ -99,15 +99,14 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
   ];
 
   const calculatePlatformDistribution = (): PlatformDistribution[] => {
-    const total = influencer.platforms.length;
-    return influencer.platforms.map((platform: any) => ({
+    const total = currentInfluencer.platforms.length;
+    return currentInfluencer.platforms.map((platform) => ({
       name: platform,
       value: Math.round(100 / total),
     }));
   };
 
   const COLORS = ["#6366f1", "#ec4899", "#14b8a6", "#f97316"] as const;
-  type ColorType = (typeof COLORS)[number];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
@@ -118,17 +117,21 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
             <Avatar className="h-16 w-16">
               <AvatarImage
                 src={
-                  influencer.avatar || user.image || "/api/placeholder/100/100"
+                  currentInfluencer.avatar ||
+                  user.image ||
+                  "/api/placeholder/100/100"
                 }
-                alt={influencer.name}
+                alt={currentInfluencer.name}
               />
-              <AvatarFallback>{influencer.name[0]}</AvatarFallback>
+              <AvatarFallback>{currentInfluencer.name[0]}</AvatarFallback>
             </Avatar>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                {influencer.name}
+                {currentInfluencer.name}
               </h1>
-              <p className="text-gray-500">{influencer.category} Influencer</p>
+              <p className="text-gray-500">
+                {currentInfluencer.category} Influencer
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -152,7 +155,7 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
             </form>
             <Badge className="bg-indigo-500 hover:bg-indigo-600">
               <Sparkles className="w-4 h-4 mr-2" />
-              {influencer.category}
+              {currentInfluencer.category}
             </Badge>
           </div>
         </div>
@@ -167,7 +170,7 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
                     Total Followers
                   </p>
                   <h3 className="text-2xl font-bold text-gray-900">
-                    {influencer.followers.toLocaleString()}
+                    {currentInfluencer.followers.toLocaleString()}
                   </h3>
                 </div>
                 <Users className="h-8 w-8 text-indigo-500" />
@@ -180,7 +183,7 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
                 <div>
                   <p className="text-sm font-medium text-gray-500">Platforms</p>
                   <h3 className="text-2xl font-bold text-gray-900">
-                    {influencer.platforms.length}
+                    {currentInfluencer.platforms.length}
                   </h3>
                 </div>
                 <Heart className="h-8 w-8 text-pink-500" />
@@ -193,7 +196,7 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
                 <div>
                   <p className="text-sm font-medium text-gray-500">Category</p>
                   <h3 className="text-xl font-bold text-gray-900">
-                    {influencer.category}
+                    {currentInfluencer.category}
                   </h3>
                 </div>
                 <Video className="h-8 w-8 text-teal-500" />
@@ -216,14 +219,14 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
         </div>
 
         {/* Bio Alert */}
-        {influencer.bio && (
+        {currentInfluencer.bio && (
           <Alert className="bg-indigo-50 border-indigo-200">
             <Bell className="h-4 w-4 text-indigo-500" />
             <AlertTitle className="text-indigo-700">
-              About {influencer.name}
+              About {currentInfluencer.name}
             </AlertTitle>
             <AlertDescription className="text-indigo-600">
-              {influencer.bio}
+              {currentInfluencer.bio}
             </AlertDescription>
           </Alert>
         )}
@@ -321,20 +324,22 @@ const InfluencerDashboard: React.FC<{ user: PrismaUserWithInfluencer }> = ({
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {influencer.platforms.map((platform: any, index: number) => (
-                  <div key={platform} className="flex items-center space-x-4">
-                    <Award
-                      style={{ color: COLORS[index % COLORS.length] }}
-                      className="h-8 w-8"
-                    />
-                    <div>
-                      <p className="font-medium">{platform}</p>
-                      <p className="text-sm text-gray-500">
-                        Connected and Active
-                      </p>
+                {currentInfluencer.platforms.map(
+                  (platform: Platform, index: number) => (
+                    <div key={platform} className="flex items-center space-x-4">
+                      <Award
+                        style={{ color: COLORS[index % COLORS.length] }}
+                        className="h-8 w-8"
+                      />
+                      <div>
+                        <p className="font-medium">{platform}</p>
+                        <p className="text-sm text-gray-500">
+                          Connected and Active
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
             </CardContent>
           </Card>

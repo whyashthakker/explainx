@@ -4,7 +4,7 @@ import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
 import prisma from "@repo/db/client";
 import InfluencerDashboard from "./_components/MainDashboard";
-import { PrismaUserWithInfluencer } from "../../../../lib/types";
+import { UserWithProfiles } from "../../../../lib/types";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -17,7 +17,7 @@ export default async function DashboardPage() {
       email: session.user.email,
     },
     include: {
-      influencer: {
+      influencers: {
         include: {
           user: {
             select: {
@@ -26,11 +26,17 @@ export default async function DashboardPage() {
               image: true,
             },
           },
+          team: true,
+          collaborations: true,
+          youtubeAccount: true,
         },
       },
     },
   });
 
-  // Type assertion here if needed
-  return <InfluencerDashboard user={user as PrismaUserWithInfluencer} />;
+  if (!user) {
+    redirect("/");
+  }
+
+  return <InfluencerDashboard user={user as UserWithProfiles} />;
 }

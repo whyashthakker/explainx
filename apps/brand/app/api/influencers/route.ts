@@ -2,9 +2,8 @@
 import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
-import { type NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
-// Define proper types for our data structures
 interface InfluencerMetrics {
   subscribers: number;
   videos: number;
@@ -22,6 +21,7 @@ interface ProcessedInfluencer {
   isVerified: boolean;
   engagement: string;
   metrics: InfluencerMetrics;
+  userId: string; // Added userId for filtering
 }
 
 interface RawInfluencer {
@@ -32,6 +32,7 @@ interface RawInfluencer {
   followers: number;
   platforms: string[];
   bio: string | null;
+  userId: string; // Added userId
   youtubeAccount: {
     channelId: string;
     channelTitle: string;
@@ -40,12 +41,13 @@ interface RawInfluencer {
     viewCount: number;
   } | null;
   user: {
+    id: string;
     email: string | null;
     image: string | null;
   };
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await auth();
     if (!session) {
@@ -53,7 +55,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch all influencers with their YouTube accounts
-    const influencers = await prisma.influencer.findMany({
+    const influencers = (await prisma.influencer.findMany({
       include: {
         youtubeAccount: {
           select: {
@@ -66,15 +68,16 @@ export async function GET(request: NextRequest) {
         },
         user: {
           select: {
+            id: true,
             email: true,
             image: true,
           },
         },
       },
-    }) as RawInfluencer[];
+    })) as RawInfluencer[];
 
     // Calculate engagement metrics and add sample data
-    const processedInfluencers = influencers.map(influencer => {
+    const processedInfluencers = influencers.map((influencer) => {
       const isVerified = !!influencer.youtubeAccount;
       const avgEngagement = calculateEngagement(influencer);
 
@@ -87,12 +90,13 @@ export async function GET(request: NextRequest) {
         platforms: influencer.platforms,
         bio: influencer.bio,
         isVerified,
+        userId: influencer.user.id, // Use user.id instead of email
         engagement: avgEngagement,
         metrics: {
           subscribers: influencer.youtubeAccount?.subscriberCount || 0,
           videos: influencer.youtubeAccount?.videoCount || 0,
           views: influencer.youtubeAccount?.viewCount || 0,
-        }
+        },
       };
     });
 
@@ -105,14 +109,17 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching influencers:", error);
     return NextResponse.json(
       { error: "Failed to fetch influencers" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 function calculateEngagement(influencer: RawInfluencer): string {
   if (influencer.youtubeAccount) {
-    return ((influencer.youtubeAccount.viewCount / influencer.followers) * 100).toFixed(2);
+    return (
+      (influencer.youtubeAccount.viewCount / influencer.followers) *
+      100
+    ).toFixed(2);
   }
   // Return random engagement rate for non-verified profiles
   return (Math.random() * (8 - 2) + 2).toFixed(2);
@@ -121,36 +128,39 @@ function calculateEngagement(influencer: RawInfluencer): string {
 function getSampleInfluencers(): ProcessedInfluencer[] {
   return [
     {
-      id: 'sample1',
-      name: 'Alex Tech',
-      avatar: '/api/placeholder/150/150',
-      category: 'Technology',
+      id: "sample1",
+      name: "Alex Tech",
+      avatar: "/api/placeholder/150/150",
+      category: "Technology",
       followers: 250000,
-      platforms: ['YOUTUBE', 'TWITTER'],
-      bio: 'Tech reviewer and gadget enthusiast',
+      platforms: ["YOUTUBE", "TWITTER"],
+      bio: "Tech reviewer and gadget enthusiast",
       isVerified: true,
-      engagement: '6.8',
+      engagement: "6.8",
+      userId: "sample-user-1", // Added userId for sample data
       metrics: {
         subscribers: 280000,
         videos: 450,
         views: 15000000,
-      }
+      },
     },
     {
-      id: 'sample2',
-      name: 'FitWithSarah',
-      avatar: '/api/placeholder/150/150',
-      category: 'Fitness',
+      id: "sample2",
+      name: "FitWithSarah",
+      avatar: "/api/placeholder/150/150",
+      category: "Fitness",
       followers: 180000,
-      platforms: ['INSTAGRAM', 'TIKTOK'],
-      bio: 'Helping you achieve your fitness goals',
+      platforms: ["INSTAGRAM", "TIKTOK"],
+      bio: "Helping you achieve your fitness goals",
       isVerified: false,
-      engagement: '4.2',
+      engagement: "4.2",
+      userId: "sample-user-2", // Added userId for sample data
       metrics: {
         subscribers: 0,
         videos: 0,
         views: 0,
-      }
+      },
     },
   ];
 }
+

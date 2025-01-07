@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../../auth";
 import prisma from "@repo/db/client";
-
+import { UserType } from "../../../../../lib/types";
 type Params = Promise<{ token: string }>;
 
 export async function GET(
@@ -49,6 +49,15 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
+    const updateUserType = await prisma.user.update({
+      where: {
+        id: session.user.id,
+      },
+      data: {
+        userType: UserType.INFLUENCER,
+      },
+    });
 
     const { token } = await params;
     const { action } = await req.json();
