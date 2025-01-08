@@ -1,4 +1,4 @@
-// Generated on 2025-01-07T11:57:19.488Z
+// Generated on 2025-01-08T11:21:33.097Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,237 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Las Mejores Plataformas de Marketing con Influencers para Startups",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "¡Desbloquea el crecimiento con las mejores plataformas de marketing con influencers para startups! Desde herramientas gratuitas hasta soluciones económicas, descubre las plataformas perfectas para escalar tus campañas con influencers en 2025.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.infloq.com/blog/post/es/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Die besten Influencer-Marketing-Plattformen für Startups",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "Erschließen Sie Wachstumspotenziale mit den besten Influencer-Marketing-Plattformen für Startups! Von kostenlosen Tools bis hin zu kostengünstigen Lösungen – entdecken Sie die perfekten Plattformen zur Skalierung Ihrer Influencer-Kampagnen im Jahr 2025.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.infloq.com/blog/post/de/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Les Meilleures Plateformes de Marketing d'Influence pour les Startups",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "Libérez votre croissance avec les meilleures plateformes de marketing d'influence pour les startups ! Des outils gratuits aux solutions économiques, découvrez les plateformes parfaites pour développer vos campagnes d'influence en 2025.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.infloq.com/blog/post/fr/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Le Migliori Piattaforme di Influencer Marketing per Startup",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "Sblocca la crescita con le migliori piattaforme di influencer marketing per startup! Da strumenti gratuiti a soluzioni economiche, scopri le piattaforme perfette per scalare le tue campagne di influencer marketing nel 2025.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.infloq.com/blog/post/it/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "स्टार्टअप्स के लिए सर्वश्रेष्ठ इन्फ्लुएंसर मार्केटिंग प्लेटफॉर्म्स",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "2025 में अपने इन्फ्लुएंसर अभियानों को बढ़ाने के लिए मुफ्त टूल से लेकर बजट-अनुकूल समाधानों तक, सर्वश्रेष्ठ प्लेटफॉर्म खोजें!",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.infloq.com/blog/post/hi/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "أفضل منصات تسويق المؤثرين للشركات الناشئة",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "اكتشف النمو مع أفضل منصات تسويق المؤثرين للشركات الناشئة! من الأدوات المجانية إلى الحلول الاقتصادية، اكتشف المنصات المثالية لتوسيع حملات المؤثرين الخاصة بك في 2025.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.infloq.com/blog/post/ar/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "初创企业最佳网红营销平台",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "为初创企业解锁增长潜力的最佳网红营销平台！从免费工具到经济实惠的解决方案，在2025年发现完美的平台来扩展您的网红营销活动。",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.infloq.com/blog/post/zh-cn/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "스타트업을 위한 최고의 인플루언서 마케팅 플랫폼",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "2025년에 스타트업을 위한 최고의 인플루언서 마케팅 플랫폼으로 성장을 실현하세요! 무료 도구부터 예산 친화적인 솔루션까지, 인플루언서 캠페인을 확장하기 위한 완벽한 플랫폼을 발견하세요.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.infloq.com/blog/post/ko/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "スタートアップのための最高のインフルエンサーマーケティングプラットフォーム",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "スタートアップのための最高のインフルエンサーマーケティングプラットフォームで成長を加速させましょう！無料ツールからコスト効率の高いソリューションまで、2025年にインフルエンサーキャンペーンを拡大するための完璧なプラットフォームを見つけましょう。",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.infloq.com/blog/post/ja/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "De Beste Influencer Marketing Platforms voor Startups",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "Ontgrendel groei met de beste influencer marketing platforms voor startups! Van gratis tools tot budgetvriendelijke oplossingen, ontdek de perfecte platforms om je influencer campagnes te schalen in 2025.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.infloq.com/blog/post/nl/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy"
+    ]
+  },
+  {
+    "title": "Лучшие Платформы для Инфлюенсер-Маркетинга для Стартапов",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "Разблокируйте рост с лучшими платформами для инфлюенсер-маркетинга для стартапов! От бесплатных инструментов до бюджетных решений, откройте для себя идеальные платформы для масштабирования ваших инфлюенсер-кампаний в 2025 году.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.infloq.com/blog/post/ru/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Best Influencer Marketing Platforms for Startups",
+    "file": "best-influencer-marketing-platforms-for-startups",
+    "description": "Unlock growth with the best influencer marketing platforms for startups! From free tools to budget-friendly solutions, discover perfect platforms to scale your influencer campaigns in 2025.",
+    "date": "January 8, 2025",
+    "datetime": "2025-01-08",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.infloq.com/blog/post/best-influencer-marketing-platforms-for-startups",
+    "categories": [
+      "influencer-marketing",
+      "creator-economy",
+      "ai-tools",
+      "instagram",
+      "campaign-management",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
   {
     "title": "Cómo Ganar Dinero en TikTok: Guía Completa 2025",
     "file": "how-to-make-money-on-tiktok",
