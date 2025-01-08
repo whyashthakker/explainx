@@ -1,10 +1,15 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/components/ui/card';
-import { Instagram, Users, Video, Image as ImageIcon } from 'lucide-react';
-import { Skeleton } from '@repo/ui/components/ui/skeleton';
-import { Alert, AlertDescription } from '@repo/ui/components/ui/alert';
-import { useInstagram } from '../../../../hooks/use-instagram';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@repo/ui/components/ui/card";
+import { Instagram, Users, Video, Image as ImageIcon } from "lucide-react";
+import { Skeleton } from "@repo/ui/components/ui/skeleton";
+import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
+import { useInstagram } from "../../../../hooks/use-instagram";
 
 export default function InstagramFeed() {
   const { profile, media, reels, isLoading, error } = useInstagram();
@@ -74,13 +79,13 @@ export default function InstagramFeed() {
             >
               <img
                 src={item.media_url}
-                alt={item.caption || 'Instagram post'}
+                alt={item.caption || "Instagram post"}
                 className="object-cover w-full h-full transition-transform group-hover:scale-105"
               />
               <div className="absolute top-2 right-2">
-                {item.media_type === 'VIDEO' ? (
+                {item.media_type === "VIDEO" ? (
                   <Video className="h-5 w-5 text-white drop-shadow-lg" />
-                ) : item.media_type === 'CAROUSEL_ALBUM' ? (
+                ) : item.media_type === "CAROUSEL_ALBUM" ? (
                   <ImageIcon className="h-5 w-5 text-white drop-shadow-lg" />
                 ) : null}
               </div>
@@ -104,7 +109,7 @@ export default function InstagramFeed() {
               >
                 <img
                   src={reel.thumbnail_url || reel.media_url}
-                  alt={reel.caption || 'Instagram reel'}
+                  alt={reel.caption || "Instagram reel"}
                   className="object-cover w-full h-full transition-transform group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
@@ -117,3 +122,4 @@ export default function InstagramFeed() {
     </div>
   );
 }
+
