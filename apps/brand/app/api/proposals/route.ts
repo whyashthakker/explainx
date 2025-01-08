@@ -8,16 +8,22 @@ import { auth } from "../../../auth";
 export async function POST(request: NextRequest) {
   try {
     const session = await auth();
-
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Parse and validate request body
     const json = await request.json();
     const validatedData = proposalFormSchema.parse(json);
 
-    // Get the brand associated with the current user
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      include: { influencers: true },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
     const brand = await prisma.brand.findFirst({
       where: { userId: session.user.id },
     });
@@ -26,7 +32,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Brand not found" }, { status: 404 });
     }
 
-    // Verify the campaign belongs to this brand
     const campaign = await prisma.campaign.findFirst({
       where: {
         id: validatedData.campaignId,
@@ -41,14 +46,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create the proposal with validated data
+    // Prevent creating proposals for own influencer profiles
     const proposal = await prisma.campaignProposal.create({
       data: {
         ...validatedData,
         status: "OPEN",
       },
       include: {
-        applications: true,
+        applications: {
+          where: {
+            influencerId: {
+              notIn: user.influencers.map((inf) => inf.id),
+            },
+          },
+        },
       },
     });
 
@@ -60,7 +71,6 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
-
     console.error("Error creating proposal:", error);
     return NextResponse.json(
       { error: "Failed to create proposal" },
@@ -72,10 +82,14 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const session = await auth();
-
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      include: { influencers: true },
+    });
 
     const brand = await prisma.brand.findFirst({
       where: { userId: session.user.id },
@@ -92,7 +106,13 @@ export async function GET(request: NextRequest) {
         },
       },
       include: {
-        applications: true,
+        applications: {
+          where: {
+            influencerId: {
+              notIn: user?.influencers.map((inf) => inf.id) || [],
+            },
+          },
+        },
       },
     });
 
