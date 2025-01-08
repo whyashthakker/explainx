@@ -29,7 +29,10 @@ export async function POST(request: NextRequest) {
     // Get user and verify brand access
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: { brands: true },
+      include: {
+        brands: true,
+        influencers: true,
+      },
     });
 
     if (!user) {
@@ -55,6 +58,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Prevent self-interaction: Check if the influencer belongs to the same user
+    const userInfluencer = user.influencers.find(
+      (influencer) => influencer.id === validatedData.influencerId,
+    );
+    if (userInfluencer) {
+      return NextResponse.json(
+        {
+          error: "Cannot create collaboration with your own influencer profile",
+        },
+        { status: 400 },
+      );
+    }
+
+    // Verify influencer exists and get their user ID
+    const targetInfluencer = await prisma.influencer.findUnique({
+      where: { id: validatedData.influencerId },
+      include: { user: true },
+    });
+
+    if (!targetInfluencer) {
+      return NextResponse.json(
+        { error: "Influencer not found" },
+        { status: 404 },
+      );
+    }
+
     // Create campaign
     const campaign = await prisma.campaign.create({
       data: {
@@ -67,7 +96,7 @@ export async function POST(request: NextRequest) {
         platforms: validatedData.platforms,
         status: "ACTIVE",
         startDate: new Date(),
-        endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
+        endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       },
     });
 
@@ -119,7 +148,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    // Get user with brands
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: { brands: true },
@@ -129,7 +157,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Verify user has brand access and is in brand portal
     if (user.userType !== "BRAND" && user.userType !== "BOTH") {
       return NextResponse.json(
         { error: "Not authorized to access brand portal" },
@@ -144,13 +171,20 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Get all brand IDs for the user
     const brandIds = user.brands.map((brand) => brand.id);
 
-    // Fetch collaborations for all user's brands
+    // Get user's influencer IDs to filter out self-interactions
+    const userInfluencers = await prisma.influencer.findMany({
+      where: { userId: user.id },
+      select: { id: true },
+    });
+    const userInfluencerIds = userInfluencers.map((inf) => inf.id);
+
     const collaborations = await prisma.collaboration.findMany({
       where: {
         brandId: { in: brandIds },
+        // Exclude collaborations with user's own influencer profiles
+        influencerId: { notIn: userInfluencerIds },
       },
       include: {
         campaign: true,

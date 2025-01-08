@@ -1,3 +1,4 @@
+//app/api/collaborations/[influencerId]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../auth";
 import prisma from "@repo/db/client";
@@ -9,27 +10,22 @@ type RouteContext = {
 
 export async function GET(req: NextRequest, context: RouteContext) {
   try {
-    // Authenticate user
     const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    // Get params
     const params = await context.params;
     const { influencerId } = params;
 
-    // Get user with their brands and verify they're using the brand portal
     const user = await prisma.user.findUnique({
-      where: {
-        email: session.user.email,
-      },
+      where: { email: session.user.email },
       include: {
         brands: true,
+        influencers: true,
       },
     });
 
-    // Check if user exists and has permission to access brand portal
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
@@ -41,7 +37,19 @@ export async function GET(req: NextRequest, context: RouteContext) {
       );
     }
 
-    // Get all brands for this user
+    // Check if trying to view collaborations with own influencer profile
+    const isOwnInfluencer = user.influencers.some(
+      (inf) => inf.id === influencerId,
+    );
+    if (isOwnInfluencer) {
+      return NextResponse.json(
+        {
+          error: "Cannot view collaborations with your own influencer profile",
+        },
+        { status: 400 },
+      );
+    }
+
     const userBrands = user.brands;
     if (!userBrands.length) {
       return NextResponse.json(
@@ -50,7 +58,6 @@ export async function GET(req: NextRequest, context: RouteContext) {
       );
     }
 
-    // Fetch collaborations for all brands owned by the user
     const brandIds = userBrands.map((brand) => brand.id);
     const collaborations = await prisma.collaboration.findMany({
       where: {
