@@ -1,17 +1,7 @@
 // app/page.tsx
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@repo/ui/components/ui/card";
-import { Button } from "@repo/ui/components/ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { auth, signIn } from "../auth";
+import { auth } from "../auth";
 import { redirect } from "next/navigation";
-import InstagramAuth from "./_components/InstagramAuth";
 import Link from "next/link";
 
 type SearchParams = Promise<{

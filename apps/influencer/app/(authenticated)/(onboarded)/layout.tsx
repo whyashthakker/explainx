@@ -49,6 +49,12 @@ export default async function DashboardLayoutWrapper({
 
   // Check onboarding status
   if (!user.influencers?.length) {
+    console.log("No influencers");
+    redirect("/onboarding");
+  }
+
+  if (!user.influencers[0]?.isOnboarded) {
+    console.log("Not onboarded");
     redirect("/onboarding");
   }
 

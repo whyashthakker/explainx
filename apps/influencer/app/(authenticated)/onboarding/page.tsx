@@ -19,8 +19,8 @@ async function getRedirectPath(user: any, teamMember: any) {
     return "/team-view";
   }
 
-  // Check existing influencer profile
-  if (user.influencers?.length > 0) {
+  // Check if user has completed onboarding
+  if (user.influencers?.length > 0 && user.influencers[0].isOnboarded) {
     return "/dashboard";
   }
 
@@ -30,19 +30,23 @@ async function getRedirectPath(user: any, teamMember: any) {
 
 export default async function OnboardingPage() {
   const session = await auth();
-
   if (!session?.user?.email) {
     redirect("/");
   }
 
   try {
-    // Get and update user in one query
+    // Get and update user in one query with all necessary relations
     const user = await prisma.user.findFirst({
       where: {
         email: session.user.email,
       },
       include: {
-        influencers: true,
+        influencers: {
+          include: {
+            youtubeAccount: true,
+            instagramAccount: true,
+          },
+        },
       },
     });
 

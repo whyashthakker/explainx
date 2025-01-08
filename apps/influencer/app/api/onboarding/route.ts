@@ -1,10 +1,10 @@
 // app/api/onboarding/route.ts
+// app/api/onboarding/route.ts
 import { NextResponse } from "next/server";
 import { auth } from "../../../auth";
 import prisma from "@repo/db/client";
 import { z } from "zod";
-import { Platform } from "@prisma/client";
-import { UserType } from "@prisma/client";
+import { Platform, UserType } from "@prisma/client";
 
 const profileSchema = z.object({
   name: z.string().min(2),
@@ -40,6 +40,19 @@ export async function POST(req: Request) {
 
     // Start a transaction to handle all updates atomically
     const result = await prisma.$transaction(async (prisma) => {
+      // Check if at least one platform is connected
+      const hasInstagram = await prisma.instagramAccount.findFirst({
+        where: { influencerId: user.influencers[0]?.id },
+      });
+
+      const hasYoutube = await prisma.youTubeAccount.findFirst({
+        where: { influencerId: user.influencers[0]?.id },
+      });
+
+      // Set isOnboarded based on platform connection
+      const isOnboarded = !!(hasInstagram || hasYoutube);
+      console.log(isOnboarded);
+      console.log(user.id, validatedData);
       // Create influencer profile
       const influencer = await prisma.influencer.create({
         data: {
@@ -49,8 +62,11 @@ export async function POST(req: Request) {
           category: validatedData.category,
           platforms: validatedData.platforms,
           followers: 0,
+          isOnboarded: isOnboarded, // Set the onboarding status
         },
       });
+
+      console.log(influencer);
 
       // Determine user type based on existing profiles
       let userType: UserType = UserType.INFLUENCER;
@@ -76,7 +92,6 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error("Profile creation error:", error);
-
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
