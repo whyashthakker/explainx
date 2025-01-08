@@ -17,6 +17,11 @@ export async function GET(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      include: { influencers: true },
+    });
+
     const brand = await prisma.brand.findFirst({
       where: { userId: session.user.id },
     });
@@ -24,6 +29,8 @@ export async function GET(
     if (!brand) {
       return NextResponse.json({ error: "Brand not found" }, { status: 404 });
     }
+
+    const userInfluencerIds = user?.influencers.map((inf) => inf.id) || [];
 
     const proposal = await prisma.campaignProposal.findFirst({
       where: {
@@ -34,6 +41,11 @@ export async function GET(
       },
       include: {
         applications: {
+          where: {
+            influencerId: {
+              notIn: userInfluencerIds,
+            },
+          },
           include: {
             influencer: true,
           },
@@ -72,6 +84,11 @@ export async function PATCH(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      include: { influencers: true },
+    });
+
     const brand = await prisma.brand.findFirst({
       where: { userId: session.user.id },
     });
@@ -80,7 +97,6 @@ export async function PATCH(
       return NextResponse.json({ error: "Brand not found" }, { status: 404 });
     }
 
-    // Verify proposal belongs to brand's campaign
     const existingProposal = await prisma.campaignProposal.findFirst({
       where: {
         id: proposalId,
@@ -97,14 +113,19 @@ export async function PATCH(
       );
     }
 
-    // Update proposal
+    const userInfluencerIds = user?.influencers.map((inf) => inf.id) || [];
+
     const updatedProposal = await prisma.campaignProposal.update({
-      where: {
-        id: proposalId,
-      },
+      where: { id: proposalId },
       data: json,
       include: {
-        applications: true,
+        applications: {
+          where: {
+            influencerId: {
+              notIn: userInfluencerIds,
+            },
+          },
+        },
       },
     });
 
@@ -138,7 +159,6 @@ export async function DELETE(
       return NextResponse.json({ error: "Brand not found" }, { status: 404 });
     }
 
-    // Verify proposal belongs to brand's campaign
     const proposal = await prisma.campaignProposal.findFirst({
       where: {
         id: proposalId,
@@ -155,11 +175,8 @@ export async function DELETE(
       );
     }
 
-    // Delete proposal
     await prisma.campaignProposal.delete({
-      where: {
-        id: proposalId,
-      },
+      where: { id: proposalId },
     });
 
     return new NextResponse(null, { status: 204 });

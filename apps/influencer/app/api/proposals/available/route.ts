@@ -5,16 +5,17 @@ import { auth } from "../../../../auth";
 
 export async function GET() {
   const session = await auth();
-
   if (!session?.user?.email) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
   try {
-    // Get the influencer profile
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: { influencers: true },
+      include: {
+        influencers: true,
+        brands: true,
+      },
     });
 
     if (!user?.influencers?.[0]) {
@@ -22,11 +23,29 @@ export async function GET() {
     }
 
     const influencer = user.influencers[0];
+    const userBrandIds = user.brands.map((brand) => brand.id);
 
-    // Get matching proposals
     const proposals = await prisma.campaignProposal.findMany({
       where: {
         status: "OPEN",
+        campaign: {
+          brandId: {
+            notIn: userBrandIds,
+          },
+        },
+      },
+      include: {
+        campaign: {
+          include: {
+            brand: {
+              select: {
+                name: true,
+                logo: true,
+                industry: true,
+              },
+            },
+          },
+        },
       },
       orderBy: {
         createdAt: "desc",
@@ -39,7 +58,6 @@ export async function GET() {
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
-
 //for production
 // export async function GET() {
 //   const session = await auth();

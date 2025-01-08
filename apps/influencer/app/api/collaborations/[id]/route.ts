@@ -12,25 +12,27 @@ async function checkCollaborationAccess(
 ) {
   const collaboration = await prisma.collaboration.findUnique({
     where: { id: collaborationId },
-    include: { brand: true, influencer: true },
+    include: {
+      brand: {
+        include: { user: true },
+      },
+      influencer: {
+        include: { user: true },
+      },
+    },
   });
 
   if (!collaboration) return { error: "Collaboration not found", status: 404 };
+
+  // Check if same user owns both brand and influencer
+  if (collaboration.brand.user.id === collaboration.influencer.user.id) {
+    return { error: "Invalid collaboration between own profiles", status: 403 };
+  }
 
   const userBrand = await prisma.brand.findFirst({ where: { userId } });
   const userInfluencer = await prisma.influencer.findFirst({
     where: { userId },
   });
-
-  // Prevent self-collaboration
-  if (userBrand && userInfluencer) {
-    const isSelfCollaboration =
-      collaboration.brandId === userBrand.id &&
-      collaboration.influencerId === userInfluencer.id;
-    if (isSelfCollaboration) {
-      return { error: "Cannot collaborate with yourself", status: 403 };
-    }
-  }
 
   const hasBrandAccess = userBrand && collaboration.brandId === userBrand.id;
   const hasInfluencerAccess =
