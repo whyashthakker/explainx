@@ -11,7 +11,10 @@ export async function GET() {
 
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: { influencers: true },
+      include: {
+        influencers: true,
+        brands: true,
+      },
     });
 
     if (!user) {
@@ -33,8 +36,15 @@ export async function GET() {
       );
     }
 
+    const userBrandIds = user.brands.map((brand) => brand.id);
+
     const collaborations = await prisma.collaboration.findMany({
-      where: { influencerId: influencer.id },
+      where: {
+        influencerId: influencer.id,
+        brandId: {
+          notIn: userBrandIds,
+        },
+      },
       include: {
         brand: true,
         campaign: true,
