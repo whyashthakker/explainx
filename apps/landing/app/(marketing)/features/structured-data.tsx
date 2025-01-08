@@ -1,5 +1,3 @@
-// app/features/_components/features-structured-data.tsx
-
 import { FeatureCategory } from "../../../data/features";
 
 interface FeaturesStructuredDataProps {
