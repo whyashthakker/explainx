@@ -22,8 +22,6 @@ import { Alert, AlertDescription } from "@repo/ui/components/ui/alert";
 import { Progress } from "@repo/ui/components/ui/progress";
 import { Platform } from "../../../../lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
-import InstagramLogin from "./instagram-connect";
-import Link from "next/link";
 import { Input } from "@repo/ui/components/ui/input";
 import { Textarea } from "@repo/ui/components/ui/textarea";
 import {

@@ -203,6 +203,8 @@ export async function GET(request: Request) {
       },
     });
 
+    console.log("Instagram profile data:", profileData);
+
     return NextResponse.redirect(
       `${baseUrl}/onboarding?success=instagram_connected`,
     );
