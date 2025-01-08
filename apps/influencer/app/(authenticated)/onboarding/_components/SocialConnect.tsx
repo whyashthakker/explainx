@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import {
   Card,
@@ -132,14 +133,15 @@ export default function SocialConnect() {
     new Set(),
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState("");
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "Aryan Nagbanshi",
-      bio: "I'm a creator at heart, and I'm passionate about helping brands grow",
-      category: "Tech",
+      name: "",
+      bio: "",
+      category: "",
       connectedPlatforms: [],
     },
   });
@@ -148,49 +150,47 @@ export default function SocialConnect() {
   useEffect(() => {
     form.setValue("connectedPlatforms", Array.from(connectedPlatforms));
   }, [connectedPlatforms, form]);
-  // Add profile state
-  const [profileData, setProfileData] = useState<ProfileData>({
-    name: "",
-    bio: "",
-    category: "",
-  });
 
-  const onSubmit = async (data: FormValues) => {
-    setIsSubmitting(true);
-    setError("");
+  useEffect(() => {
+    // Handle platform connection success/error from URL params
+    const success = searchParams.get("success");
+    const error = searchParams.get("error");
+    const code = searchParams.get("code");
+    const state = searchParams.get("state");
 
-    try {
-      const response = await fetch("/api/onboarding/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          platforms: data.connectedPlatforms,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Something went wrong");
-      }
-
-      router.push("/dashboard");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to save profile");
-    } finally {
-      setIsSubmitting(false);
+    if (success === "instagram_connected") {
+      setConnectedPlatforms((prev) => new Set([...prev, Platform.INSTAGRAM]));
     }
-  };
+    if (success === "youtube_connected") {
+      setConnectedPlatforms((prev) => new Set([...prev, Platform.YOUTUBE]));
+    }
+
+    if (error) {
+      setError(`Failed to connect: ${error}`);
+      setIsConnecting(false);
+    }
+
+    // Restore form data if available
+    const savedData = localStorage.getItem("onboardingFormData");
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      Object.entries(parsedData).forEach(([key, value]) => {
+        form.setValue(key as keyof FormValues, value as any);
+      });
+    }
+
+    // Handle OAuth callbacks
+    if (code) {
+      if (state === "youtube") {
+        handleYouTubeAuth(code);
+      } else if (state === "instagram") {
+        handleInstagramAuth(code);
+      }
+    }
+  }, [searchParams, form]);
 
   const handleYouTubeAuth = async (code: string) => {
     try {
-      console.log(
-        "Processing YouTube auth with code:",
-        code.substring(0, 10) + "...",
-      );
-
-      // Make a POST request to your API endpoint
       const response = await fetch("/api/auth/youtube", {
         method: "POST",
         headers: {
@@ -204,31 +204,16 @@ export default function SocialConnect() {
       }
 
       const data = await response.json();
-      console.log("YouTube connection response:", data);
-
       if (data.success) {
         setConnectedPlatforms((prev) => new Set([...prev, Platform.YOUTUBE]));
       }
     } catch (error) {
       console.error("Failed to connect YouTube:", error);
+      setError("Failed to connect YouTube account");
+    } finally {
+      setIsConnecting(false);
     }
   };
-
-  useEffect(() => {
-    const code = searchParams.get("code");
-    const state = searchParams.get("state"); // Get state parameter
-
-    if (code) {
-      console.log("Received auth code:", code);
-      console.log("Platform state:", state);
-
-      if (state === "youtube") {
-        handleYouTubeAuth(code);
-      } else if (state === "instagram") {
-        handleInstagramAuth(code);
-      }
-    }
-  }, [searchParams]);
 
   const handleInstagramAuth = async (code: string) => {
     try {
@@ -236,35 +221,41 @@ export default function SocialConnect() {
       const data = await response.json();
 
       if (data.success) {
-        handleConnect(Platform.INSTAGRAM);
+        setConnectedPlatforms((prev) => new Set([...prev, Platform.INSTAGRAM]));
       }
     } catch (error) {
       console.error("Instagram auth error:", error);
+      setError("Failed to connect Instagram account");
+    } finally {
+      setIsConnecting(false);
     }
   };
 
-  const ytLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams(
-    {
-      client_id: process.env.NEXT_PUBLIC_YOUTUBE_CLIENT_ID!,
-      redirect_uri: process.env.NEXT_PUBLIC_YOUTUBE_REDIRECT_URI!,
-      response_type: "code",
-      scope: "https://www.googleapis.com/auth/youtube.readonly",
-      access_type: "offline",
-      prompt: "consent",
-      // Add state parameter to identify platform
-      state: "youtube",
-    },
-  ).toString()}`;
-
-  const instaLoginUrl = process.env.NEXT_PUBLIC_INSTAGRAM_EMBEDED_URL;
-
   const handleConnect = (platform: Platform) => {
+    setIsConnecting(true);
+
+    // Store current form data before redirect
+    const formData = form.getValues();
+    localStorage.setItem("onboardingFormData", JSON.stringify(formData));
+
     if (platform === Platform.INSTAGRAM) {
-      window.location.href = instaLoginUrl!;
+      window.location.href = process.env.NEXT_PUBLIC_INSTAGRAM_EMBEDED_URL!;
       return;
     }
 
     if (platform === Platform.YOUTUBE) {
+      const ytLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams(
+        {
+          client_id: process.env.NEXT_PUBLIC_YOUTUBE_CLIENT_ID!,
+          redirect_uri: process.env.NEXT_PUBLIC_YOUTUBE_REDIRECT_URI!,
+          response_type: "code",
+          scope: "https://www.googleapis.com/auth/youtube.readonly",
+          access_type: "offline",
+          prompt: "consent",
+          state: "youtube",
+        },
+      ).toString()}`;
+
       window.location.href = ytLoginUrl;
       return;
     }
@@ -276,12 +267,45 @@ export default function SocialConnect() {
     });
   };
 
+  const onSubmit = async (data: FormValues) => {
+    if (connectedPlatforms.size === 0) {
+      setError("Please connect at least one social platform before continuing");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/onboarding/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          platforms: Array.from(connectedPlatforms),
+          // Send any other necessary data
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save profile");
+      }
+
+      // Clear stored form data after successful submission
+      localStorage.removeItem("onboardingFormData");
+      router.push("/dashboard");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to save profile");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const calculateCompletionPercentage = () => {
     const totalSteps = platforms.length + 3; // 3 additional fields: name, bio, category
     let completedSteps = connectedPlatforms.size;
 
     const formValues = form.getValues();
-
     if (formValues.name.trim()) completedSteps++;
     if (formValues.bio.trim()) completedSteps++;
     if (formValues.category) completedSteps++;
@@ -294,7 +318,8 @@ export default function SocialConnect() {
     return (
       formValues.name.trim() !== "" &&
       formValues.bio.trim() !== "" &&
-      formValues.category !== ""
+      formValues.category !== "" &&
+      connectedPlatforms.size > 0
     );
   };
 
@@ -312,6 +337,7 @@ export default function SocialConnect() {
             Connect your social platforms to unlock more opportunities
           </p>
         </div>
+
         {/* Profile Information Card */}
         <Card className="border-2 border-blue-100">
           <CardHeader>
@@ -399,6 +425,7 @@ export default function SocialConnect() {
             </div>
           </CardContent>
         </Card>
+
         {/* Progress Card */}
         <Card className="border-2 border-blue-100">
           <CardHeader>
@@ -439,6 +466,8 @@ export default function SocialConnect() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Platform Connection Cards */}
         <div className="grid gap-4">
           {platforms.map((platform) => (
             <div key={platform.platform}>
@@ -470,13 +499,14 @@ export default function SocialConnect() {
                       </div>
                     </div>
                     <Button
-                      type="button" // Add this to prevent form submission
+                      type="button"
                       variant={
                         connectedPlatforms.has(platform.platform)
                           ? "outline"
                           : "default"
                       }
                       onClick={() => handleConnect(platform.platform)}
+                      disabled={isConnecting}
                       className={`min-w-[120px] ${
                         connectedPlatforms.has(platform.platform)
                           ? "border-green-500 text-green-600"
@@ -499,8 +529,15 @@ export default function SocialConnect() {
                 </CardContent>
               </Card>
             </div>
-          ))}{" "}
+          ))}
         </div>
+
+        {error && (
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
         <Alert className="bg-blue-50 border-blue-100">
           <AlertDescription className="flex items-center text-blue-600">
             <CheckCircle2 className="h-5 w-5 mr-2" />
@@ -509,13 +546,15 @@ export default function SocialConnect() {
               : `Complete your profile and connect your platforms to unlock full potential`}
           </AlertDescription>
         </Alert>
+
         <Button
           type="submit"
           className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700"
           disabled={
             !isProfileComplete() ||
             connectedPlatforms.size === 0 ||
-            isSubmitting
+            isSubmitting ||
+            isConnecting
           }
         >
           {isSubmitting ? (
@@ -526,7 +565,7 @@ export default function SocialConnect() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </>
           )}
-        </Button>{" "}
+        </Button>
       </form>
     </Form>
   );
