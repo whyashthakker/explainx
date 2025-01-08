@@ -45,6 +45,7 @@ import {
   Award,
   LogOut,
   UserCircle,
+  Instagram,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { handleSignOut } from "../../../../../lib/actions";
@@ -107,6 +108,7 @@ const InfluencerDashboard: React.FC<{ user: UserWithProfiles }> = ({
   };
 
   const COLORS = ["#6366f1", "#ec4899", "#14b8a6", "#f97316"] as const;
+  const instaLoginUrl = process.env.NEXT_PUBLIC_INSTAGRAM_EMBEDED_URL!;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-8">
@@ -153,6 +155,11 @@ const InfluencerDashboard: React.FC<{ user: UserWithProfiles }> = ({
                 Sign Out
               </Button>
             </form>
+            <Button onClick={() => (window.location.href = instaLoginUrl)}>
+              <Instagram className="h-4 w-4" />
+              Connect Instagram
+            </Button>
+
             <Badge className="bg-indigo-500 hover:bg-indigo-600">
               <Sparkles className="w-4 h-4 mr-2" />
               {currentInfluencer.category}

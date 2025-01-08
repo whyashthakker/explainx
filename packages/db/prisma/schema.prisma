@@ -178,7 +178,8 @@ model Influencer {
   category    String
   followers   Int
   platforms   Platform[]
-  
+  isOnboarded Boolean   @default(false)  // Add this lin
+
   team        InfluencerTeam?
   collaborations Collaboration[]
   youtubeAccount YouTubeAccount?
