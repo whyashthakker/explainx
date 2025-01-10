@@ -3,21 +3,36 @@ import type { Metadata } from "next";
 import { DemoBookingForm } from "./_components/demo-booking-form";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.infloq.com"),
-  title: "Book a Demo | Infloq - Performance-Based Influencer Marketing",
-  description: "Schedule a personalized demo of Infloq's AI-powered influencer marketing platform. Learn how we can help you find the perfect creators and maximize ROI.",
-  keywords: "Infloq demo, book demo, influencer marketing demo, creator marketing platform, AI marketing demo",
+  metadataBase: new URL("https://www.explainx.ai"),
+  title: "Book a Demo | ExplainX - Custom AI Agents Development Agency",
+  description: "Schedule a personalized demo of ExplainX's AI agent development platform. Learn how we can help you build custom AI agents for automation, SEO, and marketing.",
+  keywords: [
+    "ai agents demo",
+    "custom ai development",
+    "langchain demo",
+    "crewai implementation",
+    "business automation demo",
+    "ai agent development",
+    "free ai agents demo",
+    "ai agents for seo",
+    "ai agents for marketing",
+    "enterprise ai demo",
+    "ai automation platform",
+    "ai consultation",
+    "custom ai solutions",
+    "openai integration demo"
+  ].join(", "),
   openGraph: {
-    title: "Book a Demo with Infloq | Transform Your Influencer Marketing",
-    description: "Get a personalized walkthrough of Infloq's performance-based influencer marketing platform.",
-    url: "https://www.infloq.com/demo",
-    siteName: "Infloq - Performance-Based Influencer Marketing",
+    title: "Book a Demo with ExplainX | Transform Your Business with AI Agents",
+    description: "Get a personalized walkthrough of ExplainX's AI agent development and automation platform.",
+    url: "https://www.explainx.ai/demo",
+    siteName: "ExplainX - AI Agents Development Agency",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Book a Demo with Infloq"
+        alt: "Book an AI Solution Demo with ExplainX"
       }
     ],
     locale: "en_US",
@@ -25,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Transform Your Influencer Marketing | Book a Demo",
-    description: "Schedule a personalized demo of Infloq's AI-powered platform.",
+    title: "Transform Your Business Operations | AI Agents Demo",
+    description: "Schedule a personalized demo of ExplainX's AI agent development platform.",
     images: ["/og-image.png"],
   }
 };
@@ -39,10 +54,10 @@ export default function DemoPage() {
           {/* Left Column - Information */}
           <div className="space-y-6">
             <h1 className="font-cal text-4xl md:text-5xl mb-4">
-              Book Your Personalized Demo
+              Book Your AI Solutions Demo
             </h1>
             <p className="text-muted-foreground text-lg">
-              Learn how Infloq can transform your influencer marketing with AI-powered creator matching and performance-based pricing.
+              Learn how ExplainX can transform your business operations with custom AI agents, intelligent automation, and advanced integration capabilities.
             </p>
             
             <div className="space-y-4 mt-8">
@@ -53,8 +68,8 @@ export default function DemoPage() {
                     <CheckIcon className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-medium">AI-Powered Creator Discovery</h3>
-                    <p className="text-muted-foreground">See how our AI matches you with the perfect creators for your brand</p>
+                    <h3 className="font-medium">Custom AI Agent Development</h3>
+                    <p className="text-muted-foreground">See how we create tailored AI agents for your specific business needs</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -62,8 +77,8 @@ export default function DemoPage() {
                     <CheckIcon className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Performance-Based Pricing</h3>
-                    <p className="text-muted-foreground">Learn about our unique pay-per-click model and ROI tracking</p>
+                    <h3 className="font-medium">Intelligent Process Automation</h3>
+                    <p className="text-muted-foreground">Explore our LangChain and CrewAI implementation capabilities</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -71,8 +86,8 @@ export default function DemoPage() {
                     <CheckIcon className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Campaign Management</h3>
-                    <p className="text-muted-foreground">Explore our suite of tools for managing and optimizing campaigns</p>
+                    <h3 className="font-medium">Integration & Deployment</h3>
+                    <p className="text-muted-foreground">Learn about our seamless integration process and deployment strategies</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -80,8 +95,8 @@ export default function DemoPage() {
                     <CheckIcon className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Analytics & Reporting</h3>
-                    <p className="text-muted-foreground">Get insights into our real-time analytics and performance tracking</p>
+                    <h3 className="font-medium">Performance Monitoring</h3>
+                    <p className="text-muted-foreground">Discover our advanced analytics and AI agent performance tracking</p>
                   </div>
                 </li>
               </ul>

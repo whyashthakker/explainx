@@ -4,7 +4,7 @@ type HomePageStructuredDataProps = {
   baseUrl?: string;
 };
 
-export function HomePageStructuredData({ baseUrl = 'https://infloq.com' }: HomePageStructuredDataProps) {
+export function HomePageStructuredData({ baseUrl = 'https://explainx.ai' }: HomePageStructuredDataProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -12,7 +12,7 @@ export function HomePageStructuredData({ baseUrl = 'https://infloq.com' }: HomeP
         "@type": "WebSite",
         "@id": baseUrl,
         "url": baseUrl,
-        "name": "Infloq.com",
+        "name": "explainx.ai",
         "description": "AI-Powered Influencer Marketing Platform",
         "potentialAction": {
           "@type": "SearchAction",
@@ -30,29 +30,29 @@ export function HomePageStructuredData({ baseUrl = 'https://infloq.com' }: HomeP
         "url": baseUrl,
         "logo": {
           "@type": "ImageObject",
-          "url": "https://infloq.com/icons/infloq.png"
+          "url": "https://explainx.ai/icons/ExplainX.png"
         },
         "sameAs": [
-          "https://twitter.com/infloq",
-          "https://github.com/infloq"
+          "https://twitter.com/ExplainX",
+          "https://github.com/ExplainX"
         ]
       },
       {
         "@type": "WebPage",
         "@id": `${baseUrl}#webpage`,
         "url": baseUrl,
-        "name": "Infloq - AI-Powered Influencer Marketing Platform",
+        "name": "ExplainX - AI-Powered Influencer Marketing Platform",
         "description": "Find and collaborate with creators and influencers using AI-powered tools for campaign management, analytics, and automation.",
         "isPartOf": { "@id": baseUrl },
         "about": { "@id": `${baseUrl}#organization` },
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://infloq.com/images/main/landing.png"
+          "url": "https://explainx.ai/images/main/landing.png"
         }
       },
       {
         "@type": "SoftwareApplication",
-        "name": "Infloq Influencer Marketing Platform",
+        "name": "ExplainX Influencer Marketing Platform",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web-based",
         "offers": {

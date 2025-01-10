@@ -205,7 +205,7 @@ export function FeaturesAiPersonalities() {
       imageSide="right"
       title="Quality Assured ✨"
       subtitle="Verified Influencers Only"
-      description="Every influencer on Infloq.com goes through our thorough verification process to ensure quality and authenticity."
+      description="Every influencer on explainx.ai goes through our thorough verification process to ensure quality and authenticity."
       image="/features/verified-creators-only.png"
       features={featuresVerification}
     />
@@ -307,7 +307,7 @@ export function FeaturesWithImage(props: {
             <div className="rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4">
               <Image
                 src={props.image}
-                alt="Infloq features"
+                alt="ExplainX features"
                 className="w-[48rem] max-w-none rounded-xl shadow-2xl shadow-blue-500/50 ring-1 ring-gray-400/10 sm:w-[57rem]"
                 width={2400}
                 height={1800}

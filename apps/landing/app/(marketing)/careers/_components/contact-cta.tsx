@@ -19,7 +19,7 @@ export function ContactCTA() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center">
-        <Link href="mailto:careers@infloq.com">
+        <Link href="mailto:careers@explainx.ai">
           <Button variant="outline" size="lg">
             Get in Touch
           </Button>

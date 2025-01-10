@@ -18,7 +18,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
         <div className="text-center mb-12">
           <h2 className="font-cal text-4xl mb-4">Creator Success Stories</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Hear from creators who have grown their influence with Infloq
+            Hear from creators who have grown their influence with ExplainX
           </p>
         </div>
 

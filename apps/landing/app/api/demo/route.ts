@@ -72,7 +72,7 @@ ${validatedData.utmParams ? `• Campaign: ${validatedData.utmParams.utm_campaig
     // Optional: Send confirmation email
     // await sendEmail({
     //   to: validatedData.email,
-    //   subject: "Demo Booking Confirmation - Infloq",
+    //   subject: "Demo Booking Confirmation - ExplainX",
     //   template: "demo-booking-confirmation",
     //   data: {
     //     name: validatedData.name,

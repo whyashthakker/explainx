@@ -26,7 +26,7 @@ export function PageStructuredData({ pageData, stats }: PageStructuredDataProps)
           name: "AISOLO Technologies Pvt. Ltd.",
           logo: {
             "@type": "ImageObject",
-            url: "https://infloq.com/icons/infloq.png"
+            url: "https://explainx.ai/icons/ExplainX.png"
           }
         }
       },
@@ -36,8 +36,8 @@ export function PageStructuredData({ pageData, stats }: PageStructuredDataProps)
         description: pageData.metadata.description,
         provider: {
           "@type": "Organization",
-          name: "Infloq Creator Academy",
-          sameAs: "https://infloq.com"
+          name: "ExplainX Creator Academy",
+          sameAs: "https://explainx.ai"
         },
         ...(pageData.features && {
           hasCourseInstance: pageData.features.map(feature => ({
@@ -54,7 +54,7 @@ export function PageStructuredData({ pageData, stats }: PageStructuredDataProps)
             "@type": "ListItem",
             position: 1,
             item: {
-              "@id": "https://infloq.com",
+              "@id": "https://explainx.ai",
               name: "Home"
             }
           },
@@ -62,7 +62,7 @@ export function PageStructuredData({ pageData, stats }: PageStructuredDataProps)
             "@type": "ListItem",
             position: 2,
             item: {
-              "@id": "https://infloq.com/influencers",
+              "@id": "https://explainx.ai/influencers",
               name: "For Creators"
             }
           },

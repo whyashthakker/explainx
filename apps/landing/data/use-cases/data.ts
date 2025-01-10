@@ -35,7 +35,7 @@ export interface UseCase {
       slug: "drive-ecommerce-sales",
       title: "Drive E-Commerce Sales with AI-Powered Influencer Marketing",
       subtitle: "Boost Your Online Sales Through Strategic Creator Partnerships",
-      description: "Transform your e-commerce performance with Infloq's AI-driven influencer marketing platform. Connect with authentic creators, automate campaign management, and track real ROI from your influencer partnerships.",
+      description: "Transform your e-commerce performance with ExplainX's AI-driven influencer marketing platform. Connect with authentic creators, automate campaign management, and track real ROI from your influencer partnerships.",
       heroImage: "/images/use-cases/ecommerce-hero.png",
       keywords: [
         "e-commerce influencer marketing",
@@ -85,7 +85,7 @@ export interface UseCase {
       ],
       testimonials: [
         {
-          quote: "Infloq's platform has transformed how we approach influencer marketing. The AI matching and automated campaign management have saved us countless hours while delivering better results.",
+          quote: "ExplainX's platform has transformed how we approach influencer marketing. The AI matching and automated campaign management have saved us countless hours while delivering better results.",
           author: "Sarah Chen",
           role: "Head of Marketing",
           company: "StyleCo",
@@ -93,7 +93,7 @@ export interface UseCase {
         }
       ],
       ctaTitle: "Ready to Boost Your E-commerce Sales?",
-      ctaDescription: "Join thousands of brands using Infloq to drive sales through creator partnerships.",
+      ctaDescription: "Join thousands of brands using ExplainX to drive sales through creator partnerships.",
       ctaButtonText: "Get Started Free",
       ctaButtonLink: "/signup"
     },
@@ -101,7 +101,7 @@ export interface UseCase {
       slug: "run-affiliate-programs",
       title: "Run High-Performance Affiliate Programs with Creators",
       subtitle: "Transform Creators into Revenue-Generating Partners",
-      description: "Launch and scale successful affiliate programs with Infloq's comprehensive creator management platform. Automate commission tracking, streamline payouts, and maximize ROI from your affiliate partnerships.",
+      description: "Launch and scale successful affiliate programs with ExplainX's comprehensive creator management platform. Automate commission tracking, streamline payouts, and maximize ROI from your affiliate partnerships.",
       heroImage: "/images/use-cases/affiliate-hero.png",
       keywords: [
         "affiliate marketing platform",
@@ -151,7 +151,7 @@ export interface UseCase {
       ],
       testimonials: [
         {
-          quote: "Infloq's affiliate management tools have revolutionized how we run our creator program. The automation and analytics have helped us scale faster than we thought possible.",
+          quote: "ExplainX's affiliate management tools have revolutionized how we run our creator program. The automation and analytics have helped us scale faster than we thought possible.",
           author: "Alex Rivera",
           role: "Affiliate Program Manager",
           company: "TechStyle",
@@ -159,7 +159,7 @@ export interface UseCase {
         }
       ],
       ctaTitle: "Ready to Scale Your Affiliate Program?",
-      ctaDescription: "Join leading brands using Infloq to run successful creator affiliate programs.",
+      ctaDescription: "Join leading brands using ExplainX to run successful creator affiliate programs.",
       ctaButtonText: "Start Free Trial",
       ctaButtonLink: "/signup"
     },
@@ -167,7 +167,7 @@ export interface UseCase {
       slug: "manage-client-campaigns",
       title: "Streamline Client Campaign Management",
       subtitle: "End-to-End Campaign Management for Agencies",
-      description: "Manage all your client's influencer marketing campaigns from a single platform. From creator discovery to performance reporting, Infloq provides agencies with the tools needed to deliver exceptional results.",
+      description: "Manage all your client's influencer marketing campaigns from a single platform. From creator discovery to performance reporting, ExplainX provides agencies with the tools needed to deliver exceptional results.",
       heroImage: "/images/use-cases/agency-hero.png",
       keywords: [
         "agency campaign management",
@@ -217,7 +217,7 @@ export interface UseCase {
       ],
       testimonials: [
         {
-          quote: "Managing multiple client campaigns has never been easier. Infloq's platform helps us deliver better results while saving significant time on operations.",
+          quote: "Managing multiple client campaigns has never been easier. ExplainX's platform helps us deliver better results while saving significant time on operations.",
           author: "Emma Thompson",
           role: "Agency Director",
           company: "Digital Collective",
@@ -225,7 +225,7 @@ export interface UseCase {
         }
       ],
       ctaTitle: "Ready to Transform Your Agency Operations?",
-      ctaDescription: "Join agencies worldwide using Infloq to deliver exceptional results for their clients.",
+      ctaDescription: "Join agencies worldwide using ExplainX to deliver exceptional results for their clients.",
       ctaButtonText: "Book a Demo",
       ctaButtonLink: "/demo"
     },
@@ -233,7 +233,7 @@ export interface UseCase {
       slug: "for-creators",
       title: "Grow Your Creator Business",
       subtitle: "Turn Your Influence into Sustainable Income",
-      description: "Build and scale your creator business with Infloq's comprehensive platform. Connect with brands, manage partnerships, and track your performance all in one place.",
+      description: "Build and scale your creator business with ExplainX's comprehensive platform. Connect with brands, manage partnerships, and track your performance all in one place.",
       heroImage: "/images/use-cases/creator-hero.png",
       keywords: [
         "creator monetization",
@@ -283,7 +283,7 @@ export interface UseCase {
       ],
       testimonials: [
         {
-          quote: "Infloq has transformed how I run my creator business. The platform makes it easy to find and manage brand partnerships, allowing me to focus on creating great content.",
+          quote: "ExplainX has transformed how I run my creator business. The platform makes it easy to find and manage brand partnerships, allowing me to focus on creating great content.",
           author: "James Wilson",
           role: "Content Creator",
           company: "Lifestyle & Tech",
@@ -291,7 +291,7 @@ export interface UseCase {
         }
       ],
       ctaTitle: "Ready to Scale Your Creator Business?",
-      ctaDescription: "Join thousands of creators using Infloq to build sustainable businesses.",
+      ctaDescription: "Join thousands of creators using ExplainX to build sustainable businesses.",
       ctaButtonText: "Join as Creator",
       ctaButtonLink: "/creators/signup"
     },
@@ -299,7 +299,7 @@ export interface UseCase {
       slug: "for-brands",
       title: "Scale Your Brand with AI-Powered Influencer Marketing",
       subtitle: "Reach Your Marketing Goals with Data-Driven Creator Partnerships",
-      description: "Take your brand to the next level with Infloq's comprehensive influencer marketing platform. Discover perfect creators, manage campaigns efficiently, and measure real impact on your business goals.",
+      description: "Take your brand to the next level with ExplainX's comprehensive influencer marketing platform. Discover perfect creators, manage campaigns efficiently, and measure real impact on your business goals.",
       heroImage: "/images/use-cases/brands-hero.png",
       keywords: [
         "brand marketing",
@@ -349,7 +349,7 @@ export interface UseCase {
       ],
       testimonials: [
         {
-          quote: "Infloq has revolutionized how we approach creator partnerships. The platform's AI-driven matching and automated workflows have helped us scale our influencer program while maintaining authenticity.",
+          quote: "ExplainX has revolutionized how we approach creator partnerships. The platform's AI-driven matching and automated workflows have helped us scale our influencer program while maintaining authenticity.",
           author: "Maya Patel",
           role: "Marketing Director",
           company: "GlobalBrands",
@@ -357,7 +357,7 @@ export interface UseCase {
         }
       ],
       ctaTitle: "Ready to Transform Your Brand Marketing?",
-      ctaDescription: "Join innovative brands using Infloq to achieve their marketing goals through creator partnerships.",
+      ctaDescription: "Join innovative brands using ExplainX to achieve their marketing goals through creator partnerships.",
       ctaButtonText: "Get Started",
       ctaButtonLink: "/brands/signup"
     }

@@ -111,7 +111,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-500" />
             <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-              infloq
+              ExplainX
             </h1>
           </div>
         </div>

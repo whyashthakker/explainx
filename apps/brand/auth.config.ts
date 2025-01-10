@@ -41,7 +41,7 @@ export default {
       },
     }),
     Resend({
-      from: "yash@mail.infloq.com",
+      from: "yash@mail.explainx.com",
     }),
   ],
   callbacks: {

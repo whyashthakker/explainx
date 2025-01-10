@@ -9,7 +9,7 @@ const TermsOfService: React.FC = () => {
                 <p className="text-sm text-gray-600 mb-4">Last updated: December 27, 2024</p>
 
                 <div className="mb-6">
-                    <p className="mb-4">Subject to these Terms of Service (this "Agreement"), Infloq ("Infloq", "we", "us", and/or "our") provides access to Infloq's AI-powered influencer marketing platform (collectively, the "Services"). By using or accessing the Services, you acknowledge that you have read, understand, and agree to be bound by this Agreement.</p>
+                    <p className="mb-4">Subject to these Terms of Service (this "Agreement"), ExplainX ("ExplainX", "we", "us", and/or "our") provides access to ExplainX's AI-powered influencer marketing platform (collectively, the "Services"). By using or accessing the Services, you acknowledge that you have read, understand, and agree to be bound by this Agreement.</p>
 
                     <p className="mb-4">If you are entering into this Agreement on behalf of a company, business, or other legal entity, you represent that you have the authority to bind such entity to this Agreement, in which case the term "you" shall refer to such entity. If you do not have such authority, or if you do not agree with this Agreement, you must not accept this Agreement and may not use the Services.</p>
                 </div>
@@ -17,7 +17,7 @@ const TermsOfService: React.FC = () => {
                 <h2 className="text-lg font-semibold mb-2 mt-6">1. Platform Services</h2>
                 <div className="mb-4">
                     <h3 className="font-medium mb-2">1.1 Service Description</h3>
-                    <p className="mb-2">Infloq provides an AI-powered influencer marketing platform that connects brands with creators through:</p>
+                    <p className="mb-2">ExplainX provides an AI-powered influencer marketing platform that connects brands with creators through:</p>
                     <ul className="list-disc pl-6 mb-4">
                         <li className="mb-2">AI-driven matchmaking between brands and creators</li>
                         <li className="mb-2">Campaign management and analytics tools</li>
@@ -27,7 +27,7 @@ const TermsOfService: React.FC = () => {
 
                     <h3 className="font-medium mb-2">1.2 Service Access</h3>
                     <ul className="list-disc pl-6 mb-4">
-                        <li className="mb-2">Access is provided through infloq.com and associated domains</li>
+                        <li className="mb-2">Access is provided through explainx.ai and associated domains</li>
                         <li className="mb-2">Requires creation and maintenance of an account</li>
                         <li className="mb-2">Subject to continued compliance with these terms</li>
                     </ul>
@@ -187,14 +187,14 @@ const TermsOfService: React.FC = () => {
                     <p>For questions about these Terms, contact us at:</p>
                     <div className="pl-6 mt-2">
                         <p>Legal Team</p>
-                        <p>Infloq</p>
-                        <p>Email: legal@infloq.com</p>
+                        <p>ExplainX</p>
+                        <p>Email: legal@explainx.ai</p>
                         <p>Address: Mumbai, India - 410210</p>
                     </div>
                 </div>
 
                 <div className="mt-8 text-sm text-gray-600">
-                    <p className="mb-2">By using Infloq, you acknowledge that you have read these Terms of Service, understood them, and agree to be bound by them.</p>
+                    <p className="mb-2">By using ExplainX, you acknowledge that you have read these Terms of Service, understood them, and agree to be bound by them.</p>
                     <p>Last updated: December 27, 2024</p>
                 </div>
             </div>

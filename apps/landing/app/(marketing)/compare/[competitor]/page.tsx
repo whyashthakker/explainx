@@ -10,7 +10,7 @@ import { Testimonials } from '../../../_components/testimonials';
 import FAQs from '../../../_components/faq-section';
 import { competitors } from '../../../../data/competitors';
 import { ReviewsSection } from '../../../_components/reviews/reviews-section';
-import HybridPricing from '../../../_components/infloq-pricing';
+import PricingSection from '../../../_components/explainx-pricing';
 import { ComparisonStructuredData } from './StructuredData';
 import { generateFAQsFromFeatures, generateReviews, getFeatureHighlights } from './utils';
 
@@ -32,9 +32,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!competitor) return {};
 
-  const title = `Infloq.com vs ${competitor.name} Comparison`;
-  const description = `Compare Infloq.com with ${competitor.name}. See how these ${competitor.category} tools stack up in features, pricing, and capabilities.`;
-  const keywords = [competitor.name, 'infloq.com', `${competitor.name} alternatives`, `free ${competitor.name} alternatives`, `influencer marketing platforms`, 'comparison', 'features', 'pricing', 'capabilities'];
+  const title = `explainx.ai vs ${competitor.name} Comparison`;
+  const description = `Compare explainx.ai with ${competitor.name}. See how these ${competitor.category} tools stack up in features, pricing, and capabilities.`;
+  const keywords = [competitor.name, 'explainx.ai', `${competitor.name} alternatives`, `free ${competitor.name} alternatives`, `influencer marketing platforms`, 'comparison', 'features', 'pricing', 'capabilities'];
 
   return {
     title,
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         url: competitor.comparisonImage,
         width: 1200,
         height: 630,
-        alt: `infloq.com vs ${competitor.name} comparison`
+        alt: `explainx.ai vs ${competitor.name} comparison`
       }]
     },
     twitter: {
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [competitor.comparisonImage]
     },
     alternates: {
-      canonical: `https://www.infloq.com/compare/${resolvedParams.competitor}`
+      canonical: `https://www.explainx.ai/compare/${resolvedParams.competitor}`
     }
   };
 }
@@ -85,8 +85,8 @@ export default async function ComparisonPage({ params }: PageProps) {
       />
       
       <Heading
-        title={`Infloq.com vs ${competitor.name}`}
-        subtitle={`Compare features, pricing, and capabilities between Infloq.com and ${competitor.name}`}
+        title={`explainx.ai vs ${competitor.name}`}
+        subtitle={`Compare features, pricing, and capabilities between explainx.ai and ${competitor.name}`}
         image={competitor.comparisonImage}
       />
       
@@ -97,7 +97,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         
         <Testimonials />
         <ReviewsSection />
-        <HybridPricing />
+        <PricingSection />
         <FAQs faqs={faqs} />
       </div>
     </>

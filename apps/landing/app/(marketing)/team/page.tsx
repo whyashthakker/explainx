@@ -12,31 +12,43 @@ import {
 import { Separator } from "@repo/ui/components/ui/separator";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.infloq.com"),
-  title: "Team | Infloq - Building the Future of Influencer Marketing",
-  description: "Meet the passionate team behind Infloq working to revolutionize influencer marketing through technology, transparency, and trust.",
-  keywords: "Infloq team, Influencer Marketing, Performance Marketing, Content Creators, Yash Thakker, Startup Team, Marketing Technology Team",
+  metadataBase: new URL("https://www.explainx.ai"),
+  title: "Team | ExplainX - Leading AI Agents Development Agency",
+  description: "Meet the expert team behind ExplainX working to revolutionize business automation through custom AI agents, LangChain integration, and intelligent solutions.",
+  keywords: [
+    "ai development team",
+    "ai agents experts",
+    "langchain developers",
+    "crewai specialists",
+    "ai automation team",
+    "custom ai solutions team",
+    "ai development agency",
+    "enterprise ai experts",
+    "ai agents engineers",
+    "technical ai team",
+    "automation specialists"
+  ].join(", "),
   appLinks: {
     web: {
-      url: "https://www.infloq.com/team",
+      url: "https://www.explainx.ai/team",
       should_fallback: false,
     },
   },
-  generator: "Infloq",
+  generator: "ExplainX",
   referrer: "no-referrer-when-downgrade",
   authors: [
     {
-      name: "Infloq Team",
-      url: "https://www.infloq.com/team",
+      name: "ExplainX AI Development Team",
+      url: "https://www.explainx.ai/team",
     }
   ],
-  creator: 'Infloq',
-  publisher: "Infloq",
+  creator: "ExplainX",
+  publisher: "ExplainX",
   openGraph: {
-    title: "Meet the Infloq Team | Building the Future of Influencer Marketing",
-    description: "Get to know the passionate team behind Infloq working to revolutionize influencer marketing through technology, transparency, and trust.",
-    url: "https://www.infloq.com/team",
-    siteName: "Infloq - Performance-Based Influencer Marketing",
+    title: "Meet the ExplainX Team | AI Agents Development Experts",
+    description: "Get to know the technical team behind ExplainX developing custom AI solutions and automation tools for businesses.",
+    url: "https://www.explainx.ai/team",
+    siteName: "ExplainX - AI Agents Development Agency",
     images: [
       {
         url: "/og-image.png",
@@ -63,38 +75,38 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico"
   },
-  category: "Marketing Technology",
+  category: "Technology",
 };
 
 const teamMembers = [
   {
     name: "Pratham Ware",
-    role: "Marketing & Content",
+    role: "AI Solutions Architect",
     gender: "male",
   },
   {
     name: "Geeta Thakker",
-    role: "Co-Founder & Marketing",
+    role: "Co-Founder & Technology",
     gender: "female",
   },
   {
     name: "Shri Jadhav",
-    role: "Sales & Support",
+    role: "Technical Implementation Lead",
     gender: "female",
   },
   {
     name: "Aryan Nagbanshi",
-    role: "Development Lead",
+    role: "AI Development Lead",
     gender: "male",
   },
   {
     name: "Yogesh Gaikwad",
-    role: "Video Content Lead",
+    role: "Integration Specialist",
     gender: "male",
   },
   {
     name: "Yash Thakker",
-    role: "Co-Founder & Product",
+    role: "Co-Founder & Product Strategy",
     gender: "male",
   },
 ] as const;
@@ -104,14 +116,14 @@ export default function TeamPage() {
     <div className="container max-w-7xl mx-auto px-6 py-12">
       {/* Hero section */}
       <div className="flex flex-col items-center text-center space-y-4 mb-16">
-        <h1 className="font-cal text-4xl md:text-5xl">Meet Our Team</h1>
+        <h1 className="font-cal text-4xl md:text-5xl">Meet Our AI Development Team</h1>
         <p className="text-muted-foreground max-w-[700px]">
-          We're a passionate team dedicated to revolutionizing influencer marketing through 
-          technology, transparency, and trust.
+          We're a team of AI specialists dedicated to revolutionizing business operations through 
+          custom AI agents and intelligent automation solutions.
         </p>
         <div className="flex gap-4 mt-6">
-          <Link href="https://brand.infloq.com/signup">
-            <Button size="lg">Join as Brand</Button>
+          <Link href="/demo">
+            <Button size="lg">Schedule Demo</Button>
           </Link>
           <Link href="/about">
             <Button variant="outline" size="lg">Learn More</Button>
@@ -126,12 +138,12 @@ export default function TeamPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            We're building this because we feel that Influencer Marketing is broken. As the future of marketing unfolds, 
-            we're committed to bringing order and transparency to this rapidly evolving space.
+            We're building AI solutions because we believe business automation is entering a new era. As AI technology evolves, 
+            we're committed to making intelligent automation accessible and effective for businesses of all sizes.
           </p>
           <p>
-            Our platform aims to bridge the gap between creators and brands, fostering authentic connections 
-            that benefit both parties while delivering real value to audiences.
+            Our platform aims to bridge the gap between complex AI technologies and practical business needs, creating 
+            custom solutions that deliver measurable value and drive innovation.
           </p>
         </CardContent>
       </Card>
@@ -140,7 +152,7 @@ export default function TeamPage() {
 
       {/* Team members grid */}
       <div className="space-y-8">
-        <h2 className="font-cal text-3xl text-center">The Team</h2>
+        <h2 className="font-cal text-3xl text-center">The Technical Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {teamMembers.map((member) => (
             <TeamMember key={member.name} {...member} />
@@ -153,17 +165,17 @@ export default function TeamPage() {
       {/* CTA section */}
       <Card className="bg-primary-foreground">
         <CardHeader>
-          <CardTitle className="font-cal text-2xl text-center">Ready to Get Started?</CardTitle>
+          <CardTitle className="font-cal text-2xl text-center">Ready to Transform Your Business?</CardTitle>
           <CardDescription className="text-center">
-            Join our platform and be part of the revolution in influencer marketing.
+            Partner with us to develop custom AI solutions for your organization.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex justify-center gap-4">
-          <Link href="https://creator.infloq.com/signup">
-            <Button size="lg">Sign Up as Creator</Button>
-          </Link>
           <Link href="/contact">
-            <Button variant="outline" size="lg">Contact Us</Button>
+            <Button size="lg">Contact Our Team</Button>
+          </Link>
+          <Link href="/demo">
+            <Button variant="outline" size="lg">Book a Demo</Button>
           </Link>
         </CardContent>
       </Card>

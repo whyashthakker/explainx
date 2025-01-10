@@ -19,7 +19,7 @@ import { Competitor } from "../../../../data/competitors";
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-1/3">Feature</TableHead>
-                  <TableHead>infloq.com</TableHead>
+                  <TableHead>explainx.ai</TableHead>
                   <TableHead>{competitor.name}</TableHead>
                 </TableRow>
               </TableHeader>
@@ -34,7 +34,7 @@ import { Competitor } from "../../../../data/competitors";
                         </p>
                       )}
                     </TableCell>
-                    <TableCell>{renderFeatureValue(feature.infloq)}</TableCell>
+                    <TableCell>{renderFeatureValue(feature.ExplainX)}</TableCell>
                     <TableCell>{renderFeatureValue(feature.competitor)}</TableCell>
                   </TableRow>
                 ))}

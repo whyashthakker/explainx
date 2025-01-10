@@ -1,6 +1,5 @@
 "use client";
 
-// app/demo/_components/demo-booking-form.tsx
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@repo/ui/components/ui/input";
@@ -21,8 +20,8 @@ interface FormData {
   company: string;
   role: string;
   teamSize: string;
-  monthlyBudget: string;
-  goals: string;
+  useCase: string;
+  requirements: string;
 }
 
 export function DemoBookingForm() {
@@ -35,8 +34,8 @@ export function DemoBookingForm() {
     company: "",
     role: "",
     teamSize: "",
-    monthlyBudget: "",
-    goals: "",
+    useCase: "",
+    requirements: "",
   });
 
   const handleInputChange = (
@@ -52,7 +51,6 @@ export function DemoBookingForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (step === 1) {
-      // Validate first step
       if (!formData.name || !formData.email || !formData.company) {
         return;
       }
@@ -62,7 +60,6 @@ export function DemoBookingForm() {
 
     setIsLoading(true);
     try {
-      // Send form data to your API
       const response = await fetch("/api/demo", {
         method: "POST",
         headers: {
@@ -75,7 +72,6 @@ export function DemoBookingForm() {
         throw new Error("Failed to submit form");
       }
 
-      // Show Calendly after successful submission
       setStep(3);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -87,9 +83,8 @@ export function DemoBookingForm() {
   if (step === 3) {
     return (
       <div className="h-[600px]">
-        {/* Replace YOUR_CALENDLY_URL with your actual Calendly URL */}
         <iframe
-          src="https://calendly.com/explainx/discussion?name=${formData.name}&email=${formData.email}"
+          src={`https://calendly.com/explainx/demo?name=${formData.name}&email=${formData.email}&a1=${formData.company}&a2=${formData.useCase}`}
           width="100%"
           height="100%"
           frameBorder="0"
@@ -156,9 +151,10 @@ export function DemoBookingForm() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="founder">Founder/CEO</SelectItem>
-                  <SelectItem value="marketing">Marketing Manager</SelectItem>
-                  <SelectItem value="growth">Growth Lead</SelectItem>
-                  <SelectItem value="social">Social Media Manager</SelectItem>
+                  <SelectItem value="cto">CTO/Technical Lead</SelectItem>
+                  <SelectItem value="product">Product Manager</SelectItem>
+                  <SelectItem value="engineering">Engineering Manager</SelectItem>
+                  <SelectItem value="developer">Developer</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
@@ -173,7 +169,7 @@ export function DemoBookingForm() {
         <>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="teamSize">Team Size</Label>
+              <Label htmlFor="teamSize">Development Team Size</Label>
               <Select
                 name="teamSize"
                 value={formData.teamSize}
@@ -187,46 +183,47 @@ export function DemoBookingForm() {
                   <SelectValue placeholder="Select team size" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1">Just me</SelectItem>
-                  <SelectItem value="2-5">2-5 people</SelectItem>
-                  <SelectItem value="6-10">6-10 people</SelectItem>
-                  <SelectItem value="11-50">11-50 people</SelectItem>
-                  <SelectItem value="50+">50+ people</SelectItem>
+                  <SelectItem value="1">Solo Developer</SelectItem>
+                  <SelectItem value="2-5">2-5 developers</SelectItem>
+                  <SelectItem value="6-20">6-20 developers</SelectItem>
+                  <SelectItem value="21-50">21-50 developers</SelectItem>
+                  <SelectItem value="50+">50+ developers</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="monthlyBudget">Monthly Marketing Budget</Label>
+              <Label htmlFor="useCase">Primary Use Case</Label>
               <Select
-                name="monthlyBudget"
-                value={formData.monthlyBudget}
+                name="useCase"
+                value={formData.useCase}
                 onValueChange={(value) =>
                   handleInputChange({
-                    target: { name: "monthlyBudget", value },
+                    target: { name: "useCase", value },
                   } as any)
                 }
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select budget range" />
+                  <SelectValue placeholder="Select primary use case" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="0-1000">$0 - $1,000</SelectItem>
-                  <SelectItem value="1000-5000">$1,000 - $5,000</SelectItem>
-                  <SelectItem value="5000-10000">$5,000 - $10,000</SelectItem>
-                  <SelectItem value="10000+">$10,000+</SelectItem>
+                  <SelectItem value="custom">Custom AI Agents</SelectItem>
+                  <SelectItem value="integration">System Integration</SelectItem>
+                  <SelectItem value="automation">Process Automation</SelectItem>
+                  <SelectItem value="api">API Development</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="goals">What are your main goals?</Label>
+              <Label htmlFor="requirements">Specific Requirements</Label>
               <Input
-                id="goals"
-                name="goals"
-                value={formData.goals}
+                id="requirements"
+                name="requirements"
+                value={formData.requirements}
                 onChange={handleInputChange}
-                placeholder="e.g., Increase brand awareness, drive sales..."
+                placeholder="e.g., Custom AI agent for data analysis, API integration needs..."
               />
             </div>
           </div>

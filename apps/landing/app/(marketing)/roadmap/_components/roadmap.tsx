@@ -64,7 +64,7 @@ export default function ProductRoadmap() {
   }, []);
 
   const handleRequestFeature = () => {
-    window.open(`mailto:support@infloq.com?subject=Feature Request`);
+    window.open(`mailto:support@explainx.ai?subject=Feature Request`);
   };
 
   const handleUpvote = async (id: string) => {
@@ -123,7 +123,7 @@ export default function ProductRoadmap() {
           <div>
             <h1 className="text-4xl font-bold tracking-tight">Product Roadmap</h1>
             <p className="text-muted-foreground mt-2">
-              Track the development of Infloq and vote on upcoming features
+              Track the development of ExplainX and vote on upcoming features
             </p>
           </div>
           <Button onClick={handleRequestFeature}>Request a Feature</Button>

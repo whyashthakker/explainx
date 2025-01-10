@@ -2,63 +2,29 @@ import Link from "next/link";
 
 const navigation = {
   main: [
-      { name: "Influencer Marketing Platform", href: "/products/influencer-marketing-platform" },
-      { name: "Free Influencer Finder", href: "/products/free-influencer-finder" },
-      { name: "Influencer Analytics", href: "/products/influencer-analytics" },
-      { name: "Campaign Management", href: "/products/campaign-management" },
-      { name: "Influencer Discovery", href: "/products/influencer-discovery" },
-      { name: "Product Seeding", href: "/products/product-seeding" },
-      { name: "Campaign Analytics", href: "/products/campaign-analytics" },
       { name: "All Products", href: "/products" },
   ],
   tools: [
-      { name: "Instagram Audit", href: "/tools/instagram-audit" },
-      { name: "Instagram Engagement Checker", href: "/tools/instagram-engagement-checker" },
-      { name: "TikTok Audit", href: "/tools/tiktok-audit" },
-      { name: "TikTok Engagement", href: "/tools/tiktok-engagement" },
-      { name: "YouTube Audit", href: "/tools/youtube-audit" },
-      { name: "Twitch Audit", href: "/tools/twitch-audit" },
-      { name: "Pinterest Audit", href: "/tools/pinterest-audit" },
-      { name: "Twitter Creator Finder", href: "/tools/twitter-creator-finder" },
-      { name: "Fake Follower Checker", href: "/tools/fake-follower-checker" },
-      { name: "Creator Discovery", href: "/tools/creator-discovery" },
-      { name: "Engagement Calculator", href: "/tools/engagement-calculator" },
-      { name: "Social ROI Calculator", href: "/tools/social-roi-calculator" },
-      { name: "FBA Calculator", href: "/tools/fba-calculator" },
       { name: "All Tools", href: "/tools" },
   ],
   comparisons: [
-      { name: "Infloq vs Upfluence", href: "/compare/upfluence" },
-      { name: "Infloq vs Creator.co", href: "/compare/creator-co" },
-      { name: "Infloq vs GRIN", href: "/compare/grin" },
-      { name: "Infloq vs Influencity", href: "/compare/influencity" },
-      { name: "Infloq vs IZEA", href: "/compare/izea" },
-      { name: "Infloq vs InsightIQ", href: "/compare/insightiq" },
       { name: "All Comparisons", href: "/compare" }
   ],
   forPages: [
-    { name: "Brands", href: "/brands" },
-    { name: "Creators", href: "/creators" },
-    { name: "Influencers", href: "/influencers" },
-    { name: "Nano Influencers", href: "/nano-influencers" },
-    { name: "Micro Influencers", href: "/micro-influencers" },
-    { name: "Macro Influencers", href: "/macro-influencers" },
-    { name: "Mega Influencers", href: "/mega-influencers" }
+    { name: "Custom AI Agent Development", href: "/custom-ai-agents" },
+    { name: "AI Agent Training", href: "/ai-agents-training" },
+    { name: "Generative AI Training", href: "/generative-ai-training" },
+    { name: "Frontend Development", href: "/frontend-development" },
+    { name: "AI Consulting Services", href: "/consulting-services-generative-ai" },
 ],
   company: [
       { name: "About", href: "/about" },
       { name: "Careers", href: "/careers" },
       { name: "Team", href: "/team" },
       { name: "Blog", href: "/blog" },
-      { name: "Chrome Extension", href: "/chrome-extension" },
-      { name: "Twitter", href: "https://twitter.com/infloq", target: "_blank" },
-      { name: "GitHub", href: "https://github.com/infloq", target: "_blank" },
-      { name: "Pricing", href: "/#pricing" },
       { name: "Contact", href: "/contact", target: "_blank" },
-      { name: "Feature Requests", href: "mailto:yash@infloq.com", target: "_blank" },
       { name: "FAQ", href: "/faq" },
       { name: "Demo", href: "/demo" },
-      { name: "How it works?", href: "/how-it-works" },
   ],
   legal: [
       { name: "Privacy", href: "/privacy-policy" },
@@ -68,7 +34,7 @@ const navigation = {
   social: [
     {
       name: "Twitter",
-      href: "https://twitter.com/infloq",
+      href: "https://twitter.com/ExplainX",
       target: "_blank",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -78,7 +44,7 @@ const navigation = {
     },
     {
         name: "LinkedIn",
-        href: "https://www.linkedin.com/company/infloq",
+        href: "https://www.linkedin.com/company/ExplainX",
         target: "_blank",
         icon: (props: any) => (
           <svg fill="currentColor" viewBox="0 0 192 192" {...props}>
@@ -88,7 +54,7 @@ const navigation = {
     },
     {
         name: "Instagram",
-        href: "https://www.instagram.com/infloq",
+        href: "https://www.instagram.com/ExplainX",
         target: "_blank",
         icon: (props: any) => (
             <svg fill="currentColor" viewBox="0 0 448 512" {...props}>

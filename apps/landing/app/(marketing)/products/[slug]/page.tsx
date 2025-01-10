@@ -11,7 +11,7 @@ import { UseCasesDynamic } from "../_components/use-cases";
 import { TargetAudienceDynamic } from "../_components/target-audience";
 import { Testimonials } from "../../../_components/testimonials";
 import { productPageData } from "../../../../data/productPageData";
-import HybridPricing from "../../../_components/infloq-pricing";
+import HybridPricing from "../../../_components/explainx-pricing";
 import { ProductStructuredData } from "./structured-data";
 
 // Mock reviews data - replace with your actual reviews data
@@ -59,7 +59,7 @@ export async function generateMetadata({
   
   if (!product) {
     return {
-      title: "Product Not Found | Infloq",
+      title: "Product Not Found | ExplainX",
       description: "This product doesn't exist",
     };
   }

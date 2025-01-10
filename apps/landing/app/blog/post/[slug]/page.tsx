@@ -91,7 +91,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
             }
         },
         robots: { index: true, follow: true },
-        metadataBase: new URL('https://www.infloq.com'),
+        metadataBase: new URL('https://www.explainx.ai'),
         openGraph: {
             type: 'article',
             locale: post.language.replace('zh-cn', 'zh'),

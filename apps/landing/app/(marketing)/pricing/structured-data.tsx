@@ -34,7 +34,7 @@ export function PricingStructuredData({
   plans, 
   influencerTiers,
   faqs,
-  baseUrl = 'https://infloq.com' 
+  baseUrl = 'https://explainx.ai' 
 }: PricingStructuredDataProps) {
   // Convert price string to number (e.g., "$49" -> 49)
   const getPriceValue = (priceStr: string) => {
@@ -48,7 +48,7 @@ export function PricingStructuredData({
         "@type": "WebPage",
         "@id": `${baseUrl}/pricing#webpage`,
         "url": `${baseUrl}/pricing`,
-        "name": "Infloq Pricing - Performance-Based Influencer Marketing Plans",
+        "name": "ExplainX Pricing - Performance-Based Influencer Marketing Plans",
         "description": "Choose the right plan for your influencer marketing needs. Pay only for performance with our flexible pricing options.",
         "isPartOf": { "@id": baseUrl },
         "breadcrumb": {
@@ -92,7 +92,7 @@ export function PricingStructuredData({
       ...plans.map((plan, index) => ({
         "@type": "Product",
         "@id": `${baseUrl}/pricing#${plan.name.toLowerCase()}`,
-        "name": `Infloq ${plan.name} Plan`,
+        "name": `ExplainX ${plan.name} Plan`,
         "description": plan.description,
         "offers": {
           "@type": "Offer",
@@ -103,10 +103,10 @@ export function PricingStructuredData({
           "itemCondition": "https://schema.org/NewCondition"
         },
         "identifier": `plan-${index}`,
-        "image": "https://infloq.com/images/main/landing.png",
+        "image": "https://explainx.ai/images/main/landing.png",
         "brand": {
           "@type": "Brand",
-          "name": "Infloq"
+          "name": "ExplainX"
         }
       })),
       {

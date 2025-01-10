@@ -1,4 +1,3 @@
-// app/careers/_components/culture-section.tsx
 import Link from "next/link";
 import {
   Card,
@@ -17,14 +16,17 @@ export function CultureSection() {
       </CardHeader>
       <CardContent className="space-y-4 text-muted-foreground">
         <p>
-          At Infloq, we're building the future of influencer marketing with a focus on transparency, 
-          performance, and authentic connections. Our team consists of passionate individuals who 
-          believe in the power of content creators to shape the future of digital marketing.
+          At ExplainX, we're pioneering the future of AI agents with a focus on innovation, 
+          accessibility, and practical implementation. Our team consists of AI enthusiasts, 
+          developers, and educators who believe in democratizing artificial intelligence 
+          through powerful, user-friendly agents.
         </p>
         <p>
-          We value initiative, creativity, and a growth mindset. If you're excited about working 
-          in a fast-paced startup environment and making a real impact in the creator economy, 
-          we'd love to hear from you.
+          We value technical excellence, continuous learning, and open collaboration. If you're 
+          passionate about building cutting-edge AI solutions, teaching others, and contributing 
+          to the growing ecosystem of AI agents, we want to work with you. Whether it's developing 
+          new agents, improving our marketplace, or creating educational content, there's an 
+          opportunity to make a significant impact.
         </p>
       </CardContent>
       <CardFooter className="flex justify-center pt-4">

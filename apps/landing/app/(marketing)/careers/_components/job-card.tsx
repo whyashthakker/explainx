@@ -37,7 +37,7 @@ export function JobCard({ job }: { job: Job }) {
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground mb-4">{job.description}</p>
-        <Link href={`mailto:careers@infloq.com?subject=Application for ${job.title}`}>
+        <Link href={`mailto:careers@explainx.ai?subject=Application for ${job.title}`}>
           <Button>Apply Now</Button>
         </Link>
       </CardContent>

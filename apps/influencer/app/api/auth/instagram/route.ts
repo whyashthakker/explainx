@@ -17,8 +17,8 @@ export async function GET() {
 
     // Construct Instagram OAuth URL
     const instagramAuthUrl = `https://api.instagram.com/oauth/authorize?${new URLSearchParams({
-      client_id: process.env.INSTAGRAM_CLIENT_ID!,
-      redirect_uri: process.env.INSTAGRAM_REDIRECT_URI!,
+      client_id: process.env.NEXT_PUBLIC_INSTGRAM_CLIENT_ID!,
+      redirect_uri: process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URI!,
       scope: scopes.join(','),
       response_type: 'code',
       state: state,

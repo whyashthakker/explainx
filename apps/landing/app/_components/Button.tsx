@@ -17,7 +17,7 @@ interface ButtonProps
   loading?: boolean;
 }
 
-type Color = "primary" | "white" | "red" | "transparent" | "premium" | "infloq";
+type Color = "primary" | "white" | "red" | "transparent" | "premium" | "ExplainX";
 type Size = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "circle";
 
 export const Button = (props: ButtonProps) => {
@@ -70,7 +70,7 @@ export const Button = (props: ButtonProps) => {
           "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700 focus:ring-purple-500":
             color === "premium",
           "bg-[#33dfa0] text-white hover:bg-[#2bc589] focus:ring-[#33dfa0] shadow-[#33dfa0]/50":
-            color === "infloq",
+            color === "ExplainX",
         },
         className
       )}

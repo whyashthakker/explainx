@@ -18,7 +18,7 @@ import {
         <div className="text-center mb-12">
           <h2 className="font-cal text-4xl mb-4">Frequently Asked Questions</h2>
           <p className="text-gray-600">
-            Everything you need to know about growing with Infloq
+            Everything you need to know about growing with ExplainX
           </p>
         </div>
   

@@ -12,7 +12,7 @@ export function ToolStructuredData({ tool }: ToolStructuredDataProps) {
       {
         "@type": "WebPage",
         "@id": typeof window !== 'undefined' ? window.location.href : undefined,
-        name: `${tool.name} | Infloq Tools`,
+        name: `${tool.name} | ExplainX Tools`,
         description: tool.description,
         image: tool.image,
         dateModified: new Date().toISOString(),
@@ -21,7 +21,7 @@ export function ToolStructuredData({ tool }: ToolStructuredDataProps) {
           name: "AISOLO Technologies Pvt. Ltd.",
           logo: {
             "@type": "ImageObject",
-            url: "https://infloq.com/icons/infloq.png"
+            url: "https://explainx.ai/icons/ExplainX.png"
           }
         }
       },
@@ -49,7 +49,7 @@ export function ToolStructuredData({ tool }: ToolStructuredDataProps) {
           audienceType: tool.targetAudience.join(', ')
         },
         category: tool.category,
-        applicationSuite: "Infloq Marketing Suite"
+        applicationSuite: "ExplainX Marketing Suite"
       },
       {
         "@type": "FAQPage",
@@ -69,7 +69,7 @@ export function ToolStructuredData({ tool }: ToolStructuredDataProps) {
             "@type": "ListItem",
             position: 1,
             item: {
-              "@id": "https://infloq.com",
+              "@id": "https://explainx.ai",
               name: "Home"
             }
           },
@@ -77,7 +77,7 @@ export function ToolStructuredData({ tool }: ToolStructuredDataProps) {
             "@type": "ListItem",
             position: 2,
             item: {
-              "@id": "https://infloq.com/tools",
+              "@id": "https://explainx.ai/tools",
               name: "Tools"
             }
           },

@@ -2,18 +2,18 @@ import { Metadata } from 'next';
 import { HowItWorks } from './_components/how-it-works';
 
 export const metadata: Metadata = {
-  title: 'Demo - Infloq',
-  description: 'See how Infloq connects creators with brands using AI-powered matching and performance-based pricing.',
+  title: 'Demo - ExplainX',
+  description: 'See how ExplainX connects creators with brands using AI-powered matching and performance-based pricing.',
   openGraph: {
-    title: 'Demo - Infloq',
-    description: 'Discover how Infloq revolutionizes creator-brand partnerships',
+    title: 'Demo - ExplainX',
+    description: 'Discover how ExplainX revolutionizes creator-brand partnerships',
     type: 'website',
-    url: 'https://infloq.com/how-it-works',
+    url: 'https://explainx.ai/how-it-works',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Demo - Infloq',
-    description: 'See how Infloq connects creators with brands through AI',
+    title: 'Demo - ExplainX',
+    description: 'See how ExplainX connects creators with brands through AI',
   },
 };
 

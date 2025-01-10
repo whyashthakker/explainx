@@ -34,7 +34,7 @@ export function ProductStructuredData({ product, reviews, pricing }: ProductStru
           name: "AISOLO Technologies Pvt. Ltd.",
           logo: {
             "@type": "ImageObject",
-            url: "https://infloq.com/icons/infloq.png"
+            url: "https://explainx.ai/icons/ExplainX.png"
           }
         }
       },
@@ -45,7 +45,7 @@ export function ProductStructuredData({ product, reviews, pricing }: ProductStru
         image: product.heading?.image || product.metadata.alternates?.openGraph?.images?.[0],
         brand: {
           "@type": "Brand",
-          name: "Infloq"
+          name: "ExplainX"
         },
         ...(pricing && {
           offers: {
@@ -107,7 +107,7 @@ export function ProductStructuredData({ product, reviews, pricing }: ProductStru
             "@type": "ListItem",
             position: 1,
             item: {
-              "@id": "https://infloq.com",
+              "@id": "https://explainx.ai",
               name: "Home"
             }
           },
@@ -115,7 +115,7 @@ export function ProductStructuredData({ product, reviews, pricing }: ProductStru
             "@type": "ListItem",
             position: 2,
             item: {
-              "@id": "https://infloq.com/products",
+              "@id": "https://explainx.ai/products",
               name: "Products"
             }
           },

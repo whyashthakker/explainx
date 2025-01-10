@@ -18,7 +18,7 @@ export default function LoginPage({ searchParams }: PageProps) {
       handleGoogleAuth={handleGoogleSignIn}
       searchParams={searchParams}
       alternateAuthLink={{
-        text: "New to Infloq? Create an influencer account",
+        text: "New to ExplainX? Create an influencer account",
         href: "/signup",
       }}
     />

@@ -18,7 +18,7 @@ return (
       handleGoogleAuth={handleGoogleSignIn}
       searchParams={searchParams}
       alternateAuthLink={{
-        text: "New to Infloq? Create a brand account",
+        text: "New to ExplainX? Create a brand account",
         href: "/signup",
       }}
     />

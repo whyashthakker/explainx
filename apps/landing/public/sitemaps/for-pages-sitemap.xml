@@ -3,44 +3,44 @@
 
   <!-- Core Pages -->
   <url>
-    <loc>https://infloq.com/creators</loc>
+    <loc>https://explainx.ai/creators</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://infloq.com/brands</loc>
+    <loc>https://explainx.ai/brands</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://infloq.com/influencers</loc>
+    <loc>https://explainx.ai/influencers</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Influencer Type Pages -->
   <url>
-    <loc>https://infloq.com/nano-influencers</loc>
+    <loc>https://explainx.ai/nano-influencers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://infloq.com/micro-influencers</loc>
+    <loc>https://explainx.ai/micro-influencers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://infloq.com/macro-influencers</loc>
+    <loc>https://explainx.ai/macro-influencers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://infloq.com/mega-influencers</loc>
+    <loc>https://explainx.ai/mega-influencers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://infloq.com/ai-influencers</loc>
+    <loc>https://explainx.ai/ai-influencers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

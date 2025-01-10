@@ -1,4 +1,3 @@
-// app/about/_components/timeline-event.tsx
 import { Card, CardContent } from "@repo/ui/components/ui/card";
 
 type TimelineEventProps = {
@@ -12,20 +11,16 @@ type TimelineEventProps = {
 export function TimelineEvent({ year, title, description, highlight, isLast }: TimelineEventProps) {
   return (
     <div className="relative pl-8 sm:pl-32 py-6 group">
-      {/* Year Label */}
       <div className="font-cal text-xl sm:text-2xl text-primary absolute left-0 sm:left-8 top-7">
         {year}
       </div>
 
-      {/* Timeline Line */}
       {!isLast && (
         <div className="absolute left-[1.3125rem] sm:left-24 top-10 h-full w-0.5 bg-border group-hover:bg-primary/50 transition-colors" />
       )}
 
-      {/* Timeline Dot */}
       <div className="absolute left-[1.125rem] sm:left-[5.875rem] top-[2.375rem] h-2.5 w-2.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors" />
 
-      {/* Content */}
       <Card className="transition-all">
         <CardContent className="p-6">
           <h3 className="font-cal text-xl mb-2">{title}</h3>

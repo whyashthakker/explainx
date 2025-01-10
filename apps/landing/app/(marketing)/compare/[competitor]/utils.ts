@@ -19,23 +19,23 @@ export function generateFAQsFromFeatures(competitor: Competitor): FAQ[] {
   
   // General comparison FAQ
   faqs.push({
-    question: `How does Infloq.com compare to ${competitor.name}?`,
-    answer: `Infloq.com offers ${competitor.shortDescription.toLowerCase()}. While both platforms support influencer marketing, Infloq.com differentiates itself with AI-powered matching, performance-based pricing, and no minimum investment requirements.`
+    question: `How does explainx.ai compare to ${competitor.name}?`,
+    answer: `explainx.ai offers ${competitor.shortDescription.toLowerCase()}. While both platforms support influencer marketing, explainx.ai differentiates itself with AI-powered matching, performance-based pricing, and no minimum investment requirements.`
   });
 
   // Generate FAQs from feature categories
   competitor.features.forEach((category: FeatureComparison) => {
     const significantFeatures = category.features.filter(feature => {
-      const infloqValue = Array.isArray(feature.infloq) ? feature.infloq.join(', ') : feature.infloq;
+      const ExplainXValue = Array.isArray(feature.ExplainX) ? feature.ExplainX.join(', ') : feature.ExplainX;
       const competitorValue = Array.isArray(feature.competitor) ? feature.competitor.join(', ') : feature.competitor;
-      return infloqValue !== competitorValue;
+      return ExplainXValue !== competitorValue;
     });
 
     if (significantFeatures.length > 0) {
       faqs.push({
-        question: `What are the main differences in ${category.category.toLowerCase()} between Infloq.com and ${competitor.name}?`,
+        question: `What are the main differences in ${category.category.toLowerCase()} between explainx.ai and ${competitor.name}?`,
         answer: significantFeatures.map(feature => 
-          `${feature.name}: Infloq.com offers ${Array.isArray(feature.infloq) ? feature.infloq.join(', ') : feature.infloq}, while ${competitor.name} provides ${Array.isArray(feature.competitor) ? feature.competitor.join(', ') : feature.competitor}.`
+          `${feature.name}: explainx.ai offers ${Array.isArray(feature.ExplainX) ? feature.ExplainX.join(', ') : feature.ExplainX}, while ${competitor.name} provides ${Array.isArray(feature.competitor) ? feature.competitor.join(', ') : feature.competitor}.`
         ).join(' ')
       });
     }
@@ -50,7 +50,7 @@ export function generateReviews(competitor: Competitor): Review[] {
     {
       author: "John D.",
       rating: 5,
-      content: `Switched from ${competitor.name} to Infloq.com and saw immediate improvements in campaign performance. The AI-powered matching and performance-based pricing model make it much more cost-effective.`,
+      content: `Switched from ${competitor.name} to explainx.ai and saw immediate improvements in campaign performance. The AI-powered matching and performance-based pricing model make it much more cost-effective.`,
       date: "2024-01-15"
     },
     {
@@ -75,10 +75,10 @@ export function getFeatureHighlights(competitor: Competitor): string[] {
   
   competitor.features.forEach(category => {
     category.features.forEach(feature => {
-      if (feature.infloq === true && feature.competitor === false) {
+      if (feature.ExplainX === true && feature.competitor === false) {
         highlights.push(feature.name);
-      } else if (typeof feature.infloq === 'string' && typeof feature.competitor === 'string') {
-        if (feature.infloq.toLowerCase().includes('ai') || feature.infloq.toLowerCase().includes('automated')) {
+      } else if (typeof feature.ExplainX === 'string' && typeof feature.competitor === 'string') {
+        if (feature.ExplainX.toLowerCase().includes('ai') || feature.ExplainX.toLowerCase().includes('automated')) {
           highlights.push(feature.name);
         }
       }
