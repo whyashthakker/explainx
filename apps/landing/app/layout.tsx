@@ -22,13 +22,32 @@ const calFont = localFont({
   display: "swap",
 });
 
-const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
-
 export const metadata: Metadata = {
   "metadataBase": new URL("https://www.explainx.ai"),
-  "title": "ExplainX: Connect with Top Influencers & Course Creators for Performance-Based Marketing",
-  "description": "ExplainX is the premier platform connecting founders and brands with influential content creators for performance-based marketing campaigns. Track real-time metrics across LinkedIn, Twitter, and more to maximize your ROI. Our data-driven approach ensures you only pay for actual engagement and clicks, making influencer marketing measurable and efficient.",
-  "keywords": "ExplainX, Influencer Marketing, Performance Marketing, Content Creators, Course Creators, LinkedIn Marketing, Twitter Marketing, Social Media Marketing, ROI Tracking, Digital Marketing, Brand Collaboration, Founder Marketing, B2B Marketing, Influencer Platform, Marketing Analytics, Click-Based Marketing, Performance Metrics, Social Media ROI, Brand Partnerships, Marketing Dashboard",
+  "title": "ExplainX: Custom AI Agents Development Agency and Platform for Business Automation & Growth",
+  "description": "ExplainX is the leading platform for developing custom AI agents and automation solutions. Build intelligent agents for SEO, marketing, and business processes using LangChain and CrewAI. Our enterprise-grade platform enables businesses to create, deploy, and manage AI agents with measurable results.",
+  "keywords": [
+    "ai agents development",
+    "custom ai solutions",
+    "langchain integration",
+    "crewai platform",
+    "business automation",
+    "ai agents for seo",
+    "ai agents for marketing",
+    "enterprise ai solutions",
+    "free ai agents",
+    "automation platform",
+    "ai development",
+    "intelligent automation",
+    "ai integration",
+    "openai solutions",
+    "business process automation",
+    "ai development platform",
+    "custom automation",
+    "ai deployment",
+    "technical integration",
+    "ai analytics"
+  ].join(", "),
   "appLinks": {
     web: {
       url: "https://www.explainx.ai",
@@ -39,20 +58,20 @@ export const metadata: Metadata = {
   "referrer": "no-referrer-when-downgrade",
   "authors": [
     {
-      name: "ExplainX Team",
+      name: "ExplainX AI Development Team",
       url: "https://www.explainx.ai/team",
     }
   ],
   "creator": 'ExplainX',
   "publisher": "ExplainX",
   "openGraph": {
-    title: "ExplainX: Performance-Based Influencer Marketing Platform",
-    description: "Connect with vetted influencers and course creators to grow your brand through measurable, performance-based marketing campaigns. Track engagement, clicks, and conversions across LinkedIn, Twitter, and more. Pay for results, not promises.",
+    title: "ExplainX: Enterprise AI Agents Development Platform",
+    description: "Create custom AI agents for business automation and growth. Build intelligent solutions using LangChain and CrewAI, with comprehensive analytics and deployment tools. Transform your operations with measurable AI-powered automation.",
     url: "https://www.explainx.ai",
-    siteName: "ExplainX - Performance-Based Influencer Marketing",
+    siteName: "ExplainX - AI Agents Development Platform",
     images: [
       {
-        url: "/og-image.png", // Replace with actual OG image URL
+        url: "/og-image.png",
         width: 1200,
         height: 630,
       }
@@ -76,7 +95,18 @@ export const metadata: Metadata = {
   "icons": {
     icon: "/favicon.ico"
   },
-  "category": "Marketing Technology",
+  "category": "Technology",
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ExplainX: Build Custom AI Agents for Your Business',
+    description: 'Create intelligent automation solutions with our AI development platform. From SEO to marketing, transform your operations with custom AI agents.',
+    images: ['/og-image.png'],
+    site: '@ExplainX',
+    creator: '@ExplainX'
+  },
+  alternates: {
+    canonical: 'https://www.explainx.ai'
+  }
 }
 
 export default function RootLayout({
@@ -93,7 +123,6 @@ export default function RootLayout({
             <main className="flex-grow">
               {children}
             </main>
-            <GoogleAnalytics gaId={GA_ID} />
             <PreFooter />
           </div>
           <Toaster />
