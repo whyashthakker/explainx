@@ -6,23 +6,39 @@ import { ArrowRight } from "lucide-react";
 import { getAllUseCases } from "../../../lib/use-cases";
 
 export const metadata: Metadata = {
-  title: "Use Cases | ExplainX - AI-Powered Influencer Marketing Platform",
-  description: "Discover how ExplainX's AI-powered influencer marketing platform can help you achieve your goals, whether you're a brand, creator, or agency.",
+  title: "Use Cases | ExplainX - AI Agents Development Platform",
+  description: "Discover how ExplainX's custom AI agents can transform your business operations through intelligent automation, SEO optimization, and marketing solutions.",
   keywords: [
-    "influencer marketing use cases",
-    "creator partnerships",
-    "brand marketing",
-    "affiliate marketing",
-    "agency solutions",
-    "influencer platform",
-    "marketing automation",
-    "ROI tracking",
-    "campaign management",
-    "content creation"
+    "ai agents use cases",
+    "custom ai solutions",
+    "langchain implementation",
+    "crewai applications",
+    "business automation",
+    "enterprise ai cases",
+    "ai agents for seo",
+    "ai agents for marketing",
+    "process automation",
+    "intelligent automation",
+    "free ai agents",
+    "openai integration",
+    "ai development examples",
+    "automation case studies"
   ].join(", "),
   alternates: {
     canonical: "/use-cases",
   },
+  openGraph: {
+    title: "AI Agent Solutions & Use Cases | ExplainX",
+    description: "Real-world applications of custom AI agents for business automation, SEO, and marketing.",
+    url: "https://explainx.ai/use-cases",
+    siteName: "ExplainX",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Development Use Cases | ExplainX",
+    description: "Explore how businesses leverage custom AI agents for automation and growth"
+  }
 };
 
 export default function UseCasesPage() {
@@ -35,10 +51,10 @@ export default function UseCasesPage() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Solutions for Every Need
+              AI Solutions for Every Business
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Discover how ExplainX's AI-powered platform can help you achieve your influencer marketing goals, whether you're a brand, creator, or agency.
+              Discover how ExplainX's custom AI agents can transform your operations through intelligent automation, whether you're a startup, enterprise, or agency.
             </p>
           </div>
         </div>
@@ -96,23 +112,23 @@ export default function UseCasesPage() {
         <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
             <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to transform your influencer marketing?
+              Ready to transform your business with AI?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-              Join thousands of brands, creators, and agencies using ExplainX to achieve their marketing goals.
+              Join innovative businesses using ExplainX to develop custom AI solutions and automate their operations.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
-                href="/signup"
+                href="/demo"
                 className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                Get started
+                Schedule a Demo
               </Link>
               <Link
-                href="/demo"
+                href="/contact"
                 className="text-sm font-semibold leading-6 text-white"
               >
-                Schedule a demo <span aria-hidden="true">→</span>
+                Contact Sales <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

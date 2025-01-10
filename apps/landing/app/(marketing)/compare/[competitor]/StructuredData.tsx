@@ -25,7 +25,7 @@ export function ComparisonStructuredData({ competitor, faqs, reviews, featureHig
           name: "AISOLO Technologies Pvt. Ltd.",
           logo: {
             "@type": "ImageObject",
-            url: "https://explainx.ai/icons/ExplainX.png"
+            url: "https://explainx.ai/icons/explainx_ai_light.png"
           }
         }
       },

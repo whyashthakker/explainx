@@ -62,7 +62,7 @@ export function StructuredData(props: StructuredDataProps) {
       name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
       logo: {
         "@type": "ImageObject",
-        url: "https://explainx.ai/icons/ExplainX.png"
+        url: "https://explainx.ai/icons/explainx_ai_light.png"
       }
     },
     // Add language support
