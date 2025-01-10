@@ -97,7 +97,7 @@ export default async function InvitePage(props: {
     <main className="min-h-screen w-full bg-gradient-to-b from-[#f8fafc] to-white">
       <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen">
         <div className="w-full max-w-md mb-8 text-center">
-          <h1 className="text-[#2563eb] text-4xl font-bold mb-3">infloq</h1>
+          <h1 className="text-[#2563eb] text-4xl font-bold mb-3">ExplainX</h1>
         </div>
 
         <Card className="w-full max-w-md bg-white/70 backdrop-blur-lg shadow-xl border-[#6366f1]/10">

@@ -3,49 +3,56 @@ import { Metadata } from 'next';
 import TermsOfService from '../../_components/terms-content';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Infloq - AI-Powered Influencer Marketing Platform',
-  description: 'Read and understand the Terms of Service for Infloq. Learn about your rights, responsibilities, and our platform policies for both brands and creators using our AI-powered influencer marketing platform.',
+  title: 'Terms of Service | ExplainX - AI Agents Development Agency',
+  description: 'Read and understand the Terms of Service for ExplainX. Learn about rights, responsibilities, and our platform policies for businesses using our custom AI agent development and automation solutions.',
   alternates: {
     canonical: "/terms",
   },
   openGraph: {
-    title: 'Terms of Service | Infloq - Influencer Marketing Platform',
-    description: 'Understand your rights and obligations when using Infloq\'s AI-powered influencer marketing platform. Clear terms for brands and creators ensuring transparent collaboration.',
-    url: 'https://infloq.com/terms',
-    siteName: 'Infloq',
+    title: 'Terms of Service | ExplainX - AI Development Platform',
+    description: 'Understand your rights and obligations when using ExplainX\'s AI agent development platform. Clear terms ensuring secure and compliant AI implementation.',
+    url: 'https://explainx.ai/terms',
+    siteName: 'ExplainX',
     type: 'website',
     images: [
       {
         url: "/images/main/landing-og.png",
         width: 1200,
         height: 630,
-        alt: 'Infloq Terms of Service',
+        alt: 'ExplainX AI Platform Terms of Service',
       },
     ],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Terms of Service | Infloq - Influencer Marketing Platform',
-    description: 'Clear, comprehensive terms governing the use of Infloq\'s influencer marketing platform. Understanding your rights and responsibilities.',
-    site: '@infloq',
-    creator: '@infloq',
+    title: 'Terms of Service | ExplainX - AI Development Agency',
+    description: 'Clear, comprehensive terms governing the use of ExplainX\'s AI agent development platform. Understanding your rights and responsibilities.',
+    site: '@ExplainX',
+    creator: '@ExplainX',
     images: ["/images/main/landing-og.png"],
   },
   keywords: [
-    'Infloq terms of service',
-    'influencer marketing terms',
-    'creator platform agreement',
-    'brand collaboration terms',
-    'AI matchmaking platform terms',
-    'influencer marketing policies',
-    'content creator agreement',
-    'brand partnership terms'
-  ],
+    'ai agent development terms',
+    'custom ai solutions agreement',
+    'langchain implementation terms',
+    'crewai development terms',
+    'ai automation platform terms',
+    'enterprise ai policies',
+    'ai development agreement',
+    'business automation terms',
+    'ai integration policies',
+    'data processing agreement',
+    'ai security compliance',
+    'api usage terms',
+    'ai agent marketplace terms',
+    'technical service agreement',
+    'automation platform policies'
+  ].join(', '),
   authors: [
     {
-      name: 'Infloq Legal Team',
-      url: 'https://infloq.com/legal',
+      name: 'ExplainX Legal & Compliance Team',
+      url: 'https://explainx.ai/legal',
     },
   ],
   robots: {
@@ -61,7 +68,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
-  category: 'Legal',
+  category: 'Legal'
 }
 
 const TermsPage: React.FC = () => {

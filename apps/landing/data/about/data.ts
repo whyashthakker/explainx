@@ -43,7 +43,7 @@ export const timelineData = [
       year: "2024",
       title: "Building Solutions",
       description: [
-        "Launched Infloq.com to help creators engage more efficiently.",
+        "Launched explainx.ai to help creators engage more efficiently.",
         "Achieved significant milestones: 100,000 learners, 10,000 newsletter subscribers, 15,000 Instagram followers, and 7,000 YouTube subscribers.",
         "Discovered the growing trend of SaaS founders using creator channels for product distribution.",
       ],
@@ -51,7 +51,7 @@ export const timelineData = [
     },
     {
       year: "2025",
-      title: "Infloq is Born",
+      title: "ExplainX is Born",
       description: [
         "Built our own platform to bridge the gap between creators and brands.",
         "Working on revolutionizing how performance marketing works in the creator economy.",

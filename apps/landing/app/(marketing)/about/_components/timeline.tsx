@@ -1,20 +1,43 @@
-// app/about/_components/timeline.tsx
-import { timelineData } from "../../../../data/about/data";
 import { TimelineEvent } from "./timeline-event";
 
-export function Timeline() {
-  // Sort events in descending order by year
-  const sortedData = [...timelineData].sort((a, b) => 
-    parseInt(b.year) - parseInt(a.year)
-  );
+const timelineData = [
+  {
+    year: "2024",
+    title: "Empowering the AI Community",
+    description: [
+      "Successfully educated over 100,000 students through specialized GenAI workshops and courses.",
+      "Launched ExplainX.ai to revolutionize AI agent development and deployment.",
+    ],
+    highlight: "100K+ Students Trained"
+  },
+  {
+    year: "2023",
+    title: "The GenAI Revolution",
+    description: [
+      "Made the pivotal decision to focus full-time on teaching and developing Generative AI solutions.",
+      "Created comprehensive curriculum for businesses and developers to master AI technologies.",
+    ],
+    highlight: "Full-time AI Education"
+  },
+  {
+    year: "2014-2023",
+    title: "AI Industry Experience",
+    description: [
+      "Decade-long journey in artificial intelligence, working with leading companies and technologies.",
+      "Specialized in machine learning, natural language processing, and AI system architecture.",
+    ],
+    highlight: "10 Years in AI"
+  }
+];
 
+export function Timeline() {
   return (
     <div className="relative max-w-3xl mx-auto">
-      {sortedData.map((event, idx) => (
-        <TimelineEvent 
+      {timelineData.map((event, idx) => (
+        <TimelineEvent
           key={idx} 
           {...event} 
-          isLast={idx === sortedData.length - 1} 
+          isLast={idx === timelineData.length - 1} 
         />
       ))}
     </div>

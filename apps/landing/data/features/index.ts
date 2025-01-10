@@ -28,7 +28,7 @@ export interface FeaturePageData {
 // Master features data
 export const featuresData: FeaturePageData = {
   title: "Platform Features",
-  description: "Discover all the powerful features that make Infloq the leading influencer marketing platform",
+  description: "Discover all the powerful features that make ExplainX the leading influencer marketing platform",
   categories: [
     {
       id: "ecommerce-integration",

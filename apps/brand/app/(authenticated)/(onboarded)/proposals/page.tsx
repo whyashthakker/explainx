@@ -19,7 +19,7 @@ interface PaginationProps extends PaginationData {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
-    title: "Campaign Proposals | Infloq",
+    title: "Campaign Proposals | ExplainX",
     description:
       "Create and manage your campaign proposals for influencer collaborations",
   };

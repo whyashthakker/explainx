@@ -11,16 +11,16 @@ export type FAQCategory = {
       title: "Getting Started",
       questions: [
         {
-          question: "Who is Infloq for?",
-          answer: "Infloq is designed for solopreneurs, indie makers, small businesses, and growing brands who want enterprise-grade influencer marketing capabilities at an affordable price. Our AI-powered platform makes professional influencer marketing accessible to everyone, whether you're just starting out or scaling your campaigns."
+          question: "Who is ExplainX for?",
+          answer: "ExplainX is designed for solopreneurs, indie makers, small businesses, and growing brands who want enterprise-grade influencer marketing capabilities at an affordable price. Our AI-powered platform makes professional influencer marketing accessible to everyone, whether you're just starting out or scaling your campaigns."
         },
         {
-          question: "How do I get started with Infloq?",
-          answer: "Getting started is simple: Sign up at infloq.com, choose your plan (including our free tier), and start discovering creators. Our AI will immediately match you with relevant creators based on your brand and goals. No complex onboarding or lengthy setup required."
+          question: "How do I get started with ExplainX?",
+          answer: "Getting started is simple: Sign up at explainx.ai, choose your plan (including our free tier), and start discovering creators. Our AI will immediately match you with relevant creators based on your brand and goals. No complex onboarding or lengthy setup required."
         },
         {
-          question: "What makes Infloq different from other platforms?",
-          answer: "Infloq combines enterprise-level AI capabilities with affordable, performance-based pricing. Unlike traditional platforms, you only pay for actual results (clicks and conversions), making it perfect for businesses of all sizes. Our AI-powered matching and verification ensure you connect with authentic creators who align with your brand."
+          question: "What makes ExplainX different from other platforms?",
+          answer: "ExplainX combines enterprise-level AI capabilities with affordable, performance-based pricing. Unlike traditional platforms, you only pay for actual results (clicks and conversions), making it perfect for businesses of all sizes. Our AI-powered matching and verification ensure you connect with authentic creators who align with your brand."
         }
       ]
     },
@@ -28,8 +28,8 @@ export type FAQCategory = {
       title: "Pricing & Plans",
       questions: [
         {
-          question: "How much does Infloq cost?",
-          answer: "Infloq uses a pay-per-performance model starting at $500 for 5,000 credits. You only pay for actual engagement and results, with no monthly fees. Credits cost $0.10 each and never expire. Our platform fee is 30% of campaign spend, significantly lower than industry standards."
+          question: "How much does ExplainX cost?",
+          answer: "ExplainX uses a pay-per-performance model starting at $500 for 5,000 credits. You only pay for actual engagement and results, with no monthly fees. Credits cost $0.10 each and never expire. Our platform fee is 30% of campaign spend, significantly lower than industry standards."
         },
         {
           question: "Do you offer a free trial?",
@@ -45,8 +45,8 @@ export type FAQCategory = {
       title: "Features & Capabilities",
       questions: [
         {
-          question: "What features does Infloq offer?",
-          answer: "Infloq provides AI-powered creator matching, performance tracking, automated campaign optimization, real-time analytics, and direct creator messaging. Our platform includes verification tools, ROI tracking, and easy integration with major social platforms and analytics tools."
+          question: "What features does ExplainX offer?",
+          answer: "ExplainX provides AI-powered creator matching, performance tracking, automated campaign optimization, real-time analytics, and direct creator messaging. Our platform includes verification tools, ROI tracking, and easy integration with major social platforms and analytics tools."
         },
         {
           question: "Which social networks do you support?",

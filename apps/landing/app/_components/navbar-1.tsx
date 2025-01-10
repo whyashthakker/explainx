@@ -21,46 +21,68 @@ type NavigationItem = {
 };
 
 const navigation: NavigationItem[] = [
-  { 
-    name: "Features",
-    href: "/#features",
-    hasDropdown: true,
-    dropdownItems: [
-      { name: "Analytics Dashboard", href: "/#features", description: "Track your campaign performance" },
-      { name: "Automation Tools", href: "/#features", description: "Streamline your workflow" },
-      { name: "Content Management", href: "/#features", description: "Organize your content" }
-    ]
-  },
-  { 
-    name: "Products",
-    href: "/products",
-    hasDropdown: true,
-    dropdownItems: [
-      { name: "Influencer Marketing Platform", href: "/products/influencer-marketing-platform", description: "Our AI-driven platform for impactful campaigns" },
-      { name: "Campaign Management", href: "/products/campaign-management", description: "Streamline your campaign workflows" },
-      { name: "Influencer Analytics", href: "/products/influencer-analytics", description: "In-depth creator performance analysis" },
-      { name: "Product Seeding", href: "/products/product-seeding", description: "Automate your gifting campaigns" },
-      { name: "Campaign Analytics", href: "/products/campaign-analytics", description: "Track campaign performance" },
-      { name: "Affiliate Marketing", href: "/products/affiliate-marketing", description: "Manage creator partnerships" },
-      { name: "Free Influencer Finder", href: "/products/free-influencer-finder", description: "Discover perfect creators" },
-      { name: "All Products", href: "/products", description: "View our complete suite" }
-    ]
-  },
   {
-    name: "Use Cases",
-    href: "/use-cases",
+    name: "Services",
+    href: "/#services",
     hasDropdown: true,
     dropdownItems: [
-      { name: "Drive E-commerce Sales", href: "/use-cases/drive-ecommerce-sales", description: "Boost your online sales" },
-      { name: "Run Affiliate Programs", href: "/use-cases/run-affiliate-programs", description: "Manage affiliate partnerships" },
-      { name: "Manage Client Campaigns", href: "/use-cases/manage-client-campaigns", description: "Streamline campaign management" },
-      { name: "For Creators", href: "/use-cases/for-creators", description: "Grow your influence" },
-      { name: "For Brands", href: "/use-cases/for-brands", description: "Connect with your audience" }
+      {
+        name: "Custom AI Agent Development",
+        href: "/#services",
+        description: "Build powerful AI agents tailored to your needs"
+      },
+      {
+        name: "AI Agent Training",
+        href: "/#services",
+        description: "Empower your team with AI development skills"
+      },
+      {
+        name: "Generative AI Training",
+        href: "/#services", 
+        description: "Master the fundamentals of generative AI"
+      },
+      {
+        name: "Frontend Development",
+        href: "/#services",
+        description: "Create intuitive interfaces for AI agents"
+      },
+      {
+        name: "AI Consulting",
+        href: "/#services",
+        description: "Strategic guidance for AI implementation"
+      }
     ]
   },
+  // { 
+  //   name: "Products",
+  //   href: "/products",
+  //   hasDropdown: true,
+  //   dropdownItems: [
+  //     { name: "Influencer Marketing Platform", href: "/products/influencer-marketing-platform", description: "Our AI-driven platform for impactful campaigns" },
+  //     { name: "Campaign Management", href: "/products/campaign-management", description: "Streamline your campaign workflows" },
+  //     { name: "Influencer Analytics", href: "/products/influencer-analytics", description: "In-depth creator performance analysis" },
+  //     { name: "Product Seeding", href: "/products/product-seeding", description: "Automate your gifting campaigns" },
+  //     { name: "Campaign Analytics", href: "/products/campaign-analytics", description: "Track campaign performance" },
+  //     { name: "Affiliate Marketing", href: "/products/affiliate-marketing", description: "Manage creator partnerships" },
+  //     { name: "Free Influencer Finder", href: "/products/free-influencer-finder", description: "Discover perfect creators" },
+  //     { name: "All Products", href: "/products", description: "View our complete suite" }
+  //   ]
+  // },
+  // {
+  //   name: "Use Cases",
+  //   href: "/use-cases",
+  //   hasDropdown: true,
+  //   dropdownItems: [
+  //     { name: "Drive E-commerce Sales", href: "/use-cases/drive-ecommerce-sales", description: "Boost your online sales" },
+  //     { name: "Run Affiliate Programs", href: "/use-cases/run-affiliate-programs", description: "Manage affiliate partnerships" },
+  //     { name: "Manage Client Campaigns", href: "/use-cases/manage-client-campaigns", description: "Streamline campaign management" },
+  //     { name: "For Creators", href: "/use-cases/for-creators", description: "Grow your influence" },
+  //     { name: "For Brands", href: "/use-cases/for-brands", description: "Connect with your audience" }
+  //   ]
+  // },
   { 
     name: "Pricing",
-    href: "/pricing",
+    href: "/#pricing",
     hasDropdown: false
   },
   {
@@ -68,15 +90,7 @@ const navigation: NavigationItem[] = [
     href: "/tools",
     hasDropdown: true,
     dropdownItems: [
-      { name: "Instagram Engagement Checker", href: "/tools/instagram-engagement-checker", description: "Check engagement metrics" },
-      { name: "Instagram Audit", href: "/tools/instagram-audit", description: "Analyze Instagram profiles" },
-      { name: "TikTok Audit", href: "/tools/tiktok-audit", description: "Analyze TikTok profiles" },
-      { name: "YouTube Audit", href: "/tools/youtube-audit", description: "Analyze YouTube channels" },
-      { name: "Twitch Audit", href: "/tools/twitch-audit", description: "Analyze Twitch channels" },
-      { name: "Pinterest Audit", href: "/tools/pinterest-audit", description: "Analyze Pinterest profiles" },
-      { name: "Fake Follower Checker", href: "/tools/fake-follower-checker", description: "Detect fake followers" },
-      { name: "Creator Discovery", href: "/tools/creator-discovery", description: "Find relevant creators" },
-      { name: "Social ROI Calculator", href: "/tools/social-roi-calculator", description: "Calculate campaign ROI" },
+      { name: "AI Agent Finder", href: "/tools/ai-agent-finder", description: "Find AI Agents by use case" },
       { name: "All Tools", href: "/tools", description: "View all free tools" }
     ]
   },
@@ -118,7 +132,7 @@ export default function Navbar() {
       <nav className="relative flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Infloq logo</span>
+            <span className="sr-only">ExplainX logo</span>
             <Logo className="h-14 w-auto" />
           </Link>
         </div>
@@ -187,19 +201,19 @@ export default function Navbar() {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6 lg:items-center">
           <Link
-            href="https://creator.infloq.com/login"
+            href="https://creator.explainx.ai/login"
             className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors"
           >
             For Influencers
           </Link>
           <Link
-            href="https://brand.infloq.com/login"
+            href="https://brand.explainx.ai/login"
             className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors"
           >
             Login
           </Link>
           <Link
-            href="https://brand.infloq.com/signup"
+            href="https://brand.explainx.ai/signup"
             className="inline-flex items-center justify-center rounded-lg bg-[#4361EE] px-4 h-10 text-sm font-semibold text-white hover:bg-[#3B54D3] transition-colors"
           >
             Get Started
@@ -212,7 +226,7 @@ export default function Navbar() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5" onClick={closeMobileMenu}>
-              <span className="sr-only">Infloq logo</span>
+              <span className="sr-only">ExplainX logo</span>
               <Logo className="h-6 w-auto" />
             </Link>
             <button
@@ -255,7 +269,7 @@ export default function Navbar() {
                   </div>
                 ))}
                 <Link
-                  href="https://creator.infloq.com/login"
+                  href="https://creator.explainx.ai/login"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   onClick={closeMobileMenu}
                 >
@@ -264,14 +278,14 @@ export default function Navbar() {
               </div>
               <div className="py-6 space-y-2">
                 <Link
-                  href="https://brands.infloq.com/login"
+                  href="https://brands.explainx.ai/login"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   onClick={closeMobileMenu}
                 >
                   Login
                 </Link>
                 <Link
-                  href="https://brands.infloq.com/signup"
+                  href="https://brands.explainx.ai/signup"
                   className="-mx-3 block rounded-lg bg-[#4361EE] px-3 py-2.5 text-base font-semibold text-white hover:bg-[#3B54D3]"
                   onClick={closeMobileMenu}
                 >

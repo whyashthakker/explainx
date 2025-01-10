@@ -2,7 +2,7 @@ export interface Tool {
     id: string;
     name: string;
     description: string;
-    platform: 'Instagram' | 'TikTok' | 'YouTube' | 'Twitter-X' | 'Twitch' | 'Pinterest' | 'General';
+    platform: 'General';
     icon?: string;
     category: string;
     component: string;

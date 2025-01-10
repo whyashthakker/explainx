@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
                 <p className="text-sm text-gray-600 mb-4">Last updated: December 27, 2024</p>
 
                 <h2 className="text-lg font-semibold mb-2">1. Introduction</h2>
-                <p className="mb-4">Infloq ("we," "our," or "us") is committed to protecting the privacy of both brands and creators on our platform. This Privacy Policy outlines how we collect, use, and safeguard your information when using our influencer marketing platform. By using Infloq, you agree to the collection and use of information in accordance with this policy.</p>
+                <p className="mb-4">ExplainX ("we," "our," or "us") is committed to protecting the privacy of both brands and creators on our platform. This Privacy Policy outlines how we collect, use, and safeguard your information when using our influencer marketing platform. By using ExplainX, you agree to the collection and use of information in accordance with this policy.</p>
 
                 <h2 className="text-lg font-semibold mb-2 mt-6">2. Information We Collect</h2>
                 <div className="mb-4">
@@ -127,12 +127,12 @@ const PrivacyPolicy = () => {
                 <div className="pl-6 mb-4">
                     <p className="mb-1">For privacy-related inquiries:</p>
                     <p className="mb-1">Privacy Team</p>
-                    <p className="mb-1">Email: support@infloq.com</p>
+                    <p className="mb-1">Email: support@explainx.ai</p>
                     <p className="mb-1">Address: Mumbai, India - 410210</p>
                 </div>
 
                 <div className="text-sm text-gray-600 mt-8">
-                    <p className="mb-2">By using Infloq, you acknowledge that you have read and understood this Privacy Policy.</p>
+                    <p className="mb-2">By using ExplainX, you acknowledge that you have read and understood this Privacy Policy.</p>
                     <p>Last updated: December 27, 2024</p>
                 </div>
             </div>

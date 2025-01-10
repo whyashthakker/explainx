@@ -4,7 +4,7 @@ import { cn } from "@repo/ui/lib/utils";
 import Image from "next/image";
 
 const featuredTestimonial = {
-  body: "Best Deal in Influencer Marketing: I recently tried out Infloq, and I was amazed by the experience. Their AI-powered creator matching and performance-based pricing model is exactly what small businesses need. I found the perfect creators for my brand at a fraction of the cost of traditional platforms. The ROI tracking is incredible!",
+  body: "Best Deal in Influencer Marketing: I recently tried out ExplainX, and I was amazed by the experience. Their AI-powered creator matching and performance-based pricing model is exactly what small businesses need. I found the perfect creators for my brand at a fraction of the cost of traditional platforms. The ROI tracking is incredible!",
   author: {
     name: "AppSumo User",
     handle: "106812663271318157415",
@@ -24,7 +24,7 @@ const testimonials: {
   [
     [
       {
-        body: "Finally got my lifetime subscription to Infloq. The AI-powered creator matching is saving me hours of manual search time. The performance analytics make it easy to track ROI and optimize campaigns in real-time.",
+        body: "Finally got my lifetime subscription to ExplainX. The AI-powered creator matching is saving me hours of manual search time. The performance analytics make it easy to track ROI and optimize campaigns in real-time.",
         author: {
           name: "Aman Sharma",
           handle: "amanintech",
@@ -50,7 +50,7 @@ const testimonials: {
     ],
     [
       {
-        body: "Perfect for Growing Brands: From day one with Infloq, I knew this was different. The AI matches us with creators who truly align with our brand values. The performance tracking and automated payments make management a breeze. A must-have for modern marketing teams!",
+        body: "Perfect for Growing Brands: From day one with ExplainX, I knew this was different. The AI matches us with creators who truly align with our brand values. The performance tracking and automated payments make management a breeze. A must-have for modern marketing teams!",
         author: {
           name: "AppSumo User",
           handle: "jazzyb9090",
@@ -70,7 +70,7 @@ const testimonials: {
         },
       },
       {
-        body: "The ROI tracking and analytics features are impressive! Infloq makes it easy to measure the impact of every creator partnership. Essential for any data-driven marketing team.",
+        body: "The ROI tracking and analytics features are impressive! ExplainX makes it easy to measure the impact of every creator partnership. Essential for any data-driven marketing team.",
         author: {
           name: "Chirag",
           handle: "chiragshelar",
@@ -80,7 +80,7 @@ const testimonials: {
     ],
     [
       {
-        body: "Infloq has streamlined our entire creator collaboration process. The automatic payment system and performance tracking save us hours of manual work.",
+        body: "ExplainX has streamlined our entire creator collaboration process. The automatic payment system and performance tracking save us hours of manual work.",
         author: {
           name: "Mike Wakoz",
           handle: "mike_wakoz",
@@ -88,7 +88,7 @@ const testimonials: {
         },
       },
       {
-        body: "Congratulations Yash, Infloq is the perfect example of how AI can transform influencer marketing. The creator matching is incredibly accurate!",
+        body: "Congratulations Yash, ExplainX is the perfect example of how AI can transform influencer marketing. The creator matching is incredibly accurate!",
         author: {
           name: "Jawad Naeem",
           handle: "jawadnaeem243",

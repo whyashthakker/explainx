@@ -4,11 +4,11 @@ import { Separator } from "@repo/ui/components/ui/separator";
 import { faqData } from "../../../data/landing/faq-data";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.infloq.com"),
-  title: "FAQ - Infloq | Performance-Based Influencer Marketing Platform",
-  description: "Find answers to common questions about Infloq's AI-powered influencer marketing platform. Learn about our performance-based pricing, creator discovery, and campaign management.",
+  metadataBase: new URL("https://www.explainx.ai"),
+  title: "FAQ - ExplainX | Performance-Based Influencer Marketing Platform",
+  description: "Find answers to common questions about ExplainX's AI-powered influencer marketing platform. Learn about our performance-based pricing, creator discovery, and campaign management.",
   keywords: [
-    "Infloq FAQ",
+    "ExplainX FAQ",
     "influencer marketing platform",
     "creator marketing help",
     "influencer platform support",
@@ -18,21 +18,21 @@ export const metadata: Metadata = {
   ].join(", "),
   appLinks: {
     web: {
-      url: "https://www.infloq.com/faq",
+      url: "https://www.explainx.ai/faq",
       should_fallback: false,
     },
   },
   openGraph: {
-    title: "Infloq FAQ | AI-Powered Influencer Marketing Made Simple",
-    description: "Get answers to all your questions about Infloq's performance-based influencer marketing platform. Discover how our AI helps you find and work with the perfect creators.",
-    url: "https://www.infloq.com/faq",
-    siteName: "Infloq - Performance-Based Influencer Marketing",
+    title: "ExplainX FAQ | AI-Powered Influencer Marketing Made Simple",
+    description: "Get answers to all your questions about ExplainX's performance-based influencer marketing platform. Discover how our AI helps you find and work with the perfect creators.",
+    url: "https://www.explainx.ai/faq",
+    siteName: "ExplainX - Performance-Based Influencer Marketing",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Infloq FAQ"
+        alt: "ExplainX FAQ"
       }
     ],
     locale: "en_US",
@@ -40,10 +40,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Infloq FAQ | Performance-Based Influencer Marketing",
-    description: "Everything you need to know about using Infloq's AI-powered influencer marketing platform.",
+    title: "ExplainX FAQ | Performance-Based Influencer Marketing",
+    description: "Everything you need to know about using ExplainX's AI-powered influencer marketing platform.",
     images: ["/og-image.png"],
-    creator: "@infloq",
+    creator: "@ExplainX",
   },
   robots: {
     index: true,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.infloq.com/faq",
+    canonical: "https://www.explainx.ai/faq",
   }
 };
 
@@ -71,7 +71,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Everything you need to know about using Infloq for your influencer marketing campaigns.
+            Everything you need to know about using ExplainX for your influencer marketing campaigns.
             Can't find what you're looking for? <a href="/contact" className="text-primary hover:underline">Contact our support team</a>.
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function FAQPage() {
             Ready to get started?
           </h2>
           <p className="text-muted-foreground mb-6">
-            Join thousands of brands using Infloq to scale their influencer marketing.
+            Join thousands of brands using ExplainX to scale their influencer marketing.
           </p>
           <div className="flex gap-4 justify-center">
             <a 

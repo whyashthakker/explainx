@@ -16,8 +16,8 @@ export function ComparisonStructuredData({ competitor, faqs, reviews, featureHig
       {
         "@type": "WebPage",
         "@id": typeof window !== 'undefined' ? window.location.href : undefined,
-        name: `Infloq.com vs ${competitor.name} Comparison`,
-        description: `Compare Infloq.com with ${competitor.name}. See how these ${competitor.category} tools stack up in features, pricing, and capabilities.`,
+        name: `explainx.ai vs ${competitor.name} Comparison`,
+        description: `Compare explainx.ai with ${competitor.name}. See how these ${competitor.category} tools stack up in features, pricing, and capabilities.`,
         dateModified: new Date().toISOString(),
         image: competitor.comparisonImage,
         publisher: {
@@ -25,18 +25,18 @@ export function ComparisonStructuredData({ competitor, faqs, reviews, featureHig
           name: "AISOLO Technologies Pvt. Ltd.",
           logo: {
             "@type": "ImageObject",
-            url: "https://infloq.com/icons/infloq.png"
+            url: "https://explainx.ai/icons/ExplainX.png"
           }
         }
       },
       {
         "@type": "Product",
-        name: "Infloq.com",
+        name: "explainx.ai",
         description: "AI-Powered Influencer Marketing Platform",
-        image: "https://infloq.com/images/main/landing.png",
+        image: "https://explainx.ai/images/main/landing.png",
         brand: {
           "@type": "Brand",
-          name: "Infloq"
+          name: "ExplainX"
         },
         offers: {
           "@type": "Offer",
@@ -86,7 +86,7 @@ export function ComparisonStructuredData({ competitor, faqs, reviews, featureHig
             "@type": "ListItem",
             position: 1,
             item: {
-              "@id": "https://infloq.com",
+              "@id": "https://explainx.ai",
               name: "Home"
             }
           },
@@ -94,7 +94,7 @@ export function ComparisonStructuredData({ competitor, faqs, reviews, featureHig
             "@type": "ListItem",
             position: 2,
             item: {
-              "@id": "https://infloq.com/compare",
+              "@id": "https://explainx.ai/compare",
               name: "Comparisons"
             }
           },
@@ -114,7 +114,7 @@ export function ComparisonStructuredData({ competitor, faqs, reviews, featureHig
         about: [
           {
             "@type": "SoftwareApplication",
-            name: "Infloq.com",
+            name: "explainx.ai",
             applicationCategory: "BusinessApplication",
             operatingSystem: "Web-based",
             offers: {

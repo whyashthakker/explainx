@@ -2,44 +2,44 @@ import { Metadata } from "next";
 import ContactForm from "./_components/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Infloq - AI-Powered Influencer Marketing Platform",
-  description: "Get in touch with Infloq's support team for assistance with brand collaborations, creator partnerships, or platform inquiries. We're here to help both brands and creators succeed in their influencer marketing journey.",
+  title: "Contact Us | ExplainX - Custom AI Agents Development Agency",
+  description: "Get in touch with ExplainX's expert team for custom AI agent development, automation solutions, and implementation support. We help businesses leverage LangChain, CrewAI, and OpenAI technologies.",
   alternates: {
     canonical: "/contact",
   },
   keywords: [
-    "Infloq support",
-    "influencer marketing help",
-    "brand collaboration support",
-    "creator partnership assistance",
-    "influencer platform contact",
-    "Infloq customer service",
-    "brand campaign help",
-    "creator support",
-    "influencer marketing assistance",
-    "AI matchmaking support",
-    "brand creator connection",
-    "marketing campaign help",
-    "content creator support",
-    "brand partnership assistance",
-    "influencer platform contact",
-    "digital marketing support",
-    "campaign management help",
-    "social media marketing support",
-    "influencer collaboration assistance",
-    "performance tracking help"
+    "ai agents support",
+    "custom ai agent development",
+    "langchain development help",
+    "crewai implementation",
+    "ai automation consultation",
+    "ai agent consulting",
+    "openai integration support",
+    "ai development assistance",
+    "business automation help",
+    "ai agents for seo contact",
+    "ai marketing automation support",
+    "ai agent marketplace support",
+    "custom ai solutions",
+    "ai development agency contact",
+    "enterprise ai support",
+    "free ai agents help",
+    "ai implementation assistance",
+    "business process automation",
+    "ai consultation services",
+    "technical support ai agents"
   ].join(", "),
   openGraph: {
-    title: "Connect with Infloq Support - For Brands & Creators",
-    description: "Need help with influencer marketing? Our team assists both brands and creators with campaign management, partnerships, and platform features. Reach out for personalized support.",
-    url: "https://infloq.com/contact",
-    siteName: "Infloq",
+    title: "Connect with ExplainX - Leading AI Agents Development Agency",
+    description: "Need help with AI agent development? Our team specializes in custom AI solutions, automation implementation, and technical support for businesses of all sizes.",
+    url: "https://explainx.ai/contact",
+    siteName: "ExplainX",
     images: [
       {
         url: "/images/main/landing.png",
         width: 1200,
         height: 630,
-        alt: "Contact Infloq Support Team",
+        alt: "Contact ExplainX AI Development Team",
       },
     ],
     locale: "en_US",
@@ -47,11 +47,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Get Support from Infloq - AI-Powered Influencer Marketing",
-    description: "Connect with our support team for assistance with brand-creator collaborations, campaign management, and platform features.",
+    title: "Get Support from ExplainX - AI Agents Development Experts",
+    description: "Connect with our AI development team for custom agents, automation solutions, and technical implementation support.",
     images: ["/images/main/landing.png"],
-    site: "@infloq",
-    creator: "@infloq"
+    site: "@ExplainX",
+    creator: "@ExplainX"
   },
   robots: {
     index: true,
@@ -64,11 +64,11 @@ export const metadata: Metadata = {
   },
   authors: [
     {
-      name: "Infloq Support Team",
-      url: "https://infloq.com/team",
+      name: "ExplainX AI Development Team",
+      url: "https://explainx.ai/team",
     },
   ],
-  category: "Support",
+  category: "AI Development",
   verification: {
     google: "your-google-verification-code",
   },
@@ -78,26 +78,26 @@ export default function ContactPage() {
   return (
     <div className="container mx-auto py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">Contact Infloq Support</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center">Contact ExplainX AI Solutions</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">For Brands</h2>
+            <h2 className="text-xl font-semibold mb-4">For Businesses</h2>
             <ul className="space-y-2 mb-4">
-              <li>• Campaign setup assistance</li>
-              <li>• Creator discovery help</li>
-              <li>• ROI tracking support</li>
-              <li>• Platform features guidance</li>
+              <li>• Custom AI agent development</li>
+              <li>• Process automation solutions</li>
+              <li>• LangChain & CrewAI implementation</li>
+              <li>• Technical integration support</li>
             </ul>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">For Creators</h2>
+            <h2 className="text-xl font-semibold mb-4">For Developers</h2>
             <ul className="space-y-2 mb-4">
-              <li>• Profile optimization help</li>
-              <li>• Partnership assistance</li>
-              <li>• Payment support</li>
-              <li>• Performance tracking help</li>
+              <li>• API integration assistance</li>
+              <li>• AI agent optimization</li>
+              <li>• Technical documentation</li>
+              <li>• Development support</li>
             </ul>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function ContactPage() {
         <ContactForm />
 
         <div className="mt-12 text-center text-gray-600">
-          <p className="mb-2">Email us directly: support@infloq.com</p>
+          <p className="mb-2">Email us directly: support@explainx.ai</p>
           <p>Response time: Within 24 hours</p>
         </div>
       </div>

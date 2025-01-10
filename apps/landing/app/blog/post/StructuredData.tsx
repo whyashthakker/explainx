@@ -59,10 +59,10 @@ export function StructuredData(props: StructuredDataProps) {
     // Add publisher information
     publisher: {
       "@type": "Organization",
-      name: "AISOLO Technologies Pvt. Ltd. (Parent of infloq.com)",
+      name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
       logo: {
         "@type": "ImageObject",
-        url: "https://infloq.com/icons/infloq.png"
+        url: "https://explainx.ai/icons/ExplainX.png"
       }
     },
     // Add language support

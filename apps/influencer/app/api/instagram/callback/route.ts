@@ -4,6 +4,66 @@ import prisma from "@repo/db/client";
 import { auth } from "../../../../auth";
 import { Platform, Influencer, InstagramAccount } from "@prisma/client";
 
+import { createObjectCsvWriter } from 'csv-writer';
+import path from 'path';
+
+// type InstagramMediaItem = {
+//   id: string;
+//   caption?: string;
+//   media_type: 'IMAGE' | 'VIDEO' | 'CAROUSEL_ALBUM' | 'REEL' | 'STORY';
+//   media_url?: string;
+//   permalink: string;
+//   thumbnail_url?: string;
+//   timestamp: string;
+//   like_count?: number;
+//   comments_count?: number;
+//   video_title?: string;
+//   plays?: number;
+//   reach?: number;
+//   saved?: number;
+//   engagement?: number;
+//   impressions?: number;
+// };
+
+// async function fetchInstagramMedia(userId: string, accessToken: string): Promise<InstagramMediaItem[]> {
+//   const mediaItems: InstagramMediaItem[] = [];
+//   let url = `https://graph.instagram.com/v12.0/${userId}/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,like_count,comments_count,video_title,saved,insights.metric(reach,impressions,engagement,plays)&limit=50&access_token=${accessToken}`;
+  
+//   while (url) {
+//     const response = await fetch(url);
+//     if (!response.ok) {
+//       const errorData = await response.json();
+//       throw new Error(errorData.error?.message || 'Failed to fetch Instagram media');
+//     }
+
+//     const data = await response.json();
+//     mediaItems.push(...data.data);
+
+//     // Check for next page
+//     url = data.paging?.next || '';
+//   }
+
+//   return mediaItems;
+// }
+
+// // Function to fetch stories
+// async function fetchInstagramStories(userId: string, accessToken: string): Promise<InstagramMediaItem[]> {
+//   const response = await fetch(
+//     `https://graph.instagram.com/v12.0/${userId}/stories?fields=id,media_type,media_url,timestamp,insights.metric(reach,impressions)&access_token=${accessToken}`
+//   );
+
+//   if (!response.ok) {
+//     const errorData = await response.json();
+//     throw new Error(errorData.error?.message || 'Failed to fetch Instagram stories');
+//   }
+
+//   const data = await response.json();
+//   return data.data.map((story: any) => ({
+//     ...story,
+//     media_type: 'STORY'
+//   }));
+// }
+
 type InfluencerWithInstagram = Influencer & {
   instagramAccount: InstagramAccount | null;
 };
@@ -202,6 +262,59 @@ export async function GET(request: Request) {
         profileViews: 0,
       },
     });
+
+    // const posts = await fetchInstagramMedia(profileData.id, finalAccessToken);
+    // const stories = await fetchInstagramStories(profileData.id, finalAccessToken);
+
+    // // Combine all media
+    // const allMedia = [...posts, ...stories];
+
+    // // Prepare data for CSV
+    // const csvData = allMedia.map(item => ({
+    //   id: item.id,
+    //   type: item.media_type,
+    //   caption: item.caption || '',
+    //   url: item.media_url || item.permalink,
+    //   thumbnail: item.thumbnail_url || '',
+    //   posted_at: item.timestamp,
+    //   likes: item.like_count || 0,
+    //   comments: item.comments_count || 0,
+    //   plays: item.plays || 0,
+    //   reach: item.reach || 0,
+    //   impressions: item.impressions || 0,
+    //   saved: item.saved || 0,
+    //   engagement: item.engagement || 0
+    // }));
+
+    // // Generate timestamp for filename
+    // const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    // const filename = `instagram_data_${profileData.username}_${timestamp}.csv`;
+    // const filepath = path.join(process.cwd(), 'public', 'exports', filename);
+
+    // // Create CSV writer
+    // const csvWriter = createObjectCsvWriter({
+    //   path: filepath,
+    //   header: [
+    //     {id: 'id', title: 'ID'},
+    //     {id: 'type', title: 'Type'},
+    //     {id: 'caption', title: 'Caption'},
+    //     {id: 'url', title: 'URL'},
+    //     {id: 'thumbnail', title: 'Thumbnail'},
+    //     {id: 'posted_at', title: 'Posted At'},
+    //     {id: 'likes', title: 'Likes'},
+    //     {id: 'comments', title: 'Comments'},
+    //     {id: 'plays', title: 'Video Plays'},
+    //     {id: 'reach', title: 'Reach'},
+    //     {id: 'impressions', title: 'Impressions'},
+    //     {id: 'saved', title: 'Saved'},
+    //     {id: 'engagement', title: 'Engagement'}
+    //   ]
+    // });
+
+    // // Write to CSV
+    // await csvWriter.writeRecords(csvData);
+
+    // console.log(`Exported ${csvData.length} media items to ${filename}`);
 
     console.log("Instagram profile data:", profileData);
 

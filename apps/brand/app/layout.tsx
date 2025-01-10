@@ -14,35 +14,35 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.infloq.com"),
+  metadataBase: new URL("https://www.explainx.ai"),
   title:
-    "Infloq: Connect with Top Influencers & Course Creators for Performance-Based Marketing",
+    "ExplainX: Connect with Top Influencers & Course Creators for Performance-Based Marketing",
   description:
-    "Infloq is the premier platform connecting founders and brands with influential content creators for performance-based marketing campaigns. Track real-time metrics across LinkedIn, Twitter, and more to maximize your ROI. Our data-driven approach ensures you only pay for actual engagement and clicks, making influencer marketing measurable and efficient.",
+    "ExplainX is the premier platform connecting founders and brands with influential content creators for performance-based marketing campaigns. Track real-time metrics across LinkedIn, Twitter, and more to maximize your ROI. Our data-driven approach ensures you only pay for actual engagement and clicks, making influencer marketing measurable and efficient.",
   keywords:
-    "Infloq, Influencer Marketing, Performance Marketing, Content Creators, Course Creators, LinkedIn Marketing, Twitter Marketing, Social Media Marketing, ROI Tracking, Digital Marketing, Brand Collaboration, Founder Marketing, B2B Marketing, Influencer Platform, Marketing Analytics, Click-Based Marketing, Performance Metrics, Social Media ROI, Brand Partnerships, Marketing Dashboard",
+    "ExplainX, Influencer Marketing, Performance Marketing, Content Creators, Course Creators, LinkedIn Marketing, Twitter Marketing, Social Media Marketing, ROI Tracking, Digital Marketing, Brand Collaboration, Founder Marketing, B2B Marketing, Influencer Platform, Marketing Analytics, Click-Based Marketing, Performance Metrics, Social Media ROI, Brand Partnerships, Marketing Dashboard",
   appLinks: {
     web: {
-      url: "https://www.infloq.com",
+      url: "https://www.explainx.ai",
       should_fallback: false,
     },
   },
-  generator: "Infloq",
+  generator: "ExplainX",
   referrer: "no-referrer-when-downgrade",
   authors: [
     {
-      name: "Infloq Team",
-      url: "https://www.infloq.com/team",
+      name: "ExplainX Team",
+      url: "https://www.explainx.ai/team",
     },
   ],
-  creator: "Infloq",
-  publisher: "Infloq",
+  creator: "ExplainX",
+  publisher: "ExplainX",
   openGraph: {
-    title: "Infloq: Performance-Based Influencer Marketing Platform",
+    title: "ExplainX: Performance-Based Influencer Marketing Platform",
     description:
       "Connect with vetted influencers and course creators to grow your brand through measurable, performance-based marketing campaigns. Track engagement, clicks, and conversions across LinkedIn, Twitter, and more. Pay for results, not promises.",
-    url: "https://www.infloq.com",
-    siteName: "Infloq - Performance-Based Influencer Marketing",
+    url: "https://www.explainx.ai",
+    siteName: "ExplainX - Performance-Based Influencer Marketing",
     images: [
       {
         url: "/og-image.png", // Replace with actual OG image URL

@@ -11,7 +11,7 @@ interface FeatureComparison {
   category: string
   features: {
     name: string
-    infloq: boolean | string | string[]
+    ExplainX: boolean | string | string[]
     competitor: boolean | string | string[]
     description?: string
   }[]
@@ -26,29 +26,29 @@ interface Competitor {
 }
 
 export const metadata: Metadata = {
-  title: 'Compare infloq.com with Alternatives | Feature Comparison',
-  description: 'See how infloq.com compares to other social platforms. Compare features, pricing, and capabilities with leading alternatives.',
+  title: 'Compare explainx.ai with Alternatives | Feature Comparison',
+  description: 'See how explainx.ai compares to other social platforms. Compare features, pricing, and capabilities with leading alternatives.',
   openGraph: {
-    title: 'Compare infloq.com with Alternatives',
-    description: 'Detailed comparison of infloq.com features with leading social platforms',
+    title: 'Compare explainx.ai with Alternatives',
+    description: 'Detailed comparison of explainx.ai features with leading social platforms',
     type: 'website',
     images: [
       {
         url: '/og-compare.jpg',
         width: 1200,
         height: 630,
-        alt: 'infloq.com comparison'
+        alt: 'explainx.ai comparison'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Compare infloq.com with Alternatives',
-    description: 'Detailed comparison of infloq.com features with leading social platforms',
+    title: 'Compare explainx.ai with Alternatives',
+    description: 'Detailed comparison of explainx.ai features with leading social platforms',
     images: ['/og-compare.jpg']
   },
   alternates: {
-    canonical: 'https://www.infloq.com/compare'
+    canonical: 'https://www.explainx.ai/compare'
   }
 }
 
@@ -58,16 +58,16 @@ export default function CompareHome() {
       <div className="relative w-full h-64 mb-12 rounded-xl overflow-hidden">
         <Image
           src="/images/main/landing.png"
-          alt="infloq.com Platform"
+          alt="explainx.ai Platform"
           fill
           className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/50 flex items-center">
           <div className="p-8">
-            <h1 className="text-4xl font-bold tracking-tight mb-4">Compare infloq.com</h1>
+            <h1 className="text-4xl font-bold tracking-tight mb-4">Compare explainx.ai</h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              See how Infloq stacks up against other platforms across features, pricing, and capabilities
+              See how ExplainX stacks up against other platforms across features, pricing, and capabilities
             </p>
           </div>
         </div>

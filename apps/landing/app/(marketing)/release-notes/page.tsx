@@ -3,34 +3,38 @@ import { Metadata } from 'next'
 import ReleaseNoteTimeline from './_components/notes'
 
 export const metadata: Metadata = {
-  title: 'Release Notes | Infloq - AI-Powered Influencer Marketing Platform',
-  description: 'Track Infloq\'s platform evolution. Stay informed about new features and improvements for both brands and creators, including AI matching enhancements, campaign tools, and analytics updates.',
+  title: 'Release Notes | ExplainX - AI Agents Development Platform',
+  description: 'Track ExplainX\'s AI development platform evolution. Stay informed about new agent capabilities, automation features, and improvements in LangChain integration, CrewAI implementation, and AI solutions.',
   alternates: {
     canonical: '/release-notes'
   },
   keywords: [
-    'Infloq updates',
-    'influencer platform features',
-    'creator tools updates',
-    'brand campaign features',
-    'AI matching improvements',
-    'marketing platform updates',
-    'influencer analytics tools',
-    'campaign management features',
-    'platform enhancements',
-    'creator partnership tools'
+    'ai agents updates',
+    'langchain integration features',
+    'crewai implementation',
+    'custom ai development',
+    'ai automation improvements',
+    'free ai agents updates',
+    'ai agents for seo updates',
+    'ai agents for marketing',
+    'ai platform enhancements',
+    'business automation tools',
+    'openai integration updates',
+    'enterprise ai features',
+    'ai development tools',
+    'automation platform updates'
   ].join(', '),
   openGraph: {
-    title: 'Platform Updates | Infloq - Influencer Marketing Innovation',
-    description: 'Stay updated with Infloq\'s latest features and improvements. Discover new tools for brands and creators in AI-powered influencer marketing.',
-    url: 'https://infloq.com/release-notes',
-    siteName: 'Infloq',
+    title: 'Platform Updates | ExplainX - AI Agents Development Innovation',
+    description: 'Stay updated with ExplainX\'s latest AI agent features and improvements. Discover new capabilities in custom AI development and automation solutions.',
+    url: 'https://explainx.ai/release-notes',
+    siteName: 'ExplainX',
     images: [
       {
         url: '/images/main/landing.png',
         width: 1200,
         height: 630,
-        alt: 'Infloq Platform Updates',
+        alt: 'ExplainX AI Platform Updates',
       },
     ],
     locale: 'en_US',
@@ -38,11 +42,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Latest Updates from Infloq - Influencer Marketing Platform',
-    description: 'Explore new features and improvements in Infloq\'s AI-powered influencer marketing platform.',
+    title: 'Latest Updates from ExplainX - AI Agents Development Platform',
+    description: 'Explore new features and improvements in ExplainX\'s AI agent development and automation platform.',
     images: ['/images/main/landing-og.png'],
-    site: '@infloq',
-    creator: '@infloq'
+    site: '@ExplainX',
+    creator: '@ExplainX'
   },
   robots: {
     index: true,
@@ -55,11 +59,11 @@ export const metadata: Metadata = {
   },
   authors: [
     {
-      name: 'Infloq Product Team',
-      url: 'https://infloq.com/team',
+      name: 'ExplainX AI Development Team',
+      url: 'https://explainx.ai/team',
     },
   ],
-  category: 'Product Updates',
+  category: 'AI Development Updates',
 };
 
 const ReleasePage = () => {
@@ -67,9 +71,9 @@ const ReleasePage = () => {
     <div className="container mx-auto py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Platform Updates</h1>
+          <h1 className="text-4xl font-bold mb-4">AI Platform Updates</h1>
           <p className="text-xl text-gray-600">
-            Track our journey in revolutionizing influencer marketing
+            Track our journey in revolutionizing business automation with AI agents
           </p>
         </div>
 
@@ -77,9 +81,9 @@ const ReleasePage = () => {
           <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-4">Update Categories</h2>
             <ul className="space-y-2">
-              <li>• AI Matching Improvements</li>
-              <li>• Campaign Management Tools</li>
-              <li>• Analytics Enhancements</li>
+              <li>• AI Agent Capabilities</li>
+              <li>• LangChain Integration</li>
+              <li>• Automation Features</li>
               <li>• Platform Performance</li>
               <li>• Security Updates</li>
             </ul>
@@ -88,10 +92,10 @@ const ReleasePage = () => {
           <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-4">Stay Updated</h2>
             <ul className="space-y-2">
-              <li>• Subscribe to update notifications</li>
-              <li>• Join our product webinars</li>
-              <li>• Follow our social channels</li>
-              <li>• Read our product blog</li>
+              <li>• Subscribe to technical updates</li>
+              <li>• Join our developer webinars</li>
+              <li>• Access API documentation</li>
+              <li>• Read our tech blog</li>
             </ul>
           </div>
         </div>
@@ -99,8 +103,8 @@ const ReleasePage = () => {
         <ReleaseNoteTimeline />
 
         <div className="mt-12 text-center text-gray-600">
-          <p className="mb-2">Have feedback on our updates?</p>
-          <p className="font-medium">Email us at feedback@infloq.com</p>
+          <p className="mb-2">Have feedback on our AI platform?</p>
+          <p className="font-medium">Email us at developers@explainx.ai</p>
         </div>
       </div>
     </div>

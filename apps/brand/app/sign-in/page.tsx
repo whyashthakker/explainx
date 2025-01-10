@@ -58,7 +58,7 @@ export default async function SignIn({ searchParams }: SignInPageProps) {
       <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen">
         {/* Logo & Header */}
         <div className="w-full max-w-md mb-8 text-center">
-          <h1 className="text-[#2563eb] text-4xl font-bold mb-3">infloq</h1>
+          <h1 className="text-[#2563eb] text-4xl font-bold mb-3">ExplainX</h1>
           <p className="text-[#1e293b]/80 text-lg">Connect. Create. Earn.</p>
         </div>
 
@@ -66,7 +66,7 @@ export default async function SignIn({ searchParams }: SignInPageProps) {
         <Card className="w-full max-w-md bg-white/70 backdrop-blur-lg shadow-xl border-[#6366f1]/10">
           <CardHeader className="space-y-2 text-center">
             <CardTitle className="text-[#1e293b] text-2xl">
-              {invite ? "Accept Team Invitation" : "Sign in to Infloq"}
+              {invite ? "Accept Team Invitation" : "Sign in to ExplainX"}
             </CardTitle>
             <CardDescription className="text-[#1e293b]/60 text-base">
               {invite ? (

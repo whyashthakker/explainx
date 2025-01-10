@@ -17,13 +17,13 @@ export async function generateMetadata({
 
   if (!tool) {
     return {
-      title: 'Tool Not Found | Infloq',
+      title: 'Tool Not Found | ExplainX',
       description: 'The requested tool could not be found.',
     };
   }
 
   return {
-    title: `${tool.name} | Infloq Tools`,
+    title: `${tool.name} | ExplainX Tools`,
     description: tool.description,
     keywords: [
       tool.platform,

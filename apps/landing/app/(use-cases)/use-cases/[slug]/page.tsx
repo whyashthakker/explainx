@@ -26,17 +26,17 @@ export async function generateMetadata({ params }: UseCasePageProps): Promise<Me
   const { title, description, keywords } = useCase;
 
   return {
-    title: `${title} | Infloq - AI-Powered Influencer Marketing Platform`,
+    title: `${title} | ExplainX - AI-Powered Influencer Marketing Platform`,
     description,
     keywords: keywords.join(", "),
     alternates: {
       canonical: `/use-cases/${slug}`,
     },
     openGraph: {
-      title: `${title} - Infloq Solutions`,
+      title: `${title} - ExplainX Solutions`,
       description,
-      url: `https://infloq.com/use-cases/${slug}`,
-      siteName: "Infloq",
+      url: `https://explainx.ai/use-cases/${slug}`,
+      siteName: "ExplainX",
       images: [
         {
           url: `/images/main/landing-og.png`,
@@ -53,8 +53,8 @@ export async function generateMetadata({ params }: UseCasePageProps): Promise<Me
       title: `${title} - AI-Powered Influencer Marketing`,
       description,
       images: [`/images/main/landing-og.png`],
-      site: "@infloq",
-      creator: "@infloq"
+      site: "@ExplainX",
+      creator: "@ExplainX"
     },
     robots: {
       index: true,

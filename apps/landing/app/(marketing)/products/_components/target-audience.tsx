@@ -33,7 +33,7 @@ export function TargetAudienceDynamic({
             Built For Everyone
           </h2>
           <p className="text-xl text-gray-600">
-            Discover how Infloq can help your role
+            Discover how ExplainX can help your role
           </p>
         </div>
 

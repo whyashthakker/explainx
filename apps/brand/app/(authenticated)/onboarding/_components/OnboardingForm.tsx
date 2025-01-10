@@ -822,7 +822,7 @@ export default function MultistepBrandOnboardingForm() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome to Infloq
+            Welcome to ExplainX
           </h1>
           <p className="text-gray-600">
             Let's set up your brand profile to connect with amazing creators

@@ -35,7 +35,7 @@ export const roadmapItems: RoadmapItem[] = [
     feature: "API Platform Access",
     category: "Integration",
     status: "Planned",
-    description: "Public API access for enterprise customers to integrate Infloq with their existing systems.",
+    description: "Public API access for enterprise customers to integrate ExplainX with their existing systems.",
     votes: 0
   },
 

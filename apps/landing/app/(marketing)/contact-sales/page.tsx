@@ -2,39 +2,44 @@ import { Metadata } from "next";
 import { SalesContactForm } from "./_components/component-contact-sales";
 
 export const metadata: Metadata = {
-  title: "Enterprise Solutions | Infloq - AI-Powered Influencer Marketing Platform",
-  description: "Scale your influencer marketing with Infloq's enterprise solutions. Custom features for large brands, agencies, and multi-market campaigns. Get dedicated support, advanced analytics, and AI-powered campaign optimization.",
+  title: "Enterprise AI Agent Solutions | ExplainX - Custom AI Development Agency",
+  description: "Scale your business with ExplainX's enterprise AI agent solutions. Custom AI development for large enterprises, agencies, and global operations. Get dedicated support, advanced automation, and intelligent process optimization.",
   alternates: {
     canonical: "/contact-sales",
   },
   keywords: [
-    "enterprise influencer marketing",
-    "brand collaboration platform",
-    "agency influencer tools",
-    "scaled influencer campaigns",
-    "multi-market influencer management",
-    "enterprise marketing solutions",
-    "AI campaign optimization",
-    "influencer analytics platform",
-    "brand partnership tools",
-    "creator relationship management",
-    "enterprise marketing ROI",
-    "global influencer campaigns",
-    "agency marketing tools",
-    "brand safety tools",
-    "campaign automation platform"
+    "enterprise ai agents",
+    "custom ai development",
+    "langchain enterprise solutions",
+    "crewai for business",
+    "ai agent automation",
+    "enterprise ai solutions",
+    "openai integration services",
+    "ai development platform",
+    "business process automation",
+    "ai consulting services",
+    "enterprise automation ROI",
+    "global ai solutions",
+    "agency ai tools",
+    "ai agent marketplace",
+    "intelligent automation platform",
+    "free ai agents enterprise",
+    "ai agents for seo enterprise",
+    "ai agents for marketing teams",
+    "enterprise automation tools",
+    "custom ai implementation"
   ].join(", "),
   openGraph: {
-    title: "Enterprise Influencer Marketing Solutions | Infloq",
-    description: "Transform your influencer marketing strategy with Infloq's enterprise platform. Get custom solutions, advanced AI matching, and comprehensive campaign management tools.",
-    url: "https://infloq.com/contact-sales",
-    siteName: "Infloq",
+    title: "Enterprise AI Agent Development Solutions | ExplainX",
+    description: "Transform your business processes with ExplainX's enterprise AI platform. Get custom AI agents, advanced automation, and comprehensive implementation support.",
+    url: "https://explainx.ai/contact-sales",
+    siteName: "ExplainX",
     images: [
       {
         url: "/images/main/landing.png",
         width: 1200,
         height: 630,
-        alt: "Infloq Enterprise Solutions",
+        alt: "ExplainX Enterprise AI Solutions",
       },
     ],
     locale: "en_US",
@@ -42,11 +47,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scale Your Influencer Marketing with Infloq Enterprise",
-    description: "Connect with our enterprise team to discover how Infloq's AI-powered platform can transform your influencer marketing strategy.",
+    title: "Scale Your Business with ExplainX Enterprise AI Agents",
+    description: "Connect with our enterprise team to discover how ExplainX's custom AI agents can transform your business operations.",
     images: ["/images/main/landing.png"],
-    site: "@infloq",
-    creator: "@infloq"
+    site: "@ExplainX",
+    creator: "@ExplainX"
   },
   robots: {
     index: true,
@@ -59,11 +64,11 @@ export const metadata: Metadata = {
   },
   authors: [
     {
-      name: "Infloq Enterprise Team",
-      url: "https://infloq.com/enterprise",
+      name: "ExplainX Enterprise AI Team",
+      url: "https://explainx.ai/enterprise",
     },
   ],
-  category: "Enterprise",
+  category: "Enterprise AI Solutions",
   verification: {
     google: "your-google-verification-code",
   },
@@ -74,41 +79,41 @@ export default function ContactSalesPage() {
     <div className="container mx-auto py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Enterprise Influencer Marketing Solutions</h1>
-          <p className="text-xl text-gray-600">Scale your influencer campaigns with AI-powered precision</p>
+          <h1 className="text-4xl font-bold mb-4">Enterprise AI Agent Solutions</h1>
+          <p className="text-xl text-gray-600">Scale your operations with intelligent automation</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">For Global Brands</h2>
+            <h2 className="text-xl font-semibold mb-4">For Enterprises</h2>
             <ul className="space-y-3">
-              <li>• Multi-market campaign management</li>
-              <li>• Brand safety controls</li>
-              <li>• Advanced ROI tracking</li>
-              <li>• Custom creator vetting</li>
-              <li>• Dedicated account team</li>
+              <li>• Multi-department AI solutions</li>
+              <li>• Custom AI agent development</li>
+              <li>• Advanced performance analytics</li>
+              <li>• Enterprise-grade security</li>
+              <li>• Dedicated AI architect team</li>
             </ul>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-4">For Agencies</h2>
             <ul className="space-y-3">
-              <li>• Multi-client management</li>
-              <li>• White-label options</li>
-              <li>• Campaign automation</li>
-              <li>• Client reporting tools</li>
-              <li>• Agency dashboard</li>
+              <li>• White-label AI solutions</li>
+              <li>• Multi-client AI deployment</li>
+              <li>• Process automation tools</li>
+              <li>• Custom reporting systems</li>
+              <li>• Agency AI dashboard</li>
             </ul>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">Enterprise Features</h2>
+            <h2 className="text-xl font-semibold mb-4">Technical Features</h2>
             <ul className="space-y-3">
-              <li>• Advanced AI matching</li>
-              <li>• Custom integrations</li>
-              <li>• Priority support</li>
-              <li>• Compliance tools</li>
-              <li>• API access</li>
+              <li>• LangChain & CrewAI integration</li>
+              <li>• Custom AI agent development</li>
+              <li>• Priority technical support</li>
+              <li>• Advanced API access</li>
+              <li>• Security compliance tools</li>
             </ul>
           </div>
         </div>
@@ -116,8 +121,8 @@ export default function ContactSalesPage() {
         <SalesContactForm />
 
         <div className="mt-12 text-center text-gray-600">
-          <p className="mb-2">Contact our enterprise team directly:</p>
-          <p className="font-semibold">enterprise@infloq.com</p>
+          <p className="mb-2">Contact our enterprise AI team directly:</p>
+          <p className="font-semibold">enterprise@explainx.ai</p>
           <p className="mt-4 text-sm">Expected response time: Within 12 hours</p>
         </div>
       </div>

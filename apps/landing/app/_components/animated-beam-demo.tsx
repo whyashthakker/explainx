@@ -6,25 +6,24 @@ import Image from "next/image";
 import { cn } from "@repo/ui/lib/utils";
 import { AnimatedBeam } from "./magicui/animated-beam";
 import { 
-  Instagram, 
-  Youtube, 
-  Twitter, 
-  Twitch, 
-  User,
-  DollarSign,
-  Users,
-  Building2,
-  Facebook,
-  Linkedin,
+  Code2,
+  Bot,
+  Boxes,
+  Cpu,
+  BrainCircuit,
+  Workflow,
+  Database,
+  MessagesSquare,
+  FileCode,
   SparkleIcon,
 } from 'lucide-react';
 
 interface MetricData {
-  roi: string;
-  engagement: string;
-  views: string;
+  efficiency: string;
+  automation: string;
+  timeSaved: string;
   delay: number;
-  platform: string;
+  taskType: string;
 }
 
 interface CircleProps {
@@ -47,16 +46,16 @@ const MinimalMetricBadge: React.FC<MetricBadgeProps> = ({ metrics }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: 10 }}
     transition={{ duration: 0.2 }}
-    className="absolute -top-2 -translate-y-full left-[80%] z-[100] bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-100 p-2 w-28 md:w-32"
+    className="absolute -top-2 -translate-y-full left-[80%] z-[100] bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-100 p-2 w-32 md:w-36"
   >
     <div className="text-xs md:text-sm">
       <div className="flex items-center justify-between mb-1">
-        <DollarSign className="w-3 h-3 md:w-3.5 md:h-3.5 text-green-600" />
-        <span className="font-bold text-green-600">{metrics.roi}</span>
+        <BrainCircuit className="w-3 h-3 md:w-3.5 md:h-3.5 text-purple-600" />
+        <span className="font-bold text-purple-600">{metrics.efficiency}</span>
       </div>
       <div className="flex items-center justify-between">
-        <Users className="w-3 h-3 md:w-3.5 md:h-3.5 text-blue-600" />
-        <span className="font-medium">{metrics.engagement}</span>
+        <Workflow className="w-3 h-3 md:w-3.5 md:h-3.5 text-blue-600" />
+        <span className="font-medium">{metrics.timeSaved}</span>
       </div>
     </div>
   </motion.div>
@@ -118,41 +117,41 @@ const Circle = forwardRef<HTMLDivElement, CircleProps>(
 
 Circle.displayName = "Circle";
 
-const creatorMetrics: MetricData[] = [
+const automationMetrics: MetricData[] = [
   {
-    roi: "3.2x",
-    engagement: "4.8%",
-    views: "15.2K",
+    efficiency: "95%",
+    automation: "Full",
+    timeSaved: "40hrs/wk",
     delay: 2.2,
-    platform: "Instagram"
+    taskType: "Data Processing"
   },
   {
-    roi: "4.1x",
-    engagement: "6.2%",
-    views: "25.3K",
+    efficiency: "85%",
+    automation: "Partial",
+    timeSaved: "25hrs/wk",
     delay: 2.4,
-    platform: "Youtube"
+    taskType: "Customer Support"
   },
   {
-    roi: "2.5x",
-    engagement: "3.2%",
-    views: "8.7K",
+    efficiency: "90%",
+    automation: "Full",
+    timeSaved: "30hrs/wk",
     delay: 2.6,
-    platform: "Twitter"
+    taskType: "Code Generation"
   },
   {
-    roi: "5.2x",
-    engagement: "8.5%",
-    views: "32.1K",
+    efficiency: "88%",
+    automation: "Full",
+    timeSaved: "35hrs/wk",
     delay: 2.8,
-    platform: "Twitch"
+    taskType: "Document Analysis"
   },
   {
-    roi: "6.8x",
-    engagement: "12.5%",
-    views: "45.3K",
+    efficiency: "92%",
+    automation: "Partial",
+    timeSaved: "28hrs/wk",
     delay: 3.0,
-    platform: "TikTok"
+    taskType: "Workflow Automation"
   }
 ];
 
@@ -168,25 +167,29 @@ const creatorSocialConnections = {
   4: [0, 1],
 };
 
-export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoProps) {
+export function AnimatedBeamMultipleOutputDemo({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showMetrics, setShowMetrics] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const brand1Ref = useRef<HTMLDivElement>(null);
-  const brand2Ref = useRef<HTMLDivElement>(null);
-  const brand3Ref = useRef<HTMLDivElement>(null);
-  const social1Ref = useRef<HTMLDivElement>(null);
-  const social2Ref = useRef<HTMLDivElement>(null);
-  const social3Ref = useRef<HTMLDivElement>(null);
-  const social4Ref = useRef<HTMLDivElement>(null);
-  const social5Ref = useRef<HTMLDivElement>(null);
-  const aiRef = useRef<HTMLDivElement>(null);
-  const creator1Ref = useRef<HTMLDivElement>(null);
-  const creator2Ref = useRef<HTMLDivElement>(null);
-  const creator3Ref = useRef<HTMLDivElement>(null);
-  const creator4Ref = useRef<HTMLDivElement>(null);
-  const creator5Ref = useRef<HTMLDivElement>(null);
+  // References for different sections
+  const inputRef1 = useRef<HTMLDivElement>(null);
+  const inputRef2 = useRef<HTMLDivElement>(null);
+  const inputRef3 = useRef<HTMLDivElement>(null);
+  
+  const agentRef = useRef<HTMLDivElement>(null);
+  
+  const taskRef1 = useRef<HTMLDivElement>(null);
+  const taskRef2 = useRef<HTMLDivElement>(null);
+  const taskRef3 = useRef<HTMLDivElement>(null);
+  const taskRef4 = useRef<HTMLDivElement>(null);
+  const taskRef5 = useRef<HTMLDivElement>(null);
+
+  const outputRef1 = useRef<HTMLDivElement>(null);
+  const outputRef2 = useRef<HTMLDivElement>(null);
+  const outputRef3 = useRef<HTMLDivElement>(null);
+  const outputRef4 = useRef<HTMLDivElement>(null);
+  const outputRef5 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -216,114 +219,102 @@ export function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamDemoPr
       >
         {/* Base layer for beams */}
         <div className="absolute inset-0 z-0">
-          {/* Brand to AI beams */}
-          {[brand1Ref, brand2Ref, brand3Ref].map((ref, i) => (
+          {/* Input to AI Agent beams */}
+          {[inputRef1, inputRef2, inputRef3].map((ref, i) => (
             <AnimatedBeam
-              key={`brand-${i}`}
+              key={`input-${i}`}
               containerRef={containerRef}
               fromRef={getValidRef(ref)}
-              toRef={getValidRef(aiRef)}
+              toRef={getValidRef(agentRef)}
             />
           ))}
 
-          {/* AI to Creator beams */}
-          {[creator1Ref, creator2Ref, creator3Ref, creator4Ref, creator5Ref].map((ref, i) => (
+          {/* AI Agent to Task beams */}
+          {[taskRef1, taskRef2, taskRef3, taskRef4, taskRef5].map((ref, i) => (
             <AnimatedBeam
-              key={`creator-${i}`}
+              key={`task-${i}`}
               containerRef={containerRef}
-              fromRef={getValidRef(aiRef)}
+              fromRef={getValidRef(agentRef)}
               toRef={getValidRef(ref)}
             />
           ))}
 
-          {/* Creator to Social beams */}
-          {!isMobile && [creator1Ref, creator2Ref, creator3Ref, creator4Ref, creator5Ref].map((creatorRef, i) => {
-            if (!creatorRef) return null;
-            
+          {/* Task to Output beams */}
+          {!isMobile && [taskRef1, taskRef2, taskRef3, taskRef4, taskRef5].map((taskRef, i) => {
+            const outputRef = [outputRef1, outputRef2, outputRef3, outputRef4, outputRef5][i];
+            if (!outputRef) return null;
             return (
-              <React.Fragment key={`creator-social-${i}`}>
-                {creatorSocialConnections[i as keyof typeof creatorSocialConnections].map((socialIndex) => {
-                  const socialRefs = [social1Ref, social2Ref, social3Ref, social4Ref, social5Ref]
-                    .filter((ref): ref is React.RefObject<HTMLDivElement> => ref !== null);
-
-                  const socialRef = socialRefs[socialIndex];
-                  if (!socialRef) return null;
-
-                  return (
-                    <AnimatedBeam
-                      key={`creator-${i}-social-${socialIndex}`}
-                      containerRef={containerRef}
-                      fromRef={getValidRef(creatorRef)}
-                      toRef={getValidRef(socialRef)}
-                    />
-                  );
-                })}
-              </React.Fragment>
+              <AnimatedBeam
+                key={`task-output-${i}`}
+                containerRef={containerRef}
+                fromRef={getValidRef(taskRef)}
+                toRef={getValidRef(outputRef)}
+              />
             );
           })}
         </div>
 
         {/* Content layer */}
         <div className="flex w-full h-full items-stretch justify-between relative px-2 md:px-8 lg:px-12">
-          {/* Left Side - Brands */}
+          {/* Left Side - Input Sources */}
           <div className="flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 z-10">
-            <Circle ref={brand1Ref} className="bg-blue-100" size="sm">
-              <Building2 className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={inputRef1} className="bg-blue-100" size="sm">
+              <Code2 className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={brand2Ref} className="bg-green-100" size="sm">
-              <Building2 className="text-green-600 w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={inputRef2} className="bg-purple-100" size="sm">
+              <Database className="text-purple-600 w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={brand3Ref} className="bg-purple-100" size="sm">
-              <Building2 className="text-purple-600 w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={inputRef3} className="bg-green-100" size="sm">
+              <MessagesSquare className="text-green-600 w-6 h-6 md:w-7 md:h-7" />
             </Circle>
           </div>
 
-          {/* Center - AI */}
+          {/* Center - AI Agent */}
           <div className="relative flex flex-col justify-center items-center">
-            <Circle ref={aiRef} className="relative bg-white shadow-lg p-3 md:p-4 z-20" size="lg">
+            <Circle ref={agentRef} className="relative bg-white shadow-lg p-3 md:p-4 z-20" size="lg">
               <Image
-                src="/icons/infloq.png"
+                src="/icons/ExplainX.png"
                 height={1000}
                 width={1000}
-                alt="AI"
+                alt="ExplainX AI"
                 className="p-1 md:p-2"
               />
-              <SparkleIcon className="absolute top-4 right-6 h-3 w-3 md:h-4 md:w-4 text-blue-700" />
+              <SparkleIcon className="absolute top-4 right-6 h-3 w-3 md:h-4 md:w-4 text-purple-700" />
             </Circle>
           </div>
 
-          {/* Mid-Right - Creators */}
+          {/* Mid-Right - Tasks */}
           <div className="flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 z-10">
-            {[creator1Ref, creator2Ref, creator3Ref, creator4Ref, creator5Ref].map((ref, i) => (
+            {[taskRef1, taskRef2, taskRef3, taskRef4, taskRef5].map((ref, i) => (
               <Circle 
-                key={`creator-${i}`} 
+                key={`task-${i}`} 
                 ref={ref} 
                 className="bg-white"
-                metrics={creatorMetrics[i]}
+                metrics={automationMetrics[i]}
                 showMetrics={showMetrics}
                 size="sm"
               >
-                <User className="text-gray-700 w-6 h-6 md:w-7 md:h-7" />
+                <Bot className="text-gray-700 w-6 h-6 md:w-7 md:h-7" />
               </Circle>
             ))}
           </div>
 
-          {/* Far Right - Social Networks */}
+          {/* Far Right - Outputs */}
           <div className="flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 z-10">
-            <Circle ref={social1Ref} className="bg-pink-500 text-white" size="sm">
-              <Instagram className="w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={outputRef1} className="bg-indigo-500 text-white" size="sm">
+              <FileCode className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social2Ref} className="bg-red-500 text-white" size="sm">
-              <Youtube className="w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={outputRef2} className="bg-blue-500 text-white" size="sm">
+              <Boxes className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social3Ref} className="bg-blue-400 text-white" size="sm">
-              <Twitter className="w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={outputRef3} className="bg-purple-500 text-white" size="sm">
+              <Cpu className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social4Ref} className="bg-blue-500 text-white" size="sm">
-              <Facebook className="w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={outputRef4} className="bg-green-500 text-white" size="sm">
+              <BrainCircuit className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
-            <Circle ref={social5Ref} className="bg-blue-600 text-white" size="sm">
-              <Linkedin className="w-6 h-6 md:w-7 md:h-7" />
+            <Circle ref={outputRef5} className="bg-blue-600 text-white" size="sm">
+              <Workflow className="w-6 h-6 md:w-7 md:h-7" />
             </Circle>
           </div>
         </div>

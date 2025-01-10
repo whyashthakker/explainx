@@ -32,7 +32,7 @@ export async function generateMetadata({
   
   if (!pageData) {
     return {
-      title: "Page Not Found | Infloq",
+      title: "Page Not Found | ExplainX",
       description: "The requested page doesn't exist",
     };
   }

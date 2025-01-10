@@ -2,21 +2,15 @@
 
 import { Suspense, useEffect, useState } from "react";
 import FAQSection from "../_components/faq-section";
-import {
-  Features,
-  FeaturesAiPersonalities,
-  FeaturesAutomation,
-  FeaturesCustomActions,
-  FeaturesCustomPanels,
-  FeaturesStats,
-  FeaturesUnsubscribe,
-} from "../_components/features";
 import { Heading } from "../_components/heading";
 import { Testimonials } from "../_components/testimonials";
-import ProfileCarousel from "../_components/profile-carousel";
-import Pricing from "../_components/infloq-pricing";
 import CTA from "../_components/cta";
 import { HomePageStructuredData } from './StructuredData';
+import ServicesPage from "../_components/explainx-services";
+import DeliveryStats from "../_components/proof-of-work";
+import GuaranteesSection from "../_components/guarantees";
+import { TeamSection } from "../_components/team";
+import PricingSection from "../_components/explainx-pricing";
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -71,18 +65,14 @@ const MarketingPage = () => {
     <div className="min-h-full flex flex-col">
       <HomePageStructuredData />
       <Heading />
-      <ProfileCarousel />
-      <Testimonials />
-      <Features />
-      <FeaturesAiPersonalities />
-      <FeaturesUnsubscribe />
-      <FeaturesStats />
-      <FeaturesCustomPanels />
-      <FeaturesAutomation />
-      <FeaturesCustomActions />
+      <ServicesPage />
+      <DeliveryStats />
+      {/* <Testimonials /> */}
+      <GuaranteesSection />
+      <TeamSection />
       {/* <CTA /> */}
       <Suspense>
-        <Pricing />
+        <PricingSection />
       </Suspense>
       <FAQSection />
       <CTA />

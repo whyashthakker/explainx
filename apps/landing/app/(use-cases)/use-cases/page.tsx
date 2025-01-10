@@ -6,8 +6,8 @@ import { ArrowRight } from "lucide-react";
 import { getAllUseCases } from "../../../lib/use-cases";
 
 export const metadata: Metadata = {
-  title: "Use Cases | Infloq - AI-Powered Influencer Marketing Platform",
-  description: "Discover how Infloq's AI-powered influencer marketing platform can help you achieve your goals, whether you're a brand, creator, or agency.",
+  title: "Use Cases | ExplainX - AI-Powered Influencer Marketing Platform",
+  description: "Discover how ExplainX's AI-powered influencer marketing platform can help you achieve your goals, whether you're a brand, creator, or agency.",
   keywords: [
     "influencer marketing use cases",
     "creator partnerships",
@@ -38,7 +38,7 @@ export default function UseCasesPage() {
               Solutions for Every Need
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Discover how Infloq's AI-powered platform can help you achieve your influencer marketing goals, whether you're a brand, creator, or agency.
+              Discover how ExplainX's AI-powered platform can help you achieve your influencer marketing goals, whether you're a brand, creator, or agency.
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function UseCasesPage() {
               Ready to transform your influencer marketing?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-              Join thousands of brands, creators, and agencies using Infloq to achieve their marketing goals.
+              Join thousands of brands, creators, and agencies using ExplainX to achieve their marketing goals.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
