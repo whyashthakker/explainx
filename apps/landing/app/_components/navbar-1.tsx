@@ -201,22 +201,10 @@ export default function Navbar() {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6 lg:items-center">
           <Link
-            href="https://creator.explainx.ai/login"
-            className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors"
-          >
-            For Influencers
-          </Link>
-          <Link
-            href="https://brand.explainx.ai/login"
-            className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors"
-          >
-            Login
-          </Link>
-          <Link
-            href="https://brand.explainx.ai/signup"
+            href="/demo"
             className="inline-flex items-center justify-center rounded-lg bg-[#4361EE] px-4 h-10 text-sm font-semibold text-white hover:bg-[#3B54D3] transition-colors"
           >
-            Get Started
+            Get in Touch
           </Link>
         </div>
       </nav>
