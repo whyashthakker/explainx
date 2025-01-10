@@ -273,7 +273,7 @@ export function AnimatedBeamMultipleOutputDemo({ className }: { className?: stri
           <div className="relative flex flex-col justify-center items-center">
             <Circle ref={agentRef} className="relative bg-white shadow-lg p-3 md:p-4 z-20" size="lg">
               <Image
-                src="/icons/ExplainX.png"
+                src="/icons/explainx_ai_light.png"
                 height={1000}
                 width={1000}
                 alt="ExplainX AI"

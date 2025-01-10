@@ -30,7 +30,7 @@ export function HomePageStructuredData({ baseUrl = 'https://explainx.ai' }: Home
         "url": baseUrl,
         "logo": {
           "@type": "ImageObject",
-          "url": "https://explainx.ai/icons/ExplainX.png"
+          "url": "https://explainx.ai/icons/explainx_ai_light.png"
         },
         "sameAs": [
           "https://twitter.com/ExplainX",

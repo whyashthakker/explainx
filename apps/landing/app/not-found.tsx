@@ -39,7 +39,7 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center space-y-8 px-4 max-w-[400px] mx-auto">
         <Image
-          src="/icons/ExplainX.png"
+          src="/icons/explainx_ai_light.png"
           alt="ExplainX"
           width={120}
           height={40}

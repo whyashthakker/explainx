@@ -18,7 +18,7 @@ export function AvailableTools() {
             Free Marketing Tools
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
-            Powerful tools to analyze, optimize, and grow your social media presence
+            Goal is to help you learn AI Agents Fast!
           </p>
         </div>
 
