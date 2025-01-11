@@ -1,4 +1,4 @@
-// Generated on 2025-01-11T04:58:25.217Z
+// Generated on 2025-01-11T05:09:45.568Z
 interface Author {
   name: string;
   role: string;
@@ -328,8 +328,8 @@ const postData: Post[] = [
     "title": "Что такое ИИ-агенты: Будущее Автономного Интеллекта",
     "file": "what-is-an-ai-agents",
     "description": "Исследуйте мир ИИ-агентов, от их базовых компонентов до практического применения, и поймите, как они формируют будущее технологий.",
-    "date": "Invalid Date NaN, NaN",
-    "datetime": "10 января 2025 г.",
+    "date": "January 5, 2025",
+    "datetime": "2025-01-05",
     "author": {
       "name": "Яш Таккер",
       "role": "",
@@ -340,24 +340,6 @@ const postData: Post[] = [
     "url": "https://www.explainx.ai/blog/post/ru/what-is-an-ai-agents",
     "categories": [
       "influencer-marketing"
-    ]
-  },
-  {
-    "title": "The Ultimate Guide to UGC Creators: Everything You Need to Know in 2025",
-    "file": "who-what-why-of-ugc-creators-full-guide",
-    "description": "Comprehensive guide about UGC creators, their impact on brand marketing, and how to leverage user-generated content effectively across different platforms.",
-    "date": "January 5, 2025",
-    "datetime": "2025-01-05",
-    "author": {
-      "name": "Digital Marketing Expert",
-      "role": "",
-      "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
-    },
-    "language": "en",
-    "url": "https://www.explainx.ai/blog/post/who-what-why-of-ugc-creators-full-guide",
-    "categories": [
-      "creator-economy"
     ]
   }
 ];
