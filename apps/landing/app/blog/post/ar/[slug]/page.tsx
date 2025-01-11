@@ -49,33 +49,39 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     }
     
     const defaultImage = '/images/main/landing.png';
+    const languageCode = 'ar-SA';
+    
+    // Define all supported languages with case-sensitive paths
+    const supportedLanguages = {
+        'en-US': `/blog/post/${slug}`,
+        'ar-SA': `/blog/post/ar/${slug}`,
+        'de-DE': `/blog/post/de/${slug}`,
+        'es-ES': `/blog/post/es/${slug}`,
+        'fr-FR': `/blog/post/fr/${slug}`,
+        'hi-IN': `/blog/post/hi/${slug}`,
+        'it-IT': `/blog/post/it/${slug}`,
+        'ja-JP': `/blog/post/ja/${slug}`,
+        'ko-KR': `/blog/post/ko/${slug}`,
+        'nl-NL': `/blog/post/nl/${slug}`,
+        'ru-RU': `/blog/post/ru/${slug}`,
+        'zh-CN': `/blog/post/zh-CN/${slug}`, // Case sensitive path
+    };
     
     return {
         title: post.title,
         description: post.description,
         alternates: {
-            canonical: `/blog/post/ar/${slug}`,
-            languages: {
-                'en': `/blog/post/${slug}`,
-                'ar': `/blog/post/ar/${slug}`,
-                'de': `/blog/post/de/${slug}`,
-                'es': `/blog/post/es/${slug}`,
-                'fr': `/blog/post/fr/${slug}`,
-                'hi': `/blog/post/hi/${slug}`,
-                'it': `/blog/post/it/${slug}`,
-                'ja': `/blog/post/ja/${slug}`,
-                'ko': `/blog/post/ko/${slug}`,
-                'nl': `/blog/post/nl/${slug}`,
-                'ru': `/blog/post/ru/${slug}`,
-                'zh-CN': `/blog/post/zh-cn/${slug}`,
-            }
+            canonical: `https://www.explainx.ai/blog/post/ar/${slug}`,
+            languages: Object.entries(supportedLanguages).reduce((acc, [code, url]) => ({
+                ...acc,
+                [code]: `https://www.explainx.ai${url}`,
+            }), {}),
         },
-        robots: { index: true, follow: true },
         metadataBase: new URL('https://www.explainx.ai'),
         openGraph: {
             type: 'article',
-            locale: 'ar',
-            url: `/blog/post/ar/${slug}`,
+            locale: languageCode,
+            url: `https://www.explainx.ai/blog/post/ar/${slug}`,
             title: post.title,
             description: post.description,
             images: [
@@ -92,9 +98,6 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
             title: post.title,
             description: post.description,
             images: [defaultImage],
-        },
-        other: {
-            'html-lang': 'ar',
         }
     };
 }
