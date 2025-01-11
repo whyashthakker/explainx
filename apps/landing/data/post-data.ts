@@ -1,4 +1,4 @@
-// Generated on 2025-01-11T05:13:04.995Z
+// Generated on 2025-01-11T08:28:55.325Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,241 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Las Principales Startups de Agentes de IA que Lideran la Próxima Ola de Innovación",
+    "file": "top-ai-agents-startups",
+    "description": "Explora las startups más innovadoras de agentes de IA que están moldeando el futuro de los sistemas autónomos y la automatización inteligente.",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/top-ai-agents-startups",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Die führenden KI-Agenten-Startups, die die nächste Innovationswelle anführen",
+    "file": "top-ai-agents-startups",
+    "description": "Entdecken Sie die innovativsten KI-Agenten-Startups, die die Zukunft autonomer Systeme und intelligenter Automatisierung gestalten.",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/top-ai-agents-startups",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Les Meilleures Startups d'Agents IA qui Mènent la Prochaine Vague d'Innovation",
+    "file": "top-ai-agents-startups",
+    "description": "Découvrez les startups d'agents IA les plus innovantes qui façonnent l'avenir des systèmes autonomes et de l'automatisation intelligente.",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Le Principali Startup di Agenti AI che Guidano la Prossima Ondata di Innovazione",
+    "file": "top-ai-agents-startups",
+    "description": "Esplora le startup di agenti AI più innovative che stanno plasmando il futuro dei sistemi autonomi e dell'automazione intelligente.",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI एजेंट स्टार्टअप्स जो नवाचार की अगली लहर का नेतृत्व कर रहे हैं",
+    "file": "top-ai-agents-startups",
+    "description": "स्वायत्त सिस्टम और बुद्धिमान स्वचालन के भविष्य को आकार देने वाले सबसे नवीन AI एजेंट स्टार्टअप्स की खोज करें।",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "أبرز الشركات الناشئة في مجال وكلاء الذكاء الاصطناعي التي تقود موجة الابتكار القادمة",
+    "file": "top-ai-agents-startups",
+    "description": "استكشف أكثر الشركات الناشئة ابتكاراً في مجال وكلاء الذكاء الاصطناعي التي تشكل مستقبل الأنظمة المستقلة والأتمتة الذكية",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/top-ai-agents-startups",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "引领下一波创新浪潮的顶尖AI代理初创公司",
+    "file": "top-ai-agents-startups",
+    "description": "探索塑造自主系统和智能自动化未来的最具创新性的AI代理初创公司",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "혁신의 다음 물결을 주도하는 최고의 AI 에이전트 스타트업",
+    "file": "top-ai-agents-startups",
+    "description": "자율 시스템과 지능형 자동화의 미래를 형성하는 가장 혁신적인 AI 에이전트 스타트업을 탐구합니다",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "イノベーションの次なる波を主導するトップAIエージェントスタートアップ",
+    "file": "top-ai-agents-startups",
+    "description": "自律システムとインテリジェントな自動化の未来を形作る最も革新的なAIエージェントスタートアップを探る",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "De Belangrijkste AI-Agent Startups die de Volgende Golf van Innovatie Leiden",
+    "file": "top-ai-agents-startups",
+    "description": "Ontdek de meest innovatieve AI-agent startups die de toekomst van autonome systemen en intelligente automatisering vormgeven",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Ведущие AI-агент стартапы, формирующие следующую волну инноваций",
+    "file": "top-ai-agents-startups",
+    "description": "Исследуйте самые инновационные стартапы в сфере AI-агентов, формирующие будущее автономных систем и интеллектуальной автоматизации",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Top AI Agent Startups Leading the Next Wave of Innovation",
+    "file": "top-ai-agents-startups",
+    "description": "Explore the most innovative AI agent startups shaping the future of autonomous systems and intelligent automation.",
+    "date": "January 11, 2025",
+    "datetime": "2025-01-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/top-ai-agents-startups",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
   {
     "title": "Las 5 Principales Agencias de Agentes de IA que Revolucionan la Automatización Empresarial en 2025",
     "file": "top-ai-agents-agencies",
