@@ -1,4 +1,4 @@
-// Generated on 2025-01-11T05:09:45.568Z
+// Generated on 2025-01-11T05:13:04.995Z
 interface Author {
   name: string;
   role: string;
@@ -247,6 +247,25 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "2025年革新企业自动化的五大AI代理机构",
+    "file": "top-ai-agents-agencies",
+    "description": "探索通过创新自动化解决方案和智能数字劳动力改变企业运营方式的顶尖AI代理机构。",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/top-ai-agents-agencies",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
     "title": "什么是AI智能体：自主智能的未来",
     "file": "what-is-an-ai-agents",
     "description": "探索AI智能体的世界，从其核心组件到实际应用，了解它们如何塑造技术的未来。",
@@ -260,6 +279,25 @@ const postData: Post[] = [
     },
     "language": "zh-cn",
     "url": "https://www.explainx.ai/blog/post/zh-cn/what-is-an-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "2025년 기업 자동화를 혁신하는 5대 AI 에이전트 에이전시",
+    "file": "top-ai-agents-agencies",
+    "description": "혁신적인 자동화 솔루션과 지능형 디지털 인력을 통해 기업의 운영 방식을 변화시키는 주요 AI 에이전트 에이전시를 살펴봅니다.",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/top-ai-agents-agencies",
     "categories": [
       "ai-tools",
       "analytics"
@@ -285,6 +323,25 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "2025年のビジネス自動化を革新する主要なAIエージェントエージェンシー5選",
+    "file": "top-ai-agents-agencies",
+    "description": "革新的な自動化ソリューションとインテリジェントなデジタルワークフォースを通じて、企業の運営方法を変革する主要なAIエージェントエージェンシーをご紹介します。",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/top-ai-agents-agencies",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
     "title": "AIエージェントとは：自律型インテリジェンスの未来",
     "file": "what-is-an-ai-agents",
     "description": "AIエージェントの世界を探求し、基本的なコンポーネントから実世界での応用まで、技術の未来をどのように形作っているかを理解します。",
@@ -304,6 +361,27 @@ const postData: Post[] = [
     ]
   },
   {
+    "title": "De Top 5 AI-Agent Bureaus die Bedrijfsautomatisering Revolutionair Veranderen in 2025",
+    "file": "top-ai-agents-agencies",
+    "description": "Ontdek de toonaangevende AI-agent bureaus die de manier waarop bedrijven opereren transformeren door innovatieve automatiseringsoplossingen en intelligente digitale werknemers.",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/top-ai-agents-agencies",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
     "title": "Wat zijn AI-Agenten: De Toekomst van Autonome Intelligentie",
     "file": "what-is-an-ai-agents",
     "description": "Verken de wereld van AI-agenten, van hun kerncomponenten tot praktische toepassingen, en begrijp hoe ze de toekomst van technologie vormgeven.",
@@ -317,6 +395,67 @@ const postData: Post[] = [
     },
     "language": "nl",
     "url": "https://www.explainx.ai/blog/post/nl/what-is-an-ai-agents",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "5 Ведущих AI-Агентств, Революционизирующих Автоматизацию Бизнеса в 2025 году",
+    "file": "top-ai-agents-agencies",
+    "description": "Узнайте о ведущих агентствах AI-агентов, которые трансформируют способы работы компаний через инновационные решения автоматизации и интеллектуальную цифровую рабочую силу.",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/top-ai-agents-agencies",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Top 5 AI Agent Agencies Revolutionizing Business Automation in 2025",
+    "file": "top-ai-agents-agencies",
+    "description": "Discover the leading AI agent agencies transforming how businesses operate through innovative automation solutions and intelligent digital workforces.",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/top-ai-agents-agencies",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "What is an AI Agents:The Future of Autonomous Intelligence",
+    "file": "what-is-an-ai-agents",
+    "description": "Explore the world of AI agents, from their core components to real-world applications, and understand how they're shaping the future of technology.",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/what-is-an-ai-agents",
     "categories": [
       "ai-tools",
       "instagram",
