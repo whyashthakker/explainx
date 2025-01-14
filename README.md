@@ -1,6 +1,6 @@
-# Turborepo starter
+# Yash + WiseyAI  starter
 
-This is an official starter Turborepo.
+This is an official starter of AISOLO.
 
 ## Using this example
 
