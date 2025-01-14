@@ -1,4 +1,4 @@
-// Generated on 2025-01-11T08:28:55.325Z
+// Generated on 2025-01-14T06:08:53.715Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,211 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Los 100 Agentes de IA más Populares",
+    "file": "most-populer-ai-agents",
+    "description": "Explore los agentes de IA más influyentes y utilizados en diversas categorías, desde asistentes personales hasta ejecutores de tareas especializadas.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/most-populer-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Die Top 100 beliebtesten KI-Agenten",
+    "file": "most-populer-ai-agents",
+    "description": "Erkunden Sie die einflussreichsten und am häufigsten genutzten KI-Agenten in verschiedenen Kategorien, von persönlichen Assistenten bis hin zu spezialisierten Aufgabenausführern.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/most-populer-ai-agents",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Les 100 Agents d'IA les Plus Populaires",
+    "file": "most-populer-ai-agents",
+    "description": "Explorez les agents d'IA les plus influents et les plus utilisés dans diverses catégories, des assistants personnels aux exécutants de tâches spécialisées.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/most-populer-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "I 100 Agenti IA più Popolari",
+    "file": "most-populer-ai-agents",
+    "description": "Esplora gli agenti di IA più influenti e ampiamente utilizzati in varie categorie, dagli assistenti personali agli esecutori di compiti specializzati.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/most-populer-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "शीर्ष 100 सर्वाधिक लोकप्रिय AI एजेंट्स",
+    "file": "most-populer-ai-agents",
+    "description": "विभिन्न श्रेणियों में सबसे प्रभावशाली और व्यापक रूप से उपयोग किए जाने वाले AI एजेंट्स का पता लगाएं, व्यक्तिगत सहायकों से लेकर विशेष कार्य प्रदर्शकों तक।",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/most-populer-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "أفضل 100 وكيل ذكاء اصطناعي شعبية",
+    "file": "most-populer-ai-agents",
+    "description": "استكشف أكثر وكلاء الذكاء الاصطناعي تأثيراً واستخداماً عبر مختلف الفئات، من المساعدين الشخصيين إلى المتخصصين في المهام",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/most-populer-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "상위 100개 인기 AI 에이전트",
+    "file": "most-populer-ai-agents",
+    "description": "개인 비서부터 전문 작업 수행자까지, 다양한 카테고리에서 가장 영향력 있고 널리 사용되는 AI 에이전트를 탐색합니다.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "야쉬 타커",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/most-populer-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "トップ100人気AIエージェント",
+    "file": "most-populer-ai-agents",
+    "description": "パーソナルアシスタントから専門タスク実行者まで、様々なカテゴリーで最も影響力があり広く使用されているAIエージェントを探索します。",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "ヤシュ・タッカー",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/most-populer-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "De Top 100 Meest Populaire AI-Agenten",
+    "file": "most-populer-ai-agents",
+    "description": "Ontdek de meest invloedrijke en breed gebruikte AI-agenten in verschillende categorieën, van persoonlijke assistenten tot gespecialiseerde taakuitvoerders.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/most-populer-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Топ-100 Самых Популярных ИИ-Агентов",
+    "file": "most-populer-ai-agents",
+    "description": "Исследуйте самых влиятельных и широко используемых ИИ-агентов в различных категориях, от персональных ассистентов до специализированных исполнителей задач.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Яш Таккер",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/most-populer-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Top 100 Most Popular AI Agents",
+    "file": "most-populer-ai-agents",
+    "description": "Explore the most influential and widely-used AI agents across various categories, from personal assistants to specialized task performers.",
+    "date": "January 13, 2025",
+    "datetime": "2025-01-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/most-populer-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Las Principales Startups de Agentes de IA que Lideran la Próxima Ola de Innovación",
     "file": "top-ai-agents-startups",
