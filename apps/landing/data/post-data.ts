@@ -1,4 +1,4 @@
-// Generated on 2025-01-14T06:08:53.715Z
+// Generated on 2025-01-14T11:17:25.164Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,230 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Los Mejores Agentes de IA para Pequeñas Empresas",
+    "file": "ai-agents-for-small-businesses",
+    "description": "Descubra los agentes de IA más efectivos que pueden transformar las operaciones de su pequeña empresa, impulsar la productividad y promover el crecimiento en 2025.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agents-for-small-businesses",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Die besten KI-Agenten für kleine Unternehmen",
+    "file": "ai-agents-for-small-businesses",
+    "description": "Entdecken Sie die effektivsten KI-Agenten, die Ihre kleinen Unternehmensabläufe transformieren, die Produktivität steigern und das Wachstum im Jahr 2025 vorantreiben können.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agents-for-small-businesses",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Les Meilleurs Agents IA pour les Petites Entreprises",
+    "file": "ai-agents-for-small-businesses",
+    "description": "Découvrez les agents IA les plus efficaces qui peuvent transformer les opérations de votre petite entreprise, stimuler la productivité et favoriser la croissance en 2025.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agents-for-small-businesses",
+    "categories": [
+      "analytics"
+    ]
+  },
+  {
+    "title": "I Migliori Agenti IA per le Piccole Imprese",
+    "file": "ai-agents-for-small-businesses",
+    "description": "Scopri gli agenti IA più efficaci che possono trasformare le operazioni della tua piccola impresa, aumentare la produttività e guidare la crescita nel 2025.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agents-for-small-businesses",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "छोटे व्यवसायों के लिए सर्वश्रेष्ठ AI एजेंट",
+    "file": "ai-agents-for-small-businesses",
+    "description": "2025 में आपके छोटे व्यवसाय के संचालन को बदलने, उत्पादकता बढ़ाने और विकास को बढ़ावा देने वाले सबसे प्रभावी AI एजेंट्स को खोजें।",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agents-for-small-businesses",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "أفضل وكلاء الذكاء الاصطناعي للشركات الصغيرة",
+    "file": "ai-agents-for-small-businesses",
+    "description": "اكتشف أكثر وكلاء الذكاء الاصطناعي فعالية التي يمكنها تحويل عمليات شركتك الصغيرة، وتعزيز الإنتاجية، ودفع النمو في عام 2025.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agents-for-small-businesses",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "中小企业最佳AI代理解决方案",
+    "file": "ai-agents-for-small-businesses",
+    "description": "探索能在2025年转变您的中小企业运营、提升生产力并推动增长的最有效AI代理。",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agents-for-small-businesses",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "중소기업을 위한 최고의 AI 에이전트",
+    "file": "ai-agents-for-small-businesses",
+    "description": "2025년에 귀사의 중소기업 운영을 혁신하고, 생산성을 높이며, 성장을 촉진할 수 있는 가장 효과적인 AI 에이전트를 발견하세요.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agents-for-small-businesses",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "中小企業向けベストAIエージェント",
+    "file": "ai-agents-for-small-businesses",
+    "description": "2025年に、あなたの中小企業の業務を変革し、生産性を向上させ、成長を促進できる最も効果的なAIエージェントをご紹介します。",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agents-for-small-businesses",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "De Beste AI-Agenten voor het MKB",
+    "file": "ai-agents-for-small-businesses",
+    "description": "Ontdek de meest effectieve AI-agenten die de bedrijfsvoering van uw MKB kunnen transformeren, de productiviteit kunnen verhogen en groei kunnen stimuleren in 2025.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agents-for-small-businesses",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Лучшие ИИ-агенты для малого бизнеса",
+    "file": "ai-agents-for-small-businesses",
+    "description": "Откройте для себя самых эффективных ИИ-агентов, которые могут трансформировать операции вашего малого бизнеса, повысить производительность и стимулировать рост в 2025 году.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agents-for-small-businesses",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Best AI Agents for Small Businesses",
+    "file": "ai-agents-for-small-businesses",
+    "description": "Discover the most effective AI agents that can transform your small business operations, boost productivity, and drive growth in 2025.",
+    "date": "January 14, 2025",
+    "datetime": "2025-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agents-for-small-businesses",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Los 100 Agentes de IA más Populares",
     "file": "most-populer-ai-agents",
@@ -919,6 +1143,237 @@ const postData: Post[] = [
     "url": "https://www.explainx.ai/blog/post/ru/what-is-an-ai-agents",
     "categories": [
       "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agentes de IA: El Futuro de la Automatización Empresarial Inteligente",
+    "file": "ai-agents-for-automation",
+    "description": "Domine el mundo de los agentes de IA: desde elegir las soluciones correctas hasta implementar flujos de trabajo automatizados. Descubra cómo las empresas están logrando una eficiencia 10 veces mayor con la automatización impulsada por IA.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agents-for-automation",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "KI-Agenten: Die Zukunft der intelligenten Geschäftsautomatisierung",
+    "file": "ai-agents-for-automation",
+    "description": "Beherrschen Sie die Welt der KI-Agenten - von der Auswahl der richtigen Lösungen bis zur Implementierung automatisierter Workflows. Erfahren Sie, wie Unternehmen mit KI-gestützter Automatisierung eine 10-fache Effizienz erreichen.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agents-for-automation",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Agents IA : L'Avenir de l'Automatisation Intelligente des Entreprises",
+    "file": "ai-agents-for-automation",
+    "description": "Maîtrisez le monde des agents IA - du choix des bonnes solutions à l'implémentation de flux de travail automatisés. Découvrez comment les entreprises atteignent une efficacité multipliée par 10 grâce à l'automatisation alimentée par l'IA.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agents-for-automation",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Agenti IA: Il Futuro dell'Automazione Aziendale Intelligente",
+    "file": "ai-agents-for-automation",
+    "description": "Padroneggia il mondo degli agenti IA - dalla scelta delle soluzioni giuste all'implementazione di flussi di lavoro automatizzati. Scopri come le aziende stanno raggiungendo un'efficienza 10 volte superiore con l'automazione basata sull'IA.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agents-for-automation",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "एआई एजेंट्स: बुद्धिमान व्यवसाय स्वचालन का भविष्य",
+    "file": "ai-agents-for-automation",
+    "description": "एआई एजेंट्स की दुनिया में महारत हासिल करें - सही समाधान चुनने से लेकर स्वचालित वर्कफ़्लो को लागू करने तक। जानें कैसे व्यवसाय एआई-संचालित स्वचालन के साथ 10 गुना दक्षता प्राप्त कर रहे हैं।",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agents-for-automation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "العملاء الآليون: مستقبل أتمتة الأعمال الذكية",
+    "file": "ai-agents-for-automation",
+    "description": "أتقن عالم العملاء الآليين - من اختيار الحلول المناسبة إلى تنفيذ سير العمل الآلي. تعرف على كيفية تحقيق الشركات لكفاءة تصل إلى 10 أضعاف مع الأتمتة المدعومة بالذكاء الاصطناعي.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agents-for-automation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI代理：智能业务自动化的未来",
+    "file": "ai-agents-for-automation",
+    "description": "掌握AI代理的世界 - 从选择正确的解决方案到实施自动化工作流程。了解企业如何通过AI驱动的自动化实现10倍效率提升。",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agents-for-automation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI 에이전트: 지능형 비즈니스 자동화의 미래",
+    "file": "ai-agents-for-automation",
+    "description": "AI 에이전트의 세계를 마스터하세요 - 올바른 솔루션 선택부터 자동화된 워크플로우 구현까지. 기업들이 AI 기반 자동화로 10배의 효율성을 달성하는 방법을 알아보세요.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agents-for-automation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AIエージェント：インテリジェントなビジネス自動化の未来",
+    "file": "ai-agents-for-automation",
+    "description": "AIエージェントの世界をマスターする - 適切なソリューションの選択から自動化されたワークフローの実装まで。企業がAI駆動の自動化で10倍の効率を達成する方法を学びましょう。",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agents-for-automation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI-Agenten: De Toekomst van Intelligente Bedrijfsautomatisering",
+    "file": "ai-agents-for-automation",
+    "description": "Beheers de wereld van AI-agenten - van het kiezen van de juiste oplossingen tot het implementeren van geautomatiseerde workflows. Ontdek hoe bedrijven 10x efficiëntie bereiken met AI-gestuurde automatisering.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agents-for-automation",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "ИИ-агенты: Будущее Интеллектуальной Автоматизации Бизнеса",
+    "file": "ai-agents-for-automation",
+    "description": "Освойте мир ИИ-агентов - от выбора правильных решений до внедрения автоматизированных рабочих процессов. Узнайте, как компании достигают 10-кратной эффективности с помощью автоматизации на базе ИИ.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agents-for-automation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI Agents: The Future of Intelligent Business Automation",
+    "file": "ai-agents-for-automation",
+    "description": "Master the world of AI agents - from choosing the right solutions to implementing automated workflows. Learn how businesses are achieving 10x efficiency with AI-powered automation.",
+    "date": "January 14, 2024",
+    "datetime": "2024-01-14",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agents-for-automation",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
     ]
   }
 ];
