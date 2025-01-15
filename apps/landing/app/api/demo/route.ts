@@ -1,4 +1,5 @@
 // app/api/demo/route.ts
+// test
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sendDiscordNotification } from "../../../lib/discord-notify";
@@ -9,16 +10,20 @@ const demoBookingSchema = z.object({
   company: z.string().min(1, "Company name is required"),
   role: z.string().optional(),
   teamSize: z.enum(["1", "2-5", "6-10", "11-50", "50+"]).optional(),
-  monthlyBudget: z.enum(["0-1000", "1000-5000", "5000-10000", "10000+"]).optional(),
+  monthlyBudget: z
+    .enum(["0-1000", "1000-5000", "5000-10000", "10000+"])
+    .optional(),
   goals: z.string().optional(),
   source: z.string().optional(),
-  utmParams: z.object({
-    utm_source: z.string().optional(),
-    utm_medium: z.string().optional(),
-    utm_campaign: z.string().optional(),
-    utm_content: z.string().optional(),
-    utm_term: z.string().optional()
-  }).optional()
+  utmParams: z
+    .object({
+      utm_source: z.string().optional(),
+      utm_medium: z.string().optional(),
+      utm_campaign: z.string().optional(),
+      utm_content: z.string().optional(),
+      utm_term: z.string().optional(),
+    })
+    .optional(),
 });
 
 export async function POST(req: Request) {
@@ -34,20 +39,24 @@ export async function POST(req: Request) {
 • Name: ${validatedData.name}
 • Email: ${validatedData.email}
 • Company: ${validatedData.company}
-• Role: ${validatedData.role || 'Not specified'}
+• Role: ${validatedData.role || "Not specified"}
 
 📊 Company Details
-• Team Size: ${validatedData.teamSize || 'Not specified'}
-• Monthly Budget: ${validatedData.monthlyBudget || 'Not specified'}
+• Team Size: ${validatedData.teamSize || "Not specified"}
+• Monthly Budget: ${validatedData.monthlyBudget || "Not specified"}
 
 🎯 Goals
-${validatedData.goals || 'No specific goals mentioned'}
+${validatedData.goals || "No specific goals mentioned"}
 
 📈 Source
-• Source: ${validatedData.source || 'Direct'}
-${validatedData.utmParams ? `• Campaign: ${validatedData.utmParams.utm_campaign || 'N/A'}
-• Medium: ${validatedData.utmParams.utm_medium || 'N/A'}
-• Source: ${validatedData.utmParams.utm_source || 'N/A'}` : ''}
+• Source: ${validatedData.source || "Direct"}
+${
+  validatedData.utmParams
+    ? `• Campaign: ${validatedData.utmParams.utm_campaign || "N/A"}
+• Medium: ${validatedData.utmParams.utm_medium || "N/A"}
+• Source: ${validatedData.utmParams.utm_source || "N/A"}`
+    : ""
+}
     `;
 
     // Send notification to Discord
@@ -86,31 +95,31 @@ ${validatedData.utmParams ? `• Campaign: ${validatedData.utmParams.utm_campaig
       data: {
         name: validatedData.name,
         email: validatedData.email,
-        company: validatedData.company
-      }
+        company: validatedData.company,
+      },
     });
   } catch (error) {
     console.error("Demo booking error:", error);
-    
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           error: "Invalid data",
-          details: error.errors.map(err => ({
-            field: err.path.join('.'),
-            message: err.message
-          }))
+          details: error.errors.map((err) => ({
+            field: err.path.join("."),
+            message: err.message,
+          })),
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     return NextResponse.json(
       {
         error: "Failed to process demo booking",
-        message: "An unexpected error occurred while processing your request"
+        message: "An unexpected error occurred while processing your request",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -118,12 +127,12 @@ ${validatedData.utmParams ? `• Campaign: ${validatedData.utmParams.utm_campaig
 // Optional: Add GET method to fetch available time slots or check booking status
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const email = searchParams.get('email');
+  const email = searchParams.get("email");
 
   if (!email) {
     return NextResponse.json(
       { error: "Email parameter is required" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -136,13 +145,14 @@ export async function GET(req: Request) {
     return NextResponse.json({
       success: true,
       // data: booking
-      data: { status: "MOCK_DATA" }
+      data: { status: "MOCK_DATA" },
     });
   } catch (error) {
     console.error("Error fetching demo booking:", error);
     return NextResponse.json(
       { error: "Failed to fetch booking information" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
+
