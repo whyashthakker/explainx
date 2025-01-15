@@ -79,7 +79,7 @@ const SalesContactForm: React.FC = () => {
             </div>
             <div 
               className="calendly-inline-widget" 
-              data-url={`https://calendly.com/explainx/demo?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&a1=${encodeURIComponent(formData.company)}&a2=${encodeURIComponent(formData.teamSize)}`} 
+              data-url={`https://calendly.com/explainx/discussion?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&a1=${encodeURIComponent(formData.company)}&a2=${encodeURIComponent(formData.teamSize)}`} 
               style={{ minWidth: '320px', height: '700px' }} 
             />
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
