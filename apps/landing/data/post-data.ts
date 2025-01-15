@@ -1,4 +1,4 @@
-// Generated on 2025-01-14T11:17:25.164Z
+// Generated on 2025-01-15T10:41:23.237Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,229 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Desbloquea el Futuro: Increíbles Agentes de IA que Están Cambiando las Reglas del Juego",
+    "file": "awesome-ai-agents",
+    "description": "Dile adiós a las tareas aburridas - estos increíbles agentes de IA son tus nuevos compañeros de productividad",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/awesome-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Die Zukunft erschließen: Fantastische KI-Agenten, die die Spielregeln verändern",
+    "file": "awesome-ai-agents",
+    "description": "Sagen Sie langweiligen Aufgaben Lebewohl - diese fantastischen KI-Agenten sind Ihre neuen Produktivitätsbegleiter",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/awesome-ai-agents",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "Débloquez l'Avenir : Les Incroyables Agents d'IA qui Changent la Donne",
+    "file": "awesome-ai-agents",
+    "description": "Dites adieu aux tâches ennuyeuses - ces incroyables agents d'IA sont vos nouveaux compagnons de productivité",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/awesome-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Sblocca il Futuro: Incredibili Agenti di IA che Stanno Cambiando le Regole del Gioco",
+    "file": "awesome-ai-agents",
+    "description": "Dì addio alle attività noiose - questi incredibili agenti di IA sono i tuoi nuovi compagni di produttività",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/awesome-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "भविष्य को अनलॉक करें: गेम को बदल रहे शानदार एआई एजेंट्स",
+    "file": "awesome-ai-agents",
+    "description": "उबाऊ कामों को अलविदा कहें - ये शानदार एआई एजेंट्स आपके नए प्रोडक्टिविटी सहायक हैं",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/awesome-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "افتح آفاق المستقبل: عملاء الذكاء الاصطناعي المذهلون الذين يغيرون قواعد اللعبة",
+    "file": "awesome-ai-agents",
+    "description": "قل وداعاً للمهام المملة - عملاء الذكاء الاصطناعي المذهلون هم رفاقك الجدد في الإنتاجية",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/awesome-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "开启未来：改变游戏规则的令人惊叹的人工智能代理",
+    "file": "awesome-ai-agents",
+    "description": "告别枯燥任务 - 这些令人惊叹的人工智能代理将成为您的新生产力助手",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/awesome-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "미래를 여는 열쇠: 게임 체인저가 되는 놀라운 AI 에이전트",
+    "file": "awesome-ai-agents",
+    "description": "지루한 작업에 작별을 고하세요 - 이 놀라운 AI 에이전트들이 당신의 새로운 생산성 파트너가 됩니다",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/awesome-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "未来を切り開く：ゲームチェンジャーとなる驚くべきAIエージェント",
+    "file": "awesome-ai-agents",
+    "description": "退屈な作業にさようなら - これらの驚くべきAIエージェントがあなたの新しい生産性のパートナーに",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/awesome-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Ontgrendel de Toekomst: Geweldige AI-Agenten die de Spelregels Veranderen",
+    "file": "awesome-ai-agents",
+    "description": "Zeg vaarwel tegen saaie taken - deze geweldige AI-agenten zijn je nieuwe productiviteitspartners",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/awesome-ai-agents",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Открывая Будущее: Удивительные ИИ-агенты, Меняющие Правила Игры",
+    "file": "awesome-ai-agents",
+    "description": "Попрощайтесь со скучными задачами - эти удивительные ИИ-агенты станут вашими новыми помощниками в повышении продуктивности",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/awesome-ai-agents",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Unlock the Future: Awesome AI Agents That Are Changing the Game",
+    "file": "awesome-ai-agents",
+    "description": "Say goodbye to boring tasks - theseAwesome AI agents are your new productivity sidekicks",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/awesome-ai-agents",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Los Mejores Agentes de IA para Pequeñas Empresas",
     "file": "ai-agents-for-small-businesses",
