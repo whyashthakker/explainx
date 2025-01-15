@@ -84,7 +84,7 @@ export function DemoBookingForm() {
     return (
       <div className="h-[600px]">
         <iframe
-          src={`https://calendly.com/explainx/demo?name=${formData.name}&email=${formData.email}&a1=${formData.company}&a2=${formData.useCase}`}
+          src={`https://calendly.com/explainx/discussion?name=${formData.name}&email=${formData.email}&a1=${formData.company}&a2=${formData.useCase}`}
           width="100%"
           height="100%"
           frameBorder="0"
