@@ -1,4 +1,4 @@
-// Generated on 2025-01-15T10:41:23.237Z
+// Generated on 2025-01-16T03:25:33.971Z
 interface Author {
   name: string;
   role: string;
@@ -221,6 +221,25 @@ const postData: Post[] = [
     "url": "https://www.explainx.ai/blog/post/ru/awesome-ai-agents",
     "categories": [
       "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI Agents in the Workforce: Sam Altman's Vision for 2025",
+    "file": "ai-agents-in-workforce",
+    "description": "Explore Sam Altman's groundbreaking statement about AI agents joining the workforce in 2025, ChatGPT tasks, and the future of work with GPT-4 capabilities.",
+    "date": "January 15, 2025",
+    "datetime": "2025-01-15",
+    "author": {
+      "name": "Your Name",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agents-in-workforce",
+    "categories": [
+      "ai-tools",
+      "analytics"
     ]
   },
   {
