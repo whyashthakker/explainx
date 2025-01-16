@@ -1,13 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
 provider  = "postgresql"
 url      = env("DATABASE_URL")
 directUrl = env("DIRECT_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
 
+// Authentication Models
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -20,56 +22,40 @@ model User {
   sessions      Session[]
   authenticators Authenticator[]
 
-  // Role and type
-  userType     UserType?
-  
-  // Profile relations - Remove unique constraint to allow both
-  brands        Brand[]    
-  influencers   Influencer[]
+   // Onboarding fields
+  isOnboarded   Boolean   @default(false)
+  onboardingStep String?  // To track which step of onboarding they're on
 
-  // Team memberships
-  brandTeamMemberships    BrandTeamMember[]
-  influencerTeamMemberships  InfluencerTeamMember[]
-
-  // Chat relations
-  sentMessages     Message[]  @relation("SentMessages")
-  receivedMessages Message[]  @relation("ReceivedMessages")
+  // Organization relation
+  organizationTeamMemberships    OrganizationTeamMember[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-enum UserType {
-  BRAND
-  INFLUENCER
-  BOTH
-}
 
-// Auth Models
 model Account {
-  id                String  @id @default(cuid())
   userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+ 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@unique([provider, providerAccountId])
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@id([provider, providerAccountId])
 }
 
 model Session {
-  id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
@@ -83,7 +69,7 @@ model VerificationToken {
   identifier String
   token      String
   expires    DateTime
- 
+
   @@id([identifier, token])
 }
 
@@ -109,552 +95,270 @@ enum TeamRole {
   MEMBER
 }
 
-// Update Brand model - remove unique constraint on userId
-model Brand {
-  id          String    @id @default(cuid())
-  userId      String
-  user        User      @relation(fields: [userId], references: [id])
-  
-  name        String
-  logo        String?
-  website     String?
-  industry    String
-  description String?
-
-  targetDemographic    String?
-  preferredCategories  String[]
-  minFollowers        Int?
-  maxBudget          Decimal?
-  preferredPlatforms  Platform[]
-  
-  team        BrandTeam?
-  campaigns   Campaign[]
-  collaborations Collaboration[]
-
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
-  @@index([userId]) // Add index for better query performance
-}
-
-model BrandTeam {
-  id          String    @id @default(cuid())
-  brandId     String    @unique
-  brand       Brand     @relation(fields: [brandId], references: [id])
-  
-  members     BrandTeamMember[]
-  
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-}
-
-model BrandTeamMember {
-  id          String    @id @default(cuid())
-  teamId      String
-  team        BrandTeam @relation(fields: [teamId], references: [id])
-  userId      String?
-  user        User?      @relation(fields: [userId], references: [id])
-  role        TeamRole  
-  inviteStatus InviteStatus
-  inviteToken String?   @unique
-  inviteEmail String?   // Add this field to store email for pending invites
-
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
- @@unique([teamId, inviteEmail]) // Add this unique constraint
-  @@unique([teamId, userId])
-}
-
-// Update Influencer model - remove unique constraint on userId
-model Influencer {
-  id          String    @id @default(cuid())
-  userId      String
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  name        String
-  avatar      String?
-  bio         String?
-  category    String
-  followers   Int
-  platforms   Platform[]
-  isOnboarded Boolean   @default(false)  // Add this lin
-
-  team        InfluencerTeam?
-  collaborations Collaboration[]
-  youtubeAccount YouTubeAccount?
-
-instagramAccount InstagramAccount?
-proposalApplications ProposalApplication[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
-  @@index([userId]) // Add index for better query performance
-}
-
-model InfluencerTeam {
-  id            String    @id @default(cuid())
-  influencerId  String    @unique
-  influencer    Influencer @relation(fields: [influencerId], references: [id], onDelete : Cascade)
-  
-  members       InfluencerTeamMember[]
-  
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-}
-
-model InfluencerTeamMember {
-  id            String    @id @default(cuid())
-  teamId        String
-  team          InfluencerTeam @relation(fields: [teamId], references: [id], onDelete : Cascade)
-  userId        String?   // Make userId optional
-  user          User?     @relation(fields: [userId], references: [id] , onDelete : Cascade) // Make user relation optional
-  role          TeamRole
-  inviteStatus  InviteStatus
-  inviteToken   String?   @unique
-  inviteEmail   String?   // Add this field to store email for pending invites
-  
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  @@unique([teamId, inviteEmail]) // Add unique constraint for email invites
-  @@unique([teamId, userId]) // Keep existing unique constraint
-}
-
 enum InviteStatus {
   PENDING
   ACCEPTED
   DECLINED
 }
 
-// Platform and Campaign Models
-enum Platform {
-  INSTAGRAM 
-  YOUTUBE
-  TIKTOK
-  TWITTER
-  LINKEDIN
-}
-
-model Campaign {
+// Organization Team Management
+model Organization {
   id          String    @id @default(cuid())
-  brandId     String
-  brand       Brand     @relation(fields: [brandId], references: [id])
-  createdById String    // Track which team member created the campaign
+  name        String
+  industry    String?   // Basic detail during onboarding
+  size        String?   // Basic detail during onboarding
+  website     String?   // Basic detail during onboarding
+  team        OrganizationTeam?
   
-  title       String
-  description String
-  budget      Decimal
-  requirements String[]
-  platforms   Platform[]
-  status      CampaignStatus
-  startDate   DateTime
-  endDate     DateTime
-  
-  collaborations Collaboration[]
-  proposals    CampaignProposal[]
+  // Onboarding fields
+  setupCompleted Boolean @default(false)
+  setupStep     String? // To track organization setup progress
   
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
-enum CampaignStatus {
-  DRAFT
-  ACTIVE
-  PAUSED
-  COMPLETED
-}
-
-// Collaboration and Chat Models
-
-enum CollaborationStatus {
-  PENDING
-  ACCEPTED
-  ACTIVE
-  COMPLETED
-  CANCELLED
-}
-
-
-model Collaboration {
+model OrganizationTeamMember {
   id            String    @id @default(cuid())
-  campaignId    String
-  campaign      Campaign  @relation(fields: [campaignId], references: [id], onDelete: Cascade)
-  brandId       String
-  brand         Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  influencerId  String
-  influencer    Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  teamId        String
+  team          OrganizationTeam @relation(fields: [teamId], references: [id])
+  userId        String?   // Optional to allow for pending invites
+  user          User?     @relation(fields: [userId], references: [id])
+  role          TeamRole
+  inviteStatus  InviteStatus
+  inviteToken   String?   @unique
+  inviteEmail   String?   // For pending invites
   
-  // New fields to track if this came from a proposal
-  proposalId    String?
-  proposal      CampaignProposal? @relation("ProposalCollaboration", fields: [proposalId], references: [id], onDelete: SetNull)
-  applicationId String? @unique
-  application   ProposalApplication? @relation(fields: [applicationId], references: [id], onDelete: SetNull)
-  
-  status        CollaborationStatus
-  terms         String
-  deliverables  String[]
-  compensation  Decimal
-  
-  chatRoom      ChatRoom?
+  // New fields for handling invited users during onboarding
+  isInvitedDuringOnboarding Boolean @default(false)
+  invitedBy    String?    // ID of the user who sent the invite
   
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+
+  @@unique([teamId, inviteEmail]) // Ensure unique invites per email
+  @@unique([teamId, userId]) // Ensure unique user memberships
 }
 
-enum ProposalStatus {
-  DRAFT
-  OPEN
-  CLOSED
-  CANCELLED
-}
 
-model CampaignProposal {
+model OrganizationTeam {
   id              String    @id @default(cuid())
-  campaignId      String
-  campaign        Campaign  @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  organizationId  String    @unique
+  organization    Organization @relation(fields: [organizationId], references: [id])
   
-  title           String
-  description     String
-  requirements    String[]
-  deliverables    String[]
-  budget          Decimal
-  timeframe       Int      // Duration in days
-  platforms       Platform[]
+  members         OrganizationTeamMember[]
   
-  // Targeting criteria
-  minFollowers    Int
-  maxFollowers    Int?
-  targetCategories String[]
-  targetPlatforms Platform[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Marketplace
+
+model Agent {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  category    String
+  isActive    Boolean   @default(true)
   
-  // Status
-  status          ProposalStatus @default(OPEN)
+  // Config fields
+  role        String
+  goal        String    @db.Text
+  backstory   String    @db.Text
+  verbose     Boolean   @default(true)
+  
+  // Custom API configurations
+  apiRoutes   ApiRoute[]
   
   // Relations
-  applications    ProposalApplication[]
-  collaborations  Collaboration[] @relation("ProposalCollaboration")
-  
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  tools       AgentTool[]
+  agentCrews  AgentCrewMember[]
+  tasks       Task[]
+  workflowTasks WorkflowTask[]
+  workflows   WorkflowAgent[]
+
+  createdAt   DateTime  @default(now()) 
+  updatedAt   DateTime  @updatedAt
 }
 
-model ProposalApplication {
-  id              String    @id @default(cuid())
-  proposalId      String
-  proposal        CampaignProposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
-  influencerId    String
-  influencer      Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
-  
-  // Application details
-  coverLetter     String
-  proposedTerms   String?
-  proposedBudget  Decimal?
-  
-  status          ApplicationStatus @default(PENDING)
-  
-  // If accepted, create collaboration
-  collaboration   Collaboration?
-  
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-enum ApplicationStatus {
-  PENDING
-  ACCEPTED
-  REJECTED
-  WITHDRAWN
-}
-
-
-model ChatRoom {
-  id              String    @id @default(cuid())
-  collaborationId String    @unique
-  collaboration   Collaboration @relation(fields: [collaborationId], references: [id])
-  
-  messages        Message[]
-  
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-model Message {
+model AgentTool {
   id          String    @id @default(cuid())
-  content     String
-  chatRoomId  String
-  chatRoom    ChatRoom  @relation(fields: [chatRoomId], references: [id])
+  agentId     String
+  toolId      String
   
-  senderId    String
-  sender      User      @relation("SentMessages", fields: [senderId], references: [id])
-  receiverId  String
-  receiver    User      @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  agent       Agent     @relation(fields: [agentId], references: [id])
+  tool        Tool      @relation(fields: [toolId], references: [id])
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([agentId, toolId])
+}
+
+model AgentCrew {
+  id          String    @id @default(cuid())
+  name        String
+  description String    @db.Text
+  price       Float
+  category    String
+  isActive    Boolean   @default(true)
   
-  read        Boolean   @default(false)
+  // Config fields
+  processType String    @default("sequential") // sequential, parallel, etc
+  verbose     Boolean   @default(true)
+  
+  // Relations
+  agents      AgentCrewMember[]
+  tasks       Task[]
+  apiRoutes   ApiRoute[]
+
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
-model YouTubeAccount {
-  id              String    @id @default(cuid())
-  influencerId    String    @unique
-  influencer      Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
-  
-  channelId       String    @unique
-  accessToken     String    @db.Text
-  refreshToken    String    @db.Text
-  tokenExpires    DateTime
-  
-  channelTitle    String
-  description     String?   @db.Text
-  subscriberCount Int       @default(0)
-  videoCount      Int       @default(0)
-  viewCount       Int       @default(0)
-  
-  videos          YouTubeVideo[]
-  analytics       YouTubeAnalytics[]
-
-  lastUpdated     DateTime  @default(now())
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-model YouTubeVideo {
-  id              String    @id @default(cuid())
-  accountId       String
-  account         YouTubeAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  
-  videoId         String    @unique
-  title           String
-  description     String?   @db.Text
-  thumbnailUrl    String
-  publishedAt     DateTime
-  
-  viewCount       Int       @default(0)
-  likeCount       Int       @default(0)
-  commentCount    Int       @default(0)
-  
-  analytics       YouTubeVideoAnalytics[]
-
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-model YouTubeAnalytics {
-  id              String    @id @default(cuid())
-  accountId       String
-  account         YouTubeAccount @relation(fields: [accountId], references: [id])
-  
-  date            DateTime
-  subscriberCount Int
-  viewCount       Int
-  videoCount      Int
-
-  createdAt       DateTime  @default(now())
-}
-
-model YouTubeVideoAnalytics {
-  id              String    @id @default(cuid())
-  videoId         String
-  video           YouTubeVideo @relation(fields: [videoId], references: [id], onDelete: Cascade)
-  
-  date            DateTime
-  viewCount       Int
-  likeCount       Int
-  commentCount    Int
-
-  createdAt       DateTime  @default(now())
-}
-
-
-//waitlist
-
-model WaitlistEntry {
+model AgentCrewMember {
   id          String    @id @default(cuid())
-  email       String    @unique
-  userType    UserType  // Using existing UserType enum
-  intention   String    @db.Text
-  status      WaitlistStatus @default(PENDING)
+  crewId      String
+  agentId     String
+  
+  crew        AgentCrew @relation(fields: [crewId], references: [id])
+  agent       Agent     @relation(fields: [agentId], references: [id])
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([crewId, agentId])
+}
+
+model Task {
+  id              String    @id @default(cuid())
+  description     String    @db.Text
+  expectedOutput  String    @db.Text
+  asyncExecution  Boolean   @default(false)
+  
+  // Relations
+  agentId         String?   // Optional as task can belong to crew or individual agent
+  agent           Agent?    @relation(fields: [agentId], references: [id])
+  
+  crewId          String?
+  crew            AgentCrew? @relation(fields: [crewId], references: [id])
+  
+  status          TaskStatus @default(PENDING)
+  result          String?    @db.Text // Store task execution result
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model ApiRoute {
+  id          String    @id @default(cuid())
+  name        String
+  endpoint    String
+  method      HttpMethod
+  
+  // Authentication details
+  authType    AuthType?
+  apiKey      String?   // Encrypted
+  bearerToken String?   // Encrypted
+  username    String?   // For basic auth
+  password    String?   // For basic auth, encrypted
+  
+  // Request configuration
+  headers     Json?     // Custom headers as JSON
+  parameters  Json?     // Query/Path parameters as JSON
+  bodySchema  Json?     // Expected request body schema
+  
+  // Response handling
+  responseMapping Json? // How to map API response to agent's expected format
+  
+  // Relations - API route can belong to either an agent or crew
+  agentId     String?
+  agent       Agent?    @relation(fields: [agentId], references: [id])
+  
+  crewId      String?
+  crew        AgentCrew? @relation(fields: [crewId], references: [id])
+  
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
-enum WaitlistStatus {
+enum HttpMethod {
+  GET
+  POST
+  PUT
+  PATCH
+  DELETE
+}
+
+enum AuthType {
+  NONE
+  API_KEY
+  BEARER_TOKEN
+  BASIC_AUTH
+}
+
+enum TaskStatus {
   PENDING
-  APPROVED
-  INVITED
-  JOINED
-}
-
-//INSTAGRAM MODEL
-
-model InstagramAccount {
-  id              String    @id @default(cuid())
-  influencerId    String    @unique
-  influencer      Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
-  
-  username        String    @unique
-  accessToken     String    @db.Text
-  tokenExpires    DateTime
-  
-  // Profile data
-  igAccountId     String    @unique
-  followersCount  Int       @default(0)
-  followingCount  Int       @default(0)
-  mediaCount      Int       @default(0)
-  
-  // Relations
-  posts           InstagramPost[]
-  reels           InstagramReel[]
-  stories         InstagramStory[]
-  analytics       InstagramAnalytics[]
-
-  lastUpdated     DateTime  @default(now())
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-model InstagramPost {
-  id              String    @id @default(cuid())
-  accountId       String
-  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  
-  igMediaId       String    @unique
-  mediaType       String    // IMAGE, VIDEO, CAROUSEL_ALBUM
-  mediaUrl        String
-  thumbnailUrl    String?
-  permalink       String
-  caption         String?   @db.Text
-  
-  // Engagement metrics
-  likesCount      Int       @default(0)
-  commentsCount   Int       @default(0)
-  
-  // Analytics relation
-  analytics       InstagramPostAnalytics[]
-  
-  publishedAt     DateTime
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-model InstagramReel {
-  id              String    @id @default(cuid())
-  accountId       String
-  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  
-  igMediaId       String    @unique
-  mediaUrl        String
-  thumbnailUrl    String
-  permalink       String
-  caption         String?   @db.Text
-  
-  // Engagement metrics
-  playsCount      Int       @default(0)
-  likesCount      Int       @default(0)
-  commentsCount   Int       @default(0)
-  
-  // Analytics relation
-  analytics       InstagramReelAnalytics[]
-  
-  publishedAt     DateTime
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-model InstagramStory {
-  id              String    @id @default(cuid())
-  accountId       String
-  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  
-  igMediaId       String    @unique
-  mediaType       String    // IMAGE or VIDEO
-  mediaUrl        String
-  
-  impressions     Int       @default(0)
-  replies         Int       @default(0)
-  
-  expiresAt       DateTime
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-}
-
-model InstagramAnalytics {
-  id              String    @id @default(cuid())
-  accountId       String
-  account         InstagramAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  
-  date            DateTime
-  followersCount  Int
-  followingCount  Int
-  mediaCount      Int
-  impressions     Int
-  reach           Int
-  profileViews    Int
-
-  createdAt       DateTime  @default(now())
-}
-
-model InstagramPostAnalytics {
-  id              String    @id @default(cuid())
-  postId          String
-  post            InstagramPost @relation(fields: [postId], references: [id], onDelete: Cascade)
-  
-  date            DateTime
-  impressions     Int
-  reach           Int
-  likesCount      Int
-  commentsCount   Int
-  saves           Int
-  shares          Int
-
-  createdAt       DateTime  @default(now())
-}
-
-model InstagramReelAnalytics {
-  id              String    @id @default(cuid())
-  reelId          String
-  reel            InstagramReel @relation(fields: [reelId], references: [id], onDelete: Cascade)
-  
-  date            DateTime
-  plays           Int
-  impressions     Int
-  reach           Int
-  likesCount      Int
-  commentsCount   Int
-  saves           Int
-  shares          Int
-
-  createdAt       DateTime  @default(now())
-}
-
-//ROADMAP LANDING
-
-enum RoadmapItemStatus {
-  COMPLETED
   IN_PROGRESS
-  PLANNED
+  COMPLETED
+  FAILED
 }
 
-enum RoadmapCategory {
-  CORE_PLATFORM
-  AI_FEATURES
-  ANALYTICS
-  INTEGRATION
-  USER_EXPERIENCE
-  MOBILE
-  PERFORMANCE
-}
-
-model RoadmapItem {
-  id                String            @id @default(cuid())
-  feature           String
-  status            RoadmapItemStatus
-  description       String            @db.Text
-  category          RoadmapCategory
-  votes             Int               @default(0)
-  implementationDate DateTime?
+model Tool {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  apiEndpoint String?
+  apiKey      String?   // Encrypted
+  parameters  Json?     // Tool-specific parameters
   
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  // Relations
+  agents      AgentTool[]
+  taskTools   TaskTool[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model WorkflowTask {
+  id            String   @id @default(cuid())
+  description   String
+  expectedOutput String?
+  asyncExecution Boolean @default(false)
+  workflow      Workflow @relation(fields: [workflowId], references: [id])
+  workflowId    String
+  agent         Agent?   @relation(fields: [agentId], references: [id])
+  agentId       String?
+  taskTools     TaskTool[]
+}
+
+model TaskTool {
+  id        String      @id @default(cuid())
+  task      WorkflowTask @relation(fields: [taskId], references: [id])
+  taskId    String
+  tool      Tool        @relation(fields: [toolId], references: [id])
+  toolId    String
+}
+
+model Workflow {
+  id              String    @id @default(cuid())
+  name            String
+  description     String?
+  processType     String
+  verbose         Boolean   @default(true)
+  customApiEndpoint String?
+  tasks           WorkflowTask[]
+  agents          WorkflowAgent[]
+  config          Json?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model WorkflowAgent {
+  id          String    @id @default(cuid())
+  workflow    Workflow  @relation(fields: [workflowId], references: [id])
+  workflowId  String
+  agent       Agent     @relation(fields: [agentId], references: [id])
+  agentId     String
 }
