@@ -2502,7 +2502,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "Domine el mundo de los agentes de IA: desde elegir las soluciones correctas hasta implementar flujos de trabajo automatizados. Descubra cómo las empresas están logrando una eficiencia 10 veces mayor con la automatización impulsada por IA.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2521,7 +2521,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "Beherrschen Sie die Welt der KI-Agenten - von der Auswahl der richtigen Lösungen bis zur Implementierung automatisierter Workflows. Erfahren Sie, wie Unternehmen mit KI-gestützter Automatisierung eine 10-fache Effizienz erreichen.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2540,7 +2540,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "Maîtrisez le monde des agents IA - du choix des bonnes solutions à l'implémentation de flux de travail automatisés. Découvrez comment les entreprises atteignent une efficacité multipliée par 10 grâce à l'automatisation alimentée par l'IA.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2561,7 +2561,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "Padroneggia il mondo degli agenti IA - dalla scelta delle soluzioni giuste all'implementazione di flussi di lavoro automatizzati. Scopri come le aziende stanno raggiungendo un'efficienza 10 volte superiore con l'automazione basata sull'IA.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2580,7 +2580,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "एआई एजेंट्स की दुनिया में महारत हासिल करें - सही समाधान चुनने से लेकर स्वचालित वर्कफ़्लो को लागू करने तक। जानें कैसे व्यवसाय एआई-संचालित स्वचालन के साथ 10 गुना दक्षता प्राप्त कर रहे हैं।",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2598,7 +2598,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "أتقن عالم العملاء الآليين - من اختيار الحلول المناسبة إلى تنفيذ سير العمل الآلي. تعرف على كيفية تحقيق الشركات لكفاءة تصل إلى 10 أضعاف مع الأتمتة المدعومة بالذكاء الاصطناعي.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2616,7 +2616,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "掌握AI代理的世界 - 从选择正确的解决方案到实施自动化工作流程。了解企业如何通过AI驱动的自动化实现10倍效率提升。",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2635,7 +2635,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "AI 에이전트의 세계를 마스터하세요 - 올바른 솔루션 선택부터 자동화된 워크플로우 구현까지. 기업들이 AI 기반 자동화로 10배의 효율성을 달성하는 방법을 알아보세요.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2654,7 +2654,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "AIエージェントの世界をマスターする - 適切なソリューションの選択から自動化されたワークフローの実装まで。企業がAI駆動の自動化で10倍の効率を達成する方法を学びましょう。",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2673,7 +2673,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "Beheers de wereld van AI-agenten - van het kiezen van de juiste oplossingen tot het implementeren van geautomatiseerde workflows. Ontdek hoe bedrijven 10x efficiëntie bereiken met AI-gestuurde automatisering.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2694,7 +2694,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "Освойте мир ИИ-агентов - от выбора правильных решений до внедрения автоматизированных рабочих процессов. Узнайте, как компании достигают 10-кратной эффективности с помощью автоматизации на базе ИИ.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",
@@ -2712,7 +2712,7 @@ const postData: Post[] = [
     "file": "ai-agents-for-automation",
     "description": "Master the world of AI agents - from choosing the right solutions to implementing automated workflows. Learn how businesses are achieving 10x efficiency with AI-powered automation.",
     "date": "January 14, 2024",
-    "datetime": "2024-01-14",
+    "datetime": "2025-01-14",
     "author": {
       "name": "Yash Thakker",
       "role": "Founder",

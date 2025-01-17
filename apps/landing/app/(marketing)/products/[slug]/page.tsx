@@ -21,7 +21,7 @@ const getProductReviews = (productSlug: string) => {
       author: "John Smith",
       rating: 5,
       content: "This platform has transformed how we handle influencer marketing.",
-      date: "2024-01-15"
+      date: "2025-01-15"
     },
     {
       author: "Sarah Johnson",

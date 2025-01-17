@@ -51,7 +51,7 @@ export function generateReviews(competitor: Competitor): Review[] {
       author: "John D.",
       rating: 5,
       content: `Switched from ${competitor.name} to explainx.ai and saw immediate improvements in campaign performance. The AI-powered matching and performance-based pricing model make it much more cost-effective.`,
-      date: "2024-01-15"
+      date: "2025-01-15"
     },
     {
       author: "Sarah M.",
