@@ -1,4 +1,4 @@
-// Generated on 2025-01-17T12:29:54.338Z
+// Generated on 2025-01-20T09:53:52.896Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,437 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Patrones de Diseño de IA Agencial: Una Guía Completa para Construir Sistemas de IA Autónomos",
+    "file": "agentic-ai-design-patterns",
+    "description": "Explore los cuatro patrones de diseño fundamentales que permiten a los sistemas de IA operar de manera autónoma y efectiva, desde la reflexión hasta la colaboración multi-agente.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/agentic-ai-design-patterns",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agente de IA para Análisis Financiero: Transformando las Finanzas Modernas",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "Descubra cómo los agentes de IA para servicios financieros están revolucionando la industria. Aprenda cómo los agentes de IA para finanzas y el análisis financiero están transformando la toma de decisiones, la evaluación de riesgos y las predicciones de mercado.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agent-for-financial-analysis",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agentische KI-Entwurfsmuster: Ein umfassender Leitfaden zum Aufbau autonomer KI-Systeme",
+    "file": "agentic-ai-design-patterns",
+    "description": "Erkunden Sie die vier grundlegenden Entwurfsmuster, die KI-Systeme zu autonomem und effektivem Arbeiten befähigen, von der Selbstreflexion bis zur Multi-Agenten-Zusammenarbeit.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/agentic-ai-design-patterns",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "KI-Agent für Finanzanalyse: Die Transformation des modernen Finanzwesens",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "Entdecken Sie, wie KI-Agenten für Finanzdienstleistungen die Branche neu gestalten. Erfahren Sie, wie KI-Agenten für Finanzen und Finanzanalyse die Entscheidungsfindung, Risikobewertung und Marktprognosen revolutionieren.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agent-for-financial-analysis",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Motifs de Conception pour l'IA Agentique : Un Guide Complet pour Construire des Systèmes d'IA Autonomes",
+    "file": "agentic-ai-design-patterns",
+    "description": "Explorez les quatre motifs de conception fondamentaux qui permettent aux systèmes d'IA de fonctionner de manière autonome et efficace, de la réflexion à la collaboration multi-agents.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/agentic-ai-design-patterns",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agent IA pour l'Analyse Financière : La Transformation de la Finance Moderne",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "Découvrez comment les agents IA pour les services financiers transforment l'industrie. Apprenez comment les agents IA pour la finance et l'analyse financière révolutionnent la prise de décision, l'évaluation des risques et les prédictions de marché.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agent-for-financial-analysis",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Pattern di Design dell'IA Agenziale: Una Guida Completa per Costruire Sistemi di IA Autonomi",
+    "file": "agentic-ai-design-patterns",
+    "description": "Esplora i quattro pattern di design fondamentali che permettono ai sistemi di IA di operare in modo autonomo ed efficace, dalla riflessione alla collaborazione multi-agente.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/agentic-ai-design-patterns",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Agente IA per l'Analisi Finanziaria: La Trasformazione della Finanza Moderna",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "Scopri come gli agenti IA per i servizi finanziari stanno trasformando il settore. Apprendi come gli agenti IA per la finanza e l'analisi finanziaria stanno rivoluzionando il processo decisionale, la valutazione dei rischi e le previsioni di mercato.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agent-for-financial-analysis",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "एजेंटिक एआई डिज़ाइन पैटर्न: स्वायत्त एआई सिस्टम निर्माण के लिए एक व्यापक मार्गदर्शिका",
+    "file": "agentic-ai-design-patterns",
+    "description": "आत्म-चिंतन से लेकर मल्टी-एजेंट सहयोग तक, एआई सिस्टम को स्वायत्त और प्रभावी ढंग से संचालित करने में सक्षम बनाने वाले चार मौलिक डिज़ाइन पैटर्न का अन्वेषण करें।",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/agentic-ai-design-patterns",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "أنماط تصميم الذكاء الاصطناعي العامل: دليل شامل لبناء أنظمة الذكاء الاصطناعي المستقلة",
+    "file": "agentic-ai-design-patterns",
+    "description": "استكشف أنماط التصميم الأساسية الأربعة التي تمكّن أنظمة الذكاء الاصطناعي من العمل بشكل مستقل وفعال، من التفكير الذاتي إلى التعاون متعدد العوامل",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/agentic-ai-design-patterns",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "وكيل الذكاء الاصطناعي للتحليل المالي: رؤية عميقة في تحول التمويل الحديث",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "استكشف كيف يقوم وكلاء الذكاء الاصطناعي بإعادة تشكيل الخدمات المالية. تعرف على كيفية إحداث ثورة في صنع القرار وتقييم المخاطر وتوقعات السوق من خلال التحليل المالي المتقدم.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agent-for-financial-analysis",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "智能体AI设计模式：自主AI系统构建综合指南",
+    "file": "agentic-ai-design-patterns",
+    "description": "探索使AI系统能够自主有效运行的四种基本设计模式，从反思到多智能体协作。",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/agentic-ai-design-patterns",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "金融分析AI代理：现代金融的转型",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "探索AI代理如何重塑金融服务行业。了解金融和金融分析AI代理如何革新决策制定、风险评估和市场预测。",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agent-for-financial-analysis",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "에이전틱 AI 디자인 패턴: 자율 AI 시스템 구축을 위한 포괄적 가이드",
+    "file": "agentic-ai-design-patterns",
+    "description": "자기반성부터 다중 에이전트 협업까지, AI 시스템이 자율적이고 효과적으로 작동할 수 있게 하는 네 가지 기본 디자인 패턴을 탐구합니다.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/agentic-ai-design-patterns",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "금융 분석을 위한 AI 에이전트: 현대 금융의 혁신",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "금융 서비스 분야에서 AI 에이전트가 어떻게 산업을 재편하고 있는지 탐구해보세요. 금융과 금융 분석을 위한 AI 에이전트가 의사결정, 리스크 평가, 시장 예측을 어떻게 혁신하고 있는지 알아보세요.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agent-for-financial-analysis",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "エージェンティックAIの設計パターン：自律型AIシステム構築の包括的ガイド",
+    "file": "agentic-ai-design-patterns",
+    "description": "リフレクションからマルチエージェント協調まで、AIシステムが自律的かつ効果的に動作することを可能にする4つの基本的な設計パターンを探求します。",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/agentic-ai-design-patterns",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "金融分析のためのAIエージェント：現代金融の変革に関する包括的ガイド",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "金融サービス業界におけるAIエージェントの革新的な影響力を詳しく解説します。意思決定プロセス、リスク評価、市場予測の分野で、金融向けAIエージェントがもたらす変革について、実践的な知見とともに学びます。",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agent-for-financial-analysis",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Agentische AI-ontwerppatronen: Een Uitgebreide Gids voor het Bouwen van Autonome AI-systemen",
+    "file": "agentic-ai-design-patterns",
+    "description": "Verken de vier fundamentele ontwerppatronen die AI-systemen in staat stellen autonoom en effectief te functioneren, van zelfreflectie tot multi-agent samenwerking.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/agentic-ai-design-patterns",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI-Agent voor Financiële Analyse: De Transformatie van Modern Financieel Beheer",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "Ontdek hoe AI-agents voor financiële dienstverlening de sector hervormen. Leer hoe AI-agents voor finance en financiële analyse besluitvorming, risicobeoordeling en marktvoorspellingen revolutionair veranderen.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agent-for-financial-analysis",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Паттерны проектирования агентного ИИ: Комплексное руководство по созданию автономных систем искусственного интеллекта",
+    "file": "agentic-ai-design-patterns",
+    "description": "Исследование четырех фундаментальных паттернов проектирования, которые позволяют системам ИИ работать автономно и эффективно, от рефлексии до мультиагентного взаимодействия.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/agentic-ai-design-patterns",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI-агент для финансового анализа: Трансформация современных финансов",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "Исследуйте, как AI-агенты для финансовых услуг преобразуют отрасль. Узнайте, как AI-агенты для финансов и финансового анализа революционизируют принятие решений, оценку рисков и рыночные прогнозы.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agent-for-financial-analysis",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Agentic AI Design Patterns: A Comprehensive Guide to Building Autonomous AI Systems",
+    "file": "agentic-ai-design-patterns",
+    "description": "Explore the four fundamental design patterns that enable AI systems to operate autonomously and effectively, from reflection to multi-agent collaboration.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/agentic-ai-design-patterns",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI Agent for Financial Analysis: Transforming Modern Finance",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "Explore how AI agents for financial services are reshaping the industry. Learn how AI agents for finance and AI agent for financial analysis are revolutionizing decision-making, risk assessment, and market predictions.",
+    "date": "January 20, 2025",
+    "datetime": "2025-01-20",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agent-for-financial-analysis",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Agentes de IA en el Comercio Electrónico: Revolucionando el Comercio Online",
     "file": "ai-agent-in-e-commerce",
@@ -2227,24 +2658,6 @@ const postData: Post[] = [
     ]
   },
   {
-    "title": "أفضل 5 وكالات للعملاء الذكيين تُحدث ثورة في أتمتة الأعمال في 2025",
-    "file": "top-ai-agents-agencies",
-    "description": "اكتشف وكالات العملاء الذكيين الرائدة التي تغير طريقة عمل الشركات من خلال حلول الأتمتة المبتكرة والقوى العاملة الرقمية الذكية.",
-    "date": "January 10, 2025",
-    "datetime": "2025-01-10",
-    "author": {
-      "name": "Yash Thakker",
-      "role": "Founder",
-      "href": "#",
-      "imageUrl": "/images/blog/yt.jpg"
-    },
-    "language": "ar",
-    "url": "https://www.explainx.ai/blog/post/ar/top-ai-agents-agencies",
-    "categories": [
-      "influencer-marketing"
-    ]
-  },
-  {
     "title": "ما هي العوامل الذكية: مستقبل الذكاء المستقل",
     "file": "what-is-an-ai-agents",
     "description": "اكتشف عالم العوامل الذكية، من مكوناتها الأساسية إلى تطبيقاتها في العالم الحقيقي، وافهم كيف تشكل مستقبل التكنولوجيا.",
@@ -2573,6 +2986,43 @@ const postData: Post[] = [
     "categories": [
       "instagram",
       "social-media-marketing"
+    ]
+  },
+  {
+    "title": "वित्तीय विश्लेषण के लिए AI एजेंट: आधुनिक वित्त का रूपांतरण",
+    "file": "ai-agent-for-financial-analysis",
+    "description": "जानें कि कैसे वित्तीय सेवाओं के लिए AI एजेंट उद्योग को पुनर्परिभाषित कर रहे हैं। समझें कि कैसे वित्त और वित्तीय विश्लेषण के लिए AI एजेंट निर्णय लेने, जोखिम मूल्यांकन और बाजार भविष्यवाणियों में क्रांति ला रहे हैं।",
+    "date": "Invalid Date NaN, NaN",
+    "datetime": "20 जनवरी 2025",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agent-for-financial-analysis",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "أفضل 5 وكالات للعملاء الذكيين تُحدث ثورة في أتمتة الأعمال في 2025",
+    "file": "top-ai-agents-agencies",
+    "description": "اكتشف وكالات العملاء الذكيين الرائدة التي تغير طريقة عمل الشركات من خلال حلول الأتمتة المبتكرة والقوى العاملة الرقمية الذكية.",
+    "date": "January 10, 2025",
+    "datetime": "2025-01-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/top-ai-agents-agencies",
+    "categories": [
+      "influencer-marketing"
     ]
   },
   {
