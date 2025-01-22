@@ -1,4 +1,4 @@
-// Generated on 2025-01-22T10:28:54.419Z
+// Generated on 2025-01-22T10:38:33.321Z
 interface Author {
   name: string;
   role: string;
@@ -196,8 +196,8 @@ const postData: Post[] = [
     "date": "January 22, 2025",
     "datetime": "2025-01-22",
     "author": {
-      "name": "यश ठक्कर",
-      "role": "",
+      "name": "Yash Thakker",
+      "role": "Founder",
       "href": "#",
       "imageUrl": "/images/blog/yt.jpg"
     },
