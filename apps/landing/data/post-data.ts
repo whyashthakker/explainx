@@ -1,4 +1,4 @@
-// Generated on 2025-01-22T10:50:22.235Z
+// Generated on 2025-01-23T11:21:48.067Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,228 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "El Impacto Revolucionario de los Agentes de IA en el Comercio Electrónico",
+    "file": "ai-ecommerce-transformation",
+    "description": "Descubra cómo los agentes de IA están transformando el comercio minorista en línea a través de experiencias personalizadas, eficiencia operativa y soluciones innovadoras en varios sectores del comercio electrónico.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Der revolutionäre Einfluss von KI-Agenten im E-Commerce",
+    "file": "ai-ecommerce-transformation",
+    "description": "Entdecken Sie, wie KI-Agenten den Online-Handel durch personalisierte Erlebnisse, operative Effizienz und innovative Lösungen in verschiedenen E-Commerce-Bereichen transformieren.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "L'Impact Révolutionnaire des Agents IA dans l'E-commerce",
+    "file": "ai-ecommerce-transformation",
+    "description": "Découvrez comment les agents IA transforment le commerce en ligne grâce à des expériences personnalisées, une efficacité opérationnelle et des solutions innovantes dans divers secteurs du e-commerce.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-ecommerce-transformation",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "L'Impatto Rivoluzionario degli Agenti IA nel Commercio Elettronico",
+    "file": "ai-ecommerce-transformation",
+    "description": "Scopri come gli agenti IA stanno trasformando il commercio al dettaglio online attraverso esperienze personalizzate, efficienza operativa e soluzioni innovative in vari settori dell'e-commerce.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "ई-कॉमर्स में एआई एजेंट्स का क्रांतिकारी प्रभाव",
+    "file": "ai-ecommerce-transformation",
+    "description": "जानें कैसे एआई एजेंट्स व्यक्तिगत अनुभवों, परिचालन दक्षता और विभिन्न ई-कॉमर्स क्षेत्रों में नवीन समाधानों के माध्यम से ऑनलाइन रिटेल को बदल रहे हैं।",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "التأثير الثوري للوكلاء الذكاء الاصطناعي في التجارة الإلكترونية",
+    "file": "ai-ecommerce-transformation",
+    "description": "اكتشف كيف يقوم وكلاء الذكاء الاصطناعي بتحويل التجارة الإلكترونية من خلال التجارب الشخصية والكفاءة التشغيلية والحلول المبتكرة عبر مختلف قطاعات التجارة الإلكترونية",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "人工智能代理在电子商务中的革命性影响",
+    "file": "ai-ecommerce-transformation",
+    "description": "探索人工智能代理如何通过个性化体验、运营效率和创新解决方案在各个电子商务领域转变在线零售。",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "이커머스에서 AI 에이전트의 혁명적 영향",
+    "file": "ai-ecommerce-transformation",
+    "description": "AI 에이전트가 개인화된 경험, 운영 효율성 및 혁신적인 솔루션을 통해 다양한 이커머스 분야의 온라인 소매를 어떻게 변화시키고 있는지 알아보세요.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-ecommerce-transformation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Eコマースにおける人工知能エージェントの革新的影響",
+    "file": "ai-ecommerce-transformation",
+    "description": "人工知能エージェントが、パーソナライズされた体験、業務効率化、革新的なソリューションを通じて、様々なEコマース分野でオンライン小売をどのように変革しているかを解説します。",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "De Revolutionaire Impact van AI-Agenten in E-commerce",
+    "file": "ai-ecommerce-transformation",
+    "description": "Ontdek hoe AI-agenten de online retail transformeren door gepersonaliseerde ervaringen, operationele efficiëntie en innovatieve oplossingen in verschillende e-commerce sectoren.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-ecommerce-transformation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Революционное влияние ИИ-агентов в электронной коммерции",
+    "file": "ai-ecommerce-transformation",
+    "description": "Узнайте, как ИИ-агенты трансформируют онлайн-ритейл через персонализированный опыт, операционную эффективность и инновационные решения в различных секторах электронной коммерции.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-ecommerce-transformation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "The Revolutionary Impact of AI Agents in E-commerce",
+    "file": "ai-ecommerce-transformation",
+    "description": "Discover how AI agents are transforming online retail through personalized experiences, operational efficiency, and innovative solutions across various e-commerce sectors.",
+    "date": "January 23, 2025",
+    "datetime": "2025-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-ecommerce-transformation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "La Guía Completa de Agentes de IA para Redes Sociales",
     "file": "ai-agent-for-social-media",
@@ -3854,6 +4076,232 @@ const postData: Post[] = [
     "url": "https://www.explainx.ai/blog/post/ru/what-is-an-ai-agents",
     "categories": [
       "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Cómo encontrar el agente de IA gratuito perfecto para la generación de leads en 2025",
+    "file": "ai-agent-for-lead-generation",
+    "description": "Descubra cómo seleccionar e implementar el mejor agente de IA gratuito para la generación de leads para maximizar el crecimiento de su negocio en 2025.",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agent-for-lead-generation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Wie Sie den perfekten kostenlosen KI-Agenten für Lead-Generierung im Jahr 2025 finden",
+    "file": "ai-agent-for-lead-generation",
+    "description": "Entdecken Sie, wie Sie den besten kostenlosen KI-Agenten für Lead-Generierung auswählen und implementieren können, um Ihr Geschäftswachstum im Jahr 2025 zu maximieren.",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agent-for-lead-generation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Comment trouver l'agent IA gratuit parfait pour la génération de leads en 2025",
+    "file": "ai-agent-for-lead-generation",
+    "description": "Découvrez comment sélectionner et mettre en œuvre le meilleur agent IA gratuit pour la génération de leads afin de maximiser la croissance de votre entreprise en 2025.",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Come Trovare l'Agente AI Perfetto per la Generazione di Lead Gratuita nel 2025",
+    "file": "ai-agent-for-lead-generation",
+    "description": "Scopri come selezionare e implementare il miglior agente AI gratuito per la generazione di lead per massimizzare la crescita del tuo business nel 2025",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "2025 में लीड जेनरेशन के लिए मुफ्त में परफेक्ट AI एजेंट कैसे खोजें",
+    "file": "ai-agent-for-lead-generation",
+    "description": "2025 में अपने व्यवसाय की वृद्धि को अधिकतम करने के लिए लीड जेनरेशन के लिए सर्वश्रेष्ठ मुफ्त AI एजेंट का चयन और कार्यान्वयन कैसे करें।",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "كيفية العثور على وكيل الذكاء الاصطناعي المثالي لتوليد العملاء المحتملين مجاناً في 2025",
+    "file": "ai-agent-for-lead-generation",
+    "description": "اكتشف كيفية اختيار وتنفيذ أفضل وكيل ذكاء اصطناعي مجاني لتوليد العملاء المحتملين لتعظيم نمو أعمالك في 2025",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agent-for-lead-generation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "如何在2025年找到完美的免费AI线索生成代理",
+    "file": "ai-agent-for-lead-generation",
+    "description": "了解如何选择和实施最佳免费AI线索生成代理，以在2025年最大化您的业务增长。",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "2025년 리드 생성을 위한 완벽한 무료 AI 에이전트 찾는 방법",
+    "file": "ai-agent-for-lead-generation",
+    "description": "2025년 비즈니스 성장을 극대화하기 위한 최고의 무료 AI 리드 생성 에이전트를 선택하고 구현하는 방법을 알아보세요.",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "2025年無料リード獲得のための完璧なAIエージェントの見つけ方",
+    "file": "ai-agent-for-lead-generation",
+    "description": "2025年にビジネス成長を最大化するための最適な無料AIリード獲得エージェントの選択と実装方法を解説します。",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Hoe vind je de perfecte AI-agent voor leadgeneratie gratis in 2025",
+    "file": "ai-agent-for-lead-generation",
+    "description": "Ontdek hoe je de beste gratis AI-agent voor leadgeneratie kunt selecteren en implementeren om je bedrijfsgroei in 2025 te maximaliseren.",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Как найти идеального бесплатного ИИ-агента для генерации лидов в 2025 году",
+    "file": "ai-agent-for-lead-generation",
+    "description": "Узнайте, как выбрать и внедрить лучшего бесплатного ИИ-агента для генерации лидов, чтобы максимизировать рост вашего бизнеса в 2025 году.",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agent-for-lead-generation",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "How to Find the Perfect AI Agent for Lead Generation Free in 2025",
+    "file": "ai-agent-for-lead-generation",
+    "description": "Discover how to select and implement the best free AI agent for lead generation to maximize your business growth in 2025.",
+    "date": "January 23, 2024",
+    "datetime": "2024-01-23",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agent-for-lead-generation",
+    "categories": [
+      "ai-tools",
+      "analytics"
     ]
   }
 ];
