@@ -1,4 +1,4 @@
-// Generated on 2025-01-23T11:47:43.911Z
+// Generated on 2025-01-24T10:42:20.081Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,229 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Campeones de IA Legal: Cómo los Mejores Agentes de IA para Experiencia Legal Están Revolucionando la Justicia",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "Descubra cómo la IA está transformando la investigación y la experiencia legal. Conozca los mejores agentes de IA que están revolucionando las prácticas legales en 2025.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agents-for-legal-expertise",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "KI-Rechtschampions: Wie die besten KI-Agenten für juristische Expertise die Justiz revolutionieren",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "Entdecken Sie, wie KI die juristische Recherche und Expertise transformiert. Erfahren Sie mehr über die besten KI-Agenten, die die Rechtspraxis im Jahr 2025 revolutionieren.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agents-for-legal-expertise",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Champions de l'IA Juridique : Comment les Meilleurs Agents d'IA pour l'Expertise Juridique Révolutionnent la Justice",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "Découvrez comment l'IA transforme la recherche et l'expertise juridique. Apprenez comment les meilleurs agents d'IA révolutionnent les pratiques juridiques en 2025.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agents-for-legal-expertise",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Campioni dell'IA Legale: Come i Migliori Agenti di IA per l'Expertise Legale Stanno Rivoluzionando la Giustizia",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "Scopri come l'IA sta trasformando la ricerca e l'expertise legale. Impara come i migliori agenti di IA stanno rivoluzionando le pratiche legali nel 2025.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agents-for-legal-expertise",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "कानूनी विशेषज्ञता के लिए सर्वश्रेष्ठ एआई एजेंट: कैसे न्याय क्षेत्र में क्रांति ला रहे हैं",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "जानें कैसे एआई कानूनी अनुसंधान और विशेषज्ञता को बदल रहा है। 2025 में कानून व्यवसायों में क्रांति ला रहे सर्वश्रेष्ठ एआई एजेंटों के बारे में जानें।",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "यश ठक्कर",
+      "role": "",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agents-for-legal-expertise",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "أبطال الذكاء الاصطناعي القانوني: كيف تقوم أفضل وكلاء الذكاء الاصطناعي للخبرة القانونية بثورة في العدالة",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "اكتشف كيف يحول الذكاء الاصطناعي البحث القانوني والخبرة. تعرف على أفضل وكلاء الذكاء الاصطناعي الذين يحدثون ثورة في الممارسات القانونية في عام 2025",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agents-for-legal-expertise",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI法律冠军：最佳AI法律专家代理如何革新司法",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "探索AI如何改变法律研究和专业知识。了解2025年革新法律实践的最佳AI代理。",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agents-for-legal-expertise",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI 법률 챔피언: 최고의 법률 전문 AI 에이전트가 사법 시스템을 혁신하는 방법",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "AI가 법률 연구와 전문성을 어떻게 변화시키는지 알아보세요. 2025년 법률 실무를 혁신하는 최고의 AI 에이전트에 대해 알아보세요.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agents-for-legal-expertise",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "リーガルAIチャンピオン：法的専門知識のための最高のAIエージェントが司法を革新する方法",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "AIが法的調査と専門知識をどのように変革しているかを発見してください。2025年の法律実務を革新する最高のAIエージェントについて学びましょう。",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agents-for-legal-expertise",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI Rechtskampioenen: Hoe de Beste AI-agenten voor Juridische Expertise de Rechtspraak Revolutionair Veranderen",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "Ontdek hoe AI juridisch onderzoek en expertise transformeert. Leer over de beste AI-agenten die de juridische praktijk in 2025 revolutionair veranderen.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agents-for-legal-expertise",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Правовые чемпионы ИИ: Как лучшие ИИ-агенты для юридической экспертизы революционизируют правосудие",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "Узнайте, как ИИ трансформирует юридические исследования и экспертизу. Познакомьтесь с лучшими ИИ-агентами, революционизирующими юридическую практику в 2025 году.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agents-for-legal-expertise",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI Legal Champions: How the Best AI Agents for Legal Expertise Are Revolutionizing Justice",
+    "file": "ai-agents-for-legal-expertise",
+    "description": "Discover how AI is transforming legal research and expertise. Learn about the best AI agents revolutionizing law practices in 2025.",
+    "date": "January 24, 2025",
+    "datetime": "2025-01-24",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agents-for-legal-expertise",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "El Impacto Revolucionario de los Agentes de IA en el Comercio Electrónico",
     "file": "ai-ecommerce-transformation",
