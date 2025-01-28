@@ -1,4 +1,4 @@
-// Generated on 2025-01-24T10:42:20.081Z
+// Generated on 2025-01-28T05:03:56.595Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,229 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Agentes de IA para Reuniones: El Futuro de la Colaboración Productiva",
+    "file": "ai-agents-for-meetings",
+    "description": "Descubra cómo los agentes de inteligencia artificial están revolucionando las reuniones virtuales, desde la mejora de las llamadas de Zoom hasta el análisis en tiempo real y el soporte para una mejor colaboración.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agents-for-meetings",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "KI-Agenten für Meetings: Die Zukunft der produktiven Zusammenarbeit",
+    "file": "ai-agents-for-meetings",
+    "description": "Entdecken Sie, wie KI-Agenten virtuelle Meetings revolutionieren, von der Verbesserung von Zoom-Anrufen bis hin zur Bereitstellung von Echtzeitanalysen und Unterstützung für bessere Zusammenarbeit.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agents-for-meetings",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agents IA pour les Réunions : L'Avenir de la Collaboration Productive",
+    "file": "ai-agents-for-meetings",
+    "description": "Découvrez comment les agents IA révolutionnent les réunions virtuelles, de l'amélioration des appels Zoom à la fourniture d'analyses en temps réel et de support pour une meilleure collaboration.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agents-for-meetings",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agenti IA per le Riunioni: Il Futuro della Collaborazione Produttiva",
+    "file": "ai-agents-for-meetings",
+    "description": "Scopri come gli agenti IA stanno rivoluzionando le riunioni virtuali, dal miglioramento delle chiamate Zoom alla fornitura di analisi in tempo reale e supporto per una migliore collaborazione.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agents-for-meetings",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "बैठकों के लिए एआई एजेंट: उत्पादक सहयोग का भविष्य",
+    "file": "ai-agents-for-meetings",
+    "description": "जानें कि एआई एजेंट्स कैसे वर्चुअल मीटिंग्स को क्रांतिकारी बना रहे हैं, ज़ूम कॉल्स को बेहतर बनाने से लेकर रीयल-टाइम एनालिटिक्स और सहयोग बढ़ाने के लिए सहायता प्रदान करने तक।",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agents-for-meetings",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "وكلاء الذكاء الاصطناعي للاجتماعات: مستقبل التعاون المثمر",
+    "file": "ai-agents-for-meetings",
+    "description": "اكتشف كيف يقوم وكلاء الذكاء الاصطناعي بإحداث ثورة في الاجتماعات الافتراضية، بدءًا من تحسين مكالمات زووم وحتى توفير التحليلات والدعم في الوقت الفعلي لتعاون أفضل.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agents-for-meetings",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "会议AI助手：高效协作的未来",
+    "file": "ai-agents-for-meetings",
+    "description": "探索AI助手如何革新虚拟会议，从增强Zoom通话到提供实时分析和支持，以实现更好的协作。",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agents-for-meetings",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "회의용 AI 에이전트: 생산적인 협업의 미래",
+    "file": "ai-agents-for-meetings",
+    "description": "AI 에이전트가 Zoom 통화 개선부터 실시간 분석 및 지원 제공까지 가상 회의를 어떻게 혁신하고 있는지 알아보세요.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agents-for-meetings",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "会議用AIエージェント：生産的なコラボレーションの未来",
+    "file": "ai-agents-for-meetings",
+    "description": "AIエージェントがZoomコールの強化からリアルタイム分析とサポートの提供まで、仮想会議をどのように革新しているかをご紹介します。",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agents-for-meetings",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI-Agenten voor Vergaderingen: De Toekomst van Productieve Samenwerking",
+    "file": "ai-agents-for-meetings",
+    "description": "Ontdek hoe AI-agenten virtuele vergaderingen revolutionair veranderen, van het verbeteren van Zoom-gesprekken tot het bieden van realtime analyses en ondersteuning voor betere samenwerking.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agents-for-meetings",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "ИИ-агенты для совещаний: Будущее продуктивного сотрудничества",
+    "file": "ai-agents-for-meetings",
+    "description": "Узнайте, как ИИ-агенты революционизируют виртуальные встречи, от улучшения звонков в Zoom до предоставления аналитики в реальном времени и поддержки для улучшения сотрудничества.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agents-for-meetings",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI Agents for Meetings: The Future of Productive Collaboration",
+    "file": "ai-agents-for-meetings",
+    "description": "Discover how AI agents are revolutionizing virtual meetings, from enhancing Zoom calls to providing real-time analytics and support for better collaboration.",
+    "date": "January 27, 2025",
+    "datetime": "2025-01-27",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agents-for-meetings",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Campeones de IA Legal: Cómo los Mejores Agentes de IA para Experiencia Legal Están Revolucionando la Justicia",
     "file": "ai-agents-for-legal-expertise",
