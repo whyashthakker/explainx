@@ -1,4 +1,4 @@
-// Generated on 2025-01-28T05:03:56.595Z
+// Generated on 2025-01-29T12:02:26.336Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,456 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Agentes de IA para Tomar Notas: La Guía Definitiva para Estudiantes",
+    "file": "ai-agents-for-note-taking",
+    "description": "Descubre los mejores agentes de toma de notas con IA, incluyendo opciones gratuitas para estudiantes. Aprende cómo revolucionar tus hábitos de estudio con herramientas de toma de notas potenciadas por IA.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agents-for-note-taking",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "KI-Agenten für Notizen: Der ultimative Leitfaden für Studierende",
+    "file": "ai-agents-for-note-taking",
+    "description": "Entdecken Sie die besten KI-Notiz-Agenten, einschließlich kostenloser Optionen für Studierende. Lernen Sie, wie Sie Ihre Lerngewohnheiten mit KI-gestützten Notiz-Tools revolutionieren können.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agents-for-note-taking",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agents IA pour la Prise de Notes : Le Guide Ultime pour les Étudiants",
+    "file": "ai-agents-for-note-taking",
+    "description": "Découvrez les meilleurs agents de prise de notes IA, y compris des options gratuites pour les étudiants. Apprenez à révolutionner vos habitudes d'étude avec des outils de prise de notes alimentés par l'IA.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agents-for-note-taking",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Agenti IA per Prendere Appunti: La Guida Definitiva per gli Studenti",
+    "file": "ai-agents-for-note-taking",
+    "description": "Scopri i migliori agenti IA per prendere appunti, incluse opzioni gratuite per gli studenti. Impara a rivoluzionare le tue abitudini di studio con strumenti di note-taking basati sull'IA.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agents-for-note-taking",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "नोट्स लेने के लिए AI एजेंट: छात्रों के लिए संपूर्ण गाइड",
+    "file": "ai-agents-for-note-taking",
+    "description": "छात्रों के लिए मुफ्त विकल्पों सहित सर्वश्रेष्ठ AI नोट-टेकिंग एजेंट्स की खोज करें। AI-पावर्ड नोट-टेकिंग टूल्स के साथ अपनी अध्ययन आदतों में क्रांति लाना सीखें।",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agents-for-note-taking",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "الوكلاء الذكاء الاصطناعي لتدوين الملاحظات: الدليل الشامل للطلاب",
+    "file": "ai-agents-for-note-taking",
+    "description": "اكتشف أفضل وكلاء الذكاء الاصطناعي لتدوين الملاحظات، بما في ذلك الخيارات المجانية للطلاب. تعلم كيفية تثوير عاداتك الدراسية باستخدام أدوات تدوين الملاحظات المدعومة بالذكاء الاصطناعي.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agents-for-note-taking",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI笔记代理：学生的终极指南",
+    "file": "ai-agents-for-note-taking",
+    "description": "探索最佳AI笔记代理，包括学生免费选项。学习如何利用AI驱动的笔记工具革新您的学习习惯。",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agents-for-note-taking",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "메모 작성을 위한 AI 에이전트: 학생을 위한 완벽한 가이드",
+    "file": "ai-agents-for-note-taking",
+    "description": "학생을 위한 무료 옵션을 포함한 최고의 AI 메모 작성 에이전트를 발견하세요. AI 기반 메모 작성 도구로 학습 습관을 혁신하는 방법을 배워보세요.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agents-for-note-taking",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "ノートテイキングのためのAIエージェント：学生のための完全ガイド",
+    "file": "ai-agents-for-note-taking",
+    "description": "学生向けの無料オプションを含む、最高のAIノートテイキングエージェントを発見しましょう。AIパワードのノートテイキングツールで学習習慣を革新する方法を学びましょう。",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agents-for-note-taking",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI-Agenten voor Notities: De Ultieme Gids voor Studenten",
+    "file": "ai-agents-for-note-taking",
+    "description": "Ontdek de beste AI-notitie-agenten, inclusief gratis opties voor studenten. Leer hoe je je studiegewoonten kunt revolutioneren met AI-gestuurde notitietools.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agents-for-note-taking",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "ИИ-агенты для ведения заметок: Полное руководство для студентов",
+    "file": "ai-agents-for-note-taking",
+    "description": "Откройте для себя лучших ИИ-агентов для ведения заметок, включая бесплатные варианты для студентов. Узнайте, как революционизировать свои учебные привычки с помощью инструментов ведения заметок на базе ИИ.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agents-for-note-taking",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "AI Agents for Note Taking: The Ultimate Guide for Students",
+    "file": "ai-agents-for-note-taking",
+    "description": "Discover the best AI note-taking agents, including free options for students. Learn how to revolutionize your study habits with AI-powered note-taking tools.",
+    "date": "January 29, 2025",
+    "datetime": "2025-01-29",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agents-for-note-taking",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Las 3 Mejores Herramientas Gratuitas de Agentes IA para Google Ads que Funcionan en 2025",
+    "file": "ai-agents-for-google-ads",
+    "description": "Descubre los mejores agentes de IA gratuitos para Google Ads que pueden transformar el rendimiento de tu publicidad. Aprende sobre características avanzadas, estrategias de implementación e historias de éxito reales.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/ai-agents-for-google-ads",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Die Top 3 kostenlosen KI-Agenten für Google Ads, die 2025 wirklich funktionieren",
+    "file": "ai-agents-for-google-ads",
+    "description": "Entdecken Sie die besten kostenlosen KI-Agenten für Google Ads, die Ihre Werbeleistung transformieren können. Erfahren Sie mehr über fortgeschrittene Funktionen, Implementierungsstrategien und Erfolgsgeschichten aus der Praxis.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/ai-agents-for-google-ads",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Les 3 Meilleurs Agents IA Gratuits pour Google Ads qui Fonctionnent en 2025",
+    "file": "ai-agents-for-google-ads",
+    "description": "Découvrez les meilleurs agents IA gratuits pour Google Ads qui peuvent transformer vos performances publicitaires. Apprenez-en plus sur les fonctionnalités avancées, les stratégies de mise en œuvre et les histoires de réussite.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "I Migliori 3 Strumenti AI Gratuiti per Google Ads che Funzionano Davvero nel 2025",
+    "file": "ai-agents-for-google-ads",
+    "description": "Scopri i migliori agenti AI gratuiti per Google Ads che possono trasformare le tue performance pubblicitarie. Informati sulle funzionalità avanzate, le strategie di implementazione e le storie di successo reali.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "2025 में वास्तव में काम करने वाले Google विज्ञापन के लिए टॉप 3 AI एजेंट फ्री टूल्स",
+    "file": "ai-agents-for-google-ads",
+    "description": "अपने विज्ञापन प्रदर्शन को बदल सकने वाले Google विज्ञापन के लिए शीर्ष मुफ्त AI एजेंट खोजें। उन्नत सुविधाओं, कार्यान्वयन रणनीतियों और वास्तविक सफलता की कहानियों के बारे में जानें।",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "أفضل 3 أدوات مجانية للذكاء الاصطناعي لإعلانات جوجل التي تعمل فعلياً في 2025",
+    "file": "ai-agents-for-google-ads",
+    "description": "اكتشف أفضل وكلاء الذكاء الاصطناعي المجانيين لإعلانات جوجل التي يمكن أن تحول أداء إعلاناتك. تعرف على الميزات المتقدمة واستراتيجيات التنفيذ وقصص النجاح الواقعية.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/ai-agents-for-google-ads",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025年真正有效的Google广告AI代理免费工具Top3",
+    "file": "ai-agents-for-google-ads",
+    "description": "探索能够改变您广告效果的顶级Google广告免费AI代理。了解高级功能、实施策略和真实成功案例。",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "2025년에 실제로 작동하는 Google 광고를 위한 AI 에이전트 무료 도구 TOP 3",
+    "file": "ai-agents-for-google-ads",
+    "description": "광고 성과를 혁신할 수 있는 Google 광고용 무료 AI 에이전트를 발견하세요. 고급 기능, 구현 전략 및 실제 성공 사례에 대해 알아보세요.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "2025年に実際に機能するGoogle広告向けAIエージェントの無料ツールTop3",
+    "file": "ai-agents-for-google-ads",
+    "description": "広告パフォーマンスを変革できるGoogle広告向けの無料AIエージェントをご紹介します。高度な機能、実装戦略、実際の成功事例について学びましょう。",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Top 3 AI-Agent voor Google Ads Gratis Tools die Echt Werken in 2025",
+    "file": "ai-agents-for-google-ads",
+    "description": "Ontdek de beste gratis AI-agents voor Google Ads die uw advertentieprestaties kunnen transformeren. Leer over geavanceerde functies, implementatiestrategieën en praktijkvoorbeelden.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Топ-3 Бесплатных AI-агентов для Google Ads, Которые Реально Работают в 2025 году",
+    "file": "ai-agents-for-google-ads",
+    "description": "Откройте для себя лучших бесплатных AI-агентов для Google Ads, способных трансформировать эффективность вашей рекламы. Узнайте о продвинутых функциях, стратегиях внедрения и реальных историях успеха.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Top 10 AI Agent for Google Ads Free Tools That Actually Work in 2025",
+    "file": "ai-agents-for-google-ads",
+    "description": "Discover the top free AI agents for Google Ads that can transform your advertising performance. Learn about advanced features, implementation strategies, and real-world success stories.",
+    "date": "January 28, 2025",
+    "datetime": "2025-01-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agents-for-google-ads",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Agentes de IA para Reuniones: El Futuro de la Colaboración Productiva",
     "file": "ai-agents-for-meetings",
