@@ -1,4 +1,4 @@
-// Generated on 2025-02-11T05:00:59.540Z
+// Generated on 2025-02-11T10:38:31.116Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,28 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Snapy AI: Transform Your Video Content with AI Magic",
+    "file": "snapy-ai-video-editior",
+    "description": "Discover how Snapy AI is revolutionizing video editing with AI-powered tools, making content creation easier and more efficient for creators of all levels.",
+    "date": "February 11, 2025",
+    "datetime": "2025-02-11",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/snapy-ai-video-editior",
+    "categories": [
+      "creator-economy",
+      "ai-tools",
+      "youtube",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
   {
     "title": "Olly.social: The Next-Generation AI Social Media Assistant for Strategic Growth",
     "file": "olly-social-media-assistant",
