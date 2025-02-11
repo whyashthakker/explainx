@@ -1,4 +1,4 @@
-// Generated on 2025-01-29T12:02:26.336Z
+// Generated on 2025-02-11T05:00:59.540Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,25 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Olly.social: The Next-Generation AI Social Media Assistant for Strategic Growth",
+    "file": "olly-social-media-assistant",
+    "description": "Explore how Olly.social's AI-powered features revolutionize social media management with automated commenting, content generation, and engagement optimization.",
+    "date": "February 10, 2025",
+    "datetime": "2025-02-10",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/olly-social-media-assistant",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "Agentes de IA para Tomar Notas: La Guía Definitiva para Estudiantes",
     "file": "ai-agents-for-note-taking",
