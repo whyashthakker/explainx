@@ -1,4 +1,4 @@
-// Generated on 2025-02-11T10:38:31.116Z
+// Generated on 2025-02-12T09:03:59.752Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,27 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "REVNS AI Solutions: Transform Your E-commerce with Intelligent Management",
+    "file": "revns-ai-powered-e-commerce-solutions",
+    "description": "Discover how REVNS's AI-powered platform revolutionizes e-commerce management with automated solutions and expert insights. Perfect for sellers seeking scalable growth.",
+    "date": "February 12, 2025",
+    "datetime": "2025-02-12",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/revns-ai-powered-e-commerce-solutions",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
   {
     "title": "Snapy AI: Transform Your Video Content with AI Magic",
     "file": "snapy-ai-video-editior",
