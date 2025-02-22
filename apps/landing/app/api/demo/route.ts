@@ -9,7 +9,7 @@ const demoBookingSchema = z.object({
   email: z.string().email("Invalid email address"),
   company: z.string().min(1, "Company name is required"),
   role: z.string().optional(),
-  teamSize: z.enum(["1", "2-5", "6-10", "11-50", "50+"]).optional(),
+  teamSize: z.enum(["1", "2-5", "6-20", "21-50", "50+"]).optional(),
   monthlyBudget: z
     .enum(["0-1000", "1000-5000", "5000-10000", "10000+"])
     .optional(),
@@ -24,6 +24,11 @@ const demoBookingSchema = z.object({
       utm_term: z.string().optional(),
     })
     .optional(),
+  phone: z.string().optional(),
+  industry: z.string().optional(),
+  timeline: z.enum(["immediately", "1-3 months", "3-6 months", "6+ months"]).optional(),
+  requirements: z.string().optional(),
+  preferredContactMethod: z.enum(["email", "phone", "either"]).optional(),
 });
 
 export async function POST(req: Request) {
@@ -38,17 +43,22 @@ export async function POST(req: Request) {
 👤 Contact Information
 • Name: ${validatedData.name}
 • Email: ${validatedData.email}
+• Phone: ${validatedData.phone || "Not provided"}
+• Preferred Contact: ${validatedData.preferredContactMethod || "Not specified"}
 • Company: ${validatedData.company}
 • Role: ${validatedData.role || "Not specified"}
+• Industry: ${validatedData.industry || "Not specified"}
 
 📊 Company Details
 • Team Size: ${validatedData.teamSize || "Not specified"}
 • Monthly Budget: ${validatedData.monthlyBudget || "Not specified"}
+• Timeline: ${validatedData.timeline || "Not specified"}
 
-🎯 Goals
-${validatedData.goals || "No specific goals mentioned"}
+🎯 Project Information
+• Goals: ${validatedData.goals || "No specific goals mentioned"}
+• Requirements: ${validatedData.requirements || "No specific requirements mentioned"}
 
-📈 Source
+📈 Source Information
 • Source: ${validatedData.source || "Direct"}
 ${
   validatedData.utmParams
