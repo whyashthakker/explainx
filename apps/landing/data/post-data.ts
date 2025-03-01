@@ -1,4 +1,4 @@
-// Generated on 2025-02-12T09:03:59.752Z
+// Generated on 2025-03-01T11:29:26.616Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,44 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "AI Revolution in eCommerce: Transforming How We Shop Online",
+    "file": "ai-agent-for-health-nutrition",
+    "description": "Discover how AI and GenAI are transforming the eCommerce landscape, optimizing online shopping experiences, and driving business growth.",
+    "date": "February 28, 2025",
+    "datetime": "2025-02-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agent-for-health-nutrition",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
+  {
+    "title": "AI Powered Shopping: How AI is Transforming eCommerce Experiences",
+    "file": "ai-agent-for-startup-idea-validation",
+    "description": "Discover how AI and GenAI are transforming the eCommerce landscape, optimizing online shopping experiences, and driving business growth.",
+    "date": "February 28, 2025",
+    "datetime": "2025-02-28",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/ai-agent-for-startup-idea-validation",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "REVNS AI Solutions: Transform Your E-commerce with Intelligent Management",
     "file": "revns-ai-powered-e-commerce-solutions",
