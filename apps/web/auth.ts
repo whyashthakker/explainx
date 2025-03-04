@@ -12,9 +12,9 @@ declare module "@auth/core/adapters" {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  session: {
-    strategy: "database",
-  },
+  // session: {
+  //   strategy: "database",
+  // },
   adapter: PrismaAdapter(prisma),
   ...authConfig,
 });
