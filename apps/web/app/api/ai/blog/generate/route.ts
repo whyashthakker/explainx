@@ -2,7 +2,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-import prismadb from "@repo/db";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 
 const openai = new OpenAI({
