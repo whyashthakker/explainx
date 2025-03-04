@@ -34,8 +34,8 @@ model User {
 
   blogPosts BlogPost[]
 
-isAdmin Boolean @default(false)
-isBetaTester Boolean @default(false)
+  isAdmin Boolean @default(false)
+  isBetaTester Boolean @default(false)
 }
 
 

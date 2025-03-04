@@ -1,146 +1,313 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Content } from "./content";
-import fs from 'fs/promises';
-import path from 'path';
+import fs from "fs";
+import path from "path";
+import prismadb from "@repo/db";
 import { StructuredData } from "../../StructuredData";
 
-type Params = {
-    slug: string;
-};
+// ----- 1. CONFIGURATION -----
+
+// Define supported languages and their configurations
+const SUPPORTED_LANGUAGES = {
+  en: { dir: "ltr", prefix: "" },
+  ar: { dir: "rtl", prefix: "/ar" },
+  de: { dir: "ltr", prefix: "/de" },
+  es: { dir: "ltr", prefix: "/es" },
+  fr: { dir: "ltr", prefix: "/fr" },
+  hi: { dir: "ltr", prefix: "/hi" },
+  it: { dir: "ltr", prefix: "/it" },
+  ja: { dir: "ltr", prefix: "/ja" },
+  ko: { dir: "ltr", prefix: "/ko" },
+  nl: { dir: "ltr", prefix: "/nl" },
+  ru: { dir: "ltr", prefix: "/ru" },
+  "zh-cn": { dir: "ltr", prefix: "/zh-cn" },
+} as const;
+
+// ----- 2. TYPE DEFINITIONS -----
+
+type Params = Promise<{
+  slug: string;
+}>;
 
 type BlogPostMetadata = {
-    title: string;
-    description: string;
-    date: string;
-    author: string;
-    language: string;
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  language?: string;
+  wordCount?: number;
 };
 
-async function getPostMetadata(slug: string): Promise<BlogPostMetadata | null> {
-    try {
-        const postsDirectory = path.join(process.cwd(), 'app/blog/_posts/ar');
-        const filePath = path.join(postsDirectory, `${slug}.mdx`);
-        const fileContent = await fs.readFile(filePath, 'utf8');
-        
-        const metadataMatch = fileContent.match(/export const metadata = ({[\s\S]*?})/);
-        if (!metadataMatch) return null;
-        
-        const metadata = eval(`(${metadataMatch[1]})`) as Omit<BlogPostMetadata, 'language'>;
-        return {
-            ...metadata,
-            language: 'ar' // Set Arabic as the language
-        };
-    } catch (error) {
-        console.error('Error reading post metadata:', error);
-        return null;
-    }
-}
+// ----- 3. DATA FETCHING FUNCTIONS -----
 
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
-    const { slug } = await params;
-    const post = await getPostMetadata(slug);
-    
-    if (!post) {
-        return {
-            title: 'Post Not Found',
-            robots: { index: false }
-        };
-    }
-    
-    const defaultImage = '/images/main/landing.png';
-    const languageCode = 'ar-SA';
-    
-    // Define all supported languages with case-sensitive paths
-    const supportedLanguages = {
-        'en-US': `/blog/post/${slug}`,
-        'ar-SA': `/blog/post/ar/${slug}`,
-        'de-DE': `/blog/post/de/${slug}`,
-        'es-ES': `/blog/post/es/${slug}`,
-        'fr-FR': `/blog/post/fr/${slug}`,
-        'hi-IN': `/blog/post/hi/${slug}`,
-        'it-IT': `/blog/post/it/${slug}`,
-        'ja-JP': `/blog/post/ja/${slug}`,
-        'ko-KR': `/blog/post/ko/${slug}`,
-        'nl-NL': `/blog/post/nl/${slug}`,
-        'ru-RU': `/blog/post/ru/${slug}`,
-        'zh-CN': `/blog/post/zh-CN/${slug}`, // Case sensitive path
-    };
-    
+// Function to get post from database
+async function getPostFromDatabase(slug: string) {
+  try {
+    const post = await prismadb.blogPost.findFirst({
+      where: {
+        slug,
+        isPublished: true,
+        language: "ar",
+      },
+      include: {
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+
+    if (!post) return null;
+
     return {
+      type: "database",
+      metadata: {
         title: post.title,
         description: post.description,
-        alternates: {
-            canonical: `https://www.explainx.ai/blog/post/ar/${slug}`,
-            languages: Object.entries(supportedLanguages).reduce((acc, [code, url]) => ({
-                ...acc,
-                [code]: `https://www.explainx.ai${url}`,
-            }), {}),
-        },
-        metadataBase: new URL('https://www.explainx.ai'),
-        openGraph: {
-            type: 'article',
-            locale: languageCode,
-            url: `https://www.explainx.ai/blog/post/ar/${slug}`,
-            title: post.title,
-            description: post.description,
-            images: [
-                {
-                    url: defaultImage,
-                    width: 1200,
-                    height: 630,
-                    alt: post.title,
-                }
-            ],
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: post.title,
-            description: post.description,
-            images: [defaultImage],
-        }
+        date: post.date
+          ? post.date.toISOString().split("T")[0]
+          : new Date().toISOString().split("T")[0],
+        author: "Yash Thakker",
+        language: post.language || "ar",
+        wordCount: post.content ? post.content.split(/\s+/).length : undefined,
+      },
+      content: post.content,
+      categories: post.categories,
     };
+  } catch (error) {
+    console.error("Error fetching post from database:", error);
+    return null;
+  }
 }
 
-export async function generateStaticParams(): Promise<Array<Params>> {
-    const postsDirectory = path.join(process.cwd(), 'app/blog/_posts/ar');
-    const posts = await fs.readdir(postsDirectory)
-        .then(files => 
-            files.filter(file => file.endsWith('.mdx'))
-                 .sort((a, b) => b.localeCompare(a))
-        );
-        
-    return posts.map((post) => ({
-        slug: post.replace(/\.mdx$/, ''),
-    }));
-}
+// Function to get post from MDX file
+async function getPostFromMDX(
+  slug: string,
+): Promise<{ type: "mdx"; metadata: BlogPostMetadata | null }> {
+  try {
+    const postsDirectory = path.join(process.cwd(), "app/blog/_posts/ar");
+    const filePath = path.join(postsDirectory, `${slug}.mdx`);
 
-// Use the Next.js 15 segment configuration
-export const dynamic = 'force-static'; // Prefer static generation
-export const revalidate = 3600; // Revalidate every hour
-
-export default async function Page({ params }: { params: Promise<Params> }) {
-    const { slug } = await params;
-    const postMetadata = await getPostMetadata(slug);
-    
-    if (!postMetadata) {
-        notFound();
+    if (!fs.existsSync(filePath)) {
+      return { type: "mdx", metadata: null };
     }
 
-    const defaultImage = ['/images/main/landing.png'];
-
-    return (
-        <>
-            <StructuredData
-                headline={postMetadata.title}
-                datePublished={postMetadata.date}
-                dateModified={postMetadata.date}
-                authorName={postMetadata.author}
-                authorUrl="https://goyashy.com"
-                image={defaultImage}
-                language={postMetadata.language}
-            />
-            <Content slug={slug} metadata={postMetadata} />
-        </>
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    const metadataMatch = fileContent.match(
+      /export const metadata = ({[\s\S]*?})/,
     );
+    if (!metadataMatch) return { type: "mdx", metadata: null };
+
+    const metadata = eval(`(${metadataMatch[1]})`) as Omit<
+      BlogPostMetadata,
+      "language"
+    >;
+    return {
+      type: "mdx",
+      metadata: {
+        ...metadata,
+        language: "ar",
+      },
+    };
+  } catch (error) {
+    console.error("Error reading post metadata:", error);
+    return { type: "mdx", metadata: null };
+  }
+}
+
+// Combined function to get post from either source
+async function getPost(slug: string) {
+  // First try to get from database
+  const dbPost = await getPostFromDatabase(slug);
+  if (dbPost) return dbPost;
+
+  // If not in database, try MDX
+  const mdxPost = await getPostFromMDX(slug);
+  if (mdxPost.metadata) return mdxPost;
+
+  // Post not found in either source
+  return null;
+}
+
+// ----- 4. NEXT.JS PAGE CONFIGURATION -----
+
+export async function generateMetadata(props: {
+  params: Params;
+}): Promise<Metadata> {
+  const params = await props.params;
+  const slug = params.slug;
+  const post = await getPost(slug);
+
+  if (!post || !post.metadata) {
+    return {
+      title: "المنشور غير موجود",
+      robots: { index: false },
+    };
+  }
+
+  const defaultImage = "/images/main/landing.png";
+  const baseUrl = "https://www.revns.com";
+
+  // Generate hreflang entries for all supported languages
+  const alternates: Record<string, string> = {};
+
+  // Generate alternates for all supported languages
+  Object.entries(SUPPORTED_LANGUAGES).forEach(([lang, config]) => {
+    const langPath =
+      lang === "en"
+        ? `/blog/post/${slug}`
+        : `/blog/post${config.prefix}/${slug}`;
+    alternates[lang] = `${baseUrl}${langPath}`;
+  });
+
+  // Add x-default to the alternates object
+  alternates["x-default"] = `${baseUrl}/blog/post/${slug}`;
+
+  return {
+    title: post.metadata.title,
+    description: post.metadata.description,
+    alternates: {
+      canonical: `${baseUrl}/blog/post/ar/${slug}`,
+      languages: alternates,
+    },
+    robots: { index: true, follow: true },
+    metadataBase: new URL(baseUrl),
+    openGraph: {
+      type: "article",
+      locale: "ar",
+      url: `${baseUrl}/blog/post/ar/${slug}`,
+      title: post.metadata.title,
+      description: post.metadata.description,
+      images: [
+        {
+          url: defaultImage,
+          width: 1200,
+          height: 630,
+          alt: post.metadata.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.metadata.title,
+      description: post.metadata.description,
+      images: [defaultImage],
+    },
+    authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
+    keywords: [
+      "حلول التجارة الإلكترونية",
+      "إدارة المتاجر الإلكترونية",
+      "خدمات لبائعي أمازون",
+    ],
+    referrer: "origin-when-cross-origin",
+    category: "technology",
+    other: {
+      "html-lang": "ar",
+      dir: "rtl",
+    },
+  };
+}
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  // Get MDX files from the Arabic directory
+  const postsDirectory = path.join(process.cwd(), "app/blog/_posts/ar");
+
+  // Check if directory exists first
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
+
+  const mdxPosts = fs
+    .readdirSync(postsDirectory)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => ({ slug: file.replace(/\.mdx$/, "") }));
+
+  // We can't get database posts at build time for static generation
+  // They will be handled by dynamic rendering
+
+  return mdxPosts;
+}
+
+// For ISR, we want to allow dynamic parameters
+export const dynamicParams = true;
+
+// Use the Next.js 13+ segment configuration
+export const revalidate = 3600; // Revalidate every hour
+
+// ----- 5. PAGE COMPONENT -----
+
+export default async function Page(props: { params: Params }) {
+  const params = await props.params;
+  const slug = params.slug;
+  const post = await getPost(slug);
+
+  if (!post || !post.metadata) {
+    notFound();
+  }
+
+  const defaultImage = ["/images/main/landing.png"];
+
+  // Estimate reading time and word count for structured data
+  let wordCount = 0;
+  let timeToRead = "";
+
+  if (post.type === "database" && "content" in post) {
+    // Rough estimate of word count for database content
+    wordCount = post.content.split(/\s+/).length;
+    // Estimate reading time (average reading speed of 200-250 words per minute)
+    // Note: Arabic reading speed might be different, but using similar estimate
+    const minutes = Math.ceil(wordCount / 225);
+    timeToRead = `PT${minutes}M`;
+  }
+
+  return (
+    <>
+      <StructuredData
+        headline={post.metadata.title}
+        datePublished={post.metadata.date!}
+        dateModified={post.metadata.date!}
+        authorName={post.metadata.author}
+        authorUrl="https://goyashy.com"
+        image={defaultImage}
+        language="ar"
+        categories={post.type === "database" ? post.categories : undefined}
+        keywords={[
+          "حلول التجارة الإلكترونية",
+          "إدارة المتاجر الإلكترونية",
+          "خدمات لبائعي أمازون",
+        ]}
+        description={post.metadata.description}
+        mainEntityOfPage={`https://www.revns.com/blog/post/ar/${slug}`}
+        publisher={{
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
+          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+        }}
+        timeToRead={timeToRead || undefined}
+        wordCount={wordCount || undefined}
+        isOriginal={true}
+      />
+      {post.type === "mdx" ? (
+        <Content
+          slug={slug}
+          metadata={{
+            title: post.metadata.title,
+            date: post.metadata.date!,
+            author: post.metadata.author,
+          }}
+        />
+      ) : (
+        <Content
+          slug={slug}
+          metadata={{
+            title: post.metadata.title,
+            date: post.metadata.date!,
+            author: post.metadata.author,
+          }}
+          dbContent={"content" in post ? post.content : ""}
+        />
+      )}
+    </>
+  );
 }

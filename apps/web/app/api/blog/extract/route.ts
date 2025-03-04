@@ -70,8 +70,8 @@ function extractMetadata(content: string) {
 // Helper function to check if user is authenticated
 async function isAuthenticated(request: NextRequest): Promise<boolean> {
   try {
-    const { user } = await auth();
-    return !!user?.isAdmin;
+    const session = await auth();
+    return !!session?.user?.isAdmin;
   } catch (error) {
     console.error("Error checking authentication:", error);
     return false;
