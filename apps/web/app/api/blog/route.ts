@@ -84,8 +84,8 @@ async function isAuthenticated(): Promise<boolean> {
 // Helper function to get the current authenticated user
 async function getCurrentUser() {
   try {
-    const { user } = await auth();
-    return user;
+    const session = await auth();
+    return session?.user;
   } catch (error) {
     console.error("Error getting current user:", error);
     return null;

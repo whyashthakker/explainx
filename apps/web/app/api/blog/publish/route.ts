@@ -4,9 +4,9 @@ import { auth } from "../../../../auth";
 // Helper function to check if user is authenticated
 async function isAuthenticated(request: NextRequest): Promise<boolean> {
   try {
-    const { user } = await auth();
+    const session = await auth();
 
-    if (!user?.isAdmin) {
+    if (!session?.user?.isAdmin) {
       return false;
     }
 
@@ -60,4 +60,3 @@ export async function PATCH(request: NextRequest) {
     );
   }
 }
-
