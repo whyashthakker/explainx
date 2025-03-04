@@ -10,6 +10,7 @@ import authConfig from "./auth.config";
 //     isBetaTester: boolean;
 //   }
 // }
+export const runtime = "nodejs";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   // session: {
