@@ -148,7 +148,7 @@ export async function generateMetadata(props: {
   }
 
   const defaultImage = "/images/main/landing.png";
-  const baseUrl = "https://www.revns.com";
+  const baseUrl = "https://www.explainx.ai";
 
   // Generate hreflang entries for all supported languages
   const alternates: Record<string, string> = {};
@@ -196,7 +196,18 @@ export async function generateMetadata(props: {
       images: [defaultImage],
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
-    keywords: ["电子商务解决方案", "市场平台管理", "亚马逊卖家服务"],
+    keywords: [
+      "AI代理",
+      "MVP解决方案",
+      "AI代理自动化",
+      "AI代理开发",
+      "AI代理训练",
+      "AI代理实施",
+      "AI代理优化",
+      "AI代理监控",
+      "AI代理故障排除",
+      "AI代理维护",
+    ],
     referrer: "origin-when-cross-origin",
     category: "technology",
     other: {
@@ -271,12 +282,23 @@ export default async function Page(props: { params: Params }) {
         image={defaultImage}
         language="zh-CN"
         categories={post.type === "database" ? post.categories : undefined}
-        keywords={["电子商务解决方案", "市场平台管理", "亚马逊卖家服务"]}
+        keywords={[
+          "AI代理",
+          "MVP解决方案",
+          "AI代理自动化",
+          "AI代理开发",
+          "AI代理训练",
+          "AI代理实施",
+          "AI代理优化",
+          "AI代理监控",
+          "AI代理故障排除",
+          "AI代理维护",
+        ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/zh-cn/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/zh-cn/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}

@@ -148,7 +148,7 @@ export async function generateMetadata(props: {
   }
 
   const defaultImage = "/images/main/landing.png";
-  const baseUrl = "https://www.revns.com";
+  const baseUrl = "https://www.explainx.ai";
 
   // Generate hreflang entries for all supported languages
   const alternates: Record<string, string> = {};
@@ -197,9 +197,16 @@ export async function generateMetadata(props: {
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
     keywords: [
-      "ई-कॉमर्स समाधान",
-      "मार्केटप्लेस प्रबंधन",
-      "अमेज़न विक्रेताओं के लिए सेवाएं",
+      "एआई एजेंट",
+      "एमवीपी समाधान",
+      "एआई एजेंट स्वचालन",
+      "एआई एजेंट विकास",
+      "एआई एजेंट प्रशिक्षण",
+      "एआई एजेंट कार्यान्वयन",
+      "एआई एजेंट अनुकूलन",
+      "एआई एजेंट निगरानी",
+      "एआई एजेंट समस्या निवारण",
+      "एआई एजेंट रखरखाव",
     ],
     referrer: "origin-when-cross-origin",
     category: "technology",
@@ -273,15 +280,22 @@ export default async function Page(props: { params: Params }) {
         language="hi"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "ई-कॉमर्स समाधान",
-          "मार्केटप्लेस प्रबंधन",
-          "अमेज़न विक्रेताओं के लिए सेवाएं",
+          "एआई एजेंट",
+          "एमवीपी समाधान",
+          "एआई एजेंट स्वचालन",
+          "एआई एजेंट विकास",
+          "एआई एजेंट प्रशिक्षण",
+          "एआई एजेंट कार्यान्वयन",
+          "एआई एजेंट अनुकूलन",
+          "एआई एजेंट निगरानी",
+          "एआई एजेंट समस्या निवारण",
+          "एआई एजेंट रखरखाव",
         ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/hi/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/hi/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}

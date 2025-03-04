@@ -197,9 +197,16 @@ export async function generateMetadata(props: {
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
     keywords: [
-      "soluzioni di e-commerce",
-      "gestione dei marketplace",
-      "servizi per venditori Amazon",
+      "Agenti AI",
+      "Soluzioni MVP",
+      "Automazione degli agenti AI",
+      "Sviluppo degli agenti AI",
+      "Formazione degli agenti AI",
+      "Implementazione degli agenti AI",
+      "Ottimizzazione degli agenti AI",
+      "Monitoraggio degli agenti AI",
+      "Risoluzione dei problemi degli agenti AI",
+      "Manutenzione degli agenti AI",
     ],
     referrer: "origin-when-cross-origin",
     category: "technology",
@@ -272,15 +279,22 @@ export default async function Page(props: { params: Params }) {
         language="it"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "soluzioni di e-commerce",
-          "gestione dei marketplace",
-          "servizi per venditori Amazon",
+          "Agenti AI",
+          "Soluzioni MVP",
+          "Automazione degli agenti AI",
+          "Sviluppo degli agenti AI",
+          "Formazione degli agenti AI",
+          "Implementazione degli agenti AI",
+          "Ottimizzazione degli agenti AI",
+          "Monitoraggio degli agenti AI",
+          "Risoluzione dei problemi degli agenti AI",
+          "Manutenzione degli agenti AI",
         ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/it/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/it/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}

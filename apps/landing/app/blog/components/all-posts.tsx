@@ -1,34 +1,39 @@
 // app/sitemap/page.tsx
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 import Link from "next/link";
 import { BasicLayout } from "../components/basic-layout";
 import postData from "../../../data/post-data";
 
 export const metadata: Metadata = {
-  title: "Blog Archive | Revns - Complete E-commerce Resource Library",
-  description: "Browse our complete library of e-commerce articles, guides, and insights for Amazon, Flipkart, Zepto, Blinkit, and Nykaa marketplace success.",
+  title: "ExplainX: Transform Your Business with Transparent AI Solutions",
+  description:
+    "Discover how ExplainX is revolutionizing business AI implementation with their explainable AI framework, custom agent development, and comprehensive training solutions.",
   keywords: [
-    "e-commerce articles",
-    "marketplace guides",
-    "seller resources",
-    "e-commerce blog archive",
-    "online business guides",
-    "marketplace tutorials",
-    "Revns articles",
+    "AI agents",
+    "MVP solutions",
+    "AI agent automation",
+    "AI agent development",
+    "AI agent training",
+    "AI agent implementation",
+    "AI agent optimization",
+    "AI agent monitoring",
+    "AI agent troubleshooting",
+    "AI agent maintenance",
   ].join(", "),
   openGraph: {
-    title: "Complete E-commerce Article Archive | Revns",
-    description: "Access our full library of e-commerce and marketplace resources for seller success.",
+    title: "ExplainX: Pioneering Transparent and Trustworthy AI Solutions",
+    description:
+      "Explore ExplainX's comprehensive AI agent solutions, including custom agent development, agent training, and agent monitoring.",
     type: "website",
     images: [
       {
-        url: 'https://www.google.com/maps/uv?viewerState=lb&pb=!1s0x11ae81c94242f451:0x2a6b0cac40414137!5sGlobstand+technologies&imagekey=!1e10!2sAF1QipPrTTNGxsOszQTXFD3b68e40o0V_LiVsTWwh-H6&cr=rp_35',
+        url: "https://www.google.com/maps/uv?viewerState=lb&pb=!1s0x11ae81c94242f451:0x2a6b0cac40414137!5sGlobstand+technologies&imagekey=!1e10!2sAF1QipPrTTNGxsOszQTXFD3b68e40o0V_LiVsTWwh-H6&cr=rp_35",
         width: 1200,
         height: 630,
-        alt: 'Revns Blog Archive',
+        alt: "ExplainX AI Agent Automation Solutions",
       },
     ],
-    siteName: "Revns Resource Library",
+    siteName: "Explainx Resource Library",
   },
   robots: {
     index: true,
@@ -36,9 +41,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
@@ -55,21 +60,24 @@ type Post = {
 
 // Group posts by year and month
 function groupPostsByDate(posts: Post[]) {
-  return posts.reduce((acc, post) => {
-    const date = new Date(post.datetime);
-    const year = date.getFullYear();
-    const month = date.toLocaleString('default', { month: 'long' });
-    
-    if (!acc[year]) {
-      acc[year] = {};
-    }
-    if (!acc[year][month]) {
-      acc[year][month] = [];
-    }
-    
-    acc[year][month].push(post);
-    return acc;
-  }, {} as Record<number, Record<string, Post[]>>);
+  return posts.reduce(
+    (acc, post) => {
+      const date = new Date(post.datetime);
+      const year = date.getFullYear();
+      const month = date.toLocaleString("default", { month: "long" });
+
+      if (!acc[year]) {
+        acc[year] = {};
+      }
+      if (!acc[year][month]) {
+        acc[year][month] = [];
+      }
+
+      acc[year][month].push(post);
+      return acc;
+    },
+    {} as Record<number, Record<string, Post[]>>,
+  );
 }
 
 export default function SitemapPage() {
@@ -87,64 +95,74 @@ export default function SitemapPage() {
                 Complete Article Archive
               </h1>
               <p className="text-lg text-gray-600">
-                Browse our comprehensive collection of e-commerce insights and marketplace strategies.
+                Browse our comprehensive collection of e-commerce insights and
+                marketplace strategies.
               </p>
             </div>
 
             {/* Archive List */}
             <div className="space-y-16">
-              {years.map(year => (
+              {years.map((year) => (
                 <section key={year} className="border-t border-gray-200 pt-10">
-                  <h2 className="text-2xl font-cal text-gray-900 mb-8">{year}</h2>
-                  
-                  {Object.entries(groupedPosts[Number(year)] || {}).map(([month, posts]) => (
-                    <div key={month} className="mb-12">
-                      <h3 className="text-lg font-medium text-gray-900 mb-6">{month}</h3>
-                      <ul className="space-y-4">
-                        {posts.map(post => (
-                          <li key={post.url} className="group">
-                            <article className="relative">
-                              <div className="flex flex-col sm:flex-row sm:items-baseline gap-2">
-                                <time 
-                                  dateTime={post.datetime}
-                                  className="text-sm text-gray-500 w-28 shrink-0"
-                                >
-                                  {new Date(post.datetime).toLocaleDateString('en-US', {
-                                    day: '2-digit',
-                                    month: 'short'
-                                  })}
-                                </time>
-                                <div className="flex-1">
-                                  <Link 
-                                    href={post.url}
-                                    className="text-gray-900 hover:text-gray-600 transition-colors"
-                                    hrefLang={post.language}
+                  <h2 className="text-2xl font-cal text-gray-900 mb-8">
+                    {year}
+                  </h2>
+
+                  {Object.entries(groupedPosts[Number(year)] || {}).map(
+                    ([month, posts]) => (
+                      <div key={month} className="mb-12">
+                        <h3 className="text-lg font-medium text-gray-900 mb-6">
+                          {month}
+                        </h3>
+                        <ul className="space-y-4">
+                          {posts.map((post) => (
+                            <li key={post.url} className="group">
+                              <article className="relative">
+                                <div className="flex flex-col sm:flex-row sm:items-baseline gap-2">
+                                  <time
+                                    dateTime={post.datetime}
+                                    className="text-sm text-gray-500 w-28 shrink-0"
                                   >
-                                    <h4 className="text-base font-medium group-hover:text-gray-600">
-                                      {post.title}
-                                    </h4>
-                                  </Link>
-                                  <p className="mt-2 text-sm text-gray-600 line-clamp-2">
-                                    {post.description}
-                                  </p>
-                                  <div className="mt-2 flex flex-wrap gap-2">
-                                    {post.categories.map(category => (
-                                      <span 
-                                        key={category} 
-                                        className="text-xs text-gray-500"
-                                      >
-                                        #{category}
-                                      </span>
-                                    ))}
+                                    {new Date(post.datetime).toLocaleDateString(
+                                      "en-US",
+                                      {
+                                        day: "2-digit",
+                                        month: "short",
+                                      },
+                                    )}
+                                  </time>
+                                  <div className="flex-1">
+                                    <Link
+                                      href={post.url}
+                                      className="text-gray-900 hover:text-gray-600 transition-colors"
+                                      hrefLang={post.language}
+                                    >
+                                      <h4 className="text-base font-medium group-hover:text-gray-600">
+                                        {post.title}
+                                      </h4>
+                                    </Link>
+                                    <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+                                      {post.description}
+                                    </p>
+                                    <div className="mt-2 flex flex-wrap gap-2">
+                                      {post.categories.map((category) => (
+                                        <span
+                                          key={category}
+                                          className="text-xs text-gray-500"
+                                        >
+                                          #{category}
+                                        </span>
+                                      ))}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </article>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                              </article>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ),
+                  )}
                 </section>
               ))}
             </div>
@@ -154,3 +172,4 @@ export default function SitemapPage() {
     </BasicLayout>
   );
 }
+

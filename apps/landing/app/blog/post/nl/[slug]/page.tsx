@@ -148,7 +148,7 @@ export async function generateMetadata(props: {
   }
 
   const defaultImage = "/images/main/landing.png";
-  const baseUrl = "https://www.revns.com";
+  const baseUrl = "https://www.explainx.com";
 
   // Generate hreflang entries for all supported languages
   const alternates: Record<string, string> = {};
@@ -197,9 +197,16 @@ export async function generateMetadata(props: {
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
     keywords: [
-      "e-commerce oplossingen",
-      "marketplace beheer",
-      "diensten voor Amazon-verkopers",
+      "AI-agenten",
+      "MVP-oplossingen",
+      "AI-agent automatisering",
+      "AI-agent ontwikkeling",
+      "AI-agent training",
+      "AI-agent implementatie",
+      "AI-agent optimalisatie",
+      "AI-agent monitoring",
+      "AI-agent probleemoplossing",
+      "AI-agent onderhoud",
     ],
     referrer: "origin-when-cross-origin",
     category: "technology",
@@ -272,15 +279,22 @@ export default async function Page(props: { params: Params }) {
         language="nl"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "e-commerce oplossingen",
-          "marketplace beheer",
-          "diensten voor Amazon-verkopers",
+          "AI-agenten",
+          "MVP-oplossingen",
+          "AI-agent automatisering",
+          "AI-agent ontwikkeling",
+          "AI-agent training",
+          "AI-agent implementatie",
+          "AI-agent optimalisatie",
+          "AI-agent monitoring",
+          "AI-agent probleemoplossing",
+          "AI-agent onderhoud",
         ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/nl/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/nl/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}

@@ -197,9 +197,16 @@ export async function generateMetadata(props: {
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
     keywords: [
-      "solutions de commerce électronique",
-      "gestion des marketplaces",
-      "services pour les vendeurs Amazon",
+      "Agents IA",
+      "Solutions MVP",
+      "Automatisation d'agents IA",
+      "Développement d'agents IA",
+      "Formation d'agents IA",
+      "Implémentation d'agents IA",
+      "Optimisation d'agents IA",
+      "Surveillance d'agents IA",
+      "Dépannage d'agents IA",
+      "Maintenance d'agents IA",
     ],
     referrer: "origin-when-cross-origin",
     category: "technology",
@@ -272,9 +279,16 @@ export default async function Page(props: { params: Params }) {
         language="fr"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "solutions de commerce électronique",
-          "gestion des marketplaces",
-          "services pour les vendeurs Amazon",
+          "Agents IA",
+          "Solutions MVP",
+          "Automatisation d'agents IA",
+          "Développement d'agents IA",
+          "Formation d'agents IA",
+          "Implémentation d'agents IA",
+          "Optimisation d'agents IA",
+          "Surveillance d'agents IA",
+          "Dépannage d'agents IA",
+          "Maintenance d'agents IA",
         ]}
         description={post.metadata.description}
         mainEntityOfPage={`https://www.revns.com/blog/post/fr/${slug}`}
