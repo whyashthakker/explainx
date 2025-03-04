@@ -3,22 +3,27 @@ import Google from "next-auth/providers/google";
 import Resend from "next-auth/providers/resend";
 import { JWT } from "next-auth/jwt";
 
-// Correctly extend the next-auth module
-declare module "next-auth" {
-  interface User {
-    isAdmin: boolean;
-    isBetaTester: boolean;
-  }
-
-  interface Session {
-    user: User & DefaultSession["user"];
-  }
-}
-
-// Extend JWT if needed
 declare module "next-auth/jwt" {
   interface JWT {
     id?: string;
+    isAdmin?: boolean;
+    isBetaTester?: boolean;
+  }
+}
+
+declare module "next-auth" {
+  interface User {
+    isAdmin?: boolean;
+    isBetaTester?: boolean;
+  }
+
+  // Extend the session to include our custom properties
+  interface Session {
+    user: {
+      id: string;
+      isAdmin?: boolean;
+      isBetaTester?: boolean;
+    } & DefaultSession["user"];
   }
 }
 
@@ -33,20 +38,19 @@ export default {
     }),
   ],
   callbacks: {
-    // Handle both JWT and database sessions
-    async session({ session, token, user }) {
-      if (token) {
-        session.user.id = token.sub!;
-      } else if (user) {
-        session.user.id = user.id;
-      }
-      return session;
-    },
     async jwt({ token, user }) {
       if (user) {
-        token.sub = user.id;
+        token.id = user.id;
+        token.isAdmin = user.isAdmin;
+        token.isBetaTester = user.isBetaTester;
       }
       return token;
+    },
+    async session({ session, token }) {
+      if (token && session.user) {
+        session.user.id = token.id as string;
+      }
+      return session;
     },
   },
 } satisfies NextAuthConfig;
