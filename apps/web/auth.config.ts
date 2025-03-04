@@ -49,6 +49,8 @@ export default {
     async session({ session, token }) {
       if (token && session.user) {
         session.user.id = token.id as string;
+        session.user.isAdmin = token.isAdmin as boolean;
+        session.user.isBetaTester = token.isBetaTester as boolean;
       }
       return session;
     },
