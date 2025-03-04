@@ -66,5 +66,5 @@ export default async function OnboardedLayout({
     }
   }
 
-  return <>Dashbaord</>;
+  return <>{children}</>;
 }

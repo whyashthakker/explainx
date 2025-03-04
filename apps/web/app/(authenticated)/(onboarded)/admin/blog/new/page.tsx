@@ -32,6 +32,7 @@ import {
   ArrowLeft,
   Sparkles,
   Loader2,
+  Check,
 } from "lucide-react";
 import {
   Dialog,
@@ -42,6 +43,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@repo/ui/components/ui/dialog";
+
+// Utility function for conditionally joining classnames
+const cn = (...classes: any[]) => {
+  return classes.filter(Boolean).join(" ");
+};
 
 type LanguageContent = {
   content: string;
@@ -107,6 +113,10 @@ export default function NewBlogPostPage() {
     title: "",
     extraContext: "",
   });
+  const [generatingLanguages, setGeneratingLanguages] = useState<string[]>([]);
+  const [generationProgress, setGenerationProgress] = useState<
+    Record<string, "pending" | "success" | "error">
+  >({});
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -257,14 +267,32 @@ export default function NewBlogPostPage() {
     setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
-  // Function to generate blog content with AI
-  const generateWithAI = async () => {
-    if (!aiGenerationInput.title) {
-      return;
-    }
+  // Function to select/deselect all languages
+  const handleSelectAllLanguages = (select: boolean) => {
+    setFormData((prev) => ({
+      ...prev,
+      languages: Object.keys(prev.languages).reduce(
+        (acc, langCode) => {
+          //@ts-ignore
+          acc[langCode] = {
+            ...prev.languages[langCode],
+            isEnabled: langCode === "en" ? true : select, // English is always enabled
+          };
+          return acc;
+        },
+        {} as Record<string, LanguageContent>,
+      ),
+    }));
+  };
 
-    setAiGenerating(true);
+  // Function to generate content for a single language
+  const generateForLanguage = async (langCode: string): Promise<void> => {
     try {
+      setGenerationProgress((prev) => ({ ...prev, [langCode]: "pending" }));
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 180000); // 3 minute timeout
+
       const response = await fetch("/api/ai/blog/generate", {
         method: "POST",
         headers: {
@@ -272,10 +300,13 @@ export default function NewBlogPostPage() {
         },
         body: JSON.stringify({
           title: aiGenerationInput.title,
-          language: activeLanguageTab,
+          language: langCode,
           extraContext: aiGenerationInput.extraContext,
         }),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -285,14 +316,13 @@ export default function NewBlogPostPage() {
       const data = await response.json();
 
       if (data.success && data.data) {
-        // Update the form data with the generated content
         //@ts-ignore
         setFormData((prev) => ({
           ...prev,
           languages: {
             ...prev.languages,
-            [activeLanguageTab]: {
-              ...prev.languages[activeLanguageTab],
+            [langCode]: {
+              ...prev.languages[langCode],
               title: data.data.title,
               description: data.data.description,
               content: data.data.content,
@@ -300,8 +330,7 @@ export default function NewBlogPostPage() {
           },
         }));
 
-        // If the slug is empty and we're generating for English, create a slug from the title
-        if (!formData.slug && activeLanguageTab === "en") {
+        if (!formData.slug && langCode === "en") {
           const slug = data.data.title
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, "-")
@@ -309,10 +338,41 @@ export default function NewBlogPostPage() {
           setFormData((prev) => ({ ...prev, slug }));
         }
 
-        setAiDialogOpen(false);
-      } else {
-        throw new Error("No content was generated");
+        setGenerationProgress((prev) => ({ ...prev, [langCode]: "success" }));
       }
+    } catch (err) {
+      console.error(`Error generating content for ${langCode}:`, err);
+      setError(
+        `Failed to generate content for ${AVAILABLE_LANGUAGES.find((l) => l.code === langCode)?.name}`,
+      );
+      setGenerationProgress((prev) => ({ ...prev, [langCode]: "error" }));
+    } finally {
+      setGeneratingLanguages((prev) => prev.filter((l) => l !== langCode));
+    }
+  };
+
+  // Function to generate blog content with AI for multiple languages
+  const generateWithAIForLanguages = async (languages: string[]) => {
+    if (!aiGenerationInput.title) {
+      return;
+    }
+
+    setAiGenerating(true);
+    setGeneratingLanguages(languages);
+    setGenerationProgress(
+      languages.reduce(
+        (acc, lang) => {
+          acc[lang] = "pending";
+          return acc;
+        },
+        {} as Record<string, "pending" | "success" | "error">,
+      ),
+    );
+
+    try {
+      // Generate content for all languages concurrently
+      await Promise.all(languages.map(generateForLanguage));
+      setAiDialogOpen(false);
     } catch (err) {
       setError(
         err instanceof Error
@@ -322,8 +382,12 @@ export default function NewBlogPostPage() {
       console.error(err);
     } finally {
       setAiGenerating(false);
+      setGeneratingLanguages([]);
     }
   };
+
+  // Replace the old generateWithAI function with this new one
+  const generateWithAI = () => generateWithAIForLanguages([activeLanguageTab]);
 
   return (
     <>
@@ -519,12 +583,31 @@ export default function NewBlogPostPage() {
                       </div>
 
                       <div className="bg-slate-50 p-5 rounded-lg border border-slate-100">
-                        <h3 className="font-medium text-slate-800 mb-4 flex items-center gap-2">
-                          <span className="bg-blue-100 text-blue-600 p-1 rounded">
-                            <Globe size={16} />
-                          </span>
-                          Languages ({enabledLanguagesCount} selected)
-                        </h3>
+                        <div className="flex justify-between items-center mb-4">
+                          <h3 className="font-medium text-slate-800 flex items-center gap-2">
+                            <span className="bg-blue-100 text-blue-600 p-1 rounded">
+                              <Globe size={16} />
+                            </span>
+                            Languages ({enabledLanguagesCount} selected)
+                          </h3>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              handleSelectAllLanguages(
+                                enabledLanguagesCount <
+                                  AVAILABLE_LANGUAGES.length - 1,
+                              )
+                            }
+                            className="text-xs"
+                          >
+                            {enabledLanguagesCount <
+                            AVAILABLE_LANGUAGES.length - 1
+                              ? "Select All"
+                              : "Deselect All"}
+                          </Button>
+                        </div>
 
                         <div className="grid grid-cols-2 gap-3">
                           {AVAILABLE_LANGUAGES.map((lang) => (
@@ -614,24 +697,30 @@ export default function NewBlogPostPage() {
                                   <Button
                                     type="button"
                                     className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white flex items-center gap-1"
+                                    disabled={aiGenerating}
                                   >
                                     <Sparkles size={16} />
-                                    Generate with AI
+                                    {aiGenerating ? (
+                                      <>
+                                        <Loader2
+                                          size={16}
+                                          className="mr-2 animate-spin"
+                                        />
+                                        Generating...
+                                      </>
+                                    ) : (
+                                      "Generate with AI"
+                                    )}
                                   </Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-[500px]">
-                                  <DialogHeader>
+                                <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+                                  <DialogHeader className="sticky top-0 bg-white pb-4 border-b">
                                     <DialogTitle>
                                       Generate Blog Content with AI
                                     </DialogTitle>
                                     <DialogDescription>
-                                      Generate a blog post in{" "}
-                                      {AVAILABLE_LANGUAGES.find(
-                                        (lang) =>
-                                          lang.code === activeLanguageTab,
-                                      )?.name || "English"}{" "}
-                                      using AI. Provide a title and optional
-                                      context.
+                                      Generate blog posts using AI. Provide a
+                                      title and optional context.
                                     </DialogDescription>
                                   </DialogHeader>
                                   <div className="space-y-4 py-4">
@@ -668,41 +757,100 @@ export default function NewBlogPostPage() {
                                         }
                                       />
                                     </div>
+                                    {Object.keys(generationProgress).length >
+                                      0 && (
+                                      <div className="space-y-2 border rounded-lg p-4 bg-slate-50">
+                                        <Label className="mb-2 block">
+                                          Generation Progress:
+                                        </Label>
+                                        <div className="grid grid-cols-2 gap-2">
+                                          {Object.entries(
+                                            generationProgress,
+                                          ).map(([langCode, status]) => (
+                                            <div
+                                              key={langCode}
+                                              className={cn(
+                                                "flex items-center justify-between p-2 rounded-md",
+                                                status === "pending" &&
+                                                  "bg-yellow-50 text-yellow-700",
+                                                status === "success" &&
+                                                  "bg-green-50 text-green-700",
+                                                status === "error" &&
+                                                  "bg-red-50 text-red-700",
+                                              )}
+                                            >
+                                              <span>
+                                                {
+                                                  AVAILABLE_LANGUAGES.find(
+                                                    (l) => l.code === langCode,
+                                                  )?.name
+                                                }
+                                              </span>
+                                              {status === "pending" && (
+                                                <Loader2
+                                                  size={14}
+                                                  className="animate-spin"
+                                                />
+                                              )}
+                                              {status === "success" && (
+                                                <Check size={14} />
+                                              )}
+                                              {status === "error" && (
+                                                <X size={14} />
+                                              )}
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    )}
                                   </div>
-                                  <DialogFooter>
-                                    <Button
-                                      type="button"
-                                      variant="outline"
-                                      onClick={() => setAiDialogOpen(false)}
-                                    >
-                                      Cancel
-                                    </Button>
-                                    <Button
-                                      type="button"
-                                      onClick={generateWithAI}
-                                      disabled={
-                                        aiGenerating || !aiGenerationInput.title
-                                      }
-                                      className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
-                                    >
-                                      {aiGenerating ? (
-                                        <>
-                                          <Loader2
-                                            size={16}
-                                            className="mr-2 animate-spin"
-                                          />
-                                          Generating...
-                                        </>
-                                      ) : (
-                                        <>
-                                          <Sparkles
-                                            size={16}
-                                            className="mr-2"
-                                          />
-                                          Generate
-                                        </>
-                                      )}
-                                    </Button>
+                                  <DialogFooter className="sticky bottom-0 bg-white pt-4 border-t">
+                                    <div className="flex flex-col space-y-2 w-full sm:flex-row sm:space-y-0 sm:space-x-2">
+                                      <Button
+                                        type="button"
+                                        onClick={() => generateWithAI()}
+                                        disabled={
+                                          aiGenerating ||
+                                          !aiGenerationInput.title
+                                        }
+                                        className="flex-1 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+                                      >
+                                        Generate for{" "}
+                                        {
+                                          AVAILABLE_LANGUAGES.find(
+                                            (lang) =>
+                                              lang.code === activeLanguageTab,
+                                          )?.name
+                                        }
+                                      </Button>
+                                      <Button
+                                        type="button"
+                                        onClick={() =>
+                                          generateWithAIForLanguages(
+                                            Object.entries(formData.languages)
+                                              .filter(
+                                                ([_, data]) => data.isEnabled,
+                                              )
+                                              .map(([code]) => code),
+                                          )
+                                        }
+                                        disabled={
+                                          aiGenerating ||
+                                          !aiGenerationInput.title
+                                        }
+                                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
+                                      >
+                                        Generate for All Languages
+                                      </Button>
+                                      <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={() => setAiDialogOpen(false)}
+                                        className="sm:w-auto"
+                                      >
+                                        Cancel
+                                      </Button>
+                                    </div>
                                   </DialogFooter>
                                 </DialogContent>
                               </Dialog>
