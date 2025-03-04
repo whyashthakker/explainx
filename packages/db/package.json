@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
-    "@prisma/extension-accelerate": "^1.2.1",
     "prisma": "^6.1.0"
   }
 }
