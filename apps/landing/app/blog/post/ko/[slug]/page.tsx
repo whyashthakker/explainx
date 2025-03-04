@@ -148,7 +148,7 @@ export async function generateMetadata(props: {
   }
 
   const defaultImage = "/images/main/landing.png";
-  const baseUrl = "https://www.revns.com";
+  const baseUrl = "https://www.explainx.ai";
 
   // Generate hreflang entries for all supported languages
   const alternates: Record<string, string> = {};
@@ -196,7 +196,18 @@ export async function generateMetadata(props: {
       images: [defaultImage],
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
-    keywords: ["이커머스 솔루션", "마켓플레이스 관리", "아마존 판매자 서비스"],
+    keywords: [
+      "AI 에이전트",
+      "MVP 솔루션",
+      "AI 에이전트 자동화",
+      "AI 에이전트 개발",
+      "AI 에이전트 훈련",
+      "AI 에이전트 구현",
+      "AI 에이전트 최적화",
+      "AI 에이전트 모니터링",
+      "AI 에이전트 문제 해결",
+      "AI 에이전트 유지 관리",
+    ],
     referrer: "origin-when-cross-origin",
     category: "technology",
     other: {
@@ -272,15 +283,22 @@ export default async function Page(props: { params: Params }) {
         language="ko"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "이커머스 솔루션",
-          "마켓플레이스 관리",
-          "아마존 판매자 서비스",
+          "AI 에이전트",
+          "MVP 솔루션",
+          "AI 에이전트 자동화",
+          "AI 에이전트 개발",
+          "AI 에이전트 훈련",
+          "AI 에이전트 구현",
+          "AI 에이전트 최적화",
+          "AI 에이전트 모니터링",
+          "AI 에이전트 문제 해결",
+          "AI 에이전트 유지 관리",
         ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/ko/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/ko/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}

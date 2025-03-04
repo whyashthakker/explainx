@@ -148,7 +148,7 @@ export async function generateMetadata(props: {
   }
 
   const defaultImage = "/images/main/landing.png";
-  const baseUrl = "https://www.revns.com";
+  const baseUrl = "https://www.explainx.ai";
 
   // Generate hreflang entries for all supported languages
   const alternates: Record<string, string> = {};
@@ -197,9 +197,16 @@ export async function generateMetadata(props: {
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
     keywords: [
-      "решения для электронной коммерции",
-      "управление маркетплейсами",
-      "услуги для продавцов Amazon",
+      "ИИ-агенты",
+      "MVP-решения",
+      "Автоматизация ИИ-агентов",
+      "Разработка ИИ-агентов",
+      "Обучение ИИ-агентов",
+      "Внедрение ИИ-агентов",
+      "Оптимизация ИИ-агентов",
+      "Мониторинг ИИ-агентов",
+      "Устранение неполадок ИИ-агентов",
+      "Обслуживание ИИ-агентов",
     ],
     referrer: "origin-when-cross-origin",
     category: "technology",
@@ -272,15 +279,22 @@ export default async function Page(props: { params: Params }) {
         language="ru"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "решения для электронной коммерции",
-          "управление маркетплейсами",
-          "услуги для продавцов Amazon",
+          "ИИ-агенты",
+          "MVP-решения",
+          "Автоматизация ИИ-агентов",
+          "Разработка ИИ-агентов",
+          "Обучение ИИ-агентов",
+          "Внедрение ИИ-агентов",
+          "Оптимизация ИИ-агентов",
+          "Мониторинг ИИ-агентов",
+          "Устранение неполадок ИИ-агентов",
+          "Обслуживание ИИ-агентов",
         ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/ru/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/ru/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}

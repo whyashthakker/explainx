@@ -148,7 +148,7 @@ export async function generateMetadata(props: {
   }
 
   const defaultImage = "/images/main/landing.png";
-  const baseUrl = "https://www.revns.com";
+  const baseUrl = "https://www.explainx.ai";
 
   // Generate hreflang entries for all supported languages
   const alternates: Record<string, string> = {};
@@ -197,9 +197,16 @@ export async function generateMetadata(props: {
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
     keywords: [
-      "soluciones de comercio electrónico",
-      "gestión de marketplaces",
-      "servicios para vendedores de Amazon",
+      "Agentes de IA",
+      "Soluciones MVP",
+      "Automatización de agentes de IA",
+      "Desarrollo de agentes de IA",
+      "Entrenamiento de agentes de IA",
+      "Implementación de agentes de IA",
+      "Optimización de agentes de IA",
+      "Monitoreo de agentes de IA",
+      "Solución de problemas de agentes de IA",
+      "Mantenimiento de agentes de IA",
     ],
     referrer: "origin-when-cross-origin",
     category: "technology",
@@ -272,15 +279,22 @@ export default async function Page(props: { params: Params }) {
         language="es"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "soluciones de comercio electrónico",
-          "gestión de marketplaces",
-          "servicios para vendedores de Amazon",
+          "Agentes de IA",
+          "Soluciones MVP",
+          "Automatización de agentes de IA",
+          "Desarrollo de agentes de IA",
+          "Entrenamiento de agentes de IA",
+          "Implementación de agentes de IA",
+          "Optimización de agentes de IA",
+          "Monitoreo de agentes de IA",
+          "Solución de problemas de agentes de IA",
+          "Mantenimiento de agentes de IA",
         ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/es/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/es/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}

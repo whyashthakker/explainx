@@ -148,7 +148,7 @@ export async function generateMetadata(props: {
   }
 
   const defaultImage = "/images/main/landing.png";
-  const baseUrl = "https://www.revns.com";
+  const baseUrl = "https://www.explainx.ai";
 
   // Generate hreflang entries for all supported languages
   const alternates: Record<string, string> = {};
@@ -197,9 +197,16 @@ export async function generateMetadata(props: {
     },
     authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
     keywords: [
-      "Eコマースソリューション",
-      "マーケットプレイス管理",
-      "Amazonセラー向けサービス",
+      "AIエージェント",
+      "MVPソリューション",
+      "AIエージェント自動化",
+      "AIエージェント開発",
+      "AIエージェントトレーニング",
+      "AIエージェント実装",
+      "AIエージェント最適化",
+      "AIエージェント監視",
+      "AIエージェントトラブルシューティング",
+      "AIエージェントメンテナンス",
     ],
     referrer: "origin-when-cross-origin",
     category: "technology",
@@ -276,15 +283,22 @@ export default async function Page(props: { params: Params }) {
         language="ja"
         categories={post.type === "database" ? post.categories : undefined}
         keywords={[
-          "Eコマースソリューション",
-          "マーケットプレイス管理",
-          "Amazonセラー向けサービス",
+          "AIエージェント",
+          "MVPソリューション",
+          "AIエージェント自動化",
+          "AIエージェント開発",
+          "AIエージェントトレーニング",
+          "AIエージェント実装",
+          "AIエージェント最適化",
+          "AIエージェント監視",
+          "AIエージェントトラブルシューティング",
+          "AIエージェントメンテナンス",
         ]}
         description={post.metadata.description}
-        mainEntityOfPage={`https://www.revns.com/blog/post/ja/${slug}`}
+        mainEntityOfPage={`https://www.explainx.ai/blog/post/ja/${slug}`}
         publisher={{
-          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
-          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+          logo: "https://www.explainx.ai/icons/ExplainX.png",
         }}
         timeToRead={timeToRead || undefined}
         wordCount={wordCount || undefined}
