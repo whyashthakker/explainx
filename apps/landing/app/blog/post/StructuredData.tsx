@@ -59,10 +59,10 @@ export function StructuredData(props: StructuredDataProps) {
     // Add publisher information
     publisher: {
       "@type": "Organization",
-      name: "AISOLO Technologies Pvt. Ltd. (Parent of explainx.ai)",
+      name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
       logo: {
         "@type": "ImageObject",
-        url: "https://explainx.ai/icons/explainx_ai_light.png"
+        url: "https://www.revns.com/icons/Revns_ai_light.png"
       }
     },
     // Add language support

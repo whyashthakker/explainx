@@ -9,9 +9,14 @@ type TOCLink = {
 };
 
 export function TableOfContents({ links }: { links: TOCLink[] }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  // Start expanded by default
+  const [isExpanded, setIsExpanded] = useState(true);
 
-  const filteredLinks = links.slice(0, links.findIndex(link => link.text.includes('Related Posts')));
+  // Improve filtering to be more explicit about what we're excluding
+  const filteredLinks = links.filter(link => 
+    !link.text.toLowerCase().includes('related posts') && 
+    !link.text.toLowerCase().includes('table of contents')
+  );
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -24,8 +29,11 @@ export function TableOfContents({ links }: { links: TOCLink[] }) {
     }
   };
 
+  // Return null if no valid links
+  if (filteredLinks.length === 0) return null;
+
   return (
-    <div className="mb-8 bg-gray-50/50 rounded-lg p-4">
+    <nav aria-label="Table of contents" className="mb-8 bg-gray-50/50 rounded-lg p-4">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full flex items-center justify-between text-gray-900 hover:text-gray-600 transition-colors"
@@ -34,44 +42,46 @@ export function TableOfContents({ links }: { links: TOCLink[] }) {
       >
         <div className="flex items-center space-x-2">
           {isExpanded ? (
-            <ChevronDown className="h-4 w-4" />
+            <ChevronDown className="h-4 w-4" aria-hidden="true" />
           ) : (
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           )}
-          <span className="font-semibold">Table of Contents</span>
+          <span className="font-semibold">On this page</span>
         </div>
       </button>
       
       {isExpanded && (
-        <nav className="mt-3" aria-label="Table of contents">
-          <ul id="toc-list" className="space-y-2 list-none">
-            {filteredLinks.map((link) => (
-              <li
-                key={link.id}
+        <ul 
+          id="toc-list" 
+          className="mt-3 space-y-2 list-none"
+          role="list"
+        >
+          {filteredLinks.map((link) => (
+            <li
+              key={link.id}
+              className={clsx(
+                'leading-normal',
+                link.level === 2 ? 'ml-0' : 'ml-4'
+              )}
+            >
+              <a
+                href={`#${link.id}`}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, link.id)}
                 className={clsx(
-                  'leading-normal',
-                  link.level === 2 ? 'ml-0' : 'ml-4'
+                  'block py-1 text-gray-600',
+                  'hover:text-gray-900 transition-colors',
+                  'no-underline relative',
+                  'after:absolute after:bottom-0 after:left-0 after:h-px',
+                  'after:w-0 hover:after:w-full after:transition-all',
+                  'after:bg-gray-300'
                 )}
               >
-                <a
-                  href={`#${link.id}`}
-                  onClick={(e) => scrollToSection(e, link.id)}
-                  className={clsx(
-                    'block py-1 text-gray-600',
-                    'hover:text-gray-900 transition-colors',
-                    'no-underline relative',
-                    'after:absolute after:bottom-0 after:left-0 after:h-px',
-                    'after:w-0 hover:after:w-full after:transition-all',
-                    'after:bg-gray-300'
-                  )}
-                >
-                  {link.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
       )}
-    </div>
+    </nav>
   );
 }

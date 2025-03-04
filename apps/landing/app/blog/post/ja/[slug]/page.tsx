@@ -1,142 +1,315 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Content } from "./content";
-import fs from 'fs/promises';
-import path from 'path';
+import fs from "fs";
+import path from "path";
+import prismadb from "@repo/db";
 import { StructuredData } from "../../StructuredData";
 
-type Params = {
-   slug: string;
-};
+// ----- 1. CONFIGURATION -----
+
+// Define supported languages and their configurations
+const SUPPORTED_LANGUAGES = {
+  en: { dir: "ltr", prefix: "" },
+  ar: { dir: "rtl", prefix: "/ar" },
+  de: { dir: "ltr", prefix: "/de" },
+  es: { dir: "ltr", prefix: "/es" },
+  fr: { dir: "ltr", prefix: "/fr" },
+  hi: { dir: "ltr", prefix: "/hi" },
+  it: { dir: "ltr", prefix: "/it" },
+  ja: { dir: "ltr", prefix: "/ja" },
+  ko: { dir: "ltr", prefix: "/ko" },
+  nl: { dir: "ltr", prefix: "/nl" },
+  ru: { dir: "ltr", prefix: "/ru" },
+  "zh-cn": { dir: "ltr", prefix: "/zh-cn" },
+} as const;
+
+// ----- 2. TYPE DEFINITIONS -----
+
+type Params = Promise<{
+  slug: string;
+}>;
 
 type BlogPostMetadata = {
-   title: string;
-   description: string;
-   date: string;
-   author: string;
-   language: string;
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  language?: string;
+  wordCount?: number;
 };
 
-async function getPostMetadata(slug: string): Promise<BlogPostMetadata | null> {
-   try {
-       const postsDirectory = path.join(process.cwd(), 'app/blog/_posts/ja');
-       const filePath = path.join(postsDirectory, `${slug}.mdx`);
-       const fileContent = await fs.readFile(filePath, 'utf8');
-       
-       const metadataMatch = fileContent.match(/export const metadata = ({[\s\S]*?})/);
-       if (!metadataMatch) return null;
-       
-       const metadata = eval(`(${metadataMatch[1]})`) as Omit<BlogPostMetadata, 'language'>;
-       return {
-           ...metadata,
-           language: 'ja' // Set Japanese as the language
-       };
-   } catch (error) {
-       console.error('Error reading post metadata:', error);
-       return null;
-   }
-}
+// ----- 3. DATA FETCHING FUNCTIONS -----
 
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
-   const { slug } = await params;
-   const post = await getPostMetadata(slug);
-   
-   if (!post) {
-       return {
-           title: 'Post Not Found',
-           robots: { index: false }
-       };
-   }
-   
-   const defaultImage = '/images/main/landing.png';
-   
-   return {
-       title: post.title,
-       description: post.description,
-       alternates: {
-        canonical: `/blog/post/ja/${slug}`,
-        languages: {
-            'en': `/blog/post/${slug}`,
-            'ar': `/blog/post/ar/${slug}`,
-            'de': `/blog/post/de/${slug}`,
-            'es': `/blog/post/es/${slug}`,
-            'fr': `/blog/post/fr/${slug}`,
-            'hi': `/blog/post/hi/${slug}`,
-            'it': `/blog/post/it/${slug}`,
-            'ja': `/blog/post/ja/${slug}`,
-            'ko': `/blog/post/ko/${slug}`,
-            'nl': `/blog/post/nl/${slug}`,
-            'ru': `/blog/post/ru/${slug}`,
-            'zh-CN': `/blog/post/zh-cn/${slug}`,
+// Function to get post from database
+async function getPostFromDatabase(slug: string) {
+  try {
+    const post = await prismadb.blogPost.findFirst({
+      where: {
+        slug,
+        isPublished: true,
+        language: "ja",
+      },
+      include: {
+        author: {
+          select: {
+            name: true,
+          },
         },
-       },
-       robots: { index: true, follow: true },
-       metadataBase: new URL('https://www.explainx.ai'),
-       openGraph: {
-           type: 'article',
-           locale: 'ja',
-           url: `/blog/post/ja/${slug}`,
-           title: post.title,
-           description: post.description,
-           images: [
-               {
-                   url: defaultImage,
-                   width: 1200,
-                   height: 630,
-                   alt: post.title,
-               }
-           ],
-       },
-       twitter: {
-           card: 'summary_large_image',
-           title: post.title,
-           description: post.description,
-           images: [defaultImage],
-       },
-       other: {
-           'html-lang': 'ja',
-       }
-   };
+      },
+    });
+
+    if (!post) return null;
+
+    return {
+      type: "database",
+      metadata: {
+        title: post.title,
+        description: post.description,
+        date: post.date
+          ? post.date.toISOString().split("T")[0]
+          : new Date().toISOString().split("T")[0],
+        author: "Yash Thakker",
+        language: post.language || "ja",
+        wordCount: post.content ? post.content.split(/\s+/).length : undefined,
+      },
+      content: post.content,
+      categories: post.categories,
+    };
+  } catch (error) {
+    console.error("Error fetching post from database:", error);
+    return null;
+  }
 }
 
-export async function generateStaticParams(): Promise<Array<Params>> {
-   const postsDirectory = path.join(process.cwd(), 'app/blog/_posts/ja');
-   const posts = await fs.readdir(postsDirectory)
-       .then(files => 
-           files.filter(file => file.endsWith('.mdx'))
-                .sort((a, b) => b.localeCompare(a))
-       );
-       
-   return posts.map((post) => ({
-       slug: post.replace(/\.mdx$/, ''),
-   }));
+// Function to get post from MDX file
+async function getPostFromMDX(
+  slug: string,
+): Promise<{ type: "mdx"; metadata: BlogPostMetadata | null }> {
+  try {
+    const postsDirectory = path.join(process.cwd(), "app/blog/_posts/ja");
+    const filePath = path.join(postsDirectory, `${slug}.mdx`);
+
+    if (!fs.existsSync(filePath)) {
+      return { type: "mdx", metadata: null };
+    }
+
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    const metadataMatch = fileContent.match(
+      /export const metadata = ({[\s\S]*?})/,
+    );
+    if (!metadataMatch) return { type: "mdx", metadata: null };
+
+    const metadata = eval(`(${metadataMatch[1]})`) as Omit<
+      BlogPostMetadata,
+      "language"
+    >;
+    return {
+      type: "mdx",
+      metadata: {
+        ...metadata,
+        language: "ja",
+      },
+    };
+  } catch (error) {
+    console.error("Error reading post metadata:", error);
+    return { type: "mdx", metadata: null };
+  }
 }
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+// Combined function to get post from either source
+async function getPost(slug: string) {
+  // First try to get from database
+  const dbPost = await getPostFromDatabase(slug);
+  if (dbPost) return dbPost;
 
-export default async function Page({ params }: { params: Promise<Params> }) {
-   const { slug } = await params;
-   const postMetadata = await getPostMetadata(slug);
-   
-   if (!postMetadata) {
-       notFound();
-   }
+  // If not in database, try MDX
+  const mdxPost = await getPostFromMDX(slug);
+  if (mdxPost.metadata) return mdxPost;
 
-   const defaultImage = ['/images/main/landing.png'];
+  // Post not found in either source
+  return null;
+}
 
-   return (
-       <>
-           <StructuredData
-               headline={postMetadata.title}
-               datePublished={postMetadata.date}
-               dateModified={postMetadata.date}
-               authorName={postMetadata.author}
-               authorUrl="https://goyashy.com"
-               image={defaultImage}
-               language={postMetadata.language}
-           />
-           <Content slug={slug} metadata={postMetadata} />
-       </>
-   );
+// ----- 4. NEXT.JS PAGE CONFIGURATION -----
+
+export async function generateMetadata(props: {
+  params: Params;
+}): Promise<Metadata> {
+  const params = await props.params;
+  const slug = params.slug;
+  const post = await getPost(slug);
+
+  if (!post || !post.metadata) {
+    return {
+      title: "投稿が見つかりません",
+      robots: { index: false },
+    };
+  }
+
+  const defaultImage = "/images/main/landing.png";
+  const baseUrl = "https://www.revns.com";
+
+  // Generate hreflang entries for all supported languages
+  const alternates: Record<string, string> = {};
+
+  // Generate alternates for all supported languages
+  Object.entries(SUPPORTED_LANGUAGES).forEach(([lang, config]) => {
+    const langPath =
+      lang === "en"
+        ? `/blog/post/${slug}`
+        : `/blog/post${config.prefix}/${slug}`;
+    alternates[lang] = `${baseUrl}${langPath}`;
+  });
+
+  // Add x-default to the alternates object
+  alternates["x-default"] = `${baseUrl}/blog/post/${slug}`;
+
+  return {
+    title: post.metadata.title,
+    description: post.metadata.description,
+    alternates: {
+      canonical: `${baseUrl}/blog/post/ja/${slug}`,
+      languages: alternates,
+    },
+    robots: { index: true, follow: true },
+    metadataBase: new URL(baseUrl),
+    openGraph: {
+      type: "article",
+      locale: "ja_JP",
+      url: `${baseUrl}/blog/post/ja/${slug}`,
+      title: post.metadata.title,
+      description: post.metadata.description,
+      images: [
+        {
+          url: defaultImage,
+          width: 1200,
+          height: 630,
+          alt: post.metadata.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.metadata.title,
+      description: post.metadata.description,
+      images: [defaultImage],
+    },
+    authors: [{ url: "https://goyashy.com", name: post.metadata.author }],
+    keywords: [
+      "Eコマースソリューション",
+      "マーケットプレイス管理",
+      "Amazonセラー向けサービス",
+    ],
+    referrer: "origin-when-cross-origin",
+    category: "technology",
+    other: {
+      "html-lang": "ja",
+    },
+  };
+}
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  // Get MDX files from the Japanese directory
+  const postsDirectory = path.join(process.cwd(), "app/blog/_posts/ja");
+
+  // Check if directory exists first
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
+
+  const mdxPosts = fs
+    .readdirSync(postsDirectory)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => ({ slug: file.replace(/\.mdx$/, "") }));
+
+  // We can't get database posts at build time for static generation
+  // They will be handled by dynamic rendering
+
+  return mdxPosts;
+}
+
+// For ISR, we want to allow dynamic parameters
+export const dynamicParams = true;
+
+// Use the Next.js 13+ segment configuration
+export const revalidate = 3600; // Revalidate every hour
+
+// ----- 5. PAGE COMPONENT -----
+
+export default async function Page(props: { params: Params }) {
+  const params = await props.params;
+  const slug = params.slug;
+  const post = await getPost(slug);
+
+  if (!post || !post.metadata) {
+    notFound();
+  }
+
+  const defaultImage = ["/images/main/landing.png"];
+
+  // Estimate reading time and word count for structured data
+  let wordCount = 0;
+  let timeToRead = "";
+
+  if (post.type === "database" && "content" in post) {
+    // Rough estimate of word count for database content
+    // Note: Japanese word counting differs from English due to lack of spaces
+    // between words. This is a simple approximation.
+    wordCount = post.content.split(/\s+/).length;
+
+    // Estimate reading time
+    // Japanese reading speed might be different, but using similar estimate for consistency
+    const minutes = Math.ceil(wordCount / 225);
+    timeToRead = `PT${minutes}M`;
+  }
+
+  return (
+    <>
+      <StructuredData
+        headline={post.metadata.title}
+        datePublished={post.metadata.date!}
+        dateModified={post.metadata.date!}
+        authorName={post.metadata.author}
+        authorUrl="https://goyashy.com"
+        image={defaultImage}
+        language="ja"
+        categories={post.type === "database" ? post.categories : undefined}
+        keywords={[
+          "Eコマースソリューション",
+          "マーケットプレイス管理",
+          "Amazonセラー向けサービス",
+        ]}
+        description={post.metadata.description}
+        mainEntityOfPage={`https://www.revns.com/blog/post/ja/${slug}`}
+        publisher={{
+          name: "AISOLO Technologies Pvt. Ltd. (Parent of revns.com)",
+          logo: "https://www.revns.com/icons/Revns_ai_light.png",
+        }}
+        timeToRead={timeToRead || undefined}
+        wordCount={wordCount || undefined}
+        isOriginal={true}
+      />
+      {post.type === "mdx" ? (
+        <Content
+          slug={slug}
+          metadata={{
+            title: post.metadata.title,
+            date: post.metadata.date!,
+            author: post.metadata.author,
+          }}
+        />
+      ) : (
+        <Content
+          slug={slug}
+          metadata={{
+            title: post.metadata.title,
+            date: post.metadata.date!,
+            author: post.metadata.author,
+          }}
+          dbContent={"content" in post ? post.content : ""}
+        />
+      )}
+    </>
+  );
 }

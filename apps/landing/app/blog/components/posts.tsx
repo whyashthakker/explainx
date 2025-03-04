@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@repo/ui/components/ui/button";
+import postData from "../../../data/post-data";
 
 // Define types for our props and post data
 type Author = {
@@ -29,27 +30,51 @@ type PostsProps = {
 };
 
 export function Posts({ initialPosts }: PostsProps) {
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  // Combine initialPosts with postData
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
+  const [selectedLanguage, setSelectedLanguage] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
-  
-  const languages = ["all", ...Array.from(new Set(initialPosts.map(post => post.language)))
-    .filter(lang => lang !== 'all')
-    .sort()
+
+  // Use useEffect to combine the posts when component mounts or initialPosts changes
+  useEffect(() => {
+    // Combine posts, avoiding duplicates (assuming title is unique)
+    const combinedPosts = [...initialPosts];
+
+    // Add posts from postData that don't already exist in initialPosts
+    postData.forEach((post) => {
+      const exists = initialPosts.some(
+        (initialPost) => initialPost.title === post.title,
+      );
+      if (!exists) {
+        combinedPosts.push(post);
+      }
+    });
+
+    setAllPosts(combinedPosts);
+  }, [initialPosts]);
+
+  const languages = [
+    "all",
+    ...Array.from(new Set(allPosts.map((post) => post.language)))
+      .filter((lang) => lang !== "all")
+      .sort(),
   ];
-  
-  const categories = ["all", ...Array.from(new Set(
-    initialPosts.flatMap(post => post.categories)
-  ))
-    .filter(cat => cat !== 'all')
-    .sort()
+
+  const categories = [
+    "all",
+    ...Array.from(new Set(allPosts.flatMap((post) => post.categories)))
+      .filter((cat) => cat !== "all")
+      .sort(),
   ];
-  
+
   // Filter posts
-  const filteredPosts = initialPosts.filter(post => {
-    const matchesLanguage = selectedLanguage === "all" || post.language === selectedLanguage;
-    const matchesCategory = selectedCategory === "all" || post.categories.includes(selectedCategory);
+  const filteredPosts = allPosts.filter((post) => {
+    const matchesLanguage =
+      selectedLanguage === "all" || post.language === selectedLanguage;
+    const matchesCategory =
+      selectedCategory === "all" || post.categories.includes(selectedCategory);
     return matchesLanguage && matchesCategory;
   });
 
@@ -73,21 +98,22 @@ export function Posts({ initialPosts }: PostsProps) {
       ja: "Japanese (日本語)",
       ko: "Korean (한국어)",
       nl: "Dutch (Nederlands)",
-      ru: "Russian (Русский)"
+      ru: "Russian (Русский)",
     };
     return displayNames[lang] || lang.toUpperCase();
   };
 
   const formatCategory = (category: string) => {
-    if (category === 'all') return 'All Topics';
-    return category.split('-').map(word => 
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ');
+    if (category === "all") return "All Topics";
+    return category
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   };
 
-  const handleFilterChange = (type: 'language' | 'category', value: string) => {
-    if (type === 'language') setSelectedLanguage(value);
-    if (type === 'category') setSelectedCategory(value);
+  const handleFilterChange = (type: "language" | "category", value: string) => {
+    if (type === "language") setSelectedLanguage(value);
+    if (type === "category") setSelectedCategory(value);
     setCurrentPage(1);
   };
 
@@ -111,16 +137,20 @@ export function Posts({ initialPosts }: PostsProps) {
           <div className="flex flex-col gap-6 mb-8">
             {/* Language Filter */}
             <div className="flex flex-wrap items-center gap-3">
-              <span className="text-sm font-medium text-gray-700">Filter by:</span>
+              <span className="text-sm font-medium text-gray-700">
+                Filter by:
+              </span>
               <div className="flex flex-wrap gap-2">
                 {languages.map((language) => (
                   <button
                     key={language}
-                    onClick={() => handleFilterChange('language', language)}
+                    onClick={() => handleFilterChange("language", language)}
                     className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all
-                      ${selectedLanguage === language 
-                        ? 'bg-gray-100 text-gray-800' 
-                        : 'text-gray-600 hover:bg-gray-100'}`}
+                      ${
+                        selectedLanguage === language
+                          ? "bg-gray-100 text-gray-800"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
                   >
                     {getLanguageDisplay(language)}
                   </button>
@@ -135,11 +165,13 @@ export function Posts({ initialPosts }: PostsProps) {
                 {categories.map((category) => (
                   <button
                     key={category}
-                    onClick={() => handleFilterChange('category', category)}
+                    onClick={() => handleFilterChange("category", category)}
                     className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all
-                      ${selectedCategory === category 
-                        ? 'bg-gray-100 text-gray-800' 
-                        : 'text-gray-600 hover:bg-gray-100'}`}
+                      ${
+                        selectedCategory === category
+                          ? "bg-gray-100 text-gray-800"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
                   >
                     {formatCategory(category)}
                   </button>
@@ -148,10 +180,22 @@ export function Posts({ initialPosts }: PostsProps) {
             </div>
           </div>
 
+          {/* Posts Count */}
+          <div className="mt-2 mb-4">
+            <p className="text-sm text-gray-600">
+              Showing {filteredPosts.length} posts
+              {selectedLanguage !== "all" || selectedCategory !== "all"
+                ? " (filtered)"
+                : ""}
+            </p>
+          </div>
+
           {/* Posts List */}
           {currentPosts.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-500">No posts available with selected filters.</p>
+              <p className="text-gray-500">
+                No posts available with selected filters.
+              </p>
             </div>
           ) : (
             <div className="mt-5 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
@@ -168,10 +212,12 @@ export function Posts({ initialPosts }: PostsProps) {
                       {getLanguageDisplay(post.language)}
                     </span>
                     <div className="flex flex-wrap gap-1">
-                      {post.categories.map(category => (
+                      {post.categories.map((category) => (
                         <button
                           key={category}
-                          onClick={() => handleFilterChange('category', category)}
+                          onClick={() =>
+                            handleFilterChange("category", category)
+                          }
                           className="text-gray-600 hover:text-gray-800 font-medium cursor-pointer"
                         >
                           #{formatCategory(category)}
@@ -218,20 +264,22 @@ export function Posts({ initialPosts }: PostsProps) {
             <div className="mt-12 flex justify-center items-center gap-4">
               <Button
                 variant="outline"
-                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
                 className="text-gray-700 border-gray-200 hover:bg-gray-50"
               >
                 Previous
               </Button>
-              
+
               <span className="text-sm text-gray-600">
                 Page {currentPage} of {totalPages}
               </span>
 
               <Button
                 variant="outline"
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
                 disabled={currentPage === totalPages}
                 className="text-gray-700 border-gray-200 hover:bg-gray-50"
               >
@@ -244,3 +292,4 @@ export function Posts({ initialPosts }: PostsProps) {
     </div>
   );
 }
+
