@@ -10,7 +10,6 @@ export async function handleGoogleSignIn(redirectPath: string) {
 export async function handleEmailSignIn(email: string, redirectPath: string) {
   await signIn("resend", {
     email,
-    userType: "BRAND",
     redirectTo: redirectPath,
   });
 }
