@@ -1,5 +1,6 @@
 // types/onboarding.ts
-import { TeamRole } from "@repo/db";
+
+import { TeamRole } from "@prisma/client";
 
 export type OnboardingUser = {
   id: string;
