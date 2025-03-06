@@ -1,12 +1,11 @@
-generator client {schema
+generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-provider  = "postgresql"
-url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
-
 
 // Authentication Models
 model User {
@@ -15,28 +14,27 @@ model User {
   email         String    @unique
   emailVerified DateTime?
   image         String?
-  
+
   // Auth relations
-  accounts      Account[]
-  sessions      Session[]
+  accounts       Account[]
+  sessions       Session[]
   authenticators Authenticator[]
 
-   // Onboarding fields
-  isOnboarded   Boolean   @default(false)
-  onboardingStep String?  // To track which step of onboarding they're on
+  // Onboarding fields
+  isOnboarded    Boolean @default(false)
+  onboardingStep String? // To track which step of onboarding they're on
 
   // Organization relation
-  organizationTeamMemberships    OrganizationTeamMember[]
+  organizationTeamMemberships OrganizationTeamMember[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   blogPosts BlogPost[]
 
-  isAdmin Boolean @default(false)
+  isAdmin      Boolean @default(false)
   isBetaTester Boolean @default(false)
 }
-
 
 model Account {
   userId            String
@@ -50,12 +48,12 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([provider, providerAccountId])
 }
 
@@ -85,7 +83,7 @@ model Authenticator {
   counter              Int
   credentialDeviceType String
   credentialBackedUp   Boolean
-  transports          String?
+  transports           String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -107,184 +105,183 @@ enum InviteStatus {
 
 // Organization Team Management
 model Organization {
-  id          String    @id @default(cuid())
-  name        String
-  industry    String?   // Basic detail during onboarding
-  size        String?   // Basic detail during onboarding
-  website     String?   // Basic detail during onboarding
-  team        OrganizationTeam?
-  
+  id       String            @id @default(cuid())
+  name     String
+  industry String? // Basic detail during onboarding
+  size     String? // Basic detail during onboarding
+  website  String? // Basic detail during onboarding
+  team     OrganizationTeam?
+
   // Onboarding fields
   setupCompleted Boolean @default(false)
-  setupStep     String? // To track organization setup progress
-  
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  setupStep      String? // To track organization setup progress
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model OrganizationTeamMember {
-  id            String    @id @default(cuid())
-  teamId        String
-  team          OrganizationTeam @relation(fields: [teamId], references: [id])
-  userId        String?   // Optional to allow for pending invites
-  user          User?     @relation(fields: [userId], references: [id])
-  role          TeamRole
-  inviteStatus  InviteStatus
-  inviteToken   String?   @unique
-  inviteEmail   String?   // For pending invites
-  
+  id           String           @id @default(cuid())
+  teamId       String
+  team         OrganizationTeam @relation(fields: [teamId], references: [id])
+  userId       String? // Optional to allow for pending invites
+  user         User?            @relation(fields: [userId], references: [id])
+  role         TeamRole
+  inviteStatus InviteStatus
+  inviteToken  String?          @unique
+  inviteEmail  String? // For pending invites
+
   // New fields for handling invited users during onboarding
   isInvitedDuringOnboarding Boolean @default(false)
-  invitedBy    String?    // ID of the user who sent the invite
-  
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  invitedBy                 String? // ID of the user who sent the invite
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([teamId, inviteEmail]) // Ensure unique invites per email
   @@unique([teamId, userId]) // Ensure unique user memberships
 }
 
-
 model OrganizationTeam {
-  id              String    @id @default(cuid())
-  organizationId  String    @unique
-  organization    Organization @relation(fields: [organizationId], references: [id])
-  
-  members         OrganizationTeamMember[]
-  
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  id             String       @id @default(cuid())
+  organizationId String       @unique
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  members OrganizationTeamMember[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // Marketplace
 
 model Agent {
-  id          String    @id @default(cuid())
+  id          String  @id @default(cuid())
   name        String
   description String
   price       Float
   category    String
-  isActive    Boolean   @default(true)
-  
-  // Config fields
-  role        String
-  goal        String    @db.Text
-  backstory   String    @db.Text
-  verbose     Boolean   @default(true)
-  
-  // Custom API configurations
-  apiRoutes   ApiRoute[]
-  
-  // Relations
-  tools       AgentTool[]
-  agentCrews  AgentCrewMember[]
-  tasks       Task[]
-  workflowTasks WorkflowTask[]
-  workflows   WorkflowAgent[]
+  isActive    Boolean @default(true)
 
-  createdAt   DateTime  @default(now()) 
-  updatedAt   DateTime  @updatedAt
+  // Config fields
+  role      String
+  goal      String  @db.Text
+  backstory String  @db.Text
+  verbose   Boolean @default(true)
+
+  // Custom API configurations
+  apiRoutes ApiRoute[]
+
+  // Relations
+  tools         AgentTool[]
+  agentCrews    AgentCrewMember[]
+  tasks         Task[]
+  workflowTasks WorkflowTask[]
+  workflows     WorkflowAgent[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model AgentTool {
-  id          String    @id @default(cuid())
-  agentId     String
-  toolId      String
-  
-  agent       Agent     @relation(fields: [agentId], references: [id])
-  tool        Tool      @relation(fields: [toolId], references: [id])
+  id      String @id @default(cuid())
+  agentId String
+  toolId  String
 
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  agent Agent @relation(fields: [agentId], references: [id])
+  tool  Tool  @relation(fields: [toolId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([agentId, toolId])
 }
 
 model AgentCrew {
-  id          String    @id @default(cuid())
+  id          String  @id @default(cuid())
   name        String
-  description String    @db.Text
+  description String  @db.Text
   price       Float
   category    String
-  isActive    Boolean   @default(true)
-  
-  // Config fields
-  processType String    @default("sequential") // sequential, parallel, etc
-  verbose     Boolean   @default(true)
-  
-  // Relations
-  agents      AgentCrewMember[]
-  tasks       Task[]
-  apiRoutes   ApiRoute[]
+  isActive    Boolean @default(true)
 
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  // Config fields
+  processType String  @default("sequential") // sequential, parallel, etc
+  verbose     Boolean @default(true)
+
+  // Relations
+  agents    AgentCrewMember[]
+  tasks     Task[]
+  apiRoutes ApiRoute[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model AgentCrewMember {
-  id          String    @id @default(cuid())
-  crewId      String
-  agentId     String
-  
-  crew        AgentCrew @relation(fields: [crewId], references: [id])
-  agent       Agent     @relation(fields: [agentId], references: [id])
+  id      String @id @default(cuid())
+  crewId  String
+  agentId String
 
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  crew  AgentCrew @relation(fields: [crewId], references: [id])
+  agent Agent     @relation(fields: [agentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([crewId, agentId])
 }
 
 model Task {
-  id              String    @id @default(cuid())
-  description     String    @db.Text
-  expectedOutput  String    @db.Text
-  asyncExecution  Boolean   @default(false)
-  
+  id             String  @id @default(cuid())
+  description    String  @db.Text
+  expectedOutput String  @db.Text
+  asyncExecution Boolean @default(false)
+
   // Relations
-  agentId         String?   // Optional as task can belong to crew or individual agent
-  agent           Agent?    @relation(fields: [agentId], references: [id])
-  
-  crewId          String?
-  crew            AgentCrew? @relation(fields: [crewId], references: [id])
-  
-  status          TaskStatus @default(PENDING)
-  result          String?    @db.Text // Store task execution result
-  
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  agentId String? // Optional as task can belong to crew or individual agent
+  agent   Agent?  @relation(fields: [agentId], references: [id])
+
+  crewId String?
+  crew   AgentCrew? @relation(fields: [crewId], references: [id])
+
+  status TaskStatus @default(PENDING)
+  result String?    @db.Text // Store task execution result
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model ApiRoute {
-  id          String    @id @default(cuid())
-  name        String
-  endpoint    String
-  method      HttpMethod
-  
+  id       String     @id @default(cuid())
+  name     String
+  endpoint String
+  method   HttpMethod
+
   // Authentication details
   authType    AuthType?
-  apiKey      String?   // Encrypted
-  bearerToken String?   // Encrypted
-  username    String?   // For basic auth
-  password    String?   // For basic auth, encrypted
-  
+  apiKey      String? // Encrypted
+  bearerToken String? // Encrypted
+  username    String? // For basic auth
+  password    String? // For basic auth, encrypted
+
   // Request configuration
-  headers     Json?     // Custom headers as JSON
-  parameters  Json?     // Query/Path parameters as JSON
-  bodySchema  Json?     // Expected request body schema
-  
+  headers    Json? // Custom headers as JSON
+  parameters Json? // Query/Path parameters as JSON
+  bodySchema Json? // Expected request body schema
+
   // Response handling
   responseMapping Json? // How to map API response to agent's expected format
-  
+
   // Relations - API route can belong to either an agent or crew
-  agentId     String?
-  agent       Agent?    @relation(fields: [agentId], references: [id])
-  
-  crewId      String?
-  crew        AgentCrew? @relation(fields: [crewId], references: [id])
-  
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  agentId String?
+  agent   Agent?  @relation(fields: [agentId], references: [id])
+
+  crewId String?
+  crew   AgentCrew? @relation(fields: [crewId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum HttpMethod {
@@ -310,67 +307,67 @@ enum TaskStatus {
 }
 
 model Tool {
-  id          String    @id @default(cuid())
+  id          String  @id @default(cuid())
   name        String
   description String
   apiEndpoint String?
-  apiKey      String?   // Encrypted
-  parameters  Json?     // Tool-specific parameters
-  
-  // Relations
-  agents      AgentTool[]
-  taskTools   TaskTool[]
+  apiKey      String? // Encrypted
+  parameters  Json? // Tool-specific parameters
 
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  // Relations
+  agents    AgentTool[]
+  taskTools TaskTool[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model WorkflowTask {
-  id            String   @id @default(cuid())
-  description   String
+  id             String     @id @default(cuid())
+  description    String
   expectedOutput String?
-  asyncExecution Boolean @default(false)
-  workflow      Workflow @relation(fields: [workflowId], references: [id])
-  workflowId    String
-  agent         Agent?   @relation(fields: [agentId], references: [id])
-  agentId       String?
-  taskTools     TaskTool[]
+  asyncExecution Boolean    @default(false)
+  workflow       Workflow   @relation(fields: [workflowId], references: [id])
+  workflowId     String
+  agent          Agent?     @relation(fields: [agentId], references: [id])
+  agentId        String?
+  taskTools      TaskTool[]
 }
 
 model TaskTool {
-  id        String      @id @default(cuid())
-  task      WorkflowTask @relation(fields: [taskId], references: [id])
-  taskId    String
-  tool      Tool        @relation(fields: [toolId], references: [id])
-  toolId    String
+  id     String       @id @default(cuid())
+  task   WorkflowTask @relation(fields: [taskId], references: [id])
+  taskId String
+  tool   Tool         @relation(fields: [toolId], references: [id])
+  toolId String
 }
 
 model Workflow {
-  id              String    @id @default(cuid())
-  name            String
-  description     String?
-  processType     String
-  verbose         Boolean   @default(true)
+  id                String          @id @default(cuid())
+  name              String
+  description       String?
+  processType       String
+  verbose           Boolean         @default(true)
   customApiEndpoint String?
-  tasks           WorkflowTask[]
-  agents          WorkflowAgent[]
-  config          Json?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  tasks             WorkflowTask[]
+  agents            WorkflowAgent[]
+  config            Json?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
 }
 
 model WorkflowAgent {
-  id          String    @id @default(cuid())
-  workflow    Workflow  @relation(fields: [workflowId], references: [id])
-  workflowId  String
-  agent       Agent     @relation(fields: [agentId], references: [id])
-  agentId     String
+  id         String   @id @default(cuid())
+  workflow   Workflow @relation(fields: [workflowId], references: [id])
+  workflowId String
+  agent      Agent    @relation(fields: [agentId], references: [id])
+  agentId    String
 }
 
 model BlogPost {
   id          String   @id @default(uuid())
   title       String
-  slug        String  
+  slug        String
   content     String   @db.Text
   description String   @db.Text
   date        DateTime
@@ -387,5 +384,3 @@ model BlogPost {
   @@index([language])
   @@index([isPublished])
 }
-
-
