@@ -948,7 +948,7 @@ export default function NewBlogPostPage() {
   title: "Your Post Title",
   description: "A brief description of your post",
   date: "${new Date().toISOString().split("T")[0]}",
-  author: "Geeta"
+  author: "Yash Thakker"
 }
 
 Write your content in ${lang.name} using Markdown...`}

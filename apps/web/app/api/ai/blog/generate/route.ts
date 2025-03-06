@@ -54,6 +54,7 @@ Behind ExplainX's success stands a team of dedicated professionals led by:
 - Yash Thakker (CEO & Product Lead)
 - Geeta Thakker (CMO & Operations)
 
+
 Their combined expertise in AI strategy, product development, machine learning, and AI architecture ensures that ExplainX remains at the forefront of AI innovation.
 
 ## The Open-Source Advantage
