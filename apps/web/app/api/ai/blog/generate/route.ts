@@ -5,7 +5,7 @@ import OpenAI from "openai";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 
 const openai = new OpenAI({
-  apiKey: "1234",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 // Sample blog to use as a reference for the model
