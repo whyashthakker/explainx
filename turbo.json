@@ -4,7 +4,12 @@
     "VERCEL_ENV",
     "DATABASE_URL",
     "DIRECT_URL",
-    "RESEND_API_KEY"
+    "RESEND_API_KEY",
+    "OPENAI_API_KEY",
+    "AUTH_RESEND_KEY",
+    "AUTH_SECRET",
+    "AUTH_GOOGLE_SECRET",
+    "AUTH_GOOGLE_ID"
   ],
   "ui": "tui",
   "tasks": {
