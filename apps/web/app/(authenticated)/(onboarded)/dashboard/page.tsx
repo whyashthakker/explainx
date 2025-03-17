@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../../../auth";
-import prisma from "@repo/db/client";
+import AgentCard from "../_components/AgentCard";
+
 
 export default async function BrandDashboardPage() {
   const session = await auth();
@@ -8,9 +9,6 @@ export default async function BrandDashboardPage() {
     redirect("/");
   }
 
-  return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-  );
+
+  return <AgentCard  />;
 }
