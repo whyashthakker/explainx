@@ -26,6 +26,9 @@ const config = {
   				'Inter var',
   				'sans-serif'
   			],
+			buue: [
+				'var(--font-buue)',
+			],
   			sans: [
   				'var(--font-inter)',
   				'system-ui',

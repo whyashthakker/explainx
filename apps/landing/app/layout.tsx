@@ -7,6 +7,8 @@ import Navbar from "./_components/navbar-1";
 import { PreFooter } from "./_components/pre-footer";
 import { Toaster } from "@repo/ui/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { ThemeProvider } from "./_components/theme-provider";
+// import {} from "";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,6 +23,8 @@ const calFont = localFont({
   preload: true,
   display: "swap",
 });
+
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.explainx.ai"),
@@ -122,14 +126,20 @@ export default function RootLayout({
     <html lang="en" className="h-full overflow-x-hidden">
       <body
         className={`h-full ${inter.variable} ${calFont.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <Suspense>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    
+               
           <div className="flex flex-col min-h-screen dark:bg-[#1F1F1F]">
             <Navbar />
             <main className="flex-grow">{children}</main>
             <PreFooter />
           </div>
+
           <Toaster />
+          </ThemeProvider>
         </Suspense>
       </body>
     </html>

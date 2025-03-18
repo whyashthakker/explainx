@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import Logo from "./logo-2";
 
 type DropdownItem = {
@@ -127,12 +127,12 @@ export default function Navbar() {
   return (
     <header 
       className={`sticky top-0 z-50 transition-all duration-200 
-        ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'}`}
+        ${isScrolled ? 'bg-[#2D2D2E]/95 backdrop-blur-sm shadow-sm' : 'bg-[#2D2D2E]'}`}
     >
       <nav className="relative flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">ExplainX logo</span>
+            <span className="sr-only">Logo</span>
             <Logo className="h-14 w-auto" />
           </Link>
         </div>
@@ -140,7 +140,7 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -158,7 +158,7 @@ export default function Navbar() {
             >
               <Link
                 href={item.href}
-                className="flex items-center h-10 text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors"
+                className="flex items-center h-10 text-sm font-semibold text-gray-200 hover:text-white transition-colors"
               >
                 {item.name}
                 {item.hasDropdown && (
@@ -168,8 +168,8 @@ export default function Navbar() {
               
               {item.hasDropdown && activeDropdown === item.name && item.dropdownItems && (
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 pt-2">
-                  <div className="w-64 rounded-xl bg-white shadow-lg ring-1 ring-black/5 overflow-hidden">
-                    <div className="relative bg-white p-1">
+                  <div className="w-64 rounded-xl bg-[#2D2D2E] shadow-lg ring-1 ring-white/10 overflow-hidden">
+                    <div className="relative bg-[#2D2D2E] p-1">
                       {item.dropdownItems.map((dropdownItem, index) => (
                         <Link
                           key={dropdownItem.name}
@@ -181,13 +181,13 @@ export default function Navbar() {
                             py-2.5
                             rounded-lg
                             text-sm 
-                            hover:bg-gray-50 
+                            hover:bg-gray-700 
                             transition-colors
                           `}
                         >
-                          <div className="font-medium text-gray-900">{dropdownItem.name}</div>
+                          <div className="font-medium text-gray-200">{dropdownItem.name}</div>
                           {dropdownItem.description && (
-                            <p className="mt-1 text-xs text-gray-500 line-clamp-1">{dropdownItem.description}</p>
+                            <p className="mt-1 text-xs text-gray-400 line-clamp-1">{dropdownItem.description}</p>
                           )}
                         </Link>
                       ))}
@@ -202,7 +202,7 @@ export default function Navbar() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6 lg:items-center">
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center rounded-lg bg-[#4361EE] px-4 h-10 text-sm font-semibold text-white hover:bg-[#3B54D3] transition-colors"
+            className="inline-flex items-center justify-center rounded-lg bg-white px-4 h-10 text-sm font-semibold text-[#2D2D2E] hover:bg-gray-200 transition-colors"
           >
             Get in Touch
           </Link>
@@ -211,15 +211,15 @@ export default function Navbar() {
 
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#2D2D2E] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5" onClick={closeMobileMenu}>
-              <span className="sr-only">ExplainX logo</span>
+              <span className="sr-only">Logo</span>
               <Logo className="h-6 w-auto" />
             </Link>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-gray-300"
               onClick={closeMobileMenu}
             >
               <span className="sr-only">Close menu</span>
@@ -228,13 +228,13 @@ export default function Navbar() {
           </div>
           
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="-my-6 divide-y divide-gray-700/30">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
                   <div key={item.name}>
                     <Link
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-200 hover:bg-gray-700"
                       onClick={closeMobileMenu}
                     >
                       {item.name}
@@ -246,7 +246,7 @@ export default function Navbar() {
                             key={dropdownItem.name}
                             href={dropdownItem.href}
                             target={dropdownItem.target}
-                            className="-mx-3 block rounded-lg px-6 py-2 text-base font-semibold leading-7 text-gray-700 hover:bg-gray-50"
+                            className="-mx-3 block rounded-lg px-6 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-gray-700"
                             onClick={closeMobileMenu}
                           >
                             {dropdownItem.name}
@@ -256,25 +256,18 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-                <Link
-                  href="https://creator.explainx.ai/login"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  onClick={closeMobileMenu}
-                >
-                  For Influencers
-                </Link>
               </div>
               <div className="py-6 space-y-2">
                 <Link
-                  href="https://brands.explainx.ai/login"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  href="/login"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-200 hover:bg-gray-700"
                   onClick={closeMobileMenu}
                 >
                   Login
                 </Link>
                 <Link
-                  href="https://brands.explainx.ai/signup"
-                  className="-mx-3 block rounded-lg bg-[#4361EE] px-3 py-2.5 text-base font-semibold text-white hover:bg-[#3B54D3]"
+                  href="/signup"
+                  className="-mx-3 block rounded-lg bg-white px-3 py-2.5 text-base font-semibold text-[#2D2D2E] hover:bg-gray-200"
                   onClick={closeMobileMenu}
                 >
                   Get Started

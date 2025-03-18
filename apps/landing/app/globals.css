@@ -5,7 +5,17 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+@font-face {
+  font-family: 'BluueNext';
+  src: url('./fonts//BluuNext-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 
+.blueeNext {
+  font-family: 'BluueNext', sans-serif !important;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -34,6 +44,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --font-cal: 'CalSans-SemiBold';
+    --font-bluue-next: 'BluuNext-Bold';
   }
 
   .dark {

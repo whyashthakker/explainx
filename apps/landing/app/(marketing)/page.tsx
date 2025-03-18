@@ -9,8 +9,11 @@ import { HomePageStructuredData } from './StructuredData';
 import ServicesPage from "../_components/explainx-services";
 import DeliveryStats from "../_components/proof-of-work";
 import GuaranteesSection from "../_components/guarantees";
-import { TeamSection } from "../_components/team";
+
 import PricingSection from "../_components/explainx-pricing";
+import HeroSection from "../_components/hero";
+import ServicesSection from "../_components/services";
+import TeamSection from "../_components/team";
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -64,8 +67,8 @@ const MarketingPage = () => {
   return (
     <div className="min-h-full flex flex-col">
       <HomePageStructuredData />
-      <Heading />
-      <ServicesPage />
+      <HeroSection />
+      <ServicesSection />
       <DeliveryStats />
       {/* <Testimonials /> */}
       <GuaranteesSection />
