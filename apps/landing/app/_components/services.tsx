@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function ServicesSection() {
   return (
-    <section className="py-16 md:py-32 dark:bg-transparent">
+    <section className="py-16 md:py-32 dark:bg-[#0A0A0A]">
       <div className="@container mx-auto max-w-6xl px-6">
         <div className="text-center mb-12">
           <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Our Services</h2>

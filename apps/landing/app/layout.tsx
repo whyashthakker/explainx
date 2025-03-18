@@ -8,6 +8,7 @@ import { PreFooter } from "./_components/pre-footer";
 import { Toaster } from "@repo/ui/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeProvider } from "./_components/theme-provider";
+import { HeroHeader } from "./_components/hero5-header";
 // import {} from "";
 
 const inter = Inter({
@@ -123,7 +124,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full overflow-x-hidden">
+    <html lang="en" className="h-full overflow-x-hidden dark" style={{ colorScheme: "dark" }}
+    >
       <body
         className={`h-full ${inter.variable} ${calFont.variable} font-sans antialiased`}
         suppressHydrationWarning
@@ -132,8 +134,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
     
                
-          <div className="flex flex-col min-h-screen dark:bg-[#1F1F1F]">
-            <Navbar />
+          <div className="flex flex-col min-h-screen dark:bg-[#0A0A0A]">
+            <HeroHeader />
             <main className="flex-grow">{children}</main>
             <PreFooter />
           </div>

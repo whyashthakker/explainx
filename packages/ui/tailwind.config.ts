@@ -3,6 +3,7 @@ import tailwindcssAnimate from "tailwindcss-animate";
 
 const config = {
   darkMode: ["class"],
+  
   content: [
     "./pages/**/*.{ts,tsx,mdx}",
     "./components/**/*.{ts,tsx,mdx}",
@@ -78,7 +79,11 @@ const config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+			dark:{
+				dark: "#0A0A0A",
+				background: "#0A0A0A",
+			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

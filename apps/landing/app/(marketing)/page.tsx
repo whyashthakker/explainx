@@ -14,6 +14,10 @@ import PricingSection from "../_components/explainx-pricing";
 import HeroSection from "../_components/hero";
 import ServicesSection from "../_components/services";
 import TeamSection from "../_components/team";
+import TemplateSlider from "../_components/agentCard";
+import Services2 from "../_components/service2";
+import { HeroHeader } from "../_components/hero5-header";
+import { FeaturesSectionWithHoverEffects } from "../_components/guarantees2";
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,9 +73,17 @@ const MarketingPage = () => {
       <HomePageStructuredData />
       <HeroSection />
       <ServicesSection />
+
+
+
       <DeliveryStats />
       {/* <Testimonials /> */}
-      <GuaranteesSection />
+      {/* <GuaranteesSection />
+       */}
+       <div className="min-h-screen w-full  bg-[#0B0B0B] py-16">
+     <FeaturesSectionWithHoverEffects />
+    </div>
+      {/* <TemplateSlider /> */}
       <TeamSection />
       {/* <CTA /> */}
       <Suspense>
