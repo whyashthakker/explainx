@@ -2,37 +2,37 @@ const members = [
   {
       name: 'Yash Thakker',
       role: 'CEO & Product Lead',
-      avatar: '',
+      avatar: 'https://github.com/shadcn.png',
       expertise: ['AI Strategy', 'Product Development', 'Enterprise Solutions'],
   },
   {
       name: 'Geeta Thakker',
       role: 'CMO & Operations',
-      avatar: '',
+      avatar: 'https://github.com/shadcn.png',
       expertise: ['AI Operations', 'Business Strategy', 'Team Management'],
   },
   {
       name: 'Aryan Nagbanshi',
       role: 'Development',
-      avatar: '',
+      avatar: 'https://github.com/shadcn.png',
       expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
   },
   {
       name: 'Pratham Ware',
       role: 'Marketing',
-      avatar: '',
+      avatar: 'https://github.com/shadcn.png',
       expertise: ['AI Marketing', 'Content Strategy', 'Growth'],
   },
   {
       name: 'Shri Jadhav',
       role: 'AI Solutions Expert',
-      avatar: '',
+      avatar: 'https://github.com/shadcn.png',
       expertise: ['Client Solutions', 'AI Integration', 'Support'],
   },
   {
       name: 'Yogesh Gaikwad',
       role: 'Content',
-      avatar: '',
+      avatar: 'https://github.com/shadcn.png',
       expertise: ['AI Content', 'Video Production', 'Creative Direction'],
   },
 ]
