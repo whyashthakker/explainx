@@ -26,6 +26,7 @@ model User {
 
   // Organization relation
   organizationTeamMemberships OrganizationTeamMember[]
+  realEstateTasks RealEstateTask[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -383,4 +384,18 @@ model BlogPost {
   @@index([authorId])
   @@index([language])
   @@index([isPublished])
+}
+
+
+model RealEstateTask {
+  id        String   @id @default(cuid())
+  task_id   String   @unique // External task ID from AI agent
+  status    String   // "processing", "completed", "failed"
+  message   String?  // Description or error message
+  result    Json?    // Result data from the agent
+  parameters Json    // Search parameters
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
