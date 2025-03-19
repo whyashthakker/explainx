@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="container max-w-5xl mx-auto px-6 py-12 space-y-16">
+    <div className="container max-w-5xl mx-auto px-6 py-12 space-y-16 mt-16">
       <HeroSection />
       <Timeline />
       

@@ -32,36 +32,48 @@ export default function ServicesSection() {
     amount: 0.2
   });
 
-  const serviceKeys = ['genai-marketing', 'llm-deployments', 'workflow-automation', 'vision-applications'] as const;
+  const serviceKeys = [
+    'custom-ai-agent-development', 
+    'ai-agent-training', 
+    'generative-ai-training', 
+    'frontend-development', 
+    'ai-consulting'
+  ] as const;
   type ServiceKey = (typeof serviceKeys)[number];
   
-  const [activeService, setActiveService] = useState<ServiceKey>('genai-marketing');
+  const [activeService, setActiveService] = useState<ServiceKey>('custom-ai-agent-development');
   
   // Content for each service
   const serviceContent = {
-    'genai-marketing': {
-      title: 'Magical customer experiences',
-      description: 'Allow your customers & audience to be part of a movie trailer with their favourite actor or create a custom lullaby for their kids. Create unique marketing experiences & content to maximise reach and engagement. This is a level of user personalisation never seen before.',
+    'custom-ai-agent-development': {
+      title: 'Powerful Custom AI Solutions',
+      description: 'Build sophisticated AI agents precisely tailored to your specific business needs. We leverage cutting-edge machine learning techniques to create intelligent systems that solve complex challenges and drive innovation.',
       image: '/api/placeholder/600/400',
-      alt: 'GenAI Marketing Illustration'
+      alt: 'Custom AI Agent Development Illustration'
     },
-    'llm-deployments': {
-      title: 'Custom LLM solutions',
-      description: 'Deploy specialized language models tailored to your specific business needs. From customer service automation to content generation, our custom LLM deployments integrate seamlessly with your existing systems while maintaining the highest standards of security and performance.',
+    'ai-agent-training': {
+      title: 'Empowering AI Development Skills',
+      description: 'Comprehensive training programs designed to equip your team with advanced AI development capabilities. Learn the latest techniques in AI agent creation, machine learning, and intelligent system design.',
       image: '/api/placeholder/600/400',
-      alt: 'Custom LLM Deployments Illustration'
+      alt: 'AI Agent Training Illustration'
     },
-    'workflow-automation': {
-      title: 'Streamlined processes',
-      description: 'Transform your operations with intelligent workflow automation that learns and adapts to your business. Reduce manual tasks, eliminate bottlenecks, and free your team to focus on high-value activities that drive growth and innovation.',
+    'generative-ai-training': {
+      title: 'Mastering Generative AI',
+      description: 'In-depth training to help you understand and leverage generative AI technologies. From foundational concepts to advanced implementation strategies, gain the expertise to transform your business with AI.',
       image: '/api/placeholder/600/400',
-      alt: 'Workflow Automation Illustration'
+      alt: 'Generative AI Training Illustration'
     },
-    'vision-applications': {
-      title: 'Enhanced visual intelligence',
-      description: 'Leverage the power of computer vision to extract insights from images and video. From quality control in manufacturing to customer behavior analysis in retail, our vision applications provide unprecedented levels of visual understanding and analytical capability.',
+    'frontend-development': {
+      title: 'Intuitive AI Interfaces',
+      description: 'Design and develop user-friendly interfaces that make complex AI technologies accessible and engaging. We create seamless, intuitive front-end solutions that enhance user interaction with AI-powered systems.',
       image: '/api/placeholder/600/400',
-      alt: 'Vision Applications Illustration'
+      alt: 'Frontend Development for AI Illustration'
+    },
+    'ai-consulting': {
+      title: 'Strategic AI Guidance',
+      description: 'Expert consulting to help you navigate the complex landscape of AI implementation. We provide strategic insights, assessment, and roadmapping to ensure your AI initiatives align with your business goals.',
+      image: '/api/placeholder/600/400',
+      alt: 'AI Consulting Illustration'
     }
   };
   
@@ -73,6 +85,7 @@ export default function ServicesSection() {
     <section 
       ref={sectionRef}
       className="py-16 md:py-24 lg:py-32 bg-background dark:bg-[#0A0A0A]"
+      id="services"
     >
       <div className="mx-auto max-w-6xl px-6">
       {/* Section Header with Yellow Accent */}
@@ -84,13 +97,13 @@ export default function ServicesSection() {
           transition={{ duration: 0.5 }}
         >
           <div className="w-1 h-6 bg-yellow-400"></div>
-          <h3 className="text-sm font-medium uppercase tracking-wider">WHAT WE DO</h3>
+          <h3 className="text-sm font-medium uppercase tracking-wider text-white dark:text-white">OUR SERVICES</h3>
         </motion.div>
         
         {/* Headline with mixed styling */}
         <div className="mt-8">
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-normal"
+            className="text-4xl md:text-5xl lg:text-6xl font-normal text-black dark:text-white"
             initial={{ y: 20, opacity: 0 }}
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -102,7 +115,7 @@ export default function ServicesSection() {
           
           {/* Description paragraph */}
           <motion.p 
-            className="mt-6 text-muted-foreground max-w-lg"
+            className="mt-6 text-gray-600 dark:text-gray-400 max-w-lg"
             initial={{ y: 20, opacity: 0 }}
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -127,39 +140,48 @@ export default function ServicesSection() {
             transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
           >
             <ServiceItem 
-              title="GenAI Marketing & Content"
-              serviceId="genai-marketing"
-              isActive={activeService === 'genai-marketing'}
-              onClick={() => changeService('genai-marketing' as ServiceKey)}
+              title="Custom AI Agent Development"
+              serviceId="custom-ai-agent-development"
+              isActive={activeService === 'custom-ai-agent-development'}
+              onClick={() => changeService('custom-ai-agent-development' as ServiceKey)}
               isVisible={isServicesListInView}
               index={0}
             />
             
             <ServiceItem 
-              title="Custom LLM Deployments"
-              serviceId="llm-deployments"
-              isActive={activeService === 'llm-deployments'}
-              onClick={() => changeService('llm-deployments')}
+              title="AI Agent Training"
+              serviceId="ai-agent-training"
+              isActive={activeService === 'ai-agent-training'}
+              onClick={() => changeService('ai-agent-training')}
               isVisible={isServicesListInView}
               index={1}
             />
             
             <ServiceItem 
-              title="Workflow Automation"
-              serviceId="workflow-automation"
-              isActive={activeService === 'workflow-automation'}
-              onClick={() => changeService('workflow-automation')}
+              title="Generative AI Training"
+              serviceId="generative-ai-training"
+              isActive={activeService === 'generative-ai-training'}
+              onClick={() => changeService('generative-ai-training')}
               isVisible={isServicesListInView}
               index={2}
             />
             
             <ServiceItem 
-              title="Vision Applications"
-              serviceId="vision-applications"
-              isActive={activeService === 'vision-applications'}
-              onClick={() => changeService('vision-applications')}
+              title="Frontend Development"
+              serviceId="frontend-development"
+              isActive={activeService === 'frontend-development'}
+              onClick={() => changeService('frontend-development')}
               isVisible={isServicesListInView}
               index={3}
+            />
+            
+            <ServiceItem 
+              title="AI Consulting"
+              serviceId="ai-consulting"
+              isActive={activeService === 'ai-consulting'}
+              onClick={() => changeService('ai-consulting')}
+              isVisible={isServicesListInView}
+              index={4}
             />
           </motion.div>
           
@@ -191,11 +213,11 @@ export default function ServicesSection() {
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h3 className="text-3xl md:text-4xl">
+                <h3 className="text-3xl md:text-4xl text-black dark:text-white">
                   <span className="italic">{serviceContent[activeService].title.split(' ')[0]}</span> {serviceContent[activeService].title.split(' ').slice(1).join(' ')}
                 </h3>
                 
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-600 dark:text-gray-400">
                   {serviceContent[activeService].description}
                 </p>
               </motion.div>
@@ -235,7 +257,9 @@ const ServiceItem = ({ title, serviceId, isActive = false, onClick, isVisible, i
     <div className="flex items-center justify-between">
       <h3 className={cn(
         "text-xl md:text-2xl transition-all duration-300",
-        isActive ? "font-medium" : "font-normal text-muted-foreground group-hover:text-foreground"
+        isActive 
+          ? "font-medium text-black dark:text-white" 
+          : "font-normal text-gray-600 dark:text-gray-400 group-hover:text-black group-hover:dark:text-white"
       )}>
         {title}
       </h3>
@@ -262,7 +286,7 @@ const ServiceItem = ({ title, serviceId, isActive = false, onClick, isVisible, i
           strokeLinejoin="round"
           className={cn(
             "transition-all duration-300",
-            isActive ? "text-white" : "text-muted-foreground group-hover:text-foreground"
+            isActive ? "text-white" : "text-gray-600 dark:text-gray-400 group-hover:text-black group-hover:dark:text-white"
           )}
         >
           <path d="M5 12h14" />

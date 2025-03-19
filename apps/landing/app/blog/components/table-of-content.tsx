@@ -33,10 +33,10 @@ export function TableOfContents({ links }: { links: TOCLink[] }) {
   if (filteredLinks.length === 0) return null;
 
   return (
-    <nav aria-label="Table of contents" className="mb-8 bg-gray-50/50 rounded-lg p-4">
+    <nav aria-label="Table of contents" className="mb-8 bg-[#0A0A0A]/90 rounded-lg p-4 border border-gray-800">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between text-gray-900 hover:text-gray-600 transition-colors"
+        className="w-full flex items-center justify-between text-white hover:text-gray-300 transition-colors"
         aria-expanded={isExpanded}
         aria-controls="toc-list"
       >
@@ -68,12 +68,12 @@ export function TableOfContents({ links }: { links: TOCLink[] }) {
                 href={`#${link.id}`}
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, link.id)}
                 className={clsx(
-                  'block py-1 text-gray-600',
-                  'hover:text-gray-900 transition-colors',
+                  'block py-1 text-gray-400',
+                  'hover:text-white transition-colors',
                   'no-underline relative',
                   'after:absolute after:bottom-0 after:left-0 after:h-px',
                   'after:w-0 hover:after:w-full after:transition-all',
-                  'after:bg-gray-300'
+                  'after:bg-gray-600'
                 )}
               >
                 {link.text}

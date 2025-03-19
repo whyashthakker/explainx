@@ -67,7 +67,7 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <div className="container max-w-7xl mx-auto px-6 py-12">
+    <div className="container max-w-7xl mx-auto px-6 py-12 mt-16">
       {/* Hero Section */}
       <div className="flex flex-col items-center text-center space-y-4 mb-16">
         <h1 className="font-cal text-4xl md:text-5xl">Build the Future of AI</h1>

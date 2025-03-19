@@ -86,6 +86,7 @@ export const HeroHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [scrolled, setScrolled] = React.useState(false)
     const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
+    const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
 
     const { scrollYProgress } = useScroll()
 
@@ -97,18 +98,47 @@ export const HeroHeader = () => {
     }, [scrollYProgress])
 
     const handleMouseEnter = (name: string) => {
+        // Clear any existing timeout
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+        }
         setActiveDropdown(name)
     }
 
     const handleMouseLeave = () => {
-        setActiveDropdown(null)
+        // Set a timeout before closing the dropdown
+        timeoutRef.current = setTimeout(() => {
+            setActiveDropdown(null)
+        }, 300) // 300ms delay gives users time to move to the dropdown
     }
+
+    // Handle mouse enter on dropdown to keep it open
+    const handleDropdownMouseEnter = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+        }
+    }
+
+    // Clean up timeout on unmount
+    React.useEffect(() => {
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+            }
+        }
+    }, [])
 
     return (
         <header>
         <nav
             data-state={menuState ? 'active' : ''}
-            className={cn('fixed z-20 w-full border-b transition-colors duration-150', scrolled && 'bg-background/50 backdrop-blur-3xl')}>
+            className={cn(
+                'fixed z-20 w-full border-b transition-colors duration-150', 
+                scrolled && 'bg-black text-white', // Black background for desktop when scrolled
+                menuState && 'bg-white dark:bg-gray-900' // Force solid background when mobile menu is open
+            )}>
             <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
                 <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                     <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
@@ -140,8 +170,9 @@ export const HeroHeader = () => {
                                         <Link
                                             href={item.href}
                                             className={cn(
-                                                "text-muted-foreground hover:text-accent-foreground flex items-center duration-150",
-                                                activeDropdown === item.name && "text-accent-foreground"
+                                                "flex items-center duration-150",
+                                                scrolled ? "text-white hover:text-gray-300" : "text-muted-foreground hover:text-accent-foreground",
+                                                activeDropdown === item.name && (scrolled ? "text-gray-300" : "text-accent-foreground")
                                             )}
                                         >
                                             <span>{item.name}</span>
@@ -158,6 +189,8 @@ export const HeroHeader = () => {
                                                     "bg-white dark:bg-gray-900", // Make submenu opaque
                                                     activeDropdown === item.name ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
                                                 )}
+                                                onMouseEnter={handleDropdownMouseEnter}
+                                                onMouseLeave={handleMouseLeave}
                                             >
                                                 <div className="py-1 bg-white dark:bg-gray-900">
                                                     {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
@@ -187,7 +220,9 @@ export const HeroHeader = () => {
                         className={cn(
                             "bg-background mb-6 w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent",
                             menuState ? "block" : "hidden",
-                            "lg:flex"
+                            "lg:flex",
+                            // Fix for mobile transparency
+                            !scrolled && menuState ? "bg-white dark:bg-gray-900" : ""
                         )}
                     >
                         {/* Mobile Navigation Menu */}
