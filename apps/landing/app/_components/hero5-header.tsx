@@ -1,23 +1,91 @@
 'use client'
 import Link from 'next/link'
 // import { Logo } from './logo'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@repo/ui/components/ui/button'
 import React from 'react'
 import { useScroll } from 'motion/react'
 import { cn } from '@repo/ui/lib/utils'
 import { ModeToggle } from './mode-toggle'
 
-const menuItems = [
-    { name: 'Features', href: '#link' },
-    { name: 'Solution', href: '#link' },
-    { name: 'Pricing', href: '#link' },
-    { name: 'About', href: '#link' },
-]
+// Define the navigation type
+type DropdownItem = {
+  name: string;
+  href: string;
+  description?: string;
+  target?: string;
+};
+
+type NavigationItem = {
+  name: string;
+  href: string;
+  hasDropdown: boolean;
+  dropdownItems?: DropdownItem[];
+};
+
+const navigation: NavigationItem[] = [
+  {
+    name: "Services",
+    href: "/#services",
+    hasDropdown: true,
+    dropdownItems: [
+      {
+        name: "Custom AI Agent Development",
+        href: "/#services",
+        description: "Build powerful AI agents tailored to your needs"
+      },
+      {
+        name: "AI Agent Training",
+        href: "/#services",
+        description: "Empower your team with AI development skills"
+      },
+      {
+        name: "Generative AI Training",
+        href: "/#services", 
+        description: "Master the fundamentals of generative AI"
+      },
+      {
+        name: "Frontend Development",
+        href: "/#services",
+        description: "Create intuitive interfaces for AI agents"
+      },
+      {
+        name: "AI Consulting",
+        href: "/#services",
+        description: "Strategic guidance for AI implementation"
+      }
+    ]
+  },
+  { 
+    name: "Pricing",
+    href: "/#pricing",
+    hasDropdown: false
+  },
+  {
+    name: "Free tools",
+    href: "/tools",
+    hasDropdown: true,
+    dropdownItems: [
+      { name: "AI Agent Finder", href: "/tools/ai-agent-finder", description: "Find AI Agents by use case" },
+      { name: "All Tools", href: "/tools", description: "View all free tools" }
+    ]
+  },
+  { 
+    name: "Resources",
+    href: "/resources",
+    hasDropdown: true,
+    dropdownItems: [
+      { name: "Blog", href: "/blog" },
+      { name: "Help Center", href: "/contact" },
+      { name: "Docs", href: "/#faqs", target: "_blank" },
+    ]
+  }
+];
 
 export const HeroHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [scrolled, setScrolled] = React.useState(false)
+    const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
 
     const { scrollYProgress } = useScroll()
 
@@ -28,12 +96,20 @@ export const HeroHeader = () => {
         return () => unsubscribe()
     }, [scrollYProgress])
 
+    const handleMouseEnter = (name: string) => {
+        setActiveDropdown(name)
+    }
+
+    const handleMouseLeave = () => {
+        setActiveDropdown(null)
+    }
+
     return (
         <header>
         <nav
-            data-state={menuState && 'active'}
+            data-state={menuState ? 'active' : ''}
             className={cn('fixed z-20 w-full border-b transition-colors duration-150', scrolled && 'bg-background/50 backdrop-blur-3xl')}>
-            <div className="mx-auto max-w-5xl px-6 transition-all duration-300">
+            <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
                 <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                     <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
                         <Link
@@ -45,46 +121,114 @@ export const HeroHeader = () => {
 
                         <button
                             onClick={() => setMenuState(!menuState)}
-                            aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
+                            aria-label={menuState ? 'Close Menu' : 'Open Menu'}
                             className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
-                            <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                            <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
+                            <Menu className={cn('m-auto size-6 duration-200', menuState && 'rotate-180 scale-0 opacity-0')} />
+                            <X className={cn('absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200', menuState && 'rotate-0 scale-100 opacity-100')} />
                         </button>
 
+                        {/* Desktop Navigation */}
                         <div className="hidden lg:block">
                             <ul className="flex gap-8 text-sm">
-                                {menuItems.map((item, index) => (
-                                    <li key={index}>
+                                {navigation.map((item, index) => (
+                                    <li 
+                                        key={index} 
+                                        className="relative"
+                                        onMouseEnter={() => item.hasDropdown && handleMouseEnter(item.name)}
+                                        onMouseLeave={handleMouseLeave}
+                                    >
                                         <Link
                                             href={item.href}
-                                            className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                                            className={cn(
+                                                "text-muted-foreground hover:text-accent-foreground flex items-center duration-150",
+                                                activeDropdown === item.name && "text-accent-foreground"
+                                            )}
+                                        >
                                             <span>{item.name}</span>
+                                            {item.hasDropdown && (
+                                                <ChevronDown className="ml-1 size-4" />
+                                            )}
                                         </Link>
+                                        
+                                        {/* Dropdown Menu */}
+                                        {item.hasDropdown && item.dropdownItems && (
+                                            <div 
+                                                className={cn(
+                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md bg-background shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 origin-top-left",
+                                                    "bg-white dark:bg-gray-900", // Make submenu opaque
+                                                    activeDropdown === item.name ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+                                                )}
+                                            >
+                                                <div className="py-1 bg-white dark:bg-gray-900">
+                                                    {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                                                        <Link 
+                                                            key={dropdownIndex}
+                                                            href={dropdownItem.href}
+                                                            target={dropdownItem.target}
+                                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 bg-white dark:bg-gray-900"
+                                                        >
+                                                            <div className="font-medium">{dropdownItem.name}</div>
+                                                            {dropdownItem.description && (
+                                                                <p className="text-xs text-muted-foreground">{dropdownItem.description}</p>
+                                                            )}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </li>
                                 ))}
                             </ul>
                         </div>
                     </div>
 
-                    <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
+                    {/* Mobile Navigation */}
+                    <div 
+                        className={cn(
+                            "bg-background mb-6 w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent",
+                            menuState ? "block" : "hidden",
+                            "lg:flex"
+                        )}
+                    >
+                        {/* Mobile Navigation Menu */}
                         <div className="lg:hidden">
                             <ul className="space-y-6 text-base">
-                                {menuItems.map((item, index) => (
+                                {navigation.map((item, index) => (
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                                            className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                                            onClick={() => setMenuState(false)}
+                                        >
                                             <span>{item.name}</span>
                                         </Link>
+                                        
+                                        {/* Mobile Dropdown Menu Items */}
+                                        {item.hasDropdown && item.dropdownItems && (
+                                            <ul className="pl-4 pt-2 space-y-2">
+                                                {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                                                    <li key={dropdownIndex}>
+                                                        <Link
+                                                            href={dropdownItem.href}
+                                                            target={dropdownItem.target}
+                                                            className="text-sm text-muted-foreground hover:text-accent-foreground block py-1"
+                                                            onClick={() => setMenuState(false)}
+                                                        >
+                                                            {dropdownItem.name}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </li>
                                 ))}
                             </ul>
                         </div>
+                        
+                        {/* Auth Buttons */}
                         <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                             {/* Add the mode toggle before the buttons */}
-                            <div className="hidden lg:block mr-2">
-                                <ModeToggle />
-                            </div>
+                            
                             <Button
                                 asChild
                                 variant="outline"

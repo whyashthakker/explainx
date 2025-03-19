@@ -1,6 +1,7 @@
 "use client";
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { 
   Bot, 
   Users, 
@@ -14,6 +15,7 @@ import Link from "next/link";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@repo/ui/components/ui/card";
+import { cn } from "@repo/ui/lib/utils";
 
 const engagementModels = [
   {
@@ -61,89 +63,218 @@ const engagementModels = [
   }
 ];
 
-const PricingCard = ({ model }: { model: typeof engagementModels[0] }) => (
-  <Card className={`relative overflow-hidden hover:shadow-lg transition-all duration-300 ${
-    model.highlight ? 'ring-2 ring-primary shadow-lg' : ''
-  }`}>
-    <CardHeader className="relative">
-      <div className="flex items-center gap-3">
-        <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
-          {model.icon}
-        </div>
-        <div>
-          <h3 className="text-xl font-cal font-bold tracking-tight">{model.name}</h3>
-          <p className="text-sm text-muted-foreground">{model.description}</p>
-        </div>
-      </div>
-      <div className="flex gap-2 mt-4">
-        <Badge variant="outline" className="px-3 py-1">
-          {model.timeframe}
-        </Badge>
-      </div>
-    </CardHeader>
+interface PricingCardProps {
+  model: typeof engagementModels[0];
+  index: number;
+  isVisible: boolean;
+}
 
-    <CardContent className="relative">
-      <ul className="space-y-2.5">
-        {model.features.map((feature, idx) => (
-          <li key={idx} className="flex items-start gap-2 text-sm">
-            <CheckIcon className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-            <span className="text-muted-foreground">{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </CardContent>
-
-    <CardFooter className="relative">
-      <Button 
-        className="w-full group" 
-        variant={model.highlight ? "default" : "outline"}
-        asChild
-      >
-        <Link href="/demo" className="flex items-center justify-center gap-2">
-          {model.buttonText}
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Link>
-      </Button>
-    </CardFooter>
-  </Card>
-);
-
-export default function PricingSection() {
-  return (
-    <section className="relative py-20">
-      <div className="container max-w-6xl relative">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-cal font-bold mb-4">
-            Engagement Models
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Flexible solutions tailored to your AI development needs
-          </p>
-          <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl inline-block max-w-2xl mx-auto">
-            <div className="flex items-start gap-3">
-              <InfoIcon className="h-5 w-5 text-blue-600 flex-shrink-0 mt-1" />
-              <p className="text-sm text-blue-900 text-left">
-                Our pricing is based on project complexity and requirements. Schedule a consultation 
-                to discuss your project and receive a detailed proposal.
-              </p>
+const PricingCard = ({ model, index, isVisible }: PricingCardProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+    transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+  >
+    <Card className={cn(
+      "relative overflow-hidden hover:shadow-lg transition-all duration-300",
+      "border border-gray-200 dark:border-gray-800",
+      "h-full flex flex-col",
+      model.highlight ? 'ring-2 ring-yellow-400 shadow-lg dark:ring-yellow-500' : ''
+    )}>
+      {model.highlight && (
+        <div className="absolute top-0 right-0">
+          <div className="w-24 h-24 relative">
+            <div className="absolute transform rotate-45 bg-yellow-400 text-white font-medium py-1 right-[-35px] top-[32px] w-[170px] text-center text-xs">
+              RECOMMENDED
             </div>
           </div>
         </div>
+      )}
+      
+      <CardHeader className="relative pb-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-xl bg-yellow-400/10 text-yellow-500">
+            {model.icon}
+          </div>
+          <div>
+            <h3 className="text-xl font-medium tracking-tight">{model.name}</h3>
+            <p className="text-sm text-muted-foreground">{model.description}</p>
+          </div>
+        </div>
+        <div className="flex gap-2 mt-4">
+          <Badge variant="outline" className="px-3 py-1 border-yellow-400/20 bg-yellow-400/5">
+            {model.timeframe}
+          </Badge>
+        </div>
+      </CardHeader>
 
-        <div className="grid gap-6 md:grid-cols-3 mb-12">
+      <CardContent className="relative flex-grow">
+        <ul className="space-y-3">
+          {model.features.map((feature, idx) => (
+            <li key={idx} className="flex items-start gap-2 text-sm">
+              <CheckIcon className="h-4 w-4 text-yellow-500 flex-shrink-0 mt-0.5" />
+              <span className="text-muted-foreground">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+
+      <CardFooter className="relative pt-6">
+        <Button 
+          className={cn(
+            "w-full group",
+            model.highlight 
+              ? "bg-yellow-400 hover:bg-yellow-500 text-black" 
+              : "border-yellow-400 text-yellow-500 hover:bg-yellow-400/10"
+          )}
+          variant={model.highlight ? "default" : "outline"}
+          asChild
+        >
+          <Link href="/demo" className="flex items-center justify-center gap-2">
+            {model.buttonText}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </Button>
+      </CardFooter>
+    </Card>
+  </motion.div>
+);
+
+export default function PricingSection() {
+  // Create refs for each section to track when they're in view
+  const headerRef = useRef(null);
+  const isHeaderInView = useInView(headerRef, { 
+    once: true, 
+    amount: 0.3 
+  });
+
+  const infoBoxRef = useRef(null);
+  const isInfoBoxInView = useInView(infoBoxRef, { 
+    once: true, 
+    amount: 0.5 
+  });
+
+  const cardsRef = useRef(null);
+  const isCardsInView = useInView(cardsRef, { 
+    once: true, 
+    amount: 0.1 
+  });
+
+  const ctaRef = useRef(null);
+  const isCtaInView = useInView(ctaRef, { 
+    once: true, 
+    amount: 0.8 
+  });
+
+  return (
+    <section className="py-16 md:py-24 lg:py-32 bg-background dark:bg-[#0A0A0A]" id="pricing">
+      <div className="mx-auto max-w-6xl px-6 relative">
+        {/* Section Header with Yellow Accent */}
+        <div className="mb-16" ref={headerRef}>
+          <motion.div 
+            className="flex items-center gap-3 mb-2"
+            initial={{ x: -20, opacity: 0 }}
+            animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="w-1 h-6 bg-yellow-400"></div>
+            <h3 className="text-sm font-medium uppercase tracking-wider">ENGAGEMENT MODELS</h3>
+          </motion.div>
+          
+          {/* Headline with mixed styling */}
+          <div className="mt-8">
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-normal"
+              initial={{ y: 20, opacity: 0 }}
+              animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <span className="italic">Flexible</span> solutions
+              <br />
+              tailored to your <span className="italic">needs</span>
+            </motion.h2>
+            
+            {/* Description paragraph */}
+            <motion.p 
+              className="mt-6 text-muted-foreground max-w-lg"
+              initial={{ y: 20, opacity: 0 }}
+              animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Our engagement models are designed to accommodate different project requirements,
+              timelines, and budgets. Choose the option that best suits your AI development journey.
+            </motion.p>
+          </div>
+          
+          {/* Yellow Circle Accent */}
+         
+        </div>
+
+        {/* Info Box */}
+        <motion.div 
+          ref={infoBoxRef}
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInfoBoxInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-900/20 p-5 rounded-xl max-w-2xl mx-auto">
+            <div className="flex items-start gap-3">
+              <InfoIcon className="h-5 w-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0 mt-1" />
+              <p className="text-sm text-yellow-900 dark:text-yellow-300/90 text-left">
+                Our pricing is based on project complexity and requirements. Schedule a consultation 
+                to discuss your project and receive a detailed proposal tailored to your specific needs.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Creative Staggered Card Layout */}
+        <div 
+          ref={cardsRef}
+          className="grid gap-8 md:grid-cols-3 mb-16 relative"
+        >
+          {/* Decorative Element */}
+          <motion.div 
+            className="absolute inset-0 -z-10 opacity-20 dark:opacity-10 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={isCardsInView ? { opacity: 0.2 } : { opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 blur-3xl">
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-200 to-yellow-400 opacity-30"></div>
+            </div>
+          </motion.div>
+          
           {engagementModels.map((model, index) => (
-            <PricingCard key={index} model={model} />
+            <PricingCard 
+              key={index} 
+              model={model} 
+              index={index} 
+              isVisible={isCardsInView}
+            />
           ))}
         </div>
 
-        <div className="text-center">
-          <Button size="lg" variant="outline" asChild>
-            <Link href="/demo" className="flex items-center gap-2">
-              <Code2 className="h-4 w-4" />
-              Schedule a Consultation
+        <motion.div 
+          ref={ctaRef}
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isCtaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="border-yellow-400 text-yellow-500 hover:bg-yellow-400/10 px-8"
+            asChild
+          >
+            <Link href="/demo" className="flex items-center gap-3">
+              <Code2 className="h-5 w-5" />
+              <span className="font-medium">Schedule a Consultation</span>
             </Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

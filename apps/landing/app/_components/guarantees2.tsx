@@ -1,16 +1,15 @@
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { cn } from "@repo/ui/lib/utils";
-import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
-} from "@tabler/icons-react";
 
 export function FeaturesSectionWithHoverEffects() {
+  // Create refs for different sections to track when they're in view
+  const headerRef = useRef(null);
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.3 });
+
+  const featuresGridRef = useRef(null);
+  const isFeaturesGridInView = useInView(featuresGridRef, { once: true, amount: 0.1 });
+
   const features = [
     {
       icon: "/images/icons/delivery/fast.svg",
@@ -60,20 +59,71 @@ export function FeaturesSectionWithHoverEffects() {
   ];
   
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-neutral-800 dark:text-neutral-100">Our Guarantees</h2>
-        <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-              We commit to excellence in AI agent development, training, and support
-            </p>
+    <section className="py-16 md:py-24 lg:py-32 bg-background dark:bg-[#0A0A0A]">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header with Yellow Accent */}
+        <div className="mb-16" ref={headerRef}>
+          <motion.div 
+            className="flex items-center gap-3 mb-2"
+            initial={{ x: -20, opacity: 0 }}
+            animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="w-1 h-6 bg-yellow-400"></div>
+            <h3 className="text-sm font-medium uppercase tracking-wider">OUR GUARANTEES</h3>
+          </motion.div>
+          
+          {/* Headline with mixed styling */}
+          <div className="mt-8">
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-normal"
+              initial={{ y: 20, opacity: 0 }}
+              animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              We commit to <span className="italic">excellence</span>
+              <br />
+              in <span className="italic">AI agent development</span>
+            </motion.h2>
+            
+            {/* Description paragraph */}
+            <motion.p 
+              className="mt-6 text-muted-foreground max-w-lg"
+              initial={{ y: 20, opacity: 0 }}
+              animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Our comprehensive approach ensures quality, performance, and return on 
+              investment across all our AI implementations and training programs.
+            </motion.p>
+          </div>
+        </div>
+
+        {/* Feature Grid with scroll-triggered animations */}
+        <div 
+          ref={featuresGridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10"
+        >
+          {features.slice(0, 8).map((feature, index) => (
+            <Feature 
+              key={feature.title} 
+              {...feature} 
+              index={index} 
+              isVisible={isFeaturesGridInView}
+            />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10">
-        {features.slice(0, 8).map((feature, index) => (
-          <Feature key={feature.title} {...feature} index={index} />
-        ))}
-      </div>
-    </div>
+    </section>
   );
+}
+
+interface FeatureProps {
+  title: string;
+  description: string;
+  icon: string | React.ReactNode;
+  index: number;
+  isVisible: boolean;
 }
 
 const Feature = ({
@@ -81,14 +131,17 @@ const Feature = ({
   description,
   icon,
   index,
-}: {
-  title: string;
-  description: string;
-  icon: string | React.ReactNode;
-  index: number;
-}) => {
+  isVisible
+}: FeatureProps) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ 
+        duration: 0.6, 
+        delay: 0.05 * index, // Stagger effect based on index
+        ease: "easeOut" 
+      }}
       className={cn(
         "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
         (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
@@ -105,14 +158,22 @@ const Feature = ({
         {typeof icon === 'string' ? <img src={icon} alt={title} className="h-6 w-6" /> : icon}
       </div>
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-white transition-all duration-200 origin-center" />
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-yellow-400 dark:bg-yellow-600 group-hover/feature:bg-yellow-400 transition-all duration-200 origin-center" />
         <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
           {title}
         </span>
       </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
+      <motion.p 
+        className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10"
+        initial={{ opacity: 0 }}
+        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ 
+          duration: 0.4, 
+          delay: 0.1 + (0.05 * index)  // Additional delay for description text
+        }}
+      >
         {description}
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 };

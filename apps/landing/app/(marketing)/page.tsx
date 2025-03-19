@@ -7,12 +7,12 @@ import { Testimonials } from "../_components/testimonials";
 import CTA from "../_components/cta";
 import { HomePageStructuredData } from './StructuredData';
 import ServicesPage from "../_components/explainx-services";
-import DeliveryStats from "../_components/proof-of-work";
+import DeliveryStats from "../_components/impact2";
 import GuaranteesSection from "../_components/guarantees";
 
 import PricingSection from "../_components/explainx-pricing";
 import HeroSection from "../_components/hero";
-import ServicesSection from "../_components/services";
+import ServicesSection from "../_components/service2";
 import TeamSection from "../_components/team";
 import TemplateSlider from "../_components/agentCard";
 import Services2 from "../_components/service2";
