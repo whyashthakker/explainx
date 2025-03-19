@@ -1,35 +1,38 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
+import { prisma } from '../../../../lib/prisma'; // Adjust import path as needed
 
-// Store job statuses in memory (consider using a database in production)
-let jobStatuses: Record<string, string> = {};
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const data = await req.json();
+    const body = await req.json();
+    const { task_id, status, result } = body;
 
-    const { task_id, status } = data;
-
+    // Validate required fields
     if (!task_id || !status) {
-      return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+      return NextResponse.json(
+        { message: 'Missing required fields' },
+        { status: 400 }
+      );
     }
 
-    // Update job status
-    jobStatuses[task_id] = status;
-    console.log(jobStatuses)
+    // Update the task in the database
+    const updatedTask = await prisma.realEstateTask.update({
+      where: { task_id },
+      data: {
+        status,
+        result: result || undefined,
+        updatedAt: new Date(),
+      },
+    });
 
-    return NextResponse.json({ message: "Job status updated" }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Webhook processed successfully', task: updatedTask },
+      { status: 200 }
+    );
+  } catch (error: any) {
+    console.error('Webhook processing error:', error);
+    return NextResponse.json(
+      { message: 'Internal server error', error: error.message },
+      { status: 500 }
+    );
   }
-}
-
-// Function to get job status (used in client-side polling)
-export async function GET(req: NextRequest) {
-  const task_id = req.nextUrl.searchParams.get("task_id");
-
-  if (!task_id || !jobStatuses[task_id]) {
-    return NextResponse.json({ error: "Job not found" }, { status: 404 });
-  }
-
-  return NextResponse.json({ status: jobStatuses[task_id] }, { status: 200 });
 }
