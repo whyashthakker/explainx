@@ -1,100 +1,175 @@
 "use client"
+
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/components/ui/card";
 import AgentHeader from '../../../_components/AgentHeader';
 import { Label } from '@repo/ui/components/ui/label';
 import { Table, TableHead, TableBody, TableHeader, TableRow, TableCell } from '@repo/ui/components/ui/table';
-import { CheckCircle2, DollarSign, Home, Loader2, MapPin, Timer, XCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle2, DollarSign, Home, Loader2, LogIn, MapPin, XCircle } from 'lucide-react';
 import { Input } from '@repo/ui/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@repo/ui/components/ui/select';
 import { Button } from '@repo/ui/components/ui/button';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { Alert, AlertDescription, AlertTitle } from "@repo/ui/components/ui/alert";
 
-// Define JobStatus type
+// Define the types locally to avoid importing from files that might have the async_hooks issue
 type JobStatus = 'processing' | 'completed' | 'failed';
 
-// Define Job interface
 interface Job {
+  id: string;
   task_id: string;
   status: JobStatus;
-  message: string;
-  createdAt: Date;
+  message: string | null;
+  createdAt: string | Date;
+  parameters: any;
+  result?: any | null;
 }
 
 export default function RealEstate() {
+  const { data: session, status } = useSession();
   const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [initialLoadComplete, setInitialLoadComplete] = useState<boolean>(false);
 
+  // Fetch jobs on component mount and when session changes
   useEffect(() => {
-    const interval = setInterval(async () => {
-      const updatedJobs = await Promise.all(
-        jobs.map(async (job) => {
-          if (job.status === 'processing') {
-            const updatedStatus = await fetchJobStatus(job.task_id);
-            return updatedStatus ? { ...job, status: updatedStatus } : job;
-          }
-          return job;
-        })
-      );
-      setJobs(updatedJobs);
-    }, 5000);
+    if (status === 'authenticated') {
+      fetchJobs();
+      
+      // Set up polling every minute
+      const interval = setInterval(() => {
+        fetchJobs();
+      }, 60000); // 60000 ms = 1 minute
+      
+      // Clean up on unmount
+      return () => clearInterval(interval);
+    }
+  }, [status]);
 
-    return () => clearInterval(interval);
-  }, [jobs]);
-
-  const fetchJobStatus = async (task_id: string) => {
+  const fetchJobs = async (): Promise<void> => {
     try {
-      const response = await fetch(`/api/webhook?task_id=${task_id}`);
-      if (response.ok) {
-        const data = await response.json();
-        return data.status;
+      setError(null);
+      const response = await fetch('/api/agents/tasks');
+      
+      if (!response.ok) {
+        if (response.status === 401) {
+          // Handle unauthorized (might happen if session expired)
+          throw new Error('Please sign in to view your tasks');
+        } else {
+          const data = await response.json();
+          throw new Error(data.message || 'Failed to fetch jobs');
+        }
       }
-    } catch (error) {
-      console.error("Error fetching job status:", error);
-    }
-    return null;
-  };
-  
-  
-
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-  
-    const requestBody = {
-      agent_type: "real-estate",
-      parameters: {
-        city: formData.get("city") as string,
-        max_price: Number(formData.get("maxPrice")),
-        property_category: formData.get("propertyCategory") as string,
-        property_type: formData.get("propertyType") as string,
-      },
-    };
-  
-    try {
-      const response = await fetch("/api/task", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestBody),
-      });
-  
-      if (!response.ok) throw new Error("Failed to send job request");
-  
+      
       const data = await response.json();
-      console.log("Job request sent successfully!", data);
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong. Please try again.");
+      setJobs(data);
+      setInitialLoadComplete(true);
+    } catch (error: any) {
+      console.error('Error fetching jobs:', error);
+      setError(error.message || 'Failed to load your property searches');
+      setInitialLoadComplete(true);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    
+    if (status !== 'authenticated') {
+      setError('Please sign in to create a search');
+      return;
+    }
+    
+    setLoading(true);
+    setError(null);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      city: formData.get('city') as string,
+      maxPrice: formData.get('maxPrice') as string,
+      propertyCategory: formData.get('propertyCategory') as string,
+      propertyType: formData.get('propertyType') as string
+    };
+    
+    try {
+      const response = await fetch('/api/agents/new-task', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to submit search request');
+      }
+      
+      // Refresh job list after successful submission
+      fetchJobs();
+      // Reset form
+      (e.target as HTMLFormElement).reset();
+    } catch (error: any) {
+      console.error('Error submitting form:', error);
+      setError(error.message || 'An error occurred while submitting your search');
+    } finally {
+      setLoading(false);
     }
   };
   
+  // Show login prompt if not authenticated
+  if (status === 'unauthenticated') {
+    return (
+      <div className="min-h-screen bg-background">
+        <AgentHeader />
+        <main className="container py-16">
+          <div className="flex flex-col items-center justify-center max-w-md mx-auto text-center">
+            <LogIn className="h-12 w-12 text-primary mb-4" />
+            <h1 className="text-2xl font-bold mb-3">Sign in Required</h1>
+            <p className="text-muted-foreground mb-6">
+              Please sign in to access the real estate search agent and view your searches.
+            </p>
+            <Button onClick={() => {
+              // Use window.location to navigate to sign in page to avoid any potential issues
+              window.location.href = '/api/auth/signin';
+            }} size="lg">
+              Sign In
+            </Button>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // Show loading state while session is loading
+  if (status === 'loading' || (status === 'authenticated' && !initialLoadComplete)) {
+    return (
+      <div className="min-h-screen bg-background">
+        <AgentHeader />
+        <main className="container py-16">
+          <div className="flex flex-col items-center justify-center">
+            <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+            <p className="text-muted-foreground">{status === 'loading' ? 'Loading your account...' : 'Loading your searches...'}</p>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
       <AgentHeader />
       <main className="container py-6">
+        {error && (
+          <Alert variant="destructive" className="mb-6">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+        
         <div className="grid gap-6 lg:grid-cols-[400px,1fr] lg:gap-8">
-
           {/* Search Parameters Form */}
           <Card className="h-fit lg:sticky lg:top-20">
             <CardHeader>
@@ -149,9 +224,18 @@ export default function RealEstate() {
                   </Select>
                 </div>
 
-                <Button type="submit" className="w-full">
-                  <Home className="mr-2 h-4 w-4" />
-                  Start Search
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <Home className="mr-2 h-4 w-4" />
+                      Start Search
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
@@ -160,14 +244,13 @@ export default function RealEstate() {
           {/* Jobs Table */}
           <Card>
             <CardHeader>
-              <CardTitle>Jobs</CardTitle>
+              <CardTitle>My Property Searches</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="rounded-md border overflow-auto">
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      
                       <TableHead>Status</TableHead>
                       <TableHead>Message</TableHead>
                       <TableHead>View</TableHead>
@@ -175,53 +258,59 @@ export default function RealEstate() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {jobs.map((job) => (
-                      <TableRow key={job.task_id}>
-                        {/* Task ID as a View Link */}
-                        
-
-                        {/* Job Status */}
-                        <TableCell>
-                          <div className="flex items-center gap-2">
-                            {job.status === 'processing' && (
-                              <>
-                                <Loader2 className="h-4 w-4 animate-spin text-yellow-500" />
-                                <span className="text-yellow-500">Processing</span>
-                              </>
-                            )}
-                            {job.status === 'completed' && (
-                              <>
-                                <CheckCircle2 className="h-4 w-4 text-green-500" />
-                                <span className="text-green-500">Completed</span>
-                              </>
-                            )}
-                            {job.status === 'failed' && (
-                              <>
-                                <XCircle className="h-4 w-4 text-red-500" />
-                                <span className="text-red-500">Failed</span>
-                              </>
-                            )}
-                          </div>
+                    {jobs.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={4} className="text-center py-6 text-muted-foreground">
+                          No search jobs found. Start a new search!
                         </TableCell>
-
-                        {/* Job Message */}
-                        <TableCell>{job.message}</TableCell>
-
-                        {/* Created At */}
-
-                        <TableCell><Link href={`/tasks/${job.task_id}`}>
-                        View result
-                        </Link></TableCell>
-                        <TableCell>{job.createdAt.toLocaleString()}</TableCell>
                       </TableRow>
-                    ))}
-                  </TableBody>
+                    ) : (
+                      jobs.map((job) => (
+                        <TableRow key={job.id}>
+                          {/* Job Status */}
+                          <TableCell>
+                            <div className="flex items-center gap-2">
+                              {job.status === 'processing' && (
+                                <>
+                                  <Loader2 className="h-4 w-4 animate-spin text-yellow-500" />
+                                  <span className="text-yellow-500">Processing</span>
+                                </>
+                              )}
+                              {job.status === 'completed' && (
+                                <>
+                                  <CheckCircle2 className="h-4 w-4 text-green-500" />
+                                  <span className="text-green-500">Completed</span>
+                                </>
+                              )}
+                              {job.status === 'failed' && (
+                                <>
+                                  <XCircle className="h-4 w-4 text-red-500" />
+                                  <span className="text-red-500">Failed</span>
+                                </>
+                              )}
+                            </div>
+                          </TableCell>
 
+                          {/* Job Message */}
+                          <TableCell>{job.message}</TableCell>
+
+                          {/* View Link */}
+                          <TableCell>
+                            <Link href={`/tasks/${job.task_id}`} className="text-primary hover:underline">
+                              View result
+                            </Link>
+                          </TableCell>
+                          
+                          {/* Created At */}
+                          <TableCell>{new Date(job.createdAt).toLocaleString()}</TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
                 </Table>
               </div>
             </CardContent>
           </Card>
-
         </div>
       </main>
     </div>

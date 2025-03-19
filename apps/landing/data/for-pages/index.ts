@@ -3,7 +3,7 @@ export interface InfluencerPageData {
     metadata: {
       title: string;
       description: string;
-      keywords?: string[];
+      keywords?: string[]; 
       alternates?: {
         canonical?: string;
         openGraph?: {
