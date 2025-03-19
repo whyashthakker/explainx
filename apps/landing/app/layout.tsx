@@ -131,7 +131,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Suspense>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
     
                
           <div className="flex flex-col min-h-screen dark:bg-[#0A0A0A]">
