@@ -47,15 +47,11 @@ export default function TaskDetails({ taskId }: { taskId: string }) {
     console.log("Result:", result);
 
     return (
-        <pre className="mt-2 bg-gray-100 p-4 rounded"><RealEstateResults data={result} /></pre>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <RealEstateResults data={result} />
+        </div>
     );
 }
-
-
-
-
-
-
 
 const RealEstateResults = ({ data }: { data: any }) => {
     // Check if data is a task object and extract the result
@@ -80,18 +76,18 @@ const RealEstateResults = ({ data }: { data: any }) => {
     const taskParameters = data?.task?.parameters || {};
   
     return (
-      <div className="container mx-auto p-6 space-y-6">
+      <div className="space-y-8">
         {/* Task Context Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Search Parameters</CardTitle>
+        <Card className="border border-gray-200 shadow-sm">
+          <CardHeader className="border-b border-gray-100">
+            <CardTitle className="text-xl font-semibold text-gray-900">Search Parameters</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-2">
+          <CardContent className="pt-6">
+            <div className="grid md:grid-cols-2 gap-4">
               {Object.entries(taskParameters).map(([key, value]) => (
-                <div key={key} className="flex items-center">
-                  <span className="font-semibold mr-2 capitalize">{key}:</span>
-                  <span className="break-words">{value as string}</span>
+                <div key={key} className="flex items-start space-x-3">
+                  <span className="font-medium text-gray-700 capitalize min-w-[120px]">{key}:</span>
+                  <span className="text-gray-600">{value as string}</span>
                 </div>
               ))}
             </div>
@@ -99,59 +95,70 @@ const RealEstateResults = ({ data }: { data: any }) => {
         </Card>
   
         {/* Selected Properties Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Selected Properties</CardTitle>
+        <Card className="border border-gray-200 shadow-sm">
+          <CardHeader className="border-b border-gray-100">
+            <CardTitle className="text-xl font-semibold text-gray-900">Selected Properties</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             {selectedProperties.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {selectedProperties.map((property: any, index: number) => (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <CardTitle className="break-words">{property.name}</CardTitle>
-                      <CardDescription className="break-words">{property.location}</CardDescription>
+                  <Card key={index} className="border border-gray-200 hover:shadow-md transition-all duration-200">
+                    <CardHeader className="border-b border-gray-100">
+                      <CardTitle className="text-lg font-semibold text-gray-900">{property.name}</CardTitle>
+                      <CardDescription className="text-gray-600">{property.location}</CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <div className="mb-4">
-                        <Badge variant="secondary" className="text-xl break-words">{property.price}</Badge>
+                    <CardContent className="pt-6">
+                      <div className="mb-6">
+                        <Badge variant="secondary" className="text-lg font-medium px-3 py-1 bg-gray-100 text-gray-900">
+                          {property.price}
+                        </Badge>
                       </div>
   
                       {/* Key Features */}
-                      <div className="mb-4">
-                        <h4 className="font-semibold mb-2">Key Features:</h4>
-                        <ul className="list-disc pl-5 space-y-1 text-sm">
+                      <div className="mb-6">
+                        <h4 className="font-medium text-gray-900 mb-3">Key Features</h4>
+                        <ul className="space-y-2">
                           {property.key_features.map((feature: string, featureIndex: number) => (
-                            <li key={featureIndex} className="break-words">{feature}</li>
+                            <li key={featureIndex} className="flex items-center text-gray-600">
+                              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></span>
+                              {feature}
+                            </li>
                           ))}
                         </ul>
                       </div>
   
                       {/* Pros and Cons */}
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-semibold text-green-600 mb-2">Pros:</h4>
-                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                          <h4 className="font-medium text-emerald-600 mb-3">Pros</h4>
+                          <ul className="space-y-2">
                             {property.pros.map((pro: string, proIndex: number) => (
-                              <li key={proIndex} className="break-words">{pro}</li>
+                              <li key={proIndex} className="flex items-center text-gray-600">
+                                <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-2"></span>
+                                {pro}
+                              </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-red-600 mb-2">Cons:</h4>
-                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                          <h4 className="font-medium text-rose-600 mb-3">Cons</h4>
+                          <ul className="space-y-2">
                             {property.cons.map((con: string, conIndex: number) => (
-                              <li key={conIndex} className="break-words">{con}</li>
+                              <li key={conIndex} className="flex items-center text-gray-600">
+                                <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mr-2"></span>
+                                {con}
+                              </li>
                             ))}
                           </ul>
                         </div>
                       </div>
                     </CardContent>
-                    <CardContent>
+                    <CardContent className="pt-0">
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button className="w-full">View Details</Button>
+                            <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white">View Details</Button>
                           </TooltipTrigger>
                           <TooltipContent>
                             <p>Click to see more property information</p>
@@ -163,35 +170,35 @@ const RealEstateResults = ({ data }: { data: any }) => {
                 ))}
               </div>
             ) : (
-              <Alert variant="default">
-                <AlertDescription>No properties selected based on your search criteria.</AlertDescription>
+              <Alert variant="default" className="bg-gray-50 border border-gray-200">
+                <AlertDescription className="text-gray-600">No properties selected based on your search criteria.</AlertDescription>
               </Alert>
             )}
           </CardContent>
         </Card>
   
         {/* Top Recommendations Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Top Recommendations</CardTitle>
+        <Card className="border border-gray-200 shadow-sm">
+          <CardHeader className="border-b border-gray-100">
+            <CardTitle className="text-xl font-semibold text-gray-900">Top Recommendations</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             {topRecommendations.length > 0 ? (
-              <div className="grid md:grid-cols-3 gap-4">
+              <div className="grid md:grid-cols-3 gap-6">
                 {topRecommendations.map((recommendation: any, index: number) => (
-                  <Card key={index} className="hover:shadow-md transition-shadow">
-                    <CardHeader>
-                      <CardTitle className="break-words">{recommendation.property_name}</CardTitle>
+                  <Card key={index} className="border border-gray-200 hover:shadow-md transition-all duration-200">
+                    <CardHeader className="border-b border-gray-100">
+                      <CardTitle className="text-lg font-semibold text-gray-900">{recommendation.property_name}</CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground break-words">{recommendation.reasoning}</p>
+                    <CardContent className="pt-6">
+                      <p className="text-gray-600 leading-relaxed">{recommendation.reasoning}</p>
                     </CardContent>
                   </Card>
                 ))}
               </div>
             ) : (
-              <Alert variant="default">
-                <AlertDescription>No top recommendations available at the moment.</AlertDescription>
+              <Alert variant="default" className="bg-gray-50 border border-gray-200">
+                <AlertDescription className="text-gray-600">No top recommendations available at the moment.</AlertDescription>
               </Alert>
             )}
           </CardContent>
@@ -199,29 +206,29 @@ const RealEstateResults = ({ data }: { data: any }) => {
   
         {/* Best Value Analysis Section */}
         {bestValueAnalysis && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Best Value Analysis</CardTitle>
+          <Card className="border border-gray-200 shadow-sm">
+            <CardHeader className="border-b border-gray-100">
+              <CardTitle className="text-xl font-semibold text-gray-900">Best Value Analysis</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="pt-6 space-y-6">
               {bestValueAnalysis.price_per_sqft_comparison && (
                 <div>
-                  <h3 className="font-semibold mb-2">Price Comparison</h3>
-                  <p className="text-muted-foreground break-words">{bestValueAnalysis.price_per_sqft_comparison[0]}</p>
+                  <h3 className="font-medium text-gray-900 mb-3">Price Comparison</h3>
+                  <p className="text-gray-600 leading-relaxed">{bestValueAnalysis.price_per_sqft_comparison[0]}</p>
                 </div>
               )}
-              <Separator />
+              <Separator className="my-6" />
               {bestValueAnalysis.location_advantages && (
                 <div>
-                  <h3 className="font-semibold mb-2">Location Advantages</h3>
-                  <p className="text-muted-foreground break-words">{bestValueAnalysis.location_advantages[0]}</p>
+                  <h3 className="font-medium text-gray-900 mb-3">Location Advantages</h3>
+                  <p className="text-gray-600 leading-relaxed">{bestValueAnalysis.location_advantages[0]}</p>
                 </div>
               )}
-              <Separator />
+              <Separator className="my-6" />
               {bestValueAnalysis.amenities_comparison && (
                 <div>
-                  <h3 className="font-semibold mb-2">Amenities Comparison</h3>
-                  <p className="text-muted-foreground break-words">{bestValueAnalysis.amenities_comparison[0]}</p>
+                  <h3 className="font-medium text-gray-900 mb-3">Amenities Comparison</h3>
+                  <p className="text-gray-600 leading-relaxed">{bestValueAnalysis.amenities_comparison[0]}</p>
                 </div>
               )}
             </CardContent>
@@ -229,96 +236,110 @@ const RealEstateResults = ({ data }: { data: any }) => {
         )}
   
         {/* Location Trends Section */}
-        <Card>
-  <CardHeader>
-    <CardTitle>Location Trends</CardTitle>
-  </CardHeader>
-  <CardContent>
-    {areaSummaries.length > 0 ? (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {areaSummaries.map((area: any, index: number) => (
-          <Card key={index} className="hover:shadow-md transition-shadow">
-            <CardHeader>
-              <CardTitle className="break-words text-wrap">{area.location}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div>
-                  <Badge variant="secondary">Price Trend</Badge>
-                  <p className="text-muted-foreground break-words text-wrap max-w-full">
-                    {area.price_trend}
-                  </p>
-                </div>
-                {area.appreciation !== null && (
-                  <div>
-                    <Badge variant="secondary">Appreciation</Badge>
-                    <p className="text-muted-foreground break-words text-wrap max-w-full">
-                      {area.appreciation}%
-                    </p>
-                  </div>
-                )}
-                {area.rental_yield !== null && (
-                  <div>
-                    <Badge variant="secondary">Rental Yield</Badge>
-                    <p className="text-muted-foreground break-words text-wrap max-w-full">
-                      {area.rental_yield}%
-                    </p>
-                  </div>
-                )}
+        <Card className="border border-gray-200 shadow-sm">
+          <CardHeader className="border-b border-gray-100">
+            <CardTitle className="text-xl font-semibold text-gray-900">Location Trends</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            {areaSummaries.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {areaSummaries.map((area: any, index: number) => (
+                  <Card key={index} className="border border-gray-200 hover:shadow-md transition-all duration-200">
+                    <CardHeader className="border-b border-gray-100">
+                      <CardTitle className="text-lg font-semibold text-gray-900">{area.location}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-6">
+                      <div className="space-y-4">
+                        <div>
+                          <Badge variant="secondary" className="mb-2 bg-gray-100 text-gray-900 font-medium">
+                            Price Trend
+                          </Badge>
+                          <p className="text-gray-600 leading-relaxed">
+                            {area.price_trend}
+                          </p>
+                        </div>
+                        {area.appreciation !== null && (
+                          <div>
+                            <Badge variant="secondary" className="mb-2 bg-emerald-50 text-emerald-700 font-medium">
+                              Appreciation
+                            </Badge>
+                            <p className="text-gray-600 leading-relaxed">
+                              {area.appreciation}%
+                            </p>
+                          </div>
+                        )}
+                        {area.rental_yield !== null && (
+                          <div>
+                            <Badge variant="secondary" className="mb-2 bg-blue-50 text-blue-700 font-medium">
+                              Rental Yield
+                            </Badge>
+                            <p className="text-gray-600 leading-relaxed">
+                              {area.rental_yield}%
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    ) : (
-      <Alert variant="default">
-        <AlertDescription>No location trend data available.</AlertDescription>
-      </Alert>
-    )}
-  </CardContent>
-</Card>
-
+            ) : (
+              <Alert variant="default" className="bg-gray-50 border border-gray-200">
+                <AlertDescription className="text-gray-600">No location trend data available.</AlertDescription>
+              </Alert>
+            )}
+          </CardContent>
+        </Card>
   
         {/* Top Performing Areas */}
         {Object.keys(topPerformingAreas).length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Top Performing Areas</CardTitle>
+          <Card className="border border-gray-200 shadow-sm">
+            <CardHeader className="border-b border-gray-100">
+              <CardTitle className="text-xl font-semibold text-gray-900">Top Performing Areas</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-4">
-                <Card className="bg-secondary">
-                  <CardHeader>
-                    <CardTitle>Best Value</CardTitle>
+            <CardContent className="pt-6">
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="border border-gray-200 bg-gray-50">
+                  <CardHeader className="border-b border-gray-100">
+                    <CardTitle className="text-lg font-semibold text-gray-900">Best Value</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc pl-5">
+                  <CardContent className="pt-6">
+                    <ul className="space-y-2">
                       {topPerformingAreas.best_value?.map((area: string, index: number) => (
-                        <li key={index} className="break-words">{area}</li>
+                        <li key={index} className="flex items-center text-gray-600">
+                          <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></span>
+                          {area}
+                        </li>
                       ))}
                     </ul>
                   </CardContent>
                 </Card>
-                <Card className="bg-green-50">
-                  <CardHeader>
-                    <CardTitle>Best Rental Yields</CardTitle>
+                <Card className="border border-gray-200 bg-emerald-50">
+                  <CardHeader className="border-b border-gray-100">
+                    <CardTitle className="text-lg font-semibold text-gray-900">Best Rental Yields</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc pl-5">
+                  <CardContent className="pt-6">
+                    <ul className="space-y-2">
                       {topPerformingAreas.best_rental_yields?.map((area: string, index: number) => (
-                        <li key={index} className="break-words">{area}</li>
+                        <li key={index} className="flex items-center text-gray-600">
+                          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-2"></span>
+                          {area}
+                        </li>
                       ))}
                     </ul>
                   </CardContent>
                 </Card>
-                <Card className="bg-yellow-50">
-                  <CardHeader>
-                    <CardTitle>Highest Appreciation</CardTitle>
+                <Card className="border border-gray-200 bg-amber-50">
+                  <CardHeader className="border-b border-gray-100">
+                    <CardTitle className="text-lg font-semibold text-gray-900">Highest Appreciation</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc pl-5">
+                  <CardContent className="pt-6">
+                    <ul className="space-y-2">
                       {topPerformingAreas.highest_appreciation?.map((area: string, index: number) => (
-                        <li key={index} className="break-words">{area}</li>
+                        <li key={index} className="flex items-center text-gray-600">
+                          <span className="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2"></span>
+                          {area}
+                        </li>
                       ))}
                     </ul>
                   </CardContent>
@@ -330,14 +351,17 @@ const RealEstateResults = ({ data }: { data: any }) => {
   
         {/* Investment Insights Section */}
         {investmentInsights.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Investment Insights</CardTitle>
+          <Card className="border border-gray-200 shadow-sm">
+            <CardHeader className="border-b border-gray-100">
+              <CardTitle className="text-xl font-semibold text-gray-900">Investment Insights</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ul className="list-disc pl-5 space-y-2">
+            <CardContent className="pt-6">
+              <ul className="space-y-3">
                 {investmentInsights.map((insight: string, index: number) => (
-                  <li key={index} className="break-words">{insight}</li>
+                  <li key={index} className="flex items-start text-gray-600">
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 mr-2"></span>
+                    {insight}
+                  </li>
                 ))}
               </ul>
             </CardContent>
@@ -346,14 +370,17 @@ const RealEstateResults = ({ data }: { data: any }) => {
   
         {/* Negotiation Tips */}
         {negotiationTips.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Negotiation Tips</CardTitle>
+          <Card className="border border-gray-200 shadow-sm">
+            <CardHeader className="border-b border-gray-100">
+              <CardTitle className="text-xl font-semibold text-gray-900">Negotiation Tips</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ul className="list-disc pl-5 space-y-2">
+            <CardContent className="pt-6">
+              <ul className="space-y-3">
                 {negotiationTips.map((tip: string, index: number) => (
-                  <li key={index} className="break-words">{tip}</li>
+                  <li key={index} className="flex items-start text-gray-600">
+                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 mr-2"></span>
+                    {tip}
+                  </li>
                 ))}
               </ul>
             </CardContent>
@@ -364,8 +391,8 @@ const RealEstateResults = ({ data }: { data: any }) => {
         {(areaSummaries.length === 0 && 
           investmentInsights.length === 0 && 
           selectedProperties.length === 0) && (
-          <Alert variant="default">
-            <AlertDescription>No detailed property information available at the moment.</AlertDescription>
+          <Alert variant="default" className="bg-gray-50 border border-gray-200">
+            <AlertDescription className="text-gray-600">No detailed property information available at the moment.</AlertDescription>
           </Alert>
         )}
       </div>
