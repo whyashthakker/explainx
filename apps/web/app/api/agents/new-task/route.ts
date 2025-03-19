@@ -49,7 +49,7 @@ export async function POST(req: Request) {
         property_type: propertyType
       },
       webhook: {
-        url: process.env.WEBHOOK_URL || "https://b6a8-45-249-40-106.ngrok-free.app/api/agents/webhook",
+        url: process.env.WEBHOOK_URL || "https://agents.explainx.ai/api/agents/webhook",
         headers: {
           Authorization: "Bearer 1234"
         }
