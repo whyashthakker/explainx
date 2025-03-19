@@ -249,7 +249,7 @@ function MemberCard({ member, index, highlight = false, isVisible }: MemberCardP
         
         {/* Profile Image with Yellow Border for highlighted members */}
         <div className={cn(
-          "aspect-[4/5] overflow-hidden",
+          "max-w-[200px] aspect-[4/5] overflow-hidden",
           highlight ? "ring-2 ring-yellow-400" : "ring-1 ring-gray-200 dark:ring-gray-800"
         )}>
           <img 
