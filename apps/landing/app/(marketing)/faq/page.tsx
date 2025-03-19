@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="container max-w-4xl mx-auto px-4 py-12">
+      <div className="container max-w-4xl mx-auto px-4 py-12 mt-16">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="font-cal text-4xl md:text-5xl mb-4">

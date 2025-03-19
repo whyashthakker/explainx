@@ -1,7 +1,6 @@
 import { BasicLayout } from "./basic-layout";
 import { MDXContent } from "./mdx-content";
 import { Prose } from './Prose';
-import ReadingProgress from "./reading-progress";
 import { RelatedPosts } from "./related-posts";
 
 interface BlogPostProps {
@@ -16,7 +15,6 @@ export function BlogPost(props: BlogPostProps) {
 
   return (
     <BasicLayout>
-      <ReadingProgress />
       <div className="mx-auto max-w-7xl px-6 py-20 min-h-[800px]">
         <article className="mx-auto max-w-3xl">
           <div className="mt-12">

@@ -118,16 +118,16 @@ export function Posts({ initialPosts }: PostsProps) {
   };
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-[#0A0A0A] py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
             <div>
-              <h2 className="font-cal text-3xl tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="font-cal text-3xl tracking-tight text-white sm:text-4xl">
                 From the blog
               </h2>
-              <p className="mt-2 text-lg leading-8 text-gray-600">
+              <p className="mt-2 text-lg leading-8 text-gray-400">
                 To keep up to date with the future of AI.
               </p>
             </div>
@@ -137,7 +137,7 @@ export function Posts({ initialPosts }: PostsProps) {
           <div className="flex flex-col gap-6 mb-8">
             {/* Language Filter */}
             <div className="flex flex-wrap items-center gap-3">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-gray-300">
                 Filter by:
               </span>
               <div className="flex flex-wrap gap-2">
@@ -148,8 +148,8 @@ export function Posts({ initialPosts }: PostsProps) {
                     className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all
                       ${
                         selectedLanguage === language
-                          ? "bg-gray-100 text-gray-800"
-                          : "text-gray-600 hover:bg-gray-100"
+                          ? "bg-gray-800 text-white"
+                          : "text-gray-400 hover:bg-gray-800"
                       }`}
                   >
                     {getLanguageDisplay(language)}
@@ -160,7 +160,7 @@ export function Posts({ initialPosts }: PostsProps) {
 
             {/* Category Filter */}
             <div className="flex flex-wrap items-center gap-3">
-              <span className="text-sm font-medium text-gray-700">Topics:</span>
+              <span className="text-sm font-medium text-gray-300">Topics:</span>
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <button
@@ -169,8 +169,8 @@ export function Posts({ initialPosts }: PostsProps) {
                     className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all
                       ${
                         selectedCategory === category
-                          ? "bg-gray-100 text-gray-800"
-                          : "text-gray-600 hover:bg-gray-100"
+                          ? "bg-gray-800 text-white"
+                          : "text-gray-400 hover:bg-gray-800"
                       }`}
                   >
                     {formatCategory(category)}
@@ -182,7 +182,7 @@ export function Posts({ initialPosts }: PostsProps) {
 
           {/* Posts Count */}
           <div className="mt-2 mb-4">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-400">
               Showing {filteredPosts.length} posts
               {selectedLanguage !== "all" || selectedCategory !== "all"
                 ? " (filtered)"
@@ -198,7 +198,7 @@ export function Posts({ initialPosts }: PostsProps) {
               </p>
             </div>
           ) : (
-            <div className="mt-5 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
+            <div className="mt-5 space-y-16 border-t border-gray-800 pt-10 sm:mt-16 sm:pt-16">
               {currentPosts.map((post) => (
                 <article
                   key={post.title}
@@ -208,7 +208,7 @@ export function Posts({ initialPosts }: PostsProps) {
                     <time dateTime={post.datetime} className="text-gray-500">
                       {post.date}
                     </time>
-                    <span className="text-gray-600 font-medium">
+                    <span className="text-gray-400 font-medium">
                       {getLanguageDisplay(post.language)}
                     </span>
                     <div className="flex flex-wrap gap-1">
@@ -218,7 +218,7 @@ export function Posts({ initialPosts }: PostsProps) {
                           onClick={() =>
                             handleFilterChange("category", category)
                           }
-                          className="text-gray-600 hover:text-gray-800 font-medium cursor-pointer"
+                          className="text-gray-400 hover:text-white font-medium cursor-pointer"
                         >
                           #{formatCategory(category)}
                         </button>
@@ -226,13 +226,13 @@ export function Posts({ initialPosts }: PostsProps) {
                     </div>
                   </div>
                   <div className="group relative">
-                    <h3 className="mt-3 font-cal text-lg leading-6 text-gray-900 group-hover:text-gray-700">
+                    <h3 className="mt-3 font-cal text-lg leading-6 text-white group-hover:text-gray-300">
                       <Link href={post.url} locale={post.language}>
                         <span className="absolute inset-0" />
                         {post.title}
                       </Link>
                     </h3>
-                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-400">
                       {post.description}
                     </p>
                   </div>
@@ -240,18 +240,18 @@ export function Posts({ initialPosts }: PostsProps) {
                     <Image
                       src={post.author.imageUrl}
                       alt=""
-                      className="h-10 w-10 rounded-full bg-gray-50"
+                      className="h-10 w-10 rounded-full bg-gray-800"
                       width={40}
                       height={40}
                     />
                     <div className="text-sm leading-6">
-                      <p className="font-semibold text-gray-900">
+                      <p className="font-semibold text-white">
                         <a href={post.author.href} hrefLang={post.language}>
                           <span className="absolute inset-0" />
                           {post.author.name}
                         </a>
                       </p>
-                      <p className="text-gray-600">{post.author.role}</p>
+                      <p className="text-gray-400">{post.author.role}</p>
                     </div>
                   </div>
                 </article>
@@ -266,12 +266,12 @@ export function Posts({ initialPosts }: PostsProps) {
                 variant="outline"
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
-                className="text-gray-700 border-gray-200 hover:bg-gray-50"
+                className="text-white border-gray-700 hover:bg-gray-800"
               >
                 Previous
               </Button>
 
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-400">
                 Page {currentPage} of {totalPages}
               </span>
 
@@ -281,7 +281,7 @@ export function Posts({ initialPosts }: PostsProps) {
                   setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                 }
                 disabled={currentPage === totalPages}
-                className="text-gray-700 border-gray-200 hover:bg-gray-50"
+                className="text-white border-gray-700 hover:bg-gray-800"
               >
                 Next
               </Button>
@@ -292,4 +292,3 @@ export function Posts({ initialPosts }: PostsProps) {
     </div>
   );
 }
-

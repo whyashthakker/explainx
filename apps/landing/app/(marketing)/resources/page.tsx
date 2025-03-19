@@ -20,25 +20,25 @@ interface ResourcesSectionProps {
 }
 
 const ResourcesSection: React.FC<ResourcesSectionProps> = ({ resources }) => (
-  <Card className="w-full">
+  <Card className="w-full bg-gray-900 border-gray-800">
     <CardHeader>
       <div className="flex items-center gap-2">
-        <resources.icon className="h-6 w-6" />
-        <CardTitle>{resources.title}</CardTitle>
+        <resources.icon className="h-6 w-6 text-white" />
+        <CardTitle className="text-white">{resources.title}</CardTitle>
       </div>
     </CardHeader>
     <CardContent>
-      <p className="text-gray-600 mb-4">{resources.description}</p>
+      <p className="text-gray-400 mb-4">{resources.description}</p>
       <div className="grid gap-2">
         {resources.resources.map((item) => (
           <a
             key={item.name}
             href={item.href}
-            className="block p-3 hover:bg-gray-50 rounded-lg transition-colors"
+            className="block p-3 hover:bg-gray-800 rounded-lg transition-colors"
           >
-            <div className="font-medium">{item.name}</div>
+            <div className="font-medium text-white">{item.name}</div>
             {item.description && (
-              <div className="text-sm text-gray-600">{item.description}</div>
+              <div className="text-sm text-gray-400">{item.description}</div>
             )}
           </a>
         ))}
@@ -125,10 +125,11 @@ const ResourcesPage = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="space-y-4">
-        <h1 className="text-4xl font-bold mb-8">Developer Resources</h1>
-        <p className="text-xl text-gray-600 mb-8">
+    <div className='bg-[#0A0A0A]'>
+      <div className="bg-[#0A0A0A] max-w-7xl mx-auto px-4 py-8">
+      <div className="space-y-4 mt-20">
+        <h1 className="text-4xl font-bold mb-8 text-white">Developer Resources</h1>
+        <p className="text-xl text-gray-400 mb-8">
           Everything you need to build and implement custom AI agents with ExplainX.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
@@ -137,6 +138,7 @@ const ResourcesPage = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };

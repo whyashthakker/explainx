@@ -17,27 +17,27 @@ export default function ToolCard({ tool }: ToolCardProps) {
   const PlatformIcon = platformIcons[tool.platform as keyof typeof platformIcons];
 
   return (
-    <Card className="group relative flex flex-col overflow-hidden transition-all hover:shadow-lg">
+    <Card className="group relative flex flex-col overflow-hidden transition-all hover:shadow-lg bg-gray-900 border-gray-800">
       <CardHeader className="pb-4">
         <div className="flex items-center gap-2">
           {PlatformIcon && (
-            <PlatformIcon className="h-5 w-5 text-gray-600" />
+            <PlatformIcon className="h-5 w-5 text-gray-400" />
           )}
           <div className="flex gap-2">
-            <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+            <span className="inline-flex items-center rounded-md bg-indigo-900 px-2 py-1 text-xs font-medium text-indigo-200 ring-1 ring-inset ring-indigo-700/50">
               {tool.platform}
             </span>
-            <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/10">
+            <span className="inline-flex items-center rounded-md bg-green-900 px-2 py-1 text-xs font-medium text-green-200 ring-1 ring-inset ring-green-700/50">
               Free
             </span>
           </div>
         </div>
         
-        <CardTitle className="mt-4 text-xl font-bold tracking-tight text-gray-900">
+        <CardTitle className="mt-4 text-xl font-bold tracking-tight text-white">
           {tool.name}
         </CardTitle>
         
-        <CardDescription className="mt-2 line-clamp-3 text-sm text-gray-600">
+        <CardDescription className="mt-2 line-clamp-3 text-sm text-gray-400">
           {tool.description}
         </CardDescription>
       </CardHeader>
@@ -47,8 +47,8 @@ export default function ToolCard({ tool }: ToolCardProps) {
         <div className="mb-6 flex-grow">
           <ul className="space-y-2">
             {tool.features.slice(0, 3).map((feature, index) => (
-              <li key={index} className="flex items-center text-sm text-gray-600">
-                <CheckCircle className="mr-2 h-4 w-4 text-indigo-600" />
+              <li key={index} className="flex items-center text-sm text-gray-300">
+                <CheckCircle className="mr-2 h-4 w-4 text-indigo-400" />
                 <span className="line-clamp-1">{feature}</span>
               </li>
             ))}
@@ -58,7 +58,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
         {/* CTA */}
         <Link href={`/tools/${tool.id}`} className="w-full">
           <Button 
-            className="w-full group-hover:bg-indigo-500 transition-colors flex items-center justify-center"
+            className="w-full bg-gray-800 text-white hover:bg-indigo-600 group-hover:bg-indigo-600 transition-colors flex items-center justify-center"
             size="lg"
           >
             {tool.ctaText || 'Try Now'}

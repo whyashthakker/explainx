@@ -76,14 +76,15 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">Contact ExplainX AI Solutions</h1>
+    <div className="bg-[#0A0A0A]">
+       <div className="bg-[#0A0A0A] container mx-auto py-12 px-4">
+      <div className="max-w-4xl mx-auto mt-20">
+        <h1 className="text-4xl font-bold mb-8 text-center text-white">Contact ExplainX AI Solutions</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">For Businesses</h2>
-            <ul className="space-y-2 mb-4">
+          <div className="bg-gray-900 p-6 rounded-lg shadow border border-gray-800">
+            <h2 className="text-xl font-semibold mb-4 text-white">For Businesses</h2>
+            <ul className="space-y-2 mb-4 text-gray-300">
               <li>• Custom AI agent development</li>
               <li>• Process automation solutions</li>
               <li>• LangChain & CrewAI implementation</li>
@@ -91,9 +92,9 @@ export default function ContactPage() {
             </ul>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">For Developers</h2>
-            <ul className="space-y-2 mb-4">
+          <div className="bg-gray-900 p-6 rounded-lg shadow border border-gray-800">
+            <h2 className="text-xl font-semibold mb-4 text-white">For Developers</h2>
+            <ul className="space-y-2 mb-4 text-gray-300">
               <li>• API integration assistance</li>
               <li>• AI agent optimization</li>
               <li>• Technical documentation</li>
@@ -104,11 +105,13 @@ export default function ContactPage() {
 
         <ContactForm />
 
-        <div className="mt-12 text-center text-gray-600">
+        <div className="mt-12 text-center text-gray-400">
           <p className="mb-2">Email us directly: support@explainx.ai</p>
           <p>Response time: Within 24 hours</p>
         </div>
       </div>
     </div>
+    </div>
+   
   );
 }

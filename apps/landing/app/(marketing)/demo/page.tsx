@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function DemoPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="container max-w-6xl mx-auto px-4 py-12">
+      <div className="container max-w-6xl mx-auto px-4 py-12 mt-16">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left Column - Information */}
           <div className="space-y-6">

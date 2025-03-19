@@ -113,7 +113,7 @@ const teamMembers = [
 
 export default function TeamPage() {
   return (
-    <div className="container max-w-7xl mx-auto px-6 py-12">
+    <div className="container max-w-7xl mx-auto px-6 py-12 mt-16">
       {/* Hero section */}
       <div className="flex flex-col items-center text-center space-y-4 mb-16">
         <h1 className="font-cal text-4xl md:text-5xl">Meet Our AI Development Team</h1>
@@ -151,7 +151,7 @@ export default function TeamPage() {
       <Separator className="my-16" />
 
       {/* Team members grid */}
-      <div className="space-y-8">
+      <div className="space-y-8 mt-16">
         <h2 className="font-cal text-3xl text-center">The Technical Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {teamMembers.map((member) => (

@@ -1,5 +1,3 @@
-//
-
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -57,7 +55,7 @@ export default async function InfluencerPage({ params }: PageProps) {
     <>
       <PageStructuredData pageData={pageData} />
 
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-[#0A0A0A] dark:bg-[#0A0A0A] text-white dark:text-white">
         {pageData.heading && (
           <HeadingSection
             title={pageData.heading.title}

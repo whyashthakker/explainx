@@ -86,15 +86,15 @@ export default function SitemapPage() {
 
   return (
     <BasicLayout>
-      <div className="bg-white py-24 sm:py-32">
+      <div className="bg-[#0A0A0A] py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
             {/* Header */}
             <div className="mb-16">
-              <h1 className="font-cal text-4xl tracking-tight text-gray-900 mb-4">
+              <h1 className="font-cal text-4xl tracking-tight text-white mb-4">
                 Complete Article Archive
               </h1>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-400">
                 Browse our comprehensive collection of e-commerce insights and
                 marketplace strategies.
               </p>
@@ -103,15 +103,15 @@ export default function SitemapPage() {
             {/* Archive List */}
             <div className="space-y-16">
               {years.map((year) => (
-                <section key={year} className="border-t border-gray-200 pt-10">
-                  <h2 className="text-2xl font-cal text-gray-900 mb-8">
+                <section key={year} className="border-t border-gray-800 pt-10">
+                  <h2 className="text-2xl font-cal text-white mb-8">
                     {year}
                   </h2>
 
                   {Object.entries(groupedPosts[Number(year)] || {}).map(
                     ([month, posts]) => (
                       <div key={month} className="mb-12">
-                        <h3 className="text-lg font-medium text-gray-900 mb-6">
+                        <h3 className="text-lg font-medium text-white mb-6">
                           {month}
                         </h3>
                         <ul className="space-y-4">
@@ -134,14 +134,14 @@ export default function SitemapPage() {
                                   <div className="flex-1">
                                     <Link
                                       href={post.url}
-                                      className="text-gray-900 hover:text-gray-600 transition-colors"
+                                      className="text-white hover:text-gray-400 transition-colors"
                                       hrefLang={post.language}
                                     >
-                                      <h4 className="text-base font-medium group-hover:text-gray-600">
+                                      <h4 className="text-base font-medium group-hover:text-gray-400">
                                         {post.title}
                                       </h4>
                                     </Link>
-                                    <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+                                    <p className="mt-2 text-sm text-gray-400 line-clamp-2">
                                       {post.description}
                                     </p>
                                     <div className="mt-2 flex flex-wrap gap-2">
@@ -172,4 +172,3 @@ export default function SitemapPage() {
     </BasicLayout>
   );
 }
-
