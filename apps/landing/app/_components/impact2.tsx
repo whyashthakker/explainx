@@ -116,7 +116,7 @@ export default function DeliveryStats() {
           {/* Headline with mixed styling */}
           <div className="mt-8">
             <motion.h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-normal"
+              className="text-4xl md:text-5xl lg:text-6xl font-normal font-cal"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}

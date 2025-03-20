@@ -54,7 +54,7 @@ const navigation = {
     },
     {
         name: "Instagram",
-        href: "https://www.instagram.com/ExplainX",
+        href: "https://www.instagram.com/explainx.ai/",
         target: "_blank",
         icon: (props: any) => (
             <svg fill="currentColor" viewBox="0 0 448 512" {...props}>
