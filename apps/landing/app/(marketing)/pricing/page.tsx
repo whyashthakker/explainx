@@ -41,7 +41,7 @@ export default function PricingPage() {
       <PricingHeader />
       <PricingSection />
       <PricingFeatures />
-      <PricingCalculator />
+      {/* <PricingCalculator /> */}
       <PricingFAQ />
       <ContactCTA />
     </div>
