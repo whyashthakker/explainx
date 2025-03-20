@@ -2,10 +2,10 @@ import React from 'react';
 
 const PrivacyPolicy = () => {
     return (
-        <div className="flex justify-center items-center bg-white p-4">
-            <div className="max-w-6xl bg-white p-6 rounded-lg">
-                <h1 className="text-xl font-semibold text-center mb-4">Privacy Policy</h1>
-                <p className="text-sm text-gray-600 mb-4">Last updated: December 27, 2024</p>
+        <div className="flex justify-center items-center bg-black p-4">
+            <div className="max-w-6xl bg-black p-6 rounded-lg mt-16">
+                <h1 className="text-xl font-semibold text-center mb-4 font-cal">Privacy Policy</h1>
+                <p className="text-sm text-gray-300 mb-4">Last updated: December 27, 2024</p>
 
                 <h2 className="text-lg font-semibold mb-2">1. Introduction</h2>
                 <p className="mb-4">ExplainX ("we," "our," or "us") is committed to protecting the privacy of both brands and creators on our platform. This Privacy Policy outlines how we collect, use, and safeguard your information when using our influencer marketing platform. By using ExplainX, you agree to the collection and use of information in accordance with this policy.</p>
