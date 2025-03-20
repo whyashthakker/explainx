@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-// import { Logo } from './logo'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@repo/ui/components/ui/button'
 import React from 'react'
@@ -27,7 +26,7 @@ const navigation: NavigationItem[] = [
   {
     name: "Services",
     href: "/#services",
-    hasDropdown: false,
+    hasDropdown: true,
     dropdownItems: [
       {
         name: "Custom AI Agent Development",
@@ -135,7 +134,9 @@ export const HeroHeader = () => {
         <nav
             data-state={menuState ? 'active' : ''}
             className={cn(
-                'fixed z-20 w-full border-b transition-colors duration-150 bg-black text-white' // Always black background
+                'fixed z-20 w-full border-b transition-colors duration-150',
+                'bg-black/40 backdrop-blur-lg text-white', // Glass effect for header
+                scrolled ? 'border-white/10' : 'border-transparent'
             )}>
             <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
                 <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -144,7 +145,7 @@ export const HeroHeader = () => {
                             href="/"
                             aria-label="home"
                             className="flex items-center space-x-2">
-                            ExplainX
+                            Explain <span className='text-yellow-500 font-bold'>X</span>
                         </Link>
 
                         <button
@@ -179,24 +180,24 @@ export const HeroHeader = () => {
                                         {item.hasDropdown && item.dropdownItems && (
                                             <div 
                                                 className={cn(
-                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 origin-top-left",
-                                                    "bg-black text-white", // Black background for dropdown
+                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md shadow-lg ring-1 ring-white/10 transition-all duration-200 origin-top-left",
+                                                    "bg-black/60 backdrop-blur-lg text-white", // Glass effect for dropdown
                                                     activeDropdown === item.name ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
                                                 )}
                                                 onMouseEnter={handleDropdownMouseEnter}
                                                 onMouseLeave={handleMouseLeave}
                                             >
-                                                <div className="py-1 bg-black">
+                                                <div className="py-1">
                                                     {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
                                                         <Link 
                                                             key={dropdownIndex}
                                                             href={dropdownItem.href}
                                                             target={dropdownItem.target}
-                                                            className="block px-4 py-2 hover:bg-gray-900 bg-black"
+                                                            className="block px-4 py-2 hover:bg-white/10"
                                                         >
                                                             <div className="font-medium text-white">{dropdownItem.name}</div>
                                                             {dropdownItem.description && (
-                                                                <p className="text-xs text-gray-400">{dropdownItem.description}</p>
+                                                                <p className="text-xs text-gray-300">{dropdownItem.description}</p>
                                                             )}
                                                         </Link>
                                                     ))}
@@ -212,10 +213,10 @@ export const HeroHeader = () => {
                     {/* Mobile Navigation */}
                     <div 
                         className={cn(
-                            "mb-6 w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:p-0 lg:shadow-none dark:shadow-none",
+                            "mb-6 w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border border-white/10 p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:p-0 lg:shadow-none dark:shadow-none",
                             menuState ? "block" : "hidden",
                             "lg:flex",
-                            "bg-black text-white" // Black background for mobile menu
+                            "bg-black/60 backdrop-blur-lg text-white" // Glass effect for mobile menu
                         )}
                     >
                         {/* Mobile Navigation Menu */}
