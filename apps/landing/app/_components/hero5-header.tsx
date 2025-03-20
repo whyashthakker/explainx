@@ -26,7 +26,7 @@ const navigation: NavigationItem[] = [
   {
     name: "Services",
     href: "/#services",
-    hasDropdown: true,
+    hasDropdown: false,
     dropdownItems: [
       {
         name: "Custom AI Agent Development",
@@ -168,7 +168,7 @@ export const HeroHeader = () => {
                                     >
                                         <Link
                                             href={item.href}
-                                            className="flex items-center text-white hover:text-gray-300 duration-150"
+                                            className="flex items-center text-white hover:text-yellow-400 duration-150"
                                         >
                                             <span>{item.name}</span>
                                             {item.hasDropdown && (
@@ -176,12 +176,12 @@ export const HeroHeader = () => {
                                             )}
                                         </Link>
                                         
-                                        {/* Dropdown Menu */}
+                                        {/* Dropdown Menu - Changed to pure black */}
                                         {item.hasDropdown && item.dropdownItems && (
                                             <div 
                                                 className={cn(
-                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md shadow-lg ring-1 ring-white/10 transition-all duration-200 origin-top-left",
-                                                    "bg-black/60 backdrop-blur-lg text-white", // Glass effect for dropdown
+                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md shadow-lg ring-1 ring-yellow-500/20 transition-all duration-200 origin-top-left",
+                                                    "bg-black text-white", // Pure black background
                                                     activeDropdown === item.name ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
                                                 )}
                                                 onMouseEnter={handleDropdownMouseEnter}
@@ -193,11 +193,11 @@ export const HeroHeader = () => {
                                                             key={dropdownIndex}
                                                             href={dropdownItem.href}
                                                             target={dropdownItem.target}
-                                                            className="block px-4 py-2 hover:bg-white/10"
+                                                            className="block px-4 py-2 hover:bg-zinc-900 border-l-2 border-transparent hover:border-yellow-500 transition-all duration-150"
                                                         >
                                                             <div className="font-medium text-white">{dropdownItem.name}</div>
                                                             {dropdownItem.description && (
-                                                                <p className="text-xs text-gray-300">{dropdownItem.description}</p>
+                                                                <p className="text-xs text-gray-400">{dropdownItem.description}</p>
                                                             )}
                                                         </Link>
                                                     ))}
@@ -216,7 +216,7 @@ export const HeroHeader = () => {
                             "mb-6 w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border border-white/10 p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:p-0 lg:shadow-none dark:shadow-none",
                             menuState ? "block" : "hidden",
                             "lg:flex",
-                            "bg-black/60 backdrop-blur-lg text-white" // Glass effect for mobile menu
+                            "bg-black text-white" // Pure black for mobile menu too
                         )}
                     >
                         {/* Mobile Navigation Menu */}
@@ -226,7 +226,7 @@ export const HeroHeader = () => {
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className="text-white hover:text-gray-300 block duration-150"
+                                            className="text-white hover:text-yellow-400 block duration-150"
                                             onClick={() => setMenuState(false)}
                                         >
                                             <span>{item.name}</span>
@@ -240,7 +240,7 @@ export const HeroHeader = () => {
                                                         <Link
                                                             href={dropdownItem.href}
                                                             target={dropdownItem.target}
-                                                            className="text-sm text-gray-400 hover:text-white block py-1"
+                                                            className="text-sm text-gray-400 hover:text-yellow-400 block py-1 border-l border-zinc-800 pl-2"
                                                             onClick={() => setMenuState(false)}
                                                         >
                                                             {dropdownItem.name}
@@ -259,14 +259,16 @@ export const HeroHeader = () => {
                             <Button
                                 asChild
                                 variant="outline"
-                                size="sm">
+                                size="sm"
+                                className="border-yellow-500/50 hover:border-yellow-500 text-white">
                                 <a href={`${process.env.NEXT_PUBLIC_LOGIN_URL}`}>
                                     <span>Login</span>
                                 </a>
                             </Button>
                             <Button
                                 asChild
-                                size="sm">
+                                size="sm"
+                                className="bg-yellow-500 hover:bg-yellow-600 text-black">
                                 <a href={`${process.env.NEXT_PUBLIC_SIGNUP_URL}`}>
                                     <span>Sign Up</span>
                                 </a>
