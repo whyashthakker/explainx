@@ -51,7 +51,7 @@ export default function RealEstate() {
   const fetchJobs = async (): Promise<void> => {
     try {
       setError(null);
-      const response = await fetch('/api/agents/tasks');
+      const response = await fetch('/api/agents/real-estate/tasks');
       
       if (!response.ok) {
         if (response.status === 401) {
@@ -93,7 +93,7 @@ export default function RealEstate() {
     };
     
     try {
-      const response = await fetch('/api/agents/new-task', {
+      const response = await fetch('/api/agents/real-estate/new-task', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -296,7 +296,7 @@ export default function RealEstate() {
 
                           {/* View Link */}
                           <TableCell>
-                            <Link href={`/tasks/${job.task_id}`} className="text-primary hover:underline">
+                            <Link href={`/tasks/real-estate/${job.task_id}`} className="text-primary hover:underline">
                               View result
                             </Link>
                           </TableCell>

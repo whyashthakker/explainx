@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '../../../../lib/prisma'; // Adjust import path as needed
-import { auth } from '../../../../auth'; // Adjust path to match your auth file location
+import { prisma } from '../../../../../lib/prisma'; // Adjust import path as needed
+import { auth } from '../../../../../auth'; // Adjust path to match your auth file location
 
 export async function POST(req: Request) {
   try {
