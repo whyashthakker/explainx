@@ -260,7 +260,7 @@ export const HeroHeader = () => {
                                 asChild
                                 variant="outline"
                                 size="sm"
-                                className="border-yellow-500/50 hover:border-yellow-500 text-white">
+                                className="border-white hover:border-white text-white">
                                 <a href={`${process.env.NEXT_PUBLIC_LOGIN_URL}`}>
                                     <span>Login</span>
                                 </a>
@@ -268,7 +268,7 @@ export const HeroHeader = () => {
                             <Button
                                 asChild
                                 size="sm"
-                                className="bg-yellow-500 hover:bg-yellow-600 text-black">
+                                className="bg-white hover:bg-white text-black">
                                 <a href={`${process.env.NEXT_PUBLIC_SIGNUP_URL}`}>
                                     <span>Sign Up</span>
                                 </a>
