@@ -71,7 +71,7 @@ export default function DarkCTA() {
           
           {/* Headline with mixed styling */}
           <motion.h2 
-            className="mt-8 text-4xl md:text-5xl lg:text-6xl font-normal text-white mx-auto max-w-3xl"
+            className="mt-8 text-4xl md:text-5xl lg:text-6xl font-normal text-white mx-auto max-w-3xl font-cal"
             initial={{ y: 20, opacity: 0 }}
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}

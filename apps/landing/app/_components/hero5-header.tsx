@@ -259,16 +259,16 @@ export const HeroHeader = () => {
                                 asChild
                                 variant="outline"
                                 size="sm">
-                                <Link href="#">
+                                <a href={`${process.env.NEXT_PUBLIC_LOGIN_URL}`}>
                                     <span>Login</span>
-                                </Link>
+                                </a>
                             </Button>
                             <Button
                                 asChild
                                 size="sm">
-                                <Link href="#">
+                                <a href={`${process.env.NEXT_PUBLIC_SIGNUP_URL}`}>
                                     <span>Sign Up</span>
-                                </Link>
+                                </a>
                             </Button>
                         </div>
                     </div>
