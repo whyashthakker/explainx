@@ -81,9 +81,9 @@ export function FeaturesSectionWithHoverEffects() {
               animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              We commit to <span className="italic">excellence</span>
+              We commit to <span className=" ">excellence</span>
               <br />
-              in <span className="italic">AI agent development</span>
+              in <span className=" ">AI agent development</span>
             </motion.h2>
             
             {/* Description paragraph */}

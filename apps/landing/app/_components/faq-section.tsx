@@ -70,7 +70,7 @@ export default function FAQs({ faqs }: FAQsProps) {
               animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="italic">Frequently</span> asked
+              <span className=" ">Frequently</span> asked
               <br />
               questions
             </motion.h2>

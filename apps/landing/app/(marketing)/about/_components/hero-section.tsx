@@ -16,7 +16,7 @@ export function HeroSection() {
       </Badge>
       
       <h1 className="font-cal text-4xl md:text-5xl lg:text-6xl text-foreground dark:text-white">
-        Pioneering <span className="italic">AI Agents</span>
+        Pioneering <span className=" ">AI Agents</span>
       </h1>
       
       <p className="text-muted-foreground max-w-[700px] mx-auto text-lg">

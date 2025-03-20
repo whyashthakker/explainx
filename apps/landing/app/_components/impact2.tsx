@@ -121,9 +121,9 @@ export default function DeliveryStats() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Transforming <span className="italic">businesses</span>
+              Transforming <span className=" ">businesses</span>
               <br />
-              through <span className="italic">AI innovation</span>
+              through <span className=" ">AI innovation</span>
             </motion.h2>
             
             {/* Description paragraph */}

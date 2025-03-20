@@ -570,7 +570,7 @@ export default function EditBlogPostPage(props: { params: Params }) {
                               </Badge>
                             ))}
                             {formData.categories.length === 0 && (
-                              <p className="text-xs text-slate-500 italic">
+                              <p className="text-xs text-slate-500  ">
                                 No categories added
                               </p>
                             )}
