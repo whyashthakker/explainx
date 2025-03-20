@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import {
   Card,
@@ -7,21 +9,34 @@ import {
   CardFooter,
 } from "@repo/ui/components/ui/card";
 import { Button } from "@repo/ui/components/ui/button";
+import { Badge } from "@repo/ui/components/ui/badge";
+import { Users, ArrowRight } from "lucide-react";
 
 export function CultureSection() {
   return (
-    <Card className="mb-16">
-      <CardHeader>
-        <CardTitle className="font-cal text-2xl text-center">Our Culture</CardTitle>
+    <Card className="mb-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl">
+      <CardHeader className="space-y-4">
+        <div className="flex justify-center">
+          <Badge 
+            variant="outline" 
+            className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+          >
+            <Users className="w-4 h-4 mr-1" />
+            Company Values
+          </Badge>
+        </div>
+        <CardTitle className="font-cal text-3xl text-center text-foreground dark:text-white">
+          Our <span className="italic">Culture</span>
+        </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4 text-muted-foreground">
-        <p>
+      <CardContent className="space-y-4 text-muted-foreground max-w-3xl mx-auto px-8">
+        <p className="text-lg">
           At ExplainX, we're pioneering the future of AI agents with a focus on innovation, 
           accessibility, and practical implementation. Our team consists of AI enthusiasts, 
           developers, and educators who believe in democratizing artificial intelligence 
           through powerful, user-friendly agents.
         </p>
-        <p>
+        <p className="text-lg">
           We value technical excellence, continuous learning, and open collaboration. If you're 
           passionate about building cutting-edge AI solutions, teaching others, and contributing 
           to the growing ecosystem of AI agents, we want to work with you. Whether it's developing 
@@ -29,10 +44,14 @@ export function CultureSection() {
           opportunity to make a significant impact.
         </p>
       </CardContent>
-      <CardFooter className="flex justify-center pt-4">
+      <CardFooter className="flex justify-center pt-6 pb-8">
         <Link href="/team">
-          <Button variant="outline">
-            Meet Our Team →
+          <Button 
+            className="border-yellow-500/50 hover:border-yellow-500 text-foreground dark:text-white hover:bg-yellow-500/10 px-6 py-2 transition-all group"
+            variant="outline"
+          >
+            Meet Our Team
+            <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
       </CardFooter>
