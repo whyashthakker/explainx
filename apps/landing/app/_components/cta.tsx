@@ -76,9 +76,9 @@ export default function DarkCTA() {
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Deploy <span className="italic">AI Agents</span> to
+            Deploy <span className=" ">AI Agents</span> to
             <br/>
-            transform your <span className="italic">business</span>
+            transform your <span className=" ">business</span>
           </motion.h2>
           
           {/* Description paragraph */}

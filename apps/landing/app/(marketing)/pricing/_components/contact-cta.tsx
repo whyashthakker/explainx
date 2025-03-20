@@ -52,7 +52,7 @@ export function ContactCTA() {
           animate={isCardInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          Ready to start your <span className="italic">first</span> campaign?
+          Ready to start your <span className=" ">first</span> campaign?
         </motion.h2>
         
         <motion.p 

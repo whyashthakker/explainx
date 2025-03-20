@@ -28,7 +28,7 @@ export default function CompareHome() {
               Comparison
             </Badge>
             <h1 className="font-cal text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground dark:text-white">
-              Compare <span className="italic">explainx.ai</span>
+              Compare <span className=" ">explainx.ai</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl">
               See how ExplainX stacks up against other platforms across features, pricing, and capabilities

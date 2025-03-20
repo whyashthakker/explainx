@@ -29,7 +29,7 @@ export function StatsSection({ stats }: StatsSectionProps) {
             Platform Stats
           </Badge>
           <h2 className="font-cal text-4xl md:text-5xl mb-6 text-foreground dark:text-white">
-            Growing <span className="italic">Together</span>
+            Growing <span className=" ">Together</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Join our thriving community of creators and achieve your goals

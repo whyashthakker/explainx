@@ -261,7 +261,7 @@ export const HeroHeader = () => {
                                 variant="outline"
                                 size="sm"
                                 className="border-white hover:border-white text-white">
-                                <a href={`${process.env.NEXT_PUBLIC_LOGIN_URL}`}>
+                                <a href={`https://agents.explainx.ai/signup`}>
                                     <span>Login</span>
                                 </a>
                             </Button>
@@ -269,7 +269,7 @@ export const HeroHeader = () => {
                                 asChild
                                 size="sm"
                                 className="bg-white hover:bg-white text-black">
-                                <a href={`${process.env.NEXT_PUBLIC_SIGNUP_URL}`}>
+                                <a href={`https://agents.explainx.ai/signup`}>
                                     <span>Sign Up</span>
                                 </a>
                             </Button>
