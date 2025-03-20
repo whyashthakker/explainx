@@ -26,7 +26,7 @@ export function FAQSection({ faq }: FAQSectionProps) {
           className="text-center mb-16"
         >
           <h2 className="font-cal text-4xl md:text-5xl mb-6 text-foreground dark:text-white">
-            Frequently Asked <span className="italic">Questions</span>
+            Frequently Asked <span className=" ">Questions</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Everything you need to know about growing with our platform

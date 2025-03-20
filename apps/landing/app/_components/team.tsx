@@ -118,9 +118,9 @@ export default function TeamSection() {
               animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              The <span className="italic">minds</span> behind
+              The <span className=" ">minds</span> behind
               <br />
-              our <span className="italic">innovation</span>
+              our <span className=" ">innovation</span>
             </motion.h2>
             
             {/* Description paragraph */}

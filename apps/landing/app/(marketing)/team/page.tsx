@@ -66,7 +66,7 @@ export default function TeamPage() {
           Our Team
         </Badge>
         <h1 className="font-cal text-4xl md:text-5xl text-foreground dark:text-white">
-          Meet Our <span className="italic">AI Development</span> Team
+          Meet Our <span className=" ">AI Development</span> Team
         </h1>
         <p className="text-muted-foreground max-w-[700px] text-lg">
           We're a team of AI specialists dedicated to revolutionizing business operations through 
@@ -106,7 +106,7 @@ export default function TeamPage() {
             </Badge>
           </div>
           <CardTitle className="font-cal text-3xl text-center text-foreground dark:text-white">
-            Our <span className="italic">Mission</span>
+            Our <span className=" ">Mission</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground max-w-3xl mx-auto px-8">
@@ -134,7 +134,7 @@ export default function TeamPage() {
             Meet The Experts
           </Badge>
           <h2 className="font-cal text-3xl text-center text-foreground dark:text-white">
-            The <span className="italic">Technical</span> Team
+            The <span className=" ">Technical</span> Team
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -158,7 +158,7 @@ export default function TeamPage() {
             </Badge>
           </div>
           <CardTitle className="font-cal text-3xl text-center text-foreground dark:text-white">
-            Ready to <span className="italic">Transform</span> Your Business?
+            Ready to <span className=" ">Transform</span> Your Business?
           </CardTitle>
           <CardDescription className="text-center text-muted-foreground text-lg">
             Partner with us to develop custom AI solutions for your organization.

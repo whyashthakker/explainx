@@ -7,9 +7,9 @@ export function PricingHeader() {
         Simple & Transparent Pricing
       </Badge>
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-4">
-        Find & Pay <span className="italic">Influencers</span> By
+        Find & Pay <span className=" ">Influencers</span> By
         <br />
-        <span className="italic">Performance</span>
+        <span className=" ">Performance</span>
       </h1>
       <p className="text-muted-foreground max-w-[700px] mt-6">
         Start for free, upgrade as you grow. Pay influencers based on their actual performance,

@@ -60,7 +60,7 @@ export function UseCaseTestimonials({ testimonials }: UseCaseTestimonialsProps) 
                       </p>
                     </div>
                   </div>
-                  <blockquote className="mt-6 text-base italic leading-7 text-gray-700">
+                  <blockquote className="mt-6 text-base   leading-7 text-gray-700">
                     "{testimonial.quote}"
                   </blockquote>
                 </div>

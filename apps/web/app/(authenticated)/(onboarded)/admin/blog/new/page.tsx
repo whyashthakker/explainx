@@ -551,7 +551,7 @@ export default function NewBlogPostPage() {
                               </Badge>
                             ))}
                             {formData.categories.length === 0 && (
-                              <p className="text-xs text-slate-500 italic">
+                              <p className="text-xs text-slate-500  ">
                                 No categories added
                               </p>
                             )}

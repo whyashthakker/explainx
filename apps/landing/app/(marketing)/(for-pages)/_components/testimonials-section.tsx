@@ -25,7 +25,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
           className="text-center mb-16"
         >
           <h2 className="font-cal text-4xl md:text-5xl mb-6 text-foreground dark:text-white">
-            Creator <span className="italic">Success</span> Stories
+            Creator <span className=" ">Success</span> Stories
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Hear from creators who have grown their influence with our platform

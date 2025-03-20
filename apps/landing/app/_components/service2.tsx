@@ -108,9 +108,9 @@ export default function ServicesSection() {
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            We bring <span className="italic">AI, engineering &</span>
+            We bring <span className=" ">AI, engineering &</span>
             <br />
-            <span className="italic">content</span> expertise
+            <span className=" ">content</span> expertise
           </motion.h2>
           
           {/* Description paragraph */}
@@ -214,7 +214,7 @@ export default function ServicesSection() {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <h3 className="text-3xl md:text-4xl text-black dark:text-white">
-                  <span className="italic">{serviceContent[activeService].title.split(' ')[0]}</span> {serviceContent[activeService].title.split(' ').slice(1).join(' ')}
+                  <span className=" ">{serviceContent[activeService].title.split(' ')[0]}</span> {serviceContent[activeService].title.split(' ').slice(1).join(' ')}
                 </h3>
                 
                 <p className="mt-4 text-gray-600 dark:text-gray-400">

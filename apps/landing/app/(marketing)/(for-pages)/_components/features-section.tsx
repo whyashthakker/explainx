@@ -56,7 +56,7 @@ export function FeaturesSection({ features }: FeaturesSectionProps) {
           Features
         </Badge>
         <h2 className="font-cal text-4xl md:text-5xl mb-6 text-foreground dark:text-white">
-          Everything You Need to <span className="italic">Succeed</span>
+          Everything You Need to <span className=" ">Succeed</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
           Powerful tools and resources designed to help you grow your influence and maximize earnings
