@@ -222,9 +222,9 @@ function MemberCard({ member, index, highlight = false, isVisible }: MemberCardP
       transition={{ duration: 0.5, delay: 0.1 * index }}
       className="group"
     >
-      <div className="relative mb-6 overflow-hidden rounded-xl">
+      <div className="relative mb-6 overflow-hidden rounded-xl w-[200px] h-[200px]">
         <div className={cn(
-          "absolute inset-0 z-10",
+          "absolute w-[200px] h-[200px] z-10",
           "bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         )}></div>
         
@@ -249,7 +249,7 @@ function MemberCard({ member, index, highlight = false, isVisible }: MemberCardP
         
         {/* Profile Image with Yellow Border for highlighted members */}
         <div className={cn(
-          "max-w-[200px] aspect-[4/5] overflow-hidden",
+          "w-[200px] h-[200px] overflow-hidden", // Fixed square dimensions
           highlight ? "ring-2 ring-yellow-400" : "ring-1 ring-gray-200 dark:ring-gray-800"
         )}>
           <img 

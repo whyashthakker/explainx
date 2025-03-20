@@ -27,7 +27,7 @@ const navigation: NavigationItem[] = [
   {
     name: "Services",
     href: "/#services",
-    hasDropdown: true,
+    hasDropdown: false,
     dropdownItems: [
       {
         name: "Custom AI Agent Development",
@@ -135,9 +135,7 @@ export const HeroHeader = () => {
         <nav
             data-state={menuState ? 'active' : ''}
             className={cn(
-                'fixed z-20 w-full border-b transition-colors duration-150', 
-                scrolled && 'bg-black text-white', // Black background for desktop when scrolled
-                menuState && 'bg-white dark:bg-gray-900' // Force solid background when mobile menu is open
+                'fixed z-20 w-full border-b transition-colors duration-150 bg-black text-white' // Always black background
             )}>
             <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
                 <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -169,11 +167,7 @@ export const HeroHeader = () => {
                                     >
                                         <Link
                                             href={item.href}
-                                            className={cn(
-                                                "flex items-center duration-150",
-                                                scrolled ? "text-white hover:text-gray-300" : "text-muted-foreground hover:text-accent-foreground",
-                                                activeDropdown === item.name && (scrolled ? "text-gray-300" : "text-accent-foreground")
-                                            )}
+                                            className="flex items-center text-white hover:text-gray-300 duration-150"
                                         >
                                             <span>{item.name}</span>
                                             {item.hasDropdown && (
@@ -185,24 +179,24 @@ export const HeroHeader = () => {
                                         {item.hasDropdown && item.dropdownItems && (
                                             <div 
                                                 className={cn(
-                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md bg-background shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 origin-top-left",
-                                                    "bg-white dark:bg-gray-900", // Make submenu opaque
+                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 origin-top-left",
+                                                    "bg-black text-white", // Black background for dropdown
                                                     activeDropdown === item.name ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
                                                 )}
                                                 onMouseEnter={handleDropdownMouseEnter}
                                                 onMouseLeave={handleMouseLeave}
                                             >
-                                                <div className="py-1 bg-white dark:bg-gray-900">
+                                                <div className="py-1 bg-black">
                                                     {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
                                                         <Link 
                                                             key={dropdownIndex}
                                                             href={dropdownItem.href}
                                                             target={dropdownItem.target}
-                                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 bg-white dark:bg-gray-900"
+                                                            className="block px-4 py-2 hover:bg-gray-900 bg-black"
                                                         >
-                                                            <div className="font-medium">{dropdownItem.name}</div>
+                                                            <div className="font-medium text-white">{dropdownItem.name}</div>
                                                             {dropdownItem.description && (
-                                                                <p className="text-xs text-muted-foreground">{dropdownItem.description}</p>
+                                                                <p className="text-xs text-gray-400">{dropdownItem.description}</p>
                                                             )}
                                                         </Link>
                                                     ))}
@@ -218,11 +212,10 @@ export const HeroHeader = () => {
                     {/* Mobile Navigation */}
                     <div 
                         className={cn(
-                            "bg-background mb-6 w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent",
+                            "mb-6 w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:p-0 lg:shadow-none dark:shadow-none",
                             menuState ? "block" : "hidden",
                             "lg:flex",
-                            // Fix for mobile transparency
-                            !scrolled && menuState ? "bg-white dark:bg-gray-900" : ""
+                            "bg-black text-white" // Black background for mobile menu
                         )}
                     >
                         {/* Mobile Navigation Menu */}
@@ -232,7 +225,7 @@ export const HeroHeader = () => {
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                                            className="text-white hover:text-gray-300 block duration-150"
                                             onClick={() => setMenuState(false)}
                                         >
                                             <span>{item.name}</span>
@@ -246,7 +239,7 @@ export const HeroHeader = () => {
                                                         <Link
                                                             href={dropdownItem.href}
                                                             target={dropdownItem.target}
-                                                            className="text-sm text-muted-foreground hover:text-accent-foreground block py-1"
+                                                            className="text-sm text-gray-400 hover:text-white block py-1"
                                                             onClick={() => setMenuState(false)}
                                                         >
                                                             {dropdownItem.name}
@@ -262,8 +255,6 @@ export const HeroHeader = () => {
                         
                         {/* Auth Buttons */}
                         <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-                            {/* Add the mode toggle before the buttons */}
-                            
                             <Button
                                 asChild
                                 variant="outline"
