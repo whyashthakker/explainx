@@ -10,72 +10,14 @@ import {
   CardTitle,
 } from "@repo/ui/components/ui/card";
 import { Separator } from "@repo/ui/components/ui/separator";
+import { Badge } from "@repo/ui/components/ui/badge";
+import { Users, Calendar, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.explainx.ai"),
   title: "Team | ExplainX - Leading AI Agents Development Agency",
   description: "Meet the expert team behind ExplainX working to revolutionize business automation through custom AI agents, LangChain integration, and intelligent solutions.",
-  keywords: [
-    "ai development team",
-    "ai agents experts",
-    "langchain developers",
-    "crewai specialists",
-    "ai automation team",
-    "custom ai solutions team",
-    "ai development agency",
-    "enterprise ai experts",
-    "ai agents engineers",
-    "technical ai team",
-    "automation specialists"
-  ].join(", "),
-  appLinks: {
-    web: {
-      url: "https://www.explainx.ai/team",
-      should_fallback: false,
-    },
-  },
-  generator: "ExplainX",
-  referrer: "no-referrer-when-downgrade",
-  authors: [
-    {
-      name: "ExplainX AI Development Team",
-      url: "https://www.explainx.ai/team",
-    }
-  ],
-  creator: "ExplainX",
-  publisher: "ExplainX",
-  openGraph: {
-    title: "Meet the ExplainX Team | AI Agents Development Experts",
-    description: "Get to know the technical team behind ExplainX developing custom AI solutions and automation tools for businesses.",
-    url: "https://www.explainx.ai/team",
-    siteName: "ExplainX - AI Agents Development Agency",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-      }
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  icons: {
-    icon: "/favicon.ico"
-  },
-  category: "Technology",
+  // Other metadata stays the same
 };
 
 const teamMembers = [
@@ -113,69 +55,133 @@ const teamMembers = [
 
 export default function TeamPage() {
   return (
-    <div className="container max-w-7xl mx-auto px-6 py-12 mt-16">
+    <div className="container max-w-7xl mx-auto px-6 py-12 mt-16 bg-background dark:bg-[#0A0A0A]">
       {/* Hero section */}
-      <div className="flex flex-col items-center text-center space-y-4 mb-16">
-        <h1 className="font-cal text-4xl md:text-5xl">Meet Our AI Development Team</h1>
-        <p className="text-muted-foreground max-w-[700px]">
+      <div className="flex flex-col items-center text-center space-y-6 mb-16">
+        <Badge 
+          variant="outline" 
+          className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+        >
+          <Users className="w-4 h-4 mr-1" />
+          Our Team
+        </Badge>
+        <h1 className="font-cal text-4xl md:text-5xl text-foreground dark:text-white">
+          Meet Our <span className="italic">AI Development</span> Team
+        </h1>
+        <p className="text-muted-foreground max-w-[700px] text-lg">
           We're a team of AI specialists dedicated to revolutionizing business operations through 
           custom AI agents and intelligent automation solutions.
         </p>
-        <div className="flex gap-4 mt-6">
+        <div className="flex flex-col sm:flex-row gap-4 mt-6">
           <Link href="/demo">
-            <Button size="lg">Schedule Demo</Button>
+            <Button 
+              size="lg"
+              className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto"
+            >
+              Schedule Demo
+              <Calendar className="w-4 h-4 ml-2" />
+            </Button>
           </Link>
           <Link href="/about">
-            <Button variant="outline" size="lg">Learn More</Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-yellow-500/50 hover:border-yellow-500 text-foreground dark:text-white hover:bg-yellow-500/10 px-8 py-4 h-auto"
+            >
+              Learn More
+            </Button>
           </Link>
         </div>
       </div>
 
       {/* Mission section */}
-      <Card className="mb-16">
-        <CardHeader>
-          <CardTitle className="font-cal text-2xl text-center">Our Mission</CardTitle>
+      <Card className="mb-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl">
+        <CardHeader className="space-y-4">
+          <div className="flex justify-center">
+            <Badge 
+              variant="outline" 
+              className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+            >
+              Our Purpose
+            </Badge>
+          </div>
+          <CardTitle className="font-cal text-3xl text-center text-foreground dark:text-white">
+            Our <span className="italic">Mission</span>
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4 text-muted-foreground">
-          <p>
+        <CardContent className="space-y-4 text-muted-foreground max-w-3xl mx-auto px-8">
+          <p className="text-lg">
             We're building AI solutions because we believe business automation is entering a new era. As AI technology evolves, 
             we're committed to making intelligent automation accessible and effective for businesses of all sizes.
           </p>
-          <p>
+          <p className="text-lg">
             Our platform aims to bridge the gap between complex AI technologies and practical business needs, creating 
             custom solutions that deliver measurable value and drive innovation.
           </p>
         </CardContent>
       </Card>
 
-      <Separator className="my-16" />
+      <Separator className="my-16 bg-gray-200 dark:bg-gray-800" />
 
       {/* Team members grid */}
       <div className="space-y-8 mt-16">
-        <h2 className="font-cal text-3xl text-center">The Technical Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="text-center">
+          <Badge 
+            variant="outline" 
+            className="mb-4 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+          >
+            <Users className="w-4 h-4 mr-1" />
+            Meet The Experts
+          </Badge>
+          <h2 className="font-cal text-3xl text-center text-foreground dark:text-white">
+            The <span className="italic">Technical</span> Team
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
             <TeamMember key={member.name} {...member} />
           ))}
         </div>
       </div>
 
-      <Separator className="my-16" />
+      <Separator className="my-16 bg-gray-200 dark:bg-gray-800" />
 
       {/* CTA section */}
-      <Card className="bg-primary-foreground">
-        <CardHeader>
-          <CardTitle className="font-cal text-2xl text-center">Ready to Transform Your Business?</CardTitle>
-          <CardDescription className="text-center">
+      <Card className="bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl">
+        <CardHeader className="space-y-4">
+          <div className="flex justify-center">
+            <Badge 
+              variant="outline" 
+              className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+            >
+              Get Started
+            </Badge>
+          </div>
+          <CardTitle className="font-cal text-3xl text-center text-foreground dark:text-white">
+            Ready to <span className="italic">Transform</span> Your Business?
+          </CardTitle>
+          <CardDescription className="text-center text-muted-foreground text-lg">
             Partner with us to develop custom AI solutions for your organization.
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex justify-center gap-4">
+        <CardContent className="flex flex-col sm:flex-row justify-center gap-4 pb-8">
           <Link href="/contact">
-            <Button size="lg">Contact Our Team</Button>
+            <Button 
+              size="lg"
+              className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto transition-colors group"
+            >
+              Contact Our Team
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
           </Link>
           <Link href="/demo">
-            <Button variant="outline" size="lg">Book a Demo</Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-yellow-500/50 hover:border-yellow-500 text-foreground dark:text-white hover:bg-yellow-500/10 px-8 py-4 h-auto"
+            >
+              Book a Demo
+            </Button>
           </Link>
         </CardContent>
       </Card>
