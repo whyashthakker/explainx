@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '@repo/ui/lib/utils';
+import { Bot, BookOpen, Lightbulb, Code, Briefcase } from 'lucide-react';
 
 export default function ServicesSection() {
   // Reference and InView hook for the entire section
@@ -43,36 +44,41 @@ export default function ServicesSection() {
   
   const [activeService, setActiveService] = useState<ServiceKey>('custom-ai-agent-development');
   
-  // Content for each service
+  // Content for each service with Lucide icons
   const serviceContent = {
     'custom-ai-agent-development': {
       title: 'Powerful Custom AI Solutions',
       description: 'Build sophisticated AI agents precisely tailored to your specific business needs. We leverage cutting-edge machine learning techniques to create intelligent systems that solve complex challenges and drive innovation.',
-      image: '/api/placeholder/600/400',
+      icon: Bot,
+      iconSize: 80,
       alt: 'Custom AI Agent Development Illustration'
     },
     'ai-agent-training': {
       title: 'Empowering AI Development Skills',
       description: 'Comprehensive training programs designed to equip your team with advanced AI development capabilities. Learn the latest techniques in AI agent creation, machine learning, and intelligent system design.',
-      image: '/api/placeholder/600/400',
+      icon: BookOpen,
+      iconSize: 80,
       alt: 'AI Agent Training Illustration'
     },
     'generative-ai-training': {
       title: 'Mastering Generative AI',
       description: 'In-depth training to help you understand and leverage generative AI technologies. From foundational concepts to advanced implementation strategies, gain the expertise to transform your business with AI.',
-      image: '/api/placeholder/600/400',
+      icon: Lightbulb,
+      iconSize: 80,
       alt: 'Generative AI Training Illustration'
     },
     'frontend-development': {
       title: 'Intuitive AI Interfaces',
       description: 'Design and develop user-friendly interfaces that make complex AI technologies accessible and engaging. We create seamless, intuitive front-end solutions that enhance user interaction with AI-powered systems.',
-      image: '/api/placeholder/600/400',
+      icon: Code,
+      iconSize: 80,
       alt: 'Frontend Development for AI Illustration'
     },
     'ai-consulting': {
       title: 'Strategic AI Guidance',
       description: 'Expert consulting to help you navigate the complex landscape of AI implementation. We provide strategic insights, assessment, and roadmapping to ensure your AI initiatives align with your business goals.',
-      image: '/api/placeholder/600/400',
+      icon: Briefcase,
+      iconSize: 80,
       alt: 'AI Consulting Illustration'
     }
   };
@@ -185,22 +191,22 @@ export default function ServicesSection() {
             />
           </motion.div>
           
-          {/* Right Column: Feature Image and Text */}
+          {/* Right Column: Feature Icon and Text */}
           <div ref={featureContentRef} className="lg:mt-10">
             <AnimatePresence mode="wait">
               <motion.div 
                 key={activeService} 
-                className="relative overflow-hidden rounded-lg"
+                className="relative overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 p-8 flex items-center justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isFeatureContentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <img 
-                  src={serviceContent[activeService].image}
-                  alt={serviceContent[activeService].alt}
-                  className="w-full h-auto object-cover"
-                />
+                {/* Render the appropriate Lucide icon */}
+                {React.createElement(serviceContent[activeService].icon, {
+                  size: serviceContent[activeService].iconSize,
+                  className: "text-yellow-400"
+                })}
               </motion.div>
             </AnimatePresence>
             
