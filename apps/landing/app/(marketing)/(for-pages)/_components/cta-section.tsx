@@ -1,4 +1,8 @@
+"use client";
+
 import { Button } from "@repo/ui/components/ui/button";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface CTASectionProps {
   title: string;
@@ -20,32 +24,52 @@ export function CTASection({
   secondaryButton 
 }: CTASectionProps) {
   return (
-    <section className="bg-[#0A0A0A] py-16">
+    <section className="bg-background dark:bg-[#0A0A0A] py-16 md:py-24 lg:py-32">
       <div className="container max-w-4xl mx-auto px-4 text-center">
-        <h2 className="font-cal text-4xl mb-4 text-white">{title}</h2>
-        <p className="text-gray-400 mb-8 max-w-2xl mx-auto">{description}</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="font-cal text-4xl md:text-5xl mb-6 text-foreground dark:text-white">
+            {title}
+          </h2>
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            {description}
+          </p>
+        </motion.div>
         
-        <div className="flex flex-wrap gap-4 justify-center">
-          <a href={primaryButton.link}>
-            <Button 
-              size="lg" 
-              className="bg-blue-600 hover:bg-blue-500 text-white"
-            >
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap gap-4 justify-center"
+        >
+          <Button 
+            asChild
+            size="lg" 
+            className="bg-yellow-400 hover:bg-yellow-500 text-black group"
+          >
+            <Link href={primaryButton.link} className="flex items-center gap-2">
               {primaryButton.text}
-            </Button>
-          </a>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+          </Button>
+          
           {secondaryButton && (
-            <a href={secondaryButton.link}>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white"
-              >
+            <Button 
+              asChild
+              variant="outline" 
+              size="lg"
+              className="border-yellow-400 text-yellow-500 hover:bg-yellow-400/10 group"
+            >
+              <Link href={secondaryButton.link} className="flex items-center gap-2">
                 {secondaryButton.text}
-              </Button>
-            </a>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </Button>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
