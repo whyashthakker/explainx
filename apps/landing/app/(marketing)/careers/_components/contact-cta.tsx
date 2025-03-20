@@ -26,7 +26,7 @@ export function ContactCTA() {
           </Badge>
         </div>
         <CardTitle className="font-cal text-3xl text-center text-foreground dark:text-white">
-          Don't see a <span className="italic">perfect fit</span>?
+          Don't see a <span className=" ">perfect fit</span>?
         </CardTitle>
         <CardDescription className="text-center text-muted-foreground text-lg max-w-lg mx-auto">
           We're always looking for talented people. Send us your resume and we'll keep you in mind for future opportunities.

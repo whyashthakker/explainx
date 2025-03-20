@@ -189,9 +189,9 @@ export default function PricingSection() {
               animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="italic">Flexible</span> solutions
+              <span className=" ">Flexible</span> solutions
               <br />
-              tailored to your <span className="italic">needs</span>
+              tailored to your <span className=" ">needs</span>
             </motion.h2>
             
             {/* Description paragraph */}

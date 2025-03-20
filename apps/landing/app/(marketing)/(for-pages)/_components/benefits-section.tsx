@@ -52,7 +52,7 @@ export function BenefitsSection({ benefits }: BenefitsSectionProps) {
             Benefits
           </Badge>
           <h2 className="font-cal text-4xl md:text-5xl mb-6 text-foreground dark:text-white">
-            Why Creators Choose <span className="italic">Us</span>
+            Why Creators Choose <span className=" ">Us</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Join thousands of creators who are growing their influence and earn more with our platform

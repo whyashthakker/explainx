@@ -26,7 +26,7 @@ export function CultureSection() {
           </Badge>
         </div>
         <CardTitle className="font-cal text-3xl text-center text-foreground dark:text-white">
-          Our <span className="italic">Culture</span>
+          Our <span className=" ">Culture</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4 text-muted-foreground max-w-3xl mx-auto px-8">
