@@ -21,7 +21,7 @@ export default function TaskDetails({ taskId }: { taskId: string }) {
     useEffect(() => {
         async function fetchTask() {
             try {
-                const res = await fetch(`/api/agents/task`, {
+                const res = await fetch(`/api/agents/real-estate/task`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: taskId }),
