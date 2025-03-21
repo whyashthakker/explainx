@@ -50,35 +50,35 @@ export default function ServicesSection() {
       title: 'Powerful Custom AI Solutions',
       description: 'Build sophisticated AI agents precisely tailored to your specific business needs. We leverage cutting-edge machine learning techniques to create intelligent systems that solve complex challenges and drive innovation.',
       icon: Bot,
-      iconSize: 80,
+      iconSize: 30,
       alt: 'Custom AI Agent Development Illustration'
     },
     'ai-agent-training': {
       title: 'Empowering AI Development Skills',
       description: 'Comprehensive training programs designed to equip your team with advanced AI development capabilities. Learn the latest techniques in AI agent creation, machine learning, and intelligent system design.',
       icon: BookOpen,
-      iconSize: 80,
+      iconSize: 30,
       alt: 'AI Agent Training Illustration'
     },
     'generative-ai-training': {
       title: 'Mastering Generative AI',
       description: 'In-depth training to help you understand and leverage generative AI technologies. From foundational concepts to advanced implementation strategies, gain the expertise to transform your business with AI.',
       icon: Lightbulb,
-      iconSize: 80,
+      iconSize: 30,
       alt: 'Generative AI Training Illustration'
     },
     'frontend-development': {
       title: 'Intuitive AI Interfaces',
       description: 'Design and develop user-friendly interfaces that make complex AI technologies accessible and engaging. We create seamless, intuitive front-end solutions that enhance user interaction with AI-powered systems.',
       icon: Code,
-      iconSize: 80,
+      iconSize: 30,
       alt: 'Frontend Development for AI Illustration'
     },
     'ai-consulting': {
       title: 'Strategic AI Guidance',
       description: 'Expert consulting to help you navigate the complex landscape of AI implementation. We provide strategic insights, assessment, and roadmapping to ensure your AI initiatives align with your business goals.',
       icon: Briefcase,
-      iconSize: 80,
+      iconSize: 30,
       alt: 'AI Consulting Illustration'
     }
   };
@@ -152,6 +152,8 @@ export default function ServicesSection() {
               onClick={() => changeService('custom-ai-agent-development' as ServiceKey)}
               isVisible={isServicesListInView}
               index={0}
+              icon={serviceContent['custom-ai-agent-development'].icon}
+              iconSize={serviceContent['custom-ai-agent-development'].iconSize}
             />
             
             <ServiceItem 
@@ -161,6 +163,8 @@ export default function ServicesSection() {
               onClick={() => changeService('ai-agent-training')}
               isVisible={isServicesListInView}
               index={1}
+              icon={serviceContent['ai-agent-training'].icon}
+              iconSize={serviceContent['ai-agent-training'].iconSize}
             />
             
             <ServiceItem 
@@ -170,6 +174,8 @@ export default function ServicesSection() {
               onClick={() => changeService('generative-ai-training')}
               isVisible={isServicesListInView}
               index={2}
+              icon={serviceContent['generative-ai-training'].icon}
+              iconSize={serviceContent['generative-ai-training'].iconSize}
             />
             
             <ServiceItem 
@@ -179,6 +185,8 @@ export default function ServicesSection() {
               onClick={() => changeService('frontend-development')}
               isVisible={isServicesListInView}
               index={3}
+              icon={serviceContent['frontend-development'].icon}
+              iconSize={serviceContent['frontend-development'].iconSize}
             />
             
             <ServiceItem 
@@ -188,6 +196,8 @@ export default function ServicesSection() {
               onClick={() => changeService('ai-consulting')}
               isVisible={isServicesListInView}
               index={4}
+              icon={serviceContent['ai-consulting'].icon}
+              iconSize={serviceContent['ai-consulting'].iconSize}
             />
           </motion.div>
           
@@ -196,7 +206,7 @@ export default function ServicesSection() {
             <AnimatePresence mode="wait">
               <motion.div 
                 key={activeService} 
-                className="relative overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 p-8 flex items-center justify-center"
+                className="relative overflow-hidden p-8 flex items-start justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isFeatureContentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -204,7 +214,7 @@ export default function ServicesSection() {
               >
                 {/* Render the appropriate Lucide icon */}
                 {React.createElement(serviceContent[activeService].icon, {
-                  size: serviceContent[activeService].iconSize,
+                  size: 80,
                   className: "text-yellow-400"
                 })}
               </motion.div>
@@ -242,63 +252,85 @@ interface ServiceItemProps {
   onClick: () => void;
   isVisible: boolean;
   index: number;
+  icon: React.ElementType;
+  iconSize: number;
 }
 
-const ServiceItem = ({ title, serviceId, isActive = false, onClick, isVisible, index }: ServiceItemProps) => (
-  <motion.button 
-    onClick={onClick}
-    className={cn(
-      "group border-b pb-3 transition-all duration-300 text-left w-full",
-      isActive ? "border-yellow-400" : "border-gray-200 dark:border-gray-800"
-    )}
-    whileHover={{ 
-      x: 5,
-      transition: { duration: 0.2 }
-    }}
-    whileTap={{ scale: 0.98 }}
-    initial={{ opacity: 0, x: -20 }}
-    animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-    transition={{ duration: 0.5, delay: 0.1 * index }}
-  >
-    <div className="flex items-center justify-between">
-      <h3 className={cn(
-        "text-xl md:text-2xl transition-all duration-300",
-        isActive 
-          ? "font-medium text-black dark:text-white" 
-          : "font-normal text-gray-600 dark:text-gray-400 group-hover:text-black group-hover:dark:text-white"
-      )}>
-        {title}
-      </h3>
-      
-      <motion.div 
-        className={cn(
-          "w-6 h-6 flex items-center justify-center rounded-full border transition-all duration-300",
-          isActive 
-            ? "bg-yellow-400 border-yellow-400" 
-            : "border-gray-300 dark:border-gray-700 group-hover:border-yellow-400"
-        )}
-        animate={isActive ? { rotate: 90, scale: 1.1 } : { rotate: 0, scale: 1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      >
-        <motion.svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="12" 
-          height="12" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
+const ServiceItem = ({ title, serviceId, isActive = false, onClick, isVisible, index, icon, iconSize }: ServiceItemProps) => {
+  // Dynamically create the icon component
+  const IconComponent = icon;
+  
+  return (
+    <motion.button 
+      onClick={onClick}
+      className={cn(
+        "group border-b pb-3 transition-all duration-300 text-left w-full",
+        isActive ? "border-yellow-400" : "border-gray-200 dark:border-gray-800"
+      )}
+      whileHover={{ 
+        x: 5,
+        transition: { duration: 0.2 }
+      }}
+      whileTap={{ scale: 0.98 }}
+      initial={{ opacity: 0, x: -20 }}
+      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
+    >
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          {/* Left-aligned icon */}
+          <div className="mr-3">
+            <IconComponent 
+              size={iconSize} 
+              className={cn(
+                "transition-all duration-300",
+                isActive ? "text-yellow-400" : "text-gray-600 dark:text-gray-400 group-hover:text-yellow-400"
+              )} 
+            />
+          </div>
+          
+          {/* Title */}
+          <h3 className={cn(
+            "text-xl md:text-2xl transition-all duration-300",
+            isActive 
+              ? "font-medium text-black dark:text-white" 
+              : "font-normal text-gray-600 dark:text-gray-400 group-hover:text-black group-hover:dark:text-white"
+          )}>
+            {title}
+          </h3>
+        </div>
+        
+        {/* Plus/minus indicator */}
+        <motion.div 
           className={cn(
-            "transition-all duration-300",
-            isActive ? "text-white" : "text-gray-600 dark:text-gray-400 group-hover:text-black group-hover:dark:text-white"
+            "w-6 h-6 flex items-center justify-center rounded-full border transition-all duration-300",
+            isActive 
+              ? "bg-yellow-400 border-yellow-400" 
+              : "border-gray-300 dark:border-gray-700 group-hover:border-yellow-400"
           )}
+          animate={isActive ? { rotate: 90, scale: 1.1 } : { rotate: 0, scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
-          <path d="M5 12h14" />
-          <path d="M12 5v14" />
-        </motion.svg>
-      </motion.div>
-    </div>
-  </motion.button>
-);
+          <motion.svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="12" 
+            height="12" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className={cn(
+              "transition-all duration-300",
+              isActive ? "text-white" : "text-gray-600 dark:text-gray-400 group-hover:text-black group-hover:dark:text-white"
+            )}
+          >
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+          </motion.svg>
+        </motion.div>
+      </div>
+    </motion.button>
+  );
+};
