@@ -24,6 +24,20 @@ This Turborepo includes the following packages/apps:
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
+
+## To setup docker based PostgreSQL
+
+```
+docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+
+```
+
+then set the env variable in .env file
+
+```
+DATABASE_URL=postgresql://postgres:somePassword@localhost:5432/postgres
+```
+
 ### Utilities
 
 This Turborepo has some additional tools already setup for you:
