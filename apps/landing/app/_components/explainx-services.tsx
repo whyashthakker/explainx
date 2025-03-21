@@ -160,7 +160,7 @@ const services: ServiceCardProps[] = [
     ],
     ctaText: "Get Expert Advice",
     ctaLink: "/consulting",
-    gradient: "bg-gradient-to-r from-yellow-500 to-orange-500",
+    gradient: "bg-gradient-to-r from-secondaccent2 to-orange-500",
     delay: 0.5
   }
 ];

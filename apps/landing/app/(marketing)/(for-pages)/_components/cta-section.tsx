@@ -48,7 +48,7 @@ export function CTASection({
           <Button 
             asChild
             size="lg" 
-            className="bg-yellow-400 hover:bg-yellow-500 text-black group"
+            className="bg-secondaccent hover:bg-secondaccent2 text-black group"
           >
             <Link href={primaryButton.link} className="flex items-center gap-2">
               {primaryButton.text}
@@ -61,7 +61,7 @@ export function CTASection({
               asChild
               variant="outline" 
               size="lg"
-              className="border-yellow-400 text-yellow-500 hover:bg-yellow-400/10 group"
+              className="border-secondaccent text-secondaccent2 hover:bg-secondaccent/10 group"
             >
               <Link href={secondaryButton.link} className="flex items-center gap-2">
                 {secondaryButton.text}

@@ -87,7 +87,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star
                       key={star}
-                      className={star <= stats.averageRating ? "fill-yellow-400 text-yellow-400" : "text-gray-200"}
+                      className={star <= stats.averageRating ? "fill-secondaccent text-secondaccent" : "text-gray-200"}
                       size={24}
                     />
                   ))}
@@ -103,12 +103,12 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
               {[5, 4, 3, 2, 1].map((rating) => (
                 <div key={rating} className="flex items-center gap-3 mb-2">
                   <div className="flex items-center gap-1 w-16">
-                    <Star size={14} className="fill-yellow-400 text-yellow-400" />
+                    <Star size={14} className="fill-secondaccent text-secondaccent" />
                     <span className="text-sm font-medium">{rating}</span>
                   </div>
                   <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-yellow-400 rounded-full transition-all duration-300"
+                      className="h-full bg-secondaccent rounded-full transition-all duration-300"
                       style={{
                         width: `${((stats.ratingDistribution[rating] || 0) / stats.totalReviews * 100) || 0}%`
                       }}
@@ -144,7 +144,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                     onClick={() => setNewReview({...newReview, rating: star})}
                   >
                     <Star
-                      className={star <= newReview.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-200"}
+                      className={star <= newReview.rating ? "fill-secondaccent text-secondaccent" : "text-gray-200"}
                       size={32}
                     />
                   </button>
@@ -204,7 +204,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
                         key={star}
-                        className={star <= review.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-200"}
+                        className={star <= review.rating ? "fill-secondaccent text-secondaccent" : "text-gray-200"}
                         size={18}
                       />
                     ))}

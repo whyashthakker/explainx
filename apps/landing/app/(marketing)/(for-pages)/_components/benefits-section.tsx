@@ -34,7 +34,7 @@ export function BenefitsSection({ benefits }: BenefitsSectionProps) {
   const getIcon = (iconName?: keyof typeof ICON_MAP) => {
     if (!iconName) return null;
     const Icon = ICON_MAP[iconName];
-    return Icon ? <Icon className="w-8 h-8 text-yellow-500" /> : null;
+    return Icon ? <Icon className="w-8 h-8 text-secondaccent2" /> : null;
   };
 
   return (
@@ -47,7 +47,7 @@ export function BenefitsSection({ benefits }: BenefitsSectionProps) {
         >
           <Badge 
             variant="outline" 
-            className="mb-4 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+            className="mb-4 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
           >
             Benefits
           </Badge>
@@ -75,7 +75,7 @@ export function BenefitsSection({ benefits }: BenefitsSectionProps) {
               className="p-6 hover:shadow-2xl transition-all duration-300 
               bg-background dark:bg-[#1A1A1A] 
               border border-border dark:border-gray-800 
-              hover:border-yellow-400 dark:hover:border-yellow-500 
+              hover:border-secondaccent dark:hover:border-secondaccent2 
               group"
             >
               <div className="mb-4">

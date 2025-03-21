@@ -23,7 +23,7 @@ export default function CompareHome() {
           <div className="p-8">
             <Badge 
               variant="outline" 
-              className="mb-4 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+              className="mb-4 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
             >
               Comparison
             </Badge>
@@ -43,7 +43,7 @@ export default function CompareHome() {
             <Card className="h-full transition-all duration-300 
               bg-background dark:bg-[#1A1A1A] 
               border border-border dark:border-gray-800 
-              hover:border-yellow-400 dark:hover:border-yellow-500 
+              hover:border-secondaccent dark:hover:border-secondaccent2 
               hover:shadow-2xl group">
               <CardHeader>
                 <div className="flex justify-between items-start mb-4">
@@ -52,7 +52,7 @@ export default function CompareHome() {
                   </CardTitle>
                   <Badge 
                     variant="outline" 
-                    className="bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+                    className="bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
                   >
                     {competitor.category}
                   </Badge>
@@ -82,7 +82,7 @@ export default function CompareHome() {
                           <div key={fidx} className="flex items-center gap-2 text-sm">
                             {typeof feature.competitor === 'boolean' ? (
                               feature.competitor ? 
-                                <CheckCircle2 className="h-4 w-4 text-yellow-500" /> : 
+                                <CheckCircle2 className="h-4 w-4 text-secondaccent2" /> : 
                                 <XCircle className="h-4 w-4 text-red-500" />
                             ) : null}
                             <span className="text-foreground dark:text-gray-300">{feature.name}</span>
@@ -95,7 +95,7 @@ export default function CompareHome() {
               </CardContent>
 
               <CardFooter>
-                <div className="w-full flex items-center justify-between text-yellow-500">
+                <div className="w-full flex items-center justify-between text-secondaccent2">
                   <span className="text-sm font-medium">View full comparison</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>

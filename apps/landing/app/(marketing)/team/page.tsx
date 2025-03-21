@@ -60,7 +60,7 @@ export default function TeamPage() {
       <div className="flex flex-col items-center text-center space-y-6 mb-16">
         <Badge 
           variant="outline" 
-          className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+          className="mb-2 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
         >
           <Users className="w-4 h-4 mr-1" />
           Our Team
@@ -76,7 +76,7 @@ export default function TeamPage() {
           <Link href="/demo">
             <Button 
               size="lg"
-              className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto"
+              className="bg-secondaccent2 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto"
             >
               Schedule Demo
               <Calendar className="w-4 h-4 ml-2" />
@@ -86,7 +86,7 @@ export default function TeamPage() {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-yellow-500/50 hover:border-yellow-500 text-foreground dark:text-white hover:bg-yellow-500/10 px-8 py-4 h-auto"
+              className="border-secondaccent2/50 hover:border-secondaccent2 text-foreground dark:text-white hover:bg-secondaccent2/10 px-8 py-4 h-auto"
             >
               Learn More
             </Button>
@@ -95,12 +95,12 @@ export default function TeamPage() {
       </div>
 
       {/* Mission section */}
-      <Card className="mb-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl">
+      <Card className="mb-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-secondaccent dark:hover:border-secondaccent2 transition-all duration-300 hover:shadow-2xl">
         <CardHeader className="space-y-4">
           <div className="flex justify-center">
             <Badge 
               variant="outline" 
-              className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+              className="mb-2 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
             >
               Our Purpose
             </Badge>
@@ -128,7 +128,7 @@ export default function TeamPage() {
         <div className="text-center">
           <Badge 
             variant="outline" 
-            className="mb-4 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+            className="mb-4 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
           >
             <Users className="w-4 h-4 mr-1" />
             Meet The Experts
@@ -147,12 +147,12 @@ export default function TeamPage() {
       <Separator className="my-16 bg-gray-200 dark:bg-gray-800" />
 
       {/* CTA section */}
-      <Card className="bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl">
+      <Card className="bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-secondaccent dark:hover:border-secondaccent2 transition-all duration-300 hover:shadow-2xl">
         <CardHeader className="space-y-4">
           <div className="flex justify-center">
             <Badge 
               variant="outline" 
-              className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+              className="mb-2 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
             >
               Get Started
             </Badge>
@@ -168,7 +168,7 @@ export default function TeamPage() {
           <Link href="/contact">
             <Button 
               size="lg"
-              className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto transition-colors group"
+              className="bg-secondaccent2 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto transition-colors group"
             >
               Contact Our Team
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -178,7 +178,7 @@ export default function TeamPage() {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-yellow-500/50 hover:border-yellow-500 text-foreground dark:text-white hover:bg-yellow-500/10 px-8 py-4 h-auto"
+              className="border-secondaccent2/50 hover:border-secondaccent2 text-foreground dark:text-white hover:bg-secondaccent2/10 px-8 py-4 h-auto"
             >
               Book a Demo
             </Button>

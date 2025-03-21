@@ -50,11 +50,11 @@ export function FAQSection({ faq }: FAQSectionProps) {
             >
               <AccordionItem 
                 value={`item-${index}`}
-                className="border border-border dark:border-gray-800 rounded-xl overflow-hidden hover:border-yellow-400 dark:hover:border-yellow-500 transition-colors"
+                className="border border-border dark:border-gray-800 rounded-xl overflow-hidden hover:border-secondaccent dark:hover:border-secondaccent2 transition-colors"
               >
                 <AccordionTrigger 
                   className="text-left font-medium px-6 py-4 
-                  hover:bg-yellow-400/5 
+                  hover:bg-secondaccent/5 
                   hover:text-yellow-600 
                   text-foreground dark:text-white 
                   data-[state=open]:text-yellow-600 

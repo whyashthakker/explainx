@@ -79,12 +79,12 @@ const PricingCard = ({ model, index, isVisible }: PricingCardProps) => (
       "relative overflow-hidden hover:shadow-lg transition-all duration-300",
       "border border-gray-200 dark:border-gray-800",
       "h-full flex flex-col",
-      model.highlight ? 'ring-2 ring-yellow-400 shadow-lg dark:ring-yellow-500' : ''
+      model.highlight ? 'ring-2 ring-secondaccent shadow-lg dark:ring-secondaccent2' : ''
     )}>
       {model.highlight && (
         <div className="absolute top-0 right-0">
           <div className="w-24 h-24 relative">
-            <div className="absolute transform rotate-45 bg-yellow-400 text-white font-medium py-1 right-[-35px] top-[32px] w-[170px] text-center text-xs">
+            <div className="absolute transform rotate-45 bg-secondaccent text-white font-medium py-1 right-[-35px] top-[32px] w-[170px] text-center text-xs">
               RECOMMENDED
             </div>
           </div>
@@ -93,7 +93,7 @@ const PricingCard = ({ model, index, isVisible }: PricingCardProps) => (
       
       <CardHeader className="relative pb-4">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-yellow-400/10 text-yellow-500">
+          <div className="p-2.5 rounded-xl bg-secondaccent/10 text-secondaccent2">
             {model.icon}
           </div>
           <div>
@@ -102,7 +102,7 @@ const PricingCard = ({ model, index, isVisible }: PricingCardProps) => (
           </div>
         </div>
         <div className="flex gap-2 mt-4">
-          <Badge variant="outline" className="px-3 py-1 border-yellow-400/20 bg-yellow-400/5">
+          <Badge variant="outline" className="px-3 py-1 border-secondaccent/20 bg-secondaccent/5">
             {model.timeframe}
           </Badge>
         </div>
@@ -112,7 +112,7 @@ const PricingCard = ({ model, index, isVisible }: PricingCardProps) => (
         <ul className="space-y-3">
           {model.features.map((feature, idx) => (
             <li key={idx} className="flex items-start gap-2 text-sm">
-              <CheckIcon className="h-4 w-4 text-yellow-500 flex-shrink-0 mt-0.5" />
+              <CheckIcon className="h-4 w-4 text-secondaccent2 flex-shrink-0 mt-0.5" />
               <span className="text-muted-foreground">{feature}</span>
             </li>
           ))}
@@ -124,8 +124,8 @@ const PricingCard = ({ model, index, isVisible }: PricingCardProps) => (
           className={cn(
             "w-full group",
             model.highlight 
-              ? "bg-yellow-400 hover:bg-yellow-500 text-black" 
-              : "border-yellow-400 text-yellow-500 hover:bg-yellow-400/10"
+              ? "bg-secondaccent hover:bg-secondaccent2 text-black" 
+              : "border-secondaccent text-secondaccent2 hover:bg-secondaccent/10"
           )}
           variant={model.highlight ? "default" : "outline"}
           asChild
@@ -177,7 +177,7 @@ export default function PricingSection() {
             animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-1 h-6 bg-yellow-400"></div>
+            <div className="w-1 h-6 bg-secondaccent"></div>
             <h3 className="text-sm font-medium uppercase tracking-wider">ENGAGEMENT MODELS</h3>
           </motion.div>
           
@@ -220,7 +220,7 @@ export default function PricingSection() {
         >
           <div className="bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-900/20 p-5 rounded-xl max-w-2xl mx-auto">
             <div className="flex items-start gap-3">
-              <InfoIcon className="h-5 w-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0 mt-1" />
+              <InfoIcon className="h-5 w-5 text-yellow-600 dark:text-secondaccent2 flex-shrink-0 mt-1" />
               <p className="text-sm text-yellow-900 dark:text-yellow-300/90 text-left">
                 Our pricing is based on project complexity and requirements. Schedule a consultation 
                 to discuss your project and receive a detailed proposal tailored to your specific needs.
@@ -242,7 +242,7 @@ export default function PricingSection() {
             transition={{ duration: 0.8 }}
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 blur-3xl">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-200 to-yellow-400 opacity-30"></div>
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-200 to-secondaccent opacity-30"></div>
             </div>
           </motion.div>
           
@@ -266,7 +266,7 @@ export default function PricingSection() {
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-yellow-400 text-yellow-500 hover:bg-yellow-400/10 px-8"
+            className="border-secondaccent text-secondaccent2 hover:bg-secondaccent/10 px-8"
             asChild
           >
             <Link href="/demo" className="flex items-center gap-3">

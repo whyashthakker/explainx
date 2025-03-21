@@ -24,7 +24,7 @@ export function StatsSection({ stats }: StatsSectionProps) {
         >
           <Badge 
             variant="outline" 
-            className="mb-4 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+            className="mb-4 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
           >
             Platform Stats
           </Badge>
@@ -52,10 +52,10 @@ export function StatsSection({ stats }: StatsSectionProps) {
                 className="p-6 text-center hover:shadow-2xl transition-all duration-300 
                 bg-background dark:bg-[#1A1A1A] 
                 border border-border dark:border-gray-800 
-                hover:border-yellow-400 dark:hover:border-yellow-500 
+                hover:border-secondaccent dark:hover:border-secondaccent2 
                 group flex flex-col w-full h-full"
               >
-                <div className="font-cal text-4xl text-yellow-500 mb-2 group-hover:text-yellow-600 transition-colors">
+                <div className="font-cal text-4xl text-secondaccent2 mb-2 group-hover:text-yellow-600 transition-colors">
                   {stat.value}
                 </div>
                 <div className="font-medium text-lg mb-2 text-foreground dark:text-white group-hover:text-yellow-600 transition-colors">
