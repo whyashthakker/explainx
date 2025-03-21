@@ -46,8 +46,14 @@ const config = {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
-			blah: {
-				DEFAULT: '#ffffff',
+			secondaccent: {
+				DEFAULT: '#facc15',
+			},
+			secondaccent2: {
+				DEFAULT: '#eab308',
+			},
+			secondaccent3: {
+				DEFAULT: '#ca8a04',
 			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',

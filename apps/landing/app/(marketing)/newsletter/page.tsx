@@ -30,11 +30,11 @@ export const metadata: Metadata = {
 
 export default function NewsletterPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <div className="pt-15 md:pt-12 pb-6 md:py-10 lg:py-20">
+    <div className="min-h-screen bg-black">
+      <div className="pt-15 md:pt-12 pb-6 md:py-10 lg:py-20 mt-16">
         <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-cal font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-cal font-bold text-white mb-4">
               Stay Ahead in AI
             </h1>
             <p className="text-xs md:text-xl text-gray-500">

@@ -23,30 +23,30 @@ export type Job = {
 
 export function JobCard({ job }: { job: Job }) {
   return (
-    <Card className="bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl group">
+    <Card className="bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-secondaccent dark:hover:border-secondaccent2 transition-all duration-300 hover:shadow-2xl group">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle className="text-xl text-foreground dark:text-white group-hover:text-yellow-500 transition-colors">
+            <CardTitle className="text-xl text-foreground dark:text-white group-hover:text-secondaccent2 transition-colors">
               {job.title}
             </CardTitle>
             <CardDescription className="mt-2 flex flex-wrap gap-3 text-muted-foreground">
               <span className="flex items-center">
-                <Briefcase className="w-4 h-4 mr-1 text-yellow-500" />
+                <Briefcase className="w-4 h-4 mr-1 text-secondaccent2" />
                 {job.department}
               </span>
               <span className="flex items-center">
-                <MapPin className="w-4 h-4 mr-1 text-yellow-500" />
+                <MapPin className="w-4 h-4 mr-1 text-secondaccent2" />
                 {job.location}
               </span>
               <span className="flex items-center">
-                <Clock className="w-4 h-4 mr-1 text-yellow-500" />
+                <Clock className="w-4 h-4 mr-1 text-secondaccent2" />
                 {job.type}
               </span>
             </CardDescription>
           </div>
           {job.isUrgent && (
-            <Badge className="bg-yellow-500 text-black border-yellow-400 hover:bg-yellow-600">
+            <Badge className="bg-secondaccent2 text-black border-secondaccent hover:bg-yellow-600">
               Urgent
             </Badge>
           )}
@@ -55,7 +55,7 @@ export function JobCard({ job }: { job: Job }) {
       <CardContent className="space-y-4">
         <p className="text-muted-foreground mb-4">{job.description}</p>
         <Link href={`mailto:careers@explainx.ai?subject=Application for ${job.title}`}>
-          <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium transition-colors group/btn">
+          <Button className="bg-secondaccent2 hover:bg-yellow-600 text-black font-medium transition-colors group/btn">
             Apply Now
             <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
           </Button>
