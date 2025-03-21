@@ -32,13 +32,13 @@ export function ContactCTA() {
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
-          className="absolute top-0 right-10 w-64 h-64 rounded-full bg-yellow-400/10 blur-[80px] opacity-60"
+          className="absolute top-0 right-10 w-64 h-64 rounded-full bg-secondaccent/10 blur-[80px] opacity-60"
           initial={{ opacity: 0 }}
           animate={isCardInView ? { opacity: 0.6 } : { opacity: 0 }}
           transition={{ duration: 1.5, delay: 0.2 }}
         />
         <motion.div 
-          className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-yellow-400/5 blur-[80px] opacity-40"
+          className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-secondaccent/5 blur-[80px] opacity-40"
           initial={{ opacity: 0 }}
           animate={isCardInView ? { opacity: 0.4 } : { opacity: 0 }}
           transition={{ duration: 1.5, delay: 0.4 }}
@@ -73,7 +73,7 @@ export function ContactCTA() {
         >
           <Button 
             asChild
-            className="w-full sm:w-auto px-6 py-5 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-lg"
+            className="w-full sm:w-auto px-6 py-5 bg-secondaccent hover:bg-secondaccent2 text-black font-medium rounded-lg"
             size="lg"
           >
             <Link href="/signup" className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export function ContactCTA() {
           <Button 
             asChild
             variant="outline"
-            className="w-full sm:w-auto px-6 py-5 border-yellow-400/40 text-yellow-400 hover:bg-yellow-400/10 font-medium rounded-lg"
+            className="w-full sm:w-auto px-6 py-5 border-secondaccent/40 text-secondaccent hover:bg-secondaccent/10 font-medium rounded-lg"
             size="lg"
           >
             <Link href="/contact" className="flex items-center gap-2">

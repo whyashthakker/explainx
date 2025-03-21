@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { cn } from "@repo/ui/lib/utils";
+import { MessagesSquare, Scaling, ShieldCheck, SlidersHorizontal, TrendingUp, Users, WandSparkles, Zap } from 'lucide-react';
 
 export function FeaturesSectionWithHoverEffects() {
   // Create refs for different sections to track when they're in view
@@ -11,51 +12,14 @@ export function FeaturesSectionWithHoverEffects() {
   const isFeaturesGridInView = useInView(featuresGridRef, { once: true, amount: 0.1 });
 
   const features = [
-    {
-      icon: "/images/icons/delivery/fast.svg",
-      title: "Rapid Agent Development",
-      description: "Deploy your first AI agent within 2-4 weeks, with our efficient development and integration process.",
-    },
-    {
-      icon: "/images/icons/delivery/scalable.svg",
-      title: "Scalable Architecture",
-      description: "Build agents that can handle growing workloads, with infrastructure that scales seamlessly with your needs.",
-    },
-    {
-      icon: "/images/icons/delivery/analytics.svg",
-      title: "Performance Analytics",
-      description: "Comprehensive dashboards tracking agent performance, efficiency metrics, and automation success rates.",
-    },
-    {
-      icon: "/images/icons/delivery/team.svg",
-      title: "Expert Training & Support",
-      description: "Dedicated AI specialists providing hands-on training and continuous support for your team.",
-    },
-    {
-      icon: "/images/icons/delivery/safe.svg",
-      title: "Security & Compliance",
-      description: "Enterprise-grade security protocols and compliance with industry standards for all AI implementations.",
-    },
-    {
-      icon: "/images/icons/delivery/design.svg",
-      title: "Intuitive Interfaces",
-      description: "User-friendly interfaces designed for maximum adoption and minimal learning curve.",
-    },
-    {
-      icon: "/images/icons/delivery/flexible.svg",
-      title: "Customization Freedom",
-      description: "Fully customizable agents that adapt to your specific workflows and business processes.",
-    },
-    {
-      icon: "/images/icons/delivery/support.svg",
-      title: "24/7 Technical Support",
-      description: "Round-the-clock support for critical agent operations and immediate issue resolution.",
-    },
-    {
-      icon: "/images/icons/delivery/money.svg",
-      title: "ROI-Driven Development",
-      description: "Guaranteed positive return on investment through measurable automation efficiency gains.",
-    },
+    { icon: <Zap />, title: "Rapid Agent Development", description: "Deploy your first AI agent within 2-4 weeks, with our efficient development and integration process." },
+    { icon: <Scaling />, title: "Scalable Architecture", description: "Build agents that can handle growing workloads, with infrastructure that scales seamlessly with your needs." },
+    { icon: <TrendingUp />, title: "Performance Analytics", description: "Comprehensive dashboards tracking agent performance, efficiency metrics, and automation success rates." },
+    { icon: <Users />, title: "Expert Training & Support", description: "Dedicated AI specialists providing hands-on training and continuous support for your team." },
+    { icon: <ShieldCheck />, title: "Security & Compliance", description: "Enterprise-grade security protocols and compliance with industry standards for all AI implementations." },
+    { icon: <WandSparkles />, title: "Intuitive Interfaces", description: "User-friendly interfaces designed for maximum adoption and minimal learning curve." },
+    { icon: <SlidersHorizontal />, title: "Customization Freedom", description: "Fully customizable agents that adapt to your specific workflows and business processes." },
+    { icon: <MessagesSquare />, title: "24/7 Technical Support", description: "Round-the-clock support for critical agent operations and immediate issue resolution." },
   ];
   
   return (
@@ -69,7 +33,7 @@ export function FeaturesSectionWithHoverEffects() {
             animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-1 h-6 bg-yellow-400"></div>
+            <div className="w-1 h-6 bg-secondaccent"></div>
             <h3 className="text-sm font-medium uppercase tracking-wider">OUR GUARANTEES</h3>
           </motion.div>
           
@@ -154,11 +118,11 @@ const Feature = ({
       {index >= 4 && (
         <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
       )}
-      <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
-        {typeof icon === 'string' ? <img src={icon} alt={title} className="h-6 w-6" /> : icon}
+        <div className="mb-4 relative z-10 px-10 text-secondaccent2 dark:text-white">
+        {icon}
       </div>
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-yellow-400 dark:bg-yellow-600 group-hover/feature:bg-yellow-400 transition-all duration-200 origin-center" />
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-secondaccent dark:bg-yellow-600 group-hover/feature:bg-secondaccent transition-all duration-200 origin-center" />
         <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
           {title}
         </span>

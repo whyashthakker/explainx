@@ -39,13 +39,13 @@ export default function DarkCTA() {
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
-          className="absolute top-0 right-10 w-72 h-72 rounded-full bg-yellow-400/10 blur-[100px] opacity-60"
+          className="absolute top-0 right-10 w-72 h-72 rounded-full bg-secondaccent/10 blur-[100px] opacity-60"
           initial={{ opacity: 0 }}
           animate={isSectionInView ? { opacity: 0.6 } : { opacity: 0 }}
           transition={{ duration: 2, delay: 0.2 }}
         />
         <motion.div 
-          className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-yellow-400/5 blur-[100px] opacity-40"
+          className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-secondaccent/5 blur-[100px] opacity-40"
           initial={{ opacity: 0 }}
           animate={isSectionInView ? { opacity: 0.4 } : { opacity: 0 }}
           transition={{ duration: 2, delay: 0.5 }}
@@ -61,9 +61,9 @@ export default function DarkCTA() {
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/20">
-              <Bot className="w-5 h-5 text-yellow-400" />
-              <span className="text-sm font-medium text-yellow-400">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondaccent/10 border border-secondaccent/20">
+              <Bot className="w-5 h-5 text-secondaccent" />
+              <span className="text-sm font-medium text-secondaccent">
                 AI-Powered Workforce
               </span>
             </div>
@@ -106,7 +106,7 @@ export default function DarkCTA() {
         >
           <Button 
             asChild
-            className="w-full sm:w-auto px-8 py-6 text-lg bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-lg"
+            className="w-full sm:w-auto px-8 py-6 text-lg bg-secondaccent hover:bg-secondaccent2 text-black font-medium rounded-lg"
             size="lg"
           >
             <Link href="/demo" className="flex items-center gap-2">
@@ -118,7 +118,7 @@ export default function DarkCTA() {
           <Button 
             asChild
             variant="outline"
-            className="w-full sm:w-auto px-8 py-6 text-lg border-yellow-400/40 text-yellow-400 hover:bg-yellow-400/10 font-medium rounded-lg"
+            className="w-full sm:w-auto px-8 py-6 text-lg border-secondaccent/40 text-secondaccent hover:bg-secondaccent/10 font-medium rounded-lg"
             size="lg"
           >
             <Link href="/pricing" className="flex items-center gap-2">

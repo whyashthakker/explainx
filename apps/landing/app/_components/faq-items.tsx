@@ -37,7 +37,7 @@ const FAQItem = ({
         <div 
           className={cn(
             "flex-shrink-0 ml-2 mt-1 flex items-center justify-center w-6 h-6 rounded-full transition-colors duration-200",
-            isOpen ? "bg-yellow-400 text-black" : "bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
+            isOpen ? "bg-secondaccent text-black" : "bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
           )}
         >
           {isOpen ? 
@@ -60,7 +60,7 @@ const FAQItem = ({
               initial={{ y: -10 }}
               animate={{ y: 0 }}
               transition={{ duration: 0.3 }}
-              className="mt-4 text-muted-foreground border-l-2 border-yellow-400 pl-4"
+              className="mt-4 text-muted-foreground border-l-2 border-secondaccent pl-4"
             >
               {faq.answer}
             </motion.div>

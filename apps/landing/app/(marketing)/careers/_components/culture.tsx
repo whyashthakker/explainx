@@ -14,12 +14,12 @@ import { Users, ArrowRight } from "lucide-react";
 
 export function CultureSection() {
   return (
-    <Card className="mb-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl">
+    <Card className="mb-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-secondaccent dark:hover:border-secondaccent2 transition-all duration-300 hover:shadow-2xl">
       <CardHeader className="space-y-4">
         <div className="flex justify-center">
           <Badge 
             variant="outline" 
-            className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+            className="mb-2 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
           >
             <Users className="w-4 h-4 mr-1" />
             Company Values
@@ -47,7 +47,7 @@ export function CultureSection() {
       <CardFooter className="flex justify-center pt-6 pb-8">
         <Link href="/team">
           <Button 
-            className="border-yellow-500/50 hover:border-yellow-500 text-foreground dark:text-white hover:bg-yellow-500/10 px-6 py-2 transition-all group"
+            className="border-secondaccent2/50 hover:border-secondaccent2 text-foreground dark:text-white hover:bg-secondaccent2/10 px-6 py-2 transition-all group"
             variant="outline"
           >
             Meet Our Team

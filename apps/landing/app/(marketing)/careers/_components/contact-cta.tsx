@@ -15,12 +15,12 @@ import { Send } from "lucide-react";
 
 export function ContactCTA() {
   return (
-    <Card className="mt-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 transition-all duration-300 hover:shadow-2xl">
+    <Card className="mt-16 bg-background dark:bg-[#1A1A1A] border border-border dark:border-gray-800 hover:border-secondaccent dark:hover:border-secondaccent2 transition-all duration-300 hover:shadow-2xl">
       <CardHeader className="space-y-4">
         <div className="flex justify-center">
           <Badge 
             variant="outline" 
-            className="mb-2 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+            className="mb-2 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
           >
             Open Applications
           </Badge>
@@ -36,7 +36,7 @@ export function ContactCTA() {
         <Link href="mailto:careers@explainx.ai">
           <Button 
             size="lg"
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto transition-colors"
+            className="bg-secondaccent2 hover:bg-yellow-600 text-black font-medium px-8 py-4 h-auto transition-colors"
           >
             Get in Touch
             <Send className="w-4 h-4 ml-2" />

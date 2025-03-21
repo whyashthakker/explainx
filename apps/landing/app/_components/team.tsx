@@ -16,16 +16,16 @@ type Member = {
   };
 };
 
+// Reordered members in alphabetical order by first name
 const members: Member[] = [
   {
-    name: 'Yash Thakker',
-    role: 'CEO & Product Lead',
+    name: 'Aryan Nagbanshi',
+    role: 'Development',
     avatar: 'https://github.com/shadcn.png',
-    expertise: ['AI Strategy', 'Product Development', 'Enterprise Solutions'],
+    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
     social: {
-      twitter: 'https://twitter.com',
-      linkedin: 'https://linkedin.com',
-      github: 'https://github.com'
+      github: 'https://github.com',
+      linkedin: 'https://linkedin.com'
     }
   },
   {
@@ -39,7 +39,7 @@ const members: Member[] = [
     }
   },
   {
-    name: 'Aryan Nagbanshi',
+    name: 'Paresh Bhamare',
     role: 'Development',
     avatar: 'https://github.com/shadcn.png',
     expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
@@ -59,12 +59,33 @@ const members: Member[] = [
     }
   },
   {
-    name: 'Shri Jadhav',
+    name: 'Rahul Santra',
+    role: 'Development',
+    avatar: 'https://github.com/shadcn.png',
+    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
+    social: {
+      github: 'https://github.com',
+      linkedin: 'https://linkedin.com'
+    }
+  },
+  {
+    name: 'Shriparna Jadhav',
     role: 'AI Solutions Expert',
     avatar: 'https://github.com/shadcn.png',
     expertise: ['Client Solutions', 'AI Integration', 'Support'],
     social: {
       linkedin: 'https://linkedin.com'
+    }
+  },
+  {
+    name: 'Yash Thakker',
+    role: 'CEO & Product Lead',
+    avatar: 'https://github.com/shadcn.png',
+    expertise: ['AI Strategy', 'Product Development', 'Enterprise Solutions'],
+    social: {
+      twitter: 'https://twitter.com',
+      linkedin: 'https://linkedin.com',
+      github: 'https://github.com'
     }
   },
   {
@@ -84,16 +105,8 @@ export default function TeamSection() {
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, amount: 0.3 });
   
-  // Grouped members by department for better organization with type safety
-  // We know these will never be undefined, but we need to tell TypeScript that
-  const leadership = members.slice(0, 2) as Member[];
-  
-  // For single member selection, use a more defensive approach
-  const engineering = members.slice(2, 3) as Member[]
-  
-  
-  // For the remaining members, ensure we have valid members
-  const marketing = members.length > 3 ? members.slice(3) : [] as Member[];
+  const teamSectionRef = useRef(null);
+  const isTeamSectionInView = useInView(teamSectionRef, { once: true, amount: 0.2 });
 
   return (
     <section className="py-16 md:py-24 lg:py-32 bg-background dark:bg-[#0A0A0A]">
@@ -106,7 +119,7 @@ export default function TeamSection() {
             animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-1 h-6 bg-yellow-400"></div>
+            <div className="w-1 h-6 bg-secondaccent"></div>
             <h3 className="text-sm font-medium uppercase tracking-wider">OUR TEAM</h3>
           </motion.div>
           
@@ -134,76 +147,29 @@ export default function TeamSection() {
               development, and implementation to deliver exceptional solutions.
             </motion.p>
           </div>
-          
-          {/* Yellow Circle Accent */}
-          
         </div>
 
         {/* Team Members Section */}
-        <div className="space-y-20">
-          {/* Leadership Section */}
-          <Teams
-            title="Leadership" 
-            members={leadership} 
-            highlight={true}
-          />
-          
-          {/* Engineering Section */}
-          <Teams
-            title="Engineering" 
-            members={engineering}
-          />
-          
-          {/* Marketing Section */}
-          <Teams
-            title="Marketing & Support" 
-            members={marketing}
-          />
-        </div>
+        <motion.div
+          ref={teamSectionRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isTeamSectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+            {members.map((member, index) => (
+              <MemberCard 
+                key={index} 
+                member={member} 
+                index={index} 
+                highlight={member.role.includes('CEO') || member.role.includes('CMO')}
+                isVisible={isTeamSectionInView}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
-  );
-}
-
-interface TeamsProps {
-  title: string;
-  members: Member[];
-  highlight?: boolean;
-}
-
-function Teams({ title, members, highlight = false }: TeamsProps) {
-  const sectionRef = useRef(null);
-  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  
-  return (
-    <motion.div
-      ref={sectionRef}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isSectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="flex items-center gap-3 mb-8">
-        <h3 className={cn(
-          "text-xl font-medium",
-          highlight && "text-yellow-400"
-        )}>
-          {title}
-        </h3>
-        <div className="flex-grow h-px bg-gray-200 dark:bg-gray-800"></div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-        {members.map((member, index) => (
-          <MemberCard 
-            key={index} 
-            member={member} 
-            index={index} 
-            highlight={highlight && index < 2}
-            isVisible={isSectionInView}
-          />
-        ))}
-      </div>
-    </motion.div>
   );
 }
 
@@ -250,7 +216,7 @@ function MemberCard({ member, index, highlight = false, isVisible }: MemberCardP
         {/* Profile Image with Yellow Border for highlighted members */}
         <div className={cn(
           "w-[200px] h-[200px] overflow-hidden", // Fixed square dimensions
-          highlight ? "ring-2 ring-yellow-400" : "ring-1 ring-gray-200 dark:ring-gray-800"
+          highlight ? "ring-2 ring-secondaccent" : "ring-1 ring-gray-200 dark:ring-gray-800"
         )}>
           <img 
             src={member.avatar} 
@@ -264,18 +230,18 @@ function MemberCard({ member, index, highlight = false, isVisible }: MemberCardP
         <h4 className="text-lg font-medium">
           {member.name}
           {highlight && (
-            <span className="ml-2 inline-block h-2 w-2 rounded-full bg-yellow-400"></span>
+            <span className="ml-2 inline-block h-2 w-2 rounded-full bg-secondaccent"></span>
           )}
         </h4>
         
-        <p className="text-yellow-500 dark:text-yellow-400 font-medium mt-1">
+        <p className="text-secondaccent2 dark:text-secondaccent font-medium mt-1">
           {member.role}
         </p>
         
         <div className="mt-3 space-y-1">
           {member.expertise.map((exp, idx) => (
             <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="h-1 w-1 rounded-full bg-yellow-400"></span>
+              <span className="h-1 w-1 rounded-full bg-secondaccent"></span>
               {exp}
             </div>
           ))}

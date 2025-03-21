@@ -48,10 +48,10 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
                 className="p-6 hover:shadow-2xl transition-all duration-300 
                 bg-background dark:bg-[#1A1A1A] 
                 border border-border dark:border-gray-800 
-                hover:border-yellow-400 dark:hover:border-yellow-500 
+                hover:border-secondaccent dark:hover:border-secondaccent2 
                 group flex flex-col h-full w-full"
               >
-                <Quote className="w-8 h-8 text-yellow-500 mb-4 group-hover:text-yellow-600 transition-colors" />
+                <Quote className="w-8 h-8 text-secondaccent2 mb-4 group-hover:text-yellow-600 transition-colors" />
                 <p className="text-muted-foreground mb-6 flex-grow">
                   {testimonial.quote}
                 </p>
@@ -59,7 +59,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
                   {testimonial.avatar && (
                     <Avatar className="mr-3">
                       <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
-                      <AvatarFallback className="bg-yellow-400/20 text-yellow-500">
+                      <AvatarFallback className="bg-secondaccent/20 text-secondaccent2">
                         {testimonial.author[0]}
                       </AvatarFallback>
                     </Avatar>

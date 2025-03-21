@@ -17,7 +17,7 @@ const CostCalculator = () => {
         className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-xl max-w-2xl mx-auto border border-gray-700"
       >
         <div className="flex items-center gap-3 mb-8">
-          <div className="p-2 bg-yellow-500 rounded-lg">
+          <div className="p-2 bg-secondaccent2 rounded-lg">
             <Calculator className="w-6 h-6 text-black" />
           </div>
           <h3 className="text-2xl font-bold text-white">ROI Calculator</h3>
@@ -27,7 +27,7 @@ const CostCalculator = () => {
           <div>
             <div className="flex justify-between mb-2">
               <label className="font-medium text-gray-300">Team Size</label>
-              <span className="text-yellow-400 font-medium">{employees} employees</span>
+              <span className="text-secondaccent font-medium">{employees} employees</span>
             </div>
             <input
               type="range"
@@ -35,14 +35,14 @@ const CostCalculator = () => {
               max="20"
               value={employees}
               onChange={(e) => setEmployees(Number(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-500"
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-secondaccent2"
             />
           </div>
           
           <div>
             <div className="flex justify-between mb-2">
               <label className="font-medium text-gray-300">Weekly Hours</label>
-              <span className="text-yellow-400 font-medium">{workload}h / week</span>
+              <span className="text-secondaccent font-medium">{workload}h / week</span>
             </div>
             <input
               type="range"
@@ -50,7 +50,7 @@ const CostCalculator = () => {
               max="80"
               value={workload}
               onChange={(e) => setWorkload(Number(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-500"
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-secondaccent2"
             />
           </div>
           
@@ -62,7 +62,7 @@ const CostCalculator = () => {
             </div>
             <div className="bg-gray-900 p-4 rounded-xl border border-yellow-900">
               <div className="text-sm text-gray-400 mb-1">AI Cost</div>
-              <div className="text-2xl font-bold text-yellow-400">${aiCost.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-secondaccent">${aiCost.toLocaleString()}</div>
               <div className="text-sm text-gray-400">per month</div>
             </div>
           </div>
@@ -74,7 +74,7 @@ const CostCalculator = () => {
                 {savingsPercentage}% saved
               </div>
             </div>
-            <div className="text-4xl font-bold text-yellow-400">${savings.toLocaleString()}</div>
+            <div className="text-4xl font-bold text-secondaccent">${savings.toLocaleString()}</div>
             <div className="text-sm text-gray-400 mt-1">per month</div>
           </div>
         </div>

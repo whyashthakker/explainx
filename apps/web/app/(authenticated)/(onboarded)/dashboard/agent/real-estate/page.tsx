@@ -186,7 +186,7 @@ export default function RealEstate() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="maxPrice">Maximum Price</Label>
+                  <Label htmlFor="maxPrice">Maximum Price in Crore</Label>
                   <div className="relative">
                     <DollarSign className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input id="maxPrice" name="maxPrice" type="number" placeholder="Enter maximum price" className="pl-8" required />
@@ -272,8 +272,8 @@ export default function RealEstate() {
                             <div className="flex items-center gap-2">
                               {job.status === 'processing' && (
                                 <>
-                                  <Loader2 className="h-4 w-4 animate-spin text-yellow-500" />
-                                  <span className="text-yellow-500">Processing</span>
+                                  <Loader2 className="h-4 w-4 animate-spin text-secondaccent2" />
+                                  <span className="text-secondaccent2">Processing</span>
                                 </>
                               )}
                               {job.status === 'completed' && (
@@ -296,7 +296,7 @@ export default function RealEstate() {
 
                           {/* View Link */}
                           <TableCell>
-                            <Link href={`/tasks/real-estate/${job.task_id}`} className="text-primary hover:underline">
+                            <Link href={`/tasks/real-estate/${job.task_id}`} className="text-secondaccent2 hover:underline">
                               View result
                             </Link>
                           </TableCell>

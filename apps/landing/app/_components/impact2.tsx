@@ -45,8 +45,8 @@ const StatItem = ({ value, label, suffix = "+", icon, inView, delay }: StatItemP
       transition={{ duration: 0.6, delay }}
       className="flex flex-col items-center p-6 rounded-xl bg-gradient-to-br from-background/50 to-background/80 border border-border/50 backdrop-blur-sm"
     >
-      <div className="p-3 rounded-full bg-yellow-400/10 border border-yellow-400/20 mb-4">
-        <div className="text-yellow-500">
+      <div className="p-3 rounded-full bg-secondaccent/10 border border-secondaccent/20 mb-4">
+        <div className="text-secondaccent2">
           {icon}
         </div>
       </div>
@@ -109,7 +109,7 @@ export default function DeliveryStats() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-1 h-6 bg-yellow-400"></div>
+            <div className="w-1 h-6 bg-secondaccent"></div>
             <h3 className="text-sm font-medium uppercase tracking-wider">OUR IMPACT</h3>
           </motion.div>
           
@@ -166,13 +166,13 @@ export default function DeliveryStats() {
         {/* Decorative gradients */}
         <div className="relative mt-16">
           <motion.div 
-            className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[400px] h-[300px] rounded-full bg-yellow-400/10 blur-[128px] opacity-20"
+            className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[400px] h-[300px] rounded-full bg-secondaccent/10 blur-[128px] opacity-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.2 }}
             transition={{ duration: 1.5, delay: 0.5 }}
           />
           <motion.div 
-            className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[400px] h-[300px] rounded-full bg-yellow-400/10 blur-[128px] opacity-20"
+            className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[400px] h-[300px] rounded-full bg-secondaccent/10 blur-[128px] opacity-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.2 }}
             transition={{ duration: 1.5, delay: 0.7 }}

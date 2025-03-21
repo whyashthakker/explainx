@@ -76,7 +76,7 @@ export function PricingFAQ() {
             animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-1 h-6 bg-yellow-400"></div>
+            <div className="w-1 h-6 bg-secondaccent"></div>
             <h3 className="text-sm font-medium uppercase tracking-wider">QUESTIONS & ANSWERS</h3>
           </motion.div>
           
@@ -113,13 +113,13 @@ export function PricingFAQ() {
             initial={{ opacity: 0 }}
             animate={isFaqListInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1.2 }}
-            className="absolute top-24 right-0 -translate-x-12 -translate-y-1/2 w-64 h-64 rounded-full bg-yellow-400/5 blur-3xl -z-10"
+            className="absolute top-24 right-0 -translate-x-12 -translate-y-1/2 w-64 h-64 rounded-full bg-secondaccent/5 blur-3xl -z-10"
           ></motion.div>
           <motion.div 
             initial={{ opacity: 0 }}
             animate={isFaqListInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.3 }}
-            className="absolute bottom-24 left-0 translate-x-12 translate-y-1/2 w-64 h-64 rounded-full bg-yellow-400/5 blur-3xl -z-10"
+            className="absolute bottom-24 left-0 translate-x-12 translate-y-1/2 w-64 h-64 rounded-full bg-secondaccent/5 blur-3xl -z-10"
           ></motion.div>
           
           {/* FAQ Items */}
@@ -151,7 +151,7 @@ export function PricingFAQ() {
               <Button
                 onClick={toggleShowAll}
                 variant="outline"
-                className="border-yellow-400 text-yellow-500 hover:bg-yellow-400/10 px-8"
+                className="border-secondaccent text-secondaccent2 hover:bg-secondaccent/10 px-8"
               >
                 {showAll ? "Show Less Questions" : "Show More Questions"}
               </Button>

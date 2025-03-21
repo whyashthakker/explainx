@@ -145,7 +145,7 @@ export const HeroHeader = () => {
                             href="/"
                             aria-label="home"
                             className="flex items-center space-x-2">
-                            Explain <span className='text-yellow-500 font-bold'>X</span>
+                            Explain <span className='text-secondaccent2 font-bold'>X</span>
                         </Link>
 
                         <button
@@ -168,7 +168,7 @@ export const HeroHeader = () => {
                                     >
                                         <Link
                                             href={item.href}
-                                            className="flex items-center text-white hover:text-yellow-400 duration-150"
+                                            className="flex items-center text-white hover:text-secondaccent duration-150"
                                         >
                                             <span>{item.name}</span>
                                             {item.hasDropdown && (
@@ -180,7 +180,7 @@ export const HeroHeader = () => {
                                         {item.hasDropdown && item.dropdownItems && (
                                             <div 
                                                 className={cn(
-                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md shadow-lg ring-1 ring-yellow-500/20 transition-all duration-200 origin-top-left",
+                                                    "absolute top-full left-0 z-20 mt-2 w-64 rounded-md shadow-lg ring-1 ring-secondaccent2/20 transition-all duration-200 origin-top-left",
                                                     "bg-black text-white", // Pure black background
                                                     activeDropdown === item.name ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
                                                 )}
@@ -193,7 +193,7 @@ export const HeroHeader = () => {
                                                             key={dropdownIndex}
                                                             href={dropdownItem.href}
                                                             target={dropdownItem.target}
-                                                            className="block px-4 py-2 hover:bg-zinc-900 border-l-2 border-transparent hover:border-yellow-500 transition-all duration-150"
+                                                            className="block px-4 py-2 hover:bg-zinc-900 border-l-2 border-transparent hover:border-secondaccent2 transition-all duration-150"
                                                         >
                                                             <div className="font-medium text-white">{dropdownItem.name}</div>
                                                             {dropdownItem.description && (
@@ -226,7 +226,7 @@ export const HeroHeader = () => {
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className="text-white hover:text-yellow-400 block duration-150"
+                                            className="text-white hover:text-secondaccent block duration-150"
                                             onClick={() => setMenuState(false)}
                                         >
                                             <span>{item.name}</span>
@@ -240,7 +240,7 @@ export const HeroHeader = () => {
                                                         <Link
                                                             href={dropdownItem.href}
                                                             target={dropdownItem.target}
-                                                            className="text-sm text-gray-400 hover:text-yellow-400 block py-1 border-l border-zinc-800 pl-2"
+                                                            className="text-sm text-gray-400 hover:text-secondaccent block py-1 border-l border-zinc-800 pl-2"
                                                             onClick={() => setMenuState(false)}
                                                         >
                                                             {dropdownItem.name}
@@ -260,7 +260,7 @@ export const HeroHeader = () => {
                                 asChild
                                 variant="outline"
                                 size="sm"
-                                className="border-white hover:border-white text-white">
+                                className="border-secondaccent hover:border-white text-secondaccent">
                                 <a href={`https://agents.explainx.ai/signup`}>
                                     <span>Login</span>
                                 </a>
@@ -268,7 +268,7 @@ export const HeroHeader = () => {
                             <Button
                                 asChild
                                 size="sm"
-                                className="bg-white hover:bg-white text-black">
+                                className="bg-secondaccent hover:bg-secondaccent2 text-black">
                                 <a href={`https://agents.explainx.ai/signup`}>
                                     <span>Sign Up</span>
                                 </a>
