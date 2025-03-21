@@ -186,7 +186,7 @@ export default function RealEstate() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="maxPrice">Maximum Price</Label>
+                  <Label htmlFor="maxPrice">Maximum Price in Crore</Label>
                   <div className="relative">
                     <DollarSign className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input id="maxPrice" name="maxPrice" type="number" placeholder="Enter maximum price" className="pl-8" required />
