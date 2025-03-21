@@ -97,9 +97,9 @@ export default function NewsletterForm() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center py-12"
       >
-        <CheckCircle className="w-16 h-16 text-primary mx-auto mb-6" />
-        <h3 className="text-2xl font-bold mb-4">Welcome to Our Community!</h3>
-        <p className="text-muted-foreground">You'll receive our next AI insights directly in your inbox.</p>
+        <CheckCircle className="w-16 h-16 text-secondaccent mx-auto mb-6" />
+        <h3 className="text-2xl font-bold mb-4 text-secondaccent">Welcome to Our Community!</h3>
+        <p className="text-gray-300">You'll receive our next AI insights directly in your inbox.</p>
       </motion.div>
     );
   }
@@ -110,14 +110,14 @@ export default function NewsletterForm() {
       animate={{ opacity: 1, y: 0 }}
       className="w-full max-w-xl mx-auto"
     >
-      <Card className="backdrop-blur-sm bg-white/80 shadow-xl border-0 relative overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
+      <Card className="backdrop-blur-sm bg-black/90 shadow-xl border-0 relative overflow-hidden text-white">
+        <div className="absolute -top-24 -right-24 w-48 h-48 bg-secondaccent/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-secondaccent/20 rounded-full blur-3xl" />
         
         <CardContent className="p-8">
           <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
             <div className="space-y-2">
-              <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium">
+              <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium text-secondaccent">
                 <Mail className="w-4 h-4" />
                 Email
               </Label>
@@ -131,8 +131,8 @@ export default function NewsletterForm() {
                   setErrors(prev => ({ ...prev, email: undefined }));
                 }}
                 required
-                className={`h-12 bg-white/50 backdrop-blur-sm border-gray-200 ${
-                  errors.email ? 'border-red-500' : ''
+                className={`h-12 bg-black/50 backdrop-blur-sm border-gray-800 text-white placeholder:text-gray-500 ${
+                  errors.email ? 'border-red-500' : 'focus:border-secondaccent focus:ring-secondaccent'
                 }`}
               />
               {errors.email && (
@@ -141,7 +141,7 @@ export default function NewsletterForm() {
             </div>
 
             <div className="space-y-3">
-              <Label className="flex items-center gap-2 text-sm font-medium mb-2">
+              <Label className="flex items-center gap-2 text-sm font-medium mb-2 text-secondaccent">
                 <Code className="w-4 h-4" />
                 I'm primarily interested in
               </Label>
@@ -159,8 +159,8 @@ export default function NewsletterForm() {
                     htmlFor="developer"
                     className={`flex flex-col items-center justify-center gap-2 p-4 rounded-lg border-2 cursor-pointer transition-all ${
                       formData.subscriberType === 'DEVELOPER'
-                        ? 'border-primary bg-primary/5'
-                        : 'border-gray-200 hover:border-primary/50'
+                        ? 'border-secondaccent bg-secondaccent/10 text-secondaccent'
+                        : 'border-gray-800 hover:border-secondaccent/50 text-gray-300'
                     }`}
                   >
                     <RadioGroupItem value="DEVELOPER" id="developer" className="sr-only" />
@@ -174,8 +174,8 @@ export default function NewsletterForm() {
                     htmlFor="business"
                     className={`flex flex-col items-center justify-center gap-2 p-4 rounded-lg border-2 cursor-pointer transition-all ${
                       formData.subscriberType === 'BUSINESS'
-                        ? 'border-primary bg-primary/5'
-                        : 'border-gray-200 hover:border-primary/50'
+                        ? 'border-secondaccent bg-secondaccent/10 text-secondaccent'
+                        : 'border-gray-800 hover:border-secondaccent/50 text-gray-300'
                     }`}
                   >
                     <RadioGroupItem value="BUSINESS" id="business" className="sr-only" />
@@ -189,8 +189,8 @@ export default function NewsletterForm() {
                     htmlFor="enthusiast"
                     className={`flex flex-col items-center justify-center gap-2 p-4 rounded-lg border-2 cursor-pointer transition-all ${
                       formData.subscriberType === 'ENTHUSIAST'
-                        ? 'border-primary bg-primary/5'
-                        : 'border-gray-200 hover:border-primary/50'
+                        ? 'border-secondaccent bg-secondaccent/10 text-secondaccent'
+                        : 'border-gray-800 hover:border-secondaccent/50 text-gray-300'
                     }`}
                   >
                     <RadioGroupItem value="ENTHUSIAST" id="enthusiast" className="sr-only" />
@@ -207,7 +207,7 @@ export default function NewsletterForm() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full h-12 transition-all"
+              className="w-full h-12 transition-all bg-secondaccent hover:bg-yellow-500 text-black font-semibold"
             >
               {isLoading ? (
                 <>
@@ -219,7 +219,7 @@ export default function NewsletterForm() {
               )}
             </Button>
 
-            <p className="text-xs text-center text-muted-foreground">
+            <p className="text-xs text-center text-gray-400">
               Get weekly updates on AI agents, automation trends, and industry insights. 
               You can unsubscribe at any time.
             </p>
