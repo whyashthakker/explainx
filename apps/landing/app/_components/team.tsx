@@ -49,6 +49,27 @@ const members: Member[] = [
     }
   },
   {
+    name: 'Paresh Bhamare',
+    role: 'Development',
+    avatar: 'https://github.com/shadcn.png',
+    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
+    social: {
+      github: 'https://github.com',
+      linkedin: 'https://linkedin.com'
+    }
+  },
+  {
+    name: 'Rahul Santra',
+    role: 'Development',
+    avatar: 'https://github.com/shadcn.png',
+    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
+    social: {
+      github: 'https://github.com',
+      linkedin: 'https://linkedin.com'
+    }
+  },
+  
+  {
     name: 'Pratham Ware',
     role: 'Marketing',
     avatar: 'https://github.com/shadcn.png',
@@ -59,7 +80,7 @@ const members: Member[] = [
     }
   },
   {
-    name: 'Shri Jadhav',
+    name: 'Shriparna Jadhav',
     role: 'AI Solutions Expert',
     avatar: 'https://github.com/shadcn.png',
     expertise: ['Client Solutions', 'AI Integration', 'Support'],
@@ -88,12 +109,11 @@ export default function TeamSection() {
   // We know these will never be undefined, but we need to tell TypeScript that
   const leadership = members.slice(0, 2) as Member[];
   
-  // For single member selection, use a more defensive approach
-  const engineering = members.slice(2, 3) as Member[]
+  // Fix: Use slice from 2 to 5 to get the three engineering team members
+  const engineering = members.slice(2, 5) as Member[];
   
-  
-  // For the remaining members, ensure we have valid members
-  const marketing = members.length > 3 ? members.slice(3) : [] as Member[];
+  // For the remaining members after index 5, ensure we have valid members
+  const marketing = members.length > 5 ? members.slice(5) : [] as Member[];
 
   return (
     <section className="py-16 md:py-24 lg:py-32 bg-background dark:bg-[#0A0A0A]">
