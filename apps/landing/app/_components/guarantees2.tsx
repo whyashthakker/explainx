@@ -33,7 +33,7 @@ export function FeaturesSectionWithHoverEffects() {
             animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-1 h-6 bg-yellow-400"></div>
+            <div className="w-1 h-6 bg-secondaccent"></div>
             <h3 className="text-sm font-medium uppercase tracking-wider">OUR GUARANTEES</h3>
           </motion.div>
           
@@ -118,11 +118,11 @@ const Feature = ({
       {index >= 4 && (
         <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
       )}
-        <div className="mb-4 relative z-10 px-10 text-yellow-500 dark:text-white">
+        <div className="mb-4 relative z-10 px-10 text-secondaccent2 dark:text-white">
         {icon}
       </div>
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-yellow-400 dark:bg-yellow-600 group-hover/feature:bg-yellow-400 transition-all duration-200 origin-center" />
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-secondaccent dark:bg-yellow-600 group-hover/feature:bg-secondaccent transition-all duration-200 origin-center" />
         <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
           {title}
         </span>

@@ -10,7 +10,7 @@ export function HeroSection() {
     <div className="container max-w-7xl mx-auto px-4 py-24 md:py-32 text-center space-y-8 bg-background dark:bg-[#0A0A0A]">
       <Badge 
         variant="outline" 
-        className="mb-4 bg-yellow-400/10 text-yellow-500 border-yellow-400/20"
+        className="mb-4 bg-secondaccent/10 text-secondaccent2 border-secondaccent/20"
       >
         AI Innovation
       </Badge>
@@ -28,7 +28,7 @@ export function HeroSection() {
         <Link href="/demo">
           <Button 
             size="lg" 
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-8 py-6 h-auto"
+            className="bg-secondaccent2 hover:bg-yellow-600 text-black font-medium px-8 py-6 h-auto"
           >
             Explore AI Agents
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -39,7 +39,7 @@ export function HeroSection() {
           <Button 
             variant="outline" 
             size="lg"
-            className="border-yellow-500/50 hover:border-yellow-500 text-foreground dark:text-white hover:bg-yellow-500/10 px-8 py-6 h-auto"
+            className="border-secondaccent2/50 hover:border-secondaccent2 text-foreground dark:text-white hover:bg-secondaccent2/10 px-8 py-6 h-auto"
           >
             Build With Us
           </Button>

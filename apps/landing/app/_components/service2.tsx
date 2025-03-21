@@ -102,7 +102,7 @@ export default function ServicesSection() {
           animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="w-1 h-6 bg-yellow-400"></div>
+          <div className="w-1 h-6 bg-secondaccent"></div>
           <h3 className="text-sm font-medium uppercase tracking-wider text-white dark:text-white">OUR SERVICES</h3>
         </motion.div>
         
@@ -215,7 +215,7 @@ export default function ServicesSection() {
                 {/* Render the appropriate Lucide icon */}
                 {React.createElement(serviceContent[activeService].icon, {
                   size: 80,
-                  className: "text-yellow-400"
+                  className: "text-secondaccent"
                 })}
               </motion.div>
             </AnimatePresence>
@@ -265,7 +265,7 @@ const ServiceItem = ({ title, serviceId, isActive = false, onClick, isVisible, i
       onClick={onClick}
       className={cn(
         "group border-b pb-3 transition-all duration-300 text-left w-full",
-        isActive ? "border-yellow-400" : "border-gray-200 dark:border-gray-800"
+        isActive ? "border-secondaccent" : "border-gray-200 dark:border-gray-800"
       )}
       whileHover={{ 
         x: 5,
@@ -284,7 +284,7 @@ const ServiceItem = ({ title, serviceId, isActive = false, onClick, isVisible, i
               size={iconSize} 
               className={cn(
                 "transition-all duration-300",
-                isActive ? "text-yellow-400" : "text-gray-600 dark:text-gray-400 group-hover:text-yellow-400"
+                isActive ? "text-secondaccent" : "text-gray-600 dark:text-gray-400 group-hover:text-secondaccent"
               )} 
             />
           </div>
@@ -305,8 +305,8 @@ const ServiceItem = ({ title, serviceId, isActive = false, onClick, isVisible, i
           className={cn(
             "w-6 h-6 flex items-center justify-center rounded-full border transition-all duration-300",
             isActive 
-              ? "bg-yellow-400 border-yellow-400" 
-              : "border-gray-300 dark:border-gray-700 group-hover:border-yellow-400"
+              ? "bg-secondaccent border-secondaccent" 
+              : "border-gray-300 dark:border-gray-700 group-hover:border-secondaccent"
           )}
           animate={isActive ? { rotate: 90, scale: 1.1 } : { rotate: 0, scale: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}

@@ -126,7 +126,7 @@ export default function TeamSection() {
             animate={isHeaderInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-1 h-6 bg-yellow-400"></div>
+            <div className="w-1 h-6 bg-secondaccent"></div>
             <h3 className="text-sm font-medium uppercase tracking-wider">OUR TEAM</h3>
           </motion.div>
           
@@ -205,7 +205,7 @@ function Teams({ title, members, highlight = false }: TeamsProps) {
       <div className="flex items-center gap-3 mb-8">
         <h3 className={cn(
           "text-xl font-medium",
-          highlight && "text-yellow-400"
+          highlight && "text-secondaccent"
         )}>
           {title}
         </h3>
@@ -270,7 +270,7 @@ function MemberCard({ member, index, highlight = false, isVisible }: MemberCardP
         {/* Profile Image with Yellow Border for highlighted members */}
         <div className={cn(
           "w-[200px] h-[200px] overflow-hidden", // Fixed square dimensions
-          highlight ? "ring-2 ring-yellow-400" : "ring-1 ring-gray-200 dark:ring-gray-800"
+          highlight ? "ring-2 ring-secondaccent" : "ring-1 ring-gray-200 dark:ring-gray-800"
         )}>
           <img 
             src={member.avatar} 
@@ -284,18 +284,18 @@ function MemberCard({ member, index, highlight = false, isVisible }: MemberCardP
         <h4 className="text-lg font-medium">
           {member.name}
           {highlight && (
-            <span className="ml-2 inline-block h-2 w-2 rounded-full bg-yellow-400"></span>
+            <span className="ml-2 inline-block h-2 w-2 rounded-full bg-secondaccent"></span>
           )}
         </h4>
         
-        <p className="text-yellow-500 dark:text-yellow-400 font-medium mt-1">
+        <p className="text-secondaccent2 dark:text-secondaccent font-medium mt-1">
           {member.role}
         </p>
         
         <div className="mt-3 space-y-1">
           {member.expertise.map((exp, idx) => (
             <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="h-1 w-1 rounded-full bg-yellow-400"></span>
+              <span className="h-1 w-1 rounded-full bg-secondaccent"></span>
               {exp}
             </div>
           ))}

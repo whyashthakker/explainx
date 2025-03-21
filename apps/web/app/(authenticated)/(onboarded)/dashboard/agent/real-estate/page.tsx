@@ -272,8 +272,8 @@ export default function RealEstate() {
                             <div className="flex items-center gap-2">
                               {job.status === 'processing' && (
                                 <>
-                                  <Loader2 className="h-4 w-4 animate-spin text-yellow-500" />
-                                  <span className="text-yellow-500">Processing</span>
+                                  <Loader2 className="h-4 w-4 animate-spin text-secondaccent2" />
+                                  <span className="text-secondaccent2">Processing</span>
                                 </>
                               )}
                               {job.status === 'completed' && (
@@ -296,7 +296,7 @@ export default function RealEstate() {
 
                           {/* View Link */}
                           <TableCell>
-                            <Link href={`/tasks/real-estate/${job.task_id}`} className="text-primary hover:underline">
+                            <Link href={`/tasks/real-estate/${job.task_id}`} className="text-secondaccent2 hover:underline">
                               View result
                             </Link>
                           </TableCell>
