@@ -52,6 +52,9 @@ const config = {
 			secondaccent2: {
 				DEFAULT: '#eab308',
 			},
+			secondaccent3: {
+				DEFAULT: '#ca8a04',
+			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
