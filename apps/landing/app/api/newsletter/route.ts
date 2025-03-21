@@ -1,8 +1,8 @@
-
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sendDiscordNotification } from "../../../lib/discord-notify";
 import prisma from "@repo/db/client";
+import { Prisma } from "@prisma/client";
 
 const waitlistSchema = z.object({
   email: z.string().email(),
@@ -16,12 +16,20 @@ export async function POST(req: Request) {
     const body = await req.json();
     const validatedData = waitlistSchema.parse(body);
 
+    // Create newsletter subscriber in database
+    const subscriber = await prisma.newsletterSubscriber.create({
+      data: {
+        email: validatedData.email,
+        subscriberType: validatedData.subscriberType,
+      },
+    });
+
+    // Send Discord notification
     sendDiscordNotification(
         `New waitlist entry: ${validatedData.email}, ${validatedData.subscriberType}`
     ).catch(console.error);
 
-
-    return NextResponse.json({ success: true, data: validatedData });
+    return NextResponse.json({ success: true, data: subscriber });
   } catch (error) {
     console.error("Newsletter entry error:", error);
     if (error instanceof z.ZodError) {
@@ -30,8 +38,15 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+    // Handle unique constraint violation
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002') {
+      return NextResponse.json(
+        { error: "Email already subscribed to newsletter" },
+        { status: 400 }
+      );
+    }
     return NextResponse.json(
-      { error: "Failed to join waitlist", details: error },
+      { error: "Failed to join waitlist", details: String(error) },
       { status: 500 }
     );
   }
