@@ -27,6 +27,7 @@ model User {
   // Organization relation
   organizationTeamMemberships OrganizationTeamMember[]
   realEstateTasks RealEstateTask[]
+  jobFinderTask JobFinderTask[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -408,4 +409,18 @@ model NewsletterSubscriber {
   updatedAt      DateTime @updatedAt
 
   @@map("newsletter_subscribers")
+}
+
+
+model JobFinderTask {
+  id        String   @id @default(cuid())
+  task_id   String   @unique // External task ID from AI agent
+  status    String   // "processing", "completed", "failed"
+  message   String?  // Description or error message
+  result    Json?    // Result data from the agent
+  parameters Json    // Search parameters
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
