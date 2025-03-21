@@ -17,10 +17,10 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { city, maxPrice, propertyCategory, propertyType } = body;
+    const { job_title, location, experience_years, skills, job_category } = body;
 
     // Validate required fields
-    if (!city || !maxPrice || !propertyCategory || !propertyType) {
+    if (!job_title || !location || !experience_years || !skills || !job_category) {
       return NextResponse.json(
         { message: 'Missing required fields' }, 
         { status: 400 }
@@ -41,15 +41,16 @@ export async function POST(req: Request) {
 
     // Prepare data for the AI agent
     const agentData = {
-      agent_type: "real-estate",
+      agent_type: "job-hunter",
       parameters: {
-        city: city,
-        max_price: parseFloat(maxPrice),
-        property_category: propertyCategory,
-        property_type: propertyType
+        job_title,
+        location,
+        experience_years,
+        skills,
+        job_category
       },
       webhook: {
-        url: process.env.WEBHOOK_URL || "https://e418-45-249-40-106.ngrok-free.app/api/agents/real-estate/webhook",
+        url: process.env.WEBHOOK_URL || "https://agents.explainx.ai/api/agents/job-finder/webhook",
         headers: {
           Authorization: "Bearer 1234"
         }
@@ -73,16 +74,17 @@ export async function POST(req: Request) {
     const data = await response.json();
     
     // Create a new task in our database, now with userId
-    const newTask = await prisma.realEstateTask.create({
+    const newTask = await prisma.jobFinderTask.create({
       data: {
         task_id: data.task_id,
         status: 'processing',
-        message: `Searching for ${propertyType} in ${city} under ${maxPrice}`,
+        message: `Searching for ${job_title} jobs in ${location} with ${experience_years} years experience`,
         parameters: {
-          city,
-          maxPrice,
-          propertyCategory,
-          propertyType
+          job_title,
+          location,
+          experience_years,
+          skills,
+          job_category
         },
         userId: user.id, // Associate task with the current user
       },

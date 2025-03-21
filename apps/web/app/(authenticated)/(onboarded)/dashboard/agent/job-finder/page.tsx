@@ -5,13 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/components/ui
 import AgentHeader from '../../../_components/AgentHeader';
 import { Label } from '@repo/ui/components/ui/label';
 import { Table, TableHead, TableBody, TableHeader, TableRow, TableCell } from '@repo/ui/components/ui/table';
-import { AlertCircle, CheckCircle2, DollarSign, Home, Loader2, LogIn, MapPin, XCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle2, Briefcase, MapPin, Loader2, LogIn, XCircle, Users } from 'lucide-react';
 import { Input } from '@repo/ui/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@repo/ui/components/ui/select';
 import { Button } from '@repo/ui/components/ui/button';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { Alert, AlertDescription, AlertTitle } from "@repo/ui/components/ui/alert";
+import { Textarea } from "@repo/ui/components/ui/textarea";
 
 // Define the types locally to avoid importing from files that might have the async_hooks issue
 type JobStatus = 'processing' | 'completed' | 'failed';
@@ -26,7 +27,7 @@ interface Job {
   result?: any | null;
 }
 
-export default function RealEstate() {
+export default function JobFinder() {
   const { data: session, status } = useSession();
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -68,7 +69,7 @@ export default function RealEstate() {
       setInitialLoadComplete(true);
     } catch (error: any) {
       console.error('Error fetching jobs:', error);
-      setError(error.message || 'Failed to load your property searches');
+      setError(error.message || 'Failed to load your job searches');
       setInitialLoadComplete(true);
     }
   };
@@ -86,14 +87,15 @@ export default function RealEstate() {
     
     const formData = new FormData(e.currentTarget);
     const data = {
-      city: formData.get('city') as string,
-      maxPrice: formData.get('maxPrice') as string,
-      propertyCategory: formData.get('propertyCategory') as string,
-      propertyType: formData.get('propertyType') as string
+      job_title: formData.get('job_title') as string,
+      location: formData.get('location') as string,
+      experience_years: formData.get('experience_years') as string,
+      skills: (formData.get('skills') as string).split(',').map(skill => skill.trim()),
+      job_category: formData.get('job_category') as string
     };
     
     try {
-      const response = await fetch('/api/agents/real-estate/new-task', {
+      const response = await fetch('/api/agents/job-finder/new-task', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +105,7 @@ export default function RealEstate() {
       
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to submit search request');
+        throw new Error(errorData.message || 'Failed to submit job search request');
       }
       
       // Refresh job list after successful submission
@@ -112,7 +114,7 @@ export default function RealEstate() {
       (e.target as HTMLFormElement).reset();
     } catch (error: any) {
       console.error('Error submitting form:', error);
-      setError(error.message || 'An error occurred while submitting your search');
+      setError(error.message || 'An error occurred while submitting your job search');
     } finally {
       setLoading(false);
     }
@@ -122,13 +124,13 @@ export default function RealEstate() {
   if (status === 'unauthenticated') {
     return (
       <div className="min-h-screen bg-background">
-        <AgentHeader title='Real Estate AI' />
+        <AgentHeader title="Job Finder AI agent"/>
         <main className="container py-16">
           <div className="flex flex-col items-center justify-center max-w-md mx-auto text-center">
             <LogIn className="h-12 w-12 text-primary mb-4" />
             <h1 className="text-2xl font-bold mb-3">Sign in Required</h1>
             <p className="text-muted-foreground mb-6">
-              Please sign in to access the real estate search agent and view your searches.
+              Please sign in to access the job finder agent and view your searches.
             </p>
             <Button onClick={() => {
               // Use window.location to navigate to sign in page to avoid any potential issues
@@ -146,7 +148,7 @@ export default function RealEstate() {
   if (status === 'loading' || (status === 'authenticated' && !initialLoadComplete)) {
     return (
       <div className="min-h-screen bg-background">
-        <AgentHeader title='Real Estate AI' />
+        <AgentHeader title="Job Finder AI agent"/>
         <main className="container py-16">
           <div className="flex flex-col items-center justify-center">
             <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
@@ -159,7 +161,7 @@ export default function RealEstate() {
 
   return (
     <div className="min-h-screen bg-background">
-      <AgentHeader title='Real Estate AI' />
+      <AgentHeader title="Job Finder AI agent"/>
       <main className="container py-6">
         {error && (
           <Alert variant="destructive" className="mb-6">
@@ -173,53 +175,65 @@ export default function RealEstate() {
           {/* Search Parameters Form */}
           <Card className="h-fit lg:sticky lg:top-20">
             <CardHeader>
-              <CardTitle>Search Parameters</CardTitle>
+              <CardTitle>Job Search Parameters</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="city">City</Label>
+                  <Label htmlFor="job_title">Job Title</Label>
+                  <div className="relative">
+                    <Briefcase className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input id="job_title" name="job_title" placeholder="Enter job title" className="pl-8" required />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="location">Location</Label>
                   <div className="relative">
                     <MapPin className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                    <Input id="city" name="city" placeholder="Enter city name" className="pl-8" required />
+                    <Input id="location" name="location" placeholder="Enter job location" className="pl-8" required />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="maxPrice">Maximum Price in Crore</Label>
+                  <Label htmlFor="experience_years">Years of Experience</Label>
                   <div className="relative">
-                    <DollarSign className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                    <Input id="maxPrice" name="maxPrice" type="number" placeholder="Enter maximum price" className="pl-8" required />
+                    <Users className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input 
+                      id="experience_years" 
+                      name="experience_years" 
+                      type="number" 
+                      placeholder="Enter years of experience" 
+                      className="pl-8" 
+                      required 
+                      min="0"
+                    />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="propertyCategory">Property Category</Label>
-                  <Select name="propertyCategory" required defaultValue="">
+                  <Label htmlFor="skills">Skills (comma-separated)</Label>
+                  <Textarea 
+                    id="skills" 
+                    name="skills" 
+                    placeholder="Enter skills, separated by commas" 
+                    className="min-h-[100px]"
+                    required 
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="job_category">Job Category</Label>
+                  <Select name="job_category" required defaultValue="">
                     <SelectTrigger>
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="residential">Residential</SelectItem>
-                      <SelectItem value="commercial">Commercial</SelectItem>
-                      <SelectItem value="industrial">Industrial</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="propertyType">Property Type</Label>
-                  <Select name="propertyType" required defaultValue="">
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="house">House</SelectItem>
-                      <SelectItem value="apartment">Apartment</SelectItem>
-                      <SelectItem value="condo">Condo</SelectItem>
-                      <SelectItem value="townhouse">Townhouse</SelectItem>
-                      <SelectItem value="office">Office Space</SelectItem>
-                      <SelectItem value="retail">Retail Space</SelectItem>
+                      <SelectItem value="tech">Technology</SelectItem>
+                      <SelectItem value="data_science">Data Science</SelectItem>
+                      <SelectItem value="finance">Finance</SelectItem>
+                      <SelectItem value="marketing">Marketing</SelectItem>
+                      <SelectItem value="sales">Sales</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -232,8 +246,8 @@ export default function RealEstate() {
                     </>
                   ) : (
                     <>
-                      <Home className="mr-2 h-4 w-4" />
-                      Start Search
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Start Job Search
                     </>
                   )}
                 </Button>
@@ -244,70 +258,11 @@ export default function RealEstate() {
           {/* Jobs Table */}
           <Card>
             <CardHeader>
-              <CardTitle>My Property Searches</CardTitle>
+              <CardTitle>My Job Searches</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="rounded-md border overflow-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Message</TableHead>
-                      <TableHead>View</TableHead>
-                      <TableHead className="w-[180px]">Created</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {jobs.length === 0 ? (
-                      <TableRow>
-                        <TableCell colSpan={4} className="text-center py-6 text-muted-foreground">
-                          No search jobs found. Start a new search!
-                        </TableCell>
-                      </TableRow>
-                    ) : (
-                      jobs.map((job) => (
-                        <TableRow key={job.id}>
-                          {/* Job Status */}
-                          <TableCell>
-                            <div className="flex items-center gap-2">
-                              {job.status === 'processing' && (
-                                <>
-                                  <Loader2 className="h-4 w-4 animate-spin text-secondaccent2" />
-                                  <span className="text-secondaccent2">Processing</span>
-                                </>
-                              )}
-                              {job.status === 'completed' && (
-                                <>
-                                  <CheckCircle2 className="h-4 w-4 text-green-500" />
-                                  <span className="text-green-500">Completed</span>
-                                </>
-                              )}
-                              {job.status === 'failed' && (
-                                <>
-                                  <XCircle className="h-4 w-4 text-red-500" />
-                                  <span className="text-red-500">Failed</span>
-                                </>
-                              )}
-                            </div>
-                          </TableCell>
-
-                          {/* Job Message */}
-                          <TableCell>{job.message}</TableCell>
-
-                          {/* View Link */}
-                          <TableCell>
-                            <Link href={`/tasks/real-estate/${job.task_id}`} className="text-secondaccent2 hover:underline">
-                              View result
-                            </Link>
-                          </TableCell>
-                          
-                          {/* Created At */}
-                          <TableCell>{new Date(job.createdAt).toLocaleString()}</TableCell>
-                        </TableRow>
-                      ))
-                    )}
-                  </TableBody>
-                </Table>
+               
               </div>
             </CardContent>
           </Card>
