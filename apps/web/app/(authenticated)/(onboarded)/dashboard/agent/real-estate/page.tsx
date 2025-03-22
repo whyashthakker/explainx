@@ -296,7 +296,7 @@ export default function RealEstate() {
 
                           {/* View Link */}
                           <TableCell>
-                            <Link href={`/tasks/real-estate/${job.task_id}`} className="text-secondaccent2 hover:underline">
+                            <Link href={`/dashboard/agent/real-estate/task/${job.task_id}`} className="text-secondaccent2 hover:underline">
                               View result
                             </Link>
                           </TableCell>
