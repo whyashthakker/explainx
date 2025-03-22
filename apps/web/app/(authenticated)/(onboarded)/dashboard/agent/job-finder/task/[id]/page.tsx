@@ -1,8 +1,10 @@
 "use client";
 import { use } from "react";
-import TaskDetails from "../../../../_components/real-estate-task-deatils";
+import JobTaskDetails from "../../../../../../../_components/job-task-details";
+
+
 
 export default function Task({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params); 
-    return <TaskDetails taskId={id}></TaskDetails>;
+    return <JobTaskDetails taskId={id}></JobTaskDetails>;
 }
