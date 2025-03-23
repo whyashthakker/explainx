@@ -39,6 +39,28 @@ export async function POST(req: Request) {
       );
     }
 
+    // Check daily search limit (2 searches per day) - skip for admin users
+    if (!user.isAdmin) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Start of the day
+      
+      const searchCount = await prisma.jobFinderTask.count({
+        where: {
+          userId: user.id,
+          createdAt: {
+            gte: today
+          }
+        }
+      });
+      
+      if (searchCount >= 2) {
+        return NextResponse.json(
+          { message: 'Daily search limit reached (2 searches per day)' }, 
+          { status: 429 }
+        );
+      }
+    }
+
     // Prepare data for the AI agent
     const agentData = {
       agent_type: "job-hunting",
