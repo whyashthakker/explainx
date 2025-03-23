@@ -314,7 +314,7 @@ export default function JobFinder() {
 
                           {/* View Link */}
                           <TableCell>
-                            <Link href={`/job-finder/task/${job.task_id}`} className="text-secondaccent2 hover:underline">
+                            <Link href={`/dashboard/agent/job-finder/task/${job.task_id}`} className="text-secondaccent2 hover:underline">
                               View result
                             </Link>
                           </TableCell>
