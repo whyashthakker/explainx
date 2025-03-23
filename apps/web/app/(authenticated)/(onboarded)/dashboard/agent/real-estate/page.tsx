@@ -118,6 +118,11 @@ export default function RealEstate() {
     }
   };
   
+  // Function to handle unlimited access request
+  const requestUnlimitedAccess = () => {
+    window.location.href = `mailto:yash@explainx.ai?subject=Request for Unlimited Access to ExplainX Real Estate AI&body=Hi, I'd like to get unlimited access to the Real Estate AI. Please provide me with more information.`;
+  };
+  
   // Show login prompt if not authenticated
   if (status === 'unauthenticated') {
     return (
@@ -162,10 +167,20 @@ export default function RealEstate() {
       <AgentHeader title='Real Estate AI' />
       <main className="container py-6">
         {error && (
-          <Alert variant="destructive" className="mb-6">
+          <Alert variant={error.includes('Daily search limit') ? "default" : "destructive"} className="mb-6">
             <AlertCircle className="h-4 w-4" />
-            <AlertTitle>Error</AlertTitle>
-            <AlertDescription>{error}</AlertDescription>
+            <AlertTitle>{error.includes('Daily search limit') ? "Search Limit Reached" : "Error"}</AlertTitle>
+            <AlertDescription>
+              {error}
+              {error.includes('Daily search limit') && (
+                <div className="mt-4">
+                  <p className="mb-2">We currently restrict users to 2 free requests per day. Please try again tomorrow or get unlimited access.</p>
+                  <Button onClick={requestUnlimitedAccess} variant="outline" className="mt-2">
+                    Get Unlimited Access
+                  </Button>
+                </div>
+              )}
+            </AlertDescription>
           </Alert>
         )}
         
