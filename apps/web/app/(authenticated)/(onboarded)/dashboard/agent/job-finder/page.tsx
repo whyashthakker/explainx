@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/components/ui/card";
-import AgentHeader from '../../../_components/AgentHeader';
 import { Label } from '@repo/ui/components/ui/label';
 import { Table, TableHead, TableBody, TableHeader, TableRow, TableCell } from '@repo/ui/components/ui/table';
 import { AlertCircle, CheckCircle2, Briefcase, MapPin, Loader2, LogIn, XCircle, Users } from 'lucide-react';
@@ -13,6 +12,7 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { Alert, AlertDescription, AlertTitle } from "@repo/ui/components/ui/alert";
 import { Textarea } from "@repo/ui/components/ui/textarea";
+import AgentHeader from '../../../_components/AgentHeader';
 
 // Define the types locally to avoid importing from files that might have the async_hooks issue
 type JobStatus = 'processing' | 'completed' | 'failed';
@@ -86,12 +86,13 @@ export default function JobFinder() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const skillsInput = formData.get('skills') as string;
+    const skillsValue = formData.get('skills') as string;
+    
     const data = {
       job_title: formData.get('job_title') as string,
       location: formData.get('location') as string,
       experience_years: formData.get('experience_years') as string,
-      skills: skillsInput ? skillsInput.split(',').map(skill => skill.trim()) : [],
+      skills: skillsValue ? skillsValue.split(',').map(skill => skill.trim()) : [],
       job_category: formData.get('job_category') as string
     };
 
@@ -348,4 +349,4 @@ export default function JobFinder() {
       </main>
     </div>
   );
-}
+} 
