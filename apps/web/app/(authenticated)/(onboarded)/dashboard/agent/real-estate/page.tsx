@@ -118,11 +118,6 @@ export default function RealEstate() {
     }
   };
   
-  // Function to handle unlimited access request
-  const requestUnlimitedAccess = () => {
-    window.location.href = `mailto:yash@explainx.ai?subject=Request for Unlimited Access to ExplainX Real Estate AI&body=Hi, I'd like to get unlimited access to the Real Estate AI. Please provide me with more information.`;
-  };
-  
   // Show login prompt if not authenticated
   if (status === 'unauthenticated') {
     return (
@@ -161,6 +156,10 @@ export default function RealEstate() {
       </div>
     );
   }
+
+  const requestUnlimitedAccess = () => {
+    window.location.href = `mailto:yash@explainx.ai?subject=Request for Unlimited Access to ExplainX Real Estate AI&body=Hi, I'd like to get unlimited access to the Real Estate AI. Please provide me with more information.`;
+  };
 
   return (
     <div className="min-h-screen bg-background">
