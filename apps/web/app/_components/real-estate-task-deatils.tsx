@@ -12,6 +12,15 @@ import {
   TooltipProvider, 
   TooltipTrigger 
 } from "@repo/ui/components/ui/tooltip";
+import { 
+  AlertCircle,
+  Home,
+  MapPin,
+  DollarSign,
+  BarChart3,
+  CheckCircle2,
+  Eye
+} from "lucide-react";
 
 export default function TaskDetails({ taskId }: { taskId: string }) {
     const [result, setResult] = useState<any>(null);
@@ -41,9 +50,10 @@ export default function TaskDetails({ taskId }: { taskId: string }) {
         fetchTask();
     }, [taskId]);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
-    if (!result) return <p>No result found.</p>;
+    if (loading) return <div className="flex items-center justify-center h-screen"><p className="text-lg">Loading property search results...</p></div>;
+    if (error) return <div className="flex items-center justify-center h-screen"><Alert variant="destructive"><AlertCircle className="h-4 w-4 mr-2" />{error}</Alert></div>;
+    if (!result) return <div className="flex items-center justify-center h-screen"><p className="text-lg">No results found for this property search.</p></div>;
+
     console.log("Result:", result);
 
     return (
@@ -78,16 +88,16 @@ const RealEstateResults = ({ data }: { data: any }) => {
     return (
       <div className="space-y-8">
         {/* Task Context Section */}
-        <Card className="border border-gray-200 shadow-sm">
-          <CardHeader className="border-b border-gray-100">
-            <CardTitle className="text-xl font-semibold text-gray-900">Search Parameters</CardTitle>
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle className="text-xl font-semibold">Search Parameters</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-4">
               {Object.entries(taskParameters).map(([key, value]) => (
                 <div key={key} className="flex items-start space-x-3">
-                  <span className="font-medium text-gray-700 capitalize min-w-[120px]">{key}:</span>
-                  <span className="text-gray-600">{value as string}</span>
+                  <span className="font-medium capitalize min-w-[120px]">{key}:</span>
+                  <span>{value as string}</span>
                 </div>
               ))}
             </div>
@@ -95,33 +105,36 @@ const RealEstateResults = ({ data }: { data: any }) => {
         </Card>
   
         {/* Selected Properties Section */}
-        <Card className="border border-gray-200 shadow-sm">
-          <CardHeader className="border-b border-gray-100">
-            <CardTitle className="text-xl font-semibold text-gray-900">Selected Properties</CardTitle>
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle className="text-xl font-semibold">Selected Properties</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
             {selectedProperties.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {selectedProperties.map((property: any, index: number) => (
-                  <Card key={index} className="border border-gray-200 hover:shadow-md transition-all duration-200">
-                    <CardHeader className="border-b border-gray-100">
-                      <CardTitle className="text-lg font-semibold text-gray-900">{property.name}</CardTitle>
-                      <CardDescription className="text-gray-600">{property.location}</CardDescription>
+                  <Card key={index} className="hover:shadow-md transition-all duration-200">
+                    <CardHeader className="border-b">
+                      <CardTitle className="text-lg font-semibold">{property.name}</CardTitle>
+                      <CardDescription className="flex items-center mt-1">
+                        <MapPin className="h-4 w-4 mr-1" /> {property.location}
+                      </CardDescription>
                     </CardHeader>
                     <CardContent className="pt-6">
                       <div className="mb-6">
-                        <Badge variant="secondary" className="text-lg font-medium px-3 py-1 bg-gray-100 text-gray-900">
+                        <Badge variant="outline" className="text-lg font-medium px-3 py-1 flex items-center">
+                          <DollarSign className="h-4 w-4 mr-1" />
                           {property.price}
                         </Badge>
                       </div>
   
                       {/* Key Features */}
                       <div className="mb-6">
-                        <h4 className="font-medium text-gray-900 mb-3">Key Features</h4>
+                        <h4 className="font-medium mb-3">Key Features</h4>
                         <ul className="space-y-2">
                           {property.key_features.map((feature: string, featureIndex: number) => (
-                            <li key={featureIndex} className="flex items-center text-gray-600">
-                              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></span>
+                            <li key={featureIndex} className="flex items-center">
+                              <span className="w-1.5 h-1.5 bg-primary/60 rounded-full mr-2"></span>
                               {feature}
                             </li>
                           ))}
@@ -131,22 +144,22 @@ const RealEstateResults = ({ data }: { data: any }) => {
                       {/* Pros and Cons */}
                       <div className="grid grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-medium text-emerald-600 mb-3">Pros</h4>
+                          <h4 className="font-medium text-green-500 dark:text-green-400 mb-3">Pros</h4>
                           <ul className="space-y-2">
                             {property.pros.map((pro: string, proIndex: number) => (
-                              <li key={proIndex} className="flex items-center text-gray-600">
-                                <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-2"></span>
+                              <li key={proIndex} className="flex items-center">
+                                <span className="w-1.5 h-1.5 bg-green-500 dark:bg-green-400 rounded-full mr-2"></span>
                                 {pro}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <h4 className="font-medium text-rose-600 mb-3">Cons</h4>
+                          <h4 className="font-medium text-red-500 dark:text-red-400 mb-3">Cons</h4>
                           <ul className="space-y-2">
                             {property.cons.map((con: string, conIndex: number) => (
-                              <li key={conIndex} className="flex items-center text-gray-600">
-                                <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mr-2"></span>
+                              <li key={conIndex} className="flex items-center">
+                                <span className="w-1.5 h-1.5 bg-red-500 dark:bg-red-400 rounded-full mr-2"></span>
                                 {con}
                               </li>
                             ))}
@@ -158,7 +171,10 @@ const RealEstateResults = ({ data }: { data: any }) => {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white">View Details</Button>
+                            <Button className="w-full bg-primary hover:bg-primary/90">
+                              <Eye className="h-4 w-4 mr-2" />
+                              View Details
+                            </Button>
                           </TooltipTrigger>
                           <TooltipContent>
                             <p>Click to see more property information</p>
@@ -170,35 +186,37 @@ const RealEstateResults = ({ data }: { data: any }) => {
                 ))}
               </div>
             ) : (
-              <Alert variant="default" className="bg-gray-50 border border-gray-200">
-                <AlertDescription className="text-gray-600">No properties selected based on your search criteria.</AlertDescription>
+              <Alert variant="default">
+                <AlertDescription>No properties selected based on your search criteria.</AlertDescription>
               </Alert>
             )}
           </CardContent>
         </Card>
   
         {/* Top Recommendations Section */}
-        <Card className="border border-gray-200 shadow-sm">
-          <CardHeader className="border-b border-gray-100">
-            <CardTitle className="text-xl font-semibold text-gray-900">Top Recommendations</CardTitle>
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle className="text-xl font-semibold">Top Recommendations</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
             {topRecommendations.length > 0 ? (
               <div className="grid md:grid-cols-3 gap-6">
                 {topRecommendations.map((recommendation: any, index: number) => (
-                  <Card key={index} className="border border-gray-200 hover:shadow-md transition-all duration-200">
-                    <CardHeader className="border-b border-gray-100">
-                      <CardTitle className="text-lg font-semibold text-gray-900">{recommendation.property_name}</CardTitle>
+                  <Card key={index} className="hover:shadow-md transition-all duration-200">
+                    <CardHeader className="border-b">
+                      <CardTitle className="text-lg font-semibold">
+                        {recommendation.property_name}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <p className="text-gray-600 leading-relaxed">{recommendation.reasoning}</p>
+                      <p className="leading-relaxed">{recommendation.reasoning}</p>
                     </CardContent>
                   </Card>
                 ))}
               </div>
             ) : (
-              <Alert variant="default" className="bg-gray-50 border border-gray-200">
-                <AlertDescription className="text-gray-600">No top recommendations available at the moment.</AlertDescription>
+              <Alert variant="default">
+                <AlertDescription>No top recommendations available at the moment.</AlertDescription>
               </Alert>
             )}
           </CardContent>
@@ -206,29 +224,38 @@ const RealEstateResults = ({ data }: { data: any }) => {
   
         {/* Best Value Analysis Section */}
         {bestValueAnalysis && (
-          <Card className="border border-gray-200 shadow-sm">
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle className="text-xl font-semibold text-gray-900">Best Value Analysis</CardTitle>
+          <Card>
+            <CardHeader className="border-b">
+              <CardTitle className="text-xl font-semibold">Best Value Analysis</CardTitle>
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               {bestValueAnalysis.price_per_sqft_comparison && (
                 <div>
-                  <h3 className="font-medium text-gray-900 mb-3">Price Comparison</h3>
-                  <p className="text-gray-600 leading-relaxed">{bestValueAnalysis.price_per_sqft_comparison[0]}</p>
+                  <h3 className="font-medium mb-3 flex items-center">
+                    <DollarSign className="h-5 w-5 mr-2 text-green-500 dark:text-green-400" />
+                    Price Comparison
+                  </h3>
+                  <p className="leading-relaxed">{bestValueAnalysis.price_per_sqft_comparison[0]}</p>
                 </div>
               )}
-              <Separator className="my-6" />
+              <Separator />
               {bestValueAnalysis.location_advantages && (
                 <div>
-                  <h3 className="font-medium text-gray-900 mb-3">Location Advantages</h3>
-                  <p className="text-gray-600 leading-relaxed">{bestValueAnalysis.location_advantages[0]}</p>
+                  <h3 className="font-medium mb-3 flex items-center">
+                    <MapPin className="h-5 w-5 mr-2 text-blue-500 dark:text-blue-400" />
+                    Location Advantages
+                  </h3>
+                  <p className="leading-relaxed">{bestValueAnalysis.location_advantages[0]}</p>
                 </div>
               )}
-              <Separator className="my-6" />
+              <Separator />
               {bestValueAnalysis.amenities_comparison && (
                 <div>
-                  <h3 className="font-medium text-gray-900 mb-3">Amenities Comparison</h3>
-                  <p className="text-gray-600 leading-relaxed">{bestValueAnalysis.amenities_comparison[0]}</p>
+                  <h3 className="font-medium mb-3 flex items-center">
+                    <Home className="h-5 w-5 mr-2 text-purple-500 dark:text-purple-400" />
+                    Amenities Comparison
+                  </h3>
+                  <p className="leading-relaxed">{bestValueAnalysis.amenities_comparison[0]}</p>
                 </div>
               )}
             </CardContent>
@@ -236,44 +263,45 @@ const RealEstateResults = ({ data }: { data: any }) => {
         )}
   
         {/* Location Trends Section */}
-        <Card className="border border-gray-200 shadow-sm">
-          <CardHeader className="border-b border-gray-100">
-            <CardTitle className="text-xl font-semibold text-gray-900">Location Trends</CardTitle>
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle className="text-xl font-semibold">Location Trends</CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
             {areaSummaries.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {areaSummaries.map((area: any, index: number) => (
-                  <Card key={index} className="border border-gray-200 hover:shadow-md transition-all duration-200">
-                    <CardHeader className="border-b border-gray-100">
-                      <CardTitle className="text-lg font-semibold text-gray-900">{area.location}</CardTitle>
+                  <Card key={index} className="hover:shadow-md transition-all duration-200">
+                    <CardHeader className="border-b">
+                      <CardTitle className="text-lg font-semibold">{area.location}</CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
                       <div className="space-y-4">
                         <div>
-                          <Badge variant="secondary" className="mb-2 bg-gray-100 text-gray-900 font-medium">
+                          <Badge variant="outline" className="mb-2 flex items-center">
+                            <BarChart3 className="h-3 w-3 mr-1" />
                             Price Trend
                           </Badge>
-                          <p className="text-gray-600 leading-relaxed">
+                          <p className="leading-relaxed">
                             {area.price_trend}
                           </p>
                         </div>
                         {area.appreciation !== null && (
                           <div>
-                            <Badge variant="secondary" className="mb-2 bg-emerald-50 text-emerald-700 font-medium">
+                            <Badge variant="outline" className="mb-2 bg-green-500/10 text-green-500 dark:text-green-400 dark:bg-green-500/20 font-medium">
                               Appreciation
                             </Badge>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="leading-relaxed">
                               {area.appreciation}%
                             </p>
                           </div>
                         )}
                         {area.rental_yield !== null && (
                           <div>
-                            <Badge variant="secondary" className="mb-2 bg-blue-50 text-blue-700 font-medium">
+                            <Badge variant="outline" className="mb-2 bg-blue-500/10 text-blue-500 dark:text-blue-400 dark:bg-blue-500/20 font-medium">
                               Rental Yield
                             </Badge>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="leading-relaxed">
                               {area.rental_yield}%
                             </p>
                           </div>
@@ -284,8 +312,8 @@ const RealEstateResults = ({ data }: { data: any }) => {
                 ))}
               </div>
             ) : (
-              <Alert variant="default" className="bg-gray-50 border border-gray-200">
-                <AlertDescription className="text-gray-600">No location trend data available.</AlertDescription>
+              <Alert variant="default">
+                <AlertDescription>No location trend data available.</AlertDescription>
               </Alert>
             )}
           </CardContent>
@@ -293,51 +321,51 @@ const RealEstateResults = ({ data }: { data: any }) => {
   
         {/* Top Performing Areas */}
         {Object.keys(topPerformingAreas).length > 0 && (
-          <Card className="border border-gray-200 shadow-sm">
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle className="text-xl font-semibold text-gray-900">Top Performing Areas</CardTitle>
+          <Card>
+            <CardHeader className="border-b">
+              <CardTitle className="text-xl font-semibold">Top Performing Areas</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
               <div className="grid md:grid-cols-3 gap-6">
-                <Card className="border border-gray-200 bg-gray-50">
-                  <CardHeader className="border-b border-gray-100">
-                    <CardTitle className="text-lg font-semibold text-gray-900">Best Value</CardTitle>
+                <Card className="border-gray-500/20 bg-gray-500/5 dark:bg-gray-800/20">
+                  <CardHeader className="border-b border-gray-500/20">
+                    <CardTitle className="text-lg font-semibold">Best Value</CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <ul className="space-y-2">
                       {topPerformingAreas.best_value?.map((area: string, index: number) => (
-                        <li key={index} className="flex items-center text-gray-600">
-                          <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></span>
+                        <li key={index} className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-gray-500 dark:bg-gray-400 rounded-full mr-2"></span>
                           {area}
                         </li>
                       ))}
                     </ul>
                   </CardContent>
                 </Card>
-                <Card className="border border-gray-200 bg-emerald-50">
-                  <CardHeader className="border-b border-gray-100">
-                    <CardTitle className="text-lg font-semibold text-gray-900">Best Rental Yields</CardTitle>
+                <Card className="border-green-500/20 bg-green-500/5 dark:bg-green-950/20">
+                  <CardHeader className="border-b border-green-500/20">
+                    <CardTitle className="text-lg font-semibold">Best Rental Yields</CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <ul className="space-y-2">
                       {topPerformingAreas.best_rental_yields?.map((area: string, index: number) => (
-                        <li key={index} className="flex items-center text-gray-600">
-                          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-2"></span>
+                        <li key={index} className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-green-500 dark:bg-green-400 rounded-full mr-2"></span>
                           {area}
                         </li>
                       ))}
                     </ul>
                   </CardContent>
                 </Card>
-                <Card className="border border-gray-200 bg-amber-50">
-                  <CardHeader className="border-b border-gray-100">
-                    <CardTitle className="text-lg font-semibold text-gray-900">Highest Appreciation</CardTitle>
+                <Card className="border-yellow-500/20 bg-yellow-500/5 dark:bg-yellow-950/20">
+                  <CardHeader className="border-b border-yellow-500/20">
+                    <CardTitle className="text-lg font-semibold">Highest Appreciation</CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <ul className="space-y-2">
                       {topPerformingAreas.highest_appreciation?.map((area: string, index: number) => (
-                        <li key={index} className="flex items-center text-gray-600">
-                          <span className="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2"></span>
+                        <li key={index} className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-yellow-500 dark:bg-yellow-400 rounded-full mr-2"></span>
                           {area}
                         </li>
                       ))}
@@ -351,15 +379,15 @@ const RealEstateResults = ({ data }: { data: any }) => {
   
         {/* Investment Insights Section */}
         {investmentInsights.length > 0 && (
-          <Card className="border border-gray-200 shadow-sm">
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle className="text-xl font-semibold text-gray-900">Investment Insights</CardTitle>
+          <Card>
+            <CardHeader className="border-b">
+              <CardTitle className="text-xl font-semibold">Investment Insights</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
               <ul className="space-y-3">
                 {investmentInsights.map((insight: string, index: number) => (
-                  <li key={index} className="flex items-start text-gray-600">
-                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 mr-2"></span>
+                  <li key={index} className="flex items-start">
+                    <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full mt-2 mr-2"></span>
                     {insight}
                   </li>
                 ))}
@@ -370,15 +398,15 @@ const RealEstateResults = ({ data }: { data: any }) => {
   
         {/* Negotiation Tips */}
         {negotiationTips.length > 0 && (
-          <Card className="border border-gray-200 shadow-sm">
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle className="text-xl font-semibold text-gray-900">Negotiation Tips</CardTitle>
+          <Card>
+            <CardHeader className="border-b">
+              <CardTitle className="text-xl font-semibold">Negotiation Tips</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
               <ul className="space-y-3">
                 {negotiationTips.map((tip: string, index: number) => (
-                  <li key={index} className="flex items-start text-gray-600">
-                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 mr-2"></span>
+                  <li key={index} className="flex items-start">
+                    <span className="w-1.5 h-1.5 bg-purple-500 dark:bg-purple-400 rounded-full mt-2 mr-2"></span>
                     {tip}
                   </li>
                 ))}
@@ -391,12 +419,10 @@ const RealEstateResults = ({ data }: { data: any }) => {
         {(areaSummaries.length === 0 && 
           investmentInsights.length === 0 && 
           selectedProperties.length === 0) && (
-          <Alert variant="default" className="bg-gray-50 border border-gray-200">
-            <AlertDescription className="text-gray-600">No detailed property information available at the moment.</AlertDescription>
+          <Alert variant="default">
+            <AlertDescription>No detailed property information available at the moment.</AlertDescription>
           </Alert>
         )}
       </div>
     );
   };
-  
-    
