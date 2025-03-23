@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     const { job_title, location, experience_years, skills, job_category } = body;
 
     // Validate required fields
-    if (!job_title || !location || experience_years === undefined || !skills || !job_category) {
+    if (!job_title || !location || experience_years === undefined || !job_category) {
       return NextResponse.json(
         { message: 'Missing required fields' }, 
         { status: 400 }
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
         job_title,
         location,
         experience_years: Number(experience_years),
-        skills: Array.isArray(skills) ? skills : skills.split(',').map((s: string) => s.trim()),
+        skills: skills ? (Array.isArray(skills) ? skills : skills.split(',').map((s: string) => s.trim())) : [],
         job_category
       },
       webhook: {
@@ -122,7 +122,7 @@ export async function POST(req: Request) {
             job_title,
             location,
             experience_years: Number(experience_years),
-            skills: Array.isArray(skills) ? skills : skills.split(',').map((s: string) => s.trim()),
+            skills: skills ? (Array.isArray(skills) ? skills : skills.split(',').map((s: string) => s.trim())) : [],
             job_category
           },
           userId: user.id, // Associate task with the current user

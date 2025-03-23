@@ -75,7 +75,7 @@ function SidebarComponent() {
         <div className="w-8 h-8 rounded-full bg-secondaccent/10 border-2 border-secondaccent flex items-center justify-center">
           <Robot className="w-4 h-4 text-secondaccent" />
         </div>
-        <span className="font-bold text-xl">AISOLO</span>
+        <span className="font-bold text-xl">ExplainX AI</span>
       </div>
     </SidebarHeader>
     
