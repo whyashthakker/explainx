@@ -124,27 +124,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full overflow-x-hidden dark" style={{ colorScheme: "dark" }}
-    >
-      <body
-        className={`h-full ${inter.variable} ${calFont.variable} font-sans antialiased`}
-        suppressHydrationWarning
-      >
-        <Suspense>
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
-    
-               
-          <div className="flex flex-col min-h-screen dark:bg-[#0A0A0A]">
-            <HeroHeader />
-            <main className="flex-grow">{children}</main>
-            <PreFooter />
-          </div>
 
-          <Toaster />
-          </ThemeProvider>
-        </Suspense>
-      </body>
-    </html>
+    <Suspense>
+      <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
+
+
+        <div className="flex flex-col min-h-screen dark:bg-[#0A0A0A]">
+          <HeroHeader />
+          <main className="flex-grow">{children}</main>
+          <PreFooter />
+        </div>
+
+        <Toaster />
+      </ThemeProvider>
+    </Suspense>
+
   );
 }
 

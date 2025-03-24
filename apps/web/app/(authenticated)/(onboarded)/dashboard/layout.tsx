@@ -81,26 +81,24 @@ export default async function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="dark">
-            <body suppressHydrationWarning={true}      >
-                <ThemeProvider attribute="class"
-                    defaultTheme="dark"
-                    enableSystem
-                    disableTransitionOnChange >
-                    <SessionProvider>
-                        <SidebarProvider>
-                            <div className="flex w-screen ">
-                                <SidebarComponent />
 
-                                <div className="flex-1 w-full min-w-0 overflow-hidden">
-                                    <Header />
-                                    {children}
-                                </div>
-                            </div>
-                        </SidebarProvider>
-                    </SessionProvider>
-                </ThemeProvider>
-            </body>
-        </html>
+        <ThemeProvider attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange >
+            <SessionProvider>
+                <SidebarProvider>
+                    <div className="flex w-screen ">
+                        <SidebarComponent />
+
+                        <div className="flex-1 w-full min-w-0 overflow-hidden">
+                            <Header />
+                            {children}
+                        </div>
+                    </div>
+                </SidebarProvider>
+            </SessionProvider>
+        </ThemeProvider>
+
     );
 }
