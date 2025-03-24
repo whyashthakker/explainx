@@ -1,4 +1,3 @@
-// components/onboarding/OnboardingForm.tsx
 "use client";
 
 import { useState } from "react";
@@ -167,15 +166,15 @@ export default function OnboardingForm({ user }: { user: any }) {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel className="text-gray-300">Full Name</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} className="bg-black border-gray-700 text-white focus:border-gray-500 focus:ring-gray-500" />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-400" />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold">
                 Continue
               </Button>
             </form>
@@ -194,11 +193,11 @@ export default function OnboardingForm({ user }: { user: any }) {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Organization Name</FormLabel>
+                    <FormLabel className="text-gray-300">Organization Name</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} className="bg-black border-gray-700 text-white focus:border-gray-500 focus:ring-gray-500" />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-400" />
                   </FormItem>
                 )}
               />
@@ -207,24 +206,24 @@ export default function OnboardingForm({ user }: { user: any }) {
                 name="industry"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Industry</FormLabel>
+                    <FormLabel className="text-gray-300">Industry</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger>
+                        <SelectTrigger className="bg-black border-gray-700 text-gray-300">
                           <SelectValue placeholder="Select industry" />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent>
+                      <SelectContent className="bg-black border-gray-700 text-white">
                         <SelectItem value="ecommerce">E-commerce</SelectItem>
                         <SelectItem value="retail">Retail</SelectItem>
                         <SelectItem value="technology">Technology</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormMessage />
+                    <FormMessage className="text-red-400" />
                   </FormItem>
                 )}
               />
@@ -233,17 +232,17 @@ export default function OnboardingForm({ user }: { user: any }) {
                 name="size"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company Size</FormLabel>
+                    <FormLabel className="text-gray-300">Company Size</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger>
+                        <SelectTrigger className="bg-black border-gray-700 text-gray-300">
                           <SelectValue placeholder="Select company size" />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent>
+                      <SelectContent className="bg-black border-gray-700 text-white">
                         <SelectItem value="1-10">1-10 employees</SelectItem>
                         <SelectItem value="11-50">11-50 employees</SelectItem>
                         <SelectItem value="51-200">51-200 employees</SelectItem>
@@ -253,7 +252,7 @@ export default function OnboardingForm({ user }: { user: any }) {
                         <SelectItem value="1000+">1000+ employees</SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormMessage />
+                    <FormMessage className="text-red-400" />
                   </FormItem>
                 )}
               />
@@ -262,15 +261,15 @@ export default function OnboardingForm({ user }: { user: any }) {
                 name="website"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Website (Optional)</FormLabel>
+                    <FormLabel className="text-gray-300">Website (Optional)</FormLabel>
                     <FormControl>
-                      <Input {...field} type="url" placeholder="https://" />
+                      <Input {...field} type="url" placeholder="https://" className="bg-black border-gray-700 text-white focus:border-gray-500 focus:ring-gray-500" />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-400" />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold">
                 Continue
               </Button>
             </form>
@@ -285,9 +284,9 @@ export default function OnboardingForm({ user }: { user: any }) {
               className="space-y-6"
             >
               {teamInvitesForm.watch("invites")?.map((_, index) => (
-                <Card key={index}>
+                <Card key={index} className="bg-black border-gray-700">
                   <CardHeader>
-                    <CardTitle>Team Member {index + 1}</CardTitle>
+                    <CardTitle className="text-gray-200">Team Member {index + 1}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <FormField
@@ -295,11 +294,11 @@ export default function OnboardingForm({ user }: { user: any }) {
                       name={`invites.${index}.email`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email Address</FormLabel>
+                          <FormLabel className="text-gray-300">Email Address</FormLabel>
                           <FormControl>
-                            <Input {...field} type="email" />
+                            <Input {...field} type="email" className="bg-black border-gray-700 text-white focus:border-gray-500 focus:ring-gray-500" />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-red-400" />
                         </FormItem>
                       )}
                     />
@@ -308,22 +307,22 @@ export default function OnboardingForm({ user }: { user: any }) {
                       name={`invites.${index}.role`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Role</FormLabel>
+                          <FormLabel className="text-gray-300">Role</FormLabel>
                           <Select
                             onValueChange={field.onChange}
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-black border-gray-700 text-gray-300">
                                 <SelectValue placeholder="Select role" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent>
+                            <SelectContent className="bg-black border-gray-700 text-white">
                               <SelectItem value="ADMIN">Admin</SelectItem>
                               <SelectItem value="MEMBER">Member</SelectItem>
                             </SelectContent>
                           </Select>
-                          <FormMessage />
+                          <FormMessage className="text-red-400" />
                         </FormItem>
                       )}
                     />
@@ -331,7 +330,7 @@ export default function OnboardingForm({ user }: { user: any }) {
                       type="button"
                       variant="destructive"
                       size="sm"
-                      className="mt-2"
+                      className="mt-2 bg-red-700 hover:bg-red-800 text-white"
                       onClick={() => {
                         const currentInvites =
                           teamInvitesForm.getValues("invites") || [];
@@ -349,7 +348,7 @@ export default function OnboardingForm({ user }: { user: any }) {
 
               <div className="flex flex-col gap-4">
                 {teamInvitesForm.watch("invites")?.length === 0 && (
-                  <p className="text-sm text-muted-foreground text-center">
+                  <p className="text-sm text-gray-400 text-center">
                     No team members added yet. Add team members or skip this
                     step.
                   </p>
@@ -358,7 +357,7 @@ export default function OnboardingForm({ user }: { user: any }) {
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full"
+                  className="w-full border-gray-600 text-gray-700 hover:bg-gray-900 hover:text-gray-200"
                   onClick={() => {
                     const currentInvites =
                       teamInvitesForm.getValues("invites") || [];
@@ -375,7 +374,7 @@ export default function OnboardingForm({ user }: { user: any }) {
                   <Button
                     type="button"
                     variant="secondary"
-                    className="flex-1"
+                    className="flex-1 bg-gray-800 text-gray-200 hover:bg-gray-700"
                     onClick={async () => {
                       // Skip team invites and complete onboarding
                       const completeResponse = await fetch(
@@ -402,7 +401,7 @@ export default function OnboardingForm({ user }: { user: any }) {
 
                   <Button
                     type="submit"
-                    className="flex-1"
+                    className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black font-bold"
                     disabled={!teamInvitesForm.watch("invites")?.length}
                   >
                     {teamInvitesForm.watch("invites")?.length
@@ -418,10 +417,10 @@ export default function OnboardingForm({ user }: { user: any }) {
   };
 
   return (
-    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <Card>
+    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-black text-white">
+      <Card className="bg-black border-gray-700 shadow-xl">
         <CardHeader>
-          <CardTitle className="text-center">
+          <CardTitle className="text-center text-gray-100">
             {step === STEPS.PERSONAL_INFO && "Personal Information"}
             {step === STEPS.ORGANIZATION_DETAILS && "Organization Details"}
             {step === STEPS.TEAM_INVITES && "Invite Team Members"}

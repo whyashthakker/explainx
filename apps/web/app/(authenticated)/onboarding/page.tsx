@@ -75,18 +75,20 @@ export default async function OnboardingPage() {
   }
 
   return (
-    <div className="container max-w-6xl min-h-screen flex flex-col justify-center py-12">
-      <div className="mx-auto w-full max-w-xl">
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle className="text-center text-2xl font-semibold">
-              Complete Your Setup
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <OnboardingForm user={user} />
-          </CardContent>
-        </Card>
+    <div className="bg-black">
+      <div className="container max-w-6xl min-h-screen flex flex-col justify-center py-12 dark:bg-neutral-900 dark:text-neutral-100">
+        <div className="mx-auto w-full max-w-xl">
+          <Card className="w-full bg-neutral-800 border-neutral-700">
+            <CardHeader>
+              <CardTitle className="text-center text-2xl font-semibold text-neutral-100">
+                Complete Your Setup
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <OnboardingForm user={user} />
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
