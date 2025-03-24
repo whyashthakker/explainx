@@ -26,8 +26,8 @@ model User {
 
   // Organization relation
   organizationTeamMemberships OrganizationTeamMember[]
-  realEstateTasks RealEstateTask[]
-  jobFinderTask JobFinderTask[]
+  realEstateTasks             RealEstateTask[]
+  jobFinderTask               JobFinderTask[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -36,6 +36,8 @@ model User {
 
   isAdmin      Boolean @default(false)
   isBetaTester Boolean @default(false)
+
+  Tasks Tasks[]
 }
 
 model Account {
@@ -387,18 +389,17 @@ model BlogPost {
   @@index([isPublished])
 }
 
-
 model RealEstateTask {
-  id        String   @id @default(cuid())
-  task_id   String   @unique // External task ID from AI agent
-  status    String   // "processing", "completed", "failed"
-  message   String?  // Description or error message
-  result    Json?    // Result data from the agent
-  parameters Json    // Search parameters
-  userId    String?
-  user      User?    @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  task_id    String   @unique // External task ID from AI agent
+  status     String // "processing", "completed", "failed"
+  message    String? // Description or error message
+  result     Json? // Result data from the agent
+  parameters Json // Search parameters
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model NewsletterSubscriber {
@@ -411,16 +412,29 @@ model NewsletterSubscriber {
   @@map("newsletter_subscribers")
 }
 
-
 model JobFinderTask {
-  id        String   @id @default(cuid())
-  task_id   String   @unique // External task ID from AI agent
-  status    String   // "processing", "completed", "failed"
-  message   String?  // Description or error message
-  result    Json?    // Result data from the agent
-  parameters Json    // Search parameters
-  userId    String?
-  user      User?    @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  task_id    String   @unique // External task ID from AI agent
+  status     String // "processing", "completed", "failed"
+  message    String? // Description or error message
+  result     Json? // Result data from the agent
+  parameters Json // Search parameters
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Tasks {
+  id         String   @id @default(cuid())
+  task_id    String   @unique
+  agentType  String
+  status     String // "processing", "completed", "failed"
+  message    String? // Description or error message
+  result     Json? // Result data from the agent
+  parameters Json // Search parameters
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
