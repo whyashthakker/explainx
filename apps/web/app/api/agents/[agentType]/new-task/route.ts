@@ -99,7 +99,7 @@ export async function POST(
             agent_type: agentTypeForAPI,
             parameters,
             webhook: {
-                url: process.env.WEBHOOK_URL || `https://f6be-45-249-40-106.ngrok-free.app/api/agents/${webhookPath}/webhook`,
+                url: process.env.WEBHOOK_URL || `https://agents.explainx.ai/api/agents/${webhookPath}/webhook`,
                 headers: {
                     Authorization: `Bearer ${process.env.WEBHOOK_AUTH_TOKEN || "your-secret-token"}`
                 }
