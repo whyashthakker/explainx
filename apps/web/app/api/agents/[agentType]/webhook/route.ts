@@ -5,10 +5,11 @@ import { isValidAgentType } from '../new-task/config';
 
 export async function POST(
     req: Request,
-    { params }: { params: { agentType: string } }
+    context: { params: { agentType: string } } // ✅ Ensure context is correctly typed
 ) {
     try {
-        const { agentType } = await params;
+        const { agentType } = await Promise.resolve(context.params);
+
 
         // Validate agent type
         if (!isValidAgentType(agentType)) {

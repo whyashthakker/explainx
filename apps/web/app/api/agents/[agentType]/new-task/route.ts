@@ -1,4 +1,3 @@
-// /app/api/agents/[agentType]/new-task/route.ts
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../../../lib/prisma';
 import { auth } from '../../../../../auth';
@@ -6,25 +5,17 @@ import { getConfig, isValidAgentType } from './config';
 
 export async function POST(
     req: Request,
-    { params }: { params: { agentType: string } }
+    context: { params: { agentType: string } } // ✅ Ensure context is correctly typed
 ) {
     try {
-        const { agentType } = await params;
+        // ✅ Extract params inside the function (not in function args)
+        const { agentType } = await Promise.resolve(context.params);
 
         // Validate agent type
         if (!isValidAgentType(agentType)) {
             return NextResponse.json(
                 { message: 'Invalid agent type' },
                 { status: 400 }
-            );
-        }
-
-        // Get agent configuration
-        const agentConfig = getConfig(agentType);
-        if (!agentConfig) {
-            return NextResponse.json(
-                { message: 'Agent configuration not found' },
-                { status: 500 }
             );
         }
 
@@ -52,6 +43,14 @@ export async function POST(
         }
 
         // Validate parameters
+        const agentConfig = getConfig(agentType);
+        if (!agentConfig) {
+            return NextResponse.json(
+                { message: 'Agent configuration not found' },
+                { status: 500 }
+            );
+        }
+
         const validation = agentConfig.validateParams(body);
         if (!validation.valid) {
             return NextResponse.json(
@@ -60,7 +59,7 @@ export async function POST(
             );
         }
 
-        // Check daily search limit - skip for admin users
+        // Check daily search limit (skip for admin users)
         if (!user.isAdmin) {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
@@ -92,7 +91,7 @@ export async function POST(
             agent_type: agentTypeForAPI,
             parameters,
             webhook: {
-                url: process.env.WEBHOOK_URL || `https://4d08-45-249-40-106.ngrok-free.app/api/agents/${webhookPath}/webhook`,
+                url: process.env.WEBHOOK_URL || `https://f6be-45-249-40-106.ngrok-free.app/api/agents/${webhookPath}/webhook`,
                 headers: {
                     Authorization: `Bearer ${process.env.WEBHOOK_AUTH_TOKEN || "your-secret-token"}`
                 }

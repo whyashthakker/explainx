@@ -7,10 +7,10 @@ import { isValidAgentType } from '../new-task/config';
 // Fix the function signature for Next.js App Router dynamic routes
 export async function GET(
     request: Request,
-    { params }: { params: { agentType: string } }
+    context: { params: { agentType: string } }
 ) {
     try {
-        const { agentType } = await params
+        const { agentType } = await Promise.resolve(context.params);
         // Validate agent type
         if (!isValidAgentType(agentType)) {
             return NextResponse.json(
