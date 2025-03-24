@@ -4,13 +4,22 @@ import { prisma } from '../../../../../lib/prisma';
 import { auth } from '../../../../../auth';
 import { isValidAgentType } from '../new-task/config';
 
-// Fix the function signature for Next.js App Router dynamic routes
+// Using the Promise type pattern for params
+type Props = {
+    params: Promise<{
+        agentType: string
+    }>
+}
+
 export async function GET(
     request: Request,
-    context: { params: { agentType: string } }
+    props: Props
 ) {
     try {
-        const { agentType } = await Promise.resolve(context.params);
+        // Await the params from the Promise
+        const params = await props.params;
+        const { agentType } = params;
+
         // Validate agent type
         if (!isValidAgentType(agentType)) {
             return NextResponse.json(
