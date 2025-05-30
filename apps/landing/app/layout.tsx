@@ -9,6 +9,7 @@ import { Toaster } from "@repo/ui/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeProvider } from "./_components/theme-provider";
 import { HeroHeader } from "./_components/hero5-header";
+import { Toaster as SonnerToaster } from "sonner";
 // import {} from "";
 
 const inter = Inter({
@@ -141,6 +142,7 @@ export default function RootLayout({
           </div>
 
           <Toaster />
+          <SonnerToaster />
           </ThemeProvider>
         </Suspense>
       </body>
