@@ -1,8 +1,4 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { EmailGate } from '../../../../components/resources/EmailGate';
-import { ResourcesList } from '../../../../components/resources/ResourcesList';
+import { ResourcesClient } from '../../../../components/resources/ResourcesClient';
 import { ResourceType } from '../../../../types/resources';
 
 const resources: ResourceType[] = [
@@ -23,31 +19,15 @@ const resources: ResourceType[] = [
     description: 'Learn how to build AI agents.',
     link: 'https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf',
     type: 'external'
+  },
+  {
+    title: 'Evaluating AI Agents',
+    description: 'Learn how to evaluate and optimize AI agent performance.',
+    link: '/r/agents/Evaluating AI Agent.pdf',
+    type: 'pdf'
   }
 ];
 
 export default function ResourcesPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const hasSkipped = localStorage.getItem('resources_skipped') === 'true';
-    const hasSubscribed = localStorage.getItem('resources_subscribed') === 'true';
-    setIsAuthenticated(hasSkipped || hasSubscribed);
-    setIsLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return null; // Or a loading spinner
-  }
-
-  return (
-    <>
-      {!isAuthenticated ? (
-        <EmailGate onSuccess={() => setIsAuthenticated(true)} />
-      ) : (
-        <ResourcesList resources={resources} />
-      )}
-    </>
-  );
+  return <ResourcesClient resources={resources} />;
 }
