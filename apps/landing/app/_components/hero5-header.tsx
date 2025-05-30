@@ -258,20 +258,11 @@ export const HeroHeader = () => {
                         <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                             <Button
                                 asChild
-                                variant="outline"
                                 size="sm"
-                                className="border-secondaccent hover:border-white text-secondaccent">
-                                <a href={`https://agents.explainx.ai/signup`}>
-                                    <span>Login</span>
-                                </a>
-                            </Button>
-                            <Button
-                                asChild
-                                size="sm"
-                                className="bg-secondaccent hover:bg-secondaccent2 text-black">
-                                <a href={`https://agents.explainx.ai/signup`}>
-                                    <span>Sign Up</span>
-                                </a>
+                                className="bg-secondaccent hover:bg-secondaccent2 text-black font-medium">
+                                <Link href="/contact">
+                                    Get an Agent for Your Business →
+                                </Link>
                             </Button>
                         </div>
                     </div>
