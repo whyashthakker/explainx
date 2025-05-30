@@ -19,10 +19,10 @@ const resources: ResourceType[] = [
     type: 'pdf'
   },
   {
-    title: 'Evaluating AI Agents',
-    description: 'Learn how to evaluate and optimize AI agent performance.',
-    link: '/r/agents/Evaluating AI Agent.pdf',
-    type: 'pdf'
+    title: 'A Practical Guide to Building Agents by OpenAI',
+    description: 'Learn how to build AI agents.',
+    link: 'https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf',
+    type: 'external'
   }
 ];
 
