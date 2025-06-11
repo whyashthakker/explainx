@@ -9,9 +9,11 @@ const resources: ResourceType[] = [
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },
- 
 ];
 
 export default function ResourcesPage() {
-  return <ResourcesClient resources={resources} />;
+  return (
+    <ResourcesClient resources={resources} heading="Perplexity Masterclass" />
+  );
 }
+

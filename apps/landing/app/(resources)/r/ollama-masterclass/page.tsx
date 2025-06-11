@@ -19,5 +19,5 @@ const resources: ResourceType[] = [
 ];
 
 export default function ResourcesPage() {
-  return <ResourcesClient resources={resources} />;
+  return <ResourcesClient resources={resources} heading="Ollama Masterclass" />;
 }

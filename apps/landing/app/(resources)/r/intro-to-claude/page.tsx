@@ -9,9 +9,8 @@ const resources: ResourceType[] = [
     link: "/r/agi/AGI Course PPT.pdf",
     type: "pdf",
   },
- 
 ];
 
 export default function ResourcesPage() {
-  return <ResourcesClient resources={resources} />;
+  return <ResourcesClient resources={resources} heading="Intro to Claude" />;
 }

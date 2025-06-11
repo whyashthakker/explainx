@@ -1,28 +1,36 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { ResourceType } from '../../types/resources';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@repo/ui/components/ui/card';
-import { Button } from '@repo/ui/components/ui/button';
-import { NewsletterBanner } from './NewsletterBanner';
+import { useEffect, useState } from "react";
+import { ResourceType } from "../../types/resources";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@repo/ui/components/ui/card";
+import { Button } from "@repo/ui/components/ui/button";
+import { NewsletterBanner } from "./NewsletterBanner";
 
 interface ResourcesListProps {
   resources: ResourceType[];
+  heading: string;
 }
 
-export const ResourcesList = ({ resources }: ResourcesListProps) => {
+export const ResourcesList = ({ resources, heading }: ResourcesListProps) => {
   const [showNewsletter, setShowNewsletter] = useState(false);
 
   useEffect(() => {
-    const hasSkipped = localStorage.getItem('resources_skipped') === 'true';
-    const hasSubscribed = localStorage.getItem('resources_subscribed') === 'true';
+    const hasSkipped = localStorage.getItem("resources_skipped") === "true";
+    const hasSubscribed =
+      localStorage.getItem("resources_subscribed") === "true";
     setShowNewsletter(hasSkipped && !hasSubscribed);
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">AI Agents Resources</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center">{heading}</h1>
         {showNewsletter && <NewsletterBanner />}
         <div className="grid gap-8">
           {resources.map((resource, index) => (
@@ -44,7 +52,9 @@ export const ResourcesList = ({ resources }: ResourcesListProps) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {resource.type === 'external' ? 'Visit Repository →' : 'Download PDF →'}
+                    {resource.type === "external"
+                      ? "Visit Repository →"
+                      : "Download PDF →"}
                   </a>
                 </Button>
               </CardContent>
@@ -54,4 +64,5 @@ export const ResourcesList = ({ resources }: ResourcesListProps) => {
       </div>
     </div>
   );
-}; 
+};
+

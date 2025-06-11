@@ -1,21 +1,23 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { EmailGate } from './EmailGate';
-import { ResourcesList } from './ResourcesList';
-import { ResourceType } from '../../types/resources';
+import { useState, useEffect } from "react";
+import { EmailGate } from "./EmailGate";
+import { ResourcesList } from "./ResourcesList";
+import { ResourceType } from "../../types/resources";
 
 interface ResourcesClientProps {
   resources: ResourceType[];
+  heading: string;
 }
 
-export function ResourcesClient({ resources }: ResourcesClientProps) {
+export function ResourcesClient({ resources, heading }: ResourcesClientProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const hasSkipped = localStorage.getItem('resources_skipped') === 'true';
-    const hasSubscribed = localStorage.getItem('resources_subscribed') === 'true';
+    const hasSkipped = localStorage.getItem("resources_skipped") === "true";
+    const hasSubscribed =
+      localStorage.getItem("resources_subscribed") === "true";
     setIsAuthenticated(hasSkipped || hasSubscribed);
     setIsLoading(false);
   }, []);
@@ -29,8 +31,9 @@ export function ResourcesClient({ resources }: ResourcesClientProps) {
       {!isAuthenticated ? (
         <EmailGate onSuccess={() => setIsAuthenticated(true)} />
       ) : (
-        <ResourcesList resources={resources} />
+        <ResourcesList resources={resources} heading={heading} />
       )}
     </>
   );
-} 
+}
+
