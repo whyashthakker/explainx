@@ -10,6 +10,7 @@ interface ResourcesClientProps {
   heading: string;
 }
 
+
 export function ResourcesClient({ resources, heading }: ResourcesClientProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
