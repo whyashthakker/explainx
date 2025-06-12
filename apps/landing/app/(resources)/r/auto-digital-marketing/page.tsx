@@ -5,7 +5,7 @@ const resources: ResourceType[] = [
   {
     title: "Auto Digital Marketing",
     description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+      "A comprehensive guide on how to automate digital marketing with social media marketing.",
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },

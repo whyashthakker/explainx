@@ -4,22 +4,20 @@ import { ResourceType } from "../../../../types/resources";
 const resources: ResourceType[] = [
   {
     title: "Intro to RAG",
-    description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+    description: "Need for RAG and how to use it to create AI agents.",
     link: "/r/rag/RAG PPT.pdf",
     type: "pdf",
   },
   {
     title: "Intro to AGI",
-    description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+    description: "Introduction to AGI and how to use it to create AI agents.",
     link: "/r/agi/AGI Course PPT.pdf",
     type: "pdf",
   },
   {
     title: "Prompt Engineering",
     description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+      "Prompt Engineering: Unlocking the Power of Large Language Models.",
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },
@@ -38,7 +36,7 @@ const resources: ResourceType[] = [
   },
   {
     title: "A Practical Guide to Building Agents by OpenAI",
-    description: "Learn how to build AI agents.",
+    description: "Learn how to build AI agents using OpenAI's API.",
     link: "https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf",
     type: "external",
   },
@@ -53,4 +51,3 @@ const resources: ResourceType[] = [
 export default function ResourcesPage() {
   return <ResourcesClient resources={resources} heading="Intro to GenAI" />;
 }
-

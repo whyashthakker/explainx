@@ -11,8 +11,7 @@ const resources: ResourceType[] = [
   },
   {
     title: "Intro to RAG",
-    description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+    description: "RAG with ollama for building AI agents.",
     link: "/r/rag/RAG PPT.pdf",
     type: "pdf",
   },

@@ -5,7 +5,7 @@ const resources: ResourceType[] = [
   {
     title: "Future Prompt Engineering Ready",
     description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+      "A comprehensive guide on how to use prompt engineering to create future-ready prompts.",
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },

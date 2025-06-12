@@ -5,7 +5,7 @@ const resources: ResourceType[] = [
   {
     title: "OpenAI Codex Masterclass",
     description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+      "OpenAI Codex: A Comprehensive Guide to let AI agent code for you.",
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },

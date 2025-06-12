@@ -3,9 +3,8 @@ import { ResourceType } from "../../../../types/resources";
 
 const resources: ResourceType[] = [
   {
-    title: "Prompt Engineering Guide",
-    description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+    title: "Intro to Claude",
+    description: "Comprehensive guide on how to use Claude for AI agents.",
     link: "/r/agi/AGI Course PPT.pdf",
     type: "pdf",
   },

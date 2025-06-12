@@ -4,8 +4,7 @@ import { ResourceType } from "../../../../types/resources";
 const resources: ResourceType[] = [
   {
     title: "Intro to AGI",
-    description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+    description: "Introduction to AGI and how to use it to create AI agents.",
     link: "/r/prompt/AGI Course PPT.pdf",
     type: "pdf",
   },

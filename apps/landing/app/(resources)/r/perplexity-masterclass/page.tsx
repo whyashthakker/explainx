@@ -4,8 +4,7 @@ import { ResourceType } from "../../../../types/resources";
 const resources: ResourceType[] = [
   {
     title: "Perplexity Masterclass",
-    description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+    description: "Best practices for using Perplexity to search the web",
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },
@@ -16,4 +15,3 @@ export default function ResourcesPage() {
     <ResourcesClient resources={resources} heading="Perplexity Masterclass" />
   );
 }
-

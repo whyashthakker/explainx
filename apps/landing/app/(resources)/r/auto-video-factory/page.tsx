@@ -5,7 +5,7 @@ const resources: ResourceType[] = [
   {
     title: "Auto Video Factory",
     description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+      "A comprehensive guide on how to automate video creation with AI.",
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },

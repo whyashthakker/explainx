@@ -5,7 +5,7 @@ const resources: ResourceType[] = [
   {
     title: "Prompt Engineering With 1000+ Prompt",
     description:
-      "Comprehensive guide on AI agents implementation and architecture.",
+      "A comprehensive guide on how to use prompt engineering to create future-ready prompts.",
     link: "/r/prompt/Prompt Engineering PPT_compressed.pdf",
     type: "pdf",
   },
@@ -14,4 +14,3 @@ const resources: ResourceType[] = [
 export default function ResourcesPage() {
   return <ResourcesClient resources={resources} heading="Prompt Library" />;
 }
-
