@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 from typing import List, Set
 
+
 class TurboCleanup:
     def __init__(self, dirs_to_delete: List[str]):
         self.dirs_to_delete = dirs_to_delete
