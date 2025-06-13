@@ -5,7 +5,7 @@ const resources: ResourceType[] = [
   {
     title: "Basic to Advanced: RAG",
     description: "RAG: A Comprehensive Guide to Building AI Agents.",
-    link: "r/rag/RAG PPT.pdf",
+    link: "/r/rag/RAG PPT.pdf",
     type: "pdf",
   },
 ];
