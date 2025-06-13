@@ -15,7 +15,7 @@ export default function ResourcesPage() {
   return (
     <ResourcesClient
       resources={resources}
-      heading="Automated Digital Marketing with Social Media Marketing with GenAI"
+      heading="Automated Digital Marketing with GenAI"
     />
   );
 }

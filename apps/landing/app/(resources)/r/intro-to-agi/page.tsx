@@ -5,7 +5,7 @@ const resources: ResourceType[] = [
   {
     title: "Intro to AGI",
     description: "Introduction to AGI and how to use it to create AI agents.",
-    link: "/r/prompt/AGI Course PPT.pdf",
+    link: "/r/agi/AGI Course PPT.pdf",
     type: "pdf",
   },
 ];
