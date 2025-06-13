@@ -1,4 +1,4 @@
-// Generated on 2025-03-06T10:13:04.206Z
+// Generated on 2025-06-13T11:30:52.694Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,25 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Major AI Developments Shaping the Future: Game-Changing Updates – June 2025, Week 2",
+    "file": "major-ai-developments-june-2025-game-changing-updates",
+    "description": "Discover the latest AI breakthroughs: Claude Gov models, OpenAI's O3-Pro, Meta's V-JEPA 2, and Windsurf’s AI browser for developers.",
+    "date": "June 13, 2025",
+    "datetime": "2025-06-13",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/major-ai-developments-june-2025-game-changing-updates",
+    "categories": [
+      "ai-tools",
+      "analytics"
+    ]
+  },
   {
     "title": "AI Revolution in eCommerce: Transforming How We Shop Online",
     "file": "ai-agent-for-health-nutrition",
