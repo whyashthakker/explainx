@@ -55,8 +55,12 @@ export async function POST(req: Request) {
 
 **Next Steps:** Send workshop details and calendar invite to the registered email.`;
 
-    // Send Discord notification
-    sendDiscordNotification(discordMessage).catch(console.error);
+    // Send Discord notification using workshop-specific webhook
+    sendDiscordNotification(
+      discordMessage, 
+      false, // statusUpdate
+      process.env.DISCORD_WEBHOOK_WORKSHOP_URL // custom webhook for workshop registrations
+    ).catch(console.error);
 
     return NextResponse.json({ 
       success: true, 

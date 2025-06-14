@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-export async function sendDiscordNotification(content: string, statusUpdate?: boolean) {
-    const webhookURL = statusUpdate ? process.env.DISCORD_WEBHOOK_URL_2 : process.env.DISCORD_WEBHOOK_URL;
+export async function sendDiscordNotification(
+  content: string, 
+  statusUpdate?: boolean, 
+  customWebhookUrl?: string
+) {
+    // Use custom webhook URL if provided, otherwise fall back to the existing logic
+    const webhookURL = customWebhookUrl || 
+                      (statusUpdate ? process.env.DISCORD_WEBHOOK_URL_2 : process.env.DISCORD_WEBHOOK_URL);
 
     if (!webhookURL) {
         console.error('Webhook URL is not defined.');
