@@ -31,6 +31,12 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleBackgroundClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -64,7 +70,10 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
 
   if (isSuccess) {
     return (
-      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div 
+        className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+        onClick={handleBackgroundClick}
+      >
         <Card className="w-full max-w-md bg-gray-900 border-gray-700">
           <CardHeader className="text-center">
             <div className="mx-auto w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-4">
@@ -86,7 +95,10 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+    <div 
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto"
+      onClick={handleBackgroundClick}
+    >
       <Card className="w-full max-w-lg bg-gray-900 border-gray-700 my-8">
         <CardHeader>
           <div className="flex justify-between items-center">
