@@ -424,3 +424,20 @@ model JobFinderTask {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model WorkshopRegistration {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  firstName      String
+  lastName       String
+  phone          String?
+  experience     String   // "BEGINNER", "INTERMEDIATE", "ADVANCED"
+  goals          String?  @db.Text
+  referralSource String?
+  workshopType   String   // "PROMPT_ENGINEERING", etc.
+  status         String   @default("REGISTERED") // "REGISTERED", "ATTENDED", "NO_SHOW"
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("workshop_registrations")
+}
