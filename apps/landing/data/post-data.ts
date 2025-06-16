@@ -1,4 +1,4 @@
-// Generated on 2025-06-13T11:30:52.694Z
+// Generated on 2025-06-16T12:51:37.400Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,226 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "Las 6 Mejores Alternativas a Skool para Constructores de Comunidades en 2025",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "¡Explora las mejores alternativas a Skool! Compara características, precios y beneficios de las principales plataformas de comunidades en línea para encontrar la opción perfecta para tus necesidades",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Die 6 besten Skool Alternativen für Community-Builder in 2025",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "Entdecken Sie die besten Skool Alternativen! Vergleichen Sie Funktionen, Preise und Vorteile der top Online-Community-Plattformen, um die perfekte Lösung für Ihre Bedürfnisse zu finden",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Les 6 Meilleures Alternatives à Skool pour les Créateurs de Communautés en 2025",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "Explorez les meilleures alternatives à Skool ! Comparez les fonctionnalités, les prix et les avantages des principales plateformes de communautés en ligne pour trouver la solution parfaite à vos besoins",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/best-skool-alternative-for-community-builders",
+    "categories": [
+      "ai-tools",
+      "instagram",
+      "social-media-marketing",
+      "analytics"
+    ]
+  },
+  {
+    "title": "Le 6 migliori alternative a Skool per Community Builder nel 2025",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "Esplora le migliori alternative a Skool! Confronta funzionalità, prezzi e vantaggi delle top piattaforme di community online per trovare la soluzione perfetta per le tue esigenze",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/best-skool-alternative-for-community-builders",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "2025 में कम्युनिटी बिल्डर्स के लिए 6 बेहतरीन Skool विकल्प",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "बेहतरीन Skool विकल्पों को खोजें! अपनी आवश्यकताओं के लिए सही समाधान खोजने हेतु टॉप ऑनलाइन कम्युनिटी प्लेटफॉर्म्स की विशेषताओं, कीमतों और लाभों की तुलना करें",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "أفضل 6 بدائل لـ Skool لبناة المجتمعات في 2025",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "اكتشف أفضل بدائل Skool! قارن الميزات والأسعار وفوائد أفضل منصات المجتمعات الإلكترونية لتجد الحل المثالي لاحتياجاتك",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025年社区建设者的最佳Skool替代方案6选",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "探索最佳Skool替代方案！比较顶级在线社区平台的功能、定价和优势，找到完美适合您需求的解决方案",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025년 커뮤니티 빌더를 위한 최고의 Skool 대안 6선",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "최고의 Skool 대안을 살펴보세요! 주요 온라인 커뮤니티 플랫폼의 기능, 가격, 혜택을 비교하여 귀하의 필요에 완벽한 솔루션을 찾아보세요",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025年コミュニティビルダー向けSkool代替案ベスト6",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "最高のSkool代替案を探索しましょう！オンラインコミュニティプラットフォームの主要な機能、価格、利点を比較して、あなたのニーズに最適な選択肢を見つけてください",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Beste 6 Skool Alternatieven voor Community Builders in 2025",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "Ontdek de beste Skool alternatieven! Vergelijk functies, prijzen en voordelen van top online community platforms om de perfecte oplossing voor jouw behoeften te vinden",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Лучшие 6 альтернатив Skool для создателей сообществ в 2025 году",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "Изучите лучшие альтернативы Skool! Сравните функции, цены и преимущества ведущих платформ онлайн-сообществ, чтобы найти идеальное решение для ваших потребностей",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "Best 6 Skool Alternative for Community Builders in 2025",
+    "file": "best-skool-alternative-for-community-builders",
+    "description": "Explore the best Skool alternatives! Compare features, pricing, and benefits of top online community platforms to find the perfect fit for your needs",
+    "date": "June 16, 2025",
+    "datetime": "2025-06-16",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/best-skool-alternative-for-community-builders",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
   {
     "title": "Major AI Developments Shaping the Future: Game-Changing Updates – June 2025, Week 2",
     "file": "major-ai-developments-june-2025-game-changing-updates",
