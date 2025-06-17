@@ -87,7 +87,7 @@ const trackWorkshopEvent = (eventName: string) => {
     window.fbq('track', eventName, {
       content_name: 'Prompt Engineering Workshop',
       event_date: 'June 24, 2025',
-      event_time: '7:30 PM'
+      event_time: '11:30 AM IST'
     });
   }
 };
@@ -356,7 +356,7 @@ export const HeroHeader = () => {
                                 </div>
                                 <div className="flex items-center space-x-1">
                                     <Clock className="h-3 w-3" />
-                                    <span>7:30 PM</span>
+                                    <span>11:30 AM IST</span>
                                 </div>
                             </div>
                             
@@ -403,7 +403,7 @@ export const HeroHeader = () => {
                                 </div>
                                 <div className="flex items-center space-x-1">
                                     <Clock className="h-4 w-4" />
-                                    <span>7:30 PM</span>
+                                    <span>11:30 AM IST</span>
                                 </div>
                             </div>
 

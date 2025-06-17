@@ -33,7 +33,7 @@ function isValidPhoneNumber(phone: string): boolean {
   return true;
 }
 
-const workshopRegistrationSchema = z.object({
+const bootcampRegistrationSchema = z.object({
   email: z.string().email(),
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -53,15 +53,19 @@ const workshopRegistrationSchema = z.object({
     val === "BEGINNER" || val === "INTERMEDIATE" || val === "ADVANCED", {
     message: "Experience level must be BEGINNER, INTERMEDIATE, or ADVANCED"
   }),
+  pricingTier: z.string().refine(val => 
+    val === "EARLY_BIRD" || val === "REGULAR", {
+    message: "Pricing tier must be EARLY_BIRD or REGULAR"
+  }),
 });
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const validatedData = workshopRegistrationSchema.parse(body);
+    const validatedData = bootcampRegistrationSchema.parse(body);
 
-    // Create workshop registration in database (step 1 - basic details only)
-    const registration = await prisma.workshopRegistration.create({
+    // Create bootcamp registration in database (step 1 - basic details only)
+    const registration = await prisma.bootcampRegistration.create({
       data: {
         email: validatedData.email,
         firstName: validatedData.firstName,
@@ -69,13 +73,16 @@ export async function POST(req: Request) {
         phone: validatedData.phone,
         department: validatedData.department,
         experience: validatedData.experience,
-        workshopType: "PROMPT_ENGINEERING",
+        pricingTier: validatedData.pricingTier,
         status: "REGISTERED",
       },
     });
 
     // Create basic Discord notification for step 1
-    const discordMessage = `🎯 **Workshop Registration Started - Step 1 Complete**
+    const pricingEmoji = validatedData.pricingTier === "EARLY_BIRD" ? "🎯" : "💰";
+    const pricingText = validatedData.pricingTier === "EARLY_BIRD" ? "Early Bird (₹4,999)" : "Regular (₹6,999)";
+    
+    const discordMessage = `${pricingEmoji} **AI Bootcamp Registration Started - Step 1 Complete**
     
 👤 **Student Details:**
 • Name: ${validatedData.firstName} ${validatedData.lastName}
@@ -83,28 +90,30 @@ export async function POST(req: Request) {
 • Phone: ${validatedData.phone || 'Not provided'}
 • Department: ${validatedData.department || 'Not specified'}
 • AI Experience Level: ${validatedData.experience}
+• Pricing Tier: ${pricingText}
 
 🆔 **Registration ID:** ${registration.id}
 📅 **Registered At:** ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST
 
-⏳ **Status:** Waiting for additional details (Step 2)`;
+⏳ **Status:** Waiting for additional details (Step 2)
+📚 **Program:** 5-Week AI Bootcamp (20 hours total)`;
 
-    // Send Discord notification using workshop-specific webhook
+    // Send Discord notification using bootcamp-specific webhook
     sendDiscordNotification(
       discordMessage, 
       false, // statusUpdate
-      process.env.DISCORD_WEBHOOK_WORKSHOP_URL // custom webhook for workshop registrations
+      process.env.DISCORD_WEBHOOK_BOOTCAMP_URL || process.env.DISCORD_WEBHOOK_WORKSHOP_URL // fallback to workshop webhook
     ).catch(console.error);
 
     return NextResponse.json({ 
       success: true, 
       data: {
         id: registration.id,
-        message: "Basic registration successful! Please complete additional details.",
+        message: "Basic bootcamp registration successful! Please complete additional details.",
       }
     });
   } catch (error) {
-    console.error("Workshop registration error:", error);
+    console.error("Bootcamp registration error:", error);
     
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -116,13 +125,13 @@ export async function POST(req: Request) {
     // Handle unique constraint violation (duplicate email)
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002') {
       return NextResponse.json(
-        { error: "Email already registered for this workshop" },
+        { error: "Email already registered for this bootcamp" },
         { status: 400 }
       );
     }
     
     return NextResponse.json(
-      { error: "Failed to register for workshop", details: String(error) },
+      { error: "Failed to register for bootcamp", details: String(error) },
       { status: 500 }
     );
   }

@@ -31,7 +31,7 @@ export default function PromptEngineeringLandingPage() {
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed">
-                Join Yash Thakker for a 2-hour intensive workshop on AI prompting essentials
+                Join Yash Thakker for a 1-hour intensive workshop on AI prompting essentials
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12">
@@ -58,7 +58,7 @@ export default function PromptEngineeringLandingPage() {
                   <div>
                     <h4 className="text-lg font-semibold mb-3 text-purple-400">📅 When</h4>
                     <p className="text-gray-300 mb-2">June 24, 2025</p>
-                    <p className="text-gray-300">11:30 AM - 1:30 PM IST</p>
+                    <p className="text-gray-300">11:30 AM - 12:30 PM IST</p>
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">💻 Format</h4>
@@ -83,7 +83,7 @@ export default function PromptEngineeringLandingPage() {
                   <p className="text-sm text-purple-400 mb-1">Founder of AISOLO Technologies, AI Entrepreneur</p>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline" className="text-xs">12+ Years Experience</Badge>
-                    <Badge variant="outline" className="text-xs">70K+ Students</Badge>
+                    <Badge variant="outline" className="text-xs">80K+ Students</Badge>
                   </div>
                 </div>
               </div>

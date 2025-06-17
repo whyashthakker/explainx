@@ -16,7 +16,7 @@ export default function WorkshopShare({ isOpen, onClose }: WorkshopShareProps) {
   
   const workshopUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.explainx.ai/workshops/ai/prompt-engineering';
   const workshopTitle = "Free Prompt Engineering Workshop with Yash Thakker";
-  const workshopDescription = "Join a 2-hour intensive workshop on AI prompting essentials. Learn proven techniques to 10x your productivity with AI. June 24, 2025 | FREE Registration";
+  const workshopDescription = "Join a 1-hour intensive workshop on AI prompting essentials. Learn proven techniques to 10x your productivity with AI. June 24, 2025 | FREE Registration";
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {

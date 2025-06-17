@@ -7,15 +7,15 @@ import { Input } from "@repo/ui/components/ui/input";
 import { Label } from "@repo/ui/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@repo/ui/components/ui/select";
 import { Textarea } from "@repo/ui/components/ui/textarea";
-import { X, CheckCircle, AlertCircle, ArrowLeft, ArrowRight, Mail } from "lucide-react";
+import { X, CheckCircle, ArrowLeft, ArrowRight, Mail, Clock } from "lucide-react";
 import { toast } from "sonner";
 
-interface WorkshopRegistrationFormProps {
+interface BootcampRegistrationFormProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRegistrationFormProps) {
+export default function BootcampRegistrationForm({ isOpen, onClose }: BootcampRegistrationFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [registrationId, setRegistrationId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -27,6 +27,7 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
     experience: "",
     goals: "",
     referralSource: "",
+    pricingTier: "EARLY_BIRD", // Default to early bird
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -46,7 +47,7 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/workshop-registration", {
+      const response = await fetch("/api/bootcamp-registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,6 +59,7 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
           phone: formData.phone,
           department: formData.department,
           experience: formData.experience,
+          pricingTier: formData.pricingTier,
         }),
       });
 
@@ -83,7 +85,7 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/workshop-registration/update", {
+      const response = await fetch("/api/bootcamp-registration/update", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +101,7 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
 
       if (response.ok) {
         setIsSuccess(true);
-        toast.success("Registration completed successfully!");
+        toast.success("Bootcamp registration completed successfully!");
       } else {
         toast.error(data.error || "Update failed. Please try again.");
       }
@@ -128,12 +130,24 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
             <div className="mx-auto w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-4">
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
-            <CardTitle className="text-2xl text-white">You're all set!</CardTitle>
+            <CardTitle className="text-2xl text-white">Welcome to the Bootcamp!</CardTitle>
             <CardDescription className="text-gray-300">
-              Your workshop registration is complete. Check your email for workshop details and calendar invite.
+              Your 5-week AI bootcamp registration is complete. Check your email for program details and next steps.
             </CardDescription>
           </CardHeader>
           <CardContent>
+            <div className="space-y-3 mb-6">
+              <div className="bg-purple-900/20 border border-purple-700/30 rounded-lg p-3">
+                <p className="text-purple-200 text-sm text-center">
+                  📅 Program starts with Week 1 on the next available Saturday
+                </p>
+              </div>
+              <div className="bg-blue-900/20 border border-blue-700/30 rounded-lg p-3">
+                <p className="text-blue-200 text-sm text-center">
+                  🎯 You'll receive calendar invites for all sessions
+                </p>
+              </div>
+            </div>
             <Button onClick={onClose} className="w-full bg-purple-600 hover:bg-purple-700">
               Close
             </Button>
@@ -153,12 +167,12 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
           <div className="flex justify-between items-center">
             <div>
               <CardTitle className="text-xl text-white">
-                {currentStep === 1 ? "Join Free Workshop - Step 1" : "Complete Your Registration - Step 2"}
+                {currentStep === 1 ? "Join AI Bootcamp - Step 1" : "Complete Your Registration - Step 2"}
               </CardTitle>
               <CardDescription className="text-gray-300">
                 {currentStep === 1 
-                  ? "Basic Information - Prompt Engineering Essentials with Yash Thakker"
-                  : "Additional Details - Help us personalize your experience"
+                  ? "Basic Information - 5-Week Complete AI Mastery Program"
+                  : "Additional Details - Help us personalize your learning experience"
                 }
               </CardDescription>
             </div>
@@ -264,17 +278,31 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
                 </Select>
               </div>
 
-              <div className="bg-blue-900/20 border border-blue-700/30 rounded-lg p-3">
+              <div>
+                <Label htmlFor="pricingTier" className="text-white">Pricing Option *</Label>
+                <Select onValueChange={(value) => handleInputChange("pricingTier", value)} defaultValue="EARLY_BIRD">
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                    <SelectValue placeholder="Select pricing option" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-gray-800 border-gray-700">
+                    <SelectItem value="EARLY_BIRD" className="text-white">
+                      Early Bird - ₹4,999 (Save ₹2,000)
+                    </SelectItem>
+                    <SelectItem value="REGULAR" className="text-white" disabled>
+                      Regular - ₹6,999 (Available July 1st)
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="bg-orange-900/20 border border-orange-700/30 rounded-lg p-3">
                 <div className="flex items-start gap-2">
-                  <AlertCircle className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
-                  <div className="text-sm text-blue-200">
-                    <p className="font-medium mb-1">Workshop Details:</p>
-                    <ul className="space-y-1 text-xs">
-                      <li>• <strong>Date:</strong> June 24, 2025</li>
-                      <li>• <strong>Time:</strong> 11:30 AM - 12:30 PM IST</li>
-                      <li>• <strong>Format:</strong> Live online session</li>
-                      <li>• <strong>Recording:</strong> Available for 7 days</li>
-                    </ul>
+                  <Clock className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-orange-200">
+                    <p className="font-medium mb-1">Early Bird Pricing Ends Soon!</p>
+                    <p className="text-xs">
+                      Save ₹2,000 with early bird pricing. Limited time offer valid until June 30, 2025.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -301,7 +329,7 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
                   value={formData.goals}
                   onChange={(e) => handleInputChange("goals", e.target.value)}
                   className="bg-gray-800 border-gray-700 text-white"
-                  placeholder="What do you hope to achieve from this workshop?"
+                  placeholder="What do you hope to achieve from this 5-week AI bootcamp?"
                   rows={3}
                 />
               </div>
@@ -330,7 +358,7 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
                   <div className="text-sm text-purple-200">
                     <p className="font-medium mb-1">Newsletter Subscription Included</p>
                     <p className="text-xs">
-                      Your workshop registration automatically includes our free AI Newsletter with the latest insights and trends, delivered 4 times per week.
+                      Your bootcamp registration automatically includes our free AI Newsletter with the latest insights and trends, delivered 4 times per week.
                     </p>
                   </div>
                 </div>

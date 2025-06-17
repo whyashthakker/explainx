@@ -431,6 +431,7 @@ model WorkshopRegistration {
   firstName      String
   lastName       String
   phone          String?
+  department     String?  // Department/Role field
   experience     String   // "BEGINNER", "INTERMEDIATE", "ADVANCED"
   goals          String?  @db.Text
   referralSource String?
@@ -440,4 +441,22 @@ model WorkshopRegistration {
   updatedAt      DateTime @updatedAt
 
   @@map("workshop_registrations")
+}
+
+model BootcampRegistration {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  firstName      String
+  lastName       String
+  phone          String?
+  department     String?  // Department/Role field
+  experience     String   // "BEGINNER", "INTERMEDIATE", "ADVANCED"
+  pricingTier    String   // "EARLY_BIRD", "REGULAR"
+  goals          String?  @db.Text
+  referralSource String?
+  status         String   @default("REGISTERED") // "REGISTERED", "COMPLETED", "REFUNDED"
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("bootcamp_registrations")
 }

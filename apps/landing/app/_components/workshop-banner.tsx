@@ -11,7 +11,7 @@ const trackWorkshopEvent = (eventName: string) => {
     window.fbq('track', eventName, {
       content_name: 'Prompt Engineering Workshop',
       event_date: 'June 24, 2025',
-      event_time: '7:30 PM'
+      event_time: '11:30 AM IST'
     });
   }
 };
@@ -29,7 +29,7 @@ export const WorkshopBanner = () => {
 
   // Calculate time left until June 24, 2025, 7:30 PM
   useEffect(() => {
-    const targetDate = new Date('2025-06-24T19:30:00').getTime()
+    const targetDate = new Date('2025-06-24T19:30:00+05:30').getTime()
 
     const updateTimer = () => {
       const now = new Date().getTime()
@@ -92,7 +92,7 @@ export const WorkshopBanner = () => {
               </div>
               <div className="flex items-center space-x-1">
                 <Clock className="h-3 w-3" />
-                <span>7:30 PM</span>
+                <span>11:30 AM IST</span>
               </div>
             </div>
             
@@ -138,7 +138,7 @@ export const WorkshopBanner = () => {
               </div>
               <div className="flex items-center space-x-1">
                 <Clock className="h-4 w-4" />
-                <span>7:30 PM</span>
+                <span>11:30 AM IST</span>
               </div>
             </div>
 
