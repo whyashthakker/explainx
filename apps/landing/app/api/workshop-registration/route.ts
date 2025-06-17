@@ -4,11 +4,50 @@ import { sendDiscordNotification } from "../../../lib/discord-notify";
 import prisma from "@repo/db/client";
 import { Prisma } from "@prisma/client";
 
+// Helper function to validate phone numbers and filter out fake ones
+function isValidPhoneNumber(phone: string): boolean {
+  // Extract only digits from the phone number (very permissive)
+  const digitsOnly = phone.replace(/\D/g, '');
+  
+  // Need at least 7 digits for a valid phone number
+  if (digitsOnly.length < 7) {
+    return false;
+  }
+  
+  // Check for obviously fake patterns
+  const fakePatterns = [
+    /^(\d)\1{6,}$/, // 7+ same digits (1111111, 22222222, etc.)
+    /^0{7,}$/, // 7+ zeros
+    /^1234567890?$/, // Sequential 1234567890
+    /^0123456789?$/, // Sequential starting with 0
+    /^9876543210?$/, // Reverse sequential
+  ];
+  
+  // Check against fake patterns
+  for (const pattern of fakePatterns) {
+    if (pattern.test(digitsOnly)) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
 const workshopRegistrationSchema = z.object({
   email: z.string().email(),
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  phone: z.string().optional(),
+  phone: z.string().optional().refine(
+    (phone) => {
+      // If phone is empty or undefined, it's valid (since it's optional)
+      if (!phone || phone.trim() === '') return true;
+      
+      return isValidPhoneNumber(phone);
+    },
+    {
+      message: "Please provide a valid phone number"
+    }
+  ),
   experience: z.string().refine(val => 
     val === "BEGINNER" || val === "INTERMEDIATE" || val === "ADVANCED", {
     message: "Experience level must be BEGINNER, INTERMEDIATE, or ADVANCED"

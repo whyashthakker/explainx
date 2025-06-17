@@ -159,6 +159,18 @@ export default function WorkshopRegistrationForm({ isOpen, onClose }: WorkshopRe
             </div>
 
             <div>
+              <Label htmlFor="phone" className="text-white">Phone Number</Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+                className="bg-gray-800 border-gray-700 text-white"
+                placeholder="Your phone number (any format)"
+              />
+            </div>
+
+            <div>
               <Label htmlFor="experience" className="text-white">AI Experience Level *</Label>
               <Select onValueChange={(value) => handleInputChange("experience", value)}>
                 <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
