@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@repo/ui/components/ui/card';
 import { Button } from '@repo/ui/components/ui/button';
 import { Input } from '@repo/ui/components/ui/input';
@@ -23,6 +23,14 @@ interface FormErrors {
   subscriberType?: string;
 }
 
+interface ReferralData {
+  referralUrl?: string;
+  referralCode?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+}
+
 const validateFormData = (data: FormData): { isValid: boolean; message?: string } => {
   if (!data.email || !data.email.includes('@')) {
     return { isValid: false, message: 'Please enter a valid email address' };
@@ -31,6 +39,22 @@ const validateFormData = (data: FormData): { isValid: boolean; message?: string 
     return { isValid: false, message: 'Please select your primary interest in AI' };
   }
   return { isValid: true };
+};
+
+// Function to extract URL parameters
+const extractUrlParams = (): ReferralData => {
+  if (typeof window === 'undefined') return {};
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const referralUrl = urlParams.get('ref') || urlParams.get('referral_url') || document.referrer || undefined;
+  
+  return {
+    referralUrl,
+    referralCode: urlParams.get('referral_code') || urlParams.get('ref_code') || undefined,
+    utmSource: urlParams.get('utm_source') || undefined,
+    utmMedium: urlParams.get('utm_medium') || undefined,
+    utmCampaign: urlParams.get('utm_campaign') || undefined,
+  };
 };
 
 export default function NewsletterForm() {
@@ -42,6 +66,12 @@ export default function NewsletterForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [referralData, setReferralData] = useState<ReferralData>({});
+
+  useEffect(() => {
+    // Extract referral data from URL when component mounts
+    setReferralData(extractUrlParams());
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();    
@@ -63,7 +93,10 @@ export default function NewsletterForm() {
       const payload = {
         email: formData.email.trim(),
         subscriberType: formData.subscriberType,
-        interests: formData.interests
+        interests: formData.interests,
+        // Include referral data
+        ...referralData,
+        routePath: window.location.pathname,
       };
 
       const response = await fetch('/api/newsletter', {

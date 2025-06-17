@@ -7,10 +7,33 @@ import { Button } from '@repo/ui/components/ui/button';
 import { Badge } from '@repo/ui/components/ui/badge';
 import { Input } from '@repo/ui/components/ui/input';
 
-
 interface EmailPopupProps {
   currentPath: string;
 }
+
+interface ReferralData {
+  referralUrl?: string;
+  referralCode?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+}
+
+// Function to extract URL parameters
+const extractUrlParams = (): ReferralData => {
+  if (typeof window === 'undefined') return {};
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const referralUrl = urlParams.get('ref') || urlParams.get('referral_url') || document.referrer || undefined;
+  
+  return {
+    referralUrl,
+    referralCode: urlParams.get('referral_code') || urlParams.get('ref_code') || undefined,
+    utmSource: urlParams.get('utm_source') || undefined,
+    utmMedium: urlParams.get('utm_medium') || undefined,
+    utmCampaign: urlParams.get('utm_campaign') || undefined,
+  };
+};
 
 const EmailPopup: React.FC<EmailPopupProps> = ({ currentPath }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,9 +41,11 @@ const EmailPopup: React.FC<EmailPopupProps> = ({ currentPath }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [referralData, setReferralData] = useState<ReferralData>({});
 
   useEffect(() => {
     setIsMounted(true);
+    setReferralData(extractUrlParams());
     checkAndShowPopup();
   }, []);
 
@@ -55,16 +80,22 @@ const EmailPopup: React.FC<EmailPopupProps> = ({ currentPath }) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/newsletter/opt-in', {
+      const payload = {
+        email,
+        subscriberType: 'ENTHUSIAST', // Default for blog visitors
+        routePath: currentPath,
+        // Include referral data
+        ...referralData,
+      };
+
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email,
-          routePath: currentPath,
-        }),
+        body: JSON.stringify(payload),
       });
+      
       if (response.ok) {
         setIsSuccess(true);
         // Store that user has successfully subscribed
@@ -72,9 +103,14 @@ const EmailPopup: React.FC<EmailPopupProps> = ({ currentPath }) => {
         setTimeout(() => {
           setIsVisible(false);
         }, 15000);
+      } else {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error || 'Failed to subscribe');
       }
     } catch (error) {
       console.error('Error submitting email:', error);
+      // Show error message but don't prevent retry
+      alert(error instanceof Error ? error.message : 'Error subscribing. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
