@@ -3,6 +3,11 @@ import { z } from "zod";
 import { sendDiscordNotification } from "../../../../lib/discord-notify";
 import prisma from "@repo/db/client";
 
+// Beehiiv API configuration
+const BEEHIIV_API_URL = 'https://api.beehiiv.com/v2';
+const BEEHIIV_API_KEY = process.env.BEEHIIV_API_KEY;
+const BEEHIIV_PUBLICATION_ID = process.env.BEEHIIV_PUBLICATION_ID;
+
 const updateBootcampRegistrationSchema = z.object({
   registrationId: z.string().min(1, "Registration ID is required"),
   goals: z.string().optional(),
@@ -37,11 +42,15 @@ export async function PATCH(req: Request) {
 
     // Subscribe to Beehiiv newsletter (mandatory for bootcamp)
     try {
-      const beehiivResponse = await fetch("https://api.beehiiv.com/v2/publications/pub_7e4a1940-cfd8-4ba4-be6f-9da8e5b1d7cb/subscriptions", {
+      if (!BEEHIIV_API_KEY || !BEEHIIV_PUBLICATION_ID) {
+        throw new Error('Beehiiv API configuration missing');
+      }
+
+      const beehiivResponse = await fetch(`${BEEHIIV_API_URL}/publications/${BEEHIIV_PUBLICATION_ID}/subscriptions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.BEEHIIV_API_KEY}`,
+          "Authorization": `Bearer ${BEEHIIV_API_KEY}`,
         },
         body: JSON.stringify({
           email: existingRegistration.email,
