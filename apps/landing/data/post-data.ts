@@ -1,4 +1,4 @@
-// Generated on 2025-06-16T12:51:37.400Z
+// Generated on 2025-06-18T11:50:33.239Z
 interface Author {
   name: string;
   role: string;
@@ -19,6 +19,223 @@ interface Post {
 }
 
 const postData: Post[] = [
+  {
+    "title": "6 Mejores Alternativas a Circle en 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "Las mejores alternativas a Circle para crear comunidades en línea. Compara características, precios y capacidades de las principales plataformas comunitarias.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "es",
+    "url": "https://www.explainx.ai/blog/post/es/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Beste Circle Alternativen in 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "Die besten Circle Alternativen für den Aufbau von Online-Communities. Vergleichen Sie Features, Preise und Funktionen der Top Community-Plattformen.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "de",
+    "url": "https://www.explainx.ai/blog/post/de/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Best Circle Alternatives in 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "The best Circle alternatives for building online communities. Compare features, pricing, and capabilities of top community platforms.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "fr",
+    "url": "https://www.explainx.ai/blog/post/fr/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Migliori Alternative a Circle nel 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "Le migliori alternative a Circle per costruire community online. Confronta caratteristiche, prezzi e capacità delle principali piattaforme per community.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "it",
+    "url": "https://www.explainx.ai/blog/post/it/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "instagram",
+      "social-media-marketing"
+    ]
+  },
+  {
+    "title": "2025 में 6 सबसे अच्छे Circle विकल्प",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "ऑनलाइन कम्युनिटी बनाने के लिए सबसे अच्छे Circle विकल्प। टॉप कम्युनिटी प्लेटफॉर्म की विशेषताओं, कीमतों और क्षमताओं की तुलना करें।",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "hi",
+    "url": "https://www.explainx.ai/blog/post/hi/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Best Circle Alternatives in 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "The best Circle alternatives for building online communities. Compare features, pricing, and capabilities of top community platforms.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ar",
+    "url": "https://www.explainx.ai/blog/post/ar/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025年6个最佳Circle替代方案",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "构建在线社区的最佳Circle替代方案。比较顶级社区平台的功能、定价和能力。",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "zh-cn",
+    "url": "https://www.explainx.ai/blog/post/zh-cn/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Best Circle Alternatives in 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "The best Circle alternatives for building online communities. Compare features, pricing, and capabilities of top community platforms.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ko",
+    "url": "https://www.explainx.ai/blog/post/ko/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "2025年のCircleの最良の代替案6選",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "オンラインコミュニティ構築のための最高のCircle代替案。主要コミュニティプラットフォームの機能、価格、機能を比較。",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ja",
+    "url": "https://www.explainx.ai/blog/post/ja/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Beste Circle Alternatieven in 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "De beste Circle alternatieven voor het bouwen van online communities. Vergelijk functies, prijzen en mogelijkheden van top community platforms.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "nl",
+    "url": "https://www.explainx.ai/blog/post/nl/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Лучших Альтернатив Circle в 2025 году",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "Лучшие альтернативы Circle для создания онлайн-сообществ. Сравните функции, цены и возможности ведущих платформ сообществ.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "ru",
+    "url": "https://www.explainx.ai/blog/post/ru/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
+  {
+    "title": "6 Best Circle Alternatives in 2025",
+    "file": "best-circle-alternatives-community-platforms-2025",
+    "description": "The best Circle alternatives for building online communities. Compare features, pricing, and capabilities of top community platforms.",
+    "date": "June 18, 2025",
+    "datetime": "2025-06-18",
+    "author": {
+      "name": "Yash Thakker",
+      "role": "Founder",
+      "href": "#",
+      "imageUrl": "/images/blog/yt.jpg"
+    },
+    "language": "en",
+    "url": "https://www.explainx.ai/blog/post/best-circle-alternatives-community-platforms-2025",
+    "categories": [
+      "influencer-marketing"
+    ]
+  },
   {
     "title": "Las 6 Mejores Alternativas a Skool para Constructores de Comunidades en 2025",
     "file": "best-skool-alternative-for-community-builders",
