@@ -12,7 +12,6 @@ import { HeroHeader } from "./_components/hero5-header";
 import { Toaster as SonnerToaster } from "sonner";
 import Script from "next/script";
 // import {} from "";
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
