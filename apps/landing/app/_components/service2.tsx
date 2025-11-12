@@ -34,52 +34,36 @@ export default function ServicesSection() {
   });
 
   const serviceKeys = [
-    'custom-ai-agent-development', 
-    'ai-agent-training', 
-    'generative-ai-training', 
-    'frontend-development', 
-    'ai-consulting'
+    'infloq-platform', 
+    'olly-social', 
+    'bgblur-tools'
   ] as const;
   type ServiceKey = (typeof serviceKeys)[number];
   
-  const [activeService, setActiveService] = useState<ServiceKey>('custom-ai-agent-development');
+  const [activeService, setActiveService] = useState<ServiceKey>('infloq-platform');
   
   // Content for each service with Lucide icons
   const serviceContent = {
-    'custom-ai-agent-development': {
-      title: 'Powerful Custom AI Solutions',
-      description: 'Build sophisticated AI agents precisely tailored to your specific business needs. We leverage cutting-edge machine learning techniques to create intelligent systems that solve complex challenges and drive innovation.',
+    'infloq-platform': {
+      title: 'Infloq - Influencer Management',
+      description: 'Complete influencer management platform streamlining creator discovery, campaign management, and performance analytics. Connect brands with the perfect creators for maximum ROI.',
       icon: Bot,
       iconSize: 30,
-      alt: 'Custom AI Agent Development Illustration'
+      alt: 'Infloq Influencer Management Platform'
     },
-    'ai-agent-training': {
-      title: 'Empowering AI Development Skills',
-      description: 'Comprehensive training programs designed to equip your team with advanced AI development capabilities. Learn the latest techniques in AI agent creation, machine learning, and intelligent system design.',
-      icon: BookOpen,
-      iconSize: 30,
-      alt: 'AI Agent Training Illustration'
-    },
-    'generative-ai-training': {
-      title: 'Mastering Generative AI',
-      description: 'In-depth training to help you understand and leverage generative AI technologies. From foundational concepts to advanced implementation strategies, gain the expertise to transform your business with AI.',
-      icon: Lightbulb,
-      iconSize: 30,
-      alt: 'Generative AI Training Illustration'
-    },
-    'frontend-development': {
-      title: 'Intuitive AI Interfaces',
-      description: 'Design and develop user-friendly interfaces that make complex AI technologies accessible and engaging. We create seamless, intuitive front-end solutions that enhance user interaction with AI-powered systems.',
-      icon: Code,
-      iconSize: 30,
-      alt: 'Frontend Development for AI Illustration'
-    },
-    'ai-consulting': {
-      title: 'Strategic AI Guidance',
-      description: 'Expert consulting to help you navigate the complex landscape of AI implementation. We provide strategic insights, assessment, and roadmapping to ensure your AI initiatives align with your business goals.',
+    'olly-social': {
+      title: 'Olly Social - SMB Toolkit',
+      description: 'Comprehensive social media toolkit designed for small and medium businesses. Automate posting, analyze performance, and grow your social presence with AI-powered insights.',
       icon: Briefcase,
       iconSize: 30,
-      alt: 'AI Consulting Illustration'
+      alt: 'Olly Social Media Toolkit'
+    },
+    'bgblur-tools': {
+      title: 'BGBlur - Privacy Tools',
+      description: 'Advanced privacy tools for content creators including AI background removal, blur effects, and privacy protection features. Keep your personal space private while creating professional content.',
+      icon: Code,
+      iconSize: 30,
+      alt: 'BGBlur Privacy Tools for Creators'
     }
   };
   
@@ -103,7 +87,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.5 }}
         >
           <div className="w-1 h-6 bg-secondaccent"></div>
-          <h3 className="text-sm font-medium uppercase tracking-wider text-white dark:text-white">OUR SERVICES</h3>
+          <h3 className="text-sm font-medium uppercase tracking-wider text-white dark:text-white">OUR TOOLS</h3>
         </motion.div>
         
         {/* Headline with mixed styling */}
@@ -114,9 +98,9 @@ export default function ServicesSection() {
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            We bring <span className=" ">AI, engineering &</span>
+            <span className=" ">Tools</span> we've built for
             <br />
-            <span className=" ">content</span> expertise
+            <span className=" ">modern</span> businesses
           </motion.h2>
           
           {/* Description paragraph */}
@@ -126,9 +110,8 @@ export default function ServicesSection() {
             animate={isHeaderInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Each problem is looked at from a fresh lens to provide you with a 
-            solution that solves your specific requirements and integrates with 
-            your existing infrastructure
+            Powerful SaaS tools serving 5,000+ businesses worldwide. From influencer 
+            marketing to social media automation and privacy protection.
           </motion.p>
         </div>
           
@@ -145,60 +128,44 @@ export default function ServicesSection() {
             animate={isServicesListInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
           >
-            <ServiceItem 
-              title="Custom AI Agent Development"
-              serviceId="custom-ai-agent-development"
-              isActive={activeService === 'custom-ai-agent-development'}
-              onClick={() => changeService('custom-ai-agent-development' as ServiceKey)}
-              isVisible={isServicesListInView}
-              index={0}
-              icon={serviceContent['custom-ai-agent-development'].icon}
-              iconSize={serviceContent['custom-ai-agent-development'].iconSize}
-            />
+            <a href="https://infloq.com" target="_blank" rel="noopener noreferrer" className="block">
+              <ServiceItem 
+                title="Infloq.com"
+                serviceId="infloq-platform"
+                isActive={activeService === 'infloq-platform'}
+                onClick={() => changeService('infloq-platform' as ServiceKey)}
+                isVisible={isServicesListInView}
+                index={0}
+                icon={serviceContent['infloq-platform'].icon}
+                iconSize={serviceContent['infloq-platform'].iconSize}
+              />
+            </a>
             
-            <ServiceItem 
-              title="AI Agent Training"
-              serviceId="ai-agent-training"
-              isActive={activeService === 'ai-agent-training'}
-              onClick={() => changeService('ai-agent-training')}
-              isVisible={isServicesListInView}
-              index={1}
-              icon={serviceContent['ai-agent-training'].icon}
-              iconSize={serviceContent['ai-agent-training'].iconSize}
-            />
+            <a href="https://olly.social" target="_blank" rel="noopener noreferrer" className="block">
+              <ServiceItem 
+                title="Olly.social"
+                serviceId="olly-social"
+                isActive={activeService === 'olly-social'}
+                onClick={() => changeService('olly-social')}
+                isVisible={isServicesListInView}
+                index={1}
+                icon={serviceContent['olly-social'].icon}
+                iconSize={serviceContent['olly-social'].iconSize}
+              />
+            </a>
             
-            <ServiceItem 
-              title="Generative AI Training"
-              serviceId="generative-ai-training"
-              isActive={activeService === 'generative-ai-training'}
-              onClick={() => changeService('generative-ai-training')}
-              isVisible={isServicesListInView}
-              index={2}
-              icon={serviceContent['generative-ai-training'].icon}
-              iconSize={serviceContent['generative-ai-training'].iconSize}
-            />
-            
-            <ServiceItem 
-              title="Frontend Development"
-              serviceId="frontend-development"
-              isActive={activeService === 'frontend-development'}
-              onClick={() => changeService('frontend-development')}
-              isVisible={isServicesListInView}
-              index={3}
-              icon={serviceContent['frontend-development'].icon}
-              iconSize={serviceContent['frontend-development'].iconSize}
-            />
-            
-            <ServiceItem 
-              title="AI Consulting"
-              serviceId="ai-consulting"
-              isActive={activeService === 'ai-consulting'}
-              onClick={() => changeService('ai-consulting')}
-              isVisible={isServicesListInView}
-              index={4}
-              icon={serviceContent['ai-consulting'].icon}
-              iconSize={serviceContent['ai-consulting'].iconSize}
-            />
+            <a href="https://bgblur.com" target="_blank" rel="noopener noreferrer" className="block">
+              <ServiceItem 
+                title="BGBlur.com"
+                serviceId="bgblur-tools"
+                isActive={activeService === 'bgblur-tools'}
+                onClick={() => changeService('bgblur-tools')}
+                isVisible={isServicesListInView}
+                index={2}
+                icon={serviceContent['bgblur-tools'].icon}
+                iconSize={serviceContent['bgblur-tools'].iconSize}
+              />
+            </a>
           </motion.div>
           
           {/* Right Column: Feature Icon and Text */}

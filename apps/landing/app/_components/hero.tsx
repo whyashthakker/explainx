@@ -1,12 +1,10 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { ArrowRight, ChevronRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@repo/ui/components/ui/button'
-import Image from 'next/image'
 import { TextEffect } from './text-effect'
 import { AnimatedGroup } from './animated-group'
-import CostCalculator from './cost-calculator'
 
 const transitionVariants = {
     item: {
@@ -99,7 +97,7 @@ export default function HeroSection() {
                                     per="line"  // Ensure it breaks by lines
                                     as="h1"
                                     className="mt-8 text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-cal">
-                                    {"AI Agents to\nScale Your Business"}
+                                    {"Building the future in India"}
                                 </TextEffect>
                                 <TextEffect
                                     per="line"
@@ -108,7 +106,7 @@ export default function HeroSection() {
                                     delay={0.5}
                                     as="p"
                                     className="mx-auto mt-8 max-w-2xl text-balance text-lg">
-                                    Build, deploy, and scale your AI agents with ease.
+                                    Building AI agents for automation, training & education services. Quality work over surface-level solutions.
                                 </TextEffect>
 
                                 <AnimatedGroup
@@ -123,29 +121,14 @@ export default function HeroSection() {
                                         },
                                         ...transitionVariants,
                                     }}
-                                    className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
-                                    <div
-                                        key={1}
-                                        className="  rounded-md  p-0.5">
+                                    className="mt-12 flex flex-col items-center justify-center">
+                                    <div className="rounded-md p-0.5">
                                         <Button
                                             asChild
                                             size="lg"
-                                            className="rounded-xl px-5 text-base bg-secondaccent">
-                                            <Link href="#link">
-                                                <span className="text-nowrap">Start Building</span>
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                    <div
-                                        key={2}
-                                        className=" border rounded-xl p-0.5">
-                                        <Button
-                                            asChild
-                                            size="lg"
-                                            variant="ghost"
-                                            className="rounded-xl px-5 text-base">
-                                            <Link href="#link">
-                                                <span className="text-nowrap">Request a Demo</span>
+                                            className="rounded-xl px-8 text-base bg-secondaccent">
+                                            <Link href="mailto:yash@explainx.ai">
+                                                <span className="text-nowrap">Get in Touch</span>
                                             </Link>
                                         </Button>
                                     </div>
@@ -153,26 +136,6 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        <AnimatedGroup
-                            variants={{
-                                container: {
-                                    visible: {
-                                        transition: {
-                                            staggerChildren: 0.05,
-                                            delayChildren: 0.75,
-                                        },
-                                    },
-                                },
-                                ...transitionVariants,
-                            }}>
-                            <div className="relative -mr-56 mt-8 overflow-visible px-2 sm:mr-0 sm:mt-12 md:mt-20 z-30">
-                                {/* Removed the overlay that was blocking calculator interaction */}
-                                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-visible rounded-2xl  p-4 shadow-lg shadow-zinc-950/15 ring-1 z-20">
-                                    {/* Replace the Image with ROI Calculator */}
-                                    <CostCalculator />
-                                </div>
-                            </div>
-                        </AnimatedGroup>
                     </div>
                 </section>
                 {/* Customer section code removed */}

@@ -19,13 +19,14 @@ type Member = {
 // Reordered members in alphabetical order by first name
 const members: Member[] = [
   {
-    name: 'Aryan Nagbanshi',
-    role: 'Development',
+    name: 'Yash Thakker',
+    role: 'CEO & Product Lead',
     avatar: 'https://github.com/shadcn.png',
-    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
+    expertise: ['AI Strategy', 'Product Development', 'Enterprise Solutions'],
     social: {
-      github: 'https://github.com',
-      linkedin: 'https://linkedin.com'
+      twitter: 'https://twitter.com',
+      linkedin: 'https://linkedin.com',
+      github: 'https://github.com'
     }
   },
   {
@@ -35,16 +36,6 @@ const members: Member[] = [
     expertise: ['AI Operations', 'Business Strategy', 'Team Management'],
     social: {
       twitter: 'https://twitter.com',
-      linkedin: 'https://linkedin.com'
-    }
-  },
-  {
-    name: 'Paresh Bhamare',
-    role: 'Development',
-    avatar: 'https://github.com/shadcn.png',
-    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
-    social: {
-      github: 'https://github.com',
       linkedin: 'https://linkedin.com'
     }
   },
@@ -78,23 +69,42 @@ const members: Member[] = [
     }
   },
   {
-    name: 'Yash Thakker',
-    role: 'CEO & Product Lead',
-    avatar: 'https://github.com/shadcn.png',
-    expertise: ['AI Strategy', 'Product Development', 'Enterprise Solutions'],
-    social: {
-      twitter: 'https://twitter.com',
-      linkedin: 'https://linkedin.com',
-      github: 'https://github.com'
-    }
-  },
-  {
-    name: 'Yogesh Gaikwad',
+    name: 'Tushar Mestry',
     role: 'Content',
     avatar: 'https://github.com/shadcn.png',
     expertise: ['AI Content', 'Video Production', 'Creative Direction'],
     social: {
       twitter: 'https://twitter.com',
+      linkedin: 'https://linkedin.com'
+    }
+  },
+  {
+    name: 'Dhruvi Jain',
+    role: 'Content',
+    avatar: 'https://github.com/shadcn.png',
+    expertise: ['AI Content', 'Video Production', 'Creative Direction'],
+    social: {
+      twitter: 'https://twitter.com',
+      linkedin: 'https://linkedin.com'
+    }
+  },
+  {
+    name: 'Ganesh Mohane',
+    role: 'Development',
+    avatar: 'https://github.com/shadcn.png',
+    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
+    social: {
+      github: 'https://github.com',
+      linkedin: 'https://linkedin.com'
+    }
+  },
+  {
+    name: 'Paresh Bhamare',
+    role: 'Development',
+    avatar: 'https://github.com/shadcn.png',
+    expertise: ['Machine Learning', 'AI Architecture', 'Backend Systems'],
+    social: {
+      github: 'https://github.com',
       linkedin: 'https://linkedin.com'
     }
   },

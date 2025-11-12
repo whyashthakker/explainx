@@ -12,8 +12,8 @@ export function HomePageStructuredData({ baseUrl = 'https://explainx.ai' }: Home
         "@type": "WebSite",
         "@id": baseUrl,
         "url": baseUrl,
-        "name": "explainx.ai",
-        "description": "AI-Powered Influencer Marketing Platform",
+        "name": "AISolo Technologies",
+        "description": "AI agents for automation, training & education services, and SaaS platform development",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -41,8 +41,8 @@ export function HomePageStructuredData({ baseUrl = 'https://explainx.ai' }: Home
         "@type": "WebPage",
         "@id": `${baseUrl}#webpage`,
         "url": baseUrl,
-        "name": "ExplainX - AI-Powered Influencer Marketing Platform",
-        "description": "Find and collaborate with creators and influencers using AI-powered tools for campaign management, analytics, and automation.",
+        "name": "AISolo Technologies Private Limited - AI Agents & SaaS Development",
+        "description": "Building AI agents for automation, training & education services. Creators of Infloq (influencer management), Olly.social (social media toolkit), and BGBlur (privacy tools).",
         "isPartOf": { "@id": baseUrl },
         "about": { "@id": `${baseUrl}#organization` },
         "primaryImageOfPage": {
@@ -51,47 +51,36 @@ export function HomePageStructuredData({ baseUrl = 'https://explainx.ai' }: Home
         }
       },
       {
-        "@type": "SoftwareApplication",
-        "name": "ExplainX Influencer Marketing Platform",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web-based",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "description": "Performance-based pricing - Pay per click"
-        }
-      },
-      {
         "@type": "ItemList",
+        "name": "AISolo Technologies Products",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Find Influencers",
-            "url": `${baseUrl}/products/influencer-discovery`,
-            "description": "Recruit the best influencers and affiliates for your campaigns"
+            "name": "Infloq",
+            "url": "https://infloq.com",
+            "description": "Influencer management platform for brands and creators"
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Pricing",
-            "url": `${baseUrl}/pricing`,
-            "description": "Join 1000+ Brands. Transparent, performance-based pricing options"
+            "name": "Olly Social",
+            "url": "https://olly.social",
+            "description": "Social media toolkit for small and medium businesses"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Free Tools",
-            "url": `${baseUrl}/tools`,
-            "description": "Access free influencer marketing tools and calculators"
+            "name": "BGBlur",
+            "url": "https://bgblur.com",
+            "description": "Privacy tools for content creators"
           },
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Campaign Management",
-            "url": `${baseUrl}/products/campaign-management`,
-            "description": "Manage your influencer campaigns effectively"
+            "name": "AI Training Services",
+            "url": `${baseUrl}/contact`,
+            "description": "AI automation training and education services"
           }
         ]
       },

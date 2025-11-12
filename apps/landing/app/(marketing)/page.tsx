@@ -18,6 +18,7 @@ import TemplateSlider from "../_components/agentCard";
 import Services2 from "../_components/service2";
 import { HeroHeader } from "../_components/hero5-header";
 import { FeaturesSectionWithHoverEffects } from "../_components/guarantees2";
+import CompanyInfoSection from "../_components/company-info";
 
 const MarketingPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -73,8 +74,7 @@ const MarketingPage = () => {
       <HomePageStructuredData />
       <HeroSection />
       <ServicesSection />
-
-
+      <CompanyInfoSection />
 
       <DeliveryStats />
       {/* <Testimonials /> */}

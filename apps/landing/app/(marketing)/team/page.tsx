@@ -37,8 +37,8 @@ const teamMembers = [
     gender: "female",
   },
   {
-    name: "Aryan Nagbanshi",
-    role: "AI Development Lead",
+    name: "Ganesh Mohane",
+    role: "ML Developer",
     gender: "male",
   },
   {
